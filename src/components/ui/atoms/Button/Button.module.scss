@@ -1,0 +1,144 @@
+/* Button.module.scss */
+@use 'sass:map';
+
+$btn-colors: (
+  primary: (
+    bg: blue,
+    label: white,
+  ),
+  secondary: (
+    bg: skyblue,
+    label: red,
+  ),
+  tertiary: (
+    bg: gray,
+    label: white,
+  ),
+  brand: (
+    bg: #3ddc84,
+    label: white,
+  ),
+  'brand-sub-1': (
+    bg: #4285f4,
+    label: white,
+  ),
+  'brand-sub-2': (
+    bg: #073042,
+    label: white,
+  ),
+  success: (
+    bg: green,
+    label: white,
+  ),
+  warning: (
+    bg: orange,
+    label: white,
+  ),
+  danger: (
+    bg: red,
+    label: white,
+  ),
+);
+
+/* 2️⃣ variant + color mixin */
+@mixin btn-variant($variant) {
+  &:global(.variant--#{$variant}) {
+    // outline
+    @if $variant == 'outline' {
+      border: 1px solid red;
+    }
+
+    @each $name, $props in $btn-colors {
+      &:global(.color--#{$name}) {
+        background-color: map.get($props, bg);
+
+        // &:hover {
+        //   /* hover 스타일 필요하면 여기에 */
+        // }
+
+        // &:active {
+        //   /* active 스타일 필요하면 여기에 */
+        // }
+
+        .btn-label {
+          color: map.get($props, label);
+        }
+      }
+    }
+  }
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  button:focus {
+    outline: none; // 기본 focus 제거
+  }
+
+  &:focus-visible {
+    outline: 2px dashed blue;
+    outline-offset: 2px;
+  }
+
+  .btn-label {
+    min-width: max-content;
+  }
+
+  // SIZE
+  &:global(.size--xs) {
+    height: 28px;
+    padding: 0 8px;
+  }
+
+  &:global(.size--sm) {
+    height: 32px;
+    padding: 0 12px;
+  }
+
+  &:global(.size--md) {
+    height: 40px;
+    padding: 0 16px;
+  }
+
+  &:global(.size--lg) {
+    height: 48px;
+    padding: 0 20px;
+  }
+
+  &:global(.size--xl) {
+    height: 56px;
+    padding: 0 24px;
+  }
+
+  // VARIANT
+  @include btn-variant(solid);
+  @include btn-variant(outline);
+  @include btn-variant(ghost);
+  @include btn-variant(soft);
+
+  // SHAPE
+  &:global(.shape--square) {
+    border-radius: 0;
+  }
+
+  &:global(.shape--rounded) {
+    border-radius: 8px;
+  }
+
+  &:global(.shape--pill) {
+    border-radius: 9999px;
+  }
+}

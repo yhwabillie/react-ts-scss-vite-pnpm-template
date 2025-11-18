@@ -2,6 +2,7 @@
   "files": [],
   "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
   "compilerOptions": {
+    "types": ["vite-plugin-svgr/client"],
     "outDir": "dist",
     "rootDir": "src",
     "target": "ESNext",
@@ -13,5 +14,6 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true
-  }
+  },
+  "include": ["svg.d.ts"]
 }
