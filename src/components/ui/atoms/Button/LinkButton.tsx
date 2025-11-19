@@ -11,10 +11,12 @@ type BaseProps = {
   endIcon?: React.ReactNode;
 };
 
-/** <button> 전용 Props */
-type ButtonProps = BaseProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
+/** <a> 전용 Props */
+type AnchorProps = BaseProps & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-const Button: React.FC<ButtonProps> = ({
+type LinkButtonProps = AnchorProps;
+
+const LinkButton: React.FC<LinkButtonProps> = ({
   color,
   size,
   variant,
@@ -24,20 +26,20 @@ const Button: React.FC<ButtonProps> = ({
   endIcon,
   ...props
 }) => {
-  const buttonProps = props as ButtonProps;
+  const anchorProps = props as AnchorProps;
 
   return (
-    <button
+    <a
       className={`${styles['btn']} ${`variant--${variant}`} ${`color--${color}`} ${`size--${size}`} ${`shape--${shape}`}`}
-      {...buttonProps}
+      {...anchorProps}
     >
       {startIcon && startIcon}
 
       <span className={`${styles['btn-label']}`}>{children}</span>
 
       {endIcon && endIcon}
-    </button>
+    </a>
   );
 };
 
-export default Button;
+export default LinkButton;

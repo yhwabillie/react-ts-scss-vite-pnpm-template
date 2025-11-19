@@ -13,6 +13,10 @@ export default defineConfig([
   // 모든 JS/TS/JSX/TSX 파일 적용
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
+    // env: {
+    //   browser: true, // 브라우저 환경(global window, document 등 포함)
+    //   es2021: true,
+    // },
     languageOptions: {
       parser: tsParser, // TypeScript 파서 사용
       parserOptions: {
@@ -25,6 +29,13 @@ export default defineConfig([
       globals: {
         window: 'readonly',
         document: 'readonly',
+        HTMLButtonElement: 'readonly',
+        HTMLDivElement: 'readonly',
+        SVGSVGElement: 'readonly',
+        React: 'readonly',
+        SVGElement: 'readonly',
+        HTMLAnchorElement: 'readonly',
+        console: 'readonly',
       },
     },
     plugins: {
@@ -59,10 +70,7 @@ export default defineConfig([
           ignoreRestSiblings: true,
         },
       ],
-      // env: {
-      //   browser: true, // 브라우저 환경(global window, document 등 포함)
-      //   es2021: true,
-      // },
+
       'no-console': 'off', // 콘솔 사용 허용
       'no-empty': ['error', { allowEmptyCatch: true }], // 빈 블록 금지, 단 빈 catch는 허용
       'no-empty-function': ['error', { allow: ['arrowFunctions'] }], // 빈 함수 금지, 단 arrow function(=>) 예외 허용
