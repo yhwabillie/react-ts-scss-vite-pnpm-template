@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '@/components/ui/atoms/Button/Button.module.scss';
+import styles from '@/components/ui/molecules/Button/Button.module.scss';
 
 type BaseProps = {
   variant: 'solid' | 'outline' | 'ghost' | 'soft';

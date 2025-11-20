@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '@/components/ui/atoms/IconButton/IconButton.module.scss';
+import styles from '@/components/ui/molecules/IconButton/IconButton.module.scss';
 
 type BaseProps = {
   variant: 'solid' | 'outline' | 'ghost' | 'soft';
@@ -9,20 +9,28 @@ type BaseProps = {
   icon: React.ReactNode;
 };
 
-/** <button> 전용 Props */
-type ButtonProps = BaseProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
+/** <a> 전용 Props */
+type AnchorProps = BaseProps & React.AnchorHTMLAttributes<HTMLAnchorElement>;
+type LinkButtonProps = AnchorProps;
 
-const IconButton: React.FC<ButtonProps> = ({ color, size, variant, shape, icon, ...props }) => {
-  const buttonProps = props as ButtonProps;
+const IconLinkButton: React.FC<LinkButtonProps> = ({
+  color,
+  size,
+  variant,
+  shape,
+  icon,
+  ...props
+}) => {
+  const anchorProps = props as AnchorProps;
 
   return (
-    <button
+    <a
       className={`${styles['btn']} ${`variant--${variant}`} ${`color--${color}`} ${`size--${size}`} ${`shape--${shape}`}`}
-      {...buttonProps}
+      {...anchorProps}
     >
       {icon && icon}
-    </button>
+    </a>
   );
 };
 
-export default IconButton;
+export default IconLinkButton;

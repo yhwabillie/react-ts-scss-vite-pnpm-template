@@ -1,29 +1,18 @@
 import React from 'react';
-import styles from '@/components/ui/atoms/Button/Button.module.scss';
+import styles from '@/components/ui/molecules/IconButton/IconButton.module.scss';
 
 type BaseProps = {
   variant: 'solid' | 'outline' | 'ghost' | 'soft';
   color: 'primary' | 'secondary' | 'tertiary' | 'brand' | 'brand-sub';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   shape: 'rounded' | 'square' | 'pill';
-  children: React.ReactNode;
-  startIcon?: React.ReactNode;
-  endIcon?: React.ReactNode;
+  icon: React.ReactNode;
 };
 
 /** <button> 전용 Props */
 type ButtonProps = BaseProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button: React.FC<ButtonProps> = ({
-  color,
-  size,
-  variant,
-  shape,
-  children,
-  startIcon,
-  endIcon,
-  ...props
-}) => {
+const IconButton: React.FC<ButtonProps> = ({ color, size, variant, shape, icon, ...props }) => {
   const buttonProps = props as ButtonProps;
 
   return (
@@ -31,13 +20,9 @@ const Button: React.FC<ButtonProps> = ({
       className={`${styles['btn']} ${`variant--${variant}`} ${`color--${color}`} ${`size--${size}`} ${`shape--${shape}`}`}
       {...buttonProps}
     >
-      {startIcon && startIcon}
-
-      <span className={`${styles['btn-label']}`}>{children}</span>
-
-      {endIcon && endIcon}
+      {icon && icon}
     </button>
   );
 };
 
-export default Button;
+export default IconButton;

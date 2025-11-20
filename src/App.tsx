@@ -1,8 +1,8 @@
-import Button from '@/components/ui/atoms/Button/Button';
+import Button from '@/components/ui/molecules/Button/Button';
 import Icon from '@/components/ui/atoms/Icon/Icon';
-import LinkButton from './components/ui/atoms/Button/LinkButton';
-import IconButton from './components/ui/atoms/IconButton/IconButton';
-import IconLinkButton from './components/ui/atoms/IconButton/IconLinkButton';
+import LinkButton from './components/ui/molecules/Button/LinkButton';
+import IconButton from './components/ui/molecules/IconButton/IconButton';
+import IconLinkButton from './components/ui/molecules/IconButton/IconLinkButton';
 
 function App() {
   return (
