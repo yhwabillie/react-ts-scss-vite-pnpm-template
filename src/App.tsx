@@ -1,11 +1,13 @@
 import Button from '@/components/ui/atoms/Button/Button';
 import Icon from '@/components/ui/atoms/Icon/Icon';
 import LinkButton from './components/ui/atoms/Button/LinkButton';
+import IconButton from './components/ui/atoms/IconButton/IconButton';
+import IconLinkButton from './components/ui/atoms/IconButton/IconLinkButton';
 
 function App() {
   return (
     <>
-      <Button color='primary' size='xs' variant='solid' shape='square'>
+      <Button color='primary' size='xs' variant='solid' shape='square' disabled={true}>
         Primary Button
       </Button>
       <Button color='secondary' size='sm' variant='solid' shape='rounded'>
@@ -37,9 +39,36 @@ function App() {
         size='xl'
         shape='square'
         startIcon={<Icon name='logout' color='red' size='md' />}
+        aria-disabled='true'
       >
         링크
       </LinkButton>
+
+      <IconButton
+        color='secondary'
+        size='xl'
+        variant='solid'
+        shape='pill'
+        icon={<Icon name='logout' color='red' size='md' />}
+      />
+      <IconButton
+        color='primary'
+        size='lg'
+        variant='solid'
+        shape='pill'
+        icon={<Icon name='logout' color='red' size='md' />}
+      />
+      <IconLinkButton
+        href='/home'
+        title='새 창 열기'
+        target='_blank'
+        color='secondary'
+        size='lg'
+        variant='outline'
+        shape='pill'
+        icon={<Icon name='logout' color='red' size='md' />}
+        aria-disabled='true'
+      />
 
       <Icon name='search' color='red' size='sm' />
       <Icon name='search' color='red' size='md' />

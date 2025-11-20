@@ -1,0 +1,36 @@
+import React from 'react';
+import styles from '@/components/ui/atoms/IconButton/IconButton.module.scss';
+
+type BaseProps = {
+  variant: 'solid' | 'outline' | 'ghost' | 'soft';
+  color: 'primary' | 'secondary' | 'tertiary' | 'brand' | 'brand-sub';
+  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  shape: 'rounded' | 'square' | 'pill';
+  icon: React.ReactNode;
+};
+
+/** <a> 전용 Props */
+type AnchorProps = BaseProps & React.AnchorHTMLAttributes<HTMLAnchorElement>;
+type LinkButtonProps = AnchorProps;
+
+const IconLinkButton: React.FC<LinkButtonProps> = ({
+  color,
+  size,
+  variant,
+  shape,
+  icon,
+  ...props
+}) => {
+  const anchorProps = props as AnchorProps;
+
+  return (
+    <a
+      className={`${styles['btn']} ${`variant--${variant}`} ${`color--${color}`} ${`size--${size}`} ${`shape--${shape}`}`}
+      {...anchorProps}
+    >
+      {icon && icon}
+    </a>
+  );
+};
+
+export default IconLinkButton;

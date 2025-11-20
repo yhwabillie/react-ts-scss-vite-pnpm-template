@@ -1,5 +1,5 @@
 /* Button.module.scss */
-// Button, LinkButton 공통 스타일
+// IconButton, IconLinkButton 공통 스타일
 @use 'sass:map';
 
 $btn-colors: (
@@ -60,10 +60,6 @@ $btn-colors: (
         // &:active {
         //   /* active 스타일 필요하면 여기에 */
         // }
-
-        .btn-label {
-          color: map.get($props, label);
-        }
       }
     }
   }
@@ -106,33 +102,28 @@ $btn-colors: (
 
   // SIZE
   &:global(.size--xs) {
+    width: 28px;
     height: 28px;
-    padding: 0 8px;
-    gap: 4px;
   }
 
   &:global(.size--sm) {
     height: 32px;
-    padding: 0 12px;
-    gap: 6px;
+    width: 32px;
   }
 
   &:global(.size--md) {
     height: 40px;
-    padding: 0 16px;
-    gap: 8px;
+    width: 40px;
   }
 
   &:global(.size--lg) {
     height: 48px;
-    padding: 0 20px;
-    gap: 10px;
+    width: 48px;
   }
 
   &:global(.size--xl) {
     height: 56px;
-    padding: 0 24px;
-    gap: 12px;
+    width: 56px;
   }
 
   // VARIANT
