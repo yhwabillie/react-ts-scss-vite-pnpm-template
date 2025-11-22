@@ -1,0 +1,13 @@
+@use 'sass:math';
+@use 'sass:meta';
+@use '../variables' as vars;
+
+@function rem($px) {
+  // 숫자이고 px 단위일 때만 변환
+  @if meta.type-of($px) == 'number' and math.unit($px) == 'px' {
+    @return math.div($px, vars.$g_typography-base-size) * 1rem;
+  }
+
+  // rem, %, auto, null 등은 그대로 반환
+  @return $px;
+}

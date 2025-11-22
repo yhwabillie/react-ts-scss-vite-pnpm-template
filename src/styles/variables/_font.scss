@@ -1,0 +1,63 @@
+//───────────────────────────────────────
+//  📌 variables - Font
+//───────────────────────────────────────
+// 프로젝트에서 사용하는 주 폰트만 선언
+// $g_font-family: ('Pretendard GOV Variable');
+
+// $g_typography-font-family: (
+//   ko: var(--project-font-family-ko),
+//   ja: var(--project-font-family-ja),
+// );
+
+// $g_font-family-ko: ('Pretendard GOV Variable');
+// $g_font-family-ja: ('Noto Sans JP');
+
+$g_font-family: (
+  ko: (
+    'Noto Sans KR',
+  ),
+  ja: (
+    'Noto Sans JP',
+  ),
+);
+
+// 항상 뒤에 자동으로 붙는 시스템 fallback 세트
+$g_font-family-default-fallbacks: (
+  -apple-system,
+  BlinkMacSystemFont,
+  system-ui,
+  Roboto,
+  'Helvetica Neue',
+  'Segoe UI',
+  'Apple SD Gothic Neo',
+  'Malgun Gothic',
+  'Apple Color Emoji',
+  'Segoe UI Emoji',
+  'Segoe UI Symbol'
+);
+
+$g_font-size: (
+  10: 10px,
+  12: 12px,
+  14: 14px,
+  16: 16px,
+  18: 18px,
+  20: 20px,
+  22: 22px,
+  26: 26px,
+  32: 32px,
+  40: 40px,
+  42: 42px,
+  50: 50px,
+  52: 52px,
+  64: 64px,
+);
+$g_font-weight: (
+  400: 400,
+  500: 500,
+  600: 600,
+  700: 700,
+);
+$g_line-height: (
+  default: 1.5,
+);

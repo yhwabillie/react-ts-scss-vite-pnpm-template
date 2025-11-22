@@ -5,19 +5,24 @@ import IconButton from './components/ui/molecules/IconButton/IconButton';
 import IconLinkButton from './components/ui/molecules/IconButton/IconLinkButton';
 
 function App() {
+  const headingStyle: React.CSSProperties = {
+    font: 'var(--project-typo-d2-700)',
+  };
+
   return (
     <>
+      <p>&#xE000; 뒤로 가기 </p>
       <Button color='primary' size='xs' variant='solid' shape='square' disabled={true}>
-        Primary Button
+        人類社会
       </Button>
       <Button color='secondary' size='sm' variant='solid' shape='rounded'>
-        Secondary Button
+        apple
       </Button>
       <Button color='tertiary' size='md' variant='solid' shape='rounded'>
         Tertiary Button
       </Button>
       <Button color='brand' size='lg' variant='solid' shape='rounded'>
-        Brand Button
+        Brand Button 13
       </Button>
       <Button
         color='brand-sub'
@@ -77,6 +82,13 @@ function App() {
       <Icon name='logout' color='red' size='sm' />
       <Icon name='logout' color='red' size='md' />
       <Icon name='logout' color='blue' size='lg' />
+
+      <h1 style={headingStyle}>
+        Display는 13 화면에서 가장 큰 텍스트로 주로 마케팅 용도로 사용한다.
+      </h1>
+      <h1 style={headingStyle}>
+        よって、ここに、国連総会は すべての人間は 加盟国は、国際連合と協力して
+      </h1>
     </>
   );
 }

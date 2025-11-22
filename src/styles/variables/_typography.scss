@@ -1,0 +1,419 @@
+//───────────────────────────────────────
+//  📌 variables - Typography
+//───────────────────────────────────────
+@use 'sass:math';
+
+/*
+ * 작은 글씨(16px 미만) → 대비 4.5:1 이상
+ * 큰 글씨(24px 이상) → 대비 3:1 이상
+ * 조금 작은데 Bold(18.66px 이상, 700) → 대비 3:1 이상
+*/
+
+$g_typography-base-size: 16px;
+
+// 언어별 폰트 패밀리
+// $g_typography-font-family: (
+//   ko: var(--project-font-family-ko),
+//   ja: var(--project-font-family-ja),
+// );
+
+$g_typography: (
+  // Display
+  d1: (
+      ko: (
+        font-size: 64px,
+        mobile-size: 48px,
+        font-weight: (
+          700,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+      ja: (
+        font-size: 64px,
+        mobile-size: 48px,
+        font-weight: (
+          700,
+        ),
+        line-height: 1.5,
+        font-family: ja,
+      ),
+    ),
+  d2: (
+    ko: (
+      font-size: 48px,
+      mobile-size: 36px,
+      font-weight: (
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 48px,
+      mobile-size: 36px,
+      font-weight: (
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+  ),
+  //   d3: (
+  //     ko: (
+  //       font-size: 36px,
+  //       mobile-size: 28px,
+  //       font-weight: (
+  //         600,
+  //         700,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   // Heading
+  //   h1: (
+  //       ko: (
+  //         font-size: 32px,
+  //         mobile-size: 28px,
+  //         font-weight: (
+  //           700,
+  //         ),
+  //         line-height: 1.5,
+  //         font-family: ko,
+  //       ),
+  //     ),
+  //   h2: (
+  //     ko: (
+  //       font-size: 28px,
+  //       mobile-size: 24px,
+  //       font-weight: (
+  //         600,
+  //         700,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   h3: (
+  //     ko: (
+  //       font-size: 24px,
+  //       mobile-size: 20px,
+  //       font-weight: (
+  //         600,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   // Subtitle
+  //   st1: (
+  //       ko: (
+  //         font-size: 20px,
+  //         mobile-size: 18px,
+  //         font-weight: (
+  //           500,
+  //           600,
+  //         ),
+  //         line-height: 1.5,
+  //         font-family: ko,
+  //       ),
+  //     ),
+  //   st2: (
+  //     ko: (
+  //       font-size: 18px,
+  //       mobile-size: 16px,
+  //       font-weight: (
+  //         500,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   st3: (
+  //     ko: (
+  //       font-size: 16px,
+  //       mobile-size: 14px,
+  //       font-weight: (
+  //         400,
+  //         500,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   // Body
+  //   b1: (
+  //       ko: (
+  //         font-size: 16px,
+  //         mobile-size: 14px,
+  //         font-weight: (
+  //           400,
+  //           500,
+  //         ),
+  //         line-height: 1.5,
+  //         font-family: ko,
+  //       ),
+  //     ),
+  //   b2: (
+  //     ko: (
+  //       font-size: 14px,
+  //       mobile-size: 14px,
+  //       font-weight: (
+  //         400,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   b3: (
+  //     ko: (
+  //       font-size: 12px,
+  //       mobile-size: 12px,
+  //       font-weight: (
+  //         400,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   // Caption
+  //   c1: (
+  //       ko: (
+  //         font-size: 12px,
+  //         mobile-size: 12px,
+  //         font-weight: (
+  //           400,
+  //         ),
+  //         line-height: 1.5,
+  //         font-family: ko,
+  //       ),
+  //     ),
+  //   c2: (
+  //     ko: (
+  //       font-size: 10px,
+  //       mobile-size: 10px,
+  //       font-weight: (
+  //         400,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   c3: (
+  //     ko: (
+  //       font-size: 9px,
+  //       mobile-size: 9px,
+  //       font-weight: (
+  //         400,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   // Button
+  //   btn1: (
+  //       ko: (
+  //         font-size: 16px,
+  //         mobile-size: 14px,
+  //         font-weight: (
+  //           500,
+  //           600,
+  //         ),
+  //         line-height: 1.5,
+  //         font-family: ko,
+  //       ),
+  //     ),
+  //   btn2: (
+  //     ko: (
+  //       font-size: 14px,
+  //       mobile-size: 14px,
+  //       font-weight: (
+  //         500,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   btn3: (
+  //     ko: (
+  //       font-size: 12px,
+  //       mobile-size: 12px,
+  //       font-weight: (
+  //         500,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   // Label
+  //   l1: (
+  //       ko: (
+  //         font-size: 14px,
+  //         mobile-size: 12px,
+  //         font-weight: (
+  //           500,
+  //         ),
+  //         line-height: 1.5,
+  //         font-family: ko,
+  //       ),
+  //     ),
+  //   l2: (
+  //     ko: (
+  //       font-size: 12px,
+  //       mobile-size: 12px,
+  //       font-weight: (
+  //         400,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   l3: (
+  //     ko: (
+  //       font-size: 10px,
+  //       mobile-size: 10px,
+  //       font-weight: (
+  //         400,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   // Overline
+  //   ol1: (
+  //       ko: (
+  //         font-size: 10px,
+  //         mobile-size: 10px,
+  //         font-weight: (
+  //           400,
+  //         ),
+  //         line-height: 1.5,
+  //         font-family: ko,
+  //       ),
+  //     ),
+  //   ol2: (
+  //     ko: (
+  //       font-size: 9px,
+  //       mobile-size: 9px,
+  //       font-weight: (
+  //         400,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   ol3: (
+  //     ko: (
+  //       font-size: 8px,
+  //       mobile-size: 8px,
+  //       font-weight: (
+  //         400,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   // Code / Monospace
+  //   code1: (
+  //       ko: (
+  //         font-size: 14px,
+  //         mobile-size: 12px,
+  //         font-weight: (
+  //           400,
+  //         ),
+  //         line-height: 1.5,
+  //         font-family: monospace,
+  //       ),
+  //     ),
+  //   code2: (
+  //     ko: (
+  //       font-size: 12px,
+  //       mobile-size: 12px,
+  //       font-weight: (
+  //         400,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: monospace,
+  //     ),
+  //   ),
+  //   code3: (
+  //     ko: (
+  //       font-size: 10px,
+  //       mobile-size: 10px,
+  //       font-weight: (
+  //         400,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: monospace,
+  //     ),
+  //   ),
+  //   // Input
+  //   input1: (
+  //       ko: (
+  //         font-size: 16px,
+  //         mobile-size: 14px,
+  //         font-weight: (
+  //           400,
+  //         ),
+  //         line-height: 1.5,
+  //         font-family: ko,
+  //       ),
+  //     ),
+  //   input2: (
+  //     ko: (
+  //       font-size: 14px,
+  //       mobile-size: 14px,
+  //       font-weight: (
+  //         400,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   input3: (
+  //     ko: (
+  //       font-size: 12px,
+  //       mobile-size: 12px,
+  //       font-weight: (
+  //         400,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   // Placeholder
+  //   placeholder1: (
+  //       ko: (
+  //         font-size: 16px,
+  //         mobile-size: 14px,
+  //         font-weight: (
+  //           400,
+  //         ),
+  //         line-height: 1.5,
+  //         font-family: ko,
+  //       ),
+  //     ),
+  //   placeholder2: (
+  //     ko: (
+  //       font-size: 14px,
+  //       mobile-size: 14px,
+  //       font-weight: (
+  //         400,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+  //   ),
+  //   placeholder3: (
+  //     ko: (
+  //       font-size: 12px,
+  //       mobile-size: 12px,
+  //       font-weight: (
+  //         400,
+  //       ),
+  //       line-height: 1.5,
+  //       font-family: ko,
+  //     ),
+   //   )
+);
