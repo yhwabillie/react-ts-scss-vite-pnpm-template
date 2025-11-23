@@ -1,65 +1,770 @@
 /* Button.module.scss */
 // IconButton, IconLinkButton 공통 스타일
 @use 'sass:map';
+@use '../../../../styles/mixins' as *;
 
 $btn-colors: (
   primary: (
-    bg: blue,
-    label: white,
+    solid: (
+      bg: #0052cc,
+      label: #ffffff,
+      hover: (
+        bg: #0041a8,
+        label: #ffffff,
+      ),
+      active: (
+        bg: #003388,
+        label: #ffffff,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    outline: (
+      bg: transparent,
+      label: #0052cc,
+      hover: (
+        bg: rgba(0, 82, 204, 0.1),
+        label: #0052cc,
+      ),
+      active: (
+        bg: rgba(0, 82, 204, 0.2),
+        label: #0052cc,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    soft: (
+      bg: #cce0ff,
+      label: #0052cc,
+      hover: (
+        bg: #b3d1ff,
+        label: #0052cc,
+      ),
+      active: (
+        bg: #99c2ff,
+        label: #0052cc,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    ghost: (
+      bg: transparent,
+      label: #0052cc,
+      hover: (
+        bg: rgba(0, 82, 204, 0.05),
+        label: #0052cc,
+      ),
+      active: (
+        bg: rgba(0, 82, 204, 0.1),
+        label: #0052cc,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
   ),
+
   secondary: (
-    bg: skyblue,
-    label: red,
+    solid: (
+      bg: #69b2ff,
+      label: #003366,
+      hover: (
+        bg: #4d9aff,
+        label: #003366,
+      ),
+      active: (
+        bg: #3382ff,
+        label: #003366,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    outline: (
+      bg: transparent,
+      label: #69b2ff,
+      hover: (
+        bg: rgba(105, 178, 255, 0.1),
+        label: #69b2ff,
+      ),
+      active: (
+        bg: rgba(105, 178, 255, 0.2),
+        label: #69b2ff,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    soft: (
+      bg: #e6f2ff,
+      label: #003366,
+      hover: (
+        bg: #d9ebff,
+        label: #003366,
+      ),
+      active: (
+        bg: #cce5ff,
+        label: #003366,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    ghost: (
+      bg: transparent,
+      label: #003366,
+      hover: (
+        bg: rgba(0, 51, 102, 0.05),
+        label: #003366,
+      ),
+      active: (
+        bg: rgba(0, 51, 102, 0.1),
+        label: #003366,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
   ),
+
   tertiary: (
-    bg: gray,
-    label: white,
+    solid: (
+      bg: #e0e0e0,
+      label: #333333,
+      hover: (
+        bg: #cfcfcf,
+        label: #333333,
+      ),
+      active: (
+        bg: #bfbfbf,
+        label: #333333,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    outline: (
+      bg: transparent,
+      label: #333333,
+      hover: (
+        bg: rgba(51, 51, 51, 0.1),
+        label: #333333,
+      ),
+      active: (
+        bg: rgba(51, 51, 51, 0.2),
+        label: #333333,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    soft: (
+      bg: #f5f5f5,
+      label: #333333,
+      hover: (
+        bg: #ebebeb,
+        label: #333333,
+      ),
+      active: (
+        bg: #e0e0e0,
+        label: #333333,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    ghost: (
+      bg: transparent,
+      label: #333333,
+      hover: (
+        bg: rgba(51, 51, 51, 0.05),
+        label: #333333,
+      ),
+      active: (
+        bg: rgba(51, 51, 51, 0.1),
+        label: #333333,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
   ),
+
   brand: (
-    bg: #3ddc84,
-    label: white,
+    solid: (
+      bg: #ff6f61,
+      label: #ffffff,
+      hover: (
+        bg: #e65c50,
+        label: #ffffff,
+      ),
+      active: (
+        bg: #cc5044,
+        label: #ffffff,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    outline: (
+      bg: transparent,
+      label: #ff6f61,
+      hover: (
+        bg: rgba(255, 111, 97, 0.1),
+        label: #ff6f61,
+      ),
+      active: (
+        bg: rgba(255, 111, 97, 0.2),
+        label: #ff6f61,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    soft: (
+      bg: #ffd9d0,
+      label: #ff6f61,
+      hover: (
+        bg: #ffc4b8,
+        label: #ff6f61,
+      ),
+      active: (
+        bg: #ffb0a1,
+        label: #ff6f61,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    ghost: (
+      bg: transparent,
+      label: #ff6f61,
+      hover: (
+        bg: rgba(255, 111, 97, 0.05),
+        label: #ff6f61,
+      ),
+      active: (
+        bg: rgba(255, 111, 97, 0.1),
+        label: #ff6f61,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
   ),
-  'brand-sub-1': (
-    bg: #4285f4,
-    label: white,
+
+  'brand-sub': (
+    solid: (
+      bg: #6a1b9a,
+      label: #ffffff,
+      hover: (
+        bg: #5a157f,
+        label: #ffffff,
+      ),
+      active: (
+        bg: #4b1169,
+        label: #ffffff,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    outline: (
+      bg: transparent,
+      label: #6a1b9a,
+      hover: (
+        bg: rgba(106, 27, 154, 0.1),
+        label: #6a1b9a,
+      ),
+      active: (
+        bg: rgba(106, 27, 154, 0.2),
+        label: #6a1b9a,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    soft: (
+      bg: #e1bee7,
+      label: #6a1b9a,
+      hover: (
+        bg: #d4a6dc,
+        label: #6a1b9a,
+      ),
+      active: (
+        bg: #c791d0,
+        label: #6a1b9a,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    ghost: (
+      bg: transparent,
+      label: #6a1b9a,
+      hover: (
+        bg: rgba(106, 27, 154, 0.05),
+        label: #6a1b9a,
+      ),
+      active: (
+        bg: rgba(106, 27, 154, 0.1),
+        label: #6a1b9a,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
   ),
-  'brand-sub-2': (
-    bg: #073042,
-    label: white,
-  ),
+
   success: (
-    bg: green,
-    label: white,
+    solid: (
+      bg: #28a745,
+      label: #ffffff,
+      hover: (
+        bg: #218838,
+        label: #ffffff,
+      ),
+      active: (
+        bg: #1e7e34,
+        label: #ffffff,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    outline: (
+      bg: transparent,
+      label: #28a745,
+      hover: (
+        bg: rgba(40, 167, 69, 0.1),
+        label: #28a745,
+      ),
+      active: (
+        bg: rgba(40, 167, 69, 0.2),
+        label: #28a745,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    soft: (
+      bg: #d4edda,
+      label: #28a745,
+      hover: (
+        bg: #c3e6cb,
+        label: #28a745,
+      ),
+      active: (
+        bg: #b1dfbb,
+        label: #28a745,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    ghost: (
+      bg: transparent,
+      label: #28a745,
+      hover: (
+        bg: rgba(40, 167, 69, 0.05),
+        label: #28a745,
+      ),
+      active: (
+        bg: rgba(40, 167, 69, 0.1),
+        label: #28a745,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
   ),
+
   warning: (
-    bg: orange,
-    label: white,
+    solid: (
+      bg: #ff9800,
+      label: #212121,
+      hover: (
+        bg: #e68a00,
+        label: #212121,
+      ),
+      active: (
+        bg: #cc7a00,
+        label: #212121,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    outline: (
+      bg: transparent,
+      label: #ff9800,
+      hover: (
+        bg: rgba(255, 152, 0, 0.1),
+        label: #ff9800,
+      ),
+      active: (
+        bg: rgba(255, 152, 0, 0.2),
+        label: #ff9800,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    soft: (
+      bg: #fff3e0,
+      label: #ff9800,
+      hover: (
+        bg: #ffe0b2,
+        label: #ff9800,
+      ),
+      active: (
+        bg: #ffd699,
+        label: #ff9800,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    ghost: (
+      bg: transparent,
+      label: #ff9800,
+      hover: (
+        bg: rgba(255, 152, 0, 0.05),
+        label: #ff9800,
+      ),
+      active: (
+        bg: rgba(255, 152, 0, 0.1),
+        label: #ff9800,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
   ),
   danger: (
-    bg: red,
-    label: white,
+    solid: (
+      bg: #d32f2f,
+      label: #ffffff,
+      hover: (
+        bg: #b72a2a,
+        label: #ffffff,
+      ),
+      active: (
+        bg: #9e2424,
+        label: #ffffff,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    outline: (
+      bg: transparent,
+      label: #d32f2f,
+      hover: (
+        bg: rgba(211, 47, 47, 0.1),
+        label: #d32f2f,
+      ),
+      active: (
+        bg: rgba(211, 47, 47, 0.2),
+        label: #d32f2f,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    soft: (
+      bg: #f8d7da,
+      label: #d32f2f,
+      hover: (
+        bg: #f5b7b9,
+        label: #d32f2f,
+      ),
+      active: (
+        bg: #f1a3a5,
+        label: #d32f2f,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
+    ghost: (
+      bg: transparent,
+      label: #d32f2f,
+      hover: (
+        bg: rgba(211, 47, 47, 0.05),
+        label: #d32f2f,
+      ),
+      active: (
+        bg: rgba(211, 47, 47, 0.1),
+        label: #d32f2f,
+      ),
+      disabled: (
+        bg: #e0e0e0,
+        label: #9e9e9e,
+      ),
+    ),
   ),
 );
 
-// 2️⃣ variant + color mixin
-@mixin btn-variant($variant) {
-  &:global(.variant--#{$variant}) {
-    // outline
-    @if $variant == 'outline' {
-      border: 1px solid red;
+// button size
+$btn-sizes: (
+  xs: (
+    btn-size: (
+      pc: rem(28px),
+      tablet: rem(44px),
+      mobile: rem(44px),
+    ),
+    radius: (
+      pc: rem(4px),
+      tablet: rem(6px),
+      mobile: rem(6px),
+    ),
+    icon-size: (
+      pc: rem(16px),
+      tablet: rem(16px),
+      mobile: rem(16px),
+    ),
+  ),
+
+  sm: (
+    btn-size: (
+      pc: rem(32px),
+      tablet: rem(44px),
+      mobile: rem(44px),
+    ),
+    radius: (
+      pc: rem(5px),
+      tablet: rem(6px),
+      mobile: rem(6px),
+    ),
+    icon-size: (
+      pc: rem(18px),
+      tablet: rem(16px),
+      mobile: rem(18px),
+    ),
+  ),
+
+  md: (
+    btn-size: (
+      pc: rem(40px),
+      tablet: rem(44px),
+      mobile: rem(48px),
+    ),
+    radius: (
+      pc: rem(6px),
+      tablet: rem(6px),
+      mobile: rem(7px),
+    ),
+    icon-size: (
+      pc: rem(20px),
+      tablet: rem(18px),
+      mobile: rem(20px),
+    ),
+  ),
+
+  lg: (
+    btn-size: (
+      pc: rem(48px),
+      tablet: rem(48px),
+      mobile: rem(52px),
+    ),
+    radius: (
+      pc: rem(7px),
+      tablet: rem(7px),
+      mobile: rem(8px),
+    ),
+    icon-size: (
+      pc: rem(22px),
+      tablet: rem(20px),
+      mobile: rem(20px),
+    ),
+  ),
+
+  xl: (
+    btn-size: (
+      pc: rem(56px),
+      tablet: rem(56px),
+      mobile: rem(56px),
+    ),
+    radius: (
+      pc: rem(8px),
+      tablet: rem(8px),
+      mobile: rem(8px),
+    ),
+    icon-size: (
+      pc: rem(24px),
+      tablet: rem(22px),
+      mobile: rem(22px),
+    ),
+  ),
+);
+
+// mixins - btn variant
+@mixin btn-variant {
+  @each $color-name, $color-props in $btn-colors {
+    @each $variant, $variant-props in $color-props {
+      &:global(.color--#{$color-name}.variant--#{$variant}) {
+        // 기본 상태
+        background-color: map.get($variant-props, bg);
+        color: map.get($variant-props, label);
+
+        // outline border 자동 처리
+        @if $variant == outline {
+          border: rem(1px) solid map.get($variant-props, label);
+
+          svg {
+            fill: map.get($variant-props, label);
+          }
+        } @else {
+          border: none;
+
+          svg {
+            fill: map.get($variant-props, label);
+          }
+        }
+
+        // hover
+        &:hover:not([aria-disabled='true']):not(:disabled) {
+          $hover: map.get($variant-props, hover);
+          background-color: map.get($hover, bg);
+          color: map.get($hover, label);
+        }
+
+        // active
+        &:active:not([aria-disabled='true']):not(:disabled) {
+          $active: map.get($variant-props, active);
+          background-color: map.get($active, bg);
+          color: map.get($active, label);
+        }
+
+        // disabled
+        &[aria-disabled='true'],
+        &:disabled {
+          cursor: not-allowed;
+          pointer-events: none;
+          $disabled-props: map.get($variant-props, disabled);
+
+          @if $disabled-props != null {
+            @if $variant == 'outline' {
+              border-color: map.get($disabled-props, label);
+              background-color: map.get($disabled-props, bg);
+
+              svg {
+                fill: map.get($disabled-props, label);
+              }
+            } @else {
+              background-color: map.get($disabled-props, bg);
+
+              svg {
+                fill: map.get($disabled-props, label);
+              }
+            }
+          } @else {
+          }
+        }
+      }
+    }
+  }
+}
+
+// mixins - btn size
+@mixin btn-size {
+  @each $size-name, $props in $btn-sizes {
+    $btn-size: map.get($props, btn-size);
+    $icon: map.get($props, icon-size);
+
+    // 🎯 PC 기본 사이즈
+    &:global(.size--#{$size-name}) {
+      width: map.get($btn-size, pc);
+      height: map.get($btn-size, pc);
+
+      svg {
+        width: map.get($icon, pc);
+        height: map.get($icon, pc);
+      }
     }
 
-    @each $name, $props in $btn-colors {
-      &:global(.color--#{$name}) {
-        background-color: map.get($props, bg);
+    // 🎯 Tablet (max-width: 768px)
+    @media (max-width: 768px) {
+      &:global(.size--#{$size-name}) {
+        width: map.get($btn-size, tablet);
+        height: map.get($btn-size, tablet);
 
-        // &:hover {
-        //   /* hover 스타일 필요하면 여기에 */
-        // }
+        svg {
+          width: map.get($icon, tablet);
+          height: map.get($icon, tablet);
+        }
+      }
+    }
 
-        // &:active {
-        //   /* active 스타일 필요하면 여기에 */
-        // }
+    // 🎯 Mobile (max-width: 480px)
+    @media (max-width: 480px) {
+      &:global(.size--#{$size-name}) {
+        width: map.get($btn-size, mobile);
+        height: map.get($btn-size, mobile);
+
+        svg {
+          width: map.get($icon, mobile);
+          height: map.get($icon, mobile);
+        }
+      }
+    }
+  }
+}
+
+// mixins - btn radius
+@mixin btn-radius($btn-sizes) {
+  &:global(.shape--rounded) {
+    @each $size-name, $props in $btn-sizes {
+      $radius: map.get($props, radius);
+
+      &:global(.size--#{$size-name}) {
+        // PC 기본값
+        border-radius: map.get($radius, pc);
+
+        // Tablet 이하
+        @media (max-width: 768px) {
+          border-radius: map.get($radius, tablet);
+        }
+
+        // Mobile 이하
+        @media (max-width: 480px) {
+          border-radius: map.get($radius, mobile);
+        }
       }
     }
   }
@@ -72,76 +777,25 @@ $btn-colors: (
   transition: all 0.2s ease;
   cursor: pointer;
 
-  &[aria-disabled='true'] {
-    pointer-events: none;
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
-
-  &:active {
-    transform: scale(0.98);
-  }
-
-  button:focus {
-    outline: none; // 기본 focus 제거
-  }
-
-  &:focus-visible {
-    outline: 2px dashed blue;
-    outline-offset: 2px;
-  }
-
   .btn-label {
     min-width: max-content;
   }
 
-  // SIZE
-  &:global(.size--xs) {
-    width: 28px;
-    height: 28px;
-  }
+  // size
+  @include btn-size;
 
-  &:global(.size--sm) {
-    height: 32px;
-    width: 32px;
-  }
+  // variant
+  @include btn-variant;
 
-  &:global(.size--md) {
-    height: 40px;
-    width: 40px;
-  }
-
-  &:global(.size--lg) {
-    height: 48px;
-    width: 48px;
-  }
-
-  &:global(.size--xl) {
-    height: 56px;
-    width: 56px;
-  }
-
-  // VARIANT
-  @include btn-variant(solid);
-  @include btn-variant(outline);
-  @include btn-variant(ghost);
-  @include btn-variant(soft);
-
-  // SHAPE
+  // shape
   &:global(.shape--square) {
     border-radius: 0;
   }
-
   &:global(.shape--rounded) {
-    border-radius: 8px;
+    // radius
+    @include btn-radius($btn-sizes);
   }
-
   &:global(.shape--pill) {
-    border-radius: 9999px;
+    border-radius: var(--project-border-radius-max);
   }
 }

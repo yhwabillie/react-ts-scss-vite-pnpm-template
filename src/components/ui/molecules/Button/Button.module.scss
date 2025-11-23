@@ -671,103 +671,127 @@ $btn-colors: (
 // button size
 $btn-sizes: (
   xs: (
-    height: rem(28px),
+    height: (
+      pc: rem(28px),
+      tablet: rem(44px),
+      mobile: rem(44px),
+    ),
     gap: rem(4px),
     font-token: var(--project-typo-btn1-600),
     padding: (
       pc: rem(8px),
-      tablet: rem(6px),
-      mobile: rem(6px),
+      tablet: rem(8px),
+      mobile: rem(8px),
     ),
     radius: (
       pc: rem(4px),
-      tablet: rem(4px),
-      mobile: rem(3px),
+      tablet: rem(6px),
+      mobile: rem(6px),
     ),
     icon-size: (
       pc: rem(16px),
       tablet: rem(16px),
-      mobile: rem(14px),
+      mobile: rem(16px),
     ),
   ),
+
   sm: (
-    height: rem(32px),
+    height: (
+      pc: rem(32px),
+      tablet: rem(44px),
+      mobile: rem(44px),
+    ),
     gap: rem(6px),
     font-token: var(--project-typo-btn2-600),
     padding: (
       pc: rem(12px),
-      tablet: rem(10px),
-      mobile: rem(10px),
+      tablet: rem(12px),
+      mobile: rem(12px),
     ),
     radius: (
-      pc: rem(6px),
+      pc: rem(5px),
       tablet: rem(6px),
-      mobile: rem(5px),
+      mobile: rem(6px),
     ),
     icon-size: (
       pc: rem(18px),
       tablet: rem(16px),
-      mobile: rem(16px),
+      mobile: rem(18px),
     ),
   ),
+
   md: (
-    height: rem(40px),
+    height: (
+      pc: rem(40px),
+      tablet: rem(44px),
+      mobile: rem(48px),
+    ),
     gap: rem(8px),
     font-token: var(--project-typo-btn3-600),
     padding: (
       pc: rem(16px),
       tablet: rem(14px),
-      mobile: rem(14px),
+      mobile: rem(16px),
     ),
     radius: (
-      pc: rem(8px),
-      tablet: rem(8px),
-      mobile: rem(6px),
+      pc: rem(6px),
+      tablet: rem(6px),
+      mobile: rem(7px),
     ),
     icon-size: (
       pc: rem(20px),
       tablet: rem(18px),
-      mobile: rem(16px),
+      mobile: rem(20px),
     ),
   ),
+
   lg: (
-    height: rem(48px),
+    height: (
+      pc: rem(48px),
+      tablet: rem(48px),
+      mobile: rem(52px),
+    ),
     gap: rem(10px),
     font-token: var(--project-typo-btn4-700),
     padding: (
       pc: rem(20px),
       tablet: rem(18px),
-      mobile: rem(16px),
+      mobile: rem(18px),
     ),
     radius: (
-      pc: rem(10px),
-      tablet: rem(10px),
+      pc: rem(7px),
+      tablet: rem(7px),
       mobile: rem(8px),
     ),
     icon-size: (
       pc: rem(22px),
       tablet: rem(20px),
-      mobile: rem(18px),
+      mobile: rem(20px),
     ),
   ),
+
   xl: (
-    height: rem(56px),
+    height: (
+      pc: rem(56px),
+      tablet: rem(56px),
+      mobile: rem(56px),
+    ),
     gap: rem(12px),
     font-token: var(--project-typo-btn5-700),
     padding: (
       pc: rem(24px),
       tablet: rem(20px),
-      mobile: rem(18px),
+      mobile: rem(20px),
     ),
     radius: (
-      pc: rem(12px),
-      tablet: rem(12px),
-      mobile: rem(10px),
+      pc: rem(8px),
+      tablet: rem(8px),
+      mobile: rem(8px),
     ),
     icon-size: (
       pc: rem(24px),
       tablet: rem(22px),
-      mobile: rem(20px),
+      mobile: rem(22px),
     ),
   ),
 );
@@ -861,7 +885,6 @@ $btn-sizes: (
                 }
               }
             } @else {
-              opacity: 0.45;
             }
           }
         }
@@ -875,11 +898,18 @@ $btn-sizes: (
 // mixin - btn sizes
 @mixin btn-size() {
   @each $size-name, $props in $btn-sizes {
+    // ──────────────── 기본 데이터 추출 ────────────────
     $padding: map.get($props, padding);
     $icon-size: map.get($props, icon-size);
+    $height-map: map.get($props, height);
 
+    $height-pc: map.get($height-map, pc);
+    $height-tablet: map.get($height-map, tablet);
+    $height-mobile: map.get($height-map, mobile);
+
+    // ──────────────── PC 스타일 ────────────────
     &:global(.size--#{$size-name}) {
-      height: map.get($props, height);
+      height: $height-pc;
       padding: 0 map.get($padding, pc);
       gap: map.get($props, gap);
 
@@ -893,8 +923,10 @@ $btn-sizes: (
       }
     }
 
+    // ──────────────── Tablet 스타일 (max-width: 768px) ────────────────
     @media (max-width: 768px) {
       &:global(.size--#{$size-name}) {
+        height: $height-tablet;
         padding: 0 map.get($padding, tablet);
 
         svg {
@@ -904,8 +936,10 @@ $btn-sizes: (
       }
     }
 
+    // ──────────────── Mobile 스타일 (max-width: 480px) ────────────────
     @media (max-width: 480px) {
       &:global(.size--#{$size-name}) {
+        height: $height-mobile; // 모바일 최소 44px 이미 map에서 보정됨
         padding: 0 map.get($padding, mobile);
 
         svg {
@@ -942,6 +976,7 @@ $btn-sizes: (
 }
 
 .btn {
+  min-width: rem(44px);
   display: inline-flex;
   justify-content: center;
   align-items: center;

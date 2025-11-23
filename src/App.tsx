@@ -59,6 +59,304 @@ function App() {
     <>
       <section>
         <div>
+          <IconButton
+            color='brand'
+            size='xl'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand'
+            size='lg'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand'
+            size='md'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand'
+            size='sm'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand'
+            size='xs'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+        </div>
+        <div>
+          <IconButton
+            color='brand'
+            size='xl'
+            variant='outline'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand'
+            size='lg'
+            variant='outline'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand'
+            size='md'
+            variant='outline'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand'
+            size='sm'
+            variant='outline'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand'
+            size='xs'
+            variant='outline'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+        </div>
+        <div>
+          <IconButton
+            color='brand'
+            size='xl'
+            variant='soft'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand'
+            size='lg'
+            variant='soft'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand'
+            size='md'
+            variant='soft'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand'
+            size='sm'
+            variant='soft'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand'
+            size='xs'
+            variant='soft'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+        </div>
+        <div>
+          <IconButton
+            color='brand'
+            size='xl'
+            variant='ghost'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand'
+            size='lg'
+            variant='ghost'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand'
+            size='md'
+            variant='ghost'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand'
+            size='sm'
+            variant='ghost'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand'
+            size='xs'
+            variant='ghost'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+        </div>
+        <div>
+          <IconButton
+            color='brand-sub'
+            size='xl'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand-sub'
+            size='lg'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand-sub'
+            size='md'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand-sub'
+            size='sm'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='brand-sub'
+            size='xs'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+        </div>
+        <div>
+          <IconButton
+            color='primary'
+            size='xl'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='primary'
+            size='lg'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='primary'
+            size='md'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='primary'
+            size='sm'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='primary'
+            size='xs'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+        </div>
+        <div>
+          <IconButton
+            color='secondary'
+            size='xl'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='secondary'
+            size='lg'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='secondary'
+            size='md'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='secondary'
+            size='sm'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='secondary'
+            size='xs'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+        </div>
+        <div>
+          <IconButton
+            color='tertiary'
+            size='xl'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='tertiary'
+            size='lg'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='tertiary'
+            size='md'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='tertiary'
+            size='sm'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+          <IconButton
+            color='tertiary'
+            size='xs'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+          />
+        </div>
+      </section>
+      <section>
+        <div>
           <LinkButton color='primary' size='xl' variant='link' shape='rounded' href='#'>
             링크 Text 버튼
           </LinkButton>
@@ -992,20 +1290,6 @@ function App() {
           </Button>
         </div>
       </section>
-
-      {/* <LinkButton
-        href='/home'
-        title='새 창 열기'
-        target='_blank'
-        variant='outline'
-        color='secondary'
-        size='xl'
-        shape='square'
-        startIcon={<Icon name='logout' color='red' size='md' />}
-        aria-disabled='true'
-      >
-        링크
-      </LinkButton> */}
 
       {/* <IconButton
         color='secondary'
