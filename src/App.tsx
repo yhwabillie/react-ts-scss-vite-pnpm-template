@@ -57,20 +57,647 @@ function App() {
 
   return (
     <>
-      <p>&#xE000; 뒤로 가기 </p>
-      <Button color='primary' size='xs' variant='solid' shape='square' disabled={true}>
-        人類社会
-      </Button>
-      <Button color='secondary' size='sm' variant='solid' shape='rounded'>
+      <section>
+        <div>
+          <Button color='brand' size='xl' variant='solid' shape='rounded'>
+            Brand XL 버튼
+          </Button>
+          <Button color='brand' size='lg' variant='solid' shape='rounded'>
+            Brand LG 버튼
+          </Button>
+          <Button color='brand' size='md' variant='solid' shape='rounded'>
+            Brand MD 버튼
+          </Button>
+          <Button color='brand' size='sm' variant='solid' shape='rounded'>
+            Brand SM 버튼
+          </Button>
+          <Button color='brand' size='xs' variant='solid' shape='rounded'>
+            Brand XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='brand' size='xl' variant='solid' shape='rounded' disabled>
+            Brand XL 버튼
+          </Button>
+          <Button color='brand' size='lg' variant='solid' shape='rounded' disabled>
+            Brand LG 버튼
+          </Button>
+          <Button color='brand' size='md' variant='solid' shape='rounded' disabled>
+            Brand MD 버튼
+          </Button>
+          <Button color='brand' size='sm' variant='solid' shape='rounded' disabled>
+            Brand SM 버튼
+          </Button>
+          <Button color='brand' size='xs' variant='solid' shape='rounded' disabled>
+            Brand XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='brand' size='xl' variant='outline' shape='rounded'>
+            Brand XL 버튼
+          </Button>
+          <Button color='brand' size='lg' variant='outline' shape='rounded'>
+            Brand LG 버튼
+          </Button>
+          <Button color='brand' size='md' variant='outline' shape='rounded'>
+            Brand MD 버튼
+          </Button>
+          <Button color='brand' size='sm' variant='outline' shape='rounded'>
+            Brand SM 버튼
+          </Button>
+          <Button color='brand' size='xs' variant='outline' shape='rounded'>
+            Brand XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='brand' size='xl' variant='outline' shape='rounded' disabled>
+            Brand XL 버튼
+          </Button>
+          <Button color='brand' size='lg' variant='outline' shape='rounded' disabled>
+            Brand LG 버튼
+          </Button>
+          <Button color='brand' size='md' variant='outline' shape='rounded' disabled>
+            Brand MD 버튼
+          </Button>
+          <Button color='brand' size='sm' variant='outline' shape='rounded' disabled>
+            Brand SM 버튼
+          </Button>
+          <Button color='brand' size='xs' variant='outline' shape='rounded' disabled>
+            Brand XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='brand' size='xl' variant='soft' shape='rounded'>
+            Brand XL 버튼
+          </Button>
+          <Button color='brand' size='lg' variant='soft' shape='rounded'>
+            Brand LG 버튼
+          </Button>
+          <Button color='brand' size='md' variant='soft' shape='rounded'>
+            Brand MD 버튼
+          </Button>
+          <Button color='brand' size='sm' variant='soft' shape='rounded'>
+            Brand SM 버튼
+          </Button>
+          <Button color='brand' size='xs' variant='soft' shape='rounded'>
+            Brand XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='brand' size='xl' variant='soft' shape='rounded' disabled>
+            Brand XL 버튼
+          </Button>
+          <Button color='brand' size='lg' variant='soft' shape='rounded' disabled>
+            Brand LG 버튼
+          </Button>
+          <Button color='brand' size='md' variant='soft' shape='rounded' disabled>
+            Brand MD 버튼
+          </Button>
+          <Button color='brand' size='sm' variant='soft' shape='rounded' disabled>
+            Brand SM 버튼
+          </Button>
+          <Button color='brand' size='xs' variant='soft' shape='rounded' disabled>
+            Brand XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='brand' size='xl' variant='ghost' shape='rounded'>
+            Brand XL 버튼
+          </Button>
+          <Button color='brand' size='lg' variant='ghost' shape='rounded'>
+            Brand LG 버튼
+          </Button>
+          <Button color='brand' size='md' variant='ghost' shape='rounded'>
+            Brand MD 버튼
+          </Button>
+          <Button color='brand' size='sm' variant='ghost' shape='rounded'>
+            Brand SM 버튼
+          </Button>
+          <Button color='brand' size='xs' variant='ghost' shape='rounded'>
+            Brand XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='brand' size='xl' variant='ghost' shape='rounded' disabled>
+            Brand XL 버튼
+          </Button>
+          <Button color='brand' size='lg' variant='ghost' shape='rounded' disabled>
+            Brand LG 버튼
+          </Button>
+          <Button color='brand' size='md' variant='ghost' shape='rounded' disabled>
+            Brand MD 버튼
+          </Button>
+          <Button color='brand' size='sm' variant='ghost' shape='rounded' disabled>
+            Brand SM 버튼
+          </Button>
+          <Button color='brand' size='xs' variant='ghost' shape='rounded' disabled>
+            Brand XS 버튼
+          </Button>
+        </div>
+      </section>
+      <section>
+        <div>
+          <Button color='brand-sub' size='xl' variant='solid' shape='rounded'>
+            Brand Sub XL 버튼
+          </Button>
+          <Button color='brand-sub' size='lg' variant='solid' shape='rounded'>
+            Brand Sub LG 버튼
+          </Button>
+          <Button color='brand-sub' size='md' variant='solid' shape='rounded'>
+            Brand Sub MD 버튼
+          </Button>
+          <Button color='brand-sub' size='sm' variant='solid' shape='rounded'>
+            Brand Sub SM 버튼
+          </Button>
+          <Button color='brand-sub' size='xs' variant='solid' shape='rounded'>
+            Brand Sub XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='brand-sub' size='xl' variant='outline' shape='rounded'>
+            Brand Sub XL 버튼
+          </Button>
+          <Button color='brand-sub' size='lg' variant='outline' shape='rounded'>
+            Brand Sub LG 버튼
+          </Button>
+          <Button color='brand-sub' size='md' variant='outline' shape='rounded'>
+            Brand Sub MD 버튼
+          </Button>
+          <Button color='brand-sub' size='sm' variant='outline' shape='rounded'>
+            Brand Sub SM 버튼
+          </Button>
+          <Button color='brand-sub' size='xs' variant='outline' shape='rounded'>
+            Brand Sub XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='brand-sub' size='xl' variant='soft' shape='rounded'>
+            Brand Sub XL 버튼
+          </Button>
+          <Button color='brand-sub' size='lg' variant='soft' shape='rounded'>
+            Brand Sub LG 버튼
+          </Button>
+          <Button color='brand-sub' size='md' variant='soft' shape='rounded'>
+            Brand Sub MD 버튼
+          </Button>
+          <Button color='brand-sub' size='sm' variant='soft' shape='rounded'>
+            Brand Sub SM 버튼
+          </Button>
+          <Button color='brand-sub' size='xs' variant='soft' shape='rounded'>
+            Brand Sub XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='brand-sub' size='xl' variant='ghost' shape='rounded'>
+            Brand Sub XL 버튼
+          </Button>
+          <Button color='brand-sub' size='lg' variant='ghost' shape='rounded'>
+            Brand Sub LG 버튼
+          </Button>
+          <Button color='brand-sub' size='md' variant='ghost' shape='rounded'>
+            Brand Sub MD 버튼
+          </Button>
+          <Button color='brand-sub' size='sm' variant='ghost' shape='rounded'>
+            Brand Sub SM 버튼
+          </Button>
+          <Button color='brand-sub' size='xs' variant='ghost' shape='rounded'>
+            Brand Sub XS 버튼
+          </Button>
+        </div>
+      </section>
+      <section>
+        <div>
+          <Button color='primary' size='xl' variant='solid' shape='rounded'>
+            Primary XL 버튼
+          </Button>
+          <Button color='primary' size='lg' variant='solid' shape='rounded'>
+            Primary LG 버튼
+          </Button>
+          <Button color='primary' size='md' variant='solid' shape='rounded'>
+            Primary MD 버튼
+          </Button>
+          <Button color='primary' size='sm' variant='solid' shape='rounded'>
+            Primary SM 버튼
+          </Button>
+          <Button color='primary' size='xs' variant='solid' shape='rounded'>
+            Primary XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='primary' size='xl' variant='outline' shape='rounded'>
+            Primary XL 버튼
+          </Button>
+          <Button color='primary' size='lg' variant='outline' shape='rounded'>
+            Primary LG 버튼
+          </Button>
+          <Button color='primary' size='md' variant='outline' shape='rounded'>
+            Primary MD 버튼
+          </Button>
+          <Button color='primary' size='sm' variant='outline' shape='rounded'>
+            Primary SM 버튼
+          </Button>
+          <Button color='primary' size='xs' variant='outline' shape='rounded'>
+            Primary XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='primary' size='xl' variant='soft' shape='rounded'>
+            Primary XL 버튼
+          </Button>
+          <Button color='primary' size='lg' variant='soft' shape='rounded'>
+            Primary LG 버튼
+          </Button>
+          <Button color='primary' size='md' variant='soft' shape='rounded'>
+            Primary MD 버튼
+          </Button>
+          <Button color='primary' size='sm' variant='soft' shape='rounded'>
+            Primary SM 버튼
+          </Button>
+          <Button color='primary' size='xs' variant='soft' shape='rounded'>
+            Primary XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='primary' size='xl' variant='ghost' shape='rounded'>
+            Primary XL 버튼
+          </Button>
+          <Button color='primary' size='lg' variant='ghost' shape='rounded'>
+            Primary LG 버튼
+          </Button>
+          <Button color='primary' size='md' variant='ghost' shape='rounded'>
+            Primary MD 버튼
+          </Button>
+          <Button color='primary' size='sm' variant='ghost' shape='rounded'>
+            Primary SM 버튼
+          </Button>
+          <Button color='primary' size='xs' variant='ghost' shape='rounded'>
+            Primary XS 버튼
+          </Button>
+        </div>
+      </section>
+      <section>
+        <div>
+          <Button color='secondary' size='xl' variant='solid' shape='rounded'>
+            Secondary XL 버튼
+          </Button>
+          <Button color='secondary' size='lg' variant='solid' shape='rounded'>
+            Secondary LG 버튼
+          </Button>
+          <Button color='secondary' size='md' variant='solid' shape='rounded'>
+            Secondary MD 버튼
+          </Button>
+          <Button color='secondary' size='sm' variant='solid' shape='rounded'>
+            Secondary SM 버튼
+          </Button>
+          <Button color='secondary' size='xs' variant='solid' shape='rounded'>
+            Secondary XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='secondary' size='xl' variant='outline' shape='rounded'>
+            Secondary XL 버튼
+          </Button>
+          <Button color='secondary' size='lg' variant='outline' shape='rounded'>
+            Secondary LG 버튼
+          </Button>
+          <Button color='secondary' size='md' variant='outline' shape='rounded'>
+            Secondary MD 버튼
+          </Button>
+          <Button color='secondary' size='sm' variant='outline' shape='rounded'>
+            Secondary SM 버튼
+          </Button>
+          <Button color='secondary' size='xs' variant='outline' shape='rounded'>
+            Secondary XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='secondary' size='xl' variant='soft' shape='rounded'>
+            Secondary XL 버튼
+          </Button>
+          <Button color='secondary' size='lg' variant='soft' shape='rounded'>
+            Secondary LG 버튼
+          </Button>
+          <Button color='secondary' size='md' variant='soft' shape='rounded'>
+            Secondary MD 버튼
+          </Button>
+          <Button color='secondary' size='sm' variant='soft' shape='rounded'>
+            Secondary SM 버튼
+          </Button>
+          <Button color='secondary' size='xs' variant='soft' shape='rounded'>
+            Secondary XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='secondary' size='xl' variant='ghost' shape='rounded'>
+            Secondary XL 버튼
+          </Button>
+          <Button color='secondary' size='lg' variant='ghost' shape='rounded'>
+            Secondary LG 버튼
+          </Button>
+          <Button color='secondary' size='md' variant='ghost' shape='rounded'>
+            Secondary MD 버튼
+          </Button>
+          <Button color='secondary' size='sm' variant='ghost' shape='rounded'>
+            Secondary SM 버튼
+          </Button>
+          <Button color='secondary' size='xs' variant='ghost' shape='rounded'>
+            Secondary XS 버튼
+          </Button>
+        </div>
+      </section>
+      <section>
+        <div>
+          <Button color='tertiary' size='xl' variant='solid' shape='rounded'>
+            Tertiary XL 버튼
+          </Button>
+          <Button color='tertiary' size='lg' variant='solid' shape='rounded'>
+            Tertiary LG 버튼
+          </Button>
+          <Button color='tertiary' size='md' variant='solid' shape='rounded'>
+            Tertiary MD 버튼
+          </Button>
+          <Button color='tertiary' size='sm' variant='solid' shape='rounded'>
+            Tertiary SM 버튼
+          </Button>
+          <Button color='tertiary' size='xs' variant='solid' shape='rounded'>
+            Tertiary XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='tertiary' size='xl' variant='outline' shape='rounded'>
+            Tertiary XL 버튼
+          </Button>
+          <Button color='tertiary' size='lg' variant='outline' shape='rounded'>
+            Tertiary LG 버튼
+          </Button>
+          <Button color='tertiary' size='md' variant='outline' shape='rounded'>
+            Tertiary MD 버튼
+          </Button>
+          <Button color='tertiary' size='sm' variant='outline' shape='rounded'>
+            Tertiary SM 버튼
+          </Button>
+          <Button color='tertiary' size='xs' variant='outline' shape='rounded'>
+            Tertiary XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='tertiary' size='xl' variant='soft' shape='rounded'>
+            Tertiary XL 버튼
+          </Button>
+          <Button color='tertiary' size='lg' variant='soft' shape='rounded'>
+            Tertiary LG 버튼
+          </Button>
+          <Button color='tertiary' size='md' variant='soft' shape='rounded'>
+            Tertiary MD 버튼
+          </Button>
+          <Button color='tertiary' size='sm' variant='soft' shape='rounded'>
+            Tertiary SM 버튼
+          </Button>
+          <Button color='tertiary' size='xs' variant='soft' shape='rounded'>
+            Tertiary XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='tertiary' size='xl' variant='ghost' shape='rounded'>
+            Tertiary XL 버튼
+          </Button>
+          <Button color='tertiary' size='lg' variant='ghost' shape='rounded'>
+            Tertiary LG 버튼
+          </Button>
+          <Button color='tertiary' size='md' variant='ghost' shape='rounded'>
+            Tertiary MD 버튼
+          </Button>
+          <Button color='tertiary' size='sm' variant='ghost' shape='rounded'>
+            Tertiary SM 버튼
+          </Button>
+          <Button color='tertiary' size='xs' variant='ghost' shape='rounded'>
+            Tertiary XS 버튼
+          </Button>
+        </div>
+      </section>
+
+      <section>
+        <div>
+          <Button color='success' size='xl' variant='solid' shape='rounded'>
+            Success XL 버튼
+          </Button>
+          <Button color='success' size='lg' variant='solid' shape='rounded'>
+            Success LG 버튼
+          </Button>
+          <Button color='success' size='md' variant='solid' shape='rounded'>
+            Success MD 버튼
+          </Button>
+          <Button color='success' size='sm' variant='solid' shape='rounded'>
+            Success SM 버튼
+          </Button>
+          <Button color='success' size='xs' variant='solid' shape='rounded'>
+            Success XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='success' size='xl' variant='outline' shape='rounded'>
+            Success XL 버튼
+          </Button>
+          <Button color='success' size='lg' variant='outline' shape='rounded'>
+            Success LG 버튼
+          </Button>
+          <Button color='success' size='md' variant='outline' shape='rounded'>
+            Success MD 버튼
+          </Button>
+          <Button color='success' size='sm' variant='outline' shape='rounded'>
+            Success SM 버튼
+          </Button>
+          <Button color='success' size='xs' variant='outline' shape='rounded'>
+            Success XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='success' size='xl' variant='soft' shape='rounded'>
+            Success XL 버튼
+          </Button>
+          <Button color='success' size='lg' variant='soft' shape='rounded'>
+            Success LG 버튼
+          </Button>
+          <Button color='success' size='md' variant='soft' shape='rounded'>
+            Success MD 버튼
+          </Button>
+          <Button color='success' size='sm' variant='soft' shape='rounded'>
+            Success SM 버튼
+          </Button>
+          <Button color='success' size='xs' variant='soft' shape='rounded'>
+            Success XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='success' size='xl' variant='ghost' shape='rounded'>
+            Success XL 버튼
+          </Button>
+          <Button color='success' size='lg' variant='ghost' shape='rounded'>
+            Success LG 버튼
+          </Button>
+          <Button color='success' size='md' variant='ghost' shape='rounded'>
+            Success MD 버튼
+          </Button>
+          <Button color='success' size='sm' variant='ghost' shape='rounded'>
+            Success SM 버튼
+          </Button>
+          <Button color='success' size='xs' variant='ghost' shape='rounded'>
+            Success XS 버튼
+          </Button>
+        </div>
+      </section>
+      <section>
+        <div>
+          <Button color='warning' size='xl' variant='solid' shape='rounded'>
+            Warning XL 버튼
+          </Button>
+          <Button color='warning' size='lg' variant='solid' shape='rounded'>
+            Warning LG 버튼
+          </Button>
+          <Button color='warning' size='md' variant='solid' shape='rounded'>
+            Warning MD 버튼
+          </Button>
+          <Button color='warning' size='sm' variant='solid' shape='rounded'>
+            Warning SM 버튼
+          </Button>
+          <Button color='warning' size='xs' variant='solid' shape='rounded'>
+            Warning XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='warning' size='xl' variant='outline' shape='rounded'>
+            Warning XL 버튼
+          </Button>
+          <Button color='warning' size='lg' variant='outline' shape='rounded'>
+            Warning LG 버튼
+          </Button>
+          <Button color='warning' size='md' variant='outline' shape='rounded'>
+            Warning MD 버튼
+          </Button>
+          <Button color='warning' size='sm' variant='outline' shape='rounded'>
+            Warning SM 버튼
+          </Button>
+          <Button color='warning' size='xs' variant='outline' shape='rounded'>
+            Warning XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='warning' size='xl' variant='soft' shape='rounded'>
+            Warning XL 버튼
+          </Button>
+          <Button color='warning' size='lg' variant='soft' shape='rounded'>
+            Warning LG 버튼
+          </Button>
+          <Button color='warning' size='md' variant='soft' shape='rounded'>
+            Warning MD 버튼
+          </Button>
+          <Button color='warning' size='sm' variant='soft' shape='rounded'>
+            Warning SM 버튼
+          </Button>
+          <Button color='warning' size='xs' variant='soft' shape='rounded'>
+            Warning XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='warning' size='xl' variant='ghost' shape='rounded'>
+            Warning XL 버튼
+          </Button>
+          <Button color='warning' size='lg' variant='ghost' shape='rounded'>
+            Warning LG 버튼
+          </Button>
+          <Button color='warning' size='md' variant='ghost' shape='rounded'>
+            Warning MD 버튼
+          </Button>
+          <Button color='warning' size='sm' variant='ghost' shape='rounded'>
+            Warning SM 버튼
+          </Button>
+          <Button color='warning' size='xs' variant='ghost' shape='rounded'>
+            Warning XS 버튼
+          </Button>
+        </div>
+      </section>
+      <section>
+        <div>
+          <Button color='danger' size='xl' variant='solid' shape='rounded'>
+            Danger XL 버튼
+          </Button>
+          <Button color='danger' size='lg' variant='solid' shape='rounded'>
+            Danger LG 버튼
+          </Button>
+          <Button color='danger' size='md' variant='solid' shape='rounded'>
+            Danger MD 버튼
+          </Button>
+          <Button color='danger' size='sm' variant='solid' shape='rounded'>
+            Danger SM 버튼
+          </Button>
+          <Button color='danger' size='xs' variant='solid' shape='rounded'>
+            Danger XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='danger' size='xl' variant='outline' shape='rounded'>
+            Danger XL 버튼
+          </Button>
+          <Button color='danger' size='lg' variant='outline' shape='rounded'>
+            Danger LG 버튼
+          </Button>
+          <Button color='danger' size='md' variant='outline' shape='rounded'>
+            Danger MD 버튼
+          </Button>
+          <Button color='danger' size='sm' variant='outline' shape='rounded'>
+            Danger SM 버튼
+          </Button>
+          <Button color='danger' size='xs' variant='outline' shape='rounded'>
+            Danger XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='danger' size='xl' variant='soft' shape='rounded'>
+            Danger XL 버튼
+          </Button>
+          <Button color='danger' size='lg' variant='soft' shape='rounded'>
+            Danger LG 버튼
+          </Button>
+          <Button color='danger' size='md' variant='soft' shape='rounded'>
+            Danger MD 버튼
+          </Button>
+          <Button color='danger' size='sm' variant='soft' shape='rounded'>
+            Danger SM 버튼
+          </Button>
+          <Button color='danger' size='xs' variant='soft' shape='rounded'>
+            Danger XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button color='danger' size='xl' variant='ghost' shape='rounded'>
+            Danger XL 버튼
+          </Button>
+          <Button color='danger' size='lg' variant='ghost' shape='rounded'>
+            Danger LG 버튼
+          </Button>
+          <Button color='danger' size='md' variant='ghost' shape='rounded'>
+            Danger MD 버튼
+          </Button>
+          <Button color='danger' size='sm' variant='ghost' shape='rounded'>
+            Danger SM 버튼
+          </Button>
+          <Button color='danger' size='xs' variant='ghost' shape='rounded'>
+            Danger XS 버튼
+          </Button>
+        </div>
+      </section>
+
+      {/* <p>&#xE000; 뒤로 가기 </p> */}
+      {/* <Button color='secondary' size='sm' variant='solid' shape='rounded'>
         apple
-      </Button>
-      <Button color='tertiary' size='md' variant='solid' shape='rounded'>
+      </Button> */}
+      {/* <Button color='tertiary' size='md' variant='solid' shape='rounded'>
         Tertiary Button
-      </Button>
-      <Button color='brand' size='lg' variant='solid' shape='rounded'>
+      </Button> */}
+      {/* <Button color='brand' size='lg' variant='solid' shape='rounded'>
         Brand Button 13
-      </Button>
-      <Button
+      </Button> */}
+      {/* <Button
         color='brand-sub'
         size='xl'
         variant='outline'
@@ -79,9 +706,9 @@ function App() {
         onClick={() => console.log('Clicked!')}
       >
         Brand Button
-      </Button>
+      </Button> */}
 
-      <LinkButton
+      {/* <LinkButton
         href='/home'
         title='새 창 열기'
         target='_blank'
@@ -93,9 +720,9 @@ function App() {
         aria-disabled='true'
       >
         링크
-      </LinkButton>
+      </LinkButton> */}
 
-      <IconButton
+      {/* <IconButton
         color='secondary'
         size='xl'
         variant='solid'
@@ -127,7 +754,7 @@ function App() {
 
       <Icon name='logout' color='red' size='sm' />
       <Icon name='logout' color='red' size='md' />
-      <Icon name='logout' color='blue' size='lg' />
+      <Icon name='logout' color='blue' size='lg' /> */}
 
       <section>
         {/* Display */}

@@ -549,104 +549,143 @@ $g_typography: (
   // ==========================================================================
   btn1: (
       ko: (
-        font-size: 16px,
-        tablet-size: 15px,
-        mobile-size: 14px,
-        font-weight: (
-          600,
-          700,
-        ),
+        font-size: 12px,
+        // size--xs
+        tablet-size: 12px,
+        mobile-size: 12px,
+        font-weight: 600,
         line-height: 1.5,
         font-family: ko,
       ),
       ja: (
-        font-size: 16px,
-        tablet-size: 15px,
-        mobile-size: 14px,
-        font-weight: (
-          600,
-          700,
-        ),
+        font-size: 12px,
+        tablet-size: 12px,
+        mobile-size: 12px,
+        font-weight: 600,
         line-height: 1.5,
         font-family: ja,
       ),
       en: (
-        font-size: 16px,
-        tablet-size: 15px,
-        mobile-size: 14px,
-        font-weight: (
-          600,
-          700,
-        ),
+        font-size: 12px,
+        tablet-size: 12px,
+        mobile-size: 12px,
+        font-weight: 600,
         line-height: 1.5,
         font-family: en,
       ),
     ),
+
   btn2: (
     ko: (
       font-size: 14px,
-      tablet-size: 13px,
+      // size--sm
+      tablet-size: 14px,
       mobile-size: 14px,
-      font-weight: (
-        600,
-      ),
+      font-weight: 600,
       line-height: 1.5,
       font-family: ko,
     ),
     ja: (
       font-size: 14px,
-      tablet-size: 13px,
+      tablet-size: 14px,
       mobile-size: 14px,
-      font-weight: (
-        600,
-      ),
+      font-weight: 600,
       line-height: 1.5,
       font-family: ja,
     ),
     en: (
       font-size: 14px,
-      tablet-size: 13px,
+      tablet-size: 14px,
       mobile-size: 14px,
-      font-weight: (
-        600,
-      ),
-      line-height: 1.5,
-      font-family: en,
-    ),
-  ),
-  btn3: (
-    ko: (
-      font-size: 12px,
-      tablet-size: 12px,
-      mobile-size: 12px,
-      font-weight: (
-        600,
-      ),
-      line-height: 1.5,
-      font-family: ko,
-    ),
-    ja: (
-      font-size: 12px,
-      tablet-size: 12px,
-      mobile-size: 12px,
-      font-weight: (
-        600,
-      ),
-      line-height: 1.5,
-      font-family: ja,
-    ),
-    en: (
-      font-size: 12px,
-      tablet-size: 12px,
-      mobile-size: 12px,
-      font-weight: (
-        600,
-      ),
+      font-weight: 600,
       line-height: 1.5,
       font-family: en,
     ),
   ),
 
+  btn3: (
+    ko: (
+      font-size: 16px,
+      // size--md, WCAG 본문 최소 권장
+      tablet-size: 15px,
+      mobile-size: 16px,
+      font-weight: 600,
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 16px,
+      tablet-size: 15px,
+      mobile-size: 16px,
+      font-weight: 600,
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 16px,
+      tablet-size: 15px,
+      mobile-size: 16px,
+      font-weight: 600,
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+
+  btn4: (
+    ko: (
+      font-size: 18px,
+      // size--lg
+      tablet-size: 18px,
+      mobile-size: 16px,
+      font-weight: 700,
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 18px,
+      tablet-size: 18px,
+      mobile-size: 16px,
+      font-weight: 700,
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 18px,
+      tablet-size: 18px,
+      mobile-size: 16px,
+      font-weight: 700,
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+
+  btn5: (
+    ko: (
+      font-size: 20px,
+      // size--xl
+      tablet-size: 20px,
+      mobile-size: 18px,
+      font-weight: 700,
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 20px,
+      tablet-size: 20px,
+      mobile-size: 18px,
+      font-weight: 700,
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 20px,
+      tablet-size: 20px,
+      mobile-size: 18px,
+      font-weight: 700,
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
   // ==========================================================================
   // Label (폼 레이블, 설명 텍스트)
   // 접근성 기준: 최소 12px, 모바일 최소 14px, line-height 1.5
@@ -1017,39 +1056,39 @@ $g_typography: (
     ),
   ),
 
- // ==========================================================================
+  // ==========================================================================
   // Feedback Text (유효성 검사 메시지)
   // ==========================================================================
   feedbackText: (
-    ko: (
-      font-size: 14px,
-      tablet-size: 14px,
-      mobile-size: 13px,
-      font-weight: (
-        500,
+      ko: (
+        font-size: 14px,
+        tablet-size: 14px,
+        mobile-size: 13px,
+        font-weight: (
+          500,
+        ),
+        line-height: 1.5,
+        font-family: ko,
       ),
-      line-height: 1.5,
-      font-family: ko,
-    ),
-    ja: (
-      font-size: 14px,
-      tablet-size: 14px,
-      mobile-size: 13px,
-      font-weight: (
-        500,
+      ja: (
+        font-size: 14px,
+        tablet-size: 14px,
+        mobile-size: 13px,
+        font-weight: (
+          500,
+        ),
+        line-height: 1.5,
+        font-family: ja,
       ),
-      line-height: 1.5,
-      font-family: ja,
-    ),
-    en: (
-      font-size: 14px,
-      tablet-size: 14px,
-      mobile-size: 13px,
-      font-weight: (
-        500,
+      en: (
+        font-size: 14px,
+        tablet-size: 14px,
+        mobile-size: 13px,
+        font-weight: (
+          500,
+        ),
+        line-height: 1.5,
+        font-family: en,
       ),
-      line-height: 1.5,
-      font-family: en,
-    ),
-  )
+    )
 );
