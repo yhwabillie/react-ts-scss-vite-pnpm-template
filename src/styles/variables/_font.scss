@@ -1,23 +1,16 @@
 //───────────────────────────────────────
 //  📌 variables - Font
 //───────────────────────────────────────
-// 프로젝트에서 사용하는 주 폰트만 선언
-// $g_font-family: ('Pretendard GOV Variable');
-
-// $g_typography-font-family: (
-//   ko: var(--project-font-family-ko),
-//   ja: var(--project-font-family-ja),
-// );
-
-// $g_font-family-ko: ('Pretendard GOV Variable');
-// $g_font-family-ja: ('Noto Sans JP');
-
+// 언어별 폰트 설정
 $g_font-family: (
   ko: (
-    'Noto Sans KR',
+    'Pretendard GOV Variable',
   ),
   ja: (
     'Noto Sans JP',
+  ),
+  en: (
+    'NanumSquareNeo Variable',
   ),
 );
 

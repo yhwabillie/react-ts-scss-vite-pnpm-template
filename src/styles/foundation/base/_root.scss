@@ -2,7 +2,7 @@
 @use '../../mixins/generate-variables' as *;
 
 :root {
-  @include generate-vars-font-family(vars.$g_project-name, ('ko', 'ja'));
+  @include generate-vars-font-family(vars.$g_project-name, ('ko', 'ja', 'en'));
   @include generate-vars-font-weight(vars.$g_project-name, vars.$g_font-weight);
   @include generate-vars-border-radius(vars.$g_project-name, vars.$g_border-radius);
 }

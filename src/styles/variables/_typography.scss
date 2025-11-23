@@ -3,25 +3,42 @@
 //───────────────────────────────────────
 @use 'sass:math';
 
-/*
- * 작은 글씨(16px 미만) → 대비 4.5:1 이상
- * 큰 글씨(24px 이상) → 대비 3:1 이상
- * 조금 작은데 Bold(18.66px 이상, 700) → 대비 3:1 이상
+/* ==========================================================================
+   한국 웹접근성(KWCAG) 및 WCAG 기준 기반 폰트 사이즈 권장 사항
+
+   1. 접근성 권장 사항
+      - 기본 본문 크기: 최소 16px 권장
+        * 시각적으로 읽기 어려운 글자 방지
+        * 확대/축소 시 가독성 확보
+      - 줄 높이(line-height): 1.4 ~ 1.5 권장
+      - 캡션/보조 텍스트 최소 12px 이상
+      - 모바일 환경에서는 본문 최소 16px, 보조 텍스트/캡션 최소 14px 권장
+
+   2. 실무 적용 기준
+      - 본문(body) 폰트: 16px 이상 유지
+      - Subtitle/소제목: 14px 이상
+      - Caption/보조 텍스트: 최소 12px 이상, 모바일 시 14px 이상 권장
+      - 버튼 텍스트: 최소 12px 이상, 강조 시 16px까지 사용 가능
+
+   3. 요약
+      - 본문: 16px 이상
+      - 보조 텍스트/캡션: 최소 12px, 모바일 14px 이상
+      - 버튼: 최소 12px 이상
+      - 모든 텍스트: line-height 1.5로 가독성 확보
+      => 접근성 준수 + 실무 적용 가능
+   ==========================================================================
 */
 
 $g_typography-base-size: 16px;
 
-// 언어별 폰트 패밀리
-// $g_typography-font-family: (
-//   ko: var(--project-font-family-ko),
-//   ja: var(--project-font-family-ja),
-// );
-
 $g_typography: (
-  // Display
+  // ==========================================================================
+  // Display (화면에서 가장 눈에 띄는 대형 텍스트, 주로 마케팅용)
+  // ==========================================================================
   d1: (
       ko: (
         font-size: 64px,
+        tablet-size: 56px,
         mobile-size: 48px,
         font-weight: (
           700,
@@ -31,6 +48,7 @@ $g_typography: (
       ),
       ja: (
         font-size: 64px,
+        tablet-size: 56px,
         mobile-size: 48px,
         font-weight: (
           700,
@@ -38,10 +56,21 @@ $g_typography: (
         line-height: 1.5,
         font-family: ja,
       ),
+      en: (
+        font-size: 64px,
+        tablet-size: 56px,
+        mobile-size: 48px,
+        font-weight: (
+          700,
+        ),
+        line-height: 1.5,
+        font-family: en,
+      ),
     ),
   d2: (
     ko: (
       font-size: 48px,
+      tablet-size: 40px,
       mobile-size: 36px,
       font-weight: (
         700,
@@ -51,6 +80,7 @@ $g_typography: (
     ),
     ja: (
       font-size: 48px,
+      tablet-size: 40px,
       mobile-size: 36px,
       font-weight: (
         700,
@@ -58,362 +88,968 @@ $g_typography: (
       line-height: 1.5,
       font-family: ja,
     ),
+    en: (
+      font-size: 48px,
+      tablet-size: 40px,
+      mobile-size: 36px,
+      font-weight: (
+        700,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
   ),
-  //   d3: (
-  //     ko: (
-  //       font-size: 36px,
-  //       mobile-size: 28px,
-  //       font-weight: (
-  //         600,
-  //         700,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   // Heading
-  //   h1: (
-  //       ko: (
-  //         font-size: 32px,
-  //         mobile-size: 28px,
-  //         font-weight: (
-  //           700,
-  //         ),
-  //         line-height: 1.5,
-  //         font-family: ko,
-  //       ),
-  //     ),
-  //   h2: (
-  //     ko: (
-  //       font-size: 28px,
-  //       mobile-size: 24px,
-  //       font-weight: (
-  //         600,
-  //         700,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   h3: (
-  //     ko: (
-  //       font-size: 24px,
-  //       mobile-size: 20px,
-  //       font-weight: (
-  //         600,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   // Subtitle
-  //   st1: (
-  //       ko: (
-  //         font-size: 20px,
-  //         mobile-size: 18px,
-  //         font-weight: (
-  //           500,
-  //           600,
-  //         ),
-  //         line-height: 1.5,
-  //         font-family: ko,
-  //       ),
-  //     ),
-  //   st2: (
-  //     ko: (
-  //       font-size: 18px,
-  //       mobile-size: 16px,
-  //       font-weight: (
-  //         500,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   st3: (
-  //     ko: (
-  //       font-size: 16px,
-  //       mobile-size: 14px,
-  //       font-weight: (
-  //         400,
-  //         500,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   // Body
-  //   b1: (
-  //       ko: (
-  //         font-size: 16px,
-  //         mobile-size: 14px,
-  //         font-weight: (
-  //           400,
-  //           500,
-  //         ),
-  //         line-height: 1.5,
-  //         font-family: ko,
-  //       ),
-  //     ),
-  //   b2: (
-  //     ko: (
-  //       font-size: 14px,
-  //       mobile-size: 14px,
-  //       font-weight: (
-  //         400,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   b3: (
-  //     ko: (
-  //       font-size: 12px,
-  //       mobile-size: 12px,
-  //       font-weight: (
-  //         400,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   // Caption
-  //   c1: (
-  //       ko: (
-  //         font-size: 12px,
-  //         mobile-size: 12px,
-  //         font-weight: (
-  //           400,
-  //         ),
-  //         line-height: 1.5,
-  //         font-family: ko,
-  //       ),
-  //     ),
-  //   c2: (
-  //     ko: (
-  //       font-size: 10px,
-  //       mobile-size: 10px,
-  //       font-weight: (
-  //         400,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   c3: (
-  //     ko: (
-  //       font-size: 9px,
-  //       mobile-size: 9px,
-  //       font-weight: (
-  //         400,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   // Button
-  //   btn1: (
-  //       ko: (
-  //         font-size: 16px,
-  //         mobile-size: 14px,
-  //         font-weight: (
-  //           500,
-  //           600,
-  //         ),
-  //         line-height: 1.5,
-  //         font-family: ko,
-  //       ),
-  //     ),
-  //   btn2: (
-  //     ko: (
-  //       font-size: 14px,
-  //       mobile-size: 14px,
-  //       font-weight: (
-  //         500,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   btn3: (
-  //     ko: (
-  //       font-size: 12px,
-  //       mobile-size: 12px,
-  //       font-weight: (
-  //         500,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   // Label
-  //   l1: (
-  //       ko: (
-  //         font-size: 14px,
-  //         mobile-size: 12px,
-  //         font-weight: (
-  //           500,
-  //         ),
-  //         line-height: 1.5,
-  //         font-family: ko,
-  //       ),
-  //     ),
-  //   l2: (
-  //     ko: (
-  //       font-size: 12px,
-  //       mobile-size: 12px,
-  //       font-weight: (
-  //         400,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   l3: (
-  //     ko: (
-  //       font-size: 10px,
-  //       mobile-size: 10px,
-  //       font-weight: (
-  //         400,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   // Overline
-  //   ol1: (
-  //       ko: (
-  //         font-size: 10px,
-  //         mobile-size: 10px,
-  //         font-weight: (
-  //           400,
-  //         ),
-  //         line-height: 1.5,
-  //         font-family: ko,
-  //       ),
-  //     ),
-  //   ol2: (
-  //     ko: (
-  //       font-size: 9px,
-  //       mobile-size: 9px,
-  //       font-weight: (
-  //         400,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   ol3: (
-  //     ko: (
-  //       font-size: 8px,
-  //       mobile-size: 8px,
-  //       font-weight: (
-  //         400,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   // Code / Monospace
-  //   code1: (
-  //       ko: (
-  //         font-size: 14px,
-  //         mobile-size: 12px,
-  //         font-weight: (
-  //           400,
-  //         ),
-  //         line-height: 1.5,
-  //         font-family: monospace,
-  //       ),
-  //     ),
-  //   code2: (
-  //     ko: (
-  //       font-size: 12px,
-  //       mobile-size: 12px,
-  //       font-weight: (
-  //         400,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: monospace,
-  //     ),
-  //   ),
-  //   code3: (
-  //     ko: (
-  //       font-size: 10px,
-  //       mobile-size: 10px,
-  //       font-weight: (
-  //         400,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: monospace,
-  //     ),
-  //   ),
-  //   // Input
-  //   input1: (
-  //       ko: (
-  //         font-size: 16px,
-  //         mobile-size: 14px,
-  //         font-weight: (
-  //           400,
-  //         ),
-  //         line-height: 1.5,
-  //         font-family: ko,
-  //       ),
-  //     ),
-  //   input2: (
-  //     ko: (
-  //       font-size: 14px,
-  //       mobile-size: 14px,
-  //       font-weight: (
-  //         400,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   input3: (
-  //     ko: (
-  //       font-size: 12px,
-  //       mobile-size: 12px,
-  //       font-weight: (
-  //         400,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   // Placeholder
-  //   placeholder1: (
-  //       ko: (
-  //         font-size: 16px,
-  //         mobile-size: 14px,
-  //         font-weight: (
-  //           400,
-  //         ),
-  //         line-height: 1.5,
-  //         font-family: ko,
-  //       ),
-  //     ),
-  //   placeholder2: (
-  //     ko: (
-  //       font-size: 14px,
-  //       mobile-size: 14px,
-  //       font-weight: (
-  //         400,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-  //   ),
-  //   placeholder3: (
-  //     ko: (
-  //       font-size: 12px,
-  //       mobile-size: 12px,
-  //       font-weight: (
-  //         400,
-  //       ),
-  //       line-height: 1.5,
-  //       font-family: ko,
-  //     ),
-   //   )
+  d3: (
+    ko: (
+      font-size: 36px,
+      tablet-size: 32px,
+      mobile-size: 28px,
+      font-weight: (
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 36px,
+      tablet-size: 32px,
+      mobile-size: 28px,
+      font-weight: (
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 36px,
+      tablet-size: 32px,
+      mobile-size: 28px,
+      font-weight: (
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+
+  // ==========================================================================
+  // Heading (페이지 구조를 안내하는 제목)
+  // ==========================================================================
+  h1: (
+      ko: (
+        font-size: 32px,
+        tablet-size: 30px,
+        mobile-size: 28px,
+        font-weight: (
+          700,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+      ja: (
+        font-size: 32px,
+        tablet-size: 30px,
+        mobile-size: 28px,
+        font-weight: (
+          700,
+        ),
+        line-height: 1.5,
+        font-family: ja,
+      ),
+      en: (
+        font-size: 32px,
+        tablet-size: 30px,
+        mobile-size: 28px,
+        font-weight: (
+          700,
+        ),
+        line-height: 1.5,
+        font-family: en,
+      ),
+    ),
+  h2: (
+    ko: (
+      font-size: 28px,
+      tablet-size: 26px,
+      mobile-size: 24px,
+      font-weight: (
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 28px,
+      tablet-size: 26px,
+      mobile-size: 24px,
+      font-weight: (
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 28px,
+      tablet-size: 26px,
+      mobile-size: 24px,
+      font-weight: (
+        700,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+  h3: (
+    ko: (
+      font-size: 24px,
+      tablet-size: 22px,
+      mobile-size: 20px,
+      font-weight: (
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 24px,
+      tablet-size: 22px,
+      mobile-size: 20px,
+      font-weight: (
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 24px,
+      tablet-size: 22px,
+      mobile-size: 20px,
+      font-weight: (
+        700,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+
+  // ==========================================================================
+  // Subtitle (소제목, 섹션 구분용)
+  // ==========================================================================
+  st1: (
+      ko: (
+        font-size: 20px,
+        tablet-size: 18px,
+        mobile-size: 16px,
+        font-weight: (
+          500,
+          600,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+      ja: (
+        font-size: 20px,
+        tablet-size: 18px,
+        mobile-size: 16px,
+        font-weight: (
+          500,
+          600,
+        ),
+        line-height: 1.5,
+        font-family: ja,
+      ),
+      en: (
+        font-size: 20px,
+        tablet-size: 18px,
+        mobile-size: 16px,
+        font-weight: (
+          500,
+          600,
+        ),
+        line-height: 1.5,
+        font-family: en,
+      ),
+    ),
+  st2: (
+    ko: (
+      font-size: 18px,
+      tablet-size: 16px,
+      mobile-size: 15px,
+      font-weight: (
+        500,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 18px,
+      tablet-size: 16px,
+      mobile-size: 15px,
+      font-weight: (
+        500,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 18px,
+      tablet-size: 16px,
+      mobile-size: 15px,
+      font-weight: (
+        500,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+  st3: (
+    ko: (
+      font-size: 16px,
+      tablet-size: 15px,
+      mobile-size: 14px,
+      font-weight: (
+        400,
+        500,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 16px,
+      tablet-size: 15px,
+      mobile-size: 14px,
+      font-weight: (
+        400,
+        500,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 16px,
+      tablet-size: 15px,
+      mobile-size: 14px,
+      font-weight: (
+        400,
+        500,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+
+  // ==========================================================================
+  // Body (본문, 기본 텍스트)
+  // ==========================================================================
+  b1: (
+      ko: (
+        font-size: 16px,
+        tablet-size: 15px,
+        mobile-size: 14px,
+        font-weight: (
+          400,
+          500,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+      ja: (
+        font-size: 16px,
+        tablet-size: 15px,
+        mobile-size: 14px,
+        font-weight: (
+          400,
+          500,
+        ),
+        line-height: 1.5,
+        font-family: ja,
+      ),
+      en: (
+        font-size: 16px,
+        tablet-size: 15px,
+        mobile-size: 14px,
+        font-weight: (
+          400,
+          500,
+        ),
+        line-height: 1.5,
+        font-family: en,
+      ),
+    ),
+  b2: (
+    ko: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 14px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 14px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 14px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+  b3: (
+    ko: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+
+  // ==========================================================================
+  // Caption (보조 텍스트, 안내문)
+  // ==========================================================================
+  c1: (
+      ko: (
+        font-size: 12px,
+        tablet-size: 12px,
+        mobile-size: 12px,
+        font-weight: (
+          400,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+      ja: (
+        font-size: 12px,
+        tablet-size: 12px,
+        mobile-size: 12px,
+        font-weight: (
+          400,
+        ),
+        line-height: 1.5,
+        font-family: ja,
+      ),
+      en: (
+        font-size: 12px,
+        tablet-size: 12px,
+        mobile-size: 12px,
+        font-weight: (
+          400,
+        ),
+        line-height: 1.5,
+        font-family: en,
+      ),
+    ),
+  c2: (
+    ko: (
+      font-size: 10px,
+      tablet-size: 10px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 10px,
+      tablet-size: 10px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 10px,
+      tablet-size: 10px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+  c3: (
+    ko: (
+      font-size: 9px,
+      tablet-size: 9px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 9px,
+      tablet-size: 9px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 9px,
+      tablet-size: 9px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+
+  // ==========================================================================
+  // Button (주요 UI 버튼)
+  // ==========================================================================
+  btn1: (
+      ko: (
+        font-size: 16px,
+        tablet-size: 15px,
+        mobile-size: 14px,
+        font-weight: (
+          600,
+          700,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+      ja: (
+        font-size: 16px,
+        tablet-size: 15px,
+        mobile-size: 14px,
+        font-weight: (
+          600,
+          700,
+        ),
+        line-height: 1.5,
+        font-family: ja,
+      ),
+      en: (
+        font-size: 16px,
+        tablet-size: 15px,
+        mobile-size: 14px,
+        font-weight: (
+          600,
+          700,
+        ),
+        line-height: 1.5,
+        font-family: en,
+      ),
+    ),
+  btn2: (
+    ko: (
+      font-size: 14px,
+      tablet-size: 13px,
+      mobile-size: 14px,
+      font-weight: (
+        600,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 14px,
+      tablet-size: 13px,
+      mobile-size: 14px,
+      font-weight: (
+        600,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 14px,
+      tablet-size: 13px,
+      mobile-size: 14px,
+      font-weight: (
+        600,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+  btn3: (
+    ko: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        600,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        600,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        600,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+
+  // ==========================================================================
+  // Label (폼 레이블, 설명 텍스트)
+  // 접근성 기준: 최소 12px, 모바일 최소 14px, line-height 1.5
+  // ==========================================================================
+  l1: (
+      ko: (
+        font-size: 16px,
+        tablet-size: 15px,
+        mobile-size: 14px,
+        font-weight: (
+          500,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+      ja: (
+        font-size: 16px,
+        tablet-size: 15px,
+        mobile-size: 14px,
+        font-weight: (
+          500,
+        ),
+        line-height: 1.5,
+        font-family: ja,
+      ),
+      en: (
+        font-size: 16px,
+        tablet-size: 15px,
+        mobile-size: 14px,
+        font-weight: (
+          500,
+        ),
+        line-height: 1.5,
+        font-family: en,
+      ),
+    ),
+  l2: (
+    ko: (
+      font-size: 14px,
+      tablet-size: 13px,
+      mobile-size: 13px,
+      font-weight: (
+        500,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 14px,
+      tablet-size: 13px,
+      mobile-size: 13px,
+      font-weight: (
+        500,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 14px,
+      tablet-size: 13px,
+      mobile-size: 13px,
+      font-weight: (
+        500,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+  l3: (
+    ko: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+
+  // ==========================================================================
+  // Input (폼 필드, 텍스트 입력 등)
+  // 접근성 기준: 최소 16px, 모바일 최소 14px, line-height 1.5
+  // ==========================================================================
+  input1: (
+      ko: (
+        font-size: 16px,
+        tablet-size: 15px,
+        mobile-size: 14px,
+        font-weight: (
+          400,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+      ja: (
+        font-size: 16px,
+        tablet-size: 15px,
+        mobile-size: 14px,
+        font-weight: (
+          400,
+        ),
+        line-height: 1.5,
+        font-family: ja,
+      ),
+      en: (
+        font-size: 16px,
+        tablet-size: 15px,
+        mobile-size: 14px,
+        font-weight: (
+          400,
+        ),
+        line-height: 1.5,
+        font-family: en,
+      ),
+    ),
+  input2: (
+    ko: (
+      font-size: 14px,
+      tablet-size: 13px,
+      mobile-size: 13px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 14px,
+      tablet-size: 13px,
+      mobile-size: 13px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 14px,
+      tablet-size: 13px,
+      mobile-size: 13px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+  input3: (
+    ko: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+
+  // ==========================================================================
+  // Placeholder (입력 안내 텍스트)
+  // ==========================================================================
+  placeholder1: (
+      ko: (
+        font-size: 16px,
+        tablet-size: 15px,
+        mobile-size: 14px,
+        font-weight: (
+          400,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+      ja: (
+        font-size: 16px,
+        tablet-size: 15px,
+        mobile-size: 14px,
+        font-weight: (
+          400,
+        ),
+        line-height: 1.5,
+        font-family: ja,
+      ),
+      en: (
+        font-size: 16px,
+        tablet-size: 15px,
+        mobile-size: 14px,
+        font-weight: (
+          400,
+        ),
+        line-height: 1.5,
+        font-family: en,
+      ),
+    ),
+  placeholder2: (
+    ko: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 13px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 13px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 13px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+  placeholder3: (
+    ko: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+
+  // ==========================================================================
+  // Helper / Hint Text (보조 안내 문구)
+  // ==========================================================================
+  helper1: (
+      ko: (
+        font-size: 14px,
+        tablet-size: 14px,
+        mobile-size: 13px,
+        font-weight: (
+          400,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+      ja: (
+        font-size: 14px,
+        tablet-size: 14px,
+        mobile-size: 13px,
+        font-weight: (
+          400,
+        ),
+        line-height: 1.5,
+        font-family: ja,
+      ),
+      en: (
+        font-size: 14px,
+        tablet-size: 14px,
+        mobile-size: 13px,
+        font-weight: (
+          400,
+        ),
+        line-height: 1.5,
+        font-family: en,
+      ),
+    ),
+  helper2: (
+    ko: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+
+ // ==========================================================================
+  // Feedback Text (유효성 검사 메시지)
+  // ==========================================================================
+  feedbackText: (
+    ko: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 13px,
+      font-weight: (
+        500,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 13px,
+      font-weight: (
+        500,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 13px,
+      font-weight: (
+        500,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  )
 );

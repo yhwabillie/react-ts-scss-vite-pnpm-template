@@ -4,13 +4,7 @@
 @use 'sass:string';
 @use '../variables' as vars;
 @use '../mixins/rem' as mix;
-
-/* --------------------------------------------
- * 단일 값 → 리스트
- * ------------------------------------------ */
-@function _as-list($v) {
-  @return if(meta.type-of($v) == 'list', $v, ($v));
-}
+@use '../functions' as fn;
 
 // Font-Family 변수 생성
 @mixin generate-vars-font-family($prefix, $locales: null) {
@@ -69,6 +63,36 @@
   }
 }
 
+// Tablet Typograhy 변수 생성
+@mixin generate-vars-typography-tablet($lang) {
+  @each $type, $locales in vars.$g_typography {
+    // $lang에 해당하는 스타일만 가져오기
+    $style: map.get($locales, $lang);
+    @if $style == null {
+      @continue;
+    }
+
+    $weights: fn.ensure-list(map.get($style, font-weight));
+    $tablet-size-raw: if(map.has-key($style, tablet-size), map.get($style, tablet-size), null);
+    @if not $tablet-size-raw {
+      @continue;
+    }
+
+    $line: map.get($style, line-height);
+
+    // 언어별 font-family CSS 변수 참조
+    $family-var: string.unquote('var(--#{vars.$g_project-name}-font-family-#{$lang})');
+
+    @each $weight in $weights {
+      $font-tablet-rem: #{$weight} #{mix.rem($tablet-size-raw)}/#{$line} #{$family-var};
+      $var-base: --#{vars.$g_project-name}-typo-#{$type}-#{$weight};
+
+      // ✅ 변수명은 그대로, 값만 변경
+      #{$var-base}: #{$font-tablet-rem};
+    }
+  }
+}
+
 // Mobile Typograhy 변수 생성
 @mixin generate-vars-typography-mobile($lang) {
   @each $type, $locales in vars.$g_typography {
@@ -78,7 +102,7 @@
       @continue;
     }
 
-    $weights: _as-list(map.get($style, font-weight));
+    $weights: fn.ensure-list(map.get($style, font-weight));
     $mobile-size-raw: if(map.has-key($style, mobile-size), map.get($style, mobile-size), null);
     @if not $mobile-size-raw {
       @continue;
@@ -105,7 +129,7 @@
 
   @each $type, $locales in vars.$g_typography {
     @each $locale, $style in $locales {
-      $weights: _as-list(map.get($style, font-weight));
+      $weights: fn.ensure-list(map.get($style, font-weight));
       $size-rem: mix.rem(map.get($style, font-size));
       $line: map.get($style, line-height);
       $family-key: map.get($style, font-family);
@@ -159,11 +183,11 @@
         }
       }
 
-      @media (width < 768px) {
-        // @include typography-mobile-px(false);
+      @media (max-width: 768px) {
+        @include generate-vars-typography-tablet($locale);
       }
 
-      @media (max-width: 375px) {
+      @media (max-width: 480px) {
         @include generate-vars-typography-mobile($locale);
       }
     }
