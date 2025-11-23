@@ -541,7 +541,86 @@ $btn-colors: (
   ),
 );
 
-// mixin
+// button size
+$btn-sizes: (
+  xs: (
+    height: rem(28px),
+    gap: rem(4px),
+    font-token: var(--project-typo-btn1-600),
+    padding: (
+      pc: rem(8px),
+      tablet: rem(6px),
+      mobile: rem(6px),
+    ),
+    radius: (
+      pc: rem(4px),
+      tablet: rem(4px),
+      mobile: rem(3px),
+    ),
+  ),
+  sm: (
+    height: rem(32px),
+    gap: rem(6px),
+    font-token: var(--project-typo-btn2-600),
+    padding: (
+      pc: rem(12px),
+      tablet: rem(10px),
+      mobile: rem(10px),
+    ),
+    radius: (
+      pc: rem(6px),
+      tablet: rem(6px),
+      mobile: rem(5px),
+    ),
+  ),
+  md: (
+    height: rem(40px),
+    gap: rem(8px),
+    font-token: var(--project-typo-btn3-600),
+    padding: (
+      pc: rem(16px),
+      tablet: rem(14px),
+      mobile: rem(14px),
+    ),
+    radius: (
+      pc: rem(8px),
+      tablet: rem(8px),
+      mobile: rem(6px),
+    ),
+  ),
+  lg: (
+    height: rem(48px),
+    gap: rem(10px),
+    font-token: var(--project-typo-btn4-700),
+    padding: (
+      pc: rem(20px),
+      tablet: rem(18px),
+      mobile: rem(16px),
+    ),
+    radius: (
+      pc: rem(10px),
+      tablet: rem(10px),
+      mobile: rem(8px),
+    ),
+  ),
+  xl: (
+    height: rem(56px),
+    gap: rem(12px),
+    font-token: var(--project-typo-btn5-700),
+    padding: (
+      pc: rem(24px),
+      tablet: rem(20px),
+      mobile: rem(18px),
+    ),
+    radius: (
+      pc: rem(12px),
+      tablet: rem(12px),
+      mobile: rem(10px),
+    ),
+  ),
+);
+
+// mixin - btn colors
 @mixin btn-variant($variant) {
   &:global(.variant--#{$variant}) {
     @each $name, $props in $btn-colors {
@@ -620,6 +699,61 @@ $btn-colors: (
   }
 }
 
+// mixin - btn sizes
+@mixin btn-size() {
+  @each $size-name, $props in $btn-sizes {
+    $padding: map.get($props, padding);
+
+    &:global(.size--#{$size-name}) {
+      height: map.get($props, height);
+      padding: 0 map.get($padding, pc); // PC
+      gap: map.get($props, gap);
+
+      .btn-label {
+        font: map.get($props, font-token);
+      }
+    }
+
+    // tablet 이하 (예: 768px)
+    @media (max-width: 768px) {
+      &:global(.size--#{$size-name}) {
+        padding: 0 map.get($padding, tablet);
+      }
+    }
+
+    // mobile 이하 (예: 480px)
+    @media (max-width: 480px) {
+      &:global(.size--#{$size-name}) {
+        padding: 0 map.get($padding, mobile);
+      }
+    }
+  }
+}
+
+// mixins - btn radius
+@mixin btn-radius($btn-sizes) {
+  &:global(.shape--rounded) {
+    @each $size-name, $props in $btn-sizes {
+      $radius: map.get($props, radius);
+
+      &:global(.size--#{$size-name}) {
+        // PC 기본값
+        border-radius: map.get($radius, pc);
+
+        // Tablet 이하
+        @media (max-width: 768px) {
+          border-radius: map.get($radius, tablet);
+        }
+
+        // Mobile 이하
+        @media (max-width: 480px) {
+          border-radius: map.get($radius, mobile);
+        }
+      }
+    }
+  }
+}
+
 .btn {
   display: inline-flex;
   justify-content: center;
@@ -640,51 +774,7 @@ $btn-colors: (
   }
 
   // size
-  &:global(.size--xs) {
-    height: rem(28px);
-    padding: 0 rem(8px);
-    gap: rem(4px);
-
-    .btn-label {
-      font: var(--project-typo-btn1-600);
-    }
-  }
-  &:global(.size--sm) {
-    height: rem(32px);
-    padding: 0 rem(12px);
-    gap: 6px;
-
-    .btn-label {
-      font: var(--project-typo-btn2-600);
-    }
-  }
-  &:global(.size--md) {
-    height: rem(40px);
-    padding: 0 rem(16px);
-    gap: rem(8px);
-
-    .btn-label {
-      font: var(--project-typo-btn3-600);
-    }
-  }
-  &:global(.size--lg) {
-    height: rem(48px);
-    padding: 0 rem(20px);
-    gap: rem(10px);
-
-    .btn-label {
-      font: var(--project-typo-btn4-700);
-    }
-  }
-  &:global(.size--xl) {
-    height: rem(56px);
-    padding: 0 rem(56px);
-    gap: rem(12px);
-
-    .btn-label {
-      font: var(--project-typo-btn5-700);
-    }
-  }
+  @include btn-size();
 
   // variant
   @include btn-variant(solid);
@@ -697,22 +787,8 @@ $btn-colors: (
     border-radius: 0;
   }
   &:global(.shape--rounded) {
-    // 사이즈별 라운드 적용
-    &:global(.size--xs) {
-      border-radius: var(--project-border-radius-4);
-    }
-    &:global(.size--sm) {
-      border-radius: var(--project-border-radius-6);
-    }
-    &:global(.size--md) {
-      border-radius: var(--project-border-radius-8);
-    }
-    &:global(.size--lg) {
-      border-radius: var(--project-border-radius-10);
-    }
-    &:global(.size--xl) {
-      border-radius: var(--project-border-radius-12);
-    }
+    // radius
+    @include btn-radius($btn-sizes);
   }
   &:global(.shape--pill) {
     border-radius: var(--project-border-radius-max);
