@@ -14,8 +14,8 @@ type IconName = keyof typeof iconMap;
 
 interface IconProps extends React.HTMLAttributes<SVGSVGElement> {
   name: IconName;
-  size: 'sm' | 'md' | 'lg';
-  color: string;
+  size?: 'sm' | 'md' | 'lg';
+  color?: string;
 }
 
 // size variant 매핑
@@ -29,9 +29,9 @@ export const Icon: React.FC<IconProps> = ({ name, color, size, ...props }) => {
   const SvgIcon = iconMap[name]; // name에 맞는 아이콘 가져오기
   if (!SvgIcon) return null;
 
-  const dimension = ICON_SIZES[size];
+  // size가 지정되었을 때만 width/height 적용
+  const dimensionProps = size ? { width: ICON_SIZES[size], height: ICON_SIZES[size] } : {};
 
-  return <SvgIcon fill={color} width={dimension} height={dimension} {...props} />;
+  return <SvgIcon fill={color} {...dimensionProps} {...props} />;
 };
-
 export default Icon;

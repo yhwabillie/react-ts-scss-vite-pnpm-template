@@ -59,6 +59,312 @@ function App() {
     <>
       <section>
         <div>
+          <LinkButton color='primary' size='xl' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='primary' size='lg' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='primary' size='md' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='primary' size='sm' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='primary' size='xs' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+        </div>
+        <div>
+          <LinkButton color='secondary' size='xl' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='secondary' size='lg' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='secondary' size='md' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='secondary' size='sm' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='secondary' size='xs' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+        </div>
+        <div>
+          <LinkButton color='tertiary' size='xl' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='tertiary' size='lg' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='tertiary' size='md' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='tertiary' size='sm' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='tertiary' size='xs' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+        </div>
+        <div>
+          <LinkButton color='brand' size='xl' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='brand' size='lg' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='brand' size='md' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='brand' size='sm' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='brand' size='xs' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+        </div>
+        <div>
+          <LinkButton color='brand-sub' size='xl' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='brand-sub' size='lg' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='brand-sub' size='md' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='brand-sub' size='sm' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='brand-sub' size='xs' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+        </div>
+        <div>
+          <LinkButton color='success' size='xl' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='success' size='lg' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='success' size='md' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='success' size='sm' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='success' size='xs' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+        </div>
+        <div>
+          <LinkButton color='warning' size='xl' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='warning' size='lg' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='warning' size='md' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='warning' size='sm' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='warning' size='xs' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+        </div>
+        <div>
+          <LinkButton color='danger' size='xl' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='danger' size='lg' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='danger' size='md' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='danger' size='sm' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton color='danger' size='xs' variant='link' shape='rounded' href='#'>
+            링크 Text 버튼
+          </LinkButton>
+        </div>
+        <div>
+          <LinkButton
+            color='danger'
+            size='xl'
+            variant='link'
+            shape='rounded'
+            href='#'
+            aria-disabled
+          >
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton
+            color='danger'
+            size='lg'
+            variant='link'
+            shape='rounded'
+            href='#'
+            aria-disabled
+          >
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton
+            color='danger'
+            size='md'
+            variant='link'
+            shape='rounded'
+            href='#'
+            aria-disabled
+          >
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton
+            color='danger'
+            size='sm'
+            variant='link'
+            shape='rounded'
+            href='#'
+            aria-disabled
+          >
+            링크 Text 버튼
+          </LinkButton>
+          <LinkButton
+            color='danger'
+            size='xs'
+            variant='link'
+            shape='rounded'
+            href='#'
+            aria-disabled
+          >
+            링크 Text 버튼
+          </LinkButton>
+        </div>
+      </section>
+      <section>
+        <div>
+          <LinkButton
+            color='brand'
+            size='xl'
+            variant='solid'
+            shape='rounded'
+            endIcon={<Icon name='logout' />}
+            href='/home'
+            title='새 창 열기'
+            target='_blank'
+            aria-disabled
+          >
+            링크 버튼
+          </LinkButton>
+        </div>
+      </section>
+      <section>
+        <div>
+          <Button
+            color='brand'
+            size='xl'
+            variant='solid'
+            shape='rounded'
+            endIcon={<Icon name='logout' />}
+          >
+            Brand XL 버튼
+          </Button>
+          <Button
+            color='brand'
+            size='lg'
+            variant='solid'
+            shape='rounded'
+            endIcon={<Icon name='logout' />}
+          >
+            Brand LG 버튼
+          </Button>
+          <Button
+            color='brand'
+            size='md'
+            variant='solid'
+            shape='rounded'
+            endIcon={<Icon name='logout' />}
+          >
+            Brand MD 버튼
+          </Button>
+          <Button
+            color='brand'
+            size='sm'
+            variant='solid'
+            shape='rounded'
+            endIcon={<Icon name='logout' />}
+          >
+            Brand SM 버튼
+          </Button>
+          <Button
+            color='brand'
+            size='xs'
+            variant='solid'
+            shape='rounded'
+            endIcon={<Icon name='logout' />}
+          >
+            Brand XS 버튼
+          </Button>
+        </div>
+        <div>
+          <Button
+            color='brand'
+            size='xl'
+            variant='solid'
+            shape='rounded'
+            endIcon={<Icon name='logout' />}
+            disabled
+          >
+            Brand XL 버튼
+          </Button>
+          <Button
+            color='brand'
+            size='lg'
+            variant='solid'
+            shape='rounded'
+            endIcon={<Icon name='logout' />}
+            disabled
+          >
+            Brand LG 버튼
+          </Button>
+          <Button
+            color='brand'
+            size='md'
+            variant='solid'
+            shape='rounded'
+            endIcon={<Icon name='logout' />}
+            disabled
+          >
+            Brand MD 버튼
+          </Button>
+          <Button
+            color='brand'
+            size='sm'
+            variant='solid'
+            shape='rounded'
+            endIcon={<Icon name='logout' />}
+            disabled
+          >
+            Brand SM 버튼
+          </Button>
+          <Button
+            color='brand'
+            size='xs'
+            variant='solid'
+            shape='rounded'
+            endIcon={<Icon name='logout' />}
+            disabled
+          >
+            Brand XS 버튼
+          </Button>
+        </div>
+        <div>
           <Button color='brand' size='xl' variant='solid' shape='rounded'>
             Brand XL 버튼
           </Button>
@@ -686,27 +992,6 @@ function App() {
           </Button>
         </div>
       </section>
-
-      {/* <p>&#xE000; 뒤로 가기 </p> */}
-      {/* <Button color='secondary' size='sm' variant='solid' shape='rounded'>
-        apple
-      </Button> */}
-      {/* <Button color='tertiary' size='md' variant='solid' shape='rounded'>
-        Tertiary Button
-      </Button> */}
-      {/* <Button color='brand' size='lg' variant='solid' shape='rounded'>
-        Brand Button 13
-      </Button> */}
-      {/* <Button
-        color='brand-sub'
-        size='xl'
-        variant='outline'
-        shape='pill'
-        endIcon={<Icon name='logout' color='red' size='md' />}
-        onClick={() => console.log('Clicked!')}
-      >
-        Brand Button
-      </Button> */}
 
       {/* <LinkButton
         href='/home'
