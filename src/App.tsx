@@ -59,6 +59,20 @@ function App() {
     <>
       <section>
         <div>
+          <IconLinkButton
+            color='brand'
+            size='xl'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+            href='#'
+            target='_blank'
+            title='새 창 열기'
+          />
+        </div>
+      </section>
+      <section>
+        <div>
           <IconButton
             color='brand'
             size='xl'
