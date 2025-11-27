@@ -1,8 +1,9 @@
 import Button from '@/components/ui/molecules/Button/Button';
 import Icon from '@/components/ui/atoms/Icon/Icon';
-import LinkButton from './components/ui/molecules/Button/LinkButton';
-import IconButton from './components/ui/molecules/IconButton/IconButton';
-import IconLinkButton from './components/ui/molecules/IconButton/IconLinkButton';
+import LinkButton from '@/components/ui/molecules/Button/LinkButton';
+import IconButton from '@/components/ui/molecules/IconButton/IconButton';
+import IconLinkButton from '@/components/ui/molecules/IconButton/IconLinkButton';
+import Spinner from '@/components/ui/atoms/Spinner/Spinner';
 
 function App() {
   // 타입 정의
@@ -57,6 +58,11 @@ function App() {
 
   return (
     <>
+      <section>
+        <div>
+          <Spinner color='brand' size='xl' variant='open-ring' />
+        </div>
+      </section>
       <section>
         <div>
           <IconLinkButton
