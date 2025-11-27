@@ -69,6 +69,46 @@ function App() {
             target='_blank'
             title='새 창 열기'
           />
+          <IconLinkButton
+            color='brand'
+            size='lg'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+            href='#'
+            target='_blank'
+            title='새 창 열기'
+          />
+          <IconLinkButton
+            color='brand'
+            size='md'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+            href='#'
+            target='_blank'
+            title='새 창 열기'
+          />
+          <IconLinkButton
+            color='brand'
+            size='sm'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+            href='#'
+            target='_blank'
+            title='새 창 열기'
+          />
+          <IconLinkButton
+            color='brand'
+            size='xs'
+            variant='solid'
+            shape='pill'
+            icon={<Icon name='logout' />}
+            href='#'
+            target='_blank'
+            title='새 창 열기'
+          />
         </div>
       </section>
       <section>
@@ -150,6 +190,48 @@ function App() {
           <IconButton
             color='brand'
             size='xl'
+            variant='outline'
+            shape='pill'
+            icon={<Icon name='logout' />}
+            disabled
+          />
+          <IconButton
+            color='brand'
+            size='lg'
+            variant='outline'
+            shape='pill'
+            icon={<Icon name='logout' />}
+            disabled
+          />
+          <IconButton
+            color='brand'
+            size='md'
+            variant='outline'
+            shape='pill'
+            icon={<Icon name='logout' />}
+            disabled
+          />
+          <IconButton
+            color='brand'
+            size='sm'
+            variant='outline'
+            shape='pill'
+            icon={<Icon name='logout' />}
+            disabled
+          />
+          <IconButton
+            color='brand'
+            size='xs'
+            variant='outline'
+            shape='pill'
+            icon={<Icon name='logout' />}
+            disabled
+          />
+        </div>
+        <div>
+          <IconButton
+            color='brand'
+            size='xl'
             variant='soft'
             shape='pill'
             icon={<Icon name='logout' />}
@@ -371,19 +453,54 @@ function App() {
       </section>
       <section>
         <div>
-          <LinkButton color='primary' size='xl' variant='link' shape='rounded' href='#'>
+          <LinkButton
+            color='primary'
+            size='xl'
+            variant='link'
+            shape='rounded'
+            href='#'
+            endIcon={<Icon name='logout' />}
+          >
             링크 Text 버튼
           </LinkButton>
-          <LinkButton color='primary' size='lg' variant='link' shape='rounded' href='#'>
+          <LinkButton
+            color='primary'
+            size='lg'
+            variant='link'
+            shape='rounded'
+            href='#'
+            endIcon={<Icon name='logout' />}
+          >
             링크 Text 버튼
           </LinkButton>
-          <LinkButton color='primary' size='md' variant='link' shape='rounded' href='#'>
+          <LinkButton
+            color='primary'
+            size='md'
+            variant='link'
+            shape='rounded'
+            href='#'
+            endIcon={<Icon name='logout' />}
+          >
             링크 Text 버튼
           </LinkButton>
-          <LinkButton color='primary' size='sm' variant='link' shape='rounded' href='#'>
+          <LinkButton
+            color='primary'
+            size='sm'
+            variant='link'
+            shape='rounded'
+            href='#'
+            endIcon={<Icon name='logout' />}
+          >
             링크 Text 버튼
           </LinkButton>
-          <LinkButton color='primary' size='xs' variant='link' shape='rounded' href='#'>
+          <LinkButton
+            color='primary'
+            size='xs'
+            variant='link'
+            shape='rounded'
+            href='#'
+            endIcon={<Icon name='logout' />}
+          >
             링크 Text 버튼
           </LinkButton>
         </div>

@@ -806,6 +806,8 @@ $btn-sizes: (
         &:global(.color--#{$name}) {
           // 기본 색상
           @if $variant == 'link' {
+            text-decoration: underline;
+            text-underline-offset: rem(4px);
             background-color: transparent;
             color: map.get($variant-props, label);
             fill: map.get($variant-props, label);
@@ -835,8 +837,6 @@ $btn-sizes: (
             @if $hover-props != null {
               @if $variant == 'link' {
                 background-color: map.get($hover-props, bg);
-                text-decoration: underline;
-                text-underline-offset: rem(4px);
               } @else {
                 background-color: map.get($hover-props, bg);
                 color: map.get($hover-props, label);
@@ -859,10 +859,10 @@ $btn-sizes: (
           }
 
           // focus 처리
-          &:focus-visible {
-            outline: rem(3px) dashed #003366;
-            outline-offset: rem(2px);
-          }
+          // &:focus-visible {
+          //   outline: rem(3px) dashed #003366;
+          //   outline-offset: rem(2px);
+          // }
 
           // disabled 처리
           &[aria-disabled='true'],

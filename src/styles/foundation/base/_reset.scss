@@ -146,6 +146,12 @@ button {
   box-sizing: border-box;
 }
 
+*:focus,
+*:focus-visible {
+  outline: 3px dashed #003366;
+  outline-offset: 2px;
+}
+
 /* remove animations for people who don't want them */
 @media (prefers-reduced-motion: reduce) {
   * {
