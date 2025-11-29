@@ -1,5 +1,6 @@
 /* Spinner.module.scss */
 @use 'sass:map';
+@use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
 // 인접 배경과 경로 간 명도대비, 경로와 식별자 간 명도대비를 3:1 이상으로 표현한다.
@@ -16,23 +17,300 @@
 
 // Spinner Colors
 $spinner-colors: (
-  primary: (),
-  secondary: (),
-  tertiary: (),
-  brand: (),
-  'brand-sub': (),
-  success: (),
-  warning: (),
-  danger: (),
+  // Primary
+  primary: (
+      open-ring: (
+        track: transparent,
+        path: #0052cc,
+      ),
+      closed-ring: (
+        track: rgba(0, 82, 204, 0.2),
+        path: #0052cc,
+      ),
+    ),
+  primary-solid: (
+    open-ring: (
+      track: transparent,
+      path: #ffffff,
+    ),
+    closed-ring: (
+      track: rgba(255, 255, 255, 0.2),
+      path: #ffffff,
+    ),
+  ),
+  primary-soft: (
+    open-ring: (
+      track: transparent,
+      path: #0052cc,
+    ),
+    closed-ring: (
+      track: rgba(0, 82, 204, 0.2),
+      path: #0052cc,
+    ),
+  ),
+
+  // Secondary
+  secondary: (
+      open-ring: (
+        track: transparent,
+        path: #69b2ff,
+      ),
+      closed-ring: (
+        track: rgba(105, 178, 255, 0.2),
+        path: #69b2ff,
+      ),
+    ),
+  secondary-solid: (
+    open-ring: (
+      track: transparent,
+      path: #003366,
+    ),
+    closed-ring: (
+      track: rgba(0, 51, 102, 0.2),
+      path: #003366,
+    ),
+  ),
+  secondary-soft: (
+    open-ring: (
+      track: transparent,
+      path: #003366,
+    ),
+    closed-ring: (
+      track: rgba(0, 51, 102, 0.2),
+      path: #003366,
+    ),
+  ),
+
+  // Tertiary
+  tertiary: (
+      open-ring: (
+        track: transparent,
+        path: #333333,
+      ),
+      closed-ring: (
+        track: rgba(51, 51, 51, 0.2),
+        path: #333333,
+      ),
+    ),
+  tertiary-solid: (
+    open-ring: (
+      track: transparent,
+      path: #333333,
+    ),
+    closed-ring: (
+      track: rgba(51, 51, 51, 0.2),
+      path: #333333,
+    ),
+  ),
+  tertiary-soft: (
+    open-ring: (
+      track: transparent,
+      path: #333333,
+    ),
+    closed-ring: (
+      track: rgba(51, 51, 51, 0.2),
+      path: #333333,
+    ),
+  ),
+
+  // Brand
+  brand: (
+      open-ring: (
+        track: transparent,
+        path: #ff6f61,
+      ),
+      closed-ring: (
+        track: rgba(255, 111, 97, 0.2),
+        path: #ff6f61,
+      ),
+    ),
+  brand-solid: (
+    open-ring: (
+      track: transparent,
+      path: #ffffff,
+    ),
+    closed-ring: (
+      track: rgba(255, 255, 255, 0.2),
+      path: #ffffff,
+    ),
+  ),
+  brand-soft: (
+    open-ring: (
+      track: transparent,
+      path: #ff6f61,
+    ),
+    closed-ring: (
+      track: rgba(255, 111, 97, 0.2),
+      path: #ff6f61,
+    ),
+  ),
+
+  // Brand Sub
+  'brand-sub': (
+      open-ring: (
+        track: transparent,
+        path: #6a1b9a,
+      ),
+      closed-ring: (
+        track: rgba(106, 27, 154, 0.2),
+        path: #6a1b9a,
+      ),
+    ),
+  brand-sub-solid: (
+    open-ring: (
+      track: transparent,
+      path: #ffffff,
+    ),
+    closed-ring: (
+      track: rgba(255, 255, 255, 0.2),
+      path: #ffffff,
+    ),
+  ),
+  brand-sub-soft: (
+    open-ring: (
+      track: transparent,
+      path: #6a1b9a,
+    ),
+    closed-ring: (
+      track: rgba(106, 27, 154, 0.2),
+      path: #6a1b9a,
+    ),
+  ),
+
+  // Success
+  success: (
+      open-ring: (
+        track: transparent,
+        path: #28a745,
+      ),
+      closed-ring: (
+        track: rgba(40, 167, 69, 0.2),
+        path: #28a745,
+      ),
+    ),
+  success-solid: (
+    open-ring: (
+      track: transparent,
+      path: #ffffff,
+    ),
+    closed-ring: (
+      track: rgba(255, 255, 255, 0.2),
+      path: #ffffff,
+    ),
+  ),
+  success-soft: (
+    open-ring: (
+      track: transparent,
+      path: #28a745,
+    ),
+    closed-ring: (
+      track: rgba(40, 167, 69, 0.2),
+      path: #28a745,
+    ),
+  ),
+
+  // Warning
+  warning: (
+      open-ring: (
+        track: transparent,
+        path: #ff9800,
+      ),
+      closed-ring: (
+        track: rgba(255, 152, 0, 0.2),
+        path: #ff9800,
+      ),
+    ),
+  warning-solid: (
+    open-ring: (
+      track: transparent,
+      path: #212121,
+    ),
+    closed-ring: (
+      track: rgba(33, 33, 33, 0.2),
+      path: #212121,
+    ),
+  ),
+  warning-soft: (
+    open-ring: (
+      track: transparent,
+      path: #ff9800,
+    ),
+    closed-ring: (
+      track: rgba(255, 152, 0, 0.2),
+      path: #ff9800,
+    ),
+  ),
+
+  // Danger
+  danger: (
+      open-ring: (
+        track: transparent,
+        path: #d32f2f,
+      ),
+      closed-ring: (
+        track: rgba(211, 47, 47, 0.2),
+        path: #d32f2f,
+      ),
+    ),
+  danger-solid: (
+    open-ring: (
+      track: transparent,
+      path: #ffffff,
+    ),
+    closed-ring: (
+      track: rgba(255, 255, 255, 0.2),
+      path: #ffffff,
+    ),
+  ),
+  danger-soft: (
+    open-ring: (
+      track: transparent,
+      path: #d32f2f,
+    ),
+    closed-ring: (
+      track: rgba(211, 47, 47, 0.2),
+      path: #d32f2f,
+    ),
+  )
 );
 
 // Spinner Size
 $spinner-sizes: (
-  xs: (),
-  sm: (),
-  md: (),
-  lg: (),
-  xl: (),
+  xs: (
+    size: (
+      pc: rem(12px),
+      tablet: rem(12px),
+      mobile: rem(12px),
+    ),
+  ),
+  sm: (
+    size: (
+      pc: rem(16px),
+      tablet: rem(16px),
+      mobile: rem(16px),
+    ),
+  ),
+  md: (
+    size: (
+      pc: rem(20px),
+      tablet: rem(20px),
+      mobile: rem(20px),
+    ),
+  ),
+  lg: (
+    size: (
+      pc: rem(24px),
+      tablet: rem(24px),
+      mobile: rem(24px),
+    ),
+  ),
+  xl: (
+    size: (
+      pc: rem(32px),
+      tablet: rem(32px),
+      mobile: rem(32px),
+    ),
+  ),
 );
 
 @keyframes rotate {
@@ -41,43 +319,108 @@ $spinner-sizes: (
   }
 }
 
-// mixin - spinner variant
-@mixin spinner-variant($variant) {
-  /* 인터폴레이션으로 파라미터를 클래스명으로 만듦 */
-  &:global(.variant--open-ring) {
-    width: 40px;
-    height: 40px;
-    display: inline-block;
+// mixin - spinner sizes
+@mixin spinner-size() {
+  @each $size-name, $props in $spinner-sizes {
+    // ──────────────── 기본 데이터 추출 ────────────────
+    $size-map: map.get($props, size);
 
-    svg {
-      width: 100%;
-      height: 100%;
-      transform-origin: center;
-      animation: rotate 1s linear infinite;
+    $size-pc: map.get($size-map, pc);
+    $size-tablet: map.get($size-map, tablet);
+    $size-mobile: map.get($size-map, mobile);
 
-      /* 트랙 배경 */
-      :global(.track) {
-        fill: none;
-        stroke: #e5e7eb; // 회색 트랙
-        stroke-width: 5;
+    // ──────────────── PC 스타일 ────────────────
+    &:global(.size--#{$size-name}) {
+      width: $size-pc;
+      height: $size-pc;
+    }
+
+    // ──────────────── Tablet 스타일 (max-width: 768px) ────────────────
+    @media (max-width: 768px) {
+      &:global(.size--#{$size-name}) {
+        width: $size-tablet;
+        height: $size-tablet;
       }
+    }
 
-      /* 회전 색상 */
-      :global(.path) {
-        fill: none;
-        stroke: #ff4d4d; // 색상 부분
-        stroke-width: 5;
-        stroke-linecap: round;
-        stroke-dasharray: 80 40;
-        stroke-dashoffset: 0;
+    // ──────────────── Mobile 스타일 (max-width: 480px) ────────────────
+    @media (max-width: 480px) {
+      &:global(.size--#{$size-name}) {
+        width: $size-mobile;
+        height: $size-mobile;
+      }
+    }
+  }
+}
+
+// mixin - spinner variant (color + shape)
+@mixin spinner-variant($variant) {
+  &:global(.variant--#{$variant}) {
+    @each $name, $props in $spinner-colors {
+      $variant-props: map.get($props, $variant);
+
+      //   @debug '#{meta.inspect($variant)}';
+
+      @if $variant-props != null {
+        &:global(.color--#{$name}) {
+          @if $variant == 'open-ring' {
+            svg {
+              :global(.track) {
+                stroke: map.get($variant-props, track);
+              }
+
+              :global(.path) {
+                stroke: map.get($variant-props, path);
+              }
+            }
+          } @else if $variant == 'closed-ring' {
+            svg {
+              :global(.track) {
+                stroke: map.get($variant-props, track);
+              }
+
+              :global(.path) {
+                stroke: map.get($variant-props, path);
+              }
+            }
+          }
+        }
+      } @else {
+        @warn "Variant '#{$variant}' not found for spinner '#{$name}'";
       }
     }
   }
 }
 
 .spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    animation: rotate 1s linear infinite;
+
+    :global(.track) {
+      fill: none;
+      stroke-width: 5;
+    }
+
+    :global(.path) {
+      fill: none;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-dasharray: 80 40;
+      stroke-dashoffset: 0;
+    }
+  }
+
   // size
+  @include spinner-size();
 
   // variant
+  @include spinner-variant(closed-ring);
   @include spinner-variant(open-ring);
 }

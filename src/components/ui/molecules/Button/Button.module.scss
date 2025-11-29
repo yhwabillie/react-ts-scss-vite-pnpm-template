@@ -336,7 +336,7 @@ $btn-colors: (
     ),
   ),
 
-  'brand-sub': (
+  brand-sub: (
     solid: (
       bg: #6a1b9a,
       label: #ffffff,
@@ -796,7 +796,7 @@ $btn-sizes: (
   ),
 );
 
-// mixin - btn colors
+// mixin - btn variant (color + shape)
 @mixin btn-variant($variant) {
   &:global(.variant--#{$variant}) {
     @each $name, $props in $btn-colors {

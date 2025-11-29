@@ -17,6 +17,8 @@ type BaseProps = {
   children: React.ReactNode;
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
+  startSpinner?: React.ReactNode;
+  endSpinner?: React.ReactNode;
 };
 
 /** <button> 전용 Props */
@@ -30,6 +32,8 @@ const Button: React.FC<ButtonProps> = ({
   children,
   startIcon,
   endIcon,
+  startSpinner,
+  endSpinner,
   ...props
 }) => {
   const buttonProps = props as ButtonProps;
@@ -39,11 +43,13 @@ const Button: React.FC<ButtonProps> = ({
       className={`${styles['btn']} ${`variant--${variant}`} ${`color--${color}`} ${`size--${size}`} ${`shape--${shape}`}`}
       {...buttonProps}
     >
+      {startSpinner && startSpinner}
       {startIcon && startIcon}
 
       <span className={`${styles['btn-label']}`}>{children}</span>
 
       {endIcon && endIcon}
+      {endSpinner && endSpinner}
     </button>
   );
 };

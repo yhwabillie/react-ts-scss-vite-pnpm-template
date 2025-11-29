@@ -3,7 +3,7 @@ import Icon from '@/components/ui/atoms/Icon/Icon';
 import LinkButton from '@/components/ui/molecules/Button/LinkButton';
 import IconButton from '@/components/ui/molecules/IconButton/IconButton';
 import IconLinkButton from '@/components/ui/molecules/IconButton/IconLinkButton';
-import Spinner from '@/components/ui/atoms/Spinner/Spinner';
+import RingSpinner from '@/components/ui/atoms/Spinner/LoadingSpinner/RingSpinner';
 
 function App() {
   // 타입 정의
@@ -60,7 +60,116 @@ function App() {
     <>
       <section>
         <div>
-          <Spinner color='brand' size='xl' variant='open-ring' />
+          <RingSpinner color='primary' size='xl' variant='open-ring' />
+          <RingSpinner color='primary' size='lg' variant='open-ring' />
+          <RingSpinner color='primary' size='md' variant='open-ring' />
+          <RingSpinner color='primary' size='sm' variant='open-ring' />
+          <RingSpinner color='primary' size='xs' variant='open-ring' />
+        </div>
+        <div>
+          <RingSpinner color='primary' size='xl' variant='closed-ring' />
+          <RingSpinner color='primary' size='lg' variant='closed-ring' />
+          <RingSpinner color='primary' size='md' variant='closed-ring' />
+          <RingSpinner color='primary' size='sm' variant='closed-ring' />
+          <RingSpinner color='primary' size='xs' variant='closed-ring' />
+        </div>
+        <div>
+          <RingSpinner color='secondary' size='xl' variant='open-ring' />
+          <RingSpinner color='secondary' size='lg' variant='open-ring' />
+          <RingSpinner color='secondary' size='md' variant='open-ring' />
+          <RingSpinner color='secondary' size='sm' variant='open-ring' />
+          <RingSpinner color='secondary' size='xs' variant='open-ring' />
+        </div>
+        <div>
+          <RingSpinner color='secondary' size='xl' variant='closed-ring' />
+          <RingSpinner color='secondary' size='lg' variant='closed-ring' />
+          <RingSpinner color='secondary' size='md' variant='closed-ring' />
+          <RingSpinner color='secondary' size='sm' variant='closed-ring' />
+          <RingSpinner color='secondary' size='xs' variant='closed-ring' />
+        </div>
+        <div>
+          <RingSpinner color='tertiary' size='xl' variant='open-ring' />
+          <RingSpinner color='tertiary' size='lg' variant='open-ring' />
+          <RingSpinner color='tertiary' size='md' variant='open-ring' />
+          <RingSpinner color='tertiary' size='sm' variant='open-ring' />
+          <RingSpinner color='tertiary' size='xs' variant='open-ring' />
+        </div>
+        <div>
+          <RingSpinner color='tertiary' size='xl' variant='closed-ring' />
+          <RingSpinner color='tertiary' size='lg' variant='closed-ring' />
+          <RingSpinner color='tertiary' size='md' variant='closed-ring' />
+          <RingSpinner color='tertiary' size='sm' variant='closed-ring' />
+          <RingSpinner color='tertiary' size='xs' variant='closed-ring' />
+        </div>
+        <div>
+          <RingSpinner color='brand' size='xl' variant='open-ring' />
+          <RingSpinner color='brand' size='lg' variant='open-ring' />
+          <RingSpinner color='brand' size='md' variant='open-ring' />
+          <RingSpinner color='brand' size='sm' variant='open-ring' />
+          <RingSpinner color='brand' size='xs' variant='open-ring' />
+        </div>
+        <div>
+          <RingSpinner color='brand' size='xl' variant='closed-ring' />
+          <RingSpinner color='brand' size='lg' variant='closed-ring' />
+          <RingSpinner color='brand' size='md' variant='closed-ring' />
+          <RingSpinner color='brand' size='sm' variant='closed-ring' />
+          <RingSpinner color='brand' size='xs' variant='closed-ring' />
+        </div>
+        <div>
+          <RingSpinner color='brand-sub' size='xl' variant='open-ring' />
+          <RingSpinner color='brand-sub' size='lg' variant='open-ring' />
+          <RingSpinner color='brand-sub' size='md' variant='open-ring' />
+          <RingSpinner color='brand-sub' size='sm' variant='open-ring' />
+          <RingSpinner color='brand-sub' size='xs' variant='open-ring' />
+        </div>
+        <div>
+          <RingSpinner color='brand-sub' size='xl' variant='closed-ring' />
+          <RingSpinner color='brand-sub' size='lg' variant='closed-ring' />
+          <RingSpinner color='brand-sub' size='md' variant='closed-ring' />
+          <RingSpinner color='brand-sub' size='sm' variant='closed-ring' />
+          <RingSpinner color='brand-sub' size='xs' variant='closed-ring' />
+        </div>
+        <div>
+          <RingSpinner color='success' size='xl' variant='open-ring' />
+          <RingSpinner color='success' size='lg' variant='open-ring' />
+          <RingSpinner color='success' size='md' variant='open-ring' />
+          <RingSpinner color='success' size='sm' variant='open-ring' />
+          <RingSpinner color='success' size='xs' variant='open-ring' />
+        </div>
+        <div>
+          <RingSpinner color='success' size='xl' variant='closed-ring' />
+          <RingSpinner color='success' size='lg' variant='closed-ring' />
+          <RingSpinner color='success' size='md' variant='closed-ring' />
+          <RingSpinner color='success' size='sm' variant='closed-ring' />
+          <RingSpinner color='success' size='xs' variant='closed-ring' />
+        </div>
+        <div>
+          <RingSpinner color='warning' size='xl' variant='open-ring' />
+          <RingSpinner color='warning' size='lg' variant='open-ring' />
+          <RingSpinner color='warning' size='md' variant='open-ring' />
+          <RingSpinner color='warning' size='sm' variant='open-ring' />
+          <RingSpinner color='warning' size='xs' variant='open-ring' />
+        </div>
+        <div>
+          <RingSpinner color='warning' size='xl' variant='closed-ring' />
+          <RingSpinner color='warning' size='lg' variant='closed-ring' />
+          <RingSpinner color='warning' size='md' variant='closed-ring' />
+          <RingSpinner color='warning' size='sm' variant='closed-ring' />
+          <RingSpinner color='warning' size='xs' variant='closed-ring' />
+        </div>
+        <div>
+          <RingSpinner color='danger' size='xl' variant='open-ring' />
+          <RingSpinner color='danger' size='lg' variant='open-ring' />
+          <RingSpinner color='danger' size='md' variant='open-ring' />
+          <RingSpinner color='danger' size='sm' variant='open-ring' />
+          <RingSpinner color='danger' size='xs' variant='open-ring' />
+        </div>
+        <div>
+          <RingSpinner color='danger' size='xl' variant='closed-ring' />
+          <RingSpinner color='danger' size='lg' variant='closed-ring' />
+          <RingSpinner color='danger' size='md' variant='closed-ring' />
+          <RingSpinner color='danger' size='sm' variant='closed-ring' />
+          <RingSpinner color='danger' size='xs' variant='closed-ring' />
         </div>
       </section>
       <section>
@@ -800,7 +909,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='brand' size='xl' variant='solid' shape='rounded'>
+          <Button
+            color='brand'
+            size='xl'
+            variant='solid'
+            shape='rounded'
+            endSpinner={<RingSpinner color='brand-solid' size='xl' variant='closed-ring' />}
+          >
             Brand XL 버튼
           </Button>
           <Button color='brand' size='lg' variant='solid' shape='rounded'>
@@ -834,7 +949,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='brand' size='xl' variant='outline' shape='rounded'>
+          <Button
+            color='brand'
+            size='xl'
+            variant='outline'
+            shape='rounded'
+            endSpinner={<RingSpinner color='brand' size='xl' variant='closed-ring' />}
+          >
             Brand XL 버튼
           </Button>
           <Button color='brand' size='lg' variant='outline' shape='rounded'>
@@ -868,7 +989,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='brand' size='xl' variant='soft' shape='rounded'>
+          <Button
+            color='brand'
+            size='xl'
+            variant='soft'
+            shape='rounded'
+            endSpinner={<RingSpinner color='brand-soft' size='xl' variant='closed-ring' />}
+          >
             Brand XL 버튼
           </Button>
           <Button color='brand' size='lg' variant='soft' shape='rounded'>
@@ -902,7 +1029,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='brand' size='xl' variant='ghost' shape='rounded'>
+          <Button
+            color='brand'
+            size='xl'
+            variant='ghost'
+            shape='rounded'
+            endSpinner={<RingSpinner color='brand' size='xl' variant='closed-ring' />}
+          >
             Brand XL 버튼
           </Button>
           <Button color='brand' size='lg' variant='ghost' shape='rounded'>
@@ -938,7 +1071,13 @@ function App() {
       </section>
       <section>
         <div>
-          <Button color='brand-sub' size='xl' variant='solid' shape='rounded'>
+          <Button
+            color='brand-sub'
+            size='xl'
+            variant='solid'
+            shape='rounded'
+            endSpinner={<RingSpinner color='brand-sub-solid' size='xl' variant='closed-ring' />}
+          >
             Brand Sub XL 버튼
           </Button>
           <Button color='brand-sub' size='lg' variant='solid' shape='rounded'>
@@ -955,7 +1094,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='brand-sub' size='xl' variant='outline' shape='rounded'>
+          <Button
+            color='brand-sub'
+            size='xl'
+            variant='outline'
+            shape='rounded'
+            endSpinner={<RingSpinner color='brand-sub' size='xl' variant='closed-ring' />}
+          >
             Brand Sub XL 버튼
           </Button>
           <Button color='brand-sub' size='lg' variant='outline' shape='rounded'>
@@ -972,7 +1117,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='brand-sub' size='xl' variant='soft' shape='rounded'>
+          <Button
+            color='brand-sub'
+            size='xl'
+            variant='soft'
+            shape='rounded'
+            endSpinner={<RingSpinner color='brand-sub-soft' size='xl' variant='closed-ring' />}
+          >
             Brand Sub XL 버튼
           </Button>
           <Button color='brand-sub' size='lg' variant='soft' shape='rounded'>
@@ -989,7 +1140,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='brand-sub' size='xl' variant='ghost' shape='rounded'>
+          <Button
+            color='brand-sub'
+            size='xl'
+            variant='ghost'
+            shape='rounded'
+            endSpinner={<RingSpinner color='brand-sub' size='xl' variant='closed-ring' />}
+          >
             Brand Sub XL 버튼
           </Button>
           <Button color='brand-sub' size='lg' variant='ghost' shape='rounded'>
@@ -1008,7 +1165,13 @@ function App() {
       </section>
       <section>
         <div>
-          <Button color='primary' size='xl' variant='solid' shape='rounded'>
+          <Button
+            color='primary'
+            size='xl'
+            variant='solid'
+            shape='rounded'
+            endSpinner={<RingSpinner color='primary-solid' size='xl' variant='closed-ring' />}
+          >
             Primary XL 버튼
           </Button>
           <Button color='primary' size='lg' variant='solid' shape='rounded'>
@@ -1025,7 +1188,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='primary' size='xl' variant='outline' shape='rounded'>
+          <Button
+            color='primary'
+            size='xl'
+            variant='outline'
+            shape='rounded'
+            endSpinner={<RingSpinner color='primary' size='xl' variant='closed-ring' />}
+          >
             Primary XL 버튼
           </Button>
           <Button color='primary' size='lg' variant='outline' shape='rounded'>
@@ -1042,7 +1211,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='primary' size='xl' variant='soft' shape='rounded'>
+          <Button
+            color='primary'
+            size='xl'
+            variant='soft'
+            shape='rounded'
+            endSpinner={<RingSpinner color='primary-soft' size='xl' variant='closed-ring' />}
+          >
             Primary XL 버튼
           </Button>
           <Button color='primary' size='lg' variant='soft' shape='rounded'>
@@ -1059,7 +1234,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='primary' size='xl' variant='ghost' shape='rounded'>
+          <Button
+            color='primary'
+            size='xl'
+            variant='ghost'
+            shape='rounded'
+            endSpinner={<RingSpinner color='primary' size='xl' variant='closed-ring' />}
+          >
             Primary XL 버튼
           </Button>
           <Button color='primary' size='lg' variant='ghost' shape='rounded'>
@@ -1078,7 +1259,13 @@ function App() {
       </section>
       <section>
         <div>
-          <Button color='secondary' size='xl' variant='solid' shape='rounded'>
+          <Button
+            color='secondary'
+            size='xl'
+            variant='solid'
+            shape='rounded'
+            endSpinner={<RingSpinner color='secondary-solid' size='xl' variant='closed-ring' />}
+          >
             Secondary XL 버튼
           </Button>
           <Button color='secondary' size='lg' variant='solid' shape='rounded'>
@@ -1095,7 +1282,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='secondary' size='xl' variant='outline' shape='rounded'>
+          <Button
+            color='secondary'
+            size='xl'
+            variant='outline'
+            shape='rounded'
+            endSpinner={<RingSpinner color='secondary' size='xl' variant='closed-ring' />}
+          >
             Secondary XL 버튼
           </Button>
           <Button color='secondary' size='lg' variant='outline' shape='rounded'>
@@ -1112,7 +1305,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='secondary' size='xl' variant='soft' shape='rounded'>
+          <Button
+            color='secondary'
+            size='xl'
+            variant='soft'
+            shape='rounded'
+            endSpinner={<RingSpinner color='secondary-soft' size='xl' variant='closed-ring' />}
+          >
             Secondary XL 버튼
           </Button>
           <Button color='secondary' size='lg' variant='soft' shape='rounded'>
@@ -1129,7 +1328,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='secondary' size='xl' variant='ghost' shape='rounded'>
+          <Button
+            color='secondary'
+            size='xl'
+            variant='ghost'
+            shape='rounded'
+            endSpinner={<RingSpinner color='secondary-soft' size='xl' variant='closed-ring' />}
+          >
             Secondary XL 버튼
           </Button>
           <Button color='secondary' size='lg' variant='ghost' shape='rounded'>
@@ -1148,7 +1353,13 @@ function App() {
       </section>
       <section>
         <div>
-          <Button color='tertiary' size='xl' variant='solid' shape='rounded'>
+          <Button
+            color='tertiary'
+            size='xl'
+            variant='solid'
+            shape='rounded'
+            endSpinner={<RingSpinner color='tertiary-solid' size='xl' variant='closed-ring' />}
+          >
             Tertiary XL 버튼
           </Button>
           <Button color='tertiary' size='lg' variant='solid' shape='rounded'>
@@ -1165,7 +1376,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='tertiary' size='xl' variant='outline' shape='rounded'>
+          <Button
+            color='tertiary'
+            size='xl'
+            variant='outline'
+            shape='rounded'
+            endSpinner={<RingSpinner color='tertiary' size='xl' variant='closed-ring' />}
+          >
             Tertiary XL 버튼
           </Button>
           <Button color='tertiary' size='lg' variant='outline' shape='rounded'>
@@ -1182,7 +1399,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='tertiary' size='xl' variant='soft' shape='rounded'>
+          <Button
+            color='tertiary'
+            size='xl'
+            variant='soft'
+            shape='rounded'
+            endSpinner={<RingSpinner color='tertiary' size='xl' variant='closed-ring' />}
+          >
             Tertiary XL 버튼
           </Button>
           <Button color='tertiary' size='lg' variant='soft' shape='rounded'>
@@ -1199,7 +1422,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='tertiary' size='xl' variant='ghost' shape='rounded'>
+          <Button
+            color='tertiary'
+            size='xl'
+            variant='ghost'
+            shape='rounded'
+            endSpinner={<RingSpinner color='tertiary-soft' size='xl' variant='closed-ring' />}
+          >
             Tertiary XL 버튼
           </Button>
           <Button color='tertiary' size='lg' variant='ghost' shape='rounded'>
@@ -1219,7 +1448,13 @@ function App() {
 
       <section>
         <div>
-          <Button color='success' size='xl' variant='solid' shape='rounded'>
+          <Button
+            color='success'
+            size='xl'
+            variant='solid'
+            shape='rounded'
+            endSpinner={<RingSpinner color='success-solid' size='xl' variant='closed-ring' />}
+          >
             Success XL 버튼
           </Button>
           <Button color='success' size='lg' variant='solid' shape='rounded'>
@@ -1236,7 +1471,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='success' size='xl' variant='outline' shape='rounded'>
+          <Button
+            color='success'
+            size='xl'
+            variant='outline'
+            shape='rounded'
+            endSpinner={<RingSpinner color='success' size='xl' variant='closed-ring' />}
+          >
             Success XL 버튼
           </Button>
           <Button color='success' size='lg' variant='outline' shape='rounded'>
@@ -1253,7 +1494,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='success' size='xl' variant='soft' shape='rounded'>
+          <Button
+            color='success'
+            size='xl'
+            variant='soft'
+            shape='rounded'
+            endSpinner={<RingSpinner color='success-soft' size='xl' variant='closed-ring' />}
+          >
             Success XL 버튼
           </Button>
           <Button color='success' size='lg' variant='soft' shape='rounded'>
@@ -1270,7 +1517,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='success' size='xl' variant='ghost' shape='rounded'>
+          <Button
+            color='success'
+            size='xl'
+            variant='ghost'
+            shape='rounded'
+            endSpinner={<RingSpinner color='success-soft' size='xl' variant='closed-ring' />}
+          >
             Success XL 버튼
           </Button>
           <Button color='success' size='lg' variant='ghost' shape='rounded'>
@@ -1289,7 +1542,13 @@ function App() {
       </section>
       <section>
         <div>
-          <Button color='warning' size='xl' variant='solid' shape='rounded'>
+          <Button
+            color='warning'
+            size='xl'
+            variant='solid'
+            shape='rounded'
+            endSpinner={<RingSpinner color='warning-solid' size='xl' variant='closed-ring' />}
+          >
             Warning XL 버튼
           </Button>
           <Button color='warning' size='lg' variant='solid' shape='rounded'>
@@ -1306,7 +1565,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='warning' size='xl' variant='outline' shape='rounded'>
+          <Button
+            color='warning'
+            size='xl'
+            variant='outline'
+            shape='rounded'
+            endSpinner={<RingSpinner color='warning' size='xl' variant='closed-ring' />}
+          >
             Warning XL 버튼
           </Button>
           <Button color='warning' size='lg' variant='outline' shape='rounded'>
@@ -1323,7 +1588,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='warning' size='xl' variant='soft' shape='rounded'>
+          <Button
+            color='warning'
+            size='xl'
+            variant='soft'
+            shape='rounded'
+            endSpinner={<RingSpinner color='warning-soft' size='xl' variant='closed-ring' />}
+          >
             Warning XL 버튼
           </Button>
           <Button color='warning' size='lg' variant='soft' shape='rounded'>
@@ -1340,7 +1611,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='warning' size='xl' variant='ghost' shape='rounded'>
+          <Button
+            color='warning'
+            size='xl'
+            variant='ghost'
+            shape='rounded'
+            endSpinner={<RingSpinner color='warning' size='xl' variant='closed-ring' />}
+          >
             Warning XL 버튼
           </Button>
           <Button color='warning' size='lg' variant='ghost' shape='rounded'>
@@ -1359,7 +1636,13 @@ function App() {
       </section>
       <section>
         <div>
-          <Button color='danger' size='xl' variant='solid' shape='rounded'>
+          <Button
+            color='danger'
+            size='xl'
+            variant='solid'
+            shape='rounded'
+            endSpinner={<RingSpinner color='danger-solid' size='xl' variant='closed-ring' />}
+          >
             Danger XL 버튼
           </Button>
           <Button color='danger' size='lg' variant='solid' shape='rounded'>
@@ -1376,7 +1659,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='danger' size='xl' variant='outline' shape='rounded'>
+          <Button
+            color='danger'
+            size='xl'
+            variant='outline'
+            shape='rounded'
+            endSpinner={<RingSpinner color='danger' size='xl' variant='closed-ring' />}
+          >
             Danger XL 버튼
           </Button>
           <Button color='danger' size='lg' variant='outline' shape='rounded'>
@@ -1393,7 +1682,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='danger' size='xl' variant='soft' shape='rounded'>
+          <Button
+            color='danger'
+            size='xl'
+            variant='soft'
+            shape='rounded'
+            endSpinner={<RingSpinner color='danger-soft' size='xl' variant='closed-ring' />}
+          >
             Danger XL 버튼
           </Button>
           <Button color='danger' size='lg' variant='soft' shape='rounded'>
@@ -1410,7 +1705,13 @@ function App() {
           </Button>
         </div>
         <div>
-          <Button color='danger' size='xl' variant='ghost' shape='rounded'>
+          <Button
+            color='danger'
+            size='xl'
+            variant='ghost'
+            shape='rounded'
+            endSpinner={<RingSpinner color='danger' size='xl' variant='closed-ring' />}
+          >
             Danger XL 버튼
           </Button>
           <Button color='danger' size='lg' variant='ghost' shape='rounded'>
