@@ -3,17 +3,197 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
+// radio color
+$radio-colors: (
+  primary: (
+    fill: #0052cc,
+    disabled: (
+      bg: #e0e0e0,
+      border: #9e9e9e,
+    ),
+  ),
+  secondary: (
+    fill: #69b2ff,
+    disabled: (
+      bg: #e0e0e0,
+      border: #9e9e9e,
+    ),
+  ),
+  tertiary: (
+    fill: #333333,
+    disabled: (
+      bg: #e0e0e0,
+      border: #9e9e9e,
+    ),
+  ),
+  brand: (
+    fill: #ff6f61,
+    disabled: (
+      bg: #e0e0e0,
+      border: #9e9e9e,
+    ),
+  ),
+  brand-sub: (
+    fill: #6a1b9a,
+    disabled: (
+      bg: #e0e0e0,
+      border: #9e9e9e,
+    ),
+  ),
+  success: (
+    fill: #28a745,
+    disabled: (
+      bg: #e0e0e0,
+      border: #9e9e9e,
+    ),
+  ),
+  warning: (
+    fill: #ff9800,
+    disabled: (
+      bg: #e0e0e0,
+      border: #9e9e9e,
+    ),
+  ),
+  danger: (
+    fill: #d32f2f,
+    disabled: (
+      bg: #e0e0e0,
+      border: #9e9e9e,
+    ),
+  ),
+);
+
+// radio size
+$radio-sizes: (
+  xs: (
+    size: (
+      pc: rem(12px),
+      tablet: rem(12px),
+      mobile: rem(44px),
+    ),
+  ),
+  sm: (
+    size: (
+      pc: rem(16px),
+      tablet: rem(16px),
+      mobile: rem(44px),
+    ),
+  ),
+  md: (
+    size: (
+      pc: rem(20px),
+      tablet: rem(20px),
+      mobile: rem(44px),
+    ),
+  ),
+  lg: (
+    size: (
+      pc: rem(24px),
+      tablet: rem(24px),
+      mobile: rem(44px),
+    ),
+  ),
+  xl: (
+    size: (
+      pc: rem(28px),
+      tablet: rem(28px),
+      mobile: rem(44px),
+    ),
+  ),
+);
+
+// mixin - radio variant (color)
+@mixin radio-variant($variant) {
+  $props: map.get($radio-colors, $variant);
+  $fill: map.get($props, fill);
+
+  // disabled 색상
+  $disabled-props: map.get($props, disabled);
+  $disabled-bg: map.get($disabled-props, bg);
+  $disabled-border: map.get($disabled-props, border);
+
+  &:global(.color--#{$variant}) {
+    border-color: #717171;
+
+    &:has(input:checked) {
+      border-color: $fill;
+    }
+
+    &:has(input:disabled) {
+      cursor: not-allowed;
+      pointer-events: none;
+      user-select: none;
+      border-color: $disabled-border;
+      background-color: $disabled-bg;
+    }
+
+    input:checked + :global(.mark) {
+      color: $fill;
+    }
+
+    input:disabled + :global(.mark) {
+      color: $disabled-border;
+    }
+  }
+}
+
+// mixin - radio sizes
+@mixin radio-size() {
+  @each $size-name, $props in $radio-sizes {
+    // ──────────────── 기본 데이터 추출 ────────────────
+    $size-map: map.get($props, size);
+
+    $size-pc: map.get($size-map, pc);
+    $size-tablet: map.get($size-map, tablet);
+    $size-mobile: map.get($size-map, mobile);
+
+    // ──────────────── PC 스타일 ────────────────
+    &:global(.size--#{$size-name}) {
+      width: $size-pc;
+      height: $size-pc;
+    }
+
+    // ──────────────── Tablet 스타일 (max-width: 768px) ────────────────
+    @media (max-width: 768px) {
+      &:global(.size--#{$size-name}) {
+        width: $size-tablet;
+        height: $size-tablet;
+      }
+    }
+
+    // ──────────────── Mobile 스타일 (max-width: 480px) ────────────────
+    @media (max-width: 480px) {
+      &:global(.size--#{$size-name}) {
+        width: $size-mobile;
+        height: $size-mobile;
+      }
+    }
+  }
+}
+
 .radio {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  width: rem(18px);
-  height: rem(18px);
   border-radius: var(--project-border-radius-max);
-  border: rem(1px) solid red;
+  border: rem(1px) solid #717171;
   position: relative;
-  background-color: white;
+  background-color: #ffffff;
   transition: all 0.1s;
+  overflow: hidden;
+
+  // size
+  @include radio-size();
+
+  // variant
+  @include radio-variant(primary);
+  @include radio-variant(secondary);
+  @include radio-variant(tertiary);
+  @include radio-variant(brand);
+  @include radio-variant(brand-sub);
+  @include radio-variant(success);
+  @include radio-variant(warning);
+  @include radio-variant(danger);
 
   input[type='radio'] {
     position: absolute;
@@ -26,7 +206,7 @@
   }
 
   :global(.mark) {
-    color: red;
+    color: transparent;
     transform: scale(0);
     transition: transform 0.15s ease-out;
   }

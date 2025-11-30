@@ -17,7 +17,7 @@ type BaseProps = {
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 };
 
-type RadioProps = BaseProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'color'>;
+type RadioProps = BaseProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof BaseProps>;
 
 const Radio = forwardRef<HTMLInputElement, RadioProps>(
   ({ id, name, color, size, className, ...rest }, ref) => {
@@ -29,14 +29,9 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
     return (
       <label
         htmlFor={generatedId}
-        className={clsx(
-          styles['radio'],
-          styles[`color--${color}`],
-          styles[`size--${size}`],
-          className,
-        )}
+        className={clsx(`${styles['radio']} ${`color--${color}`} ${`size--${size}`}`, className)}
       >
-        <input id={generatedId} name={name} type='radio' ref={ref} {...rest} />
+        <input id={generatedId} name={name} type='radio' ref={ref} tabIndex={0} {...rest} />
         <svg className='mark' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
           <circle cx='8' cy='8' r='4' fill='currentColor' />
         </svg>

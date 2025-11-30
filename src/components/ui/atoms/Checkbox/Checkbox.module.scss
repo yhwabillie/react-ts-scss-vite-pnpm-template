@@ -3,16 +3,226 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
+// checkbox color
+$checkbox-colors: (
+  primary: (
+    fill: #0052cc,
+    disabled: (
+      bg: #e0e0e0,
+      border: #9e9e9e,
+    ),
+  ),
+  secondary: (
+    fill: #69b2ff,
+    disabled: (
+      bg: #e0e0e0,
+      border: #9e9e9e,
+    ),
+  ),
+  tertiary: (
+    fill: #333333,
+    disabled: (
+      bg: #e0e0e0,
+      border: #9e9e9e,
+    ),
+  ),
+  brand: (
+    fill: #ff6f61,
+    disabled: (
+      bg: #e0e0e0,
+      border: #9e9e9e,
+    ),
+  ),
+  brand-sub: (
+    fill: #6a1b9a,
+    disabled: (
+      bg: #e0e0e0,
+      border: #9e9e9e,
+    ),
+  ),
+  success: (
+    fill: #28a745,
+    disabled: (
+      bg: #e0e0e0,
+      border: #9e9e9e,
+    ),
+  ),
+  warning: (
+    fill: #ff9800,
+    disabled: (
+      bg: #e0e0e0,
+      border: #9e9e9e,
+    ),
+  ),
+  danger: (
+    fill: #d32f2f,
+    disabled: (
+      bg: #e0e0e0,
+      border: #9e9e9e,
+    ),
+  ),
+);
+
+// checkbox size
+$checkbox-sizes: (
+  xs: (
+    size: (
+      pc: rem(12px),
+      tablet: rem(12px),
+      mobile: rem(44px),
+    ),
+    radius: (
+      pc: rem(2px),
+      tablet: rem(2px),
+      mobile: rem(6px),
+      // 44px 터치 영역 대비 자연스러운 반경
+    ),
+  ),
+  sm: (
+    size: (
+      pc: rem(16px),
+      tablet: rem(16px),
+      mobile: rem(44px),
+    ),
+    radius: (
+      pc: rem(2px),
+      tablet: rem(2px),
+      mobile: rem(6px),
+    ),
+  ),
+  md: (
+    size: (
+      pc: rem(20px),
+      tablet: rem(20px),
+      mobile: rem(44px),
+    ),
+    radius: (
+      pc: rem(3px),
+      tablet: rem(3px),
+      mobile: rem(7px),
+    ),
+  ),
+  lg: (
+    size: (
+      pc: rem(24px),
+      tablet: rem(24px),
+      mobile: rem(44px),
+    ),
+    radius: (
+      pc: rem(4px),
+      tablet: rem(4px),
+      mobile: rem(8px),
+    ),
+  ),
+  xl: (
+    size: (
+      pc: rem(28px),
+      tablet: rem(28px),
+      mobile: rem(44px),
+    ),
+    radius: (
+      pc: rem(5px),
+      tablet: rem(5px),
+      mobile: rem(8px),
+    ),
+  ),
+);
+
+// mixin - checkbox variant (color)
+@mixin checkbox-variant($variant) {
+  $props: map.get($checkbox-colors, $variant);
+  $fill: map.get($props, fill);
+
+  // disabled 색상
+  $disabled-props: map.get($props, disabled);
+  $disabled-bg: map.get($disabled-props, bg);
+  $disabled-border: map.get($disabled-props, border);
+
+  &:global(.color--#{$variant}) {
+    &:has(input:checked) {
+      border-color: $fill;
+    }
+
+    &:has(input:disabled) {
+      cursor: not-allowed;
+      pointer-events: none;
+      user-select: none;
+      border-color: $disabled-border;
+    }
+
+    input:checked + :global(.mark) {
+      background-color: $fill;
+    }
+
+    input:disabled + :global(.mark) {
+      color: $disabled-border;
+      background-color: $disabled-bg;
+    }
+  }
+}
+
+// mixin - checkbox sizes
+@mixin checkbox-size() {
+  @each $size-name, $props in $checkbox-sizes {
+    // ──────────────── 기본 데이터 추출 ────────────────
+    $size-map: map.get($props, size);
+    $radius-map: map.get($props, radius);
+
+    $size-pc: map.get($size-map, pc);
+    $size-tablet: map.get($size-map, tablet);
+    $size-mobile: map.get($size-map, mobile);
+
+    $radius-pc: map.get($radius-map, pc);
+    $radius-tablet: map.get($radius-map, tablet);
+    $radius-mobile: map.get($radius-map, mobile);
+
+    // ──────────────── PC 스타일 ────────────────
+    &:global(.size--#{$size-name}) {
+      width: $size-pc;
+      height: $size-pc;
+      border-radius: $radius-pc;
+    }
+
+    // ──────────────── Tablet 스타일 (max-width: 768px) ────────────────
+    @media (max-width: 768px) {
+      &:global(.size--#{$size-name}) {
+        width: $size-tablet;
+        height: $size-tablet;
+        border-radius: $radius-tablet;
+      }
+    }
+
+    // ──────────────── Mobile 스타일 (max-width: 480px) ────────────────
+    @media (max-width: 480px) {
+      &:global(.size--#{$size-name}) {
+        width: $size-mobile;
+        height: $size-mobile;
+        border-radius: $radius-mobile;
+      }
+    }
+  }
+}
+
 .checkbox {
   display: inline-flex;
   align-items: center;
-  gap: rem(10px);
   cursor: pointer;
-  width: rem(18px);
-  height: rem(18px);
-  border-radius: rem(var(--project-border-radius-4));
-  border: rem(1px) solid red;
+  overflow: hidden;
+  border: rem(1px) solid #717171;
   position: relative;
+
+  // size
+  @include checkbox-size();
+
+  // variant
+  @include checkbox-variant(primary);
+  @include checkbox-variant(secondary);
+  @include checkbox-variant(tertiary);
+  @include checkbox-variant(brand);
+  @include checkbox-variant(brand-sub);
+  @include checkbox-variant(success);
+  @include checkbox-variant(warning);
+  @include checkbox-variant(danger);
 
   input[type='checkbox'] {
     position: absolute;
@@ -20,17 +230,15 @@
     pointer-events: none;
 
     &:checked ~ :global(.mark) {
-      background-color: red;
-
       path {
         stroke-opacity: 1;
-        stroke-dashoffset: 0; // 체크되면 선이 따라 그려짐
+        stroke-dashoffset: 0;
       }
     }
   }
 
   :global(.mark) {
-    color: white;
+    color: #ffffff;
 
     path {
       stroke-opacity: 0;

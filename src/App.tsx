@@ -62,18 +62,132 @@ function App() {
     <>
       <section>
         <div>
-          <Checkbox name='checkbox-name' color='primary' size='xl' />
-          <Checkbox name='checkbox-name' color='primary' size='lg' />
-          <Checkbox name='checkbox-name' color='primary' size='md' defaultChecked />
-          <Checkbox name='checkbox-name' color='primary' size='sm' />
-          <Checkbox name='checkbox-name' color='primary' size='xs' />
+          <Checkbox name='checkbox-name-1' color='primary' size='xl' />
+          <Checkbox name='checkbox-name-1' color='primary' size='lg' />
+          <Checkbox name='checkbox-name-1' color='primary' size='md' defaultChecked />
+          <Checkbox name='checkbox-name-1' color='primary' size='sm' />
+          <Checkbox name='checkbox-name-1' color='primary' size='xs' />
         </div>
         <div>
-          <Radio name='radio-name' color='primary' size='xl' />
-          <Radio name='radio-name' color='primary' size='lg' />
-          <Radio name='radio-name' color='primary' size='md' defaultChecked />
-          <Radio name='radio-name' color='primary' size='sm' />
-          <Radio name='radio-name' color='primary' size='xs' />
+          <Checkbox name='checkbox-name-2' color='primary' size='xl' disabled />
+          <Checkbox name='checkbox-name-2' color='primary' size='lg' disabled />
+          <Checkbox name='checkbox-name-2' color='primary' size='md' defaultChecked disabled />
+          <Checkbox name='checkbox-name-2' color='primary' size='sm' disabled />
+          <Checkbox name='checkbox-name-2' color='primary' size='xs' disabled />
+        </div>
+        <div>
+          <Checkbox name='checkbox-name-3' color='secondary' size='xl' />
+          <Checkbox name='checkbox-name-3' color='secondary' size='lg' />
+          <Checkbox name='checkbox-name-3' color='secondary' size='md' defaultChecked />
+          <Checkbox name='checkbox-name-3' color='secondary' size='sm' />
+          <Checkbox name='checkbox-name-3' color='secondary' size='xs' />
+        </div>
+        <div>
+          <Checkbox name='checkbox-name-4' color='tertiary' size='xl' />
+          <Checkbox name='checkbox-name-4' color='tertiary' size='lg' />
+          <Checkbox name='checkbox-name-4' color='tertiary' size='md' defaultChecked />
+          <Checkbox name='checkbox-name-4' color='tertiary' size='sm' />
+          <Checkbox name='checkbox-name-4' color='tertiary' size='xs' />
+        </div>
+        <div>
+          <Checkbox name='checkbox-name-5' color='brand' size='xl' />
+          <Checkbox name='checkbox-name-5' color='brand' size='lg' />
+          <Checkbox name='checkbox-name-5' color='brand' size='md' defaultChecked />
+          <Checkbox name='checkbox-name-5' color='brand' size='sm' />
+          <Checkbox name='checkbox-name-5' color='brand' size='xs' />
+        </div>
+        <div>
+          <Checkbox name='checkbox-name-6' color='brand-sub' size='xl' />
+          <Checkbox name='checkbox-name-6' color='brand-sub' size='lg' />
+          <Checkbox name='checkbox-name-6' color='brand-sub' size='md' defaultChecked />
+          <Checkbox name='checkbox-name-6' color='brand-sub' size='sm' />
+          <Checkbox name='checkbox-name-6' color='brand-sub' size='xs' />
+        </div>
+        <div>
+          <Checkbox name='checkbox-name-7' color='success' size='xl' />
+          <Checkbox name='checkbox-name-7' color='success' size='lg' />
+          <Checkbox name='checkbox-name-7' color='success' size='md' defaultChecked />
+          <Checkbox name='checkbox-name-7' color='success' size='sm' />
+          <Checkbox name='checkbox-name-7' color='success' size='xs' />
+        </div>
+        <div>
+          <Checkbox name='checkbox-name-8' color='warning' size='xl' />
+          <Checkbox name='checkbox-name-8' color='warning' size='lg' />
+          <Checkbox name='checkbox-name-8' color='warning' size='md' defaultChecked />
+          <Checkbox name='checkbox-name-8' color='warning' size='sm' />
+          <Checkbox name='checkbox-name-8' color='warning' size='xs' />
+        </div>
+        <div>
+          <Checkbox name='checkbox-name-9' color='danger' size='xl' />
+          <Checkbox name='checkbox-name-9' color='danger' size='lg' />
+          <Checkbox name='checkbox-name-9' color='danger' size='md' defaultChecked />
+          <Checkbox name='checkbox-name-9' color='danger' size='sm' />
+          <Checkbox name='checkbox-name-9' color='danger' size='xs' />
+        </div>
+      </section>
+      <section>
+        <div>
+          <Radio name='radio-name-1' color='primary' size='xl' />
+          <Radio name='radio-name-1' color='primary' size='lg' />
+          <Radio name='radio-name-1' color='primary' size='md' defaultChecked />
+          <Radio name='radio-name-1' color='primary' size='sm' />
+          <Radio name='radio-name-1' color='primary' size='xs' />
+        </div>
+        <div>
+          <Radio name='radio-name-disabled' color='primary' size='xl' disabled />
+          <Radio name='radio-name-disabled' color='primary' size='lg' disabled />
+          <Radio name='radio-name-disabled' color='primary' size='md' defaultChecked disabled />
+          <Radio name='radio-name-disabled' color='primary' size='sm' disabled />
+          <Radio name='radio-name-disabled' color='primary' size='xs' disabled />
+        </div>
+        <div>
+          <Radio name='radio-name-2' color='secondary' size='xl' />
+          <Radio name='radio-name-2' color='secondary' size='lg' />
+          <Radio name='radio-name-2' color='secondary' size='md' defaultChecked />
+          <Radio name='radio-name-2' color='secondary' size='sm' />
+          <Radio name='radio-name-2' color='secondary' size='xs' />
+        </div>
+        <div>
+          <Radio name='radio-name-3' color='tertiary' size='xl' />
+          <Radio name='radio-name-3' color='tertiary' size='lg' />
+          <Radio name='radio-name-3' color='tertiary' size='md' defaultChecked />
+          <Radio name='radio-name-3' color='tertiary' size='sm' />
+          <Radio name='radio-name-3' color='tertiary' size='xs' />
+        </div>
+        <div>
+          <Radio name='radio-name-4' color='brand' size='xl' />
+          <Radio name='radio-name-4' color='brand' size='lg' />
+          <Radio name='radio-name-4' color='brand' size='md' defaultChecked />
+          <Radio name='radio-name-4' color='brand' size='sm' />
+          <Radio name='radio-name-4' color='brand' size='xs' />
+        </div>
+        <div>
+          <Radio name='radio-name-5' color='brand-sub' size='xl' />
+          <Radio name='radio-name-5' color='brand-sub' size='lg' />
+          <Radio name='radio-name-5' color='brand-sub' size='md' defaultChecked />
+          <Radio name='radio-name-5' color='brand-sub' size='sm' />
+          <Radio name='radio-name-5' color='brand-sub' size='xs' />
+        </div>
+        <div>
+          <Radio name='radio-name-6' color='success' size='xl' />
+          <Radio name='radio-name-6' color='success' size='lg' />
+          <Radio name='radio-name-6' color='success' size='md' defaultChecked />
+          <Radio name='radio-name-6' color='success' size='sm' />
+          <Radio name='radio-name-6' color='success' size='xs' />
+        </div>
+        <div>
+          <Radio name='radio-name-7' color='warning' size='xl' />
+          <Radio name='radio-name-7' color='warning' size='lg' />
+          <Radio name='radio-name-7' color='warning' size='md' defaultChecked />
+          <Radio name='radio-name-7' color='warning' size='sm' />
+          <Radio name='radio-name-7' color='warning' size='xs' />
+        </div>
+        <div>
+          <Radio name='radio-name-8' color='danger' size='xl' />
+          <Radio name='radio-name-8' color='danger' size='lg' />
+          <Radio name='radio-name-8' color='danger' size='md' defaultChecked />
+          <Radio name='radio-name-8' color='danger' size='sm' />
+          <Radio name='radio-name-8' color='danger' size='xs' />
         </div>
       </section>
       <section>

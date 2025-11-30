@@ -818,12 +818,12 @@ $btn-sizes: (
           } @else {
             background-color: map.get($variant-props, bg);
             color: map.get($variant-props, label);
-            fill: map.get($variant-props, label);
+            fill: currentColor;
 
             @if $variant == 'outline' {
               border-width: rem(1px);
               border-style: solid;
-              border-color: map.get($variant-props, label);
+              border-color: currentColor;
             } @else if $variant == 'soft' or $variant == 'ghost' {
               border: none;
             } @else {
@@ -858,17 +858,12 @@ $btn-sizes: (
             transform: scale(0.97);
           }
 
-          // focus 처리
-          // &:focus-visible {
-          //   outline: rem(3px) dashed #003366;
-          //   outline-offset: rem(2px);
-          // }
-
           // disabled 처리
           &[aria-disabled='true'],
           &:disabled {
             cursor: not-allowed;
             pointer-events: none;
+            user-select: none;
             $disabled-props: map.get($variant-props, disabled);
 
             @if $disabled-props != null {
@@ -878,10 +873,8 @@ $btn-sizes: (
               } @else {
                 background-color: map.get($disabled-props, bg);
                 color: map.get($disabled-props, label);
-                fill: map.get($disabled-props, label);
 
                 @if $variant == 'outline' {
-                  border-color: map.get($disabled-props, label);
                 }
               }
             } @else {

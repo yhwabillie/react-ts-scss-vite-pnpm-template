@@ -17,8 +17,7 @@ type BaseProps = {
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 };
 
-type CheckboxProps = BaseProps &
-  Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'color'>;
+type CheckboxProps = BaseProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof BaseProps>;
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ id, name, color, size, className, ...rest }, ref) => {
@@ -43,18 +42,14 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <label
         htmlFor={generatedId}
-        className={clsx(
-          styles['checkbox'],
-          styles[`color--${color}`],
-          styles[`size--${size}`],
-          className,
-        )}
+        className={clsx(`${styles['checkbox']} ${`color--${color}`} ${`size--${size}`}`, className)}
       >
         <input
           id={generatedId}
           name={generatedName}
           type='checkbox'
           ref={ref}
+          tabIndex={0}
           onChange={() => setChecked(!checked)}
           {...rest}
         />
