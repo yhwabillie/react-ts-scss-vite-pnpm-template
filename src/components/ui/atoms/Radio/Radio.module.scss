@@ -1,0 +1,33 @@
+/* Radio.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.radio {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  width: rem(18px);
+  height: rem(18px);
+  border-radius: var(--project-border-radius-max);
+  border: rem(1px) solid red;
+  position: relative;
+  background-color: white;
+  transition: all 0.1s;
+
+  input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+
+    &:checked ~ :global(.mark) {
+      transform: scale(1);
+    }
+  }
+
+  :global(.mark) {
+    color: red;
+    transform: scale(0);
+    transition: transform 0.15s ease-out;
+  }
+}

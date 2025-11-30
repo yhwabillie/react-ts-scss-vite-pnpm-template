@@ -35,7 +35,9 @@ export default defineConfig([
         React: 'readonly',
         SVGElement: 'readonly',
         HTMLAnchorElement: 'readonly',
+        HTMLInputElement: 'readonly',
         console: 'readonly',
+        SVGPathElement: 'readonly',
       },
     },
     plugins: {

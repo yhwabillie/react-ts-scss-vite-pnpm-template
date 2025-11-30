@@ -4,6 +4,8 @@ import LinkButton from '@/components/ui/molecules/Button/LinkButton';
 import IconButton from '@/components/ui/molecules/IconButton/IconButton';
 import IconLinkButton from '@/components/ui/molecules/IconButton/IconLinkButton';
 import RingSpinner from '@/components/ui/atoms/Spinner/LoadingSpinner/RingSpinner';
+import Radio from '@/components/ui/atoms/Radio/Radio';
+import Checkbox from '@/components/ui/atoms/Checkbox/Checkbox';
 
 function App() {
   // 타입 정의
@@ -58,6 +60,22 @@ function App() {
 
   return (
     <>
+      <section>
+        <div>
+          <Checkbox name='checkbox-name' color='primary' size='xl' />
+          <Checkbox name='checkbox-name' color='primary' size='lg' />
+          <Checkbox name='checkbox-name' color='primary' size='md' defaultChecked />
+          <Checkbox name='checkbox-name' color='primary' size='sm' />
+          <Checkbox name='checkbox-name' color='primary' size='xs' />
+        </div>
+        <div>
+          <Radio name='radio-name' color='primary' size='xl' />
+          <Radio name='radio-name' color='primary' size='lg' />
+          <Radio name='radio-name' color='primary' size='md' defaultChecked />
+          <Radio name='radio-name' color='primary' size='sm' />
+          <Radio name='radio-name' color='primary' size='xs' />
+        </div>
+      </section>
       <section>
         <div>
           <RingSpinner color='primary' size='xl' variant='open-ring' />

@@ -1,0 +1,45 @@
+/* Checkbox.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(10px);
+  cursor: pointer;
+  width: rem(18px);
+  height: rem(18px);
+  border-radius: rem(var(--project-border-radius-4));
+  border: rem(1px) solid red;
+  position: relative;
+
+  input[type='checkbox'] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+
+    &:checked ~ :global(.mark) {
+      background-color: red;
+
+      path {
+        stroke-opacity: 1;
+        stroke-dashoffset: 0; // 체크되면 선이 따라 그려짐
+      }
+    }
+  }
+
+  :global(.mark) {
+    color: white;
+
+    path {
+      stroke-opacity: 0;
+      stroke-dasharray: 12;
+      stroke-dashoffset: 12;
+      transition:
+        stroke-dashoffset 0.3s ease-out 0.15s,
+        // dash offset은 delay
+        stroke-opacity 0.01s ease-in 0.15s; // opacity는 dashoffset 시작 직전에 켬
+    }
+  }
+}

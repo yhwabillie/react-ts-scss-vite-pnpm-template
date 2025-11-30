@@ -279,6 +279,7 @@ $spinner-sizes: (
   xs: (
     size: (
       pc: rem(12px),
+      // 버튼 height 28px → spinner 12px
       tablet: rem(12px),
       mobile: rem(12px),
     ),
@@ -286,6 +287,7 @@ $spinner-sizes: (
   sm: (
     size: (
       pc: rem(16px),
+      // 버튼 height 32px → spinner 16px
       tablet: rem(16px),
       mobile: rem(16px),
     ),
@@ -293,6 +295,7 @@ $spinner-sizes: (
   md: (
     size: (
       pc: rem(20px),
+      // 버튼 height 40px → spinner 20px
       tablet: rem(20px),
       mobile: rem(20px),
     ),
@@ -300,6 +303,7 @@ $spinner-sizes: (
   lg: (
     size: (
       pc: rem(24px),
+      // 버튼 height 48px → spinner 24px
       tablet: rem(24px),
       mobile: rem(24px),
     ),
@@ -307,6 +311,7 @@ $spinner-sizes: (
   xl: (
     size: (
       pc: rem(32px),
+      // 버튼 height 56px → spinner 32px
       tablet: rem(32px),
       mobile: rem(32px),
     ),
