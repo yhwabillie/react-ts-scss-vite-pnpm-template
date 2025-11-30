@@ -38,6 +38,7 @@ export default defineConfig([
         HTMLInputElement: 'readonly',
         console: 'readonly',
         SVGPathElement: 'readonly',
+        HTMLLabelElement: 'readonly',
       },
     },
     plugins: {

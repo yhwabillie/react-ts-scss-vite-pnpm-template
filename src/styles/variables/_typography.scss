@@ -691,7 +691,41 @@ $g_typography: (
   // 접근성 기준: 최소 12px, 모바일 최소 14px, line-height 1.5
   // ==========================================================================
   l1: (
+      // XL 체크박스, 가장 큼
       ko: (
+          font-size: 18px,
+          tablet-size: 16px,
+          mobile-size: 15px,
+          font-weight: (
+            500,
+          ),
+          line-height: 1.5,
+          font-family: ko,
+        ),
+      ja: (
+        font-size: 18px,
+        tablet-size: 16px,
+        mobile-size: 15px,
+        font-weight: (
+          500,
+        ),
+        line-height: 1.5,
+        font-family: ja,
+      ),
+      en: (
+        font-size: 18px,
+        tablet-size: 16px,
+        mobile-size: 15px,
+        font-weight: (
+          500,
+        ),
+        line-height: 1.5,
+        font-family: en,
+      )
+    ),
+  l2: (
+    // LG 체크박스
+    ko: (
         font-size: 16px,
         tablet-size: 15px,
         mobile-size: 14px,
@@ -701,42 +735,10 @@ $g_typography: (
         line-height: 1.5,
         font-family: ko,
       ),
-      ja: (
-        font-size: 16px,
-        tablet-size: 15px,
-        mobile-size: 14px,
-        font-weight: (
-          500,
-        ),
-        line-height: 1.5,
-        font-family: ja,
-      ),
-      en: (
-        font-size: 16px,
-        tablet-size: 15px,
-        mobile-size: 14px,
-        font-weight: (
-          500,
-        ),
-        line-height: 1.5,
-        font-family: en,
-      ),
-    ),
-  l2: (
-    ko: (
-      font-size: 14px,
-      tablet-size: 13px,
-      mobile-size: 13px,
-      font-weight: (
-        500,
-      ),
-      line-height: 1.5,
-      font-family: ko,
-    ),
     ja: (
-      font-size: 14px,
-      tablet-size: 13px,
-      mobile-size: 13px,
+      font-size: 16px,
+      tablet-size: 15px,
+      mobile-size: 14px,
       font-weight: (
         500,
       ),
@@ -744,33 +746,69 @@ $g_typography: (
       font-family: ja,
     ),
     en: (
-      font-size: 14px,
-      tablet-size: 13px,
-      mobile-size: 13px,
+      font-size: 16px,
+      tablet-size: 15px,
+      mobile-size: 14px,
       font-weight: (
         500,
       ),
       line-height: 1.5,
       font-family: en,
-    ),
+    )
   ),
   l3: (
+    // MD 체크박스
     ko: (
-      font-size: 12px,
-      tablet-size: 12px,
-      mobile-size: 12px,
+        font-size: 14px,
+        tablet-size: 13px,
+        mobile-size: 13px,
+        font-weight: (
+          500,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+    ja: (
+      font-size: 14px,
+      tablet-size: 13px,
+      mobile-size: 13px,
       font-weight: (
-        400,
+        500,
       ),
       line-height: 1.5,
-      font-family: ko,
+      font-family: ja,
     ),
+    en: (
+      font-size: 14px,
+      tablet-size: 13px,
+      mobile-size: 13px,
+      font-weight: (
+        500,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    )
+  ),
+  l4: (
+    // SM 체크박스
+    ko: (
+        font-size: 12px,
+        tablet-size: 12px,
+        mobile-size: 12px,
+        font-weight: (
+          400,
+          500,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
     ja: (
       font-size: 12px,
       tablet-size: 12px,
       mobile-size: 12px,
       font-weight: (
         400,
+        500,
       ),
       line-height: 1.5,
       font-family: ja,
@@ -781,10 +819,47 @@ $g_typography: (
       mobile-size: 12px,
       font-weight: (
         400,
+        500,
       ),
       line-height: 1.5,
       font-family: en,
+    )
+  ),
+  l5: (
+    // XS 체크박스, 가장 작음
+    ko: (
+        font-size: 11px,
+        tablet-size: 11px,
+        mobile-size: 11px,
+        font-weight: (
+          400,
+          500,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+    ja: (
+      font-size: 11px,
+      tablet-size: 11px,
+      mobile-size: 11px,
+      font-weight: (
+        400,
+        500,
+      ),
+      line-height: 1.5,
+      font-family: ja,
     ),
+    en: (
+      font-size: 11px,
+      tablet-size: 11px,
+      mobile-size: 11px,
+      font-weight: (
+        400,
+        500,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    )
   ),
 
   // ==========================================================================

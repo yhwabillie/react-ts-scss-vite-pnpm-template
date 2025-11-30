@@ -6,6 +6,7 @@ import IconLinkButton from '@/components/ui/molecules/IconButton/IconLinkButton'
 import RingSpinner from '@/components/ui/atoms/Spinner/LoadingSpinner/RingSpinner';
 import Radio from '@/components/ui/atoms/Radio/Radio';
 import Checkbox from '@/components/ui/atoms/Checkbox/Checkbox';
+import Label from './components/ui/atoms/Label/Label';
 
 function App() {
   // 타입 정의
@@ -14,6 +15,7 @@ function App() {
   type SubtitleLevel = 'st1' | 'st2' | 'st3';
   type BodyLevel = 'b1' | 'b2' | 'b3';
   type CaptionLevel = 'c1' | 'c2' | 'c3';
+  type LabelLevel = 'l1' | 'l2' | 'l3';
   type ButtonLevel = 'btn1' | 'btn2' | 'btn3';
 
   // Display 레벨
@@ -51,6 +53,13 @@ function App() {
     c3: { font: 'var(--project-typo-c3-400)' },
   };
 
+  // Label 레벨
+  const labelStyles: Record<LabelLevel, React.CSSProperties> = {
+    l1: { font: 'var(--project-typo-l1-500)' },
+    l2: { font: 'var(--project-typo-l2-500)' },
+    l3: { font: 'var(--project-typo-l3-500)' },
+  };
+
   // Button 레벨
   const btnStyles: Record<ButtonLevel, React.CSSProperties> = {
     btn1: { font: 'var(--project-typo-btn1-500)' },
@@ -60,6 +69,78 @@ function App() {
 
   return (
     <>
+      <section>
+        <div>
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              margin: '10px 20px 10px 20px',
+            }}
+          >
+            <Checkbox id='test-1' name='test-1-name' color='primary' size='xl' />
+            <Label htmlFor='test-1' size='xl'>
+              라벨 XL
+            </Label>
+          </div>
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              margin: '10px 20px 10px 20px',
+            }}
+          >
+            <Checkbox id='test-2' name='test-2-name' color='primary' size='lg' />
+            <Label htmlFor='test-2' size='lg'>
+              라벨 LG
+            </Label>
+          </div>
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              margin: '10px 20px 10px 20px',
+            }}
+          >
+            <Checkbox id='test-3' name='test-3-name' color='primary' size='md' />
+            <Label htmlFor='test-3' size='md'>
+              라벨 MD
+            </Label>
+          </div>
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              margin: '10px 20px 10px 20px',
+            }}
+          >
+            <Checkbox id='test-4' name='test-4-name' color='primary' size='sm' />
+            <Label htmlFor='test-4' size='sm'>
+              라벨 SM
+            </Label>
+          </div>
+
+          <Label htmlFor='id-1' size='xl'>
+            라벨 XL
+          </Label>
+          <Label htmlFor='id-1' size='lg'>
+            라벨 LG
+          </Label>
+          <Label htmlFor='id-1' size='md'>
+            라벨 MD
+          </Label>
+          <Label htmlFor='id-1' size='sm'>
+            라벨 SM
+          </Label>
+          <Label htmlFor='id-1' size='xs'>
+            라벨 XS
+          </Label>
+        </div>
+      </section>
       <section>
         <div>
           <Checkbox name='checkbox-name-1' color='primary' size='xl' />
@@ -1860,41 +1941,6 @@ function App() {
           </Button>
         </div>
       </section>
-
-      {/* <IconButton
-        color='secondary'
-        size='xl'
-        variant='solid'
-        shape='pill'
-        icon={<Icon name='logout' color='red' size='md' />}
-      />
-      <IconButton
-        color='primary'
-        size='lg'
-        variant='solid'
-        shape='pill'
-        icon={<Icon name='logout' color='red' size='md' />}
-      />
-      <IconLinkButton
-        href='/home'
-        title='새 창 열기'
-        target='_blank'
-        color='secondary'
-        size='lg'
-        variant='outline'
-        shape='pill'
-        icon={<Icon name='logout' color='red' size='md' />}
-        aria-disabled='true'
-      />
-
-      <Icon name='search' color='red' size='sm' />
-      <Icon name='search' color='red' size='md' />
-      <Icon name='search' color='blue' size='lg' />
-
-      <Icon name='logout' color='red' size='sm' />
-      <Icon name='logout' color='red' size='md' />
-      <Icon name='logout' color='blue' size='lg' /> */}
-
       <section>
         {/* Display */}
         <h1 style={displayStyles.d1}>
@@ -1993,7 +2039,37 @@ function App() {
       </section>
 
       <section>
-        {/* Caption */}
+        {/* Label - Form field 라벨, Checkbox / Radio 라벨, 버튼 그룹 / 옵션 그룹 라벨, 테이블 헤더 라벨 */}
+        <span style={labelStyles.l1}>
+          입력 필드, 버튼 그룹, 옵션 그룹 등 UI 요소의 이름을 나타내는 기본 라벨 텍스트입니다 — abc
+          0123456789 @#%!?*
+        </span>
+        <span style={labelStyles.l1}>
+          入力フィールド、ボタングループ、オプショングループなどのUI要素名を示す基本ラベル用書体です
+          — abc 0123456789 @#%!?*
+        </span>
+
+        <span style={labelStyles.l2}>
+          입력 필드, 버튼 그룹, 옵션 그룹 등 UI 요소의 이름을 나타내는 기본 라벨 텍스트입니다 — abc
+          0123456789 @#%!?*
+        </span>
+        <span style={labelStyles.l2}>
+          入力フィールド、ボタングループ、オプショングループなどのUI要素名を示す基本ラベル用書体です
+          — abc 0123456789 @#%!?*
+        </span>
+
+        <span style={labelStyles.l3}>
+          입력 필드, 버튼 그룹, 옵션 그룹 등 UI 요소의 이름을 나타내는 기본 라벨 텍스트입니다 — abc
+          0123456789 @#%!?*
+        </span>
+        <span style={labelStyles.l3}>
+          入力フィールド、ボタングループ、オプショングループなどのUI要素名を示す基本ラベル用書体です
+          — abc 0123456789 @#%!?*
+        </span>
+      </section>
+
+      <section>
+        {/* Caption - Form Validation 메시지 */}
         <span style={captionStyles.c1}>
           보조 정보, 라벨, 참고 텍스트 등 작은 글자용 서체입니다 — abc 0123456789 @#%!?*
         </span>
