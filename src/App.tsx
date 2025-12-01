@@ -7,6 +7,7 @@ import RingSpinner from '@/components/ui/atoms/Spinner/LoadingSpinner/RingSpinne
 import Radio from '@/components/ui/atoms/Radio/Radio';
 import Checkbox from '@/components/ui/atoms/Checkbox/Checkbox';
 import Label from './components/ui/atoms/Label/Label';
+import FormField from './components/ui/atoms/FormField/FormField';
 
 function App() {
   // 타입 정의
@@ -71,59 +72,72 @@ function App() {
     <>
       <section>
         <div>
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              margin: '10px 20px 10px 20px',
-            }}
-          >
-            <Checkbox id='test-1' name='test-1-name' color='primary' size='xl' />
+          <FormField size='xl'>
+            <Checkbox id='test-1' name='test-1-name' color='primary' size='xl' defaultChecked />
             <Label htmlFor='test-1' size='xl'>
               라벨 XL
             </Label>
-          </div>
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              margin: '10px 20px 10px 20px',
-            }}
-          >
+          </FormField>
+          <FormField size='lg'>
             <Checkbox id='test-2' name='test-2-name' color='primary' size='lg' />
             <Label htmlFor='test-2' size='lg'>
               라벨 LG
             </Label>
-          </div>
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              margin: '10px 20px 10px 20px',
-            }}
-          >
+          </FormField>
+          <FormField size='md'>
             <Checkbox id='test-3' name='test-3-name' color='primary' size='md' />
             <Label htmlFor='test-3' size='md'>
               라벨 MD
             </Label>
-          </div>
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              margin: '10px 20px 10px 20px',
-            }}
-          >
+          </FormField>
+          <FormField size='sm'>
             <Checkbox id='test-4' name='test-4-name' color='primary' size='sm' />
             <Label htmlFor='test-4' size='sm'>
               라벨 SM
             </Label>
-          </div>
-
+          </FormField>
+          <FormField size='xs'>
+            <Checkbox id='test-5' name='test-5-name' color='primary' size='xs' />
+            <Label htmlFor='test-5' size='xs'>
+              라벨 XS
+            </Label>
+          </FormField>
+        </div>
+        <div>
+          <FormField size='xl'>
+            <Radio id='test-radio-1' name='test-radio' color='primary' size='xl' defaultChecked />
+            <Label htmlFor='test-radio-1' size='xl'>
+              라벨 XL
+            </Label>
+          </FormField>
+          <FormField size='lg'>
+            <Radio id='test-radio-2' name='test-radio' color='primary' size='lg' />
+            <Label htmlFor='test-radio-2' size='lg'>
+              라벨 LG
+            </Label>
+          </FormField>
+          <FormField size='md'>
+            <Radio id='test-radio-3' name='test-radio' color='primary' size='md' />
+            <Label htmlFor='test-radio-3' size='md'>
+              라벨 MD
+            </Label>
+          </FormField>
+          <FormField size='sm'>
+            <Radio id='test-radio-4' name='test-radio' color='primary' size='sm' />
+            <Label htmlFor='test-radio-4' size='sm'>
+              라벨 SM
+            </Label>
+          </FormField>
+          <FormField size='xs'>
+            <Radio id='test-radio-5' name='test-radio' color='primary' size='xs' />
+            <Label htmlFor='test-radio-5' size='xs'>
+              라벨 SM
+            </Label>
+          </FormField>
+        </div>
+      </section>
+      <section>
+        <div>
           <Label htmlFor='id-1' size='xl'>
             라벨 XL
           </Label>

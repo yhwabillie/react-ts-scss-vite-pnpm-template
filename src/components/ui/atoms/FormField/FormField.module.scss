@@ -1,0 +1,40 @@
+/* Label.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+// checkbox size
+$formfield-sizes: (
+  xs: (
+    gap: rem(4px),
+  ),
+  sm: (
+    gap: rem(6px),
+  ),
+  md: (
+    gap: rem(8px),
+  ),
+  lg: (
+    gap: rem(10px),
+  ),
+  xl: (
+    gap: rem(12px),
+  ),
+);
+
+// mixin - formfield sizes
+@mixin formfield-size() {
+  @each $size-name, $props in $formfield-sizes {
+    &:global(.size--#{$size-name}) {
+      gap: map-get($props, gap);
+    }
+  }
+}
+
+.formfield {
+  display: inline-flex;
+  align-items: center;
+
+  // size
+  @include formfield-size();
+}
