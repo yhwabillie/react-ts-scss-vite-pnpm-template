@@ -26,6 +26,11 @@ export default defineConfig([
           jsx: true, // JSX 문법 사용 가능 (tsParser로 TSX 지원)
         },
       },
+      env: {
+        node: true, // ✅ Node.js 전역 변수 허용 (process, __dirname 등)
+        browser: true, // 브라우저 전역 변수 허용 (window, document 등)
+        es2021: true, // 최신 JS 문법 허용
+      },
       globals: {
         window: 'readonly',
         document: 'readonly',

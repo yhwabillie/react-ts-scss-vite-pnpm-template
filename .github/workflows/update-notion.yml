@@ -6,7 +6,8 @@ on:
 
 env:
   NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-  NOTION_DB_ID: ${{ secrets.NOTION_DB_ID }}
+  PARENT_PAGE_ID: ${{ secrets.NOTION_DB_ID }} # updateNotion.js에서 사용하는 이름
+  TASK_DB_NAME: 'Task'
   GITHUB_REPO: ${{ github.repository }}
   COMMIT_HASH: ${{ github.sha }}
 
@@ -17,12 +18,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Set up Node
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      - name: Install pnpm
+      - name: Enable pnpm
         run: |
           corepack enable
           corepack prepare pnpm@latest --activate
@@ -30,5 +31,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Update Notion
+      - name: Update Notion Ticket
         run: node scripts/updateNotion.js

@@ -1,65 +1,106 @@
-import 'dotenv/config'; // 로컬 .env 사용
+// scripts/updateNotion.js
+import 'dotenv/config';
 import { Client } from '@notionhq/client';
 import { execSync } from 'child_process';
 
-// 환경변수 읽기
-const { NOTION_API_KEY, NOTION_DB_ID, GITHUB_REPO, COMMIT_HASH } = process.env;
+const { NOTION_API_KEY, PARENT_PAGE_ID, TASK_DB_NAME, GITHUB_REPO, COMMIT_HASH } = process.env;
 
-if (!NOTION_API_KEY || !NOTION_DB_ID || !GITHUB_REPO || !COMMIT_HASH) {
+if (!NOTION_API_KEY || !PARENT_PAGE_ID || !TASK_DB_NAME || !GITHUB_REPO || !COMMIT_HASH) {
   throw new Error('환경변수가 설정되지 않았습니다. Secrets 및 env 확인 필요');
 }
 
-// Notion 클라이언트 초기화
 const notion = new Client({ auth: NOTION_API_KEY });
 
-// 마지막 커밋 메시지
-const lastCommit = execSync('git log -1 --pretty=%B').toString().trim();
-console.log('Last commit:', lastCommit);
-
-// Ticket ID 추출 (예: UIS-6)
-const ticketMatch = lastCommit.match(/UIS-\d+/);
-if (!ticketMatch) {
-  console.log('Ticket ID not found in commit message.');
-  process.exit(0);
+// 마지막 커밋 메시지 가져오기
+function getLastCommitMessage() {
+  return execSync('git log -1 --pretty=%B').toString().trim();
 }
-const ticketId = ticketMatch[0];
-console.log('Ticket ID:', ticketId);
 
-// Commit prefix로 Status 매핑
-let status = 'To Do';
-if (lastCommit.startsWith('[MOD]')) status = 'In Progress';
-if (lastCommit.startsWith('[FIX]')) status = 'Done';
+// Commit prefix로 상태(Status) 매핑
+function mapCommitToStatus(commitMsg) {
+  if (commitMsg.startsWith('[FIX]')) return '완료';
+  if (commitMsg.startsWith('[MOD]')) return '진행 중';
+  return 'To Do';
+}
 
+// 상위 페이지에서 Child Database(Task) 찾기
+async function findTaskDatabaseId() {
+  const blocks = await notion.blocks.children.list({ block_id: PARENT_PAGE_ID });
+  const taskDbBlock = blocks.results.find(
+    block => block.type === 'child_database' && block.child_database?.title === TASK_DB_NAME,
+  );
+
+  if (!taskDbBlock) {
+    throw new Error(`Child database "${TASK_DB_NAME}" not found under the parent page`);
+  }
+
+  console.log(`✅ Found Task DB: "${TASK_DB_NAME}"`);
+  console.log(`   Database ID: ${taskDbBlock.id}`);
+  console.log(`   Parent Page ID: ${taskDbBlock.parent.page_id}`);
+
+  return taskDbBlock.id;
+}
+
+// Task DB 안에서 Ticket 페이지 검색 후 상태 및 URL 업데이트
+async function findTicketPageAndUpdate(taskDbId, ticketId, status, commitUrl) {
+  const searchRes = await notion.search({
+    query: '',
+    filter: { value: 'page', property: 'object' },
+    page_size: 100,
+  });
+
+  const ticketRows = searchRes.results.filter(page => {
+    const ticketProp = page.properties['Ticket']?.unique_id;
+    if (!ticketProp) return false;
+
+    const fullId = `${ticketProp.prefix}-${ticketProp.number}`;
+    return fullId === ticketId && page.parent?.database_id === taskDbId;
+  });
+
+  if (!ticketRows.length) {
+    throw new Error(`Ticket "${ticketId}" not found in Task DB`);
+  }
+
+  const ticketPage = ticketRows[0];
+
+  await notion.pages.update({
+    page_id: ticketPage.id,
+    properties: {
+      status: { status: { name: status } },
+      url: { url: commitUrl },
+    },
+  });
+
+  console.log(`✅ Updated Notion Ticket: "${ticketId}"`);
+  console.log(`   Status: ${status}`);
+  console.log(`   Commit URL: ${commitUrl}`);
+
+  return ticketPage;
+}
+
+// 메인 실행
 (async () => {
   try {
-    // Notion Database에서 Ticket 검색
-    const response = await notion.databases.query({
-      database_id: NOTION_DB_ID,
-      filter: {
-        property: 'Ticket',
-        rich_text: { equals: ticketId }, // v5에서는 rich_text나 title 필드 명확히
-      },
-    });
+    const lastCommit = getLastCommitMessage();
+    console.log(`📝 Last commit message: "${lastCommit}"`);
 
-    if (response.results.length === 0) {
-      console.log('Ticket not found in Notion:', ticketId);
+    const status = mapCommitToStatus(lastCommit);
+    const ticketMatch = lastCommit.match(/UIS-(\d+)/);
+    if (!ticketMatch) {
+      console.log('⚠️ Ticket ID not found in commit message.');
       return;
     }
 
-    const pageId = response.results[0].id;
+    const ticketNumber = ticketMatch[1]; // 숫자만
+    const ticketId = `UIS-${ticketNumber}`; // UIS-6 형태 그대로
     const commitUrl = `https://github.com/${GITHUB_REPO}/commit/${COMMIT_HASH}`;
 
-    // 페이지 업데이트
-    await notion.pages.update({
-      page_id: pageId,
-      properties: {
-        Status: { select: { name: status } },
-        Link: { url: commitUrl },
-      },
-    });
+    console.log(`🔍 Searching for Ticket: "${ticketId}"`);
 
-    console.log(`Notion Ticket ${ticketId} updated with status '${status}' and commit link.`);
-  } catch (error) {
-    console.error('Error updating Notion:', error);
+    const taskDbId = await findTaskDatabaseId();
+
+    await findTicketPageAndUpdate(taskDbId, ticketId, status, commitUrl);
+  } catch (err) {
+    console.error('❌ Error updating Notion:', err);
   }
 })();
