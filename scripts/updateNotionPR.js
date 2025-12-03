@@ -1,4 +1,3 @@
-// scripts/updateNotionPR.js
 import 'dotenv/config';
 import { Client } from '@notionhq/client';
 import fetch from 'node-fetch';
