@@ -1,35 +1,27 @@
-name: Update Notion Ticket
+name: Update Notion from PR
 
 on:
   pull_request:
-    branches: [main]
-    types: [opened, reopened, synchronize, closed]
+    types: [opened, edited, closed]
 
 env:
   NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-  NOTION_DB_ID: ${{ secrets.NOTION_DB_ID }}
   NOTION_PARENT_PAGE_ID: ${{ secrets.NOTION_PARENT_PAGE_ID }}
   TASK_DB_NAME: 'Task'
   GITHUB_REPO: ${{ github.repository }}
-  PR_NUMBER: ${{ github.event.pull_request.number }}
-  PR_TITLE: ${{ github.event.pull_request.title }}
-  PR_URL: ${{ github.event.pull_request.html_url }}
-  PR_MERGED: ${{ github.event.pull_request.merged }}
-  PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+  REPO_TOKEN: ${{ secrets.GITHUB_REPO }}
 
 jobs:
   update-notion:
-    if: ${{ github.event.pull_request.merged == true }}
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: 20
 
       - name: Enable pnpm
         run: |
@@ -39,5 +31,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Update Notion Ticket
-        run: node scripts/updateNotion.js
+      - name: Update Notion
+        run: node scripts/updateNotionPR.js
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
