@@ -3,9 +3,17 @@ import 'dotenv/config';
 import { Client } from '@notionhq/client';
 import { execSync } from 'child_process';
 
-const { NOTION_API_KEY, PARENT_PAGE_ID, TASK_DB_NAME, GITHUB_REPO, COMMIT_HASH } = process.env;
+const { NOTION_API_KEY, NOTION_DB_ID, PARENT_PAGE_ID, TASK_DB_NAME, GITHUB_REPO, COMMIT_HASH } =
+  process.env;
 
-if (!NOTION_API_KEY || !PARENT_PAGE_ID || !TASK_DB_NAME || !GITHUB_REPO || !COMMIT_HASH) {
+if (
+  !NOTION_API_KEY ||
+  !NOTION_DB_ID ||
+  !PARENT_PAGE_ID ||
+  !TASK_DB_NAME ||
+  !GITHUB_REPO ||
+  !COMMIT_HASH
+) {
   throw new Error('환경변수가 설정되지 않았습니다. Secrets 및 env 확인 필요');
 }
 
