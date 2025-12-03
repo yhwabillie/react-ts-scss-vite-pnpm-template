@@ -78,7 +78,7 @@ function mapCommitToStatus(commitMsg) {
 // }
 
 async function findTaskDatabaseId() {
-  const blocks = await notion.blocks.children.list({ block_id: PARENT_PAGE_ID });
+  const blocks = await notion.blocks.children.list({ block_id: NOTION_PARENT_PAGE_ID });
   console.log(
     'Blocks under parent page:',
     blocks.results.map(b => ({
