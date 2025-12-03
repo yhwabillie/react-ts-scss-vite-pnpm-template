@@ -163,13 +163,12 @@ async function findTicketPageAndUpdate(taskDbId, ticketId, status, prUrl) {
     url: { url: prUrl },
   };
 
+  // [done]이면 end_date를 오늘 날짜로 설정
   if (status === '완료') {
-    // [done]이면 오늘 날짜를 end_date로 설정
     const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
     properties.end_date = { date: { start: today } };
-  } else {
-    // [in progress], [to do]이면 기존 end_date 삭제
-    properties.end_date = null;
+  } else if (status === '진행 중' || status === '시작 전') {
+    properties.end_date = { date: null };
   }
 
   await notion.pages.update({
@@ -178,7 +177,7 @@ async function findTicketPageAndUpdate(taskDbId, ticketId, status, prUrl) {
   });
 
   console.log('🔧 Variables used for update:');
-  console.table({ ticketId, status, prUrl, end_date: properties.end_date?.date.start || null });
+  console.table({ ticketId, status, prUrl, end_date: properties.end_date?.date?.start || null });
   console.log(`✅ Updated Notion Ticket "${ticketId}"`);
 }
 
