@@ -60,34 +60,8 @@ function mapCommitToStatus(commitMsg) {
 }
 
 // 상위 페이지에서 Child Database(Task) 찾기
-// async function findTaskDatabaseId() {
-//   const blocks = await notion.blocks.children.list({ block_id: NOTION_PARENT_PAGE_ID });
-//   const taskDbBlock = blocks.results.find(
-//     block => block.type === 'child_database' && block.child_database?.title === TASK_DB_NAME,
-//   );
-
-//   if (!taskDbBlock) {
-//     throw new Error(`Child database "${TASK_DB_NAME}" not found under the parent page`);
-//   }
-
-//   console.log(`✅ Found Task DB: "${TASK_DB_NAME}"`);
-//   console.log(`   Database ID: ${taskDbBlock.id}`);
-//   console.log(`   Parent Page ID: ${taskDbBlock.parent.page_id}`);
-
-//   return taskDbBlock.id;
-// }
-
 async function findTaskDatabaseId() {
   const blocks = await notion.blocks.children.list({ block_id: NOTION_PARENT_PAGE_ID });
-  console.log(
-    'Blocks under parent page:',
-    blocks.results.map(b => ({
-      id: b.id,
-      type: b.type,
-      title: b.child_database?.title,
-    })),
-  );
-
   const taskDbBlock = blocks.results.find(
     block => block.type === 'child_database' && block.child_database?.title === TASK_DB_NAME,
   );
@@ -96,8 +70,34 @@ async function findTaskDatabaseId() {
     throw new Error(`Child database "${TASK_DB_NAME}" not found under the parent page`);
   }
 
+  console.log(`✅ Found Task DB: "${TASK_DB_NAME}"`);
+  console.log(`   Database ID: ${taskDbBlock.id}`);
+  console.log(`   Parent Page ID: ${taskDbBlock.parent.page_id}`);
+
   return taskDbBlock.id;
 }
+
+// async function findTaskDatabaseId() {
+//   const blocks = await notion.blocks.children.list({ block_id: NOTION_PARENT_PAGE_ID });
+//   console.log(
+//     'Blocks under parent page:',
+//     blocks.results.map(b => ({
+//       id: b.id,
+//       type: b.type,
+//       title: b.child_database?.title,
+//     })),
+//   );
+
+//   const taskDbBlock = blocks.results.find(
+//     block => block.type === 'child_database' && block.child_database?.title === TASK_DB_NAME,
+//   );
+
+//   if (!taskDbBlock) {
+//     throw new Error(`Child database "${TASK_DB_NAME}" not found under the parent page`);
+//   }
+
+//   return taskDbBlock.id;
+// }
 
 // Task DB 안에서 Ticket 페이지 검색 후 상태 및 URL 업데이트
 async function findTicketPageAndUpdate(taskDbId, ticketId, status, commitUrl) {
