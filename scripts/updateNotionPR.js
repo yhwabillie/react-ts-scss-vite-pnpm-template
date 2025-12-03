@@ -4,10 +4,11 @@ import { Client } from '@notionhq/client';
 import fetch from 'node-fetch';
 import { execSync } from 'child_process';
 
+// 환경변수
 const {
   NOTION_API_KEY,
   NOTION_PARENT_PAGE_ID,
-  NOTION_TASK_DB_NAME, // 최종 업데이트된 Task DB 이름
+  NOTION_TASK_DB_NAME,
   GITHUB_REPO,
   REPO_TOKEN, // GitHub API 접근용 토큰
 } = process.env;
@@ -24,7 +25,7 @@ function getCurrentGitBranch() {
 
 const PR_BRANCH = getCurrentGitBranch();
 
-// 환경변수 체크
+// 필수 환경변수 체크
 const requiredEnvs = {
   NOTION_API_KEY,
   NOTION_PARENT_PAGE_ID,
@@ -47,20 +48,21 @@ if (emptyEnvs.length) {
   console.log('✅ All required environment variables are set.');
 }
 
-// 디버깅용 table 로그
+// 디버깅용 값 출력
 console.log('🔧 Current environment variables:');
 console.table({
   NOTION_API_KEY: !!NOTION_API_KEY,
   NOTION_PARENT_PAGE_ID: !!NOTION_PARENT_PAGE_ID,
-  NOTION_TASK_DB_NAME,
-  GITHUB_REPO,
+  NOTION_TASK_DB_NAME: !!NOTION_TASK_DB_NAME,
+  GITHUB_REPO: !!GITHUB_REPO,
   REPO_TOKEN: !!REPO_TOKEN,
   PR_BRANCH,
 });
 
+// Notion client
 const notion = new Client({ auth: NOTION_API_KEY });
 
-// GitHub API로 PR 정보 가져오기
+// PR 정보 가져오기
 async function getPrInfo() {
   try {
     const url = `https://api.github.com/repos/${GITHUB_REPO}/pulls?head=${PR_BRANCH}`;
@@ -71,9 +73,7 @@ async function getPrInfo() {
       },
     });
 
-    if (!res.ok) {
-      throw new Error(`GitHub API error: ${res.status} ${res.statusText}`);
-    }
+    if (!res.ok) throw new Error(`GitHub API error: ${res.status} ${res.statusText}`);
 
     const prs = await res.json();
     if (!prs.length) {
@@ -81,18 +81,30 @@ async function getPrInfo() {
       return null;
     }
 
-    const pr = prs[0]; // 여러 PR이면 첫 번째
-    console.log('🔍 PR info fetched from GitHub API:');
-    console.table({
-      number: pr.number,
-      title: pr.title,
-      url: pr.html_url,
-      merged: pr.merged,
-      merge_commit_message: pr.merge_commit_message,
-      branch: pr.head.ref,
-    });
+    // main 브랜치 대상으로 필터링
+    const prsForMain = prs.filter(pr => pr.base.ref === 'main');
 
-    return pr;
+    if (!prsForMain.length) {
+      console.warn(`⚠️ No PR targeting main for branch: ${PR_BRANCH}`);
+      return null;
+    }
+
+    if (prsForMain.length > 1) {
+      console.warn(`⚠️ Multiple PRs found for branch ${PR_BRANCH} -> main. Using the first one.`);
+    }
+
+    console.log('🔍 PRs targeting main branch:');
+    console.table(
+      prsForMain.map(pr => ({
+        number: pr.number,
+        title: pr.title,
+        url: pr.html_url,
+        merged: !!pr.merged,
+        branch: pr.head.ref,
+      })),
+    );
+
+    return prsForMain[0];
   } catch (err) {
     console.error('❌ Error fetching PR info:', err);
     return null;
@@ -106,14 +118,11 @@ function extractTicketIdFromBranch(branch) {
   return match ? match[1].toUpperCase() : null;
 }
 
-// merge commit message → Notion Status 매핑
-function mapCommitMessageToStatus(commitMessage) {
-  if (!commitMessage) return '시작 전';
-  const msg = commitMessage.toLowerCase().trim();
-  if (msg.startsWith('[done]')) return '완료';
-  if (msg.startsWith('[in progress]')) return '진행 중';
-  if (msg.startsWith('[to do]')) return '시작 전';
-  return '시작 전';
+// PR Title → Notion Status
+function mapPrTitleToStatus(title) {
+  if (title.startsWith('[done]')) return '완료';
+  if (title.startsWith('[in progress]')) return '진행 중';
+  if (title.startsWith('[to do]')) return '시작 전';
 }
 
 // Task DB 찾기
@@ -121,18 +130,15 @@ async function findTaskDatabaseId() {
   const blocks = await notion.blocks.children.list({
     block_id: NOTION_PARENT_PAGE_ID,
   });
-
   const taskDbBlock = blocks.results.find(
     b => b.type === 'child_database' && b.child_database?.title === NOTION_TASK_DB_NAME,
   );
-
   if (!taskDbBlock) throw new Error(`Child database "${NOTION_TASK_DB_NAME}" not found.`);
-
   console.log(`✅ Found Task DB: "${NOTION_TASK_DB_NAME}" (ID: ${taskDbBlock.id})`);
   return taskDbBlock.id;
 }
 
-// Ticket 페이지 찾고 업데이트
+// Ticket 업데이트
 async function findTicketPageAndUpdate(taskDbId, ticketId, status, prUrl) {
   const searchRes = await notion.search({
     query: '',
@@ -156,31 +162,29 @@ async function findTicketPageAndUpdate(taskDbId, ticketId, status, prUrl) {
     properties: { status: { status: { name: status } }, url: { url: prUrl } },
   });
 
-  // 로그 table로 확인
-  console.log('✅ Updated Notion Ticket:');
-  console.table({
-    ticketId,
-    status,
-    prUrl,
-  });
+  console.log('🔧 Variables used for update:');
+  console.table({ ticketId, status, prUrl });
+  console.log(`✅ Updated Notion Ticket "${ticketId}"`);
 }
 
 // 메인 실행
 (async () => {
   try {
     const prInfo = await getPrInfo();
-    if (!prInfo || !prInfo.merged) {
+    if (!prInfo) return;
+
+    const ticketId = extractTicketIdFromBranch(prInfo.head.ref);
+    if (!ticketId) {
+      console.warn(`⚠️ No Ticket ID found in branch name: ${prInfo.head.ref}`);
+      return;
+    }
+
+    if (!prInfo.merged) {
       console.log('⚠️ PR not merged → Not updating Notion.');
       return;
     }
 
-    const ticketId = extractTicketIdFromBranch(prInfo.head.ref);
-    if (!ticketId) {
-      console.log(`⚠️ No Ticket ID found in branch name: ${PR_BRANCH}`);
-      return;
-    }
-
-    const status = mapCommitMessageToStatus(prInfo.merge_commit_message);
+    const status = mapPrTitleToStatus(prInfo.title);
     const taskDbId = await findTaskDatabaseId();
     await findTicketPageAndUpdate(taskDbId, ticketId, status, prInfo.html_url);
   } catch (err) {

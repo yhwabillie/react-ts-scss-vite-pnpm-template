@@ -2,7 +2,7 @@ name: Update Notion from PR
 
 on:
   pull_request:
-    types: [opened, edited, closed]
+    types: [opened, edited]
 
 env:
   NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
@@ -33,3 +33,5 @@ jobs:
 
       - name: Update Notion
         run: node scripts/updateNotionPR.js
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
