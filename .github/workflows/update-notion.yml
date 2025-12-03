@@ -6,7 +6,7 @@ on:
 
 env:
   NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-  PARENT_PAGE_ID: ${{ secrets.NOTION_DB_ID }} # updateNotion.js에서 사용하는 이름
+  PARENT_PAGE_ID: ${{ secrets.NOTION_PARENT_PAGE_ID }} # updateNotion.js에서 사용하는 이름
   TASK_DB_NAME: 'Task'
   GITHUB_REPO: ${{ github.repository }}
   COMMIT_HASH: ${{ github.sha }}
