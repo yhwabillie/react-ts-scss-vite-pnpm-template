@@ -9,7 +9,7 @@ env:
   NOTION_PARENT_PAGE_ID: ${{ secrets.NOTION_PARENT_PAGE_ID }}
   TASK_DB_NAME: 'Task'
   GITHUB_REPO: ${{ github.repository }}
-  REPO_TOKEN: ${{ secrets.GITHUB_REPO }}
+  REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
 
 jobs:
   update-notion:
