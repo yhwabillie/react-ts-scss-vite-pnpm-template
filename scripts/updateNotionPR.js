@@ -122,6 +122,7 @@ function mapPrTitleToStatus(title) {
   if (title.startsWith('[done]')) return '완료';
   if (title.startsWith('[in progress]')) return '진행 중';
   if (title.startsWith('[to do]')) return '시작 전';
+  return '시작 전'; // 디폴트
 }
 
 // Task DB 찾기
@@ -178,11 +179,7 @@ async function findTicketPageAndUpdate(taskDbId, ticketId, status, prUrl) {
       return;
     }
 
-    if (!prInfo.merged) {
-      console.log('⚠️ PR not merged → Not updating Notion.');
-      return;
-    }
-
+    // 머지 여부와 관계없이 Notion 업데이트
     const status = mapPrTitleToStatus(prInfo.title);
     const taskDbId = await findTaskDatabaseId();
     await findTicketPageAndUpdate(taskDbId, ticketId, status, prInfo.html_url);
