@@ -7,7 +7,7 @@ on:
 env:
   NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
   NOTION_PARENT_PAGE_ID: ${{ secrets.NOTION_PARENT_PAGE_ID }}
-  TASK_DB_NAME: 'Task'
+  NOTION_TASK_DB_NAME: 'Task'
   GITHUB_REPO: ${{ github.repository }}
   REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
 
