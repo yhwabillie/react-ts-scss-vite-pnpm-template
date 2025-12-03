@@ -1,8 +1,9 @@
 name: Update Notion Ticket
 
 on:
-  push:
+  pull_request:
     branches: [main]
+    types: [opened, reopened, synchronize, closed]
 
 env:
   NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
@@ -10,11 +11,17 @@ env:
   NOTION_PARENT_PAGE_ID: ${{ secrets.NOTION_PARENT_PAGE_ID }}
   TASK_DB_NAME: 'Task'
   GITHUB_REPO: ${{ github.repository }}
-  COMMIT_HASH: ${{ github.sha }}
+  PR_NUMBER: ${{ github.event.pull_request.number }}
+  PR_TITLE: ${{ github.event.pull_request.title }}
+  PR_URL: ${{ github.event.pull_request.html_url }}
+  PR_MERGED: ${{ github.event.pull_request.merged }}
+  PR_BRANCH: ${{ github.event.pull_request.head.ref }}
 
 jobs:
   update-notion:
+    if: ${{ github.event.pull_request.merged == true }}
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
