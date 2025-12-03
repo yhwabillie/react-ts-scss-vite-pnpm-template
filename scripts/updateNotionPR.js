@@ -157,13 +157,25 @@ async function findTicketPageAndUpdate(taskDbId, ticketId, status, prUrl) {
 
   if (!ticketRows.length) throw new Error(`Ticket "${ticketId}" not found in Task DB`);
 
+  // 업데이트할 Notion 속성 구성
+  const properties = {
+    status: { status: { name: status } },
+    url: { url: prUrl },
+  };
+
+  // [done]이면 end_date를 오늘 날짜로 설정
+  if (status === '완료') {
+    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+    properties.end_date = { date: { start: today } };
+  }
+
   await notion.pages.update({
     page_id: ticketRows[0].id,
-    properties: { status: { status: { name: status } }, url: { url: prUrl } },
+    properties,
   });
 
   console.log('🔧 Variables used for update:');
-  console.table({ ticketId, status, prUrl });
+  console.table({ ticketId, status, prUrl, end_date: properties.end_date?.date.start || null });
   console.log(`✅ Updated Notion Ticket "${ticketId}"`);
 }
 
