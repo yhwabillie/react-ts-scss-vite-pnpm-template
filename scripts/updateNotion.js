@@ -6,16 +6,38 @@ import { execSync } from 'child_process';
 const { NOTION_API_KEY, NOTION_DB_ID, PARENT_PAGE_ID, TASK_DB_NAME, GITHUB_REPO, COMMIT_HASH } =
   process.env;
 
-if (
-  !NOTION_API_KEY ||
-  !NOTION_DB_ID ||
-  !PARENT_PAGE_ID ||
-  !TASK_DB_NAME ||
-  !GITHUB_REPO ||
-  !COMMIT_HASH
-) {
-  throw new Error('환경변수가 설정되지 않았습니다. Secrets 및 env 확인 필요');
+const requiredEnvs = {
+  NOTION_API_KEY,
+  NOTION_DB_ID,
+  PARENT_PAGE_ID,
+  TASK_DB_NAME,
+  GITHUB_REPO,
+  COMMIT_HASH,
+};
+
+// 비어 있는 환경변수만 확인
+const emptyEnvs = Object.entries(requiredEnvs)
+  .filter(([key, value]) => !value)
+  .map(([key]) => key);
+
+if (emptyEnvs.length) {
+  console.error('❌ 다음 환경변수가 설정되지 않았습니다:', emptyEnvs.join(', '));
+  throw new Error('환경변수 확인 필요');
 }
+
+// 디버깅용 전체 출력 (원하면)
+console.log('🔧 현재 환경변수 값:', requiredEnvs);
+
+// if (
+//   !NOTION_API_KEY ||
+//   !NOTION_DB_ID ||
+//   !PARENT_PAGE_ID ||
+//   !TASK_DB_NAME ||
+//   !GITHUB_REPO ||
+//   !COMMIT_HASH
+// ) {
+//   throw new Error('환경변수가 설정되지 않았습니다. Secrets 및 env 확인 필요');
+// }
 
 const notion = new Client({ auth: NOTION_API_KEY });
 
