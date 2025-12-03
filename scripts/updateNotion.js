@@ -3,13 +3,19 @@ import 'dotenv/config';
 import { Client } from '@notionhq/client';
 import { execSync } from 'child_process';
 
-const { NOTION_API_KEY, NOTION_DB_ID, PARENT_PAGE_ID, TASK_DB_NAME, GITHUB_REPO, COMMIT_HASH } =
-  process.env;
+const {
+  NOTION_API_KEY,
+  NOTION_DB_ID,
+  NOTION_PARENT_PAGE_ID,
+  TASK_DB_NAME,
+  GITHUB_REPO,
+  COMMIT_HASH,
+} = process.env;
 
 const requiredEnvs = {
   NOTION_API_KEY,
   NOTION_DB_ID,
-  PARENT_PAGE_ID,
+  NOTION_PARENT_PAGE_ID,
   TASK_DB_NAME,
   GITHUB_REPO,
   COMMIT_HASH,
@@ -31,7 +37,7 @@ console.log('🔧 현재 환경변수 값:', requiredEnvs);
 // if (
 //   !NOTION_API_KEY ||
 //   !NOTION_DB_ID ||
-//   !PARENT_PAGE_ID ||
+//   !NOTION_PARENT_PAGE_ID ||
 //   !TASK_DB_NAME ||
 //   !GITHUB_REPO ||
 //   !COMMIT_HASH
@@ -55,7 +61,7 @@ function mapCommitToStatus(commitMsg) {
 
 // 상위 페이지에서 Child Database(Task) 찾기
 // async function findTaskDatabaseId() {
-//   const blocks = await notion.blocks.children.list({ block_id: PARENT_PAGE_ID });
+//   const blocks = await notion.blocks.children.list({ block_id: NOTION_PARENT_PAGE_ID });
 //   const taskDbBlock = blocks.results.find(
 //     block => block.type === 'child_database' && block.child_database?.title === TASK_DB_NAME,
 //   );
