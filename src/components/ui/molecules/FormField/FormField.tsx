@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import clsx from 'clsx';
-import styles from '@/components/ui/atoms/FormField/FormField.module.scss';
+import styles from '@/components/ui/molecules/FormField/FormField.module.scss';
 
 type BaseProps = {
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';

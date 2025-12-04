@@ -26,7 +26,7 @@ $formfield-sizes: (
 @mixin formfield-size() {
   @each $size-name, $props in $formfield-sizes {
     &:global(.size--#{$size-name}) {
-      gap: map-get($props, gap);
+      gap: map.get($props, gap);
     }
   }
 }
