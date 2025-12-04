@@ -165,8 +165,11 @@ async function findTicketPageAndUpdate(taskDbId, ticketId, status, prUrl) {
 
   // [done]이면 end_date를 오늘 날짜로 설정
   if (status === '완료') {
-    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-    properties.end_date = { date: { start: today } };
+    const today = new Date();
+    today.setHours(today.getHours() + 9); // UTC에서 KST로 보정
+
+    const formatted = today.toISOString().split('T')[0]; // YYYY-MM-DD
+    properties.end_date = { date: { start: formatted } };
   } else if (status === '진행 중' || status === '시작 전') {
     properties.end_date = { date: null };
   }
