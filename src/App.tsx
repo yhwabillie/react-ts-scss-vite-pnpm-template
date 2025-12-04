@@ -7,7 +7,7 @@ import RingSpinner from '@/components/ui/atoms/Spinner/LoadingSpinner/RingSpinne
 import Radio from '@/components/ui/atoms/Radio/Radio';
 import Checkbox from '@/components/ui/atoms/Checkbox/Checkbox';
 import Label from './components/ui/atoms/Label/Label';
-import FormField from './components/ui/atoms/FormField/FormField';
+import FormField from './components/ui/molecules/FormField/FormField';
 
 function App() {
   // 타입 정의
