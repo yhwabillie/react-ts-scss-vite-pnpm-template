@@ -12,6 +12,7 @@ import ButtonGroup from './components/ui/molecules/ButtonGroup/ButtonGroup';
 import ActionBar from './components/ui/organisms/ActionBar/ActionBar';
 import FormFieldset from './components/ui/molecules/FormFieldset/FormFieldset';
 import ValidationMsg from './components/ui/atoms/ValidationMsg/ValidationMsg';
+import ControlGroup from './components/ui/molecules/ControlGroup/ControlGroup';
 
 function App() {
   // 타입 정의
@@ -75,166 +76,149 @@ function App() {
   return (
     <>
       <section>
-        <ValidationMsg variant='error' size='xl'>
-          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
-        </ValidationMsg>
-        <ValidationMsg variant='warning' size='xl'>
-          <Icon name='warning-triangle' className='icon' />
-          유효성검사 문구 : 워닝
-        </ValidationMsg>
-        <ValidationMsg variant='success' size='xl'>
-          <Icon name='check-circle' className='icon' />
-          유효성검사 문구 : 성공
-        </ValidationMsg>
-        <ValidationMsg variant='guide' size='xl'>
-          <Icon name='info-circle' className='icon' />
-          유효성검사 문구 : 가이드
-        </ValidationMsg>
-      </section>
-      <section>
-        <ValidationMsg variant='error' size='lg'>
-          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
-        </ValidationMsg>
-        <ValidationMsg variant='warning' size='lg'>
-          <Icon name='warning-triangle' className='icon' />
-          유효성검사 문구 : 워닝
-        </ValidationMsg>
-        <ValidationMsg variant='success' size='lg'>
-          <Icon name='check-circle' className='icon' />
-          유효성검사 문구 : 성공
-        </ValidationMsg>
-        <ValidationMsg variant='guide' size='lg'>
-          <Icon name='info-circle' className='icon' />
-          유효성검사 문구 : 가이드
-        </ValidationMsg>
-      </section>
-      <section>
-        <ValidationMsg variant='error' size='md'>
-          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
-        </ValidationMsg>
-        <ValidationMsg variant='warning' size='md'>
-          <Icon name='warning-triangle' className='icon' />
-          유효성검사 문구 : 워닝
-        </ValidationMsg>
-        <ValidationMsg variant='success' size='md'>
-          <Icon name='check-circle' className='icon' />
-          유효성검사 문구 : 성공
-        </ValidationMsg>
-        <ValidationMsg variant='guide' size='md'>
-          <Icon name='info-circle' className='icon' />
-          유효성검사 문구 : 가이드
-        </ValidationMsg>
-      </section>
-      <section>
-        <ValidationMsg variant='error' size='sm'>
-          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
-        </ValidationMsg>
-        <ValidationMsg variant='warning' size='sm'>
-          <Icon name='warning-triangle' className='icon' />
-          유효성검사 문구 : 워닝
-        </ValidationMsg>
-        <ValidationMsg variant='success' size='sm'>
-          <Icon name='check-circle' className='icon' />
-          유효성검사 문구 : 성공
-        </ValidationMsg>
-        <ValidationMsg variant='guide' size='sm'>
-          <Icon name='info-circle' className='icon' />
-          유효성검사 문구 : 가이드
-        </ValidationMsg>
-      </section>
-      <section>
-        <ValidationMsg variant='error' size='xs'>
-          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
-        </ValidationMsg>
-        <ValidationMsg variant='warning' size='xs'>
-          <Icon name='warning-triangle' className='icon' />
-          유효성검사 문구 : 워닝
-        </ValidationMsg>
-        <ValidationMsg variant='success' size='xs'>
-          <Icon name='check-circle' className='icon' />
-          유효성검사 문구 : 성공
-        </ValidationMsg>
-        <ValidationMsg variant='guide' size='xs'>
-          <Icon name='info-circle' className='icon' />
-          유효성검사 문구 : 가이드
-        </ValidationMsg>
-      </section>
-      <section>
-        <FormFieldset size='xl' legend='체크박스 옵션 선택' direction='row' required={true}>
-          <FormField as='label' htmlFor='formfield-test-1' size='xl'>
-            <Checkbox
-              as='span'
-              id='formfield-test-1'
-              name='formfield-test-checkbox'
-              color='primary'
-              size='xl'
-              value='체크박스 옵션 1'
-              required
-              defaultChecked
-            />
-            <Label size='xl'>체크박스 옵션 1</Label>
-          </FormField>
-          <FormField as='label' htmlFor='formfield-test-2' size='xl'>
-            <Checkbox
-              as='span'
-              id='formfield-test-2'
-              name='formfield-test-checkbox'
-              color='primary'
-              size='xl'
-              value='체크박스 옵션 2'
-            />
-            <Label size='xl'>체크박스 옵션 2</Label>
-          </FormField>
-          <FormField as='label' htmlFor='formfield-test-3' size='xl'>
-            <Checkbox
-              as='span'
-              id='formfield-test-3'
-              name='formfield-test-checkbox'
-              color='primary'
-              size='xl'
-              value='체크박스 옵션 3'
-            />
-            <Label size='xl'>체크박스 옵션 3</Label>
-          </FormField>
+        <FormFieldset size='xl' legend='체크박스 옵션 선택' required={true}>
+          {/* ControlGroup */}
+          <ControlGroup
+            size='xl'
+            direction='row'
+            aria-describedby='checkbox-error-msg checkbox-warning-msg checkbox-success-msg checkbox-guide-msg'
+          >
+            <FormField as='label' htmlFor='formfield-test-1' size='xl'>
+              <Checkbox
+                as='span'
+                id='formfield-test-1'
+                name='formfield-test-checkbox'
+                color='primary'
+                size='xl'
+                value='체크박스 옵션 1'
+                required
+                defaultChecked
+              />
+              <Label size='xl'>체크박스 옵션 1</Label>
+            </FormField>
+            <FormField as='label' htmlFor='formfield-test-2' size='xl'>
+              <Checkbox
+                as='span'
+                id='formfield-test-2'
+                name='formfield-test-checkbox'
+                color='primary'
+                size='xl'
+                value='체크박스 옵션 2'
+              />
+              <Label size='xl'>체크박스 옵션 2</Label>
+            </FormField>
+            <FormField as='label' htmlFor='formfield-test-3' size='xl'>
+              <Checkbox
+                as='span'
+                id='formfield-test-3'
+                name='formfield-test-checkbox'
+                color='primary'
+                size='xl'
+                value='체크박스 옵션 3'
+              />
+              <Label size='xl'>체크박스 옵션 3</Label>
+            </FormField>
+          </ControlGroup>
+          {/* 유효성 검사 문구 */}
+          <ValidationMsg
+            id='checkbox-error-msg'
+            variant='danger'
+            role='alert'
+            ariaLive='assertive'
+            size='xl'
+          >
+            <Icon name='x-circle' className='icon' />
+            <span className='text'>유효성검사 문구 : 에러</span>
+          </ValidationMsg>
+          <ValidationMsg
+            id='checkbox-warning-msg'
+            variant='warning'
+            role='status'
+            ariaLive='polite'
+            size='xl'
+          >
+            <Icon name='warning-triangle' className='icon' />
+            <span className='text'>유효성검사 문구 : 워닝</span>
+          </ValidationMsg>
+          <ValidationMsg
+            id='checkbox-success-msg'
+            variant='success'
+            role='status'
+            ariaLive='polite'
+            size='xl'
+          >
+            <Icon name='check-circle' className='icon' />
+            <span className='text'>유효성검사 문구 : 성공</span>
+          </ValidationMsg>
+          <ValidationMsg
+            id='checkbox-guide-msg'
+            variant='guide'
+            role='status'
+            ariaLive='polite'
+            size='xl'
+          >
+            <Icon name='info-circle' className='icon' />
+            <span className='text'>유효성검사 문구 : 가이드</span>
+          </ValidationMsg>
         </FormFieldset>
       </section>
       <section>
-        <FormFieldset size='xl' legend='라디오 옵션 선택' direction='row' required={true}>
-          <FormField as='label' htmlFor='formfield-test-4' size='xl'>
-            <Radio
-              as='span'
-              id='formfield-test-4'
-              name='formfield-test-radio'
-              color='primary'
-              size='xl'
-              value='라디오 옵션 1'
-              required
-              defaultChecked
-            />
-            <Label size='xl'>라디오 옵션 1</Label>
-          </FormField>
-          <FormField as='label' htmlFor='formfield-test-5' size='xl'>
-            <Radio
-              as='span'
-              id='formfield-test-5'
-              name='formfield-test-radio'
-              color='primary'
-              size='xl'
-              value='라디오 옵션 2'
-            />
-            <Label size='xl'>라디오 옵션 2</Label>
-          </FormField>
-          <FormField as='label' htmlFor='formfield-test-6' size='xl'>
-            <Radio
-              as='span'
-              id='formfield-test-6'
-              name='formfield-test-radio'
-              color='primary'
-              size='xl'
-              value='라디오 옵션 3'
-            />
-            <Label size='xl'>라디오 옵션 3</Label>
-          </FormField>
+        <FormFieldset size='xl' legend='라디오 옵션 선택' required={true}>
+          {/* ControlGroup */}
+          <ControlGroup size='xl' direction='row'>
+            <FormField as='label' htmlFor='formfield-test-4' size='xl'>
+              <Radio
+                as='span'
+                id='formfield-test-4'
+                name='formfield-test-radio'
+                color='primary'
+                size='xl'
+                value='라디오 옵션 1'
+                required
+                defaultChecked
+              />
+              <Label size='xl'>라디오 옵션 1</Label>
+            </FormField>
+            <FormField as='label' htmlFor='formfield-test-5' size='xl'>
+              <Radio
+                as='span'
+                id='formfield-test-5'
+                name='formfield-test-radio'
+                color='primary'
+                size='xl'
+                value='라디오 옵션 2'
+              />
+              <Label size='xl'>라디오 옵션 2</Label>
+            </FormField>
+            <FormField as='label' htmlFor='formfield-test-6' size='xl'>
+              <Radio
+                as='span'
+                id='formfield-test-6'
+                name='formfield-test-radio'
+                color='primary'
+                size='xl'
+                value='라디오 옵션 3'
+              />
+              <Label size='xl'>라디오 옵션 3</Label>
+            </FormField>
+          </ControlGroup>
+          {/* 유효성 검사 문구 */}
+          <ValidationMsg variant='danger' role='alert' ariaLive='assertive' size='xl'>
+            <Icon name='x-circle' className='icon' />
+            <span className='text'>유효성검사 문구 : 에러</span>
+          </ValidationMsg>
+          <ValidationMsg variant='warning' role='status' ariaLive='polite' size='xl'>
+            <Icon name='warning-triangle' className='icon' />
+            <span className='text'>유효성검사 문구 : 워닝</span>
+          </ValidationMsg>
+          <ValidationMsg variant='success' role='status' ariaLive='polite' size='xl'>
+            <Icon name='check-circle' className='icon' />
+            <span className='text'>유효성검사 문구 : 성공</span>
+          </ValidationMsg>
+          <ValidationMsg variant='guide' role='status' ariaLive='polite' size='xl'>
+            <Icon name='info-circle' className='icon' />
+            <span className='text'>유효성검사 문구 : 가이드</span>
+          </ValidationMsg>
         </FormFieldset>
       </section>
       <section>
@@ -591,6 +575,91 @@ function App() {
           <Radio as='label' name='checkbox-standalone-18' color='danger' size='sm' />
           <Radio as='label' name='checkbox-standalone-18' color='danger' size='xs' />
         </div>
+      </section>
+      <section>
+        <ValidationMsg variant='danger' size='xl' role='alert' ariaLive='assertive'>
+          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
+        </ValidationMsg>
+        <ValidationMsg variant='warning' size='xl' role='status' ariaLive='polite'>
+          <Icon name='warning-triangle' className='icon' />
+          유효성검사 문구 : 워닝
+        </ValidationMsg>
+        <ValidationMsg variant='success' size='xl' role='status' ariaLive='polite'>
+          <Icon name='check-circle' className='icon' />
+          유효성검사 문구 : 성공
+        </ValidationMsg>
+        <ValidationMsg variant='guide' size='xl' role='status' ariaLive='polite'>
+          <Icon name='info-circle' className='icon' />
+          유효성검사 문구 : 가이드
+        </ValidationMsg>
+      </section>
+      <section>
+        <ValidationMsg variant='danger' size='lg' role='alert' ariaLive='assertive'>
+          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
+        </ValidationMsg>
+        <ValidationMsg variant='warning' size='lg' role='status' ariaLive='polite'>
+          <Icon name='warning-triangle' className='icon' />
+          유효성검사 문구 : 워닝
+        </ValidationMsg>
+        <ValidationMsg variant='success' size='lg' role='status' ariaLive='polite'>
+          <Icon name='check-circle' className='icon' />
+          유효성검사 문구 : 성공
+        </ValidationMsg>
+        <ValidationMsg variant='guide' size='lg' role='status' ariaLive='polite'>
+          <Icon name='info-circle' className='icon' />
+          유효성검사 문구 : 가이드
+        </ValidationMsg>
+      </section>
+      <section>
+        <ValidationMsg variant='danger' size='md' role='alert' ariaLive='assertive'>
+          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
+        </ValidationMsg>
+        <ValidationMsg variant='warning' size='md' role='status' ariaLive='polite'>
+          <Icon name='warning-triangle' className='icon' />
+          유효성검사 문구 : 워닝
+        </ValidationMsg>
+        <ValidationMsg variant='success' size='md' role='status' ariaLive='polite'>
+          <Icon name='check-circle' className='icon' />
+          유효성검사 문구 : 성공
+        </ValidationMsg>
+        <ValidationMsg variant='guide' size='md' role='status' ariaLive='polite'>
+          <Icon name='info-circle' className='icon' />
+          유효성검사 문구 : 가이드
+        </ValidationMsg>
+      </section>
+      <section>
+        <ValidationMsg variant='danger' size='sm' role='alert' ariaLive='assertive'>
+          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
+        </ValidationMsg>
+        <ValidationMsg variant='warning' size='sm' role='status' ariaLive='polite'>
+          <Icon name='warning-triangle' className='icon' />
+          유효성검사 문구 : 워닝
+        </ValidationMsg>
+        <ValidationMsg variant='success' size='sm' role='status' ariaLive='polite'>
+          <Icon name='check-circle' className='icon' />
+          유효성검사 문구 : 성공
+        </ValidationMsg>
+        <ValidationMsg variant='guide' size='sm' role='status' ariaLive='polite'>
+          <Icon name='info-circle' className='icon' />
+          유효성검사 문구 : 가이드
+        </ValidationMsg>
+      </section>
+      <section>
+        <ValidationMsg variant='danger' size='xs' role='alert' ariaLive='assertive'>
+          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
+        </ValidationMsg>
+        <ValidationMsg variant='warning' size='xs' role='status' ariaLive='polite'>
+          <Icon name='warning-triangle' className='icon' />
+          유효성검사 문구 : 워닝
+        </ValidationMsg>
+        <ValidationMsg variant='success' size='xs' role='status' ariaLive='polite'>
+          <Icon name='check-circle' className='icon' />
+          유효성검사 문구 : 성공
+        </ValidationMsg>
+        <ValidationMsg variant='guide' size='xs' role='status' ariaLive='polite'>
+          <Icon name='info-circle' className='icon' />
+          유효성검사 문구 : 가이드
+        </ValidationMsg>
       </section>
       <section style={{ width: '100%' }}>
         <ActionBar size='xl'>
