@@ -15,27 +15,34 @@ type BaseProps = {
     | 'warning'
     | 'danger';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  as?: React.ElementType; // 최상위 태그 변경 가능
+  htmlFor?: string; // label일 경우 연결
+  className?: string;
 };
 
 type RadioProps = BaseProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof BaseProps>;
 
-const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ id, name, color, size, className, ...rest }, ref) => {
-    // React에서 id는 truthy/falsey로 처리하는 것이 일반적
-    // id?.trim()은 다음 경우 모두 false 처리
-    // undefined, null, ''
+const Radio = forwardRef<HTMLElement, RadioProps>(
+  ({ id, name, color, size, as: Component = 'label', htmlFor, className, ...rest }, ref) => {
     const generatedId = id?.trim() ? id : `id-${name}-${Math.random().toString(36).slice(2, 7)}`;
 
     return (
-      <label
-        htmlFor={generatedId}
+      <Component
+        ref={ref}
         className={clsx(`${styles['radio']} ${`color--${color}`} ${`size--${size}`}`, className)}
+        {...(Component === 'label' ? { htmlFor: htmlFor || generatedId } : {})}
       >
-        <input id={generatedId} name={name} type='radio' ref={ref} tabIndex={0} {...rest} />
-        <svg className='mark' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <input id={generatedId} name={name} type='radio' {...rest} />
+        <svg
+          className='mark'
+          viewBox='0 0 16 16'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+          aria-hidden
+        >
           <circle cx='8' cy='8' r='4' fill='currentColor' />
         </svg>
-      </label>
+      </Component>
     );
   },
 );

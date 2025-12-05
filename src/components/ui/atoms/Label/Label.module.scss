@@ -28,6 +28,7 @@ $label-sizes: (
 .label {
   color: #1d1d1d;
   cursor: pointer;
+  flex: 1 1 auto;
 
   // size
   @include label-size();
