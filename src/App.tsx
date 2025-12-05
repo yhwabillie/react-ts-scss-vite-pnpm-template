@@ -11,6 +11,7 @@ import FormField from './components/ui/molecules/FormField/FormField';
 import ButtonGroup from './components/ui/molecules/ButtonGroup/ButtonGroup';
 import ActionBar from './components/ui/organisms/ActionBar/ActionBar';
 import FormFieldset from './components/ui/molecules/FormFieldset/FormFieldset';
+import ValidationMsg from './components/ui/atoms/ValidationMsg/ValidationMsg';
 
 function App() {
   // 타입 정의
@@ -73,6 +74,91 @@ function App() {
 
   return (
     <>
+      <section>
+        <ValidationMsg variant='error' size='xl'>
+          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
+        </ValidationMsg>
+        <ValidationMsg variant='warning' size='xl'>
+          <Icon name='warning-triangle' className='icon' />
+          유효성검사 문구 : 워닝
+        </ValidationMsg>
+        <ValidationMsg variant='success' size='xl'>
+          <Icon name='check-circle' className='icon' />
+          유효성검사 문구 : 성공
+        </ValidationMsg>
+        <ValidationMsg variant='guide' size='xl'>
+          <Icon name='info-circle' className='icon' />
+          유효성검사 문구 : 가이드
+        </ValidationMsg>
+      </section>
+      <section>
+        <ValidationMsg variant='error' size='lg'>
+          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
+        </ValidationMsg>
+        <ValidationMsg variant='warning' size='lg'>
+          <Icon name='warning-triangle' className='icon' />
+          유효성검사 문구 : 워닝
+        </ValidationMsg>
+        <ValidationMsg variant='success' size='lg'>
+          <Icon name='check-circle' className='icon' />
+          유효성검사 문구 : 성공
+        </ValidationMsg>
+        <ValidationMsg variant='guide' size='lg'>
+          <Icon name='info-circle' className='icon' />
+          유효성검사 문구 : 가이드
+        </ValidationMsg>
+      </section>
+      <section>
+        <ValidationMsg variant='error' size='md'>
+          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
+        </ValidationMsg>
+        <ValidationMsg variant='warning' size='md'>
+          <Icon name='warning-triangle' className='icon' />
+          유효성검사 문구 : 워닝
+        </ValidationMsg>
+        <ValidationMsg variant='success' size='md'>
+          <Icon name='check-circle' className='icon' />
+          유효성검사 문구 : 성공
+        </ValidationMsg>
+        <ValidationMsg variant='guide' size='md'>
+          <Icon name='info-circle' className='icon' />
+          유효성검사 문구 : 가이드
+        </ValidationMsg>
+      </section>
+      <section>
+        <ValidationMsg variant='error' size='sm'>
+          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
+        </ValidationMsg>
+        <ValidationMsg variant='warning' size='sm'>
+          <Icon name='warning-triangle' className='icon' />
+          유효성검사 문구 : 워닝
+        </ValidationMsg>
+        <ValidationMsg variant='success' size='sm'>
+          <Icon name='check-circle' className='icon' />
+          유효성검사 문구 : 성공
+        </ValidationMsg>
+        <ValidationMsg variant='guide' size='sm'>
+          <Icon name='info-circle' className='icon' />
+          유효성검사 문구 : 가이드
+        </ValidationMsg>
+      </section>
+      <section>
+        <ValidationMsg variant='error' size='xs'>
+          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
+        </ValidationMsg>
+        <ValidationMsg variant='warning' size='xs'>
+          <Icon name='warning-triangle' className='icon' />
+          유효성검사 문구 : 워닝
+        </ValidationMsg>
+        <ValidationMsg variant='success' size='xs'>
+          <Icon name='check-circle' className='icon' />
+          유효성검사 문구 : 성공
+        </ValidationMsg>
+        <ValidationMsg variant='guide' size='xs'>
+          <Icon name='info-circle' className='icon' />
+          유효성검사 문구 : 가이드
+        </ValidationMsg>
+      </section>
       <section>
         <FormFieldset size='xl' legend='체크박스 옵션 선택' direction='row' required={true}>
           <FormField as='label' htmlFor='formfield-test-1' size='xl'>
