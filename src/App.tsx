@@ -10,6 +10,7 @@ import Label from './components/ui/atoms/Label/Label';
 import FormField from './components/ui/molecules/FormField/FormField';
 import ButtonGroup from './components/ui/molecules/ButtonGroup/ButtonGroup';
 import ActionBar from './components/ui/organisms/ActionBar/ActionBar';
+import FormFieldset from './components/ui/molecules/FormFieldset/FormFieldset';
 
 function App() {
   // 타입 정의
@@ -72,6 +73,439 @@ function App() {
 
   return (
     <>
+      <section>
+        <FormFieldset size='xl' legend='체크박스 옵션 선택' direction='row' required={true}>
+          <FormField as='label' htmlFor='formfield-test-1' size='xl'>
+            <Checkbox
+              as='span'
+              id='formfield-test-1'
+              name='formfield-test-checkbox'
+              color='primary'
+              size='xl'
+              value='체크박스 옵션 1'
+              required
+              defaultChecked
+            />
+            <Label size='xl'>체크박스 옵션 1</Label>
+          </FormField>
+          <FormField as='label' htmlFor='formfield-test-2' size='xl'>
+            <Checkbox
+              as='span'
+              id='formfield-test-2'
+              name='formfield-test-checkbox'
+              color='primary'
+              size='xl'
+              value='체크박스 옵션 2'
+            />
+            <Label size='xl'>체크박스 옵션 2</Label>
+          </FormField>
+          <FormField as='label' htmlFor='formfield-test-3' size='xl'>
+            <Checkbox
+              as='span'
+              id='formfield-test-3'
+              name='formfield-test-checkbox'
+              color='primary'
+              size='xl'
+              value='체크박스 옵션 3'
+            />
+            <Label size='xl'>체크박스 옵션 3</Label>
+          </FormField>
+        </FormFieldset>
+      </section>
+      <section>
+        <FormFieldset size='xl' legend='라디오 옵션 선택' direction='row' required={true}>
+          <FormField as='label' htmlFor='formfield-test-4' size='xl'>
+            <Radio
+              as='span'
+              id='formfield-test-4'
+              name='formfield-test-radio'
+              color='primary'
+              size='xl'
+              value='라디오 옵션 1'
+              required
+              defaultChecked
+            />
+            <Label size='xl'>라디오 옵션 1</Label>
+          </FormField>
+          <FormField as='label' htmlFor='formfield-test-5' size='xl'>
+            <Radio
+              as='span'
+              id='formfield-test-5'
+              name='formfield-test-radio'
+              color='primary'
+              size='xl'
+              value='라디오 옵션 2'
+            />
+            <Label size='xl'>라디오 옵션 2</Label>
+          </FormField>
+          <FormField as='label' htmlFor='formfield-test-6' size='xl'>
+            <Radio
+              as='span'
+              id='formfield-test-6'
+              name='formfield-test-radio'
+              color='primary'
+              size='xl'
+              value='라디오 옵션 3'
+            />
+            <Label size='xl'>라디오 옵션 3</Label>
+          </FormField>
+        </FormFieldset>
+      </section>
+      <section>
+        <div>
+          <FormField as='label' htmlFor='formfield-test-7' size='xl'>
+            <Checkbox
+              as='span'
+              id='formfield-test-7'
+              name='formfield-checkbox'
+              color='primary'
+              size='xl'
+              value='체크박스 옵션 1'
+              defaultChecked
+            />
+            <Label size='xl'>체크박스 옵션 1</Label>
+          </FormField>
+          <FormField as='label' htmlFor='formfield-test-8' size='lg'>
+            <Checkbox
+              as='span'
+              id='formfield-test-8'
+              name='formfield-checkbox'
+              color='primary'
+              size='lg'
+              value='체크박스 옵션 2'
+            />
+            <Label size='lg'>체크박스 옵션 2</Label>
+          </FormField>
+          <FormField as='label' htmlFor='formfield-test-9' size='md'>
+            <Checkbox
+              as='span'
+              id='formfield-test-9'
+              name='formfield-checkbox'
+              color='primary'
+              size='md'
+              value='체크박스 옵션 3'
+            />
+            <Label size='md'>체크박스 옵션 3</Label>
+          </FormField>
+          <FormField as='label' htmlFor='formfield-test-10' size='sm'>
+            <Checkbox
+              as='span'
+              id='formfield-test-10'
+              name='formfield-checkbox'
+              color='primary'
+              size='sm'
+              value='체크박스 옵션 4'
+            />
+            <Label size='sm'>체크박스 옵션 4</Label>
+          </FormField>
+          <FormField as='label' htmlFor='formfield-test-11' size='xs'>
+            <Checkbox
+              as='span'
+              id='formfield-test-11'
+              name='formfield-checkbox'
+              color='primary'
+              size='xs'
+              value='체크박스 옵션 5'
+            />
+            <Label size='xs'>체크박스 옵션 5</Label>
+          </FormField>
+        </div>
+        <div>
+          <FormField as='label' htmlFor='formfield-test-12' size='xl'>
+            <Radio
+              as='span'
+              id='formfield-test-12'
+              name='formfield-radio'
+              color='primary'
+              size='xl'
+              value='라디오 옵션 1'
+              defaultChecked
+            />
+            <Label size='xl'>라디오 옵션 1</Label>
+          </FormField>
+          <FormField as='label' htmlFor='formfield-test-13' size='lg'>
+            <Radio
+              as='span'
+              id='formfield-test-13'
+              name='formfield-radio'
+              color='primary'
+              size='lg'
+              value='라디오 옵션 2'
+            />
+            <Label size='lg'>라디오 옵션 2</Label>
+          </FormField>
+          <FormField as='label' htmlFor='formfield-test-14' size='md'>
+            <Radio
+              as='span'
+              id='formfield-test-14'
+              name='formfield-radio'
+              color='primary'
+              size='md'
+              value='라디오 옵션 3'
+            />
+            <Label size='md'>라디오 옵션 3</Label>
+          </FormField>
+          <FormField as='label' htmlFor='formfield-test-15' size='sm'>
+            <Radio
+              as='span'
+              id='formfield-test-15'
+              name='formfield-radio'
+              color='primary'
+              size='sm'
+              value='라디오 옵션 4'
+            />
+            <Label size='sm'>라디오 옵션 4</Label>
+          </FormField>
+          <FormField as='label' htmlFor='formfield-test-16' size='xs'>
+            <Radio
+              as='span'
+              id='formfield-test-16'
+              name='formfield-radio'
+              color='primary'
+              size='xs'
+              value='라디오 옵션 5'
+            />
+            <Label size='xs'>라디오 옵션 5</Label>
+          </FormField>
+        </div>
+      </section>
+      <section>
+        <div>
+          <Label size='xl'>라벨 XL</Label>
+          <Label size='lg'>라벨 LG</Label>
+          <Label size='md'>라벨 MD</Label>
+          <Label size='sm'>라벨 SM</Label>
+          <Label size='xs'>라벨 XS</Label>
+        </div>
+      </section>
+      <section>
+        <div>
+          <Checkbox
+            as='label'
+            name='checkbox-standalone-1'
+            color='primary'
+            size='xl'
+            defaultChecked
+          />
+          <Checkbox as='label' name='checkbox-standalone-1' color='primary' size='lg' />
+          <Checkbox as='label' name='checkbox-standalone-1' color='primary' size='md' />
+          <Checkbox as='label' name='checkbox-standalone-1' color='primary' size='sm' />
+          <Checkbox as='label' name='checkbox-standalone-1' color='primary' size='xs' />
+        </div>
+        <div>
+          <Checkbox
+            name='checkbox-standalone-2'
+            color='primary'
+            size='xl'
+            defaultChecked
+            disabled
+          />
+          <Checkbox as='label' name='checkbox-standalone-2' color='primary' size='lg' disabled />
+          <Checkbox as='label' name='checkbox-standalone-2' color='primary' size='md' disabled />
+          <Checkbox as='label' name='checkbox-standalone-2' color='primary' size='sm' disabled />
+          <Checkbox as='label' name='checkbox-standalone-2' color='primary' size='xs' disabled />
+        </div>
+        <div>
+          <Checkbox
+            as='label'
+            name='checkbox-standalone-3'
+            color='secondary'
+            size='xl'
+            defaultChecked
+          />
+          <Checkbox as='label' name='checkbox-standalone-3' color='secondary' size='lg' />
+          <Checkbox as='label' name='checkbox-standalone-3' color='secondary' size='md' />
+          <Checkbox as='label' name='checkbox-standalone-3' color='secondary' size='sm' />
+          <Checkbox as='label' name='checkbox-standalone-3' color='secondary' size='xs' />
+        </div>
+        <div>
+          <Checkbox
+            as='label'
+            name='checkbox-standalone-4'
+            color='tertiary'
+            size='xl'
+            defaultChecked
+          />
+          <Checkbox as='label' name='checkbox-standalone-4' color='tertiary' size='lg' />
+          <Checkbox as='label' name='checkbox-standalone-4' color='tertiary' size='md' />
+          <Checkbox as='label' name='checkbox-standalone-4' color='tertiary' size='sm' />
+          <Checkbox as='label' name='checkbox-standalone-4' color='tertiary' size='xs' />
+        </div>
+        <div>
+          <Checkbox
+            as='label'
+            name='checkbox-standalone-5'
+            color='brand'
+            size='xl'
+            defaultChecked
+          />
+          <Checkbox as='label' name='checkbox-standalone-5' color='brand' size='lg' />
+          <Checkbox as='label' name='checkbox-standalone-5' color='brand' size='md' />
+          <Checkbox as='label' name='checkbox-standalone-5' color='brand' size='sm' />
+          <Checkbox as='label' name='checkbox-standalone-5' color='brand' size='xs' />
+        </div>
+
+        <div>
+          <Checkbox
+            as='label'
+            name='checkbox-standalone-6'
+            color='brand-sub'
+            size='xl'
+            defaultChecked
+          />
+          <Checkbox as='label' name='checkbox-standalone-6' color='brand-sub' size='lg' />
+          <Checkbox as='label' name='checkbox-standalone-6' color='brand-sub' size='md' />
+          <Checkbox as='label' name='checkbox-standalone-6' color='brand-sub' size='sm' />
+          <Checkbox as='label' name='checkbox-standalone-6' color='brand-sub' size='xs' />
+        </div>
+        <div>
+          <Checkbox
+            as='label'
+            name='checkbox-standalone-7'
+            color='success'
+            size='xl'
+            defaultChecked
+          />
+          <Checkbox as='label' name='checkbox-standalone-7' color='success' size='lg' />
+          <Checkbox as='label' name='checkbox-standalone-7' color='success' size='md' />
+          <Checkbox as='label' name='checkbox-standalone-7' color='success' size='sm' />
+          <Checkbox as='label' name='checkbox-standalone-7' color='success' size='xs' />
+        </div>
+        <div>
+          <Checkbox
+            as='label'
+            name='checkbox-standalone-8'
+            color='warning'
+            size='xl'
+            defaultChecked
+          />
+          <Checkbox as='label' name='checkbox-standalone-8' color='warning' size='lg' />
+          <Checkbox as='label' name='checkbox-standalone-8' color='warning' size='md' />
+          <Checkbox as='label' name='checkbox-standalone-8' color='warning' size='sm' />
+          <Checkbox as='label' name='checkbox-standalone-8' color='warning' size='xs' />
+        </div>
+        <div>
+          <Checkbox
+            as='label'
+            name='checkbox-standalone-9'
+            color='danger'
+            size='xl'
+            defaultChecked
+          />
+          <Checkbox as='label' name='checkbox-standalone-9' color='danger' size='lg' />
+          <Checkbox as='label' name='checkbox-standalone-9' color='danger' size='md' />
+          <Checkbox as='label' name='checkbox-standalone-9' color='danger' size='sm' />
+          <Checkbox as='label' name='checkbox-standalone-9' color='danger' size='xs' />
+        </div>
+      </section>
+      <section>
+        <div>
+          <Radio
+            as='label'
+            name='checkbox-standalone-10'
+            color='primary'
+            size='xl'
+            defaultChecked
+          />
+          <Radio as='label' name='checkbox-standalone-10' color='primary' size='lg' />
+          <Radio as='label' name='checkbox-standalone-10' color='primary' size='md' />
+          <Radio as='label' name='checkbox-standalone-10' color='primary' size='sm' />
+          <Radio as='label' name='checkbox-standalone-10' color='primary' size='xs' />
+        </div>
+        <div>
+          <Radio
+            as='label'
+            name='checkbox-standalone-11'
+            color='primary'
+            size='xl'
+            defaultChecked
+            disabled
+          />
+          <Radio as='label' name='checkbox-standalone-11' color='primary' size='lg' disabled />
+          <Radio as='label' name='checkbox-standalone-11' color='primary' size='md' disabled />
+          <Radio as='label' name='checkbox-standalone-11' color='primary' size='sm' disabled />
+          <Radio as='label' name='checkbox-standalone-11' color='primary' size='xs' disabled />
+        </div>
+        <div>
+          <Radio
+            as='label'
+            name='checkbox-standalone-12'
+            color='secondary'
+            size='xl'
+            defaultChecked
+          />
+          <Radio as='label' name='checkbox-standalone-12' color='secondary' size='lg' />
+          <Radio as='label' name='checkbox-standalone-12' color='secondary' size='md' />
+          <Radio as='label' name='checkbox-standalone-12' color='secondary' size='sm' />
+          <Radio as='label' name='checkbox-standalone-12' color='secondary' size='xs' />
+        </div>
+        <div>
+          <Radio
+            as='label'
+            name='checkbox-standalone-13'
+            color='tertiary'
+            size='xl'
+            defaultChecked
+          />
+          <Radio as='label' name='checkbox-standalone-13' color='tertiary' size='lg' />
+          <Radio as='label' name='checkbox-standalone-13' color='tertiary' size='md' />
+          <Radio as='label' name='checkbox-standalone-13' color='tertiary' size='sm' />
+          <Radio as='label' name='checkbox-standalone-13' color='tertiary' size='xs' />
+        </div>
+        <div>
+          <Radio as='label' name='checkbox-standalone-14' color='brand' size='xl' defaultChecked />
+          <Radio as='label' name='checkbox-standalone-14' color='brand' size='lg' />
+          <Radio as='label' name='checkbox-standalone-14' color='brand' size='md' />
+          <Radio as='label' name='checkbox-standalone-14' color='brand' size='sm' />
+          <Radio as='label' name='checkbox-standalone-14' color='brand' size='xs' />
+        </div>
+        <div>
+          <Radio
+            as='label'
+            name='checkbox-standalone-15'
+            color='brand-sub'
+            size='xl'
+            defaultChecked
+          />
+          <Radio as='label' name='checkbox-standalone-15' color='brand-sub' size='lg' />
+          <Radio as='label' name='checkbox-standalone-15' color='brand-sub' size='md' />
+          <Radio as='label' name='checkbox-standalone-15' color='brand-sub' size='sm' />
+          <Radio as='label' name='checkbox-standalone-15' color='brand-sub' size='xs' />
+        </div>
+        <div>
+          <Radio
+            as='label'
+            name='checkbox-standalone-16'
+            color='success'
+            size='xl'
+            defaultChecked
+          />
+          <Radio as='label' name='checkbox-standalone-16' color='success' size='lg' />
+          <Radio as='label' name='checkbox-standalone-16' color='success' size='md' />
+          <Radio as='label' name='checkbox-standalone-16' color='success' size='sm' />
+          <Radio as='label' name='checkbox-standalone-16' color='success' size='xs' />
+        </div>
+        <div>
+          <Radio
+            as='label'
+            name='checkbox-standalone-17'
+            color='warning'
+            size='xl'
+            defaultChecked
+          />
+          <Radio as='label' name='checkbox-standalone-17' color='warning' size='lg' />
+          <Radio as='label' name='checkbox-standalone-17' color='warning' size='md' />
+          <Radio as='label' name='checkbox-standalone-17' color='warning' size='sm' />
+          <Radio as='label' name='checkbox-standalone-17' color='warning' size='xs' />
+        </div>
+        <div>
+          <Radio as='label' name='checkbox-standalone-18' color='danger' size='xl' defaultChecked />
+          <Radio as='label' name='checkbox-standalone-18' color='danger' size='lg' />
+          <Radio as='label' name='checkbox-standalone-18' color='danger' size='md' />
+          <Radio as='label' name='checkbox-standalone-18' color='danger' size='sm' />
+          <Radio as='label' name='checkbox-standalone-18' color='danger' size='xs' />
+        </div>
+      </section>
       <section style={{ width: '100%' }}>
         <ActionBar size='xl'>
           <ButtonGroup size='xl' align='left'>
@@ -130,221 +564,6 @@ function App() {
             Brand xs 버튼
           </Button>
         </ButtonGroup>
-      </section>
-      <section>
-        <div>
-          <FormField size='xl'>
-            <Checkbox id='test-1' name='test-1-name' color='primary' size='xl' defaultChecked />
-            <Label htmlFor='test-1' size='xl'>
-              라벨 XL
-            </Label>
-          </FormField>
-          <FormField size='lg'>
-            <Checkbox id='test-2' name='test-2-name' color='primary' size='lg' />
-            <Label htmlFor='test-2' size='lg'>
-              라벨 LG
-            </Label>
-          </FormField>
-          <FormField size='md'>
-            <Checkbox id='test-3' name='test-3-name' color='primary' size='md' />
-            <Label htmlFor='test-3' size='md'>
-              라벨 MD
-            </Label>
-          </FormField>
-          <FormField size='sm'>
-            <Checkbox id='test-4' name='test-4-name' color='primary' size='sm' />
-            <Label htmlFor='test-4' size='sm'>
-              라벨 SM
-            </Label>
-          </FormField>
-          <FormField size='xs'>
-            <Checkbox id='test-5' name='test-5-name' color='primary' size='xs' />
-            <Label htmlFor='test-5' size='xs'>
-              라벨 XS
-            </Label>
-          </FormField>
-        </div>
-        <div>
-          <FormField size='xl'>
-            <Radio id='test-radio-1' name='test-radio' color='primary' size='xl' defaultChecked />
-            <Label htmlFor='test-radio-1' size='xl'>
-              라벨 XL
-            </Label>
-          </FormField>
-          <FormField size='lg'>
-            <Radio id='test-radio-2' name='test-radio' color='primary' size='lg' />
-            <Label htmlFor='test-radio-2' size='lg'>
-              라벨 LG
-            </Label>
-          </FormField>
-          <FormField size='md'>
-            <Radio id='test-radio-3' name='test-radio' color='primary' size='md' />
-            <Label htmlFor='test-radio-3' size='md'>
-              라벨 MD
-            </Label>
-          </FormField>
-          <FormField size='sm'>
-            <Radio id='test-radio-4' name='test-radio' color='primary' size='sm' />
-            <Label htmlFor='test-radio-4' size='sm'>
-              라벨 SM
-            </Label>
-          </FormField>
-          <FormField size='xs'>
-            <Radio id='test-radio-5' name='test-radio' color='primary' size='xs' />
-            <Label htmlFor='test-radio-5' size='xs'>
-              라벨 SM
-            </Label>
-          </FormField>
-        </div>
-      </section>
-      <section>
-        <div>
-          <Label htmlFor='id-1' size='xl'>
-            라벨 XL
-          </Label>
-          <Label htmlFor='id-1' size='lg'>
-            라벨 LG
-          </Label>
-          <Label htmlFor='id-1' size='md'>
-            라벨 MD
-          </Label>
-          <Label htmlFor='id-1' size='sm'>
-            라벨 SM
-          </Label>
-          <Label htmlFor='id-1' size='xs'>
-            라벨 XS
-          </Label>
-        </div>
-      </section>
-      <section>
-        <div>
-          <Checkbox name='checkbox-name-1' color='primary' size='xl' />
-          <Checkbox name='checkbox-name-1' color='primary' size='lg' />
-          <Checkbox name='checkbox-name-1' color='primary' size='md' defaultChecked />
-          <Checkbox name='checkbox-name-1' color='primary' size='sm' />
-          <Checkbox name='checkbox-name-1' color='primary' size='xs' />
-        </div>
-        <div>
-          <Checkbox name='checkbox-name-2' color='primary' size='xl' disabled />
-          <Checkbox name='checkbox-name-2' color='primary' size='lg' disabled />
-          <Checkbox name='checkbox-name-2' color='primary' size='md' defaultChecked disabled />
-          <Checkbox name='checkbox-name-2' color='primary' size='sm' disabled />
-          <Checkbox name='checkbox-name-2' color='primary' size='xs' disabled />
-        </div>
-        <div>
-          <Checkbox name='checkbox-name-3' color='secondary' size='xl' />
-          <Checkbox name='checkbox-name-3' color='secondary' size='lg' />
-          <Checkbox name='checkbox-name-3' color='secondary' size='md' defaultChecked />
-          <Checkbox name='checkbox-name-3' color='secondary' size='sm' />
-          <Checkbox name='checkbox-name-3' color='secondary' size='xs' />
-        </div>
-        <div>
-          <Checkbox name='checkbox-name-4' color='tertiary' size='xl' />
-          <Checkbox name='checkbox-name-4' color='tertiary' size='lg' />
-          <Checkbox name='checkbox-name-4' color='tertiary' size='md' defaultChecked />
-          <Checkbox name='checkbox-name-4' color='tertiary' size='sm' />
-          <Checkbox name='checkbox-name-4' color='tertiary' size='xs' />
-        </div>
-        <div>
-          <Checkbox name='checkbox-name-5' color='brand' size='xl' />
-          <Checkbox name='checkbox-name-5' color='brand' size='lg' />
-          <Checkbox name='checkbox-name-5' color='brand' size='md' defaultChecked />
-          <Checkbox name='checkbox-name-5' color='brand' size='sm' />
-          <Checkbox name='checkbox-name-5' color='brand' size='xs' />
-        </div>
-        <div>
-          <Checkbox name='checkbox-name-6' color='brand-sub' size='xl' />
-          <Checkbox name='checkbox-name-6' color='brand-sub' size='lg' />
-          <Checkbox name='checkbox-name-6' color='brand-sub' size='md' defaultChecked />
-          <Checkbox name='checkbox-name-6' color='brand-sub' size='sm' />
-          <Checkbox name='checkbox-name-6' color='brand-sub' size='xs' />
-        </div>
-        <div>
-          <Checkbox name='checkbox-name-7' color='success' size='xl' />
-          <Checkbox name='checkbox-name-7' color='success' size='lg' />
-          <Checkbox name='checkbox-name-7' color='success' size='md' defaultChecked />
-          <Checkbox name='checkbox-name-7' color='success' size='sm' />
-          <Checkbox name='checkbox-name-7' color='success' size='xs' />
-        </div>
-        <div>
-          <Checkbox name='checkbox-name-8' color='warning' size='xl' />
-          <Checkbox name='checkbox-name-8' color='warning' size='lg' />
-          <Checkbox name='checkbox-name-8' color='warning' size='md' defaultChecked />
-          <Checkbox name='checkbox-name-8' color='warning' size='sm' />
-          <Checkbox name='checkbox-name-8' color='warning' size='xs' />
-        </div>
-        <div>
-          <Checkbox name='checkbox-name-9' color='danger' size='xl' />
-          <Checkbox name='checkbox-name-9' color='danger' size='lg' />
-          <Checkbox name='checkbox-name-9' color='danger' size='md' defaultChecked />
-          <Checkbox name='checkbox-name-9' color='danger' size='sm' />
-          <Checkbox name='checkbox-name-9' color='danger' size='xs' />
-        </div>
-      </section>
-      <section>
-        <div>
-          <Radio name='radio-name-1' color='primary' size='xl' />
-          <Radio name='radio-name-1' color='primary' size='lg' />
-          <Radio name='radio-name-1' color='primary' size='md' defaultChecked />
-          <Radio name='radio-name-1' color='primary' size='sm' />
-          <Radio name='radio-name-1' color='primary' size='xs' />
-        </div>
-        <div>
-          <Radio name='radio-name-disabled' color='primary' size='xl' disabled />
-          <Radio name='radio-name-disabled' color='primary' size='lg' disabled />
-          <Radio name='radio-name-disabled' color='primary' size='md' defaultChecked disabled />
-          <Radio name='radio-name-disabled' color='primary' size='sm' disabled />
-          <Radio name='radio-name-disabled' color='primary' size='xs' disabled />
-        </div>
-        <div>
-          <Radio name='radio-name-2' color='secondary' size='xl' />
-          <Radio name='radio-name-2' color='secondary' size='lg' />
-          <Radio name='radio-name-2' color='secondary' size='md' defaultChecked />
-          <Radio name='radio-name-2' color='secondary' size='sm' />
-          <Radio name='radio-name-2' color='secondary' size='xs' />
-        </div>
-        <div>
-          <Radio name='radio-name-3' color='tertiary' size='xl' />
-          <Radio name='radio-name-3' color='tertiary' size='lg' />
-          <Radio name='radio-name-3' color='tertiary' size='md' defaultChecked />
-          <Radio name='radio-name-3' color='tertiary' size='sm' />
-          <Radio name='radio-name-3' color='tertiary' size='xs' />
-        </div>
-        <div>
-          <Radio name='radio-name-4' color='brand' size='xl' />
-          <Radio name='radio-name-4' color='brand' size='lg' />
-          <Radio name='radio-name-4' color='brand' size='md' defaultChecked />
-          <Radio name='radio-name-4' color='brand' size='sm' />
-          <Radio name='radio-name-4' color='brand' size='xs' />
-        </div>
-        <div>
-          <Radio name='radio-name-5' color='brand-sub' size='xl' />
-          <Radio name='radio-name-5' color='brand-sub' size='lg' />
-          <Radio name='radio-name-5' color='brand-sub' size='md' defaultChecked />
-          <Radio name='radio-name-5' color='brand-sub' size='sm' />
-          <Radio name='radio-name-5' color='brand-sub' size='xs' />
-        </div>
-        <div>
-          <Radio name='radio-name-6' color='success' size='xl' />
-          <Radio name='radio-name-6' color='success' size='lg' />
-          <Radio name='radio-name-6' color='success' size='md' defaultChecked />
-          <Radio name='radio-name-6' color='success' size='sm' />
-          <Radio name='radio-name-6' color='success' size='xs' />
-        </div>
-        <div>
-          <Radio name='radio-name-7' color='warning' size='xl' />
-          <Radio name='radio-name-7' color='warning' size='lg' />
-          <Radio name='radio-name-7' color='warning' size='md' defaultChecked />
-          <Radio name='radio-name-7' color='warning' size='sm' />
-          <Radio name='radio-name-7' color='warning' size='xs' />
-        </div>
-        <div>
-          <Radio name='radio-name-8' color='danger' size='xl' />
-          <Radio name='radio-name-8' color='danger' size='lg' />
-          <Radio name='radio-name-8' color='danger' size='md' defaultChecked />
-          <Radio name='radio-name-8' color='danger' size='sm' />
-          <Radio name='radio-name-8' color='danger' size='xs' />
-        </div>
       </section>
       <section>
         <div>

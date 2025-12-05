@@ -154,9 +154,10 @@ input {
 }
 
 *:focus,
-*:focus-visible {
+*:focus-visible,
+label:focus-within {
   outline: 3px dashed #003366;
-  outline-offset: 2px;
+  outline-offset: -1px;
 }
 
 /* screen reader only */

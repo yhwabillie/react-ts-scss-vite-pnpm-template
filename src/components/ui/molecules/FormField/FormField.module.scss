@@ -33,7 +33,6 @@ $formfield-sizes: (
 
 .formfield {
   display: inline-flex;
-  align-items: center;
 
   // size
   @include formfield-size();

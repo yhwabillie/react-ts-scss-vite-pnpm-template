@@ -1,0 +1,72 @@
+/* FormFieldset.module.scss */
+@use 'sass:map';
+@use '../../../../styles/mixins' as *;
+
+// legend size
+$legend-sizes: (
+  xs: (
+    font-token: var(--project-typo-legend5-600),
+    gap: rem(4px),
+  ),
+  sm: (
+    font-token: var(--project-typo-legend4-600),
+    gap: rem(8px),
+  ),
+  md: (
+    font-token: var(--project-typo-legend3-600),
+    gap: rem(12px),
+  ),
+  lg: (
+    font-token: var(--project-typo-legend2-600),
+    gap: rem(1rem (6px)),
+  ),
+  xl: (
+    font-token: var(--project-typo-legend1-600),
+    gap: rem(20px),
+  ),
+);
+
+// mixin - legend sizes
+@mixin legend-size {
+  @each $size-name, $props in $legend-sizes {
+    // ──────────────── 기본 데이터 추출 ────────────────
+    $font-token: map.get($props, font-token);
+    $gap: map.get($props, gap);
+
+    // ──────────────── PC 스타일 ────────────────
+    &:global(.size--#{$size-name}) {
+      gap: $gap;
+
+      :global(.legend) {
+        font: $font-token;
+        margin-bottom: rem(12px);
+        display: inline-flex;
+        align-items: center;
+        gap: rem(4px);
+        flex-wrap: wrap;
+
+        :global(.requried) {
+          color: red;
+        }
+      }
+    }
+  }
+}
+
+.form-fieldset {
+  width: inherit;
+
+  // Row
+  &:global(.direction--row) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  }
+
+  // Column
+  &:global(.direction--column) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include legend-size;
+}

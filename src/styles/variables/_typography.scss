@@ -687,6 +687,201 @@ $g_typography: (
     ),
   ),
   // ==========================================================================
+  // Legend (Label +2px)
+  // 접근성 기준 동일 유지
+  // ==========================================================================
+  legend1: (
+      // XL 체크박스 기반 +2px
+      ko: (
+          font-size: 20px,
+          tablet-size: 18px,
+          mobile-size: 17px,
+          font-weight: (
+            500,
+            600,
+          ),
+          line-height: 1.5,
+          font-family: ko,
+        ),
+      ja: (
+        font-size: 20px,
+        tablet-size: 18px,
+        mobile-size: 17px,
+        font-weight: (
+          500,
+          600,
+        ),
+        line-height: 1.5,
+        font-family: ja,
+      ),
+      en: (
+        font-size: 20px,
+        tablet-size: 18px,
+        mobile-size: 17px,
+        font-weight: (
+          500,
+          600,
+        ),
+        line-height: 1.5,
+        font-family: en,
+      )
+    ),
+
+  legend2: (
+    // LG 체크박스 +2px
+    ko: (
+        font-size: 18px,
+        tablet-size: 17px,
+        mobile-size: 16px,
+        font-weight: (
+          500,
+          600,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+    ja: (
+      font-size: 18px,
+      tablet-size: 17px,
+      mobile-size: 16px,
+      font-weight: (
+        500,
+        600,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 18px,
+      tablet-size: 17px,
+      mobile-size: 16px,
+      font-weight: (
+        500,
+        600,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    )
+  ),
+
+  legend3: (
+    // MD 체크박스 +2px
+    ko: (
+        font-size: 16px,
+        tablet-size: 15px,
+        mobile-size: 15px,
+        font-weight: (
+          500,
+          600,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+    ja: (
+      font-size: 16px,
+      tablet-size: 15px,
+      mobile-size: 15px,
+      font-weight: (
+        500,
+        600,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 16px,
+      tablet-size: 15px,
+      mobile-size: 15px,
+      font-weight: (
+        500,
+        600,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    )
+  ),
+
+  legend4: (
+    // SM 체크박스 +2px
+    ko: (
+        font-size: 14px,
+        tablet-size: 14px,
+        mobile-size: 14px,
+        font-weight: (
+          400,
+          500,
+          600,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+    ja: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 14px,
+      font-weight: (
+        400,
+        500,
+        600,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 14px,
+      font-weight: (
+        400,
+        500,
+        600,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    )
+  ),
+
+  legend5: (
+    // XS 체크박스 +2px
+    ko: (
+        font-size: 13px,
+        tablet-size: 13px,
+        mobile-size: 13px,
+        font-weight: (
+          400,
+          500,
+          600,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+    ja: (
+      font-size: 13px,
+      tablet-size: 13px,
+      mobile-size: 13px,
+      font-weight: (
+        400,
+        500,
+        600,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 13px,
+      tablet-size: 13px,
+      mobile-size: 13px,
+      font-weight: (
+        400,
+        500,
+        600,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    )
+  ),
+
+  // ==========================================================================
   // Label (폼 레이블, 설명 텍스트)
   // 접근성 기준: 최소 12px, 모바일 최소 14px, line-height 1.5
   // ==========================================================================
@@ -698,6 +893,7 @@ $g_typography: (
           mobile-size: 15px,
           font-weight: (
             500,
+            600,
           ),
           line-height: 1.5,
           font-family: ko,
@@ -708,6 +904,7 @@ $g_typography: (
         mobile-size: 15px,
         font-weight: (
           500,
+          600,
         ),
         line-height: 1.5,
         font-family: ja,
@@ -718,6 +915,7 @@ $g_typography: (
         mobile-size: 15px,
         font-weight: (
           500,
+          600,
         ),
         line-height: 1.5,
         font-family: en,
@@ -731,6 +929,7 @@ $g_typography: (
         mobile-size: 14px,
         font-weight: (
           500,
+          600,
         ),
         line-height: 1.5,
         font-family: ko,
@@ -741,6 +940,7 @@ $g_typography: (
       mobile-size: 14px,
       font-weight: (
         500,
+        600,
       ),
       line-height: 1.5,
       font-family: ja,
@@ -751,6 +951,7 @@ $g_typography: (
       mobile-size: 14px,
       font-weight: (
         500,
+        600,
       ),
       line-height: 1.5,
       font-family: en,
@@ -764,6 +965,7 @@ $g_typography: (
         mobile-size: 13px,
         font-weight: (
           500,
+          600,
         ),
         line-height: 1.5,
         font-family: ko,
@@ -774,6 +976,7 @@ $g_typography: (
       mobile-size: 13px,
       font-weight: (
         500,
+        600,
       ),
       line-height: 1.5,
       font-family: ja,
@@ -784,6 +987,7 @@ $g_typography: (
       mobile-size: 13px,
       font-weight: (
         500,
+        600,
       ),
       line-height: 1.5,
       font-family: en,
@@ -798,6 +1002,7 @@ $g_typography: (
         font-weight: (
           400,
           500,
+          600,
         ),
         line-height: 1.5,
         font-family: ko,
@@ -809,6 +1014,7 @@ $g_typography: (
       font-weight: (
         400,
         500,
+        600,
       ),
       line-height: 1.5,
       font-family: ja,
@@ -820,6 +1026,7 @@ $g_typography: (
       font-weight: (
         400,
         500,
+        600,
       ),
       line-height: 1.5,
       font-family: en,
@@ -834,6 +1041,7 @@ $g_typography: (
         font-weight: (
           400,
           500,
+          600,
         ),
         line-height: 1.5,
         font-family: ko,
@@ -845,6 +1053,7 @@ $g_typography: (
       font-weight: (
         400,
         500,
+        600,
       ),
       line-height: 1.5,
       font-family: ja,
@@ -856,6 +1065,7 @@ $g_typography: (
       font-weight: (
         400,
         500,
+        600,
       ),
       line-height: 1.5,
       font-family: en,
