@@ -8,6 +8,8 @@ import Radio from '@/components/ui/atoms/Radio/Radio';
 import Checkbox from '@/components/ui/atoms/Checkbox/Checkbox';
 import Label from './components/ui/atoms/Label/Label';
 import FormField from './components/ui/molecules/FormField/FormField';
+import ButtonGroup from './components/ui/molecules/ButtonGroup/ButtonGroup';
+import ActionBar from './components/ui/organisms/ActionBar/ActionBar';
 
 function App() {
   // 타입 정의
@@ -70,6 +72,65 @@ function App() {
 
   return (
     <>
+      <section style={{ width: '100%' }}>
+        <ActionBar size='xl'>
+          <ButtonGroup size='xl' align='left'>
+            <Button color='tertiary' size='xl' variant='outline' shape='rounded'>
+              Brand XL 버튼
+            </Button>
+          </ButtonGroup>
+          <ButtonGroup size='xl' align='right' role='group' ariaLabel='작업 버튼'>
+            <Button color='brand' size='xl' variant='outline' shape='rounded'>
+              Brand XL 버튼
+            </Button>
+            <Button color='brand' size='xl' variant='solid' shape='rounded'>
+              Brand XL 버튼
+            </Button>
+          </ButtonGroup>
+        </ActionBar>
+      </section>
+      <section>
+        <ButtonGroup size='xl' align='left' role='group' ariaLabel='작업 버튼'>
+          <Button color='brand' size='xl' variant='outline' shape='rounded'>
+            Brand XL 버튼
+          </Button>
+          <Button color='brand' size='xl' variant='solid' shape='rounded'>
+            Brand XL 버튼
+          </Button>
+        </ButtonGroup>
+        <ButtonGroup size='lg' align='left' role='group' ariaLabel='작업 버튼'>
+          <Button color='brand' size='lg' variant='outline' shape='rounded'>
+            Brand lg 버튼
+          </Button>
+          <Button color='brand' size='lg' variant='solid' shape='rounded'>
+            Brand lg 버튼
+          </Button>
+        </ButtonGroup>
+        <ButtonGroup size='md' align='left' role='group' ariaLabel='작업 버튼'>
+          <Button color='brand' size='md' variant='outline' shape='rounded'>
+            Brand md 버튼
+          </Button>
+          <Button color='brand' size='md' variant='solid' shape='rounded'>
+            Brand md 버튼
+          </Button>
+        </ButtonGroup>
+        <ButtonGroup size='sm' align='left' role='group' ariaLabel='작업 버튼'>
+          <Button color='brand' size='sm' variant='outline' shape='rounded'>
+            Brand sm 버튼
+          </Button>
+          <Button color='brand' size='sm' variant='solid' shape='rounded'>
+            Brand sm 버튼
+          </Button>
+        </ButtonGroup>
+        <ButtonGroup size='xs' align='left' role='group' ariaLabel='작업 버튼'>
+          <Button color='brand' size='xs' variant='outline' shape='rounded'>
+            Brand xs 버튼
+          </Button>
+          <Button color='brand' size='xs' variant='solid' shape='rounded'>
+            Brand xs 버튼
+          </Button>
+        </ButtonGroup>
+      </section>
       <section>
         <div>
           <FormField size='xl'>
