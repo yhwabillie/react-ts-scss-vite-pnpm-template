@@ -12,7 +12,7 @@ type BaseProps = {
 };
 
 type FormFieldsetProps = BaseProps &
-  Omit<React.HtmlHTMLAttributes<HTMLFieldSetElement>, keyof BaseProps>;
+  Omit<React.HTMLAttributes<HTMLFieldSetElement>, keyof BaseProps>;
 
 const FormFieldset = forwardRef<HTMLFieldSetElement, FormFieldsetProps>(
   ({ size, direction, required, className, legend, children }, ref) => {

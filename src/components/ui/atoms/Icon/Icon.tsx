@@ -3,10 +3,18 @@ import React from 'react';
 // 아이콘 svg import
 import SearchIcon from '@/assets/icons/icon-search.svg?react';
 import LogoutIcon from '@/assets/icons/icon-logout.svg?react';
+import CheckCircleIcon from '@/assets/icons/icon-check_circle.svg?react';
+import CheckInfoIcon from '@/assets/icons/icon-info_circle.svg?react';
+import XCircleIcon from '@/assets/icons/icon-x_circle.svg?react';
+import WarningTriangleIcon from '@/assets/icons/icon-warning_triangle.svg?react';
 
 const iconMap = {
   search: SearchIcon,
   logout: LogoutIcon,
+  'check-circle': CheckCircleIcon,
+  'info-circle': CheckInfoIcon,
+  'x-circle': XCircleIcon,
+  'warning-triangle': WarningTriangleIcon,
   // 다른 아이콘들도 여기에 추가
 };
 
@@ -32,6 +40,6 @@ export const Icon: React.FC<IconProps> = ({ name, color, size, ...props }) => {
   // size가 지정되었을 때만 width/height 적용
   const dimensionProps = size ? { width: ICON_SIZES[size], height: ICON_SIZES[size] } : {};
 
-  return <SvgIcon fill={color} {...dimensionProps} {...props} />;
+  return <SvgIcon fill={color} aria-hidden {...dimensionProps} {...props} />;
 };
 export default Icon;

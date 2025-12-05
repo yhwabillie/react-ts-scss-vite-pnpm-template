@@ -1,0 +1,90 @@
+/* ValidationMsg.module.scss */
+@use 'sass:map';
+@use '../../../../styles/mixins' as *;
+
+// $validation-msg variant
+$validation-msg-variant: (
+  error: (
+    color: #d32f2f,
+    icon: (
+      fill: #d32f2f,
+    ),
+  ),
+  warning: (
+    color: #ff9800,
+    icon: (
+      fill: #ff9800,
+    ),
+  ),
+  success: (
+    color: #28a745,
+    icon: (
+      fill: #28a745,
+    ),
+  ),
+  guide: (
+    color: gray,
+    icon: (
+      fill: gray,
+    ),
+  ),
+);
+
+// validation-msg size
+$validation-msg-sizes: (
+  xs: (
+    font-token: var(--project-typo-helper2-400),
+    gap: rem(8px),
+    icon-size: rem(16px),
+  ),
+  sm: (
+    font-token: var(--project-typo-helper2-400),
+    gap: rem(8px),
+    icon-size: rem(16px),
+  ),
+  md: (
+    font-token: var(--project-typo-helper1-400),
+    gap: rem(8px),
+    icon-size: rem(20px),
+  ),
+  lg: (
+    font-token: var(--project-typo-helper1-400),
+    gap: rem(10px),
+    icon-size: rem(20px),
+  ),
+  xl: (
+    font-token: var(--project-typo-helper1-400),
+    gap: rem(10px),
+    icon-size: rem(20px),
+  ),
+);
+
+.validation-msg {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  // size 적용
+  @each $size-name, $props in $validation-msg-sizes {
+    &:global(.size--#{$size-name}) {
+      font: map.get($props, font-token);
+      gap: map.get($props, gap);
+
+      :global(.icon) {
+        width: map.get($props, icon-size);
+        height: map.get($props, icon-size);
+      }
+    }
+  }
+
+  // variant 적용
+  @each $variant-name, $props in $validation-msg-variant {
+    &:global(.variant--#{$variant-name}) {
+      color: map.get($props, color);
+
+      :global(.icon) {
+        fill: map.get(map.get($props, icon), fill);
+      }
+    }
+  }
+}
