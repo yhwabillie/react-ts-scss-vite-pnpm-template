@@ -1,0 +1,39 @@
+/* ButtonGroup.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.button-group {
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  // Align
+  &:global(.align--left) {
+    justify-content: flex-start;
+  }
+  &:global(.align--right) {
+    justify-content: flex-end;
+  }
+  &:global(.align--center) {
+    justify-content: center;
+  }
+
+  // Gap sizes
+  &:global(.size--xs) {
+    gap: rem(4px);
+  }
+  &:global(.size--sm) {
+    gap: rem(8px);
+  }
+  &:global(.size--md) {
+    gap: rem(12px);
+  }
+  &:global(.size--lg) {
+    gap: rem(16px);
+  }
+  &:global(.size--xl) {
+    gap: rem(24px);
+  }
+}

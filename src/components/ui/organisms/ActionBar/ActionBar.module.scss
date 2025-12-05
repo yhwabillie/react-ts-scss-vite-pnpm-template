@@ -1,0 +1,31 @@
+/* ActionBar.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.action-bar {
+  width: inherit;
+  display: flex;
+  align-items: center;
+
+  & > :global(div:nth-child(2)) {
+    flex: 0 0 0;
+  }
+
+  // Gap sizes
+  &:global(.size--xs) {
+    gap: rem(4px);
+  }
+  &:global(.size--sm) {
+    gap: rem(8px);
+  }
+  &:global(.size--md) {
+    gap: rem(12px);
+  }
+  &:global(.size--lg) {
+    gap: rem(16px);
+  }
+  &:global(.size--xl) {
+    gap: rem(24px);
+  }
+}
