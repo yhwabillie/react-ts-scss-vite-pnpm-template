@@ -4,7 +4,6 @@ import styles from '@/components/ui/molecules/FormFieldset/FormFieldset.module.s
 
 type BaseProps = {
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  direction: 'row' | 'column';
   required?: boolean;
   className?: string;
   legend: string;
@@ -15,14 +14,11 @@ type FormFieldsetProps = BaseProps &
   Omit<React.HTMLAttributes<HTMLFieldSetElement>, keyof BaseProps>;
 
 const FormFieldset = forwardRef<HTMLFieldSetElement, FormFieldsetProps>(
-  ({ size, direction, required, className, legend, children }, ref) => {
+  ({ size, required, className, legend, children }, ref) => {
     return (
       <fieldset
         ref={ref}
-        className={clsx(
-          `${styles['form-fieldset']} ${`size--${size} ${`direction--${direction}`}`}`,
-          className,
-        )}
+        className={clsx(`${styles['form-fieldset']} ${`size--${size}`}`, className)}
       >
         <legend className='legend'>
           {legend}

@@ -4,7 +4,7 @@
 
 // $validation-msg variant
 $validation-msg-variant: (
-  error: (
+  danger: (
     color: #d32f2f,
     icon: (
       fill: #d32f2f,
@@ -61,8 +61,9 @@ $validation-msg-sizes: (
 
 .validation-msg {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+
+  // align-items: center;
+  margin-top: rem(12px);
 
   // size 적용
   @each $size-name, $props in $validation-msg-sizes {
@@ -84,6 +85,16 @@ $validation-msg-sizes: (
 
       :global(.icon) {
         fill: map.get(map.get($props, icon), fill);
+        flex: 0 0 auto;
+        margin-top: rem(2px);
+      }
+
+      :global(.text) {
+        color: map.get(map.get($props, icon), color);
+        flex: 1 1 auto;
+        white-space: normal;
+        display: inline-flex;
+        word-break: break-word;
       }
     }
   }

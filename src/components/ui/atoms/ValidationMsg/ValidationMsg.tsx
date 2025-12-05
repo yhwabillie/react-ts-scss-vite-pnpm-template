@@ -4,7 +4,9 @@ import styles from '@/components/ui/atoms/ValidationMsg/ValidationMsg.module.scs
 
 type BaseProps = {
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  variant: 'error' | 'warning' | 'success' | 'guide';
+  variant: 'danger' | 'warning' | 'success' | 'guide';
+  role: 'alert' | 'status';
+  ariaLive: 'assertive' | 'polite';
   className?: string;
   children: React.ReactNode;
 };
@@ -12,7 +14,7 @@ type BaseProps = {
 type ValidationMsgProps = BaseProps & Omit<React.HTMLAttributes<HTMLDivElement>, keyof BaseProps>;
 
 const ValidationMsg = forwardRef<HTMLDivElement, ValidationMsgProps>(
-  ({ variant, size, className, children }, ref) => {
+  ({ variant, size, role, ariaLive, className, children, ...rest }, ref) => {
     return (
       <div
         ref={ref}
@@ -20,8 +22,9 @@ const ValidationMsg = forwardRef<HTMLDivElement, ValidationMsgProps>(
           `${styles['validation-msg']} ${`variant--${variant}`} ${`size--${size}`}`,
           className,
         )}
-        role='alert'
-        aria-live='assertive'
+        role={role}
+        aria-live={ariaLive}
+        {...rest}
       >
         {children}
       </div>
