@@ -13,6 +13,7 @@ import ActionBar from './components/ui/organisms/ActionBar/ActionBar';
 import FormFieldset from './components/ui/molecules/FormFieldset/FormFieldset';
 import ValidationMsg from './components/ui/atoms/ValidationMsg/ValidationMsg';
 import ControlGroup from './components/ui/molecules/ControlGroup/ControlGroup';
+import Switch from './components/ui/molecules/Switch/Switch';
 
 function App() {
   // 타입 정의
@@ -75,6 +76,157 @@ function App() {
 
   return (
     <>
+      <section style={{ padding: '30px' }}>
+        <Switch variant='primary' size='xl' id='switch-label-xl' defaultChecked={true}>
+          <Label size='xl'>스위치 라벨</Label>
+        </Switch>
+        <Switch variant='primary' size='lg' id='switch-label-lg' defaultChecked={true}>
+          <Label size='lg'>스위치 라벨</Label>
+        </Switch>
+        <Switch variant='primary' size='md' id='switch-label-md' defaultChecked={true}>
+          <Label size='md'>스위치 라벨</Label>
+        </Switch>
+        <Switch variant='primary' size='sm' id='switch-label-sm' defaultChecked={true}>
+          <Label size='sm'>스위치 라벨</Label>
+        </Switch>
+        <Switch variant='primary' size='xs' id='switch-label-xs' defaultChecked={true}>
+          <Label size='xs'>스위치 라벨</Label>
+        </Switch>
+      </section>
+      <section>
+        <Switch
+          variant='primary'
+          size='xl'
+          id='switch-primary-xl-1'
+          defaultChecked={true}
+          disabled={true}
+        ></Switch>
+        <Switch
+          variant='primary'
+          size='lg'
+          id='switch-primary-lg-2'
+          defaultChecked={false}
+          disabled={true}
+        ></Switch>
+        <Switch variant='primary' size='md' id='switch-primary-md-3' defaultChecked={true}></Switch>
+        <Switch variant='primary' size='sm' id='switch-primary-sm-4' defaultChecked={true}></Switch>
+        <Switch variant='primary' size='xs' id='switch-primary-xs-5' defaultChecked={true}></Switch>
+        <Switch
+          variant='secondary'
+          size='xl'
+          id='switch-secondary-xl-1'
+          defaultChecked={true}
+        ></Switch>
+        <Switch
+          variant='secondary'
+          size='lg'
+          id='switch-secondary-lg-2'
+          defaultChecked={true}
+        ></Switch>
+        <Switch
+          variant='secondary'
+          size='md'
+          id='switch-secondary-md-3'
+          defaultChecked={true}
+        ></Switch>
+        <Switch
+          variant='secondary'
+          size='sm'
+          id='switch-secondary-sm-4'
+          defaultChecked={true}
+        ></Switch>
+        <Switch
+          variant='secondary'
+          size='xs'
+          id='switch-secondary-xs-5'
+          defaultChecked={true}
+        ></Switch>
+        <Switch
+          variant='tertiary'
+          size='xl'
+          id='switch-tertiary-xl-1'
+          defaultChecked={true}
+        ></Switch>
+        <Switch
+          variant='tertiary'
+          size='lg'
+          id='switch-tertiary-lg-2'
+          defaultChecked={true}
+        ></Switch>
+        <Switch
+          variant='tertiary'
+          size='md'
+          id='switch-tertiary-md-3'
+          defaultChecked={true}
+        ></Switch>
+        <Switch
+          variant='tertiary'
+          size='sm'
+          id='switch-tertiary-sm-4'
+          defaultChecked={true}
+        ></Switch>
+        <Switch
+          variant='tertiary'
+          size='xs'
+          id='switch-tertiary-xs-5'
+          defaultChecked={true}
+        ></Switch>
+
+        <Switch variant='brand' size='xl' id='switch-brand-xl-1' defaultChecked={true}></Switch>
+        <Switch variant='brand' size='lg' id='switch-brand-lg-2' defaultChecked={true}></Switch>
+        <Switch variant='brand' size='md' id='switch-brand-md-3' defaultChecked={true}></Switch>
+        <Switch variant='brand' size='sm' id='switch-brand-sm-4' defaultChecked={true}></Switch>
+        <Switch variant='brand' size='xs' id='switch-brand-xs-5' defaultChecked={true}></Switch>
+
+        <Switch
+          variant='brand-sub'
+          size='xl'
+          id='switch-brand-sub-xl-1'
+          defaultChecked={true}
+        ></Switch>
+        <Switch
+          variant='brand-sub'
+          size='lg'
+          id='switch-brand-sub-lg-2'
+          defaultChecked={true}
+        ></Switch>
+        <Switch
+          variant='brand-sub'
+          size='md'
+          id='switch-brand-sub-md-3'
+          defaultChecked={true}
+        ></Switch>
+        <Switch
+          variant='brand-sub'
+          size='sm'
+          id='switch-brand-sub-sm-4'
+          defaultChecked={true}
+        ></Switch>
+        <Switch
+          variant='brand-sub'
+          size='xs'
+          id='switch-brand-sub-xs-5'
+          defaultChecked={true}
+        ></Switch>
+
+        <Switch variant='success' size='xl' id='switch-success-xl-1' defaultChecked={true}></Switch>
+        <Switch variant='success' size='lg' id='switch-success-lg-2' defaultChecked={true}></Switch>
+        <Switch variant='success' size='md' id='switch-success-md-3' defaultChecked={true}></Switch>
+        <Switch variant='success' size='sm' id='switch-success-sm-4' defaultChecked={true}></Switch>
+        <Switch variant='success' size='xs' id='switch-success-xs-5' defaultChecked={true}></Switch>
+
+        <Switch variant='warning' size='xl' id='switch-warning-xl-1' defaultChecked={true}></Switch>
+        <Switch variant='warning' size='lg' id='switch-warning-lg-2' defaultChecked={true}></Switch>
+        <Switch variant='warning' size='md' id='switch-warning-md-3' defaultChecked={true}></Switch>
+        <Switch variant='warning' size='sm' id='switch-warning-sm-4' defaultChecked={true}></Switch>
+        <Switch variant='warning' size='xs' id='switch-warning-xs-5' defaultChecked={true}></Switch>
+
+        <Switch variant='danger' size='xl' id='switch-danger-xl-1' defaultChecked={true}></Switch>
+        <Switch variant='danger' size='lg' id='switch-danger-lg-2' defaultChecked={true}></Switch>
+        <Switch variant='danger' size='md' id='switch-danger-md-3' defaultChecked={true}></Switch>
+        <Switch variant='danger' size='sm' id='switch-danger-sm-4' defaultChecked={true}></Switch>
+        <Switch variant='danger' size='xs' id='switch-danger-xs-5' defaultChecked={true}></Switch>
+      </section>
       <section>
         <FormFieldset size='xl' legend='체크박스 옵션 선택' required={true}>
           {/* ControlGroup */}

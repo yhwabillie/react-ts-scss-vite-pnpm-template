@@ -7,6 +7,8 @@ import CheckCircleIcon from '@/assets/icons/icon-check_circle.svg?react';
 import CheckInfoIcon from '@/assets/icons/icon-info_circle.svg?react';
 import XCircleIcon from '@/assets/icons/icon-x_circle.svg?react';
 import WarningTriangleIcon from '@/assets/icons/icon-warning_triangle.svg?react';
+import CheckIcon from '@/assets/icons/icon-check.svg?react';
+import XIcon from '@/assets/icons/icon-x.svg?react';
 
 const iconMap = {
   search: SearchIcon,
@@ -15,6 +17,8 @@ const iconMap = {
   'info-circle': CheckInfoIcon,
   'x-circle': XCircleIcon,
   'warning-triangle': WarningTriangleIcon,
+  check: CheckIcon,
+  x: XIcon,
   // 다른 아이콘들도 여기에 추가
 };
 
@@ -24,6 +28,8 @@ interface IconProps extends React.HTMLAttributes<SVGSVGElement> {
   name: IconName;
   size?: 'sm' | 'md' | 'lg';
   color?: string;
+  strokeLinecap?: 'round' | 'butt' | 'square';
+  strokeLinejoin?: 'round' | 'bevel' | 'miter';
 }
 
 // size variant 매핑
@@ -33,13 +39,29 @@ const ICON_SIZES: Record<'sm' | 'md' | 'lg', number> = {
   lg: 32,
 };
 
-export const Icon: React.FC<IconProps> = ({ name, color, size, ...props }) => {
+export const Icon: React.FC<IconProps> = ({
+  name,
+  color,
+  size,
+  strokeLinecap,
+  strokeLinejoin,
+  ...props
+}) => {
   const SvgIcon = iconMap[name]; // name에 맞는 아이콘 가져오기
   if (!SvgIcon) return null;
 
   // size가 지정되었을 때만 width/height 적용
   const dimensionProps = size ? { width: ICON_SIZES[size], height: ICON_SIZES[size] } : {};
 
-  return <SvgIcon fill={color} aria-hidden {...dimensionProps} {...props} />;
+  return (
+    <SvgIcon
+      fill={color}
+      strokeLinecap={strokeLinecap}
+      strokeLinejoin={strokeLinejoin}
+      aria-hidden
+      {...dimensionProps}
+      {...props}
+    />
+  );
 };
 export default Icon;
