@@ -9,6 +9,8 @@ import XCircleIcon from '@/assets/icons/icon-x_circle.svg?react';
 import WarningTriangleIcon from '@/assets/icons/icon-warning_triangle.svg?react';
 import CheckIcon from '@/assets/icons/icon-check.svg?react';
 import XIcon from '@/assets/icons/icon-x.svg?react';
+import EyeOffIcon from '@/assets/icons/icon-eye-off.svg?react';
+import EyeIcon from '@/assets/icons/icon-eye.svg?react';
 
 const iconMap = {
   search: SearchIcon,
@@ -19,6 +21,8 @@ const iconMap = {
   'warning-triangle': WarningTriangleIcon,
   check: CheckIcon,
   x: XIcon,
+  eye: EyeIcon,
+  'eye-off': EyeOffIcon,
   // 다른 아이콘들도 여기에 추가
 };
 

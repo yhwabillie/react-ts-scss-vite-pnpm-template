@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '@/components/ui/molecules/IconButton/IconButton.module.scss';
+import clsx from 'clsx';
 
 type BaseProps = {
   variant: 'solid' | 'outline' | 'ghost' | 'soft' | 'link';
@@ -15,21 +16,36 @@ type BaseProps = {
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   shape: 'rounded' | 'square' | 'pill';
   icon: React.ReactNode;
+  className?: string;
+  as?: React.ElementType;
 };
 
-/** <button> 전용 Props */
 type ButtonProps = BaseProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-const IconButton: React.FC<ButtonProps> = ({ color, size, variant, shape, icon, ...props }) => {
-  const buttonProps = props as ButtonProps;
-
+const IconButton: React.FC<ButtonProps> = ({
+  as: Component = 'button',
+  variant,
+  color,
+  size,
+  shape,
+  icon,
+  className,
+  ...props
+}) => {
   return (
-    <button
-      className={`${styles['btn']} ${`variant--${variant}`} ${`color--${color}`} ${`size--${size}`} ${`shape--${shape}`}`}
-      {...buttonProps}
+    <Component
+      className={clsx(
+        styles['btn'],
+        `variant--${variant}`,
+        `color--${color}`,
+        `size--${size}`,
+        `shape--${shape}`,
+        className,
+      )}
+      {...props}
     >
-      {icon && icon}
-    </button>
+      {icon}
+    </Component>
   );
 };
 

@@ -153,12 +153,12 @@ input {
   box-sizing: border-box;
 }
 
-*:focus,
-*:focus-visible,
-label:focus-within {
-  outline: 3px dashed #003366;
-  outline-offset: -1px;
-}
+// *:focus,
+// *:focus-visible,
+// label:focus-within {
+//   outline: 3px dashed #00cbde;
+//   outline-offset: -1px;
+// }
 
 /* screen reader only */
 .sr-only {

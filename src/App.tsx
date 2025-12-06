@@ -14,6 +14,7 @@ import FormFieldset from './components/ui/molecules/FormFieldset/FormFieldset';
 import ValidationMsg from './components/ui/atoms/ValidationMsg/ValidationMsg';
 import ControlGroup from './components/ui/molecules/ControlGroup/ControlGroup';
 import Switch from './components/ui/molecules/Switch/Switch';
+import Input from './components/ui/atoms/Input/Input';
 
 function App() {
   // 타입 정의
@@ -76,7 +77,370 @@ function App() {
 
   return (
     <>
-      <section style={{ padding: '30px' }}>
+      <section style={{ margin: '30px' }}>
+        <Input
+          as='div'
+          id='input-icon-1'
+          type='text'
+          shape='rounded'
+          variant='outline'
+          color='tertiary'
+          size='xl'
+          name='input-name'
+          placeholder='값을 입력하세요.'
+          defaultValue='비활성화'
+          disabled
+          adornedEnd={
+            <IconButton
+              color='tertiary'
+              size='xl'
+              variant='ghost'
+              shape='square'
+              className='adorned-end'
+              icon={<Icon name='eye' />}
+              disabled
+            />
+          }
+        />
+        <Input
+          as='div'
+          id='input-icon-2'
+          type='text'
+          shape='rounded'
+          variant='outline'
+          color='tertiary'
+          size='lg'
+          name='input-name'
+          placeholder='값을 입력하세요.'
+          defaultValue='읽기만 가능'
+          readOnly
+          adornedEnd={
+            <IconButton
+              color='tertiary'
+              size='lg'
+              variant='ghost'
+              shape='square'
+              className='adorned-end'
+              icon={<Icon name='eye' />}
+            />
+          }
+        />
+        <Input
+          as='div'
+          id='input-icon-3'
+          type='text'
+          shape='rounded'
+          variant='outline'
+          color='tertiary'
+          size='md'
+          name='input-name'
+          defaultValue='defaultValue'
+          placeholder='값을 입력하세요.'
+          adornedEnd={
+            <IconButton
+              as='div'
+              color='tertiary'
+              size='md'
+              variant='ghost'
+              shape='square'
+              className='adorned-end'
+              icon={<Icon name='eye' />}
+            />
+          }
+        />
+        <Input
+          as='div'
+          id='input-icon-4'
+          type='text'
+          shape='rounded'
+          variant='outline'
+          color='tertiary'
+          size='sm'
+          name='input-name'
+          defaultValue='defaultValue'
+          placeholder='값을 입력하세요.'
+          adornedEnd={
+            <IconButton
+              color='tertiary'
+              size='sm'
+              variant='ghost'
+              shape='square'
+              className='adorned-end'
+              icon={<Icon name='eye' />}
+            />
+          }
+        />
+        <Input
+          as='div'
+          id='input-icon-5'
+          type='text'
+          shape='rounded'
+          variant='outline'
+          color='tertiary'
+          size='xs'
+          name='input-name'
+          defaultValue='defaultValue'
+          placeholder='값을 입력하세요.'
+          adornedEnd={
+            <IconButton
+              color='tertiary'
+              size='xs'
+              variant='ghost'
+              shape='square'
+              className='adorned-end'
+              icon={<Icon name='eye' />}
+            />
+          }
+        />
+      </section>
+
+      <section style={{ margin: '30px' }}>
+        <Input
+          as='div'
+          id='input-outline-1'
+          type='text'
+          shape='rounded'
+          variant='outline'
+          color='tertiary'
+          size='xl'
+          name='input-name'
+          placeholder='값을 입력하세요.'
+          defaultValue='비활성화'
+          disabled
+        />
+        <Input
+          as='div'
+          id='input-outline-2'
+          type='text'
+          shape='rounded'
+          variant='outline'
+          color='tertiary'
+          size='lg'
+          name='input-name'
+          placeholder='값을 입력하세요.'
+          defaultValue='읽기만 가능'
+          readOnly
+        />
+        <Input
+          as='div'
+          id='input-outline-3'
+          type='text'
+          shape='rounded'
+          variant='outline'
+          color='tertiary'
+          size='md'
+          name='input-name'
+          defaultValue='defaultValue'
+          placeholder='값을 입력하세요.'
+        />
+        <Input
+          as='div'
+          id='input-outline-4'
+          type='text'
+          shape='rounded'
+          variant='outline'
+          color='tertiary'
+          size='sm'
+          name='input-name'
+          defaultValue='defaultValue'
+          placeholder='값을 입력하세요.'
+        />
+        <Input
+          as='div'
+          id='input-outline-5'
+          type='text'
+          shape='rounded'
+          variant='outline'
+          color='tertiary'
+          size='xs'
+          name='input-name'
+          defaultValue='defaultValue'
+          placeholder='값을 입력하세요.'
+        />
+      </section>
+
+      <section style={{ margin: '30px' }}>
+        <Input
+          as='div'
+          id='input-solid-1'
+          type='text'
+          shape='rounded'
+          variant='solid'
+          color='primary'
+          size='xl'
+          name='input-name'
+          placeholder='값을 입력하세요.'
+          defaultValue='비활성화'
+          disabled
+          adornedEnd={
+            <IconButton
+              color='tertiary'
+              size='xl'
+              variant='ghost'
+              shape='square'
+              className='adorned-end'
+              icon={<Icon name='eye' />}
+              disabled
+            />
+          }
+        />
+        <Input
+          as='div'
+          id='input-solid-2'
+          type='text'
+          shape='rounded'
+          variant='solid'
+          color='primary'
+          size='lg'
+          name='input-name'
+          placeholder='값을 입력하세요.'
+          defaultValue='읽기만 가능'
+          readOnly
+          adornedEnd={
+            <IconButton
+              color='tertiary'
+              size='lg'
+              variant='ghost'
+              shape='square'
+              className='adorned-end'
+              icon={<Icon name='eye' />}
+            />
+          }
+        />
+        <Input
+          as='div'
+          id='input-solid-3'
+          type='text'
+          shape='rounded'
+          variant='solid'
+          color='primary'
+          size='md'
+          name='input-name'
+          defaultValue='defaultValue'
+          placeholder='값을 입력하세요.'
+          adornedEnd={
+            <IconButton
+              as='div'
+              color='tertiary'
+              size='md'
+              variant='ghost'
+              shape='square'
+              className='adorned-end'
+              icon={<Icon name='eye' />}
+            />
+          }
+        />
+        <Input
+          as='div'
+          id='input-solid-4'
+          type='text'
+          shape='rounded'
+          variant='solid'
+          color='primary'
+          size='sm'
+          name='input-name'
+          defaultValue='defaultValue'
+          placeholder='값을 입력하세요.'
+          adornedEnd={
+            <IconButton
+              color='tertiary'
+              size='sm'
+              variant='ghost'
+              shape='square'
+              className='adorned-end'
+              icon={<Icon name='eye' />}
+            />
+          }
+        />
+        <Input
+          as='div'
+          id='input-solid-5'
+          type='text'
+          shape='rounded'
+          variant='solid'
+          color='primary'
+          size='xs'
+          name='input-name'
+          defaultValue='defaultValue'
+          placeholder='값을 입력하세요.'
+          adornedEnd={
+            <IconButton
+              color='tertiary'
+              size='xs'
+              variant='ghost'
+              shape='square'
+              className='adorned-end'
+              icon={<Icon name='eye' />}
+            />
+          }
+        />
+      </section>
+
+      <section style={{ margin: '30px' }}>
+        <Input
+          as='div'
+          id='input-1'
+          type='text'
+          shape='rounded'
+          variant='solid'
+          color='primary'
+          size='xl'
+          name='input-name'
+          placeholder='값을 입력하세요.'
+          defaultValue='비활성화'
+          disabled
+        />
+        <Input
+          as='div'
+          id='input-2'
+          type='text'
+          shape='rounded'
+          variant='solid'
+          color='primary'
+          size='lg'
+          name='input-name'
+          placeholder='값을 입력하세요.'
+          defaultValue='읽기만 가능'
+          readOnly
+        />
+        <Input
+          as='div'
+          id='input-3'
+          type='text'
+          shape='rounded'
+          variant='solid'
+          color='primary'
+          size='md'
+          name='input-name'
+          defaultValue='defaultValue'
+          placeholder='값을 입력하세요.'
+        />
+        <Input
+          as='div'
+          id='input-4'
+          type='text'
+          shape='rounded'
+          variant='solid'
+          color='primary'
+          size='sm'
+          name='input-name'
+          defaultValue='defaultValue'
+          placeholder='값을 입력하세요.'
+        />
+        <Input
+          as='div'
+          id='input-5'
+          type='text'
+          shape='rounded'
+          variant='solid'
+          color='primary'
+          size='xs'
+          name='input-name'
+          defaultValue='defaultValue'
+          placeholder='값을 입력하세요.'
+        />
+      </section>
+      <section style={{ margin: '30px' }}>
         <Switch variant='primary' size='xl' id='switch-label-xl' defaultChecked={true}>
           <Label size='xl'>스위치 라벨</Label>
         </Switch>
