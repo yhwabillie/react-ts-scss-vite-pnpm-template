@@ -1,0 +1,219 @@
+/* Switch.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+// switch color variant
+$switch-variants: (
+  primary: (
+    track-on-bg: #2563eb,
+    handle-on-bg: #ffffff,
+    handle-on-border: #2563eb,
+    icon-on-color: #2563eb,
+  ),
+  secondary: (
+    track-on-bg: #69b2ff,
+    handle-on-bg: #ffffff,
+    handle-on-border: #69b2ff,
+    icon-on-color: #69b2ff,
+  ),
+  tertiary: (
+    track-on-bg: #111827,
+    handle-on-bg: #ffffff,
+    handle-on-border: #111827,
+    icon-on-color: #111827,
+  ),
+  brand: (
+    track-on-bg: #ff6f61,
+    handle-on-bg: #ffffff,
+    handle-on-border: #ff6f61,
+    icon-on-color: #ff6f61,
+  ),
+  brand-sub: (
+    track-on-bg: #6a1b9a,
+    handle-on-bg: #ffffff,
+    handle-on-border: #6a1b9a,
+    icon-on-color: #6a1b9a,
+  ),
+  success: (
+    track-on-bg: #10b981,
+    handle-on-bg: #ffffff,
+    handle-on-border: #10b981,
+    icon-on-color: #10b981,
+  ),
+  warning: (
+    track-on-bg: #f59e0b,
+    handle-on-bg: #ffffff,
+    handle-on-border: #f59e0b,
+    icon-on-color: #f59e0b,
+  ),
+  danger: (
+    track-on-bg: #ef4444,
+    handle-on-bg: #ffffff,
+    handle-on-border: #ef4444,
+    icon-on-color: #ef4444,
+  ),
+);
+
+// switch size map
+$switch-sizes: (
+  xs: (
+    gap: rem(12px),
+    track-width: rem(28px),
+    track-height: rem(16px),
+    track-radius: rem(var(--project-border-radius-8)),
+    handle-size: rem(16px),
+    handle-radius: rem(var(--project-border-radius-8)),
+    icon-size: rem(8px),
+  ),
+  sm: (
+    gap: rem(14px),
+    track-width: rem(32px),
+    track-height: rem(20px),
+    track-radius: rem(var(--project-border-radius-10)),
+    handle-size: rem(20px),
+    handle-radius: rem(var(--project-border-radius-10)),
+    icon-size: rem(10px),
+  ),
+  md: (
+    gap: rem(16px),
+    track-width: rem(40px),
+    track-height: rem(24px),
+    track-radius: rem(var(--project-border-radius-12)),
+    handle-size: rem(24px),
+    handle-radius: rem(var(--project-border-radius-12)),
+    icon-size: rem(12px),
+  ),
+  lg: (
+    gap: rem(18px),
+    track-width: rem(48px),
+    track-height: rem(28px),
+    track-radius: rem(var(--project-border-radius-14)),
+    handle-size: rem(28px),
+    handle-radius: rem(var(--project-border-radius-14)),
+    icon-size: rem(14px),
+  ),
+  xl: (
+    gap: rem(20px),
+    track-width: rem(56px),
+    track-height: rem(32px),
+    track-radius: rem(var(--project-border-radius-16)),
+    handle-size: rem(32px),
+    handle-radius: rem(var(--project-border-radius-16)),
+    icon-size: rem(16px),
+  ),
+);
+
+.switch {
+  display: inline-flex;
+  cursor: pointer;
+
+  @each $variant-name, $props in $switch-variants {
+    &:global(.variant--#{$variant-name}) {
+      :global(input[type='checkbox']:checked ~ .label) {
+        :global(.track) {
+          background-color: map.get($props, track-on-bg);
+
+          :global(.handle) {
+            border-color: map.get($props, handle-on-border);
+            color: map.get($props, icon-on-color);
+            background-color: map.get($props, handle-on-bg);
+          }
+        }
+      }
+
+      :global(input[type='checkbox']:disabled ~ .label) {
+        cursor: not-allowed;
+
+        :global(.track) {
+          background-color: #cdd1d5;
+
+          :global(.handle) {
+            border-color: #cdd1d5;
+            color: #cdd1d5;
+            background-color: #8a949e;
+          }
+        }
+      }
+    }
+  }
+
+  @each $size-name, $props in $switch-sizes {
+    &:global(.size--#{$size-name}) {
+      :global(input[type='checkbox']:checked ~ .label) {
+        :global(.track) {
+          :global(.handle) {
+            left: calc(100% - map.get($props, handle-size));
+          }
+        }
+      }
+
+      :global(.label) {
+        :global(.track) {
+          width: map.get($props, track-width);
+          height: map.get($props, track-height);
+          border-radius: map.get($props, track-radius);
+
+          :global(.handle) {
+            width: map.get($props, handle-size);
+            height: map.get($props, handle-size);
+            border-radius: map.get($props, handle-radius);
+
+            :global(.icon) {
+              width: map.get($props, icon-size);
+              height: map.get($props, icon-size);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  :global(input[type='checkbox']) {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+
+  :global(.label) {
+    display: inline-flex;
+    align-items: center;
+    gap: rem(8px);
+
+    :global(.track) {
+      position: relative;
+      background-color: #6d7882;
+
+      :global(.handle) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: rem(2px) solid;
+        border-radius: var(--project-border-radius-max);
+        border-color: #6d7882;
+        background-color: #ffffff;
+        color: #6d7882;
+
+        transition:
+          left 0.25s ease,
+          right 0.25s ease,
+          border-color 0.25s ease,
+          color 0.25s ease,
+          background-color 0.25s ease;
+
+        :global(.icon) {
+          fill: none;
+        }
+      }
+    }
+  }
+}
