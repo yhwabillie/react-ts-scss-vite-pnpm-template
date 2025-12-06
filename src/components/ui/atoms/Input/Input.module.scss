@@ -1,0 +1,279 @@
+/* Input.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:list';
+@use 'sass:string';
+@use '../../../../styles/mixins' as *;
+
+$input-colors: (
+  primary: (
+    solid: (
+      bg: #f5f6f7,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #0052cc,
+    ),
+  ),
+  secondary: (
+    solid: (
+      bg: #f5f6f7,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #69b2ff,
+    ),
+  ),
+  tertiary: (
+    solid: (
+      bg: #f5f6f7,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #d1d5db,
+    ),
+  ),
+  brand: (
+    solid: (
+      bg: #f5f6f7,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #ff6f61,
+    ),
+  ),
+  brand-sub: (
+    solid: (
+      bg: #f5f6f7,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #6a1b9a,
+    ),
+  ),
+  success: (
+    solid: (
+      bg: #f5f6f7,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #28a745,
+    ),
+  ),
+  warning: (
+    solid: (
+      bg: #f5f6f7,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #ff9800,
+    ),
+  ),
+  danger: (
+    solid: (
+      bg: #f5f6f7,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #d32f2f,
+    ),
+  ),
+);
+
+$input-sizes: (
+  xs: (
+    height: rem(32px),
+    padding: 0 rem(8px),
+    font-token: var(--project-typo-input3-500),
+    radius: rem(var(--project-border-radius-4)),
+    adorned-start: (
+      padding: 0 rem(8px) 0 rem(32px),
+      radius: 0 rem(4px) rem(4px) 0,
+    ),
+    adorned-end: (
+      padding: 0 rem(32px) 0 rem(8px),
+      radius: rem(4px) 0 0 rem(4px),
+    ),
+  ),
+  sm: (
+    height: rem(36px),
+    padding: 0 rem(10px),
+    font-token: var(--project-typo-input2-500),
+    radius: rem(var(--project-border-radius-6)),
+    adorned-start: (
+      padding: 0 rem(10px) 0 rem(36px),
+      radius: 0 rem(6px) rem(6px) 0,
+    ),
+    adorned-end: (
+      padding: 0 rem(36px) 0 rem(10px),
+      radius: rem(6px) 0 0 rem(6px),
+    ),
+  ),
+  md: (
+    height: rem(40px),
+    padding: 0 rem(12px),
+    font-token: var(--project-typo-input2-500),
+    radius: rem(var(--project-border-radius-6)),
+    adorned-start: (
+      padding: 0 rem(12px) 0 rem(40px),
+      radius: 0 rem(6px) rem(6px) 0,
+    ),
+    adorned-end: (
+      padding: 0 rem(40px) 0 rem(12px),
+      radius: rem(6px) 0 0 rem(6px),
+    ),
+  ),
+  lg: (
+    height: rem(44px),
+    padding: 0 rem(14px),
+    font-token: var(--project-typo-input1-500),
+    radius: rem(var(--project-border-radius-8)),
+    adorned-start: (
+      padding: 0 rem(14px) 0 rem(44px),
+      radius: 0 rem(8px) rem(8px) 0,
+    ),
+    adorned-end: (
+      padding: 0 rem(44px) 0 rem(14px),
+      radius: rem(8px) 0 0 rem(8px),
+    ),
+  ),
+  xl: (
+    height: rem(48px),
+    padding: 0 rem(16px),
+    font-token: var(--project-typo-input1-500),
+    radius: rem(var(--project-border-radius-8)),
+    adorned-start: (
+      padding: 0 rem(16px) 0 rem(48px),
+      radius: 0 rem(8px) rem(8px) 0,
+    ),
+    adorned-end: (
+      padding: 0 rem(48px) 0 rem(16px),
+      radius: rem(8px) 0 0 rem(8px),
+    ),
+  ),
+);
+
+// mixin - input variant [color + variant]
+@mixin input-variant($variant) {
+  &:global(.variant--#{$variant}) {
+    @each $name, $props in $input-colors {
+      $variant-props: map.get($props, $variant);
+
+      @if $variant-props != null {
+        &:global(.color--#{$name}) {
+          // variant
+
+          @if $variant == 'solid' {
+            &:global(.variant--solid) {
+              background-color: map.get($variant-props, bg);
+            }
+          } @else if $variant == 'outline' {
+            &:global(.variant--outline) {
+              background-color: map.get($variant-props, bg);
+              border: rem(1px) solid map.get($variant-props, border);
+
+              &:global(:has(input:disabled)) {
+                border: rem(1px) solid #d9d9d9;
+              }
+
+              &:global(:has(input:read-only)) {
+                border: rem(1px) solid #c0c4cc;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.input {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: rem(240px);
+  position: relative;
+
+  // variant
+  @include input-variant(solid);
+  @include input-variant(outline);
+
+  // size, shape
+  @each $size-name, $props in $input-sizes {
+    $adorned-start-map: map.get($props, adorned-start);
+    $adorned-end-map: map.get($props, adorned-end);
+
+    &:global(.size--#{$size-name}) {
+      height: map.get($props, height);
+
+      &:global(.shape--squre) {
+        border-radius: 0;
+      }
+
+      &:global(.shape--rounded) {
+        border-radius: map.get($props, radius);
+      }
+
+      &:global(.shape--pill) {
+        border-radius: var(--project-border-radius-max);
+      }
+
+      :global(input) {
+        padding: map.get($props, padding);
+        font: map.get($props, font-token);
+      }
+
+      // adorned start, end
+      &:global(:has(.adorned-start)) {
+        :global(input) {
+          padding: map.get($adorned-start-map, padding);
+        }
+      }
+
+      &:global(:has(.adorned-end)) {
+        :global(input) {
+          padding: map.get($adorned-end-map, padding);
+        }
+      }
+
+      :global(.adorned-start) {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        border-radius: map.get($adorned-start-map, radius);
+      }
+
+      :global(.adorned-end) {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        border-radius: map.get($adorned-start-map, radius);
+      }
+    }
+  }
+
+  :global(input) {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: inherit;
+    color: #2d2d2d;
+    border-radius: inherit;
+
+    &:global(::placeholder) {
+      color: #6f6f6f;
+    }
+
+    &:global(:disabled) {
+      background-color: #e5e7eb;
+      cursor: not-allowed;
+      color: #9ca3af;
+    }
+
+    &:global(:read-only) {
+      background-color: #f0f1f3;
+    }
+  }
+}

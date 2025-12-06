@@ -65,7 +65,7 @@ $btn-colors: (
         label: #0052cc,
       ),
       disabled: (
-        bg: #e0e0e0,
+        bg: transparent,
         label: #9e9e9e,
       ),
     ),
@@ -132,7 +132,7 @@ $btn-colors: (
         label: #003366,
       ),
       disabled: (
-        bg: #e0e0e0,
+        bg: transparent,
         label: #9e9e9e,
       ),
     ),
@@ -199,7 +199,7 @@ $btn-colors: (
         label: #333333,
       ),
       disabled: (
-        bg: #e0e0e0,
+        bg: transparent,
         label: #9e9e9e,
       ),
     ),
@@ -266,7 +266,7 @@ $btn-colors: (
         label: #ff6f61,
       ),
       disabled: (
-        bg: #e0e0e0,
+        bg: transparent,
         label: #9e9e9e,
       ),
     ),
@@ -333,7 +333,7 @@ $btn-colors: (
         label: #6a1b9a,
       ),
       disabled: (
-        bg: #e0e0e0,
+        bg: transparent,
         label: #9e9e9e,
       ),
     ),
@@ -400,7 +400,7 @@ $btn-colors: (
         label: #28a745,
       ),
       disabled: (
-        bg: #e0e0e0,
+        bg: transparent,
         label: #9e9e9e,
       ),
     ),
@@ -467,7 +467,7 @@ $btn-colors: (
         label: #ff9800,
       ),
       disabled: (
-        bg: #e0e0e0,
+        bg: transparent,
         label: #9e9e9e,
       ),
     ),
@@ -533,7 +533,7 @@ $btn-colors: (
         label: #d32f2f,
       ),
       disabled: (
-        bg: #e0e0e0,
+        bg: transparent,
         label: #9e9e9e,
       ),
     ),
@@ -544,9 +544,9 @@ $btn-colors: (
 $btn-sizes: (
   xs: (
     btn-size: (
-      pc: rem(28px),
-      tablet: rem(44px),
-      mobile: rem(44px),
+      pc: rem(32px),
+      tablet: rem(32px),
+      mobile: rem(32px),
     ),
     radius: (
       pc: rem(4px),
@@ -562,9 +562,9 @@ $btn-sizes: (
 
   sm: (
     btn-size: (
-      pc: rem(32px),
-      tablet: rem(44px),
-      mobile: rem(44px),
+      pc: rem(36px),
+      tablet: rem(36px),
+      mobile: rem(36px),
     ),
     radius: (
       pc: rem(5px),
@@ -581,8 +581,8 @@ $btn-sizes: (
   md: (
     btn-size: (
       pc: rem(40px),
-      tablet: rem(44px),
-      mobile: rem(48px),
+      tablet: rem(40px),
+      mobile: rem(40px),
     ),
     radius: (
       pc: rem(6px),
@@ -598,9 +598,9 @@ $btn-sizes: (
 
   lg: (
     btn-size: (
-      pc: rem(48px),
-      tablet: rem(48px),
-      mobile: rem(52px),
+      pc: rem(44px),
+      tablet: rem(44px),
+      mobile: rem(44px),
     ),
     radius: (
       pc: rem(7px),
@@ -616,9 +616,9 @@ $btn-sizes: (
 
   xl: (
     btn-size: (
-      pc: rem(56px),
-      tablet: rem(56px),
-      mobile: rem(56px),
+      pc: rem(48px),
+      tablet: rem(48px),
+      mobile: rem(48px),
     ),
     radius: (
       pc: rem(8px),
@@ -658,14 +658,24 @@ $btn-sizes: (
         }
 
         // hover
-        &:hover:not([aria-disabled='true']):not(:disabled) {
+        @at-root button#{&}:hover:not([aria-disabled='true']):not(:disabled) {
+          $hover: map.get($variant-props, hover);
+          background-color: map.get($hover, bg);
+          color: map.get($hover, label);
+        }
+        @at-root a#{&}:hover:not([aria-disabled='true']):not(:disabled) {
           $hover: map.get($variant-props, hover);
           background-color: map.get($hover, bg);
           color: map.get($hover, label);
         }
 
         // active
-        &:active:not([aria-disabled='true']):not(:disabled) {
+        @at-root button#{&}:active:not([aria-disabled='true']):not(:disabled) {
+          $active: map.get($variant-props, active);
+          background-color: map.get($active, bg);
+          color: map.get($active, label);
+        }
+        @at-root a#{&}:active:not([aria-disabled='true']):not(:disabled) {
           $active: map.get($variant-props, active);
           background-color: map.get($active, bg);
           color: map.get($active, label);
@@ -775,7 +785,10 @@ $btn-sizes: (
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease;
-  cursor: pointer;
+
+  @at-root button#{&} {
+    cursor: pointer;
+  }
 
   .btn-label {
     min-width: max-content;
