@@ -15,6 +15,7 @@ import ValidationMsg from './components/ui/atoms/ValidationMsg/ValidationMsg';
 import ControlGroup from './components/ui/molecules/ControlGroup/ControlGroup';
 import Switch from './components/ui/molecules/Switch/Switch';
 import Input from './components/ui/atoms/Input/Input';
+import Textarea from './components/ui/atoms/Textarea/Textarea';
 
 function App() {
   // 타입 정의
@@ -77,6 +78,73 @@ function App() {
 
   return (
     <>
+      <section style={{ margin: '30px' }}>
+        <Textarea
+          variant='solid'
+          color='primary'
+          id='textarea-r-1'
+          rows={6}
+          placeholder='입력하세요'
+        />
+        <Textarea
+          variant='outline'
+          color='primary'
+          id='textarea-r-2'
+          rows={6}
+          placeholder='입력하세요'
+        />
+        <Textarea
+          variant='soft'
+          color='primary'
+          id='textarea-r-3'
+          rows={6}
+          placeholder='입력하세요'
+        />
+        <Textarea
+          variant='ghost'
+          color='primary'
+          id='textarea-r-4'
+          rows={6}
+          placeholder='입력하세요'
+        />
+
+        <Textarea
+          variant='solid'
+          color='primary'
+          id='textarea-1'
+          rows={6}
+          placeholder='입력하세요'
+          defaultValue='비활성화 textarea 텍스트'
+          disabled
+        />
+        <Textarea
+          variant='outline'
+          color='primary'
+          id='textarea-2'
+          rows={6}
+          placeholder='입력하세요'
+          defaultValue='비활성화 textarea 텍스트'
+          disabled
+        />
+        <Textarea
+          variant='soft'
+          color='primary'
+          id='textarea-3'
+          rows={6}
+          placeholder='입력하세요'
+          defaultValue='비활성화 textarea 텍스트'
+          disabled
+        />
+        <Textarea
+          variant='ghost'
+          color='primary'
+          id='textarea-4'
+          rows={6}
+          placeholder='입력하세요'
+          defaultValue='비활성화 textarea 텍스트'
+          disabled
+        />
+      </section>
       <section style={{ margin: '30px' }}>
         <Input
           as='div'
