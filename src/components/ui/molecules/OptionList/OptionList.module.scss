@@ -1,0 +1,180 @@
+/* OptionList.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+// option-list color
+$option-list-colors: (
+  primary: (
+    solid: (
+      bg: #d2e4ff,
+    ),
+    soft: (
+      bg: #f7faff,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #3366cc,
+    ),
+  ),
+  secondary: (
+    solid: (
+      bg: #bfe0ff,
+    ),
+    soft: (
+      bg: #e6f3ff,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #69b2ff,
+    ),
+  ),
+  tertiary: (
+    solid: (
+      bg: #e8e8e8,
+    ),
+    soft: (
+      bg: #f5f5f5,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #a4a4a4,
+    ),
+  ),
+  brand: (
+    solid: (
+      bg: #ffe9e6,
+    ),
+    soft: (
+      bg: #fff3f1,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #ffb3aa,
+    ),
+  ),
+  brand-sub: (
+    solid: (
+      bg: #f3e9fb,
+    ),
+    soft: (
+      bg: #f8f1ff,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #b399d9,
+    ),
+  ),
+  success: (
+    solid: (
+      bg: #e2f5e9,
+    ),
+    soft: (
+      bg: #f0faf3,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #71c28a,
+    ),
+  ),
+  warning: (
+    solid: (
+      bg: #fff4d1,
+    ),
+    soft: (
+      bg: #fff9e8,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #f9d875,
+    ),
+  ),
+  danger: (
+    solid: (
+      bg: #ffe8e8,
+    ),
+    soft: (
+      bg: #fff2f2,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #ea8a8a,
+    ),
+  ),
+);
+
+// option-list sizes
+$option-list-sizes: (
+  xs: (
+    width: rem(220px),
+    radius: rem(8px),
+    padding: rem(6px) rem(6px),
+    shadow: drop-shadow(0 rem(5px) rem(10px) rgba(0, 0, 0, 0.1)),
+  ),
+  sm: (
+    width: rem(240px),
+    radius: rem(10px),
+    padding: rem(8px) rem(8px),
+    shadow: drop-shadow(0 rem(6px) rem(12px) rgba(0, 0, 0, 0.1)),
+  ),
+  md: (
+    width: rem(260px),
+    radius: rem(12px),
+    padding: rem(10px) rem(10px),
+    shadow: drop-shadow(0 rem(7px) rem(14px) rgba(0, 0, 0, 0.1)),
+  ),
+  lg: (
+    width: rem(280px),
+    radius: rem(12px),
+    padding: rem(12px) rem(12px),
+    shadow: drop-shadow(0 rem(8px) rem(16px) rgba(0, 0, 0, 0.1)),
+  ),
+  xl: (
+    width: rem(300px),
+    radius: rem(14px),
+    padding: rem(14px) rem(14px),
+    shadow: drop-shadow(0 rem(10px) rem(20px) rgba(0, 0, 0, 0.1)),
+  ),
+);
+
+// mixin - option-list variant [color + variant]
+@mixin option-list-variant($variant) {
+  &:global(.variant--#{$variant}) {
+    @each $name, $props in $option-list-colors {
+      $variant-props: map.get($props, $variant);
+
+      @if $variant-props != null {
+        &:global(.color--#{$name}) {
+          // variant
+          @if $variant == 'solid' or $variant == 'soft' {
+            &:global(.variant--#{$variant}) {
+              background-color: map.get($variant-props, bg);
+            }
+          } @else if $variant == 'outline' {
+            &:global(.variant--#{$variant}) {
+              background-color: map.get($variant-props, bg);
+              border: rem(1px) solid map.get($variant-props, border);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.option-list {
+  // size
+  @each $size-name, $props in $option-list-sizes {
+    &:global(.size--#{$size-name}) {
+      width: map.get($props, width);
+      padding: map.get($props, padding);
+      border-radius: map.get($props, radius);
+      filter: map.get($props, shadow);
+    }
+  }
+
+  // variant
+  @include option-list-variant(solid);
+  @include option-list-variant(soft);
+  @include option-list-variant(outline);
+}

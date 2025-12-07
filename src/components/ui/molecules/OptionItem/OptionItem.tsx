@@ -1,9 +1,18 @@
 import React, { forwardRef } from 'react';
 import clsx from 'clsx';
-import styles from '@/components/ui/atoms/OptionItem/OptionItem.module.scss';
+import styles from '@/components/ui/molecules/OptionItem/OptionItem.module.scss';
 
 type BaseProps = {
   variant: 'solid' | 'soft' | 'ghost';
+  color:
+    | 'primary'
+    | 'secondary'
+    | 'tertiary'
+    | 'brand'
+    | 'brand-sub'
+    | 'success'
+    | 'warning'
+    | 'danger';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
   children: React.ReactNode;
