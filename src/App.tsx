@@ -16,6 +16,7 @@ import ControlGroup from './components/ui/molecules/ControlGroup/ControlGroup';
 import Switch from './components/ui/molecules/Switch/Switch';
 import Input from './components/ui/atoms/Input/Input';
 import Textarea from './components/ui/atoms/Textarea/Textarea';
+import OptionItem from './components/ui/atoms/OptionItem/OptionItem';
 
 function App() {
   // 타입 정의
@@ -78,6 +79,135 @@ function App() {
 
   return (
     <>
+      <section style={{ margin: '30px' }}>
+        <ul role='listbox'>
+          <OptionItem variant='ghost' color='primary' size='md' aria-selected={true}>
+            <Icon name='eye' className='icon' />
+            옵션 내용 1
+          </OptionItem>
+          <OptionItem variant='ghost' color='primary' size='md'>
+            <Icon name='eye' className='icon' />
+            옵션 내용 2
+          </OptionItem>
+          <OptionItem variant='ghost' color='primary' size='md' aria-disabled={true}>
+            <Icon name='eye' className='icon' />
+            옵션 내용 3 (비활성화)
+          </OptionItem>
+        </ul>
+      </section>
+      <section style={{ margin: '30px' }}>
+        <ul role='listbox'>
+          <OptionItem variant='ghost' color='secondary' size='md' aria-selected={true}>
+            <Icon name='eye' className='icon' />
+            옵션 내용 1
+          </OptionItem>
+          <OptionItem variant='ghost' color='secondary' size='md'>
+            <Icon name='eye' className='icon' />
+            옵션 내용 2
+          </OptionItem>
+          <OptionItem variant='ghost' color='secondary' size='md' aria-disabled={true}>
+            <Icon name='eye' className='icon' />
+            옵션 내용 3 (비활성화)
+          </OptionItem>
+        </ul>
+      </section>
+      <section style={{ margin: '30px' }}>
+        <ul role='listbox'>
+          <OptionItem variant='ghost' color='tertiary' size='md' aria-selected={true}>
+            <Icon name='eye' className='icon' />
+            옵션 내용 1
+          </OptionItem>
+          <OptionItem variant='ghost' color='tertiary' size='md'>
+            <Icon name='eye' className='icon' />
+            옵션 내용 2
+          </OptionItem>
+          <OptionItem variant='ghost' color='tertiary' size='md' aria-disabled={true}>
+            <Icon name='eye' className='icon' />
+            옵션 내용 3 (비활성화)
+          </OptionItem>
+        </ul>
+      </section>
+      <section style={{ margin: '30px' }}>
+        <ul role='listbox'>
+          <OptionItem variant='ghost' color='brand' size='md' aria-selected={true}>
+            <Icon name='eye' className='icon' />
+            옵션 내용 1
+          </OptionItem>
+          <OptionItem variant='ghost' color='brand' size='md'>
+            <Icon name='eye' className='icon' />
+            옵션 내용 2
+          </OptionItem>
+          <OptionItem variant='ghost' color='brand' size='md' aria-disabled={true}>
+            <Icon name='eye' className='icon' />
+            옵션 내용 3 (비활성화)
+          </OptionItem>
+        </ul>
+      </section>
+      <section style={{ margin: '30px' }}>
+        <ul role='listbox'>
+          <OptionItem variant='ghost' color='brand-sub' size='md' aria-selected={true}>
+            <Icon name='eye' className='icon' />
+            옵션 내용 1
+          </OptionItem>
+          <OptionItem variant='ghost' color='brand-sub' size='md'>
+            <Icon name='eye' className='icon' />
+            옵션 내용 2
+          </OptionItem>
+          <OptionItem variant='ghost' color='brand-sub' size='md' aria-disabled={true}>
+            <Icon name='eye' className='icon' />
+            옵션 내용 3 (비활성화)
+          </OptionItem>
+        </ul>
+      </section>
+      <section style={{ margin: '30px' }}>
+        <ul role='listbox'>
+          <OptionItem variant='ghost' color='success' size='md' aria-selected={true}>
+            <Icon name='eye' className='icon' />
+            옵션 내용 1
+          </OptionItem>
+          <OptionItem variant='ghost' color='success' size='md'>
+            <Icon name='eye' className='icon' />
+            옵션 내용 2
+          </OptionItem>
+          <OptionItem variant='ghost' color='success' size='md' aria-disabled={true}>
+            <Icon name='eye' className='icon' />
+            옵션 내용 3 (비활성화)
+          </OptionItem>
+        </ul>
+      </section>
+      <section style={{ margin: '30px' }}>
+        <ul role='listbox'>
+          <OptionItem variant='ghost' color='warning' size='md' aria-selected={true}>
+            <Icon name='eye' className='icon' />
+            옵션 내용 1
+          </OptionItem>
+          <OptionItem variant='ghost' color='warning' size='md'>
+            <Icon name='eye' className='icon' />
+            옵션 내용 2
+          </OptionItem>
+          <OptionItem variant='ghost' color='warning' size='md' aria-disabled={true}>
+            <Icon name='eye' className='icon' />
+            옵션 내용 3 (비활성화)
+          </OptionItem>
+        </ul>
+      </section>
+      <section style={{ margin: '30px' }}>
+        <ul role='listbox'>
+          <OptionItem variant='ghost' color='danger' size='md' aria-selected={true}>
+            <Icon name='eye' className='icon' />
+            옵션 내용 1
+          </OptionItem>
+          <OptionItem variant='ghost' color='danger' size='md'>
+            <Icon name='eye' className='icon' />
+            옵션 내용 2
+          </OptionItem>
+          <OptionItem variant='ghost' color='danger' size='md' aria-disabled={true}>
+            <Icon name='eye' className='icon' />
+            옵션 내용 3 (비활성화)
+          </OptionItem>
+        </ul>
+      </section>
+
       <section style={{ margin: '30px' }}>
         <Textarea
           variant='solid'

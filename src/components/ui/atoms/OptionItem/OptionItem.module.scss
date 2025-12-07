@@ -1,0 +1,882 @@
+/* OptionItem.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+// option-item color
+$option-item-colors: (
+  primary: (
+    solid: (
+      bg: #d2e4ff,
+      label: #003f99,
+      hover: (
+        bg: #c4dbff,
+        label: #003f99,
+      ),
+      active: (
+        bg: #b3cefc,
+        label: #003f99,
+      ),
+      selected: (
+        bg: #b3cefc,
+        label: #003f99,
+      ),
+      selected-hover: (
+        bg: #a3c0f5,
+        label: #003f99,
+      ),
+      selected-active: (
+        bg: #94b3ee,
+        label: #003f99,
+      ),
+      disabled: (
+        bg: #f0f0f0,
+        label: #b5b5b5,
+      ),
+    ),
+    soft: (
+      bg: #f7faff,
+      label: #003f99,
+      hover: (
+        bg: #eef4ff,
+        label: #003f99,
+      ),
+      active: (
+        bg: #e4edff,
+        label: #003f99,
+      ),
+      selected: (
+        bg: #e4edff,
+        label: #003f99,
+      ),
+      selected-hover: (
+        bg: #d5e2fb,
+        label: #003f99,
+      ),
+      selected-active: (
+        bg: #c7d6f5,
+        label: #003f99,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+    ghost: (
+      bg: transparent,
+      label: #003f99,
+      hover: (
+        bg: #eef4ff,
+        label: #003f99,
+      ),
+      active: (
+        bg: #e4edff,
+        label: #003f99,
+      ),
+      selected: (
+        bg: #e4edff,
+        label: #003f99,
+      ),
+      selected-hover: (
+        bg: #d5e2fb,
+        label: #003f99,
+      ),
+      selected-active: (
+        bg: #c7d6f5,
+        label: #003f99,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+  ),
+  secondary: (
+    solid: (
+      bg: #d8f0ff,
+      label: #003355,
+      hover: (
+        bg: #cce8ff,
+        label: #003355,
+      ),
+      active: (
+        bg: #b8ddff,
+        label: #003355,
+      ),
+      selected: (
+        bg: #b8ddff,
+        label: #003355,
+      ),
+      selected-hover: (
+        bg: #a8d1f5,
+        label: #003355,
+      ),
+      selected-active: (
+        bg: #99c5eb,
+        label: #003355,
+      ),
+      disabled: (
+        bg: #f0f0f0,
+        label: #b5b5b5,
+      ),
+    ),
+    soft: (
+      bg: #f0faff,
+      label: #003355,
+      hover: (
+        bg: #e4f2ff,
+        label: #003355,
+      ),
+      active: (
+        bg: #d8ebff,
+        label: #003355,
+      ),
+      selected: (
+        bg: #d8ebff,
+        label: #003355,
+      ),
+      selected-hover: (
+        bg: #c6e0f5,
+        label: #003355,
+      ),
+      selected-active: (
+        bg: #b3d4eb,
+        label: #003355,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+    ghost: (
+      bg: transparent,
+      label: #003355,
+      hover: (
+        bg: #e4f2ff,
+        label: #003355,
+      ),
+      active: (
+        bg: #d8ebff,
+        label: #003355,
+      ),
+      selected: (
+        bg: #d8ebff,
+        label: #003355,
+      ),
+      selected-hover: (
+        bg: #c6e0f5,
+        label: #003355,
+      ),
+      selected-active: (
+        bg: #b3d4eb,
+        label: #003355,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+  ),
+  tertiary: (
+    solid: (
+      bg: #e8e8e8,
+      label: #1a1a1a,
+      hover: (
+        bg: #dbdbdb,
+        label: #1a1a1a,
+      ),
+      active: (
+        bg: #cfcfcf,
+        label: #1a1a1a,
+      ),
+      selected: (
+        bg: #cfcfcf,
+        label: #1a1a1a,
+      ),
+      selected-hover: (
+        bg: #c3c3c3,
+        label: #1a1a1a,
+      ),
+      selected-active: (
+        bg: #b7b7b7,
+        label: #1a1a1a,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+    soft: (
+      bg: #f5f5f5,
+      label: #1a1a1a,
+      hover: (
+        bg: #ebebeb,
+        label: #1a1a1a,
+      ),
+      active: (
+        bg: #e0e0e0,
+        label: #1a1a1a,
+      ),
+      selected: (
+        bg: #e0e0e0,
+        label: #1a1a1a,
+      ),
+      selected-hover: (
+        bg: #d4d4d4,
+        label: #1a1a1a,
+      ),
+      selected-active: (
+        bg: #c8c8c8,
+        label: #1a1a1a,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+    ghost: (
+      bg: transparent,
+      label: #1a1a1a,
+      hover: (
+        bg: #ebebeb,
+        label: #1a1a1a,
+      ),
+      active: (
+        bg: #e0e0e0,
+        label: #1a1a1a,
+      ),
+      selected: (
+        bg: #e0e0e0,
+        label: #1a1a1a,
+      ),
+      selected-hover: (
+        bg: #d4d4d4,
+        label: #1a1a1a,
+      ),
+      selected-active: (
+        bg: #c8c8c8,
+        label: #1a1a1a,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+  ),
+  brand: (
+    solid: (
+      bg: #ffe9e6,
+      label: #7a2e25,
+      hover: (
+        bg: #ffd6d1,
+        label: #7a2e25,
+      ),
+      active: (
+        bg: #ffc1bb,
+        label: #7a2e25,
+      ),
+      selected: (
+        bg: #ffc1bb,
+        label: #7a2e25,
+      ),
+      selected-hover: (
+        bg: #ffaea8,
+        label: #7a2e25,
+      ),
+      selected-active: (
+        bg: #ff9b95,
+        label: #7a2e25,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+    soft: (
+      bg: #fff3f1,
+      label: #7a2e25,
+      hover: (
+        bg: #ffe7e2,
+        label: #7a2e25,
+      ),
+      active: (
+        bg: #ffdbd5,
+        label: #7a2e25,
+      ),
+      selected: (
+        bg: #ffdbd5,
+        label: #7a2e25,
+      ),
+      selected-hover: (
+        bg: #ffcfc9,
+        label: #7a2e25,
+      ),
+      selected-active: (
+        bg: #ffc3bd,
+        label: #7a2e25,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+    ghost: (
+      bg: transparent,
+      label: #7a2e25,
+      hover: (
+        bg: #ffe7e2,
+        label: #7a2e25,
+      ),
+      active: (
+        bg: #ffdbd5,
+        label: #7a2e25,
+      ),
+      selected: (
+        bg: #ffdbd5,
+        label: #7a2e25,
+      ),
+      selected-hover: (
+        bg: #ffcfc9,
+        label: #7a2e25,
+      ),
+      selected-active: (
+        bg: #ffc3bd,
+        label: #7a2e25,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+  ),
+  brand-sub: (
+    solid: (
+      bg: #f3e9fb,
+      label: #4b2b70,
+      hover: (
+        bg: #e8d7f7,
+        label: #4b2b70,
+      ),
+      active: (
+        bg: #dcbff2,
+        label: #4b2b70,
+      ),
+      selected: (
+        bg: #dcbff2,
+        label: #4b2b70,
+      ),
+      selected-hover: (
+        bg: #d0aeea,
+        label: #4b2b70,
+      ),
+      selected-active: (
+        bg: #c3a0e2,
+        label: #4b2b70,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+    soft: (
+      bg: #f8f1ff,
+      label: #4b2b70,
+      hover: (
+        bg: #f1e3fb,
+        label: #4b2b70,
+      ),
+      active: (
+        bg: #e6d2f7,
+        label: #4b2b70,
+      ),
+      selected: (
+        bg: #e6d2f7,
+        label: #4b2b70,
+      ),
+      selected-hover: (
+        bg: #d9c0f3,
+        label: #4b2b70,
+      ),
+      selected-active: (
+        bg: #cdb0ee,
+        label: #4b2b70,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+    ghost: (
+      bg: transparent,
+      label: #4b2b70,
+      hover: (
+        bg: #f1e3fb,
+        label: #4b2b70,
+      ),
+      active: (
+        bg: #e6d2f7,
+        label: #4b2b70,
+      ),
+      selected: (
+        bg: #e6d2f7,
+        label: #4b2b70,
+      ),
+      selected-hover: (
+        bg: #d9c0f3,
+        label: #4b2b70,
+      ),
+      selected-active: (
+        bg: #cdb0ee,
+        label: #4b2b70,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+  ),
+  success: (
+    solid: (
+      bg: #d7f2df,
+      label: #2e5938,
+      hover: (
+        bg: #c9ebd0,
+        label: #2e5938,
+      ),
+      active: (
+        bg: #b9e2c0,
+        label: #2e5938,
+      ),
+      selected: (
+        bg: #b9e2c0,
+        label: #2e5938,
+      ),
+      selected-hover: (
+        bg: #aad9b0,
+        label: #2e5938,
+      ),
+      selected-active: (
+        bg: #9bce9f,
+        label: #2e5938,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+    soft: (
+      bg: #eef9f0,
+      label: #2e5938,
+      hover: (
+        bg: #e2f4e2,
+        label: #2e5938,
+      ),
+      active: (
+        bg: #d4edcf,
+        label: #2e5938,
+      ),
+      selected: (
+        bg: #d4edcf,
+        label: #2e5938,
+      ),
+      selected-hover: (
+        bg: #c4e3be,
+        label: #2e5938,
+      ),
+      selected-active: (
+        bg: #b4d8ad,
+        label: #2e5938,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+    ghost: (
+      bg: transparent,
+      label: #2e5938,
+      hover: (
+        bg: #e2f4e2,
+        label: #2e5938,
+      ),
+      active: (
+        bg: #d4edcf,
+        label: #2e5938,
+      ),
+      selected: (
+        bg: #d4edcf,
+        label: #2e5938,
+      ),
+      selected-hover: (
+        bg: #c4e3be,
+        label: #2e5938,
+      ),
+      selected-active: (
+        bg: #b4d8ad,
+        label: #2e5938,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+  ),
+  warning: (
+    solid: (
+      bg: #fff4d1,
+      label: #5c4a00,
+      hover: (
+        bg: #fff0b8,
+        label: #5c4a00,
+      ),
+      active: (
+        bg: #ffeb9f,
+        label: #5c4a00,
+      ),
+      selected: (
+        bg: #ffeb9f,
+        label: #5c4a00,
+      ),
+      selected-hover: (
+        bg: #ffe486,
+        label: #5c4a00,
+      ),
+      selected-active: (
+        bg: #ffdd6d,
+        label: #5c4a00,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+    soft: (
+      bg: #fff9e8,
+      label: #5c4a00,
+      hover: (
+        bg: #fff4d1,
+        label: #5c4a00,
+      ),
+      active: (
+        bg: #ffefb8,
+        label: #5c4a00,
+      ),
+      selected: (
+        bg: #ffefb8,
+        label: #5c4a00,
+      ),
+      selected-hover: (
+        bg: #ffe986,
+        label: #5c4a00,
+      ),
+      selected-active: (
+        bg: #ffe26d,
+        label: #5c4a00,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+    ghost: (
+      bg: transparent,
+      label: #5c4a00,
+      hover: (
+        bg: #fff4d1,
+        label: #5c4a00,
+      ),
+      active: (
+        bg: #ffefb8,
+        label: #5c4a00,
+      ),
+      selected: (
+        bg: #ffefb8,
+        label: #5c4a00,
+      ),
+      selected-hover: (
+        bg: #ffe986,
+        label: #5c4a00,
+      ),
+      selected-active: (
+        bg: #ffe26d,
+        label: #5c4a00,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+  ),
+  danger: (
+    solid: (
+      bg: #ffb5b5,
+      label: #6f1a1a,
+      hover: (
+        bg: #ffa3a3,
+        label: #6f1a1a,
+      ),
+      active: (
+        bg: #ff8f8f,
+        label: #6f1a1a,
+      ),
+      selected: (
+        bg: #ff8f8f,
+        label: #6f1a1a,
+      ),
+      selected-hover: (
+        bg: #ff7d7d,
+        label: #6f1a1a,
+      ),
+      selected-active: (
+        bg: #ff6b6b,
+        label: #6f1a1a,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+    soft: (
+      bg: #ffe5e5,
+      label: #6f1a1a,
+      hover: (
+        bg: #ffd6d6,
+        label: #6f1a1a,
+      ),
+      active: (
+        bg: #ffc7c7,
+        label: #6f1a1a,
+      ),
+      selected: (
+        bg: #ffc7c7,
+        label: #6f1a1a,
+      ),
+      selected-hover: (
+        bg: #ffb8b8,
+        label: #6f1a1a,
+      ),
+      selected-active: (
+        bg: #ffaaaa,
+        label: #6f1a1a,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+    ghost: (
+      bg: transparent,
+      label: #6f1a1a,
+      hover: (
+        bg: #ffd6d6,
+        label: #6f1a1a,
+      ),
+      active: (
+        bg: #ffc7c7,
+        label: #6f1a1a,
+      ),
+      selected: (
+        bg: #ffc7c7,
+        label: #6f1a1a,
+      ),
+      selected-hover: (
+        bg: #ffb8b8,
+        label: #6f1a1a,
+      ),
+      selected-active: (
+        bg: #ffaaaa,
+        label: #6f1a1a,
+      ),
+      disabled: (
+        bg: #f4f4f4,
+        label: #b5b5b5,
+      ),
+    ),
+  ),
+);
+
+// option-item sizes
+$option-item-sizes: (
+  xs: (
+    height: rem(28px),
+    radius: rem(4px),
+    padding: rem(4px) rem(8px),
+    font-token: var(--project-typo-input3-500),
+    icon-size: rem(16px),
+  ),
+  sm: (
+    height: rem(32px),
+    radius: rem(6px),
+    padding: rem(6px) rem(10px),
+    font-token: var(--project-typo-input2-500),
+    icon-size: rem(18px),
+  ),
+  md: (
+    height: rem(36px),
+    radius: rem(8px),
+    padding: rem(8px) rem(12px),
+    font-token: var(--project-typo-input2-500),
+    icon-size: rem(20px),
+  ),
+  lg: (
+    height: rem(40px),
+    radius: rem(8px),
+    padding: rem(10px) rem(14px),
+    font-token: var(--project-typo-input1-500),
+    icon-size: rem(22px),
+  ),
+  xl: (
+    height: rem(44px),
+    radius: rem(10px),
+    padding: rem(12px) rem(16px),
+    font-token: var(--project-typo-input1-500),
+    icon-size: rem(22px),
+  ),
+);
+
+// mixin - option-item variant [color + variant]
+@mixin option-item-variant($variant) {
+  &:global(.variant--#{$variant}) {
+    @each $name, $props in $option-item-colors {
+      $variant-props: map.get($props, $variant);
+
+      @if $variant-props != null {
+        $hover-map: map.get($variant-props, hover);
+        $active-map: map.get($variant-props, active);
+        $selected-map: map.get($variant-props, selected);
+        $selected-hover-map: map.get($variant-props, selected-hover);
+        $selected-active-map: map.get($variant-props, selected-active);
+        $disabled-map: map.get($variant-props, disabled);
+
+        &:global(.color--#{$name}) {
+          // variant
+          @if $variant == 'solid' or $variant == 'soft' {
+            &:global(.variant--#{$variant}) {
+              background-color: map.get($variant-props, bg);
+              color: map.get($variant-props, label);
+
+              &:not([aria-disabled='true'], [aria-selected='true']):hover {
+                background-color: map.get($hover-map, bg);
+                color: map.get($hover-map, label);
+              }
+
+              &:not([aria-disabled='true'], [aria-selected='true']):active {
+                background-color: map.get($active-map, bg);
+                color: map.get($active-map, label);
+              }
+
+              // selected
+              &[aria-selected='true'] {
+                background-color: map.get($selected-map, bg);
+                color: map.get($selected-map, label);
+              }
+              &[aria-selected='true']:hover {
+                background-color: map.get($selected-hover-map, bg);
+                color: map.get($selected-hover-map, label);
+              }
+              &[aria-selected='true']:active {
+                background-color: map.get($selected-active-map, bg);
+                color: map.get($selected-active-map, label);
+              }
+
+              // disabled
+              &[aria-disabled='true'] {
+                background-color: map.get($disabled-map, bg);
+                color: map.get($disabled-map, label);
+                cursor: not-allowed;
+
+                // icon
+                :global(.icon) {
+                  fill: map.get($disabled-map, label);
+                }
+              }
+
+              // icon
+              :global(.icon) {
+                fill: map.get($variant-props, label);
+              }
+            }
+          } @else if $variant == 'ghost' {
+            &:global(.variant--#{$variant}) {
+              background-color: map.get($variant-props, bg);
+              color: map.get($variant-props, label);
+
+              &:not([aria-disabled='true'], [aria-selected='true']):hover {
+                background-color: map.get($hover-map, bg);
+                color: map.get($hover-map, label);
+              }
+
+              &:not([aria-disabled='true'], [aria-selected='true']):active {
+                background-color: map.get($active-map, bg);
+                color: map.get($active-map, label);
+              }
+
+              // selected
+              &[aria-selected='true'] {
+                background-color: map.get($selected-map, bg);
+                color: map.get($selected-map, label);
+              }
+              &[aria-selected='true']:hover {
+                background-color: map.get($selected-hover-map, bg);
+                color: map.get($selected-hover-map, label);
+              }
+              &[aria-selected='true']:active {
+                background-color: map.get($selected-active-map, bg);
+                color: map.get($selected-active-map, label);
+              }
+
+              // disabled
+              &[aria-disabled='true'] {
+                background-color: map.get($disabled-map, bg);
+                color: map.get($disabled-map, label);
+                cursor: not-allowed;
+
+                // icon
+                :global(.icon) {
+                  fill: map.get($disabled-map, label);
+                }
+              }
+
+              // icon
+              :global(.icon) {
+                fill: map.get($variant-props, label);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.option-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: rem(10px);
+  padding: rem(8px);
+  border-radius: var(--project-border-radius-8);
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+
+  // size
+  @each $size-name, $props in $option-item-sizes {
+    &:global(.size--#{$size-name}) {
+      height: map.get($props, height);
+      padding: map.get($props, padding);
+      border-radius: map.get($props, radius);
+      font: map.get($props, font-token);
+
+      :global(.icon) {
+        width: map.get($props, icon-size);
+        height: map.get($props, icon-size);
+      }
+    }
+  }
+
+  // variant
+  @include option-item-variant(solid);
+  @include option-item-variant(soft);
+  @include option-item-variant(ghost);
+}
