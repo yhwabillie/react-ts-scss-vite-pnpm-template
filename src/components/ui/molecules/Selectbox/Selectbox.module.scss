@@ -3,8 +3,92 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
+$selectbox-sizes: (
+  xs: (
+    width: rem(220px),
+    height: rem(32px),
+    padding: 0 rem(8px),
+    font-token: var(--project-typo-input3-500),
+    radius: rem(var(--project-border-radius-4)),
+    adorned-start: (
+      padding: 0 rem(8px) 0 rem(32px),
+      radius: 0 rem(4px) rem(4px) 0,
+    ),
+    adorned-end: (
+      padding: 0 rem(32px) 0 rem(8px),
+      radius: rem(4px) 0 0 rem(4px),
+    ),
+    icon-size: rem(14px),
+  ),
+  sm: (
+    width: rem(240px),
+    height: rem(36px),
+    padding: 0 rem(10px),
+    font-token: var(--project-typo-input2-500),
+    radius: rem(var(--project-border-radius-6)),
+    adorned-start: (
+      padding: 0 rem(10px) 0 rem(36px),
+      radius: 0 rem(6px) rem(6px) 0,
+    ),
+    adorned-end: (
+      padding: 0 rem(36px) 0 rem(10px),
+      radius: rem(6px) 0 0 rem(6px),
+    ),
+    icon-size: rem(18px),
+  ),
+  md: (
+    width: rem(260px),
+    height: rem(40px),
+    padding: 0 rem(12px),
+    font-token: var(--project-typo-input2-500),
+    radius: rem(var(--project-border-radius-6)),
+    adorned-start: (
+      padding: 0 rem(12px) 0 rem(40px),
+      radius: 0 rem(6px) rem(6px) 0,
+    ),
+    adorned-end: (
+      padding: 0 rem(40px) 0 rem(12px),
+      radius: rem(6px) 0 0 rem(6px),
+    ),
+    icon-size: rem(20px),
+  ),
+  lg: (
+    width: rem(280px),
+    height: rem(44px),
+    padding: 0 rem(14px),
+    font-token: var(--project-typo-input1-500),
+    radius: rem(var(--project-border-radius-8)),
+    adorned-start: (
+      padding: 0 rem(14px) 0 rem(44px),
+      radius: 0 rem(8px) rem(8px) 0,
+    ),
+    adorned-end: (
+      padding: 0 rem(44px) 0 rem(14px),
+      radius: rem(8px) 0 0 rem(8px),
+    ),
+    icon-size: rem(22px),
+  ),
+  xl: (
+    width: rem(300px),
+    height: rem(48px),
+    padding: 0 rem(16px),
+    font-token: var(--project-typo-input1-500),
+    radius: rem(var(--project-border-radius-8)),
+    adorned-start: (
+      padding: 0 rem(16px) 0 rem(48px),
+      radius: 0 rem(8px) rem(8px) 0,
+    ),
+    adorned-end: (
+      padding: 0 rem(48px) 0 rem(16px),
+      radius: rem(8px) 0 0 rem(8px),
+    ),
+    icon-size: rem(24),
+  ),
+);
+
 .selectbox {
-  border: 1px solid red;
+  width: fit-content;
+  position: relative;
 
   select {
     position: absolute !important;
@@ -16,5 +100,47 @@
     clip: rect(0, 0, 0, 0) !important;
     white-space: nowrap !important;
     border: 0 !important;
+  }
+
+  // size
+  @each $size-name, $props in $selectbox-sizes {
+    $adorned-start-map: map.get($props, adorned-start);
+    $adorned-end-map: map.get($props, adorned-end);
+
+    &:global(.size--#{$size-name}) {
+      :global(.custom-select) {
+        width: map.get($props, width);
+        height: map.get($props, height);
+        padding: map.get($props, padding);
+        border-radius: map.get($props, radius);
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+
+        border: 1px solid red;
+
+        :global(.custom-select-text) {
+          font: map.get($props, font-token);
+          flex: 1 1 auto;
+        }
+
+        :global(.icon) {
+          width: map.get($props, icon-size);
+          height: map.get($props, icon-size);
+          flex: 0 0 auto;
+          fill: red;
+        }
+      }
+
+      :global(ul) {
+        position: absolute;
+        top: calc(map.get($props, height) + rem(6px));
+        display: none;
+
+        &:global(.is-show) {
+          display: block;
+        }
+      }
+    }
   }
 }

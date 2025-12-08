@@ -16,6 +16,7 @@ type BaseProps = {
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   value: string; // 선택값
   disabled?: boolean;
+  selected?: boolean; // ★ 현재 선택 여부
   onSelect?: (value: string) => void; // OptionList → OptionItem 선택 콜백
   className?: string;
   children: React.ReactNode;
@@ -26,17 +27,24 @@ export type OptionItemProps = BaseProps &
 
 const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
   (
-    { variant, color, size, value, disabled, onSelect, className, children, onClick, ...rest },
+    {
+      variant,
+      color,
+      size,
+      value,
+      disabled,
+      selected,
+      onSelect,
+      className,
+      children,
+      onClick,
+      ...rest
+    },
     ref,
   ) => {
     const handleClick = (e: React.MouseEvent<HTMLLIElement>) => {
-      // 기존 onClick 먼저 실행
       onClick?.(e);
-
-      if (!disabled) {
-        // 선택 이벤트 전달
-        onSelect?.(value);
-      }
+      if (!disabled) onSelect?.(value);
     };
 
     return (
@@ -44,11 +52,14 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
         ref={ref}
         role='option'
         aria-disabled={disabled}
+        aria-selected={selected}
+        tabIndex={-1} // ★ 키보드 포커싱 제어
         className={clsx(
           styles['option-item'],
           `variant--${variant}`,
           `color--${color}`,
           `size--${size}`,
+          selected && 'is-selected', // ★ 선택 시 스타일
           className,
         )}
         onClick={handleClick}

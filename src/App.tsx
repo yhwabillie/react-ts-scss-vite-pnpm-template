@@ -83,27 +83,38 @@ function App() {
   type Option = {
     id: string; // 🔹 React key용 고유 ID
     value: string; // UI 표시 및 선택 상태용
+    label?: string;
     disabled?: boolean;
     selected?: boolean;
   };
 
   const mockOptions: Option[] = [
+    { id: 'placeholder', value: '' }, // placeholder
     { id: 'opt-1', value: '옵션 1' },
-    { id: 'opt-2', value: '옵션 2', selected: true },
-    { id: 'opt-3', value: '옵션 3' },
+    { id: 'opt-2', value: '옵션 2' },
+    { id: 'opt-3', value: '옵션 3', selected: true },
     { id: 'opt-4', value: '옵션 4' },
     { id: 'opt-5', value: '옵션 5', disabled: true },
   ];
 
-  // ⭐ selected: true인 항목 찾기, 없으면 첫 번째
-  const initialValue = mockOptions.find(opt => opt.selected)?.value ?? mockOptions[0].value;
+  // placeholder Option 객체
+  const placeholderOption: Option = { id: 'placeholder', value: '', disabled: true };
+
+  // parsedOptions 배열
+  const parsedOptions: Option[] = [
+    ...(mockOptions.some(opt => opt.id === 'placeholder') ? [placeholderOption] : []),
+    ...mockOptions.filter(opt => opt.value !== ''),
+  ];
+
+  // 초기값
+  const initialValue = parsedOptions.find(opt => opt.selected)?.value ?? parsedOptions[0].value;
 
   // ⭐ 상태는 value 기준으로 관리
   const [value, setValue] = useState(initialValue);
 
   return (
     <>
-      <section>
+      <section style={{ width: '700px', margin: 'auto' }}>
         <Selectbox
           id='custom-select-1'
           variant='solid'
@@ -111,13 +122,13 @@ function App() {
           size='md'
           required
           onValueChange={setValue}
-          value={value} // value 기준 상태
+          value={value}
         >
           <OptionList id='custom-select-1-optionlist' variant='outline' color='primary' size='md'>
-            {mockOptions.map(opt => (
+            {parsedOptions.map(opt => (
               <OptionItem
-                key={opt.id} // 🔹 고유 key
-                value={opt.value} // 선택 상태용 value
+                key={opt.id}
+                value={opt.value}
                 variant='ghost'
                 color='primary'
                 size='md'
@@ -125,9 +136,9 @@ function App() {
                 aria-disabled={opt.disabled}
               >
                 <span className='label' title={opt.value}>
-                  {opt.value}
+                  {opt.value || '선택해주세요'}
                 </span>
-                {value === opt.value && (
+                {value === opt.value && value !== '' && (
                   <Icon
                     name='check'
                     className='icon'
