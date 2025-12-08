@@ -1,0 +1,27 @@
+// ellipsis 믹스인
+@mixin ell($lines: 1) {
+  //기본적으로 한 줄일 때의 말줄임표
+  @if $lines == reset {
+    display: initial !important;
+    overflow: visible !important;
+    text-overflow: initial !important;
+    -webkit-box-orient: initial !important;
+    -webkit-line-clamp: initial !important;
+    word-break: normal !important;
+  } @else if $lines == 1 {
+    display: -webkit-box !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 1 !important;
+    word-break: break-all !important;
+  } @else {
+    //여러 줄에 대한 말줄임표
+    display: -webkit-box !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: $lines !important;
+    word-break: break-all !important;
+  }
+}

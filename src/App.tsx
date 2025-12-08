@@ -16,6 +16,10 @@ import ControlGroup from './components/ui/molecules/ControlGroup/ControlGroup';
 import Switch from './components/ui/molecules/Switch/Switch';
 import Input from './components/ui/atoms/Input/Input';
 import Textarea from './components/ui/atoms/Textarea/Textarea';
+import OptionItem, { type OptionItemProps } from './components/ui/molecules/OptionItem/OptionItem';
+import OptionList from './components/ui/molecules/OptionList/OptionList';
+import Selectbox from './components/ui/molecules/Selectbox/Selectbox';
+import { useEffect, useState } from 'react';
 
 function App() {
   // 타입 정의
@@ -76,8 +80,78 @@ function App() {
     btn3: { font: 'var(--project-typo-btn3-400)' },
   };
 
+  type Option = {
+    id: string; // 🔹 React key용 고유 ID
+    value: string; // UI 표시 및 선택 상태용
+    label?: string;
+    disabled?: boolean;
+    selected?: boolean;
+  };
+
+  const mockOptions: Option[] = [
+    { id: 'placeholder', value: '' }, // placeholder
+    { id: 'opt-1', value: '옵션 1' },
+    { id: 'opt-2', value: '옵션 2' },
+    { id: 'opt-3', value: '옵션 3' },
+    { id: 'opt-4', value: '옵션 4' },
+    { id: 'opt-5', value: '옵션 5', disabled: true },
+  ];
+
+  // placeholder Option 객체
+  const placeholderOption: Option = { id: 'placeholder', value: '', disabled: true };
+
+  // parsedOptions 배열
+  const parsedOptions: Option[] = [
+    ...(mockOptions.some(opt => opt.id === 'placeholder') ? [placeholderOption] : []),
+    ...mockOptions.filter(opt => opt.value !== ''),
+  ];
+
+  // 초기값
+  const initialValue = parsedOptions.find(opt => opt.selected)?.value ?? parsedOptions[0].value;
+
+  // ⭐ 상태는 value 기준으로 관리
+  const [value, setValue] = useState(initialValue);
+
   return (
     <>
+      <section style={{ width: '700px', margin: 'auto' }}>
+        <Selectbox
+          id='custom-select-1'
+          variant='outline'
+          color='warning'
+          size='lg'
+          onValueChange={setValue}
+          value={value}
+          required
+        >
+          <OptionList id='custom-select-1-optionlist' variant='outline' color='warning' size='lg'>
+            {parsedOptions.map(opt => (
+              <OptionItem
+                key={opt.id}
+                value={opt.value}
+                variant='ghost'
+                color='warning'
+                size='lg'
+                aria-selected={value === opt.value}
+                aria-disabled={opt.disabled}
+              >
+                <span className='label' title={opt.value}>
+                  {opt.value || '선택해주세요'}
+                </span>
+                {value === opt.value && value !== '' && (
+                  <Icon
+                    name='round-check'
+                    className='icon'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                  />
+                )}
+              </OptionItem>
+            ))}
+          </OptionList>
+        </Selectbox>
+      </section>
+
       <section style={{ margin: '30px' }}>
         <Textarea
           variant='solid'
@@ -261,7 +335,6 @@ function App() {
           }
         />
       </section>
-
       <section style={{ margin: '30px' }}>
         <Input
           as='div'
@@ -326,7 +399,6 @@ function App() {
           placeholder='값을 입력하세요.'
         />
       </section>
-
       <section style={{ margin: '30px' }}>
         <Input
           as='div'
@@ -443,7 +515,6 @@ function App() {
           }
         />
       </section>
-
       <section style={{ margin: '30px' }}>
         <Input
           as='div'
