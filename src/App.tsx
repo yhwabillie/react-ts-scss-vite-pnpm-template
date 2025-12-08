@@ -94,7 +94,10 @@ function App() {
     { id: 'opt-2', value: '옵션 2' },
     { id: 'opt-3', value: '옵션 3' },
     { id: 'opt-4', value: '옵션 4' },
-    { id: 'opt-5', value: '옵션 5', disabled: true },
+    { id: 'opt-5', value: '옵션 5' },
+    { id: 'opt-6', value: '옵션 6' },
+    { id: 'opt-7', value: '옵션 7' },
+    { id: 'opt-8', value: '옵션 8' },
   ];
 
   // placeholder Option 객체
@@ -114,6 +117,7 @@ function App() {
 
   return (
     <>
+      <section></section>
       <section style={{ width: '700px', margin: 'auto' }}>
         <Selectbox
           id='custom-select-1'

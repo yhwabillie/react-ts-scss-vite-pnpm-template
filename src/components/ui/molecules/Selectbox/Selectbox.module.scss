@@ -309,7 +309,7 @@ $selectbox-sizes: (
         }
       }
 
-      :global(ul) {
+      :global(.option-list) {
         position: absolute;
         top: calc(map.get($props, height) + rem(6px));
         display: none;

@@ -20,12 +20,14 @@ type BaseProps = {
   onSelect?: (value: string) => void; // OptionList → OptionItem 선택 콜백
   className?: string;
   children: React.ReactNode;
+  onMount?: (el: HTMLLIElement | null, idx: number) => void;
+  index?: number; // Optional로 추가
 };
 
 export type OptionItemProps = BaseProps &
   Omit<React.LiHTMLAttributes<HTMLLIElement>, keyof BaseProps>;
 
-const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
+const OptionItemComponent = forwardRef<HTMLLIElement, OptionItemProps>(
   (
     {
       variant,
@@ -38,6 +40,8 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
       className,
       children,
       onClick,
+      index,
+      onMount,
       ...rest
     },
     ref,
@@ -49,7 +53,9 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
 
     return (
       <li
-        ref={ref}
+        ref={el => {
+          onMount?.(el, index ?? 0);
+        }}
         role='option'
         aria-disabled={disabled}
         aria-selected={selected}
@@ -71,6 +77,19 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
   },
 );
 
-OptionItem.displayName = 'OptionItem';
+OptionItemComponent.displayName = 'OptionItem';
+
+// -----------------------------
+// 업데이트: memoization 적용
+// -----------------------------
+const OptionItem = React.memo(
+  OptionItemComponent,
+  (prev, next) =>
+    prev.selected === next.selected &&
+    prev.disabled === next.disabled &&
+    prev.children === next.children &&
+    prev.onSelect === next.onSelect &&
+    prev.onKeyDown === next.onKeyDown,
+);
 
 export default OptionItem;

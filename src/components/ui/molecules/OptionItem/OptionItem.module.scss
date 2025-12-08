@@ -860,7 +860,13 @@ $option-item-sizes: (
   border-radius: var(--project-border-radius-8);
   cursor: pointer;
   background-color: #ffffff;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease;
+
+  &:focus,
+  &:focus-visible {
+    outline: 2.5px dashed #2466eb;
+    outline-offset: -2px;
+  }
 
   &[aria-disabled='true'][aria-selected='true']:hover {
     background-color: #f4f4f4 !important;
