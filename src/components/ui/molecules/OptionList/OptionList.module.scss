@@ -7,98 +7,99 @@
 $option-list-colors: (
   primary: (
     solid: (
-      bg: #d2e4ff,
-    ),
-    soft: (
-      bg: #f7faff,
+      bg: #dceaff,
     ),
     outline: (
       bg: #ffffff,
       border: #3366cc,
     ),
+    soft: (
+      bg: #eef5ff,
+    ),
   ),
   secondary: (
     solid: (
-      bg: #bfe0ff,
-    ),
-    soft: (
-      bg: #e6f3ff,
+      bg: #d8edff,
     ),
     outline: (
       bg: #ffffff,
       border: #69b2ff,
+    ),
+    soft: (
+      bg: #eef7ff,
     ),
   ),
   tertiary: (
     solid: (
       bg: #e8e8e8,
     ),
-    soft: (
-      bg: #f5f5f5,
-    ),
     outline: (
       bg: #ffffff,
-      border: #a4a4a4,
+      border: #4d4d4d,
+    ),
+    soft: (
+      bg: #f5f5f5,
+      color: #232323,
     ),
   ),
   brand: (
     solid: (
       bg: #ffe9e6,
     ),
-    soft: (
-      bg: #fff3f1,
-    ),
     outline: (
       bg: #ffffff,
-      border: #ffb3aa,
+      border: #ff6f61,
+    ),
+    soft: (
+      bg: #fff3f1,
     ),
   ),
   brand-sub: (
     solid: (
       bg: #f3e9fb,
     ),
-    soft: (
-      bg: #f8f1ff,
-    ),
     outline: (
       bg: #ffffff,
-      border: #b399d9,
+      border: #6a1b9a,
+    ),
+    soft: (
+      bg: #f8f1ff,
     ),
   ),
   success: (
     solid: (
       bg: #e2f5e9,
     ),
-    soft: (
-      bg: #f0faf3,
-    ),
     outline: (
       bg: #ffffff,
-      border: #71c28a,
+      border: #28a745,
+    ),
+    soft: (
+      bg: #f0faf3,
     ),
   ),
   warning: (
     solid: (
       bg: #fff4d1,
     ),
-    soft: (
-      bg: #fff9e8,
-    ),
     outline: (
       bg: #ffffff,
-      border: #f9d875,
+      border: #f5c84a,
+    ),
+    soft: (
+      bg: #fff9e8,
     ),
   ),
   danger: (
     solid: (
       bg: #ffe8e8,
     ),
-    soft: (
-      bg: #fff2f2,
-    ),
     outline: (
       bg: #ffffff,
-      border: #ea8a8a,
+      border: #d84a4a,
+    ),
+    soft: (
+      bg: #fff2f2,
     ),
   ),
 );

@@ -20,15 +20,19 @@ type BaseProps = {
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
   children: React.ReactNode;
-  required?: boolean;
   value?: string;
   onValueChange?: (value: string) => void;
+  required?: boolean;
+  disabled?: boolean;
 };
 
 type SelectboxProps = BaseProps & Omit<React.HTMLAttributes<HTMLSelectElement>, keyof BaseProps>;
 
 const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
-  ({ variant, color, size, className, children, required, onValueChange, ...rest }, ref) => {
+  (
+    { variant, color, size, className, children, required, disabled, onValueChange, ...rest },
+    ref,
+  ) => {
     const [isOpen, setIsOpen] = useState(false);
     const [internalValue, setInternalValue] = useState('');
     const containerRef = React.useRef<HTMLDivElement>(null);
@@ -196,9 +200,10 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
           ref={ref}
           tabIndex={-1}
           {...rest}
-          required={required}
           value={selectedValue}
           onChange={handleChange}
+          required={required}
+          disabled={disabled}
         >
           {parsedOptions.map(opt => (
             <option key={opt.key} value={opt.value} disabled={opt.disabled}>
@@ -210,7 +215,7 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
         <div
           ref={customSelectRef}
           className='custom-select'
-          tabIndex={0}
+          tabIndex={disabled ? -1 : 0}
           onFocus={handleCustomSelectFocus} // tab 포커싱 진입 시
           onKeyDown={handleKeyDown}
           onClick={() => setIsOpen(prev => !prev)}

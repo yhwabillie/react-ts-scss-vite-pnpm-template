@@ -862,6 +862,11 @@ $option-item-sizes: (
   background-color: #ffffff;
   transition: all 0.2s ease;
 
+  &[aria-disabled='true'][aria-selected='true']:hover {
+    background-color: #f4f4f4 !important;
+    color: #b5b5b5 !important;
+  }
+
   :global(.icon) {
     flex: 0 0 auto;
     fill: none;

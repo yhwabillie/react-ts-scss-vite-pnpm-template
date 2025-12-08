@@ -19,7 +19,7 @@ import Textarea from './components/ui/atoms/Textarea/Textarea';
 import OptionItem, { type OptionItemProps } from './components/ui/molecules/OptionItem/OptionItem';
 import OptionList from './components/ui/molecules/OptionList/OptionList';
 import Selectbox from './components/ui/molecules/Selectbox/Selectbox';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   // 타입 정의
@@ -92,7 +92,7 @@ function App() {
     { id: 'placeholder', value: '' }, // placeholder
     { id: 'opt-1', value: '옵션 1' },
     { id: 'opt-2', value: '옵션 2' },
-    { id: 'opt-3', value: '옵션 3', selected: true },
+    { id: 'opt-3', value: '옵션 3' },
     { id: 'opt-4', value: '옵션 4' },
     { id: 'opt-5', value: '옵션 5', disabled: true },
   ];
@@ -117,21 +117,21 @@ function App() {
       <section style={{ width: '700px', margin: 'auto' }}>
         <Selectbox
           id='custom-select-1'
-          variant='solid'
-          color='primary'
-          size='md'
-          required
+          variant='outline'
+          color='warning'
+          size='lg'
           onValueChange={setValue}
           value={value}
+          required
         >
-          <OptionList id='custom-select-1-optionlist' variant='outline' color='primary' size='md'>
+          <OptionList id='custom-select-1-optionlist' variant='outline' color='warning' size='lg'>
             {parsedOptions.map(opt => (
               <OptionItem
                 key={opt.id}
                 value={opt.value}
                 variant='ghost'
-                color='primary'
-                size='md'
+                color='warning'
+                size='lg'
                 aria-selected={value === opt.value}
                 aria-disabled={opt.disabled}
               >
