@@ -140,7 +140,7 @@ function App() {
                 </span>
                 {value === opt.value && value !== '' && (
                   <Icon
-                    name='check'
+                    name='round-check'
                     className='icon'
                     strokeLinecap='round'
                     strokeLinejoin='round'

@@ -213,7 +213,8 @@ $selectbox-sizes: (
                 }
 
                 :global(.icon) {
-                  fill: map.get($variant-props, color);
+                  color: map.get($variant-props, color);
+                  fill: none;
                 }
               }
             }
@@ -234,7 +235,8 @@ $selectbox-sizes: (
                 }
 
                 :global(.icon) {
-                  fill: map.get($variant-props, color);
+                  color: map.get($variant-props, color);
+                  fill: none;
                 }
               }
             }
