@@ -48,20 +48,20 @@ const OptionList = forwardRef<HTMLUListElement, OptionListProps>(
     });
 
     return (
-      <ul
-        ref={ref}
-        role='listbox'
-        {...rest}
+      <div
         className={clsx(
           styles['option-list'],
           `variant--${variant}`,
           `color--${color}`,
           `size--${size}`,
+          `option-list`,
           className,
         )}
       >
-        {clonedChildren}
-      </ul>
+        <ul ref={ref} role='listbox' {...rest}>
+          {clonedChildren}
+        </ul>
+      </div>
     );
   },
 );

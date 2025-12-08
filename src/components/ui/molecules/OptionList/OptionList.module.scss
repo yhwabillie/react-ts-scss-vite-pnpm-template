@@ -164,6 +164,14 @@ $option-list-sizes: (
 }
 
 .option-list {
+  // listbox
+  :global([role='listbox']) {
+    max-height: rem(240px);
+    overflow: auto;
+    margin-right: rem(-6px);
+    padding-right: rem(6px);
+  }
+
   // size
   @each $size-name, $props in $option-list-sizes {
     &:global(.size--#{$size-name}) {

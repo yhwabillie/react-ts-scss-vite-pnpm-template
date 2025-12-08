@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, useRef, useMemo, useState, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from '@/components/ui/molecules/Selectbox/Selectbox.module.scss';
 import type { OptionListProps } from '../OptionList/OptionList';
@@ -35,14 +35,14 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
   ) => {
     const [isOpen, setIsOpen] = useState(false);
     const [internalValue, setInternalValue] = useState('');
-    const containerRef = React.useRef<HTMLDivElement>(null);
-    const optionRefs = React.useRef<HTMLLIElement[]>([]); // optionItem ref 배열
+    const containerRef = useRef<HTMLDivElement>(null);
+    const optionRefs = useRef<HTMLLIElement[]>([]);
     const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
 
     // -----------------------------
     // 외부 클릭 시 닫기
     // -----------------------------
-    React.useEffect(() => {
+    useEffect(() => {
       const handleClickOutside = (event: MouseEvent) => {
         if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
           setIsOpen(false);
@@ -68,41 +68,50 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
     // -----------------------------
     // OptionItem → label / value 변환
     // -----------------------------
+    const labelCache = useRef(new Map<React.ReactNode, string>());
+
     const extractLabelText = (node: React.ReactNode): string => {
-      if (!node) return '';
-      if (typeof node === 'string' || typeof node === 'number') return String(node);
-      if (Array.isArray(node)) return node.map(extractLabelText).find(Boolean) ?? '';
-      if (React.isValidElement(node)) {
-        const props: any = node.props ?? {};
-        if (props.className === 'label') return extractLabelText(props.children);
-        return extractLabelText(props.children);
+      if (labelCache.current.has(node)) return labelCache.current.get(node)!;
+      let result = '';
+      if (!node) result = '';
+      else if (typeof node === 'string' || typeof node === 'number') result = String(node);
+      else if (Array.isArray(node)) result = node.map(extractLabelText).join('');
+      else if (React.isValidElement(node)) {
+        const element = node as React.ReactElement<{ children?: React.ReactNode }>;
+        result = extractLabelText(element.props.children);
       }
-      return '';
+      labelCache.current.set(node, result);
+      return result;
     };
 
     // placeholder가 없으면 optionRefs[0]가 실제 첫 옵션과 항상 일치
-    const parsedOptions = optionItemArr.map((item, idx) => {
-      const labelText = extractLabelText(item.props.children);
-      const value = item.props.value ?? labelText;
-      return {
-        key: idx,
-        label: labelText,
-        value,
-        disabled: item.props['aria-disabled'] === true,
-      };
-    });
+    const parsedOptions = useMemo(() => {
+      return optionItemArr.map((item, idx) => {
+        const labelText = extractLabelText(item.props.children);
+        const value = item.props.value ?? labelText;
+        return {
+          key: idx,
+          label: labelText,
+          value,
+          disabled: item.props['aria-disabled'] === true,
+        };
+      });
+    }, [optionItemArr]);
 
     // -----------------------------
     // 선택값 상태 관리
     // -----------------------------
     const selectedValue = rest.value ?? internalValue;
 
-    const handleSelect = (value: string) => {
-      if (!rest.value) setInternalValue(value);
-      onValueChange?.(value);
-      setIsOpen(false);
-      setFocusedIndex(null);
-    };
+    const handleSelect = React.useCallback(
+      (value: string) => {
+        if (!rest.value) setInternalValue(value);
+        onValueChange?.(value);
+        setIsOpen(false);
+        setFocusedIndex(null);
+      },
+      [rest.value, onValueChange],
+    );
 
     const handleChange: React.ChangeEventHandler<HTMLSelectElement> = e => {
       handleSelect(e.target.value);
@@ -116,70 +125,104 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
     // -----------------------------
     // custom-select 포커스 시 첫 옵션 포커싱
     // -----------------------------
-    const handleCustomSelectFocus = () => {
+    const handleCustomSelectFocus = React.useCallback(() => {
       if (isOpen) {
-        // selectedValue가 있으면 해당 옵션, 없으면 첫 번째 활성 옵션
         const idx = parsedOptions.findIndex(o => o.value === selectedValue && !o.disabled);
         setFocusedIndex(idx >= 0 ? idx : parsedOptions.findIndex(o => !o.disabled));
       }
-    };
+    }, [isOpen, parsedOptions, selectedValue]);
 
     // -----------------------------
     // 키보드 이벤트
     // -----------------------------
-    const handleKeyDown = <T extends HTMLElement>(e: React.KeyboardEvent<T>) => {
-      if (!isOpen) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          setIsOpen(true);
-          const selectedIdx = parsedOptions.findIndex(
-            o => o.value === selectedValue && !o.disabled,
-          );
-          const firstActiveIdx = parsedOptions.findIndex(o => !o.disabled);
-          setFocusedIndex(selectedIdx >= 0 ? selectedIdx : firstActiveIdx);
-        }
-      } else {
-        switch (e.key) {
-          case 'Escape':
+    const handleKeyDown = React.useCallback(
+      <T extends HTMLElement>(e: React.KeyboardEvent<T>) => {
+        if (!isOpen) {
+          if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            setIsOpen(false);
-            setFocusedIndex(null);
-            customSelectRef.current?.focus();
-            break;
-          case 'ArrowDown':
-            e.preventDefault();
-            setFocusedIndex(prev => {
-              if (prev === null) return parsedOptions.findIndex(o => !o.disabled);
-              let next = prev + 1;
-              while (next < parsedOptions.length && parsedOptions[next].disabled) next++;
-              return next < parsedOptions.length ? next : prev;
-            });
-            break;
-          case 'ArrowUp':
-            e.preventDefault();
-            setFocusedIndex(prev => {
-              if (prev === null) return parsedOptions.length - 1;
-              let next = prev - 1;
-              while (next >= 0 && parsedOptions[next].disabled) next--;
-              return next >= 0 ? next : prev;
-            });
-            break;
-          case 'Enter':
-          case ' ':
-            e.preventDefault();
-            if (focusedIndex !== null && !parsedOptions[focusedIndex].disabled) {
-              handleSelect(parsedOptions[focusedIndex].value);
+            setIsOpen(true);
+            const selectedIdx = parsedOptions.findIndex(
+              o => o.value === selectedValue && !o.disabled,
+            );
+            const firstActiveIdx = parsedOptions.findIndex(o => !o.disabled);
+            setFocusedIndex(selectedIdx >= 0 ? selectedIdx : firstActiveIdx);
+          }
+        } else {
+          switch (e.key) {
+            case 'Escape':
+              e.preventDefault();
+              setIsOpen(false);
+              setFocusedIndex(null);
               customSelectRef.current?.focus();
-            }
-            break;
+              break;
+            case 'ArrowDown':
+              e.preventDefault();
+              setFocusedIndex(prev => {
+                if (prev === null) return parsedOptions.findIndex(o => !o.disabled);
+                let next = prev + 1;
+                while (next < parsedOptions.length && parsedOptions[next].disabled) next++;
+                return next < parsedOptions.length ? next : prev;
+              });
+              break;
+            case 'ArrowUp':
+              e.preventDefault();
+              setFocusedIndex(prev => {
+                if (prev === null) return parsedOptions.length - 1;
+                let next = prev - 1;
+                while (next >= 0 && parsedOptions[next].disabled) next--;
+                return next >= 0 ? next : prev;
+              });
+              break;
+            case 'Enter':
+            case ' ':
+              e.preventDefault();
+              if (focusedIndex !== null && !parsedOptions[focusedIndex].disabled) {
+                handleSelect(parsedOptions[focusedIndex].value);
+                customSelectRef.current?.focus();
+              }
+              break;
+          }
         }
-      }
-    };
+      },
+      [isOpen, parsedOptions, selectedValue, focusedIndex, handleSelect],
+    );
+
+    const optionListChildren = useMemo(() => {
+      return React.Children.map(optionList.props.children, (child, idx) => {
+        if (!React.isValidElement(child)) return child;
+
+        const childTyped = child as React.ReactElement<OptionItemProps>;
+
+        return React.cloneElement(childTyped, {
+          tabIndex: -1,
+          selected: parsedOptions[idx].value === selectedValue,
+          onSelect: handleSelect, // useCallback 적용
+          onKeyDown: handleKeyDown, // useCallback 적용
+          index: idx,
+          onMount: (el: HTMLLIElement | null, index?: number) => {
+            if (index !== undefined && optionRefs.current[index] !== el) {
+              optionRefs.current[index] = el!;
+            }
+          },
+        });
+      });
+    }, [optionList.props.children, parsedOptions, selectedValue, handleSelect, handleKeyDown]);
+
+    const memoizedOptionList = useMemo(() => {
+      if (!optionList) return null;
+
+      return React.cloneElement(optionList, {
+        selectedValue: String(selectedValue),
+        onOptionSelect: handleSelect,
+        className: clsx(optionList.props.className, isOpen && 'is-show'),
+        children: optionListChildren, // useMemo로 미리 만들어둔 children
+      });
+    }, [optionList, optionListChildren, selectedValue, handleSelect, isOpen]);
 
     // -----------------------------
     // 포커싱 효과
     // -----------------------------
-    React.useEffect(() => {
+    useEffect(() => {
       if (focusedIndex !== null && optionRefs.current[focusedIndex]) {
         optionRefs.current[focusedIndex].focus();
       }
@@ -231,27 +274,7 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
           />
         </div>
 
-        {React.cloneElement(optionList, {
-          selectedValue: String(selectedValue),
-          onOptionSelect: handleSelect,
-          className: clsx(optionList.props.className, isOpen && 'is-show'),
-          children: React.Children.map(optionList.props.children, (child, idx) => {
-            if (!React.isValidElement(child)) return child;
-
-            const childTyped = child as React.ReactElement<
-              OptionItemProps & { ref?: React.Ref<HTMLLIElement> },
-              typeof OptionItem
-            >;
-
-            return React.cloneElement(childTyped, {
-              ref: (el: HTMLLIElement | null) => {
-                optionRefs.current[idx] = el!;
-              },
-              tabIndex: -1, // S에서 focus 가능하도록
-              onKeyDown: handleKeyDown, // li에서 키보드 이벤트 처리
-            });
-          }),
-        })}
+        {memoizedOptionList}
       </div>
     );
   },
