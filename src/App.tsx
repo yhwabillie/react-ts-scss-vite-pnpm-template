@@ -16,8 +16,10 @@ import ControlGroup from './components/ui/molecules/ControlGroup/ControlGroup';
 import Switch from './components/ui/molecules/Switch/Switch';
 import Input from './components/ui/atoms/Input/Input';
 import Textarea from './components/ui/atoms/Textarea/Textarea';
-import OptionItem from './components/ui/molecules/OptionItem/OptionItem';
+import OptionItem, { type OptionItemProps } from './components/ui/molecules/OptionItem/OptionItem';
 import OptionList from './components/ui/molecules/OptionList/OptionList';
+import Selectbox from './components/ui/molecules/Selectbox/Selectbox';
+import { useState } from 'react';
 
 function App() {
   // 타입 정의
@@ -78,167 +80,65 @@ function App() {
     btn3: { font: 'var(--project-typo-btn3-400)' },
   };
 
+  type Option = {
+    id: string; // 🔹 React key용 고유 ID
+    value: string; // UI 표시 및 선택 상태용
+    disabled?: boolean;
+    selected?: boolean;
+  };
+
+  const mockOptions: Option[] = [
+    { id: 'opt-1', value: '옵션 1' },
+    { id: 'opt-2', value: '옵션 2', selected: true },
+    { id: 'opt-3', value: '옵션 3' },
+    { id: 'opt-4', value: '옵션 4' },
+    { id: 'opt-5', value: '옵션 5', disabled: true },
+  ];
+
+  // ⭐ selected: true인 항목 찾기, 없으면 첫 번째
+  const initialValue = mockOptions.find(opt => opt.selected)?.value ?? mockOptions[0].value;
+
+  // ⭐ 상태는 value 기준으로 관리
+  const [value, setValue] = useState(initialValue);
+
   return (
     <>
-      <section style={{ margin: '30px' }}>
-        <OptionList variant='outline' color='primary' size='xl'>
-          <OptionItem variant='ghost' color='primary' size='xl' aria-selected={true}>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-            <Icon name='check' className='icon' />
-          </OptionItem>
-          <OptionItem variant='ghost' color='primary' size='xl'>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-          </OptionItem>
-          <OptionItem variant='ghost' color='primary' size='xl' aria-disabled={true}>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-          </OptionItem>
-        </OptionList>
-      </section>
-      <section style={{ margin: '30px' }}>
-        <OptionList variant='outline' color='secondary' size='lg'>
-          <OptionItem variant='ghost' color='secondary' size='lg' aria-selected={true}>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-            <Icon name='check' className='icon' />
-          </OptionItem>
-          <OptionItem variant='ghost' color='secondary' size='lg'>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-          </OptionItem>
-          <OptionItem variant='ghost' color='secondary' size='lg' aria-disabled={true}>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-          </OptionItem>
-        </OptionList>
-      </section>
-      <section style={{ margin: '30px' }}>
-        <OptionList variant='outline' color='tertiary' size='md'>
-          <OptionItem variant='ghost' color='tertiary' size='md' aria-selected={true}>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-            <Icon name='check' className='icon' />
-          </OptionItem>
-          <OptionItem variant='ghost' color='tertiary' size='md'>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-          </OptionItem>
-          <OptionItem variant='ghost' color='tertiary' size='md' aria-disabled={true}>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-          </OptionItem>
-        </OptionList>
-      </section>
-      <section style={{ margin: '30px' }}>
-        <OptionList variant='outline' color='brand' size='sm'>
-          <OptionItem variant='ghost' color='brand' size='sm' aria-selected={true}>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-            <Icon name='check' className='icon' />
-          </OptionItem>
-          <OptionItem variant='ghost' color='brand' size='sm'>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-          </OptionItem>
-          <OptionItem variant='ghost' color='brand' size='sm' aria-disabled={true}>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-          </OptionItem>
-        </OptionList>
-      </section>
-      <section style={{ margin: '30px' }}>
-        <OptionList variant='outline' color='brand-sub' size='xs'>
-          <OptionItem variant='ghost' color='brand-sub' size='xs' aria-selected={true}>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-            <Icon name='check' className='icon' />
-          </OptionItem>
-          <OptionItem variant='ghost' color='brand-sub' size='xs'>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-          </OptionItem>
-          <OptionItem variant='ghost' color='brand-sub' size='xs' aria-disabled={true}>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-          </OptionItem>
-        </OptionList>
-      </section>
-      <section style={{ margin: '30px' }}>
-        <OptionList variant='outline' color='success' size='xs'>
-          <OptionItem variant='ghost' color='success' size='xs' aria-selected={true}>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-            <Icon name='check' className='icon' />
-          </OptionItem>
-          <OptionItem variant='ghost' color='success' size='xs'>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-          </OptionItem>
-          <OptionItem variant='ghost' color='success' size='xs' aria-disabled={true}>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-          </OptionItem>
-        </OptionList>
-      </section>
-      <section style={{ margin: '30px' }}>
-        <OptionList variant='outline' color='warning' size='xs'>
-          <OptionItem variant='ghost' color='warning' size='xs' aria-selected={true}>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-            <Icon name='check' className='icon' />
-          </OptionItem>
-          <OptionItem variant='ghost' color='warning' size='xs'>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-          </OptionItem>
-          <OptionItem variant='ghost' color='warning' size='xs' aria-disabled={true}>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-          </OptionItem>
-        </OptionList>
-      </section>
-      <section style={{ margin: '30px' }}>
-        <OptionList variant='outline' color='danger' size='xs'>
-          <OptionItem variant='ghost' color='danger' size='xs' aria-selected={true}>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-            <Icon name='check' className='icon' />
-          </OptionItem>
-          <OptionItem variant='ghost' color='danger' size='xs'>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-          </OptionItem>
-          <OptionItem variant='ghost' color='danger' size='xs' aria-disabled={true}>
-            <span className='label' title='옵션'>
-              옵션
-            </span>
-          </OptionItem>
-        </OptionList>
+      <section>
+        <Selectbox
+          id='custom-select-1'
+          variant='solid'
+          color='primary'
+          size='md'
+          required
+          onValueChange={setValue}
+          value={value} // value 기준 상태
+        >
+          <OptionList id='custom-select-1-optionlist' variant='outline' color='primary' size='md'>
+            {mockOptions.map(opt => (
+              <OptionItem
+                key={opt.id} // 🔹 고유 key
+                value={opt.value} // 선택 상태용 value
+                variant='ghost'
+                color='primary'
+                size='md'
+                aria-selected={value === opt.value}
+                aria-disabled={opt.disabled}
+              >
+                <span className='label' title={opt.value}>
+                  {opt.value}
+                </span>
+                {value === opt.value && (
+                  <Icon
+                    name='check'
+                    className='icon'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                  />
+                )}
+              </OptionItem>
+            ))}
+          </OptionList>
+        </Selectbox>
       </section>
 
       <section style={{ margin: '30px' }}>
@@ -424,7 +324,6 @@ function App() {
           }
         />
       </section>
-
       <section style={{ margin: '30px' }}>
         <Input
           as='div'
@@ -489,7 +388,6 @@ function App() {
           placeholder='값을 입력하세요.'
         />
       </section>
-
       <section style={{ margin: '30px' }}>
         <Input
           as='div'
@@ -606,7 +504,6 @@ function App() {
           }
         />
       </section>
-
       <section style={{ margin: '30px' }}>
         <Input
           as='div'
