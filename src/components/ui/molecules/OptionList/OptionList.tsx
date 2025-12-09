@@ -18,15 +18,15 @@ type BaseProps = {
   className?: string;
   children: React.ReactNode;
 
-  onOptionSelect?: (value: string) => void;
-  selectedValue?: string;
+  onOptionSelect?: (id: string, value: string) => void;
+  selectedId?: string;
 };
 
 export type OptionListProps = BaseProps &
   Omit<React.HTMLAttributes<HTMLUListElement>, keyof BaseProps>;
 
 const OptionList = forwardRef<HTMLUListElement, OptionListProps>(
-  ({ variant, color, size, className, children, onOptionSelect, selectedValue, ...rest }, ref) => {
+  ({ variant, color, size, className, children, onOptionSelect, selectedId, ...rest }, ref) => {
     const clonedChildren = React.Children.map(children, child => {
       if (!React.isValidElement(child)) return child;
 
@@ -35,14 +35,18 @@ const OptionList = forwardRef<HTMLUListElement, OptionListProps>(
 
       const value = element.props.value;
       const disabled = element.props['aria-disabled'] === true;
+      const id = element.props.id; // id 확보
 
       return React.cloneElement(element, {
+        key: id,
         role: 'option',
+        value,
+        disabled,
+        selected: selectedId === id,
         'aria-disabled': disabled,
-
         onClick: (e: React.MouseEvent<HTMLLIElement>) => {
           element.props.onClick?.(e);
-          if (!disabled) onOptionSelect?.(value);
+          if (!disabled) onOptionSelect?.(id, value); // id + value
         },
       });
     });
