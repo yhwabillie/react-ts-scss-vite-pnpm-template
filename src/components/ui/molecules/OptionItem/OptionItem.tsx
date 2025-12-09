@@ -1,8 +1,11 @@
 import React, { forwardRef } from 'react';
 import clsx from 'clsx';
 import styles from '@/components/ui/molecules/OptionItem/OptionItem.module.scss';
+import Icon from '../../atoms/Icon/Icon';
 
 type BaseProps = {
+  id: string;
+  index?: number; // Optional로 추가
   variant: 'solid' | 'soft' | 'ghost';
   color:
     | 'primary'
@@ -17,19 +20,18 @@ type BaseProps = {
   value: string; // 선택값
   disabled?: boolean;
   selected?: boolean; // ★ 현재 선택 여부
-  onSelect?: (value: string) => void; // OptionList → OptionItem 선택 콜백
+  onSelect?: (id: string, value: string) => void;
   className?: string;
-  children: React.ReactNode;
   onMount?: (el: HTMLLIElement | null, idx: number) => void;
-  index?: number; // Optional로 추가
 };
 
 export type OptionItemProps = BaseProps &
   Omit<React.LiHTMLAttributes<HTMLLIElement>, keyof BaseProps>;
 
-const OptionItemComponent = forwardRef<HTMLLIElement, OptionItemProps>(
+const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
   (
     {
+      id,
       variant,
       color,
       size,
@@ -38,23 +40,26 @@ const OptionItemComponent = forwardRef<HTMLLIElement, OptionItemProps>(
       selected,
       onSelect,
       className,
-      children,
       onClick,
       index,
       onMount,
+      onKeyDown,
       ...rest
     },
     ref,
   ) => {
-    const handleClick = (e: React.MouseEvent<HTMLLIElement>) => {
-      onClick?.(e);
-      if (!disabled) onSelect?.(value);
+    const handleClick = () => {
+      if (!disabled) {
+        onSelect?.(id, value); // id + value 전달
+      }
     };
 
     return (
       <li
         ref={el => {
           onMount?.(el, index ?? 0);
+          if (typeof ref === 'function') ref(el);
+          else if (ref) (ref as any).current = el;
         }}
         role='option'
         aria-disabled={disabled}
@@ -65,31 +70,24 @@ const OptionItemComponent = forwardRef<HTMLLIElement, OptionItemProps>(
           `variant--${variant}`,
           `color--${color}`,
           `size--${size}`,
-          selected && 'is-selected', // ★ 선택 시 스타일
           className,
         )}
-        onClick={handleClick}
         {...rest}
+        onClick={handleClick}
+        onKeyDown={onKeyDown}
       >
-        {children}
+        <span className='label' title={value}>
+          {value || '선택해주세요'}
+        </span>
+
+        {selected && value !== '' && (
+          <Icon name='round-check' className='icon' strokeLinecap='round' strokeLinejoin='round' />
+        )}
       </li>
     );
   },
 );
 
-OptionItemComponent.displayName = 'OptionItem';
-
-// -----------------------------
-// 업데이트: memoization 적용
-// -----------------------------
-const OptionItem = React.memo(
-  OptionItemComponent,
-  (prev, next) =>
-    prev.selected === next.selected &&
-    prev.disabled === next.disabled &&
-    prev.children === next.children &&
-    prev.onSelect === next.onSelect &&
-    prev.onKeyDown === next.onKeyDown,
-);
+OptionItem.displayName = 'OptionItem';
 
 export default OptionItem;

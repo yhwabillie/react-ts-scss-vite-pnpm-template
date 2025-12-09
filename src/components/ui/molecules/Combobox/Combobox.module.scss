@@ -1,0 +1,9 @@
+/* Combobox.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.combobox {
+  display: inline-flex;
+  align-items: center;
+}

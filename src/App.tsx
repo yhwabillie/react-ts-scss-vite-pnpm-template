@@ -20,129 +20,169 @@ import OptionItem, { type OptionItemProps } from './components/ui/molecules/Opti
 import OptionList from './components/ui/molecules/OptionList/OptionList';
 import Selectbox from './components/ui/molecules/Selectbox/Selectbox';
 import { useEffect, useState } from 'react';
+import OptionListPortal from './components/ui/molecules/OptionListPortal/OptionListPortal';
+
+// 타입 정의
+type DisplayLevel = 'd1' | 'd2' | 'd3';
+type HeadingLevel = 'h1' | 'h2' | 'h3';
+type SubtitleLevel = 'st1' | 'st2' | 'st3';
+type BodyLevel = 'b1' | 'b2' | 'b3';
+type CaptionLevel = 'c1' | 'c2' | 'c3';
+type LabelLevel = 'l1' | 'l2' | 'l3';
+type ButtonLevel = 'btn1' | 'btn2' | 'btn3';
+
+// Display 레벨
+const displayStyles: Record<DisplayLevel, React.CSSProperties> = {
+  d1: { font: 'var(--project-typo-d1-700)' },
+  d2: { font: 'var(--project-typo-d2-700)' },
+  d3: { font: 'var(--project-typo-d3-700)' },
+};
+
+// Heading 레벨
+const headingStyles: Record<HeadingLevel, React.CSSProperties> = {
+  h1: { font: 'var(--project-typo-h1-700)' },
+  h2: { font: 'var(--project-typo-h2-700)' },
+  h3: { font: 'var(--project-typo-h3-700)' },
+};
+
+// Subtitle 레벨
+const subtitleStyles: Record<SubtitleLevel, React.CSSProperties> = {
+  st1: { font: 'var(--project-typo-st1-500)' },
+  st2: { font: 'var(--project-typo-st2-500)' },
+  st3: { font: 'var(--project-typo-st3-400)' },
+};
+
+// Body 레벨
+const bodyStyles: Record<BodyLevel, React.CSSProperties> = {
+  b1: { font: 'var(--project-typo-b1-400)' },
+  b2: { font: 'var(--project-typo-b2-400)' },
+  b3: { font: 'var(--project-typo-b3-400)' },
+};
+
+// Caption 레벨
+const captionStyles: Record<CaptionLevel, React.CSSProperties> = {
+  c1: { font: 'var(--project-typo-c1-400)' },
+  c2: { font: 'var(--project-typo-c2-400)' },
+  c3: { font: 'var(--project-typo-c3-400)' },
+};
+
+// Label 레벨
+const labelStyles: Record<LabelLevel, React.CSSProperties> = {
+  l1: { font: 'var(--project-typo-l1-500)' },
+  l2: { font: 'var(--project-typo-l2-500)' },
+  l3: { font: 'var(--project-typo-l3-500)' },
+};
+
+// Button 레벨
+const btnStyles: Record<ButtonLevel, React.CSSProperties> = {
+  btn1: { font: 'var(--project-typo-btn1-500)' },
+  btn2: { font: 'var(--project-typo-btn2-600)' },
+  btn3: { font: 'var(--project-typo-btn3-400)' },
+};
+
+type Option = {
+  id: string;
+  value: string;
+  label?: string;
+  disabled?: boolean;
+  selected?: boolean;
+};
+
+// -------------------------------
+// 1번 Selectbox 데이터
+// -------------------------------
+const mockOptions1: Option[] = [
+  { id: 'placeholder', value: '' },
+  { id: 'opt-1', value: '옵션 1' },
+  { id: 'opt-2', value: '옵션 2' },
+  { id: 'opt-3', value: '옵션 3' },
+  { id: 'opt-4', value: '옵션 3' },
+  { id: 'opt-5', value: '옵션 3' },
+  { id: 'opt-6', value: '옵션 3' },
+  { id: 'opt-7', value: '옵션 3' },
+  { id: 'opt-8', value: '옵션 3' },
+  { id: 'opt-9', value: '옵션 3', selected: true },
+];
+
+const placeholderOption1: Option = { id: 'placeholder', value: '', disabled: true };
+
+const parsedOptions1: Option[] = [
+  ...(mockOptions1.some(opt => opt.id === 'placeholder') ? [placeholderOption1] : []),
+  ...mockOptions1.filter(opt => opt.value !== ''),
+];
+
+// 초기 선택 id를 기준으로
+const initialSelectedId1 = parsedOptions1.find(opt => opt.selected)?.id ?? parsedOptions1[0].id;
 
 function App() {
-  // 타입 정의
-  type DisplayLevel = 'd1' | 'd2' | 'd3';
-  type HeadingLevel = 'h1' | 'h2' | 'h3';
-  type SubtitleLevel = 'st1' | 'st2' | 'st3';
-  type BodyLevel = 'b1' | 'b2' | 'b3';
-  type CaptionLevel = 'c1' | 'c2' | 'c3';
-  type LabelLevel = 'l1' | 'l2' | 'l3';
-  type ButtonLevel = 'btn1' | 'btn2' | 'btn3';
-
-  // Display 레벨
-  const displayStyles: Record<DisplayLevel, React.CSSProperties> = {
-    d1: { font: 'var(--project-typo-d1-700)' },
-    d2: { font: 'var(--project-typo-d2-700)' },
-    d3: { font: 'var(--project-typo-d3-700)' },
-  };
-
-  // Heading 레벨
-  const headingStyles: Record<HeadingLevel, React.CSSProperties> = {
-    h1: { font: 'var(--project-typo-h1-700)' },
-    h2: { font: 'var(--project-typo-h2-700)' },
-    h3: { font: 'var(--project-typo-h3-700)' },
-  };
-
-  // Subtitle 레벨
-  const subtitleStyles: Record<SubtitleLevel, React.CSSProperties> = {
-    st1: { font: 'var(--project-typo-st1-500)' },
-    st2: { font: 'var(--project-typo-st2-500)' },
-    st3: { font: 'var(--project-typo-st3-400)' },
-  };
-
-  // Body 레벨
-  const bodyStyles: Record<BodyLevel, React.CSSProperties> = {
-    b1: { font: 'var(--project-typo-b1-400)' },
-    b2: { font: 'var(--project-typo-b2-400)' },
-    b3: { font: 'var(--project-typo-b3-400)' },
-  };
-
-  // Caption 레벨
-  const captionStyles: Record<CaptionLevel, React.CSSProperties> = {
-    c1: { font: 'var(--project-typo-c1-400)' },
-    c2: { font: 'var(--project-typo-c2-400)' },
-    c3: { font: 'var(--project-typo-c3-400)' },
-  };
-
-  // Label 레벨
-  const labelStyles: Record<LabelLevel, React.CSSProperties> = {
-    l1: { font: 'var(--project-typo-l1-500)' },
-    l2: { font: 'var(--project-typo-l2-500)' },
-    l3: { font: 'var(--project-typo-l3-500)' },
-  };
-
-  // Button 레벨
-  const btnStyles: Record<ButtonLevel, React.CSSProperties> = {
-    btn1: { font: 'var(--project-typo-btn1-500)' },
-    btn2: { font: 'var(--project-typo-btn2-600)' },
-    btn3: { font: 'var(--project-typo-btn3-400)' },
-  };
-
-  type Option = {
-    id: string; // 🔹 React key용 고유 ID
-    value: string; // UI 표시 및 선택 상태용
-    label?: string;
-    disabled?: boolean;
-    selected?: boolean;
-  };
-
-  const mockOptions: Option[] = [
-    { id: 'placeholder', value: '' }, // placeholder
-    { id: 'opt-1', value: '옵션 1' },
-    { id: 'opt-2', value: '옵션 2' },
-    { id: 'opt-3', value: '옵션 3' },
-    { id: 'opt-4', value: '옵션 4' },
-    { id: 'opt-5', value: '옵션 5' },
-    { id: 'opt-6', value: '옵션 6' },
-    { id: 'opt-7', value: '옵션 7' },
-    { id: 'opt-8', value: '옵션 8' },
-  ];
-
-  // placeholder Option 객체
-  const placeholderOption: Option = { id: 'placeholder', value: '', disabled: true };
-
-  // parsedOptions 배열
-  const parsedOptions: Option[] = [
-    ...(mockOptions.some(opt => opt.id === 'placeholder') ? [placeholderOption] : []),
-    ...mockOptions.filter(opt => opt.value !== ''),
-  ];
-
-  // 초기값
-  const initialValue = parsedOptions.find(opt => opt.selected)?.value ?? parsedOptions[0].value;
-
-  // ⭐ 상태는 value 기준으로 관리
-  const [value, setValue] = useState(initialValue);
+  // id 기준으로 선택된 value 가져오기
+  const [selectedId1, setSelectedId1] = useState(initialSelectedId1);
+  const selectedValue1 = parsedOptions1.find(opt => opt.id === selectedId1)?.value ?? '';
 
   return (
     <>
-      <section></section>
       <section style={{ width: '700px', margin: 'auto' }}>
         <Selectbox
           id='custom-select-1'
           variant='outline'
           color='warning'
           size='lg'
-          onValueChange={setValue}
-          value={value}
+          onValueChange={val => {
+            // value로 바로 상태를 바꾸는게 아니라 id 기준으로 바꿔야 함
+            const found = parsedOptions1.find(opt => opt.value === val);
+            if (found) setSelectedId1(found.id);
+          }}
+          value={selectedValue1}
           required
         >
-          <OptionList id='custom-select-1-optionlist' variant='outline' color='warning' size='lg'>
-            {parsedOptions.map(opt => (
+          <OptionList
+            id='custom-select-1-optionlist'
+            variant='outline'
+            color='warning'
+            size='lg'
+            selectedId={selectedId1}
+            onOptionSelect={(id, value) => {
+              setSelectedId1(id); // id 선택
+            }}
+          >
+            {parsedOptions1.map(opt => (
               <OptionItem
                 key={opt.id}
+                id={opt.id}
                 value={opt.value}
                 variant='ghost'
                 color='warning'
                 size='lg'
-                aria-selected={value === opt.value}
+                selected={selectedId1 === opt.id}
+                aria-disabled={opt.disabled}
+              />
+            ))}
+          </OptionList>
+        </Selectbox>
+        {/* <Selectbox
+          id='custom-select-2'
+          variant='outline'
+          color='primary'
+          size='lg'
+          onValueChange={setValue2}
+          value={value2}
+          required
+        >
+          <OptionList id='custom-select-2-optionlist' variant='outline' color='primary' size='lg'>
+            {parsedOptions2.map(opt => (
+              <OptionItem
+                key={opt.id}
+                value={opt.value}
+                variant='ghost'
+                color='primary'
+                size='lg'
+                aria-selected={value2 === opt.value}
                 aria-disabled={opt.disabled}
               >
                 <span className='label' title={opt.value}>
                   {opt.value || '선택해주세요'}
                 </span>
-                {value === opt.value && value !== '' && (
+                {value2 === opt.value && value2 !== '' && (
                   <Icon
                     name='round-check'
                     className='icon'
@@ -153,7 +193,7 @@ function App() {
               </OptionItem>
             ))}
           </OptionList>
-        </Selectbox>
+        </Selectbox> */}
       </section>
 
       <section style={{ margin: '30px' }}>
