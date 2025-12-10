@@ -645,16 +645,8 @@ $btn-sizes: (
         // outline border 자동 처리
         @if $variant == outline {
           border: rem(1px) solid map.get($variant-props, label);
-
-          svg {
-            fill: map.get($variant-props, label);
-          }
         } @else {
           border: none;
-
-          svg {
-            fill: map.get($variant-props, label);
-          }
         }
 
         // hover
@@ -692,16 +684,8 @@ $btn-sizes: (
             @if $variant == 'outline' {
               border-color: map.get($disabled-props, label);
               background-color: map.get($disabled-props, bg);
-
-              svg {
-                fill: map.get($disabled-props, label);
-              }
             } @else {
               background-color: map.get($disabled-props, bg);
-
-              svg {
-                fill: map.get($disabled-props, label);
-              }
             }
           } @else {
           }

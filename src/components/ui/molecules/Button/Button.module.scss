@@ -810,7 +810,6 @@ $btn-sizes: (
             text-underline-offset: rem(4px);
             background-color: transparent;
             color: map.get($variant-props, label);
-            fill: map.get($variant-props, label);
             border: none;
 
             // link 타입 예외 스타일
@@ -818,7 +817,6 @@ $btn-sizes: (
           } @else {
             background-color: map.get($variant-props, bg);
             color: map.get($variant-props, label);
-            fill: currentColor;
 
             @if $variant == 'outline' {
               border-width: rem(1px);
@@ -869,17 +867,9 @@ $btn-sizes: (
               @if $variant == 'link' {
                 color: map.get($disabled-props, label);
                 background-color: map.get($disabled-props, bg);
-
-                :global(svg) {
-                  fill: map.get($disabled-props, label);
-                }
               } @else {
                 background-color: map.get($disabled-props, bg);
                 color: map.get($disabled-props, label);
-
-                :global(svg) {
-                  fill: map.get($disabled-props, label);
-                }
 
                 @if $variant == 'outline' {
                 }

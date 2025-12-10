@@ -14,6 +14,7 @@ import EyeIcon from '@/assets/icons/icon-eye.svg?react';
 import ArrowDownIcon from '@/assets/icons/icon-arrow-down.svg?react';
 import ArrowUpIcon from '@/assets/icons/icon-arrow-up.svg?react';
 import RoundCheckIcon from '@/assets/icons/icon-round_check.svg?react';
+import SearchXIcon from '@/assets/icons/icon-search-x.svg?react';
 
 const iconMap = {
   search: SearchIcon,
@@ -29,6 +30,7 @@ const iconMap = {
   'arrow-down': ArrowDownIcon,
   'arrow-up': ArrowUpIcon,
   'round-check': RoundCheckIcon,
+  'search-x': SearchXIcon,
   // 다른 아이콘들도 여기에 추가
 };
 

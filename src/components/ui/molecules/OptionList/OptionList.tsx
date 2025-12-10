@@ -34,16 +34,18 @@ const OptionList = forwardRef<HTMLUListElement, OptionListProps>(
       const element = child as React.ReactElement<OptionItemProps>;
 
       const value = element.props.value;
-      const disabled = element.props['aria-disabled'] === true;
+      const disabled = element.props.disabled === true;
       const id = element.props.id; // id 확보
 
       return React.cloneElement(element, {
+        // 기존 props를 모두 유지 (onKeyDown 포함)
+        ...element.props, // 🚨 이 부분이 없다면 onKeyDown이 누락될 수 있습니다.
         key: id,
         role: 'option',
         value,
         disabled,
         selected: selectedId === id,
-        'aria-disabled': disabled,
+
         onClick: (e: React.MouseEvent<HTMLLIElement>) => {
           element.props.onClick?.(e);
           if (!disabled) onOptionSelect?.(id, value); // id + value

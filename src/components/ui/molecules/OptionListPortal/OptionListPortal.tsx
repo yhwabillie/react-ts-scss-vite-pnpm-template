@@ -1,7 +1,7 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 
-type PortalPosition = { top: number; left: number; width: number };
+export type PortalPosition = { top: number; left: number; width: number };
 type Props = {
   children: React.ReactNode;
   position: PortalPosition;
@@ -17,7 +17,7 @@ const OptionListPortal: React.FC<Props> = ({ children, position, isOpen, portalR
       ref={portalRef}
       style={{
         position: 'absolute',
-        top: position.top,
+        top: position.top + 6,
         left: position.left,
         width: position.width,
         zIndex: 9999,

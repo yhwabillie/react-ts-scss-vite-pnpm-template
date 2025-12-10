@@ -9,10 +9,12 @@ import React, {
 } from 'react';
 import clsx from 'clsx';
 import styles from '@/components/ui/molecules/Selectbox/Selectbox.module.scss';
+import Icon from '@/components/ui/atoms/Icon/Icon';
+import IconButton from '@/components/ui/molecules/IconButton/IconButton';
+import OptionListPortal from '@/components/ui/molecules/OptionListPortal/OptionListPortal';
+import type { PortalPosition } from '@/components/ui/molecules/OptionListPortal/OptionListPortal';
 import type { OptionListProps } from '../OptionList/OptionList';
 import type { OptionItemProps } from '../OptionItem/OptionItem';
-import Icon from '../../atoms/Icon/Icon';
-import OptionListPortal from '../OptionListPortal/OptionListPortal';
 
 type BaseProps = {
   variant: 'solid' | 'soft' | 'outline' | 'ghost';
@@ -26,20 +28,19 @@ type BaseProps = {
     | 'warning'
     | 'danger';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  id?: string;
   className?: string;
-  children: React.ReactNode;
-  value?: string;
-  onValueChange?: (value: string) => void;
   required?: boolean;
   disabled?: boolean;
+  ariaControls?: string;
+  ariaLabelledBy?: string;
+  value?: string;
+  placeholder?: string;
+  children: React.ReactNode;
+  onValueChange?: (value: string) => void;
 };
 
 type SelectboxProps = BaseProps & Omit<React.HTMLAttributes<HTMLSelectElement>, keyof BaseProps>;
-type PortalPosition = {
-  top: number;
-  left: number;
-  width: number;
-};
 
 const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
   (
@@ -47,24 +48,49 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
       variant,
       color,
       size,
+      id,
       className,
-      children,
       required,
       disabled,
+      ariaControls,
+      ariaLabelledBy,
       value,
+      placeholder,
+      children,
       onValueChange,
-      ...rest
     },
     ref,
   ) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
+    const [positioned, setPositioned] = useState(false);
+    const [portalPos, setPortalPos] = useState<PortalPosition | null>(null);
+
+    const portalRef = useRef<HTMLDivElement | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const optionRefs = useRef<HTMLLIElement[]>([]);
-    const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
 
-    const [portalPos, setPortalPos] = useState<PortalPosition | null>(null);
-    const [positioned, setPositioned] = useState(false);
-    const portalRef = useRef<HTMLDivElement | null>(null);
+    // -----------------------------
+    // custom-select 포커스 제어 ref
+    // -----------------------------
+    const customSelectRef = React.useRef<HTMLDivElement>(null);
+
+    // -----------------------------
+    // 선택된 옵션 스크롤 이동 (한 번만)
+    // -----------------------------
+    const hasScrolledRef = useRef(false);
+
+    // --------------------------------------------
+    // OptionList + OptionItem (children에서 추출)
+    // --------------------------------------------
+    const optionList = React.Children.toArray(children).find(child =>
+      React.isValidElement(child),
+    ) as React.ReactElement<OptionListProps>;
+    if (!optionList) return null;
+
+    const optionItemArr = React.Children.toArray(optionList.props.children).filter(child =>
+      React.isValidElement(child),
+    ) as React.ReactElement<OptionItemProps>[];
 
     // -----------------------------
     // 포지션 업데이트
@@ -99,18 +125,6 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
       document.addEventListener('mousedown', handleClickOutside);
       return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
-
-    // -----------------------------
-    // OptionList + OptionItem 추출
-    // -----------------------------
-    const optionList = React.Children.toArray(children).find(child =>
-      React.isValidElement(child),
-    ) as React.ReactElement<OptionListProps> | undefined;
-    if (!optionList) return null;
-
-    const optionItemArr = React.Children.toArray(optionList.props.children).filter(child =>
-      React.isValidElement(child),
-    ) as React.ReactElement<OptionItemProps>[];
 
     // -----------------------------
     // OptionItem → label / value 변환
@@ -174,11 +188,6 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
     const handleChange: React.ChangeEventHandler<HTMLSelectElement> = e => {
       handleSelect(e.target.id, e.target.value);
     };
-
-    // -----------------------------
-    // custom-select 포커스 제어 ref
-    // -----------------------------
-    const customSelectRef = React.useRef<HTMLDivElement>(null);
 
     // -----------------------------
     // custom-select 포커스 시 첫 옵션 포커싱
@@ -302,7 +311,7 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
       return React.cloneElement(optionList, {
         selectedId: selectedId,
         onOptionSelect: handleSelect,
-        className: clsx(optionList.props.className, isOpen && 'is-show'),
+        className: optionList.props.className,
         children: optionListChildren, // useMemo로 미리 만들어둔 children
       });
     }, [optionList, optionListChildren, selectedValue, handleSelect, isOpen]);
@@ -351,11 +360,6 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
       };
     }, [isOpen, updatePosition]);
 
-    // -----------------------------
-    // 선택된 옵션 스크롤 이동 (한 번만)
-    // -----------------------------
-    const hasScrolledRef = useRef(false);
-
     useEffect(() => {
       if (!isOpen) {
         hasScrolledRef.current = false; // 닫히면 다시 초기화
@@ -379,6 +383,23 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
     }, [isOpen, selectedId, parsedOptions]);
 
     // -----------------------------
+    // focusedIndex 기반으로 activeDescendant 계산
+    // -----------------------------
+    const activeDescendant = useMemo(() => {
+      // 1) 키보드로 포커스된 옵션 우선
+      if (focusedIndex !== null) {
+        const opt = parsedOptions[focusedIndex];
+        if (opt) return `${opt.id}`;
+      }
+
+      // 2) 클릭으로 선택된 옵션 (포커스는 사라졌지만 선택은 유지됨)
+      if (selectedId) return `${selectedId}`;
+
+      // 3) 아무것도 없으면 공백
+      return '';
+    }, [focusedIndex, parsedOptions, selectedId]);
+
+    // -----------------------------
     // 렌더링
     // -----------------------------
     return (
@@ -389,36 +410,56 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
           className,
         )}
       >
+        {/* native select (보조기기 동기화용) */}
         <select
           ref={ref}
-          tabIndex={-1}
-          {...rest}
+          id={id}
           value={selectedValue}
-          onChange={handleChange}
+          tabIndex={-1}
           required={required}
           disabled={disabled}
+          onChange={handleChange}
         >
           {parsedOptions.map(opt => (
             <option key={opt.key} value={opt.value} disabled={opt.disabled}>
-              {opt.label}
+              {opt.value}
             </option>
           ))}
         </select>
 
+        {/* 커스텀 셀렉트 트리거 */}
         <div
           ref={customSelectRef}
           className='custom-select'
           tabIndex={disabled ? -1 : 0}
-          onFocus={handleCustomSelectFocus} // tab 포커싱 진입 시
+          aria-disabled={disabled}
+          onFocus={handleCustomSelectFocus}
           onKeyDown={handleKeyDown}
           onClick={() => setIsOpen(prev => !prev)}
+          role='combobox'
+          aria-controls={ariaControls}
+          aria-activedescendant={isOpen ? activeDescendant : ''}
+          aria-expanded={isOpen}
+          aria-haspopup='listbox'
+          aria-labelledby={ariaLabelledBy}
         >
-          <span className='custom-select-text'>{selectedValue || '선택해주세요'}</span>
-          <Icon
-            name={isOpen ? 'arrow-up' : 'arrow-down'} // 열려있으면 up, 아니면 down
-            className='icon'
-            strokeLinecap='round'
-            strokeLinejoin='round'
+          <span className='custom-select-text'>{selectedValue || placeholder}</span>
+
+          <IconButton
+            as='div'
+            color={color}
+            size={size}
+            variant='ghost'
+            shape='rounded'
+            className='adorned-end'
+            icon={
+              <Icon
+                name='arrow-down'
+                className='icon'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
+            }
           />
         </div>
 
