@@ -16,7 +16,10 @@ import ControlGroup from './components/ui/molecules/ControlGroup/ControlGroup';
 import Switch from './components/ui/molecules/Switch/Switch';
 import Input from './components/ui/atoms/Input/Input';
 import Textarea from './components/ui/atoms/Textarea/Textarea';
-import OptionItem, { type OptionItemProps } from './components/ui/molecules/OptionItem/OptionItem';
+import OptionItem, {
+  type OptionBase,
+  type OptionItemProps,
+} from './components/ui/molecules/OptionItem/OptionItem';
 import OptionList from './components/ui/molecules/OptionList/OptionList';
 import Selectbox from './components/ui/molecules/Selectbox/Selectbox';
 import { useEffect, useState } from 'react';
@@ -81,93 +84,49 @@ const btnStyles: Record<ButtonLevel, React.CSSProperties> = {
   btn3: { font: 'var(--project-typo-btn3-400)' },
 };
 
-type Option = {
-  id: string;
-  value: string;
-  label?: string;
-  selected?: boolean;
-  disabled?: boolean;
-};
-
 // -------------------------------
-// 1번 Selectbox 데이터
+// Selectbox, Combobox 목업 데이터
 // -------------------------------
-const mockOptions1: Option[] = [
-  {
-    id: 'placeholder',
-    label: 'Select 아이템을 선택해 주세요',
-    value: '',
-    selected: false,
-    disabled: true,
-  },
-  { id: 'opt-1', value: '옵션 1' },
-  { id: 'opt-2', value: '옵션 2' },
-  { id: 'opt-3', value: '옵션 3' },
-  { id: 'opt-4', value: '옵션 4' },
-  { id: 'opt-5', value: '옵션 5' },
-  { id: 'opt-6', value: '옵션 6' },
-  { id: 'opt-7', value: '옵션 7' },
-  { id: 'opt-8', value: '옵션 8' },
-  { id: 'opt-9', value: '옵션 9' },
-];
-
-const placeholderOption1: Option = mockOptions1[0];
-
-const parsedOptions1: Option[] = [
-  ...(mockOptions1.some(opt => opt.id === 'placeholder') ? [placeholderOption1] : []),
-  ...mockOptions1.filter(opt => opt.value !== ''),
-];
-
-// 초기 선택 id를 기준으로
-const initialSelectedId1 = parsedOptions1.find(opt => opt.selected)?.id ?? parsedOptions1[0].id;
-
-// -------------------------------
-// 2번 Combobox 데이터
-// -------------------------------
-type Option2 = {
-  id: string;
-  value: string;
-  label?: string;
-  selected: boolean;
-  disabled: boolean;
-};
-
-const mockOptions2: Option2[] = [
+const mockOptions: OptionBase[] = [
   {
     id: 'placeholder',
     value: '',
-    label: 'Combo 아이템을 선택해 주세요',
+    label: 'ComboBox 옵션을 선택해 주세요',
     selected: false,
     disabled: true,
   },
   { id: 'combo-1', value: '바나나', selected: false, disabled: false },
   { id: 'combo-2', value: '사과', selected: false, disabled: false },
   { id: 'combo-3', value: '파인애플', selected: false, disabled: false },
-  { id: 'combo-4', value: '나주배', selected: false, disabled: false },
+  { id: 'combo-4', value: '나주배', selected: false, disabled: true },
   { id: 'combo-5', value: '용과', selected: false, disabled: false },
   { id: 'combo-6', value: '샤인머스캣', selected: false, disabled: false },
   { id: 'combo-7', value: '딸기', selected: false, disabled: false },
-  { id: 'combo-8', value: '망고', selected: false, disabled: true },
-  { id: 'combo-9', value: '키위', selected: false, disabled: true },
+  { id: 'combo-8', value: '망고', selected: false, disabled: false },
+  { id: 'combo-9', value: '키위', selected: false, disabled: false },
 ];
 
-const placeholderOption2: Option2 = mockOptions2[0];
+const placeholderOption = mockOptions.find(opt => opt.id === 'placeholder') ?? null;
+const optionsWithoutPlaceholder = mockOptions.filter(opt => opt.id !== 'placeholder');
 
-const parsedOptions2: Option2[] = [
-  ...(mockOptions2.some(opt => opt.id === 'placeholder') ? [placeholderOption2] : []),
-  ...mockOptions2.filter(opt => opt.value !== ''),
-];
+// 플레이스홀더 옵션이 있으면 맨 앞에 추가
+const parsedOptions = placeholderOption
+  ? [placeholderOption, ...optionsWithoutPlaceholder]
+  : optionsWithoutPlaceholder;
 
-// 초기 선택 id를 기준으로
-const initialSelectedId2 = parsedOptions2.find(opt => opt.selected)?.id ?? parsedOptions2[0].id;
+// selected=true인 옵션 찾기
+const selectedOption = parsedOptions.find(opt => opt.selected);
+
+// 초기 selected가 있는 옵션의 id를 찾고, 없으면 첫 번째 옵션의 id를 초기값으로 설정
+// placeholder가 있으면 placeholder의 id값 사용, 없으면 가장 첫번째 옵션의 id 값 사용
+const initialSelectedId = selectedOption?.id ?? parsedOptions[0].id;
 
 function App() {
-  // id 기준으로 선택된 value 가져오기
-  const [selectedId1, setSelectedId1] = useState(initialSelectedId1);
-  const selectedValue1 = parsedOptions1.find(opt => opt.id === selectedId1)?.value ?? '';
+  // 선택된 옵션 id 상태 관리
+  const [selectedId, setSelectedId] = useState(initialSelectedId);
 
-  const [selectedId2, setSelectedId2] = useState(initialSelectedId2);
-  const selectedValue2 = parsedOptions2.find(opt => opt.id === selectedId2)?.value ?? '';
+  // 선택된 옵션의 value 값을 찾음
+  const selectedValue = parsedOptions.find(opt => opt.id === selectedId)?.value ?? '';
 
   return (
     <>
@@ -175,51 +134,51 @@ function App() {
         <FormField
           as='div'
           size='xl'
-          id='combobox-1-label'
-          htmlFor='combobox-1'
+          id='combobox-label'
+          htmlFor='combobox'
           labelText='콤보박스 옵션 선택'
           direction='column'
-          required={true}
+          // required={true}
         >
           <Combobox
             variant='outline'
             color='primary'
             size='xl'
-            id='combobox-1'
-            ariaControls='combobox-1-optionlist'
-            ariaLabelledBy='combobox-1-label'
-            value={selectedValue2}
-            placeholder={mockOptions2[0].label}
+            id='combobox'
+            // disabled={true}
+            // required={true}
+            placeholder={parsedOptions[0].label || '옵션을 선택해 주세요'}
+            ariaControls='combobox-optionlist'
+            ariaLabelledBy='combobox-label'
             onValueChange={val => {
-              // value로 바로 상태를 바꾸는게 아니라 id 기준으로 바꿔야 함
-              const found = parsedOptions2.find(opt => opt.value === val);
-              if (found) setSelectedId2(found.id);
+              const found = parsedOptions.find(opt => opt.value === val);
+              if (found) setSelectedId(found.id);
             }}
           >
             <OptionList
-              id='combobox-1-optionlist'
               variant='outline'
               color='primary'
               size='xl'
-              selectedId={selectedId2}
-              onOptionSelect={id => {
-                setSelectedId2(id);
-              }}
+              id='combobox-optionlist'
+              selectedId={selectedId}
+              onOptionSelect={id => setSelectedId(id)}
             >
-              {parsedOptions2.map((opt, idx) => (
-                <OptionItem
-                  key={opt.id}
-                  variant='ghost'
-                  color='primary'
-                  size='xl'
-                  index={idx}
-                  id={opt.id}
-                  value={opt.value}
-                  placeholder={opt.label}
-                  selected={selectedId2 === opt.id}
-                  aria-disabled={opt.disabled}
-                />
-              ))}
+              {parsedOptions.map((opt, idx) => {
+                return (
+                  <OptionItem
+                    key={opt.id}
+                    variant='ghost'
+                    color='primary'
+                    size='xl'
+                    id={opt.id}
+                    value={opt.value}
+                    selected={selectedId === opt.id}
+                    disabled={opt.disabled}
+                    index={idx}
+                    placeholder={opt.label}
+                  />
+                );
+              })}
             </OptionList>
           </Combobox>
         </FormField>
@@ -232,6 +191,7 @@ function App() {
           htmlFor='custom-select-1'
           labelText='셀렉스 박스 옵션 선택'
           direction='column'
+          // required={true}
         >
           <Selectbox
             variant='outline'
@@ -240,12 +200,12 @@ function App() {
             id='custom-select-1'
             ariaControls='selectbox-1-optionlist'
             ariaLabelledBy='selectbox-1-label'
-            value={selectedValue1}
-            placeholder={mockOptions1[0].label}
+            // disabled={true}
+            // required={true}
+            placeholder={parsedOptions[0].label || '옵션을 선택해 주세요'}
             onValueChange={val => {
-              // value로 바로 상태를 바꾸는게 아니라 id 기준으로 바꿔야 함
-              const found = parsedOptions1.find(opt => opt.value === val);
-              if (found) setSelectedId1(found.id);
+              const found = parsedOptions.find(opt => opt.value === val);
+              if (found) setSelectedId(found.id);
             }}
           >
             <OptionList
@@ -253,12 +213,10 @@ function App() {
               variant='outline'
               color='warning'
               size='xl'
-              selectedId={selectedId1}
-              onOptionSelect={id => {
-                setSelectedId1(id); // id 선택
-              }}
+              selectedId={selectedId}
+              onOptionSelect={id => setSelectedId(id)}
             >
-              {parsedOptions1.map((opt, idx) => (
+              {parsedOptions.map((opt, idx) => (
                 <OptionItem
                   key={opt.id}
                   variant='ghost'
@@ -268,8 +226,8 @@ function App() {
                   id={opt.id}
                   value={opt.value}
                   placeholder={opt.label}
-                  selected={selectedId1 === opt.id}
-                  aria-disabled={opt.disabled}
+                  selected={selectedId === opt.id}
+                  disabled={opt.disabled}
                 />
               ))}
             </OptionList>
