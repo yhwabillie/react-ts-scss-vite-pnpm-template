@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from '@/components/ui/molecules/OptionItem/OptionItem.module.scss';
 import Icon from '../../atoms/Icon/Icon';
@@ -18,6 +18,7 @@ type BaseProps = {
     | 'danger';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   value: string; // 선택값
+  placeholder?: string;
   disabled?: boolean;
   selected?: boolean; // ★ 현재 선택 여부
   onSelect?: (id: string, value: string) => void;
@@ -36,6 +37,7 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
       color,
       size,
       value,
+      placeholder,
       disabled,
       selected,
       onSelect,
@@ -44,6 +46,7 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
       index,
       onMount,
       onKeyDown,
+      tabIndex,
       ...rest
     },
     ref,
@@ -61,10 +64,11 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
           if (typeof ref === 'function') ref(el);
           else if (ref) (ref as any).current = el;
         }}
+        id={id}
         role='option'
-        aria-disabled={disabled}
-        aria-selected={selected}
-        tabIndex={-1} // ★ 키보드 포커싱 제어
+        aria-disabled={id === 'placeholder' ? false : disabled}
+        aria-selected={id === 'placeholder' ? false : selected}
+        tabIndex={tabIndex}
         className={clsx(
           styles['option-item'],
           `variant--${variant}`,
@@ -72,12 +76,12 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
           `size--${size}`,
           className,
         )}
-        {...rest}
         onClick={handleClick}
         onKeyDown={onKeyDown}
+        {...rest}
       >
         <span className='label' title={value}>
-          {value || '선택해주세요'}
+          {value || placeholder}
         </span>
 
         {selected && value !== '' && (

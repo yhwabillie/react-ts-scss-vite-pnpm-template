@@ -16,6 +16,7 @@ type BaseProps = {
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   shape: 'rounded' | 'square' | 'pill';
   type: 'text' | 'number' | 'email';
+  role?: 'combobox';
   className?: string;
   as?: React.ElementType;
   adornedStart?: React.ReactNode;
@@ -32,17 +33,18 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       color,
       size,
       type,
+      role,
       id,
       as: Component = 'label',
       className,
       adornedStart,
       adornedEnd,
+      value, // 부모로부터 value 받기
+      onChange, // 부모로부터 onChange 받기
       ...rest
     },
     ref,
   ) => {
-    const [value, setValue] = useState('');
-
     return (
       <Component
         {...(Component === 'label' ? { htmlFor: id } : {})}
@@ -53,7 +55,15 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       >
         {adornedStart && adornedStart}
 
-        <input id={id} type={type} ref={ref} onChange={e => setValue(e.target.value)} {...rest} />
+        <input
+          id={id}
+          role={role}
+          type={type}
+          ref={ref}
+          value={value}
+          onChange={e => onChange?.(e)}
+          {...rest}
+        />
 
         {adornedEnd && adornedEnd}
       </Component>

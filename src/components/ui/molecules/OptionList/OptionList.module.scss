@@ -182,6 +182,34 @@ $option-list-sizes: (
       padding: map.get($props, padding);
       border-radius: map.get($props, radius);
       filter: map.get($props, shadow);
+
+      :global(.empty-state) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: map.get($props, padding);
+        border-radius: map.get($props, radius);
+        background-color: #f5f5f5;
+
+        :global(.icon) {
+          fill: none;
+          color: #555555;
+          margin-bottom: rem(6px);
+          width: rem(20px);
+          height: rem(20px);
+        }
+
+        :global(.title) {
+          font: var(--project-typo-input2-500);
+          color: #555555;
+        }
+
+        :global(.desc) {
+          font: var(--project-typo-input2-500);
+          color: #888888;
+        }
+      }
     }
   }
 

@@ -21,6 +21,7 @@ import OptionList from './components/ui/molecules/OptionList/OptionList';
 import Selectbox from './components/ui/molecules/Selectbox/Selectbox';
 import { useEffect, useState } from 'react';
 import OptionListPortal from './components/ui/molecules/OptionListPortal/OptionListPortal';
+import Combobox from './components/ui/molecules/Combobox/Combobox';
 
 // 타입 정의
 type DisplayLevel = 'd1' | 'd2' | 'd3';
@@ -84,27 +85,33 @@ type Option = {
   id: string;
   value: string;
   label?: string;
-  disabled?: boolean;
   selected?: boolean;
+  disabled?: boolean;
 };
 
 // -------------------------------
 // 1번 Selectbox 데이터
 // -------------------------------
 const mockOptions1: Option[] = [
-  { id: 'placeholder', value: '' },
+  {
+    id: 'placeholder',
+    label: 'Select 아이템을 선택해 주세요',
+    value: '',
+    selected: false,
+    disabled: true,
+  },
   { id: 'opt-1', value: '옵션 1' },
   { id: 'opt-2', value: '옵션 2' },
   { id: 'opt-3', value: '옵션 3' },
-  { id: 'opt-4', value: '옵션 3' },
-  { id: 'opt-5', value: '옵션 3' },
-  { id: 'opt-6', value: '옵션 3' },
-  { id: 'opt-7', value: '옵션 3' },
-  { id: 'opt-8', value: '옵션 3' },
-  { id: 'opt-9', value: '옵션 3', selected: true },
+  { id: 'opt-4', value: '옵션 4' },
+  { id: 'opt-5', value: '옵션 5' },
+  { id: 'opt-6', value: '옵션 6' },
+  { id: 'opt-7', value: '옵션 7' },
+  { id: 'opt-8', value: '옵션 8' },
+  { id: 'opt-9', value: '옵션 9' },
 ];
 
-const placeholderOption1: Option = { id: 'placeholder', value: '', disabled: true };
+const placeholderOption1: Option = mockOptions1[0];
 
 const parsedOptions1: Option[] = [
   ...(mockOptions1.some(opt => opt.id === 'placeholder') ? [placeholderOption1] : []),
@@ -114,86 +121,148 @@ const parsedOptions1: Option[] = [
 // 초기 선택 id를 기준으로
 const initialSelectedId1 = parsedOptions1.find(opt => opt.selected)?.id ?? parsedOptions1[0].id;
 
+// -------------------------------
+// 2번 Combobox 데이터
+// -------------------------------
+type Option2 = {
+  id: string;
+  value: string;
+  label?: string;
+  selected: boolean;
+  disabled: boolean;
+};
+
+const mockOptions2: Option2[] = [
+  {
+    id: 'placeholder',
+    value: '',
+    label: 'Combo 아이템을 선택해 주세요',
+    selected: false,
+    disabled: true,
+  },
+  { id: 'combo-1', value: '바나나', selected: false, disabled: false },
+  { id: 'combo-2', value: '사과', selected: false, disabled: false },
+  { id: 'combo-3', value: '파인애플', selected: false, disabled: false },
+  { id: 'combo-4', value: '나주배', selected: false, disabled: false },
+  { id: 'combo-5', value: '용과', selected: false, disabled: false },
+  { id: 'combo-6', value: '샤인머스캣', selected: false, disabled: false },
+  { id: 'combo-7', value: '딸기', selected: false, disabled: false },
+  { id: 'combo-8', value: '망고', selected: false, disabled: true },
+  { id: 'combo-9', value: '키위', selected: false, disabled: true },
+];
+
+const placeholderOption2: Option2 = mockOptions2[0];
+
+const parsedOptions2: Option2[] = [
+  ...(mockOptions2.some(opt => opt.id === 'placeholder') ? [placeholderOption2] : []),
+  ...mockOptions2.filter(opt => opt.value !== ''),
+];
+
+// 초기 선택 id를 기준으로
+const initialSelectedId2 = parsedOptions2.find(opt => opt.selected)?.id ?? parsedOptions2[0].id;
+
 function App() {
   // id 기준으로 선택된 value 가져오기
   const [selectedId1, setSelectedId1] = useState(initialSelectedId1);
   const selectedValue1 = parsedOptions1.find(opt => opt.id === selectedId1)?.value ?? '';
 
+  const [selectedId2, setSelectedId2] = useState(initialSelectedId2);
+  const selectedValue2 = parsedOptions2.find(opt => opt.id === selectedId2)?.value ?? '';
+
   return (
     <>
+      <section style={{ width: '700px', margin: '30px auto 30px auto' }}>
+        <label id='combobox-1-label' htmlFor='combobox-1'>
+          옵션 카테고리
+        </label>
+        <Combobox
+          variant='outline'
+          color='primary'
+          size='xl'
+          id='combobox-1'
+          ariaControls='combobox-1-optionlist'
+          ariaLabelledBy='combobox-1-label'
+          value={selectedValue2}
+          placeholder={mockOptions2[0].label}
+          onValueChange={val => {
+            // value로 바로 상태를 바꾸는게 아니라 id 기준으로 바꿔야 함
+            const found = parsedOptions2.find(opt => opt.value === val);
+            if (found) setSelectedId2(found.id);
+          }}
+        >
+          <OptionList
+            id='combobox-1-optionlist'
+            variant='outline'
+            color='primary'
+            size='xl'
+            selectedId={selectedId2}
+            onOptionSelect={id => {
+              setSelectedId2(id);
+            }}
+          >
+            {parsedOptions2.map((opt, idx) => (
+              <OptionItem
+                key={opt.id}
+                variant='ghost'
+                color='primary'
+                size='xl'
+                index={idx}
+                id={opt.id}
+                value={opt.value}
+                placeholder={opt.label}
+                selected={selectedId2 === opt.id}
+                aria-disabled={opt.disabled}
+              />
+            ))}
+          </OptionList>
+        </Combobox>
+      </section>
+
       <section style={{ width: '700px', margin: 'auto' }}>
+        <label id='selectbox-1-label' htmlFor='custom-select-1'>
+          옵션 카테고리
+        </label>
         <Selectbox
-          id='custom-select-1'
           variant='outline'
           color='warning'
-          size='lg'
+          size='xl'
+          id='custom-select-1'
+          ariaControls='selectbox-1-optionlist'
+          ariaLabelledBy='selectbox-1-label'
+          value={selectedValue1}
+          placeholder={mockOptions1[0].label}
           onValueChange={val => {
             // value로 바로 상태를 바꾸는게 아니라 id 기준으로 바꿔야 함
             const found = parsedOptions1.find(opt => opt.value === val);
             if (found) setSelectedId1(found.id);
           }}
-          value={selectedValue1}
-          required
         >
           <OptionList
-            id='custom-select-1-optionlist'
+            id='selectbox-1-optionlist'
             variant='outline'
             color='warning'
-            size='lg'
+            size='xl'
             selectedId={selectedId1}
-            onOptionSelect={(id, value) => {
+            onOptionSelect={id => {
               setSelectedId1(id); // id 선택
             }}
           >
-            {parsedOptions1.map(opt => (
+            {parsedOptions1.map((opt, idx) => (
               <OptionItem
                 key={opt.id}
-                id={opt.id}
-                value={opt.value}
                 variant='ghost'
                 color='warning'
-                size='lg'
+                size='xl'
+                index={idx}
+                id={opt.id}
+                value={opt.value}
+                placeholder={opt.label}
                 selected={selectedId1 === opt.id}
                 aria-disabled={opt.disabled}
               />
             ))}
           </OptionList>
         </Selectbox>
-        {/* <Selectbox
-          id='custom-select-2'
-          variant='outline'
-          color='primary'
-          size='lg'
-          onValueChange={setValue2}
-          value={value2}
-          required
-        >
-          <OptionList id='custom-select-2-optionlist' variant='outline' color='primary' size='lg'>
-            {parsedOptions2.map(opt => (
-              <OptionItem
-                key={opt.id}
-                value={opt.value}
-                variant='ghost'
-                color='primary'
-                size='lg'
-                aria-selected={value2 === opt.value}
-                aria-disabled={opt.disabled}
-              >
-                <span className='label' title={opt.value}>
-                  {opt.value || '선택해주세요'}
-                </span>
-                {value2 === opt.value && value2 !== '' && (
-                  <Icon
-                    name='round-check'
-                    className='icon'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                )}
-              </OptionItem>
-            ))}
-          </OptionList>
-        </Selectbox> */}
       </section>
 
       <section style={{ margin: '30px' }}>
