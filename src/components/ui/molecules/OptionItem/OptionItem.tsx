@@ -1,11 +1,16 @@
-import React, { forwardRef, useEffect } from 'react';
+import React, { forwardRef } from 'react';
 import clsx from 'clsx';
 import styles from '@/components/ui/molecules/OptionItem/OptionItem.module.scss';
-import Icon from '../../atoms/Icon/Icon';
+import Icon from '@/components/ui/atoms/Icon/Icon';
 
-type BaseProps = {
+export interface OptionBase {
   id: string;
-  index?: number; // Optional로 추가
+  value: string;
+  label?: string;
+  disabled?: boolean;
+  selected: boolean;
+}
+interface BaseProps extends OptionBase {
   variant: 'solid' | 'soft' | 'ghost';
   color:
     | 'primary'
@@ -17,14 +22,12 @@ type BaseProps = {
     | 'warning'
     | 'danger';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  value: string; // 선택값
-  placeholder?: string;
-  disabled?: boolean;
-  selected?: boolean; // ★ 현재 선택 여부
-  onSelect?: (id: string, value: string) => void;
+  index?: number; // Optional로 추가
   className?: string;
+  placeholder?: string;
+  onSelect?: (id: string, value: string) => void;
   onMount?: (el: HTMLLIElement | null, idx: number) => void;
-};
+}
 
 export type OptionItemProps = BaseProps &
   Omit<React.LiHTMLAttributes<HTMLLIElement>, keyof BaseProps>;
@@ -47,7 +50,6 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
       onMount,
       onKeyDown,
       tabIndex,
-      ...rest
     },
     ref,
   ) => {
@@ -65,8 +67,8 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
           else if (ref) (ref as any).current = el;
         }}
         id={id}
-        role='option'
-        aria-disabled={id === 'placeholder' ? false : disabled}
+        role={id === 'placeholder' ? 'note' : 'option'}
+        aria-disabled={disabled}
         aria-selected={id === 'placeholder' ? false : selected}
         tabIndex={tabIndex}
         className={clsx(
@@ -78,7 +80,6 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
         )}
         onClick={handleClick}
         onKeyDown={onKeyDown}
-        {...rest}
       >
         <span className='label' title={value}>
           {value || placeholder}

@@ -1,9 +1,9 @@
 import React, { forwardRef } from 'react';
 import clsx from 'clsx';
 import styles from '@/components/ui/molecules/OptionList/OptionList.module.scss';
-import type { OptionItemProps } from '../OptionItem/OptionItem';
+import type { OptionBase, OptionItemProps } from '../OptionItem/OptionItem';
 
-type BaseProps = {
+interface BaseProps extends Pick<OptionBase, 'id'> {
   variant: 'solid' | 'soft' | 'outline' | 'ghost';
   color:
     | 'primary'
@@ -15,18 +15,17 @@ type BaseProps = {
     | 'warning'
     | 'danger';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  selectedId?: string;
   className?: string;
   children: React.ReactNode;
-
   onOptionSelect?: (id: string, value: string) => void;
-  selectedId?: string;
-};
+}
 
 export type OptionListProps = BaseProps &
   Omit<React.HTMLAttributes<HTMLUListElement>, keyof BaseProps>;
 
 const OptionList = forwardRef<HTMLUListElement, OptionListProps>(
-  ({ variant, color, size, className, children, onOptionSelect, selectedId, ...rest }, ref) => {
+  ({ variant, color, size, className, children, onOptionSelect, selectedId }, ref) => {
     const clonedChildren = React.Children.map(children, child => {
       if (!React.isValidElement(child)) return child;
 
@@ -38,8 +37,7 @@ const OptionList = forwardRef<HTMLUListElement, OptionListProps>(
       const id = element.props.id; // id 확보
 
       return React.cloneElement(element, {
-        // 기존 props를 모두 유지 (onKeyDown 포함)
-        ...element.props, // 🚨 이 부분이 없다면 onKeyDown이 누락될 수 있습니다.
+        ...element.props,
         key: id,
         role: 'option',
         value,
@@ -64,7 +62,7 @@ const OptionList = forwardRef<HTMLUListElement, OptionListProps>(
           className,
         )}
       >
-        <ul ref={ref} role='listbox' {...rest}>
+        <ul ref={ref} role='listbox'>
           {clonedChildren}
         </ul>
       </div>

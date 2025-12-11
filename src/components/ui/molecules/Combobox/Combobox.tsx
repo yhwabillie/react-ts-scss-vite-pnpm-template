@@ -14,11 +14,9 @@ import IconButton from '@/components/ui/molecules/IconButton/IconButton';
 import OptionListPortal from '@/components/ui/molecules/OptionListPortal/OptionListPortal';
 import type { PortalPosition } from '../OptionListPortal/OptionListPortal';
 import type { OptionListProps } from '../OptionList/OptionList';
-import type { OptionItemProps } from '../OptionItem/OptionItem';
+import type { OptionBase, OptionItemProps } from '../OptionItem/OptionItem';
 
-// Input 컴포넌트는 사용되지 않으므로 제거하거나 그대로 둡니다. (현재 코드에서는 제거)
-
-type BaseProps = {
+interface BaseProps extends Pick<OptionBase, 'id' | 'disabled'> {
   variant: 'solid' | 'soft' | 'outline' | 'ghost';
   color:
     | 'primary'
@@ -30,17 +28,14 @@ type BaseProps = {
     | 'warning'
     | 'danger';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  id?: string;
-  className?: string;
   required?: boolean;
-  disabled?: boolean;
+  placeholder: string;
+  className?: string;
   ariaControls?: string;
   ariaLabelledBy?: string;
-  value: string;
-  placeholder?: string;
-  children: React.ReactNode;
   onValueChange?: (value: string) => void;
-};
+  children: React.ReactNode;
+}
 
 type ComboboxProps = BaseProps & Omit<React.HTMLAttributes<HTMLInputElement>, keyof BaseProps>;
 
@@ -56,37 +51,56 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       disabled,
       ariaControls,
       ariaLabelledBy,
-      value,
       placeholder,
       children,
       onValueChange,
     },
     ref,
   ) => {
+    // -----------------------------
+    // 📌 상태 선언
+    // -----------------------------
     const [isOpen, setIsOpen] = useState(false);
-    // [수정] focusedIndex는 이제 filteredOptions 내의 인덱스를 가리킵니다.
     const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
     const [positioned, setPositioned] = useState(false);
     const [portalPos, setPortalPos] = useState<PortalPosition | null>(null);
 
+    // -----------------------------
+    // 🧩 Ref 플래그 선언
+    // -----------------------------
     const portalRef = useRef<HTMLDivElement | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
-    // [삭제] optionRefs는 사용하지 않으므로 주석 처리하거나 제거 (스크롤 로직을 filteredOptionRefs가 대체)
-    // const optionRefs = useRef<HTMLLIElement[]>([]);
-
-    // -----------------------------
-    // custom-input 포커스 제어 ref
-    // -----------------------------
     const customInputRef = React.useRef<HTMLDivElement>(null);
-
-    // -----------------------------
-    // 선택된 옵션 스크롤 이동 (한 번만)
-    // -----------------------------
     const hasScrolledRef = useRef(false);
 
-    // --------------------------------------------
-    // OptionList + OptionItem (children에서 추출)
-    // --------------------------------------------
+    // -----------------------------
+    // 🗂️ labelCache
+    // - ReactNode → string 매핑을 캐싱
+    // -----------------------------
+    const labelCache = useRef(new Map<React.ReactNode, string>());
+
+    // -----------------------------
+    // 🗂️ extractLabelText
+    // - ReactNode(children)를 문자열로 변환
+    // -----------------------------
+    const extractLabelText = (node: React.ReactNode): string => {
+      if (labelCache.current.has(node)) return labelCache.current.get(node)!;
+      let result = '';
+
+      if (!node) result = '';
+      else if (typeof node === 'string' || typeof node === 'number') result = String(node);
+      else if (Array.isArray(node)) result = node.map(extractLabelText).join('');
+      else if (React.isValidElement(node)) {
+        const element = node as React.ReactElement<{ children?: React.ReactNode }>;
+        result = extractLabelText(element.props.children);
+      }
+      labelCache.current.set(node, result);
+      return result;
+    };
+
+    // ------------------------------------------------------
+    // 📦 OptionList & OptionItem 파싱
+    // ------------------------------------------------------
     const optionList = React.Children.toArray(children).find(child =>
       React.isValidElement(child),
     ) as React.ReactElement<OptionListProps>;
@@ -96,34 +110,45 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       React.isValidElement(child),
     ) as React.ReactElement<OptionItemProps>[];
 
-    // -----------------------------
-    // ParsedOptions (전체 옵션)
-    // -----------------------------
+    // -------------------------------------
+    // 📦 ParsedOptions 파싱
+    // - label: extractLabelText 사용
+    // - value: label 폴백 사용
+    // - id: 인덱스 폴백 사용
+    // -------------------------------------
     const parsedOptions = useMemo(() => {
       return optionItemArr.map((item, idx) => {
-        const index = idx;
-        const id = item.props.id;
-        const value = item.props.value;
+        const id = item.props.id ?? `opt-${idx}`; // ID는 prop이 없으면 자동 생성
+        const labelText = extractLabelText(item.props.children); // 레이블은 children에서 텍스트 추출
+        const value = item.props.value ?? labelText; // Value는 prop이 없으면 레이블 사용
         const selected = item.props.selected;
-        const disabled = item.props['aria-disabled'];
+        const disabled = item.props.disabled;
 
         return {
-          index, // 전체 옵션 내 인덱스
+          key: idx,
           id,
           value,
+          label: labelText,
           selected,
           disabled,
         };
       });
     }, [optionItemArr]);
 
-    // ---------------------------------------------------------------------------------------
-    // selectedId/selectedValue 상태 관리 (기존 로직 유지)
-    // ---------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
+    // 📌 선택 상태 관리
+    // - selectedId: 현재 선택된 옵션의 id
+    //   • disabled 옵션은 제외
+    //   • 값이 없는 옵션은 제외
+    //   • 초기값: parsedOptions에서 selected가 true인 첫 번째 유효 옵션
+    // - selectedValue: 현재 선택된 옵션의 value
+    //   • 초기값: parsedOptions에서 selected가 true인 첫 번째 옵션 값
+    // ----------------------------------------------------------------------------
     const [selectedId, setSelectedId] = useState<string>(() => {
-      const selectedOption = parsedOptions.find(opt => opt.selected && !opt.disabled);
+      const selectedOption = parsedOptions.find(
+        opt => opt.selected && !opt.disabled && opt.value !== '',
+      );
       if (selectedOption) return selectedOption.id;
-
       return '';
     });
 
@@ -131,14 +156,21 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       parsedOptions.find(opt => opt.selected)?.value ?? '',
     );
 
-    // -----------------------------
-    // OptionList 열기 직전 값 저장
-    // -----------------------------
+    // -----------------------------------------------------
+    // 📌 prevSelectedValue 상태 관리
+    // - OptionList 열기 직전 값 저장
+    // - 이전 selectedValue 상태를 저장하여 포커스 아웃 시 복원에 사용
+    // -----------------------------------------------------
     const [prevSelectedValue, setPrevSelectedValue] = useState(selectedValue);
 
-    // -----------------------------
-    // handleSelect (기존 로직 유지)
-    // -----------------------------
+    // ------------------------------------------------------
+    // ⚡️ handleSelect
+    // - 옵션 선택 시 호출되는 이벤트 핸들러
+    // - selectedId, selectedValue, prevSelectedValue 업데이트
+    // - onValueChange 콜백 실행
+    // - 드롭다운 메뉴 닫기(isOpen = false)
+    // - 선택 완료 후 포커스(focusedIndex) 초기화
+    // ------------------------------------------------------
     const handleSelect = useCallback(
       (id: string, value: string) => {
         setSelectedId(id);
@@ -151,9 +183,43 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       [onValueChange],
     );
 
-    // -----------------------------
-    // handleBlur [유효성 검사 로직이 이미 적용되어 있음]
-    // -----------------------------
+    // ------------------------------------------------------
+    // ⚡️ handleChange
+    // - Select 입력값 변경 시 호출
+    // - selectedValue 업데이트 및 onValueChange 콜백 실행
+    // - 입력 시작 시 드롭다운 메뉴 열기(isOpen = true)
+    // - 기존 선택 ID 초기화(setSelectedId('')) → 필터링 충돌 방지
+    // - 포커스(focusedIndex) 초기화
+    // ------------------------------------------------------
+    const handleChange = useCallback(
+      (e: React.ChangeEvent<HTMLInputElement>) => {
+        const val = e.target.value;
+
+        setSelectedValue(val);
+        onValueChange?.(val);
+
+        // 검색어를 입력하면 무조건 OptionList 열기
+        if (!isOpen) setIsOpen(true);
+
+        // 타이핑 시작 시 기존 선택 ID를 무조건 초기화
+        // filteredOptions 로직이 선택된 ID에 기반하여 필터링을 유지하는 것을 방지
+        setSelectedId('');
+
+        // 검색어를 입력하면 기존 포커싱을 초기화
+        setFocusedIndex(null);
+      },
+      [onValueChange, isOpen],
+    );
+
+    // ------------------------------------------------------
+    // ⚡️ handleBlur
+    // - 입력 요소 포커스가 벗어날 때 호출
+    // - 콤보박스 내부로 이동하지 않으면 드롭다운 닫기(isOpen = false)
+    // - 포커스(focusedIndex) 초기화
+    // - 값 유효성 검사:
+    //   • 입력값이 parsedOptions와 일치하지 않으면 selectedValue, selectedId 초기화
+    //   • 일치하면 해당 옵션 id 유지
+    // ------------------------------------------------------
     const handleBlur = useCallback(
       (e: React.FocusEvent<HTMLInputElement>) => {
         const nextFocusedElement = e.relatedTarget as Node | null;
@@ -167,16 +233,22 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
           setIsOpen(false);
           setFocusedIndex(null);
 
-          // 🚨 [핵심 로직 확인]: 요청하신 유효성 검사 및 초기화
-          const isValueMatchedInOptions = parsedOptions.some(opt => opt.value === selectedValue);
+          // 유효성 검사 및 초기화
+          const isValueMatchedInOptions = parsedOptions.some(
+            // 💡 수정: value가 일치하고 AND disabled가 아닌 옵션만 유효함
+            opt => opt.value === selectedValue && !opt.disabled,
+          );
 
           if (!isValueMatchedInOptions) {
-            // 현재 입력된 값이 유효한 옵션 값과 일치하지 않으면 초기화 (빈 문자열)
+            // 현재 입력된 값이 유효한 옵션 값과 일치하지 않으면 초기화
             setSelectedValue('');
             setSelectedId('');
           } else {
             // 현재 입력된 값이 유효한 옵션 값과 일치하면 해당 값을 유지
-            const matchedOption = parsedOptions.find(opt => opt.value === selectedValue);
+            // 💡 disabled가 아닌 옵션 중에서만 찾도록 find도 수정
+            const matchedOption = parsedOptions.find(
+              opt => opt.value === selectedValue && !opt.disabled,
+            );
             if (matchedOption) {
               setSelectedId(matchedOption.id);
             }
@@ -186,9 +258,14 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       [parsedOptions, selectedValue, setSelectedValue, setSelectedId, setIsOpen, setFocusedIndex],
     );
 
-    // -----------------------------
-    // 입력값(selectedValue)에 따라 옵션 필터링 [최종 수정]
-    // -----------------------------
+    // ------------------------------------------------------
+    // 🔍 filteredOptions
+    // - 입력값(selectedValue)에 따라 옵션 목록 필터링
+    // - selectedValue가 없거나, 선택된 옵션 값과 정확히 일치하면 전체 옵션 반환
+    // - 입력값이 선택된 값과 다르거나 타이핑 중이면:
+    //   • disabled가 아닌 옵션만 포함
+    //   • 입력값 포함 여부(value.includes) 기준으로 필터링
+    // ------------------------------------------------------
     const filteredOptions = useMemo(() => {
       // 1. 선택된 값이 없거나, 현재 input 값이 이미 선택된 옵션의 값과 정확히 일치하는 경우
       if (
@@ -209,203 +286,149 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       );
     }, [parsedOptions, selectedValue, selectedId]);
 
-    // [추가] filteredOptions가 변경되면 focusedIndex 초기화
+    // ------------------------------------------------------
+    // ✨ filteredOptions 변경 시 포커스 초기화
+    // - 드롭다운이 열려 있는 상태(isOpen)에서만 적용
+    // - 검색어 입력 등으로 filteredOptions가 변경되면 focusedIndex 초기화
+    //   → 사용자가 새로운 옵션을 탐색할 때 포커스 혼동 방지
+    // ------------------------------------------------------
     useEffect(() => {
       if (isOpen) {
-        // 검색 결과가 변경되면 포커스 초기화 (사용자가 새로운 검색어를 입력할 때)
         setFocusedIndex(null);
       }
     }, [filteredOptions.length, isOpen]);
 
     // -----------------------------
-    // handleKeyDown [최종 수정: preventDefault 위치 변경]
+    // ⚡️ 키보드 이벤트 처리
+    // - 화살표 키, Enter, Space, Escape, Tab 대응
+    // - 포커스 이동 및 선택 로직 관리
+    // - 입력 필드의 기본 문자 입력은 handleChange에 위임
     // -----------------------------
     const handleKeyDown = useCallback(
       <T extends HTMLElement>(e: React.KeyboardEvent<T>) => {
         e.stopPropagation();
-        // 🚨 [제거]: 모든 키 입력에 대한 e.preventDefault()를 여기서 제거합니다.
-        // 일반적인 문자 입력은 허용해야 합니다.
 
         const isNavigationKey = ['Enter', ' ', 'ArrowDown', 'ArrowUp', 'Escape'].includes(e.key);
-
         if (isNavigationKey) {
-          // 탐색 키에 대해서만 기본 동작을 막습니다. (스크롤, 폼 제출 등을 방지)
-          e.preventDefault();
+          e.preventDefault(); // 탐색 키에 대해서만 기본 동작 차단
         }
 
-        // 현재 포커스 인덱스를 지역 변수로 가져와서 다음 값을 계산하는 데 사용
         let nextFocusedIndex = focusedIndex;
 
         if (!isOpen && isNavigationKey) {
           setIsOpen(true);
 
-          // 포커스 초기값 계산
           if (e.key === 'ArrowDown') {
-            nextFocusedIndex = null; // 다음 ArrowDown에서 첫 옵션부터 시작
+            nextFocusedIndex = null;
           } else {
-            // 이미 선택된 값이 있다면 그 인덱스를 우선
             let focusIdx = filteredOptions.findIndex(opt => opt.id === selectedId && !opt.disabled);
-            if (focusIdx === -1) {
-              // 선택된 값 없으면 첫 번째 유효 옵션
-              focusIdx = filteredOptions.findIndex(opt => !opt.disabled);
-            }
+            if (focusIdx === -1) focusIdx = filteredOptions.findIndex(opt => !opt.disabled);
             nextFocusedIndex = focusIdx !== -1 ? focusIdx : null;
           }
 
           setFocusedIndex(nextFocusedIndex);
+          return;
         }
 
-        // 🚨 주의: setTimeout 내부에서는 e.preventDefault()를 호출할 수 없습니다.
-        // (이벤트가 이미 처리되었으므로) 따라서 위에 isNavigationKey를 사용하여 처리합니다.
-
-        if (!isOpen) {
-          // 콤보박스가 닫힌 상태 (목록 열기)
-          if (isNavigationKey) {
-            // isNavigationKey로 통합
-            setIsOpen(true);
-
-            // ArrowDown: 목록만 열고, 다음 키 입력(ArrowDown)에서 0으로 시작하게 null 유지
-            if (e.key === 'ArrowDown') {
-              nextFocusedIndex = null;
-            } else {
-              // Enter/Space: 선택된 항목이나 첫 항목으로 포커스를 이동
-              let focusIdx = filteredOptions.findIndex(
-                opt => opt.id === selectedId && !opt.disabled,
-              );
-
-              // 🚨 1. 선택된 항목(selectedId)이 있고 비활성화(disabled)되지 않았다면,
-              //    focusIdx는 해당 항목의 인덱스를 갖게 됩니다. (최우선 순위)
-
-              if (focusIdx === -1) {
-                // 2. 선택된 항목이 없다면, 필터링된 옵션 중 가장 처음 나타나는
-                //    비활성화되지 않은 항목을 찾습니다.
-                focusIdx = filteredOptions.findIndex(opt => !opt.disabled);
-              }
-              nextFocusedIndex = focusIdx !== -1 ? focusIdx : null;
-            }
-
-            setFocusedIndex(nextFocusedIndex);
-          }
-        } else {
-          // 콤보박스가 열린 상태
-          if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-            // 포커스 이동 로직 (이전과 동일)
-            if (filteredOptions.length === 0) {
-              nextFocusedIndex = null;
-            } else {
-              // ... (ArrowDown, ArrowUp 로직 유지) ...
-              if (e.key === 'ArrowDown') {
-                if (nextFocusedIndex === null) {
-                  // 리스트 열자마자 포커스가 없는 상태라면 selectedId 또는 첫 유효 옵션
-                  nextFocusedIndex = filteredOptions.findIndex(
-                    opt => opt.id === selectedId && !opt.disabled,
-                  );
-                  if (nextFocusedIndex === -1)
-                    nextFocusedIndex = filteredOptions.findIndex(opt => !opt.disabled);
-                } else {
-                  let i = nextFocusedIndex + 1;
-                  while (i < filteredOptions.length && filteredOptions[i].disabled) i++;
-                  if (i < filteredOptions.length) nextFocusedIndex = i;
-                }
-                setFocusedIndex(nextFocusedIndex);
-              } else if (e.key === 'ArrowUp') {
-                if (nextFocusedIndex === null) {
-                  // 리스트 열자마자 포커스가 없는 상태라면 selectedId 또는 마지막 유효 옵션
-                  nextFocusedIndex = filteredOptions.findIndex(
-                    opt => opt.id === selectedId && !opt.disabled,
-                  );
-                  if (nextFocusedIndex === -1) {
-                    let lastIdx = filteredOptions.length - 1;
-                    while (lastIdx >= 0 && filteredOptions[lastIdx].disabled) lastIdx--;
-                    nextFocusedIndex = lastIdx >= 0 ? lastIdx : null;
+        if (isOpen) {
+          switch (e.key) {
+            case 'ArrowDown':
+            case 'ArrowUp':
+              if (filteredOptions.length === 0) {
+                nextFocusedIndex = null;
+              } else {
+                if (e.key === 'ArrowDown') {
+                  if (nextFocusedIndex === null) {
+                    nextFocusedIndex = filteredOptions.findIndex(
+                      opt => opt.id === selectedId && !opt.disabled,
+                    );
+                    if (nextFocusedIndex === -1)
+                      nextFocusedIndex = filteredOptions.findIndex(opt => !opt.disabled);
+                  } else {
+                    let i = nextFocusedIndex + 1;
+                    while (i < filteredOptions.length && filteredOptions[i].disabled) i++;
+                    if (i < filteredOptions.length) nextFocusedIndex = i;
                   }
-                } else {
-                  let i = nextFocusedIndex - 1;
-                  while (i >= 0 && filteredOptions[i].disabled) i--;
-                  if (i >= 0) nextFocusedIndex = i;
+                } else if (e.key === 'ArrowUp') {
+                  if (nextFocusedIndex === null) {
+                    nextFocusedIndex = filteredOptions.findIndex(
+                      opt => opt.id === selectedId && !opt.disabled,
+                    );
+                    if (nextFocusedIndex === -1) {
+                      let lastIdx = filteredOptions.length - 1;
+                      while (lastIdx >= 0 && filteredOptions[lastIdx].disabled) lastIdx--;
+                      nextFocusedIndex = lastIdx >= 0 ? lastIdx : null;
+                    }
+                  } else {
+                    let i = nextFocusedIndex - 1;
+                    while (i >= 0 && filteredOptions[i].disabled) i--;
+                    if (i >= 0) nextFocusedIndex = i;
+                  }
                 }
-                setFocusedIndex(nextFocusedIndex);
               }
-            }
+              setFocusedIndex(nextFocusedIndex);
+              break;
 
-            setFocusedIndex(nextFocusedIndex); // 최종 계산된 값 한 번만 업데이트
-          } else if (e.key === 'Enter' || e.key === ' ') {
-            // 옵션 선택 로직 (이전과 동일)
-            if (
-              focusedIndex !== null &&
-              focusedIndex >= 0 &&
-              focusedIndex < filteredOptions.length
-            ) {
-              const selectedOption = filteredOptions[focusedIndex];
-              if (!selectedOption.disabled) {
-                handleSelect(selectedOption.id, selectedOption.value);
-                customInputRef.current?.focus();
+            case 'Enter':
+            case ' ':
+              if (
+                focusedIndex !== null &&
+                focusedIndex >= 0 &&
+                focusedIndex < filteredOptions.length
+              ) {
+                const selectedOption = filteredOptions[focusedIndex];
+                if (!selectedOption.disabled) handleSelect(selectedOption.id, selectedOption.value);
               }
 
-              // 🚨 [핵심 수정]: custom-input의 첫 번째 자식 요소(input)에 포커스 반환
-              const inputElement = customInputRef.current?.firstChild as
-                | HTMLInputElement
-                | undefined;
-              if (inputElement) {
-                inputElement.focus();
+              // input에 포커스 복귀
+              const inputEl = customInputRef.current?.firstChild;
+              if (inputEl instanceof HTMLInputElement) {
+                inputEl.focus();
                 setIsOpen(false);
               }
-            }
-          } else if (e.key === 'Escape') {
-            // Escape: 닫고 포커스를 input으로 이동하며, 필요시 값 복원 (이전과 동일)
+              break;
 
-            // 3. 🚨 [새로운 값 복원/유지 로직]
-            // 현재 입력된 selectedValue가 전체 옵션 목록에 존재하는지 확인합니다.
-            const isValueMatchedInOptions = parsedOptions.some(opt => opt.value === selectedValue);
-
-            setIsOpen(false);
-            setFocusedIndex(null);
-            // 🚨 [핵심 수정]: custom-input의 첫 번째 자식 요소(input)에 포커스 반환
-            const inputElement = customInputRef.current?.firstChild as HTMLInputElement | undefined;
-            if (inputElement) {
-              inputElement.focus();
+            case 'Escape':
               setIsOpen(false);
-            }
+              setFocusedIndex(null);
 
-            if (!isValueMatchedInOptions) {
-              // 현재 입력된 값이 유효한 옵션 값과 일치하지 않으면 초기화 (빈 문자열)
-              setSelectedValue('');
-              setSelectedId('');
-            } else {
-              // 현재 입력된 값이 유효한 옵션 값과 일치하면 해당 값을 유지
-              // 단, id도 업데이트될 수 있도록 매칭되는 옵션을 찾아 id를 설정
-              const matchedOption = parsedOptions.find(opt => opt.value === selectedValue);
-              if (matchedOption) {
-                setSelectedId(matchedOption.id);
+              const escInputEl = customInputRef.current?.firstChild;
+              if (escInputEl instanceof HTMLInputElement) escInputEl.focus();
+
+              const isValueMatched = parsedOptions.some(
+                opt => opt.value === selectedValue && !opt.disabled,
+              );
+              if (!isValueMatched) {
+                setSelectedValue('');
+                setSelectedId('');
+              } else {
+                // disabled가 아닌 옵션 중에서만 찾도록 find도 수정
+                const matchedOption = parsedOptions.find(
+                  opt => opt.value === selectedValue && !opt.disabled,
+                );
+                if (matchedOption) setSelectedId(matchedOption.id);
               }
-            }
-          }
-          // 일반 문자 입력(e.key.length === 1)은 여기서 처리하지 않습니다.
-          // 이는 브라우저의 기본 동작(input에 타이핑)과 handleChange에 위임됩니다.
-        }
+              break;
 
-        if (e.key === 'Tab') {
-          // 🚨 [핵심 로직 확인]: 요청하신 유효성 검사 및 초기화
-          const isValueMatchedInOptions = parsedOptions.some(opt => opt.value === selectedValue);
-
-          if (!isValueMatchedInOptions) {
-            // 현재 입력된 값이 유효한 옵션 값과 일치하지 않으면 초기화 (빈 문자열)
-            setSelectedValue('');
-            setSelectedId('');
-          } else {
-            // 현재 입력된 값이 유효한 옵션 값과 일치하면 해당 값을 유지
-            const matchedOption = parsedOptions.find(opt => opt.value === selectedValue);
-            if (matchedOption) {
-              setSelectedId(matchedOption.id);
-            }
-          }
-
-          if (isOpen) {
-            setIsOpen(false);
+            case 'Tab':
+              const isValueMatchedTab = parsedOptions.some(
+                opt => opt.value === selectedValue && !opt.disabled,
+              );
+              if (!isValueMatchedTab) {
+                setSelectedValue('');
+                setSelectedId('');
+              } else {
+                // disabled가 아닌 옵션 중에서만 찾도록 find도 수정
+                const matchedOption = parsedOptions.find(
+                  opt => opt.value === selectedValue && !opt.disabled,
+                );
+                if (matchedOption) setSelectedId(matchedOption.id);
+              }
+              if (isOpen) setIsOpen(false);
+              break;
           }
         }
       },
-
       [
         isOpen,
         filteredOptions,
@@ -413,38 +436,25 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
         handleSelect,
         selectedId,
         selectedValue,
-        prevSelectedValue,
-        setFocusedIndex,
-        setIsOpen,
-        setSelectedId,
-        setSelectedValue,
-        // 🚨 [추가] 값 복원 로직에 사용됨
         parsedOptions,
       ],
     );
-    // -----------------------------
-    // focusedIndex 기반으로 activeDescendant 계산
-    // -----------------------------
-    const activeDescendant = useMemo(() => {
-      // 1) 키보드로 포커스된 옵션 우선 (filteredOptions 기준)
-      if (focusedIndex !== null && focusedIndex >= 0 && focusedIndex < filteredOptions.length) {
-        const opt = filteredOptions[focusedIndex];
 
-        if (opt) return `${opt.id}`;
-      }
+    // ------------------------------------------------------
+    // 🧩 filteredOptionRefs
+    // - OptionListChildren 각 OptionItem의 DOM 요소를 참조
+    // - 포커스 이동, 키보드 내비게이션 관리용
+    // - 렌더링 직전에 useMemo 내에서 초기화 후 재할당
+    // ------------------------------------------------------
+    const filteredOptionRefs = useRef<HTMLLIElement[]>([]);
 
-      // 2) 클릭으로 선택된 옵션
-      if (selectedId) return `${selectedId}`;
-
-      // 3) 아무것도 없으면 공백
-      return '';
-    }, [focusedIndex, filteredOptions, selectedId]);
-
-    // -----------------------------
-    // optionListChildren의 DOM 요소 참조
-    // -----------------------------
-    const filteredOptionRefs = useRef<HTMLLIElement[]>([]); // 필터링된 옵션만 참조
-
+    // ------------------------------------------------------
+    // 🧩 optionListChildrenWithRef
+    // - OptionList 내부 children을 map하여 OptionItem에 필요한 props 주입
+    // - index, tabIndex, selected, disabled, value, 이벤트 핸들러(onSelect, onKeyDown) 설정
+    // - onMount를 통해 optionRefs에 DOM 요소 저장 → 포커스 관리용
+    // - parsedOptions 기반으로 selected/disabled 상태 동기화
+    // ------------------------------------------------------
     const optionListChildrenWithRef = useMemo(() => {
       if (filteredOptions.length === 0) {
         // Empty state 처리
@@ -510,9 +520,15 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       isOpen,
     ]);
 
-    // -----------------------------
-    // memoizedOptionList
-    // -----------------------------
+    // ------------------------------------------------------
+    // 🧩 memoizedOptionList
+    // - OptionList를 클론하여 필요한 props 주입
+    //   • selectedId: 현재 선택된 옵션 id
+    //   • onOptionSelect: 옵션 선택 핸들러
+    //   • className: 기존 OptionList 클래스 유지
+    //   • children: useMemo로 생성한 OptionItem 리스트
+    // - useMemo 적용 → optionList 또는 children 변경 시에만 리렌더링
+    // ------------------------------------------------------
     const memoizedOptionList = useMemo(() => {
       if (!optionList) return null;
 
@@ -524,104 +540,34 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       });
     }, [optionList, optionListChildrenWithRef, selectedValue, handleSelect, isOpen]);
 
-    // -----------------------------
-    // 포지션 업데이트 및 외부 클릭 닫기 (기존 로직 유지)
-    // -----------------------------
-    const updatePosition = useCallback(() => {
-      const el = customInputRef.current ?? containerRef.current;
-      if (!el) return null;
-      const rect = el.getBoundingClientRect();
-      return {
-        top: rect.bottom + window.scrollY,
-        left: rect.left + window.scrollX,
-        width: rect.width,
-      } as PortalPosition;
-    }, []);
-
-    useEffect(() => {
-      const handleClickOutside = (event: MouseEvent) => {
-        const target = event.target as Node | null;
-        const insideContainer =
-          containerRef.current && target && containerRef.current.contains(target);
-        const insidePortal = portalRef.current && target && portalRef.current.contains(target);
-
-        if (!insideContainer && !insidePortal) {
-          setIsOpen(false);
-          setFocusedIndex(null);
-
-          // 🚨 [수정]: 값 복원 로직을 여기서 완전히 제거합니다.
-          // 복원 로직은 Escape 키와 유효성 검사 실패 시에만 수행됩니다.
-
-          /* // [제거 대상] 이전 복원 로직:
-          const matchedOption = parsedOptions.find(opt => opt.value === selectedValue);
-          if (!matchedOption || matchedOption.id !== selectedId) {
-            setSelectedValue(prevSelectedValue || '');
-            setSelectedId('');
-          }
-          */
-        }
-      };
-
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, [parsedOptions, selectedValue, selectedId, prevSelectedValue]);
-
-    // -----------------------------
-    // 포커싱 시 스크롤 이동 및 콘솔 로그 [수정]
-    // -----------------------------
-    // -----------------------------
-    // 포커싱 시 스크롤 이동 및 포커스 이동 (Combobox.tsx)
-    // -----------------------------
-    useEffect(() => {
-      if (isOpen && focusedIndex !== null) {
-        const currentOption = filteredOptions[focusedIndex];
-        if (!currentOption || currentOption.disabled) return;
-
-        requestAnimationFrame(() => {
-          const focusedEl = filteredOptionRefs.current[focusedIndex];
-          if (focusedEl) {
-            focusedEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-          }
-        });
-      }
-    }, [focusedIndex, isOpen, filteredOptions]);
-    // -----------------------------
-    // 포탈 위치 계산 및 리스너 (기존 로직 유지)
-    // -----------------------------
-    useLayoutEffect(() => {
-      if (!isOpen) {
-        setPositioned(false);
-        setPortalPos(null);
-        return;
+    // -----------------------------------------------------
+    // ♿️ [ARIA] activeDescendant 계산
+    // - focusedIndex를 기준으로 현재 키보드 포커스가 있는 옵션 ID 반환
+    // - 포커스가 없으면 선택된 옵션(selectedId) ID 반환
+    // - 둘 다 없으면 공백 반환
+    // - 웹 접근성: aria-activedescendant 속성에 사용
+    // -----------------------------------------------------
+    const activeDescendant = useMemo(() => {
+      // 키보드로 포커스된 옵션 우선 (filteredOptions 기준)
+      if (focusedIndex !== null && focusedIndex >= 0 && focusedIndex < filteredOptions.length) {
+        const opt = filteredOptions[focusedIndex];
+        if (opt) return `${opt.id}`;
       }
 
-      const pos = updatePosition();
-      if (pos) {
-        setPortalPos(pos);
-        setPositioned(true);
-      }
-    }, [isOpen, updatePosition]);
+      // 클릭으로 선택된 옵션 (포커스는 사라졌지만 선택은 유지됨)
+      if (selectedId) return `${selectedId}`;
 
-    useEffect(() => {
-      if (!isOpen) return;
+      // 아무것도 없으면 공백
+      return '';
+    }, [focusedIndex, filteredOptions, selectedId]);
 
-      const handle = () => {
-        const pos = updatePosition();
-        if (pos) setPortalPos(pos);
-      };
-
-      window.addEventListener('resize', handle);
-      window.addEventListener('scroll', handle, true);
-
-      return () => {
-        window.removeEventListener('resize', handle);
-        window.removeEventListener('scroll', handle, true);
-      };
-    }, [isOpen, updatePosition]);
-
-    // -----------------------------
-    // 선택된 옵션으로 초기 스크롤 이동 (기존 로직 유지)
-    // -----------------------------
+    // -----------------------------------------------------
+    // ✨ [Scroll] 드롭다운 열릴 때 선택된 옵션으로 자동 스크롤
+    // - isOpen이 true일 때만 실행
+    // - 이미 스크롤된 경우(hasScrolledRef) 중복 실행 방지
+    // - filteredOptions에서 selectedId에 해당하는 요소를 찾아 scrollIntoView
+    // - setTimeout 0ms 사용 → DOM 렌더링 후 스크롤 보장
+    // -----------------------------------------------------
     useEffect(() => {
       if (!isOpen) {
         hasScrolledRef.current = false;
@@ -644,42 +590,108 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       return () => clearTimeout(timeout);
     }, [isOpen, selectedId, filteredOptions]);
 
-    // -----------------------------
-    // handleChange (기존 로직 유지)
-    // -----------------------------
-    const handleChange = useCallback(
-      (e: React.ChangeEvent<HTMLInputElement>) => {
-        const val = e.target.value;
-
-        setSelectedValue(val);
-        onValueChange?.(val);
-
-        // 검색어를 입력하면 무조건 목록을 엽니다.
-        if (!isOpen) setIsOpen(true);
-
-        // 🚨 [핵심 추가]: 타이핑 시작 시 기존 선택 ID를 무조건 초기화합니다.
-        // 이는 filteredOptions 로직이 선택된 ID에 기반하여 필터링을 유지하는 것을 방지합니다.
-        setSelectedId('');
-
-        // 검색어를 입력하면 기존 포커싱을 초기화
-        setFocusedIndex(null);
-      },
-      [onValueChange, isOpen],
-    );
-
+    // -----------------------------------------------------
+    // ✨ [Scroll] focusedIndex 변경 시 스크롤 이동
+    // - filteredOptions 기준으로 현재 포커스된 옵션을 찾아 스크롤 이동
+    // - isOpen이 true이고 focusedIndex가 존재할 때만 동작
+    // - 웹 접근성: 키보드 탐색 시 포커스된 옵션이 항상 보이도록 보장
+    // -----------------------------------------------------
     useEffect(() => {
-      // [수정] focusedIndex가 filteredOptions의 인덱스이므로, filteredOptionRefs 사용
       if (isOpen && focusedIndex !== null) {
         const focusedEl = filteredOptionRefs.current[focusedIndex];
         if (focusedEl) {
-          // 스크롤 이동이 여기서 발생해야 합니다.
           focusedEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
         }
       }
-    }, [focusedIndex, isOpen, filteredOptions]); //
+    }, [focusedIndex, isOpen, filteredOptions]);
+
+    // -----------------------------------------------------
+    // 🔧 [Portal] updatePosition
+    // - customInputRef 또는 containerRef 기준으로 위치 측정
+    // - getBoundingClientRect() + window.scrollY/X → 스크롤 반영
+    // - top: 요소 하단 기준, left/width: 요소 좌측 및 너비
+    // - 외부 클릭 닫기 등 포털 렌더링 위치 계산에 사용
+    // -----------------------------------------------------
+    const updatePosition = useCallback(() => {
+      const el = customInputRef.current ?? containerRef.current;
+      if (!el) return null;
+      const rect = el.getBoundingClientRect();
+      return {
+        top: rect.bottom + window.scrollY,
+        left: rect.left + window.scrollX,
+        width: rect.width,
+      } as PortalPosition;
+    }, []);
+
+    // ----------------------------------------------
+    // ✨ [Portal] OptionList 위치 초기화
+    // - isOpen 상태에 따라 Portal 위치 계산
+    // - 열려있으면 동기적으로 위치 계산 후 상태 업데이트
+    // - 닫히면 positioned, portalPos 초기화
+    // ----------------------------------------------
+    useLayoutEffect(() => {
+      if (!isOpen) {
+        setPositioned(false);
+        setPortalPos(null);
+        return;
+      }
+
+      const pos = updatePosition();
+      if (pos) {
+        setPortalPos(pos);
+        setPositioned(true);
+      }
+    }, [isOpen, updatePosition]);
+
+    // ---------------------------------------------------------------
+    // ✨ [Portal] OptionList 윈도우 리사이즈 / 스크롤 시 Portal 위치 재계산
+    // - isOpen 상태에서만 이벤트 리스너 등록
+    // - 리사이즈 및 스크롤 이벤트 발생 시 updatePosition 실행
+    // - 컴포넌트 언마운트 시 이벤트 제거
+    // ---------------------------------------------------------------
+    useEffect(() => {
+      if (!isOpen) return;
+
+      const handle = () => {
+        const pos = updatePosition();
+        if (pos) setPortalPos(pos);
+      };
+
+      window.addEventListener('resize', handle);
+      window.addEventListener('scroll', handle, true);
+
+      return () => {
+        window.removeEventListener('resize', handle);
+        window.removeEventListener('scroll', handle, true);
+      };
+    }, [isOpen, updatePosition]);
+
+    // -----------------------------------------------------
+    // ✨ [Portal] 외부 클릭 처리
+    // - 드롭다운 관련 요소(container + portal) 외부 클릭 감지
+    // - 외부 클릭 시 메뉴를 닫고(isOpen=false) 포커스(focusedIndex) 초기화
+    // - 선택 값 복원 로직 제거 (Escape 키나 유효성 검사 시만 처리)
+    // - 의존성 배열: parsedOptions, selectedValue, selectedId, prevSelectedValue
+    // -----------------------------------------------------
+    useEffect(() => {
+      const handleClickOutside = (event: MouseEvent) => {
+        const target = event.target as Node | null;
+        const insideContainer =
+          containerRef.current && target && containerRef.current.contains(target);
+        const insidePortal = portalRef.current && target && portalRef.current.contains(target);
+
+        if (!insideContainer && !insidePortal) {
+          setIsOpen(false);
+          setFocusedIndex(null);
+        }
+      };
+
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [parsedOptions, selectedValue, selectedId, prevSelectedValue]);
 
     // -----------------------------
-    // 렌더링 (기존 로직 유지)
+    // ▶️ 렌더링
     // -----------------------------
     return (
       <div
@@ -695,10 +707,11 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
             ref={ref}
             id={id}
             className='custom-input-text'
-            tabIndex={disabled ? -1 : 0}
+            {...(disabled ? { tabIndex: -1 } : {})}
             disabled={disabled}
             value={selectedValue}
             placeholder={placeholder}
+            required={required}
             type='text'
             role='combobox'
             aria-controls={ariaControls}
@@ -722,7 +735,6 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
             onKeyDown={handleKeyDown}
             onChange={handleChange}
           />
-
           <IconButton
             color={color}
             size={size}
@@ -730,6 +742,7 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
             shape='rounded'
             className='adorned-end'
             type='button'
+            disabled={disabled}
             icon={
               <Icon
                 name='arrow-down'
@@ -741,11 +754,12 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
             onClick={() => {
               setPrevSelectedValue(selectedValue);
               setIsOpen(prev => !prev);
-              if (!isOpen) setFocusedIndex(null); // 닫혀 있을 때 열면 포커스 초기화
+              if (!isOpen) setFocusedIndex(null);
             }}
           />
         </div>
 
+        {/* OptionList */}
         {isOpen && positioned && portalPos && (
           <OptionListPortal isOpen={isOpen} position={portalPos} portalRef={portalRef}>
             {memoizedOptionList}

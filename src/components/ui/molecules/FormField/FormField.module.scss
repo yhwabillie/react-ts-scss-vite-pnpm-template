@@ -29,7 +29,7 @@ $formfield-sizes: (
 
 .formfield {
   display: inline-flex;
-  width: 100%;
+  width: inherit;
 
   // Row
   &:global(.direction--row) {
