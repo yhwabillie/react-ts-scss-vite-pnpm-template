@@ -7,33 +7,59 @@
 $formfield-sizes: (
   xs: (
     gap: rem(4px),
+    font-token: var(--project-typo-legend5-600),
   ),
   sm: (
     gap: rem(6px),
+    font-token: var(--project-typo-legend4-600),
   ),
   md: (
     gap: rem(8px),
+    font-token: var(--project-typo-legend3-600),
   ),
   lg: (
     gap: rem(10px),
+    font-token: var(--project-typo-legend2-600),
   ),
   xl: (
     gap: rem(12px),
+    font-token: var(--project-typo-legend1-600),
   ),
 );
 
-// mixin - formfield sizes
-@mixin formfield-size() {
-  @each $size-name, $props in $formfield-sizes {
-    &:global(.size--#{$size-name}) {
-      gap: map.get($props, gap);
-    }
-  }
-}
-
 .formfield {
   display: inline-flex;
+  width: 100%;
+
+  // Row
+  &:global(.direction--row) {
+    flex-direction: row;
+  }
+
+  // Column
+  &:global(.direction--column) {
+    flex-direction: column;
+  }
 
   // size
-  @include formfield-size();
+  @each $size-name, $props in $formfield-sizes {
+    // ──────────────── 기본 데이터 추출 ────────────────
+    $font-token: map.get($props, font-token);
+
+    &:global(.size--#{$size-name}) {
+      gap: map.get($props, gap);
+
+      :global(.label) {
+        font: $font-token;
+        display: inline-flex;
+        align-items: center;
+        gap: rem(4px);
+        flex-wrap: wrap;
+
+        :global(.requried) {
+          color: #d32f2f;
+        }
+      }
+    }
+  }
 }

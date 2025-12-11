@@ -171,166 +171,256 @@ function App() {
 
   return (
     <>
-      <section style={{ width: '700px', margin: '30px auto 30px auto' }}>
-        <label id='combobox-1-label' htmlFor='combobox-1'>
-          옵션 카테고리
-        </label>
-        <Combobox
-          variant='outline'
-          color='primary'
+      <section>
+        <FormField
+          as='div'
           size='xl'
-          id='combobox-1'
-          ariaControls='combobox-1-optionlist'
-          ariaLabelledBy='combobox-1-label'
-          value={selectedValue2}
-          placeholder={mockOptions2[0].label}
-          onValueChange={val => {
-            // value로 바로 상태를 바꾸는게 아니라 id 기준으로 바꿔야 함
-            const found = parsedOptions2.find(opt => opt.value === val);
-            if (found) setSelectedId2(found.id);
-          }}
+          id='combobox-1-label'
+          htmlFor='combobox-1'
+          labelText='콤보박스 옵션 선택'
+          direction='column'
+          required={true}
         >
-          <OptionList
-            id='combobox-1-optionlist'
+          <Combobox
             variant='outline'
             color='primary'
             size='xl'
-            selectedId={selectedId2}
-            onOptionSelect={id => {
-              setSelectedId2(id);
+            id='combobox-1'
+            ariaControls='combobox-1-optionlist'
+            ariaLabelledBy='combobox-1-label'
+            value={selectedValue2}
+            placeholder={mockOptions2[0].label}
+            onValueChange={val => {
+              // value로 바로 상태를 바꾸는게 아니라 id 기준으로 바꿔야 함
+              const found = parsedOptions2.find(opt => opt.value === val);
+              if (found) setSelectedId2(found.id);
             }}
           >
-            {parsedOptions2.map((opt, idx) => (
-              <OptionItem
-                key={opt.id}
-                variant='ghost'
-                color='primary'
-                size='xl'
-                index={idx}
-                id={opt.id}
-                value={opt.value}
-                placeholder={opt.label}
-                selected={selectedId2 === opt.id}
-                aria-disabled={opt.disabled}
-              />
-            ))}
-          </OptionList>
-        </Combobox>
+            <OptionList
+              id='combobox-1-optionlist'
+              variant='outline'
+              color='primary'
+              size='xl'
+              selectedId={selectedId2}
+              onOptionSelect={id => {
+                setSelectedId2(id);
+              }}
+            >
+              {parsedOptions2.map((opt, idx) => (
+                <OptionItem
+                  key={opt.id}
+                  variant='ghost'
+                  color='primary'
+                  size='xl'
+                  index={idx}
+                  id={opt.id}
+                  value={opt.value}
+                  placeholder={opt.label}
+                  selected={selectedId2 === opt.id}
+                  aria-disabled={opt.disabled}
+                />
+              ))}
+            </OptionList>
+          </Combobox>
+        </FormField>
       </section>
-
-      <section style={{ width: '700px', margin: 'auto' }}>
-        <label id='selectbox-1-label' htmlFor='custom-select-1'>
-          옵션 카테고리
-        </label>
-        <Selectbox
-          variant='outline'
-          color='warning'
+      <section>
+        <FormField
+          as='div'
           size='xl'
-          id='custom-select-1'
-          ariaControls='selectbox-1-optionlist'
-          ariaLabelledBy='selectbox-1-label'
-          value={selectedValue1}
-          placeholder={mockOptions1[0].label}
-          onValueChange={val => {
-            // value로 바로 상태를 바꾸는게 아니라 id 기준으로 바꿔야 함
-            const found = parsedOptions1.find(opt => opt.value === val);
-            if (found) setSelectedId1(found.id);
-          }}
+          id='selectbox-1-label'
+          htmlFor='custom-select-1'
+          labelText='셀렉스 박스 옵션 선택'
+          direction='column'
         >
-          <OptionList
-            id='selectbox-1-optionlist'
+          <Selectbox
             variant='outline'
             color='warning'
             size='xl'
-            selectedId={selectedId1}
-            onOptionSelect={id => {
-              setSelectedId1(id); // id 선택
+            id='custom-select-1'
+            ariaControls='selectbox-1-optionlist'
+            ariaLabelledBy='selectbox-1-label'
+            value={selectedValue1}
+            placeholder={mockOptions1[0].label}
+            onValueChange={val => {
+              // value로 바로 상태를 바꾸는게 아니라 id 기준으로 바꿔야 함
+              const found = parsedOptions1.find(opt => opt.value === val);
+              if (found) setSelectedId1(found.id);
             }}
           >
-            {parsedOptions1.map((opt, idx) => (
-              <OptionItem
-                key={opt.id}
-                variant='ghost'
-                color='warning'
-                size='xl'
-                index={idx}
-                id={opt.id}
-                value={opt.value}
-                placeholder={opt.label}
-                selected={selectedId1 === opt.id}
-                aria-disabled={opt.disabled}
-              />
-            ))}
-          </OptionList>
-        </Selectbox>
+            <OptionList
+              id='selectbox-1-optionlist'
+              variant='outline'
+              color='warning'
+              size='xl'
+              selectedId={selectedId1}
+              onOptionSelect={id => {
+                setSelectedId1(id); // id 선택
+              }}
+            >
+              {parsedOptions1.map((opt, idx) => (
+                <OptionItem
+                  key={opt.id}
+                  variant='ghost'
+                  color='warning'
+                  size='xl'
+                  index={idx}
+                  id={opt.id}
+                  value={opt.value}
+                  placeholder={opt.label}
+                  selected={selectedId1 === opt.id}
+                  aria-disabled={opt.disabled}
+                />
+              ))}
+            </OptionList>
+          </Selectbox>
+        </FormField>
       </section>
 
       <section style={{ margin: '30px' }}>
-        <Textarea
-          variant='solid'
-          color='primary'
-          id='textarea-r-1'
-          rows={6}
-          placeholder='입력하세요'
-        />
-        <Textarea
-          variant='outline'
-          color='primary'
-          id='textarea-r-2'
-          rows={6}
-          placeholder='입력하세요'
-        />
-        <Textarea
-          variant='soft'
-          color='primary'
-          id='textarea-r-3'
-          rows={6}
-          placeholder='입력하세요'
-        />
-        <Textarea
-          variant='ghost'
-          color='primary'
-          id='textarea-r-4'
-          rows={6}
-          placeholder='입력하세요'
-        />
+        <FormField
+          as='div'
+          size='xl'
+          id='textarea-r-1-label'
+          htmlFor='textarea-r-1'
+          labelText='Textarea 라벨'
+          direction='column'
+          required={true}
+        >
+          <Textarea
+            variant='solid'
+            color='primary'
+            id='textarea-r-1'
+            rows={6}
+            placeholder='입력하세요'
+          />
+        </FormField>
+        <FormField
+          as='div'
+          size='xl'
+          id='textarea-r-2-label'
+          htmlFor='textarea-r-2'
+          labelText='Textarea 라벨'
+          direction='column'
+        >
+          <Textarea
+            variant='outline'
+            color='primary'
+            id='textarea-r-2'
+            rows={6}
+            placeholder='입력하세요'
+          />
+        </FormField>
 
-        <Textarea
-          variant='solid'
-          color='primary'
-          id='textarea-1'
-          rows={6}
-          placeholder='입력하세요'
-          defaultValue='비활성화 textarea 텍스트'
-          disabled
-        />
-        <Textarea
-          variant='outline'
-          color='primary'
-          id='textarea-2'
-          rows={6}
-          placeholder='입력하세요'
-          defaultValue='비활성화 textarea 텍스트'
-          disabled
-        />
-        <Textarea
-          variant='soft'
-          color='primary'
-          id='textarea-3'
-          rows={6}
-          placeholder='입력하세요'
-          defaultValue='비활성화 textarea 텍스트'
-          disabled
-        />
-        <Textarea
-          variant='ghost'
-          color='primary'
-          id='textarea-4'
-          rows={6}
-          placeholder='입력하세요'
-          defaultValue='비활성화 textarea 텍스트'
-          disabled
-        />
+        <FormField
+          as='div'
+          size='xl'
+          id='textarea-r-3-label'
+          htmlFor='textarea-r-3'
+          labelText='Textarea 라벨'
+          direction='column'
+        >
+          <Textarea
+            variant='soft'
+            color='primary'
+            id='textarea-r-3'
+            rows={6}
+            placeholder='입력하세요'
+          />
+        </FormField>
+
+        <FormField
+          as='div'
+          size='xl'
+          id='textarea-r-4-label'
+          htmlFor='textarea-r-4'
+          labelText='Textarea 라벨'
+          direction='column'
+        >
+          <Textarea
+            variant='ghost'
+            color='primary'
+            id='textarea-r-4'
+            rows={6}
+            placeholder='입력하세요'
+          />
+        </FormField>
+
+        <FormField
+          as='div'
+          size='xl'
+          id='textarea-1-label'
+          htmlFor='textarea-1'
+          labelText='Textarea 라벨'
+          direction='column'
+        >
+          <Textarea
+            variant='solid'
+            color='primary'
+            id='textarea-1'
+            rows={6}
+            placeholder='입력하세요'
+            defaultValue='비활성화 textarea 텍스트'
+            disabled
+          />
+        </FormField>
+
+        <FormField
+          as='div'
+          size='xl'
+          id='textarea-2-label'
+          htmlFor='textarea-2'
+          labelText='Textarea 라벨'
+          direction='column'
+        >
+          <Textarea
+            variant='outline'
+            color='primary'
+            id='textarea-2'
+            rows={6}
+            placeholder='입력하세요'
+            defaultValue='비활성화 textarea 텍스트'
+            disabled
+          />
+        </FormField>
+
+        <FormField
+          as='div'
+          size='xl'
+          id='textarea-3-label'
+          htmlFor='textarea-3'
+          labelText='Textarea 라벨'
+          direction='column'
+        >
+          <Textarea
+            variant='soft'
+            color='primary'
+            id='textarea-3'
+            rows={6}
+            placeholder='입력하세요'
+            defaultValue='비활성화 textarea 텍스트'
+            disabled
+          />
+        </FormField>
+
+        <FormField
+          as='div'
+          size='xl'
+          id='textarea-4-label'
+          htmlFor='textarea-4'
+          labelText='Textarea 라벨'
+          direction='column'
+        >
+          <Textarea
+            variant='ghost'
+            color='primary'
+            id='textarea-4'
+            rows={6}
+            placeholder='입력하세요'
+            defaultValue='비활성화 textarea 텍스트'
+            disabled
+          />
+        </FormField>
       </section>
       <section style={{ margin: '30px' }}>
         <Input
@@ -851,7 +941,7 @@ function App() {
             direction='row'
             aria-describedby='checkbox-error-msg checkbox-warning-msg checkbox-success-msg checkbox-guide-msg'
           >
-            <FormField as='label' htmlFor='formfield-test-1' size='xl'>
+            <FormField as='label' htmlFor='formfield-test-1' size='xl' direction='row'>
               <Checkbox
                 as='span'
                 id='formfield-test-1'
@@ -864,7 +954,7 @@ function App() {
               />
               <Label size='xl'>체크박스 옵션 1</Label>
             </FormField>
-            <FormField as='label' htmlFor='formfield-test-2' size='xl'>
+            <FormField as='label' htmlFor='formfield-test-2' size='xl' direction='row'>
               <Checkbox
                 as='span'
                 id='formfield-test-2'
@@ -875,7 +965,7 @@ function App() {
               />
               <Label size='xl'>체크박스 옵션 2</Label>
             </FormField>
-            <FormField as='label' htmlFor='formfield-test-3' size='xl'>
+            <FormField as='label' htmlFor='formfield-test-3' size='xl' direction='row'>
               <Checkbox
                 as='span'
                 id='formfield-test-3'
@@ -934,7 +1024,7 @@ function App() {
         <FormFieldset size='xl' legend='라디오 옵션 선택' required={true}>
           {/* ControlGroup */}
           <ControlGroup size='xl' direction='row'>
-            <FormField as='label' htmlFor='formfield-test-4' size='xl'>
+            <FormField as='label' htmlFor='formfield-test-4' size='xl' direction='row'>
               <Radio
                 as='span'
                 id='formfield-test-4'
@@ -947,7 +1037,7 @@ function App() {
               />
               <Label size='xl'>라디오 옵션 1</Label>
             </FormField>
-            <FormField as='label' htmlFor='formfield-test-5' size='xl'>
+            <FormField as='label' htmlFor='formfield-test-5' size='xl' direction='row'>
               <Radio
                 as='span'
                 id='formfield-test-5'
@@ -958,7 +1048,7 @@ function App() {
               />
               <Label size='xl'>라디오 옵션 2</Label>
             </FormField>
-            <FormField as='label' htmlFor='formfield-test-6' size='xl'>
+            <FormField as='label' htmlFor='formfield-test-6' size='xl' direction='row'>
               <Radio
                 as='span'
                 id='formfield-test-6'
@@ -991,7 +1081,7 @@ function App() {
       </section>
       <section>
         <div>
-          <FormField as='label' htmlFor='formfield-test-7' size='xl'>
+          <FormField as='label' htmlFor='formfield-test-7' size='xl' direction='row'>
             <Checkbox
               as='span'
               id='formfield-test-7'
@@ -1003,7 +1093,7 @@ function App() {
             />
             <Label size='xl'>체크박스 옵션 1</Label>
           </FormField>
-          <FormField as='label' htmlFor='formfield-test-8' size='lg'>
+          <FormField as='label' htmlFor='formfield-test-8' size='lg' direction='row'>
             <Checkbox
               as='span'
               id='formfield-test-8'
@@ -1014,7 +1104,7 @@ function App() {
             />
             <Label size='lg'>체크박스 옵션 2</Label>
           </FormField>
-          <FormField as='label' htmlFor='formfield-test-9' size='md'>
+          <FormField as='label' htmlFor='formfield-test-9' size='md' direction='row'>
             <Checkbox
               as='span'
               id='formfield-test-9'
@@ -1025,7 +1115,7 @@ function App() {
             />
             <Label size='md'>체크박스 옵션 3</Label>
           </FormField>
-          <FormField as='label' htmlFor='formfield-test-10' size='sm'>
+          <FormField as='label' htmlFor='formfield-test-10' size='sm' direction='row'>
             <Checkbox
               as='span'
               id='formfield-test-10'
@@ -1036,7 +1126,7 @@ function App() {
             />
             <Label size='sm'>체크박스 옵션 4</Label>
           </FormField>
-          <FormField as='label' htmlFor='formfield-test-11' size='xs'>
+          <FormField as='label' htmlFor='formfield-test-11' size='xs' direction='row'>
             <Checkbox
               as='span'
               id='formfield-test-11'
@@ -1049,7 +1139,7 @@ function App() {
           </FormField>
         </div>
         <div>
-          <FormField as='label' htmlFor='formfield-test-12' size='xl'>
+          <FormField as='label' htmlFor='formfield-test-12' size='xl' direction='row'>
             <Radio
               as='span'
               id='formfield-test-12'
@@ -1061,7 +1151,7 @@ function App() {
             />
             <Label size='xl'>라디오 옵션 1</Label>
           </FormField>
-          <FormField as='label' htmlFor='formfield-test-13' size='lg'>
+          <FormField as='label' htmlFor='formfield-test-13' size='lg' direction='row'>
             <Radio
               as='span'
               id='formfield-test-13'
@@ -1072,7 +1162,7 @@ function App() {
             />
             <Label size='lg'>라디오 옵션 2</Label>
           </FormField>
-          <FormField as='label' htmlFor='formfield-test-14' size='md'>
+          <FormField as='label' htmlFor='formfield-test-14' size='md' direction='row'>
             <Radio
               as='span'
               id='formfield-test-14'
@@ -1083,7 +1173,7 @@ function App() {
             />
             <Label size='md'>라디오 옵션 3</Label>
           </FormField>
-          <FormField as='label' htmlFor='formfield-test-15' size='sm'>
+          <FormField as='label' htmlFor='formfield-test-15' size='sm' direction='row'>
             <Radio
               as='span'
               id='formfield-test-15'
@@ -1094,7 +1184,7 @@ function App() {
             />
             <Label size='sm'>라디오 옵션 4</Label>
           </FormField>
-          <FormField as='label' htmlFor='formfield-test-16' size='xs'>
+          <FormField as='label' htmlFor='formfield-test-16' size='xs' direction='row'>
             <Radio
               as='span'
               id='formfield-test-16'
