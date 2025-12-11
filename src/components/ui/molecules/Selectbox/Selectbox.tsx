@@ -454,7 +454,7 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
             className='adorned-end'
             icon={
               <Icon
-                name='arrow-down'
+                name={isOpen ? 'arrow-up' : 'arrow-down'}
                 className='icon'
                 strokeLinecap='round'
                 strokeLinejoin='round'

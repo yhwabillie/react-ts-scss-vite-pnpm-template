@@ -156,8 +156,9 @@ input {
 /* 모든 요소 포커스 기본 제거 */
 :focus,
 :focus-visible,
-label:focus-within {
-  outline: 2.5px dashed #2466eb;
+label:focus-within,
+textarea:focus-visible {
+  outline: 2.5px dashed #2466eb !important;
   outline-offset: 2px;
 }
 
