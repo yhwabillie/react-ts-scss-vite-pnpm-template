@@ -25,7 +25,7 @@ export type OptionListProps = BaseProps &
   Omit<React.HTMLAttributes<HTMLUListElement>, keyof BaseProps>;
 
 const OptionList = forwardRef<HTMLUListElement, OptionListProps>(
-  ({ variant, color, size, className, children, onOptionSelect, selectedId }, ref) => {
+  ({ variant, color, size, className, children, onOptionSelect, selectedId, id }, ref) => {
     const clonedChildren = React.Children.map(children, child => {
       if (!React.isValidElement(child)) return child;
 
@@ -62,7 +62,7 @@ const OptionList = forwardRef<HTMLUListElement, OptionListProps>(
           className,
         )}
       >
-        <ul ref={ref} role='listbox'>
+        <ul ref={ref} role='listbox' id={id}>
           {clonedChildren}
         </ul>
       </div>

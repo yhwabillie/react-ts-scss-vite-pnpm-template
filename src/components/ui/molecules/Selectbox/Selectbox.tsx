@@ -244,21 +244,22 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
     const handleKeyDown = useCallback(
       <T extends HTMLElement>(e: React.KeyboardEvent<T>) => {
         if (!isOpen) {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            setIsOpen(true);
-
-            // 현재 선택된 id 기준으로 포커스
-            let focusIdx = parsedOptions.findIndex(opt => opt.id === selectedId && !opt.disabled);
-
-            // 없으면 첫 번째 활성 옵션
-            if (focusIdx === -1) {
-              focusIdx = parsedOptions.findIndex(opt => !opt.disabled);
-            }
-
-            setTimeout(() => setFocusedIndex(focusIdx), 0);
+          switch (e.key) {
+            case 'Enter':
+            case ' ':
+              e.preventDefault();
+              setIsOpen(true);
           }
         } else {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (focusedIndex !== null && !parsedOptions[focusedIndex].disabled) {
+              handleSelect(parsedOptions[focusedIndex].id, parsedOptions[focusedIndex].value);
+              customSelectRef.current?.focus();
+            }
+            return;
+          }
+
           switch (e.key) {
             case 'Escape':
               e.preventDefault();
@@ -269,7 +270,23 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
             case 'ArrowDown':
               e.preventDefault();
               setFocusedIndex(prev => {
-                if (prev === null) return parsedOptions.findIndex(o => !o.disabled);
+                // prev === null, 즉 포커스가 없는 상태에서 탐색을 시작할 때
+                if (prev === null) {
+                  // 1. 현재 선택된 id 기준으로 parsedOptions에서 포커스를 찾습니다.
+                  let initialFocusIdx = parsedOptions.findIndex(
+                    opt => opt.id === selectedId && !opt.disabled,
+                  );
+
+                  // 2. 선택된 항목이 없으면, 첫 번째 비활성화가 아닌 옵션을 찾습니다.
+                  if (initialFocusIdx === -1) {
+                    initialFocusIdx = parsedOptions.findIndex(o => !o.disabled);
+                  }
+
+                  // 찾은 항목이 있다면 그곳으로 이동하고, 없다면 null을 유지합니다.
+                  return initialFocusIdx !== -1 ? initialFocusIdx : null;
+                }
+
+                // 포커스가 이미 있다면, 다음 항목으로 이동합니다.
                 let next = prev + 1;
                 while (next < parsedOptions.length && parsedOptions[next].disabled) next++;
                 return next < parsedOptions.length ? next : prev;
@@ -284,12 +301,15 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
                 return next >= 0 ? next : prev;
               });
               break;
-            case 'Enter':
-            case ' ':
-              e.preventDefault();
-              if (focusedIndex !== null && !parsedOptions[focusedIndex].disabled) {
-                handleSelect(parsedOptions[focusedIndex].id, parsedOptions[focusedIndex].value);
-                customSelectRef.current?.focus();
+            case 'Tab':
+              if (e.shiftKey) {
+                // Shift + Tab
+                e.preventDefault();
+                setIsOpen(false);
+              } else {
+                // 그냥 Tab
+                e.preventDefault();
+                setIsOpen(false);
               }
               break;
           }
