@@ -87,105 +87,97 @@ const btnStyles: Record<ButtonLevel, React.CSSProperties> = {
 // -------------------------------
 // Selectbox, Combobox 목업 데이터
 // -------------------------------
+// ✅ 모든 계산을 컴포넌트 외부로 이동
 const mockOptions: OptionBase[] = [
   {
     id: 'placeholder',
     value: '',
-    label: 'ComboBox 옵션을 선택해 주세요',
     selected: false,
     disabled: true,
   },
   { id: 'combo-1', value: '바나나', selected: false, disabled: false },
   { id: 'combo-2', value: '사과', selected: false, disabled: false },
-  { id: 'combo-3', value: '파인애플', selected: false, disabled: false },
+  { id: 'combo-3', value: '과나나', selected: false, disabled: false },
   { id: 'combo-4', value: '나주배', selected: false, disabled: true },
   { id: 'combo-5', value: '용과', selected: false, disabled: false },
-  { id: 'combo-6', value: '샤인머스캣', selected: false, disabled: false },
+  { id: 'combo-6', value: '샤인머스캣', selected: true, disabled: false },
   { id: 'combo-7', value: '딸기', selected: false, disabled: false },
   { id: 'combo-8', value: '망고', selected: false, disabled: false },
   { id: 'combo-9', value: '키위', selected: false, disabled: false },
+  { id: 'combo-10', value: '빠나나', selected: false, disabled: false },
 ];
 
+// -----------------------------
+// 📌 [Placeholder 추출]
+// - id가 'placeholder'인 옵션을 찾아 placeholderOption에 저장
+// - 없으면 null
+// -----------------------------
 const placeholderOption = mockOptions.find(opt => opt.id === 'placeholder') ?? null;
+
+// -----------------------------
+// 📌 [Placeholder 제외 옵션 배열]
+// - placeholderOption을 제외한 나머지 옵션 배열
+// -----------------------------
 const optionsWithoutPlaceholder = mockOptions.filter(opt => opt.id !== 'placeholder');
 
-// 플레이스홀더 옵션이 있으면 맨 앞에 추가
+// -----------------------------
+// 📌 [Parsed Options 생성]
+// - placeholderOption이 있으면 배열 맨 앞에 추가
+// - 없으면 나머지 옵션 그대로 사용
+// -----------------------------
 const parsedOptions = placeholderOption
   ? [placeholderOption, ...optionsWithoutPlaceholder]
   : optionsWithoutPlaceholder;
 
-// selected=true인 옵션 찾기
+// -----------------------------
+// 📌 [초기 선택값 결정]
+// - selected: true 옵션 우선 선택
+// - 없으면 배열 첫 번째 옵션 선택
+// -----------------------------
 const selectedOption = parsedOptions.find(opt => opt.selected);
-
-// 초기 selected가 있는 옵션의 id를 찾고, 없으면 첫 번째 옵션의 id를 초기값으로 설정
-// placeholder가 있으면 placeholder의 id값 사용, 없으면 가장 첫번째 옵션의 id 값 사용
 const initialSelectedId = selectedOption?.id ?? parsedOptions[0].id;
 
-function App() {
-  // 선택된 옵션 id 상태 관리
-  const [selectedId, setSelectedId] = useState(initialSelectedId);
+// -----------------------------
+// 📌 [Input Props 외부 정의]
+// - Combobox input에서 공통으로 사용하는 속성 분리
+// -----------------------------
+const comboboxInputProps = {
+  placeholder: '검색 혹은 검색해서 선택',
+  autoComplete: 'off',
+} as const;
 
-  // 선택된 옵션의 value 값을 찾음
+function App() {
+  const [selectedId, setSelectedId] = useState(initialSelectedId);
   const selectedValue = parsedOptions.find(opt => opt.id === selectedId)?.value ?? '';
 
   return (
     <>
       <section>
         <FormField
-          as='div'
           size='xl'
-          id='combobox-label'
-          htmlFor='combobox'
-          labelText='콤보박스 옵션 선택'
           direction='column'
-          // required={true}
+          id='combobox-label'
+          htmlFor='combobox-input'
+          labelText='콤보박스 옵션 선택'
         >
           <Combobox
             variant='outline'
             color='primary'
             size='xl'
-            id='combobox'
-            // disabled={true}
+            role='combobox'
+            aria-labelledby='combobox-label'
+            id='combobox-component'
+            inputId='combobox-input'
             // required={true}
-            placeholder={parsedOptions[0].label || '옵션을 선택해 주세요'}
-            ariaControls='combobox-optionlist'
-            ariaLabelledBy='combobox-label'
-            onValueChange={val => {
-              const found = parsedOptions.find(opt => opt.value === val);
-              if (found) setSelectedId(found.id);
-            }}
-          >
-            <OptionList
-              variant='outline'
-              color='primary'
-              size='xl'
-              id='combobox-optionlist'
-              selectedId={selectedId}
-              onOptionSelect={id => setSelectedId(id)}
-            >
-              {parsedOptions.map((opt, idx) => {
-                return (
-                  <OptionItem
-                    key={opt.id}
-                    variant='ghost'
-                    color='primary'
-                    size='xl'
-                    id={opt.id}
-                    value={opt.value}
-                    selected={selectedId === opt.id}
-                    disabled={opt.disabled}
-                    index={idx}
-                    placeholder={opt.label}
-                  />
-                );
-              })}
-            </OptionList>
-          </Combobox>
+            // readOnly={true}
+            // disabled={true}
+            inputProps={comboboxInputProps}
+            options={mockOptions}
+          />
         </FormField>
       </section>
       <section>
-        <FormField
-          as='div'
+        {/* <FormField
           size='xl'
           id='selectbox-1-label'
           htmlFor='custom-select-1'
@@ -232,7 +224,7 @@ function App() {
               ))}
             </OptionList>
           </Selectbox>
-        </FormField>
+        </FormField> */}
       </section>
 
       <section style={{ margin: '30px' }}>
