@@ -8,10 +8,10 @@ export interface OptionBase {
   value: string;
   label?: string;
   disabled?: boolean;
-  selected: boolean;
+  selected?: any;
 }
 interface BaseProps extends OptionBase {
-  variant: 'solid' | 'soft' | 'ghost';
+  variant: 'solid' | 'soft' | 'outline' | 'ghost';
   color:
     | 'primary'
     | 'secondary'
@@ -27,6 +27,7 @@ interface BaseProps extends OptionBase {
   placeholder?: string;
   onSelect?: (id: string, value: string) => void;
   onMount?: (el: HTMLLIElement | null, idx: number) => void;
+  isActive?: boolean;
 }
 
 export type OptionItemProps = BaseProps &
@@ -50,6 +51,7 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
       onMount,
       onKeyDown,
       tabIndex,
+      isActive,
     },
     ref,
   ) => {
@@ -67,7 +69,7 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
           else if (ref) (ref as any).current = el;
         }}
         id={id}
-        role={id === 'placeholder' ? 'note' : 'option'}
+        role='option'
         aria-disabled={disabled}
         aria-selected={id === 'placeholder' ? false : selected}
         tabIndex={tabIndex}
@@ -76,12 +78,14 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
           `variant--${variant}`,
           `color--${color}`,
           `size--${size}`,
+          'option-item',
+          isActive && 'is-active',
           className,
         )}
         onClick={handleClick}
         onKeyDown={onKeyDown}
       >
-        <span className='label' title={value}>
+        <span className='label' title={value || undefined}>
           {value || placeholder}
         </span>
 

@@ -864,7 +864,7 @@ $option-item-sizes: (
 
   &:focus,
   &:focus-visible,
-  &:global(.focused-by-keyboard) {
+  &:global(.is-active) {
     outline: 2.5px dashed #2466eb;
     outline-offset: -2px;
   }
