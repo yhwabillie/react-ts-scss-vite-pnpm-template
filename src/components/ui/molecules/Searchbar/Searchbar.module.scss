@@ -5,4 +5,14 @@
 
 .searchbar {
   border: 1px solid red;
+
+  :global(input[type='search']) {
+    -webkit-appearance: textfield;
+
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-decoration {
+      -webkit-appearance: none;
+      display: none;
+    }
+  }
 }

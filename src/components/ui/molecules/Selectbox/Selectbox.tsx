@@ -343,15 +343,10 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
 
       const isInsidePortal = portalRef.current && target && portalRef.current.contains(target);
 
-      if (isInsideContainer || isInsidePortal) return;
-
-      // ⭐ 핵심: 클릭으로 막 연 경우 무시
-      if (openReasonRef.current === 'click') {
-        openReasonRef.current = null;
-        return;
+      if (!isInsideContainer && !isInsidePortal) {
+        setIsOpen(false);
+        setFocusedIndex(null);
       }
-
-      close();
     }, []);
 
     // -----------------------------------------------------

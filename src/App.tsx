@@ -24,6 +24,8 @@ import {
 } from './components/ui/molecules/Combobox/Combobox.mock';
 import { selectboxOptions } from './components/ui/molecules/Selectbox/Selectbox.mock';
 import Searchbar from './components/ui/molecules/Searchbar/Searchbar';
+import { useState } from 'react';
+import type { OptionBase } from './components/ui/molecules/OptionItem/OptionItem';
 
 // 타입 정의
 type DisplayLevel = 'd1' | 'd2' | 'd3';
@@ -83,7 +85,19 @@ const btnStyles: Record<ButtonLevel, React.CSSProperties> = {
   btn3: { font: 'var(--project-typo-btn3-400)' },
 };
 
+const MOCK_OPTIONS: OptionBase[] = [
+  { id: 'searchbar-1', value: '사과' },
+  { id: 'searchbar-2', value: '바나나' },
+  { id: 'searchbar-3', value: '포도' },
+  { id: 'searchbar-4', value: '딸기' },
+  { id: 'searchbar-5', value: '과나나' },
+  { id: 'searchbar-6', value: '우나나' },
+  { id: 'searchbar-7', value: '오나나' },
+];
+
 function App() {
+  const [value, setValue] = useState('');
+
   return (
     <>
       <section>
@@ -92,21 +106,23 @@ function App() {
           color='primary'
           size='xl'
           shape='rounded'
-          id='searchbar'
+          id='searchbar-component'
+          inputId='searchbar-input'
           placeholder='검색하세요'
           role='combobox'
           labelText='검색'
-          aria-labelledby='searchbar-label'
+          value={value} // ✅
+          onChange={setValue} // ✅
+          options={MOCK_OPTIONS} // ✅ 외부 옵션 주입
           actions={{
             utilityAction: {
               type: 'clear',
               icon: <Icon name='x' />,
-              onClick: () => console.log('clear'),
             },
             submitAction: {
               type: 'submit',
               icon: <Icon name='search' />,
-              onClick: () => console.log('submit'),
+              onClick: () => console.log('submit', value),
             },
           }}
         />
