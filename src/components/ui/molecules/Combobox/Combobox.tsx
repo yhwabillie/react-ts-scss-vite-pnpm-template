@@ -11,12 +11,12 @@ import React, {
 import clsx from 'clsx';
 import styles from '@/components/ui/molecules/Combobox/Combobox.module.scss';
 import type { Size, Variant, Color } from '@/types/design/design-tokens.types';
-import IconButton from '../IconButton/IconButton';
-import Icon from '../../atoms/Icon/Icon';
-import type { PortalPosition } from '../OptionListPortal/OptionListPortal';
-import OptionListPortal from '../OptionListPortal/OptionListPortal';
-import OptionList from '../OptionList/OptionList';
-import OptionItem, { type OptionBase } from '../OptionItem/OptionItem';
+import IconButton from '@/components/ui/molecules/IconButton/IconButton';
+import Icon from '@/components/ui/atoms/Icon/Icon';
+import type { PortalPosition } from '@/components/ui/molecules/OptionListPortal/OptionListPortal';
+import OptionListPortal from '@/components/ui/molecules/OptionListPortal/OptionListPortal';
+import OptionList from '@/components/ui/molecules/OptionList/OptionList';
+import OptionItem, { type OptionBase } from '@/components/ui/molecules/OptionItem/OptionItem';
 import type { ComboboxA11yProps } from '@/types/a11y/a11y-roles.types';
 import type { ComboboxInputProps } from '@/types/form-control.types';
 
@@ -54,7 +54,9 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
       'aria-labelledby': ariaLabelledBy,
       id,
       inputId,
+      required,
       disabled,
+      readOnly,
       className,
       inputProps,
       options,
@@ -71,6 +73,16 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
 
     // -----------------------------
+    // 🧩 Ref 선언
+    // -----------------------------
+    const portalRef = useRef<HTMLDivElement | null>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const customInputRef = React.useRef<HTMLDivElement>(null);
+    const nativeInputRef = React.useRef<HTMLInputElement>(null);
+    const optionRefs = useRef<(HTMLLIElement | null)[]>([]);
+    const openReasonRef = useRef<'input' | 'keyboard' | 'button' | null>(null);
+
+    // -----------------------------
     // 🔑 [ID 관리] Combobox 및 리스트박스 식별자
     // - baseId: 사용자로부터 id가 전달되면 사용, 없으면 useId()로 생성
     // - listboxId: 리스트박스(옵션 컨테이너)의 고유 ID, aria-controls 등에 사용
@@ -79,28 +91,15 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     const listboxId = `${baseId}-listbox`;
 
     // -----------------------------
-    // 🧩 [옵션 데이터 파싱] parsedOptions
-    // - options 배열을 정규화
-    // - 각 옵션에 id, value, selected, disabled 정보 포함
-    // - id 없으면 인덱스 기반 기본 id 생성
-    // -----------------------------
-    const parsedOptions = useMemo(() => {
-      return options.map((opt, idx) => ({
-        id: opt.id ?? `opt-${idx}`,
-        value: opt.value,
-        selected: opt.selected,
-        disabled: opt.disabled ?? false,
-      }));
-    }, [options]);
-
-    // -----------------------------
     // 🏁 초기 선택값 설정
-    // - selected: true인 옵션이 있으면 그 값을 사용
-    // - 없으면 선택 없음(selectedId: null, inputValue: '')
+    // - 최초 마운트 시 options 중
+    //   selected: true && disabled 아님 && value가 빈 값이 아닌 옵션을 찾음
+    // - 해당 옵션이 있으면 selectedId / inputValue의 초기값으로 사용
+    // - 없으면 선택 없음 (selectedId: null, inputValue: '')
     // -----------------------------
     const initialSelectedOption = useMemo(
-      () => parsedOptions.find(opt => opt.selected) ?? null,
-      [parsedOptions],
+      () => options.find(opt => opt.selected && !opt.disabled && opt.value !== '') ?? null,
+      [options],
     );
 
     const [selectedId, setSelectedId] = useState<string | null>(initialSelectedOption?.id ?? null);
@@ -113,33 +112,23 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     // - 대소문자 구분 없이 포함 여부 검사
     // -----------------------------
     const filteredOptions = useMemo(() => {
-      if (!inputValue) return parsedOptions;
+      if (!inputValue) return options;
 
       const keyword = inputValue.toLowerCase();
 
-      return parsedOptions.filter(opt => opt.value.toLowerCase().includes(keyword));
-    }, [parsedOptions, inputValue]);
+      return options.filter(opt => opt.value.toLowerCase().includes(keyword));
+    }, [options, inputValue]);
 
     // -----------------------------
-    // 🎯 [ARIA] 활성 옵션 ID
+    // ♿️ [ARIA] 활성 옵션 ID
     // - 키보드 포커스가 있는 옵션의 ID를 aria-activedescendant에 사용
     // - focusedIndex가 null이면 undefined 반환
     // -----------------------------
     const activeDescendantId =
       focusedIndex !== null ? filteredOptions[focusedIndex]?.id : undefined;
 
-    // -----------------------------
-    // 🧩 Ref 플래그 선언
-    // -----------------------------
-    const portalRef = useRef<HTMLDivElement | null>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
-    const customInputRef = React.useRef<HTMLDivElement>(null);
-    const nativeInputRef = React.useRef<HTMLInputElement>(null);
-    const optionRefs = useRef<(HTMLLIElement | null)[]>([]);
-    const openReasonRef = useRef<'input' | 'keyboard' | 'button' | null>(null);
-
     // -----------------------------------------------------
-    // ✍️ [Input] handleInputChange
+    // ⚡️ [Input] handleInputChange
     // - 사용자가 입력창에 타이핑할 때 호출
     // - 입력값을 내부 상태(inputValue)에 반영
     // - 입력 시 옵션 리스트를 열고(isOpen = true)
@@ -161,7 +150,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     };
 
     // -----------------------------------------------------
-    // ✅ [Option] handleSelect
+    // ⚡️ [Option] handleSelect
     // - OptionItem 선택 시 호출되는 콜백
     // - 선택된 옵션의 value를 inputValue에 반영
     // - 선택된 옵션의 id를 selectedId로 저장
@@ -172,8 +161,8 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     // -----------------------------------------------------
     const handleSelect = useCallback(
       (id: string, value: string) => {
-        setInputValue(value);
         setSelectedId(id);
+        setInputValue(value);
         setIsOpen(false);
         setFocusedIndex(null);
 
@@ -529,6 +518,9 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
             aria-labelledby={ariaLabelledBy}
             aria-autocomplete='list'
             aria-expanded={isOpen}
+            required={required}
+            readOnly={readOnly}
+            disabled={disabled}
             value={inputValue}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}

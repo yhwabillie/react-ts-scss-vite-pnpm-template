@@ -100,7 +100,7 @@ const mockOptions: OptionBase[] = [
   { id: 'combo-3', value: '과나나', selected: false, disabled: false },
   { id: 'combo-4', value: '나주배', selected: false, disabled: true },
   { id: 'combo-5', value: '용과', selected: false, disabled: false },
-  { id: 'combo-6', value: '샤인머스캣', selected: true, disabled: false },
+  { id: 'combo-6', value: '샤인머스캣', selected: false, disabled: false },
   { id: 'combo-7', value: '딸기', selected: false, disabled: false },
   { id: 'combo-8', value: '망고', selected: false, disabled: false },
   { id: 'combo-9', value: '키위', selected: false, disabled: false },
@@ -135,21 +135,18 @@ const parsedOptions = placeholderOption
 // - 없으면 배열 첫 번째 옵션 선택
 // -----------------------------
 const selectedOption = parsedOptions.find(opt => opt.selected);
-const initialSelectedId = selectedOption?.id ?? parsedOptions[0].id;
+// const initialSelectedId = selectedOption?.id ?? parsedOptions[0].id;
 
 // -----------------------------
 // 📌 [Input Props 외부 정의]
 // - Combobox input에서 공통으로 사용하는 속성 분리
 // -----------------------------
 const comboboxInputProps = {
-  placeholder: '검색 혹은 검색해서 선택',
+  placeholder: '검색 후 옵션 샌택',
   autoComplete: 'off',
 } as const;
 
 function App() {
-  const [selectedId, setSelectedId] = useState(initialSelectedId);
-  const selectedValue = parsedOptions.find(opt => opt.id === selectedId)?.value ?? '';
-
   return (
     <>
       <section>
@@ -173,58 +170,37 @@ function App() {
             // disabled={true}
             inputProps={comboboxInputProps}
             options={mockOptions}
+            onValueChange={(value, option) => {
+              console.log(value, option);
+            }}
           />
         </FormField>
       </section>
       <section>
-        {/* <FormField
+        <FormField
           size='xl'
-          id='selectbox-1-label'
-          htmlFor='custom-select-1'
-          labelText='셀렉스 박스 옵션 선택'
           direction='column'
-          // required={true}
+          id='selectbox-label'
+          htmlFor='selectbox-select'
+          labelText='셀렉트박스 옵션 선택'
         >
           <Selectbox
             variant='outline'
-            color='warning'
+            color='primary'
             size='xl'
-            id='custom-select-1'
-            ariaControls='selectbox-1-optionlist'
-            ariaLabelledBy='selectbox-1-label'
-            // disabled={true}
+            role='combobox'
+            aria-labelledby='selectbox-label'
+            id='selectbox-component'
+            selectId='selectbox-select'
             // required={true}
-            placeholder={parsedOptions[0].label || '옵션을 선택해 주세요'}
-            onValueChange={val => {
-              const found = parsedOptions.find(opt => opt.value === val);
-              if (found) setSelectedId(found.id);
+            // disabled={true}
+            placeholder='선택해보세요'
+            options={mockOptions}
+            onValueChange={(value, option) => {
+              console.log(value, option);
             }}
-          >
-            <OptionList
-              id='selectbox-1-optionlist'
-              variant='outline'
-              color='warning'
-              size='xl'
-              selectedId={selectedId}
-              onOptionSelect={id => setSelectedId(id)}
-            >
-              {parsedOptions.map((opt, idx) => (
-                <OptionItem
-                  key={opt.id}
-                  variant='ghost'
-                  color='warning'
-                  size='xl'
-                  index={idx}
-                  id={opt.id}
-                  value={opt.value}
-                  placeholder={opt.label}
-                  selected={selectedId === opt.id}
-                  disabled={opt.disabled}
-                />
-              ))}
-            </OptionList>
-          </Selectbox>
-        </FormField> */}
+          />
+        </FormField>
       </section>
 
       <section style={{ margin: '30px' }}>

@@ -1,58 +1,62 @@
 import React, {
   forwardRef,
-  useRef,
-  useMemo,
   useCallback,
-  useState,
   useEffect,
+  useId,
   useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
 } from 'react';
 import clsx from 'clsx';
 import styles from '@/components/ui/molecules/Selectbox/Selectbox.module.scss';
-import Icon from '@/components/ui/atoms/Icon/Icon';
+import type { Size, Variant, Color } from '@/types/design/design-tokens.types';
 import IconButton from '@/components/ui/molecules/IconButton/IconButton';
-import OptionListPortal from '@/components/ui/molecules/OptionListPortal/OptionListPortal';
+import Icon from '@/components/ui/atoms/Icon/Icon';
 import type { PortalPosition } from '@/components/ui/molecules/OptionListPortal/OptionListPortal';
-import type { OptionListProps } from '../OptionList/OptionList';
-import type { OptionBase, OptionItemProps } from '../OptionItem/OptionItem';
+import OptionListPortal from '@/components/ui/molecules/OptionListPortal/OptionListPortal';
+import OptionList from '@/components/ui/molecules/OptionList/OptionList';
+import OptionItem, { type OptionBase } from '@/components/ui/molecules/OptionItem/OptionItem';
+import type { SelectboxA11yProps } from '@/types/a11y/a11y-roles.types';
 
-interface BaseProps extends Pick<OptionBase, 'id' | 'disabled'> {
-  variant: 'solid' | 'soft' | 'outline' | 'ghost';
-  color:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'brand'
-    | 'brand-sub'
-    | 'success'
-    | 'warning'
-    | 'danger';
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  required?: boolean;
-  placeholder: string;
-  className?: string;
-  ariaControls?: string;
-  ariaLabelledBy?: string;
-  onValueChange?: (value: string) => void;
-  children: React.ReactNode;
+interface StyleProps {
+  variant: Variant;
+  color: Color;
+  size: Size;
 }
 
-type SelectboxProps = BaseProps & Omit<React.HTMLAttributes<HTMLSelectElement>, keyof BaseProps>;
+type NativeDivProps = Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  keyof StyleProps | keyof SelectboxA11yProps
+>;
 
-const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
+interface SelectboxProps extends StyleProps, SelectboxA11yProps, NativeDivProps {
+  id?: string;
+  selectId?: string;
+  required?: boolean;
+  disabled?: boolean;
+  placeholder?: string;
+  options: OptionBase[];
+  value?: string; // controlled
+  defaultValue?: string; // uncontrolled
+  onValueChange?: (value: string, option?: OptionBase) => void;
+}
+
+const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
   (
     {
       variant,
       color,
       size,
+      role,
+      'aria-labelledby': ariaLabelledBy,
       id,
-      className,
+      selectId,
       required,
       disabled,
-      ariaControls,
-      ariaLabelledBy,
+      className,
       placeholder,
-      children,
+      options,
       onValueChange,
     },
     ref,
@@ -61,108 +65,65 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
     // 📌 상태 선언
     // -----------------------------
     const [isOpen, setIsOpen] = useState(false);
-    const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
     const [positioned, setPositioned] = useState(false);
     const [portalPos, setPortalPos] = useState<PortalPosition | null>(null);
+    const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
 
     // -----------------------------
-    // 🧩 Ref 플래그 선언
+    // 🧩 Ref 선언
     // -----------------------------
     const portalRef = useRef<HTMLDivElement | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
-    const optionRefs = useRef<HTMLLIElement[]>([]);
     const customSelectRef = React.useRef<HTMLDivElement>(null);
+    const nativeSelectRef = React.useRef<HTMLSelectElement>(null);
     const hasScrolledRef = useRef(false);
+    const optionRefs = useRef<(HTMLLIElement | null)[]>([]);
+    const openReasonRef = useRef<'click' | 'keyboard' | null>(null);
 
     // -----------------------------
-    // 🗂️ labelCache
-    // - ReactNode → string 매핑을 캐싱
-    // - 동일한 JSX 요소를 반복 처리하지 않도록 성능 최적화
+    // 🔑 [ID 관리] Combobox 및 리스트박스 식별자
+    // - baseId: 사용자로부터 id가 전달되면 사용, 없으면 useId()로 생성
+    // - listboxId: 리스트박스(옵션 컨테이너)의 고유 ID, aria-controls 등에 사용
     // -----------------------------
-    const labelCache = useRef(new Map<React.ReactNode, string>());
+    const baseId = id ?? useId();
+    const listboxId = `${baseId}-listbox`;
 
     // -----------------------------
-    // 🗂️ extractLabelText
-    // - ReactNode(children)를 문자열로 변환
-    // - 문자열/숫자 → 그대로 반환
-    // - 배열 → 재귀적으로 각 요소를 합쳐서 반환
-    // - ReactElement → children 재귀 처리
-    // - 변환 결과를 labelCache에 저장
+    // 🏁 [초기 선택 옵션 계산]
+    // - 최초 마운트 시 options 중
+    //   selected: true && disabled 아님 && value가 빈 값이 아닌 옵션을 탐색
+    // - 조건을 만족하는 첫 번째 옵션을 초기 선택값으로 사용
+    // - 없으면 초기 선택 없음 (null / '')
     // -----------------------------
-    const extractLabelText = (node: React.ReactNode): string => {
-      if (labelCache.current.has(node)) return labelCache.current.get(node)!;
-      let result = '';
-      if (!node) result = '';
-      else if (typeof node === 'string' || typeof node === 'number') result = String(node);
-      else if (Array.isArray(node)) result = node.map(extractLabelText).join('');
-      else if (React.isValidElement(node)) {
-        const element = node as React.ReactElement<{ children?: React.ReactNode }>;
-        result = extractLabelText(element.props.children);
-      }
-      labelCache.current.set(node, result);
-      return result;
+    const initialSelectedOption = useMemo(
+      () => options.find(opt => opt.selected && !opt.disabled && opt.value !== '') ?? null,
+      [options],
+    );
+
+    const [selectedId, setSelectedId] = useState<string | null>(
+      () => initialSelectedOption?.id ?? null,
+    );
+    const [selectedValue, setSelectedValue] = useState<string>(
+      () => initialSelectedOption?.value ?? '',
+    );
+
+    // -----------------------------
+    // ♿️ [ARIA] 활성 옵션 ID
+    // - 키보드 포커스가 있는 옵션의 ID를 aria-activedescendant에 사용
+    // - focusedIndex가 null이면 undefined 반환
+    // -----------------------------
+    const activeDescendantId = focusedIndex !== null ? options[focusedIndex]?.id : undefined;
+
+    const open = (reason: 'click' | 'keyboard') => {
+      openReasonRef.current = reason;
+      setIsOpen(true);
     };
 
-    // ------------------------------------------------------
-    // 📦 OptionList & OptionItem 파싱
-    // - children 중 첫 번째 유효한 ReactElement를 OptionList로 간주
-    // - OptionList 내부의 OptionItem들을 배열로 정규화
-    // ------------------------------------------------------
-    const optionList = React.Children.toArray(children).find(child =>
-      React.isValidElement(child),
-    ) as React.ReactElement<OptionListProps>;
-    if (!optionList) return null;
-
-    const optionItemArr = React.Children.toArray(optionList.props.children).filter(child =>
-      React.isValidElement(child),
-    ) as React.ReactElement<OptionItemProps>[];
-
-    // -----------------------------
-    // 📦 parsedOptions 파싱
-    // - OptionItem JSX → 순수 데이터 객체 배열
-    // - label: extractLabelText 사용
-    // - value: props.value가 없으면 label 사용
-    // - id: props.id 없으면 자동 생성
-    // - disabled: aria-disabled 기준
-    // -----------------------------
-    const parsedOptions = useMemo(() => {
-      return optionItemArr.map((item, idx) => {
-        const id = item.props.id ?? `opt-${idx}`; // id 포함
-        const labelText = extractLabelText(item.props.children);
-        const value = item.props.value ?? labelText;
-        const selected = item.props.selected;
-        const disabled = item.props.disabled;
-
-        return {
-          key: idx,
-          id,
-          value,
-          label: labelText,
-          selected,
-          disabled,
-        };
-      });
-    }, [optionItemArr]);
-
-    // ----------------------------------------------------------------------------
-    // 📌 선택 상태 관리
-    // - selectedId: 현재 선택된 옵션의 id
-    //   • 초기값: parsedOptions에서 selected가 true인 옵션 id
-    //   • 없으면 첫 번째 옵션(parsedOptions[0].id) 사용
-    // - selectedValue: 현재 선택된 옵션의 value
-    //   • selectedId 기준으로 가져옴
-    // ----------------------------------------------------------------------------
-    const [selectedId, setSelectedId] = useState<string>(() => {
-      const selectedOption = parsedOptions.find(
-        opt => opt.selected && !opt.disabled && opt.value !== '',
-      );
-      if (selectedOption) return selectedOption.id;
-      return '';
-    });
-
-    const [selectedValue, setSelectedValue] = useState<string>(
-      parsedOptions.find(opt => opt.selected)?.value ?? '',
-    );
+    const close = () => {
+      openReasonRef.current = null;
+      setIsOpen(false);
+      setFocusedIndex(null);
+    };
 
     // ------------------------------------------------------
     // ⚡️ handleSelect
@@ -176,11 +137,13 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
       (id: string, value: string) => {
         setSelectedId(id);
         setSelectedValue(value);
-        onValueChange?.(value);
         setIsOpen(false);
         setFocusedIndex(null);
+
+        const option = options.find(opt => opt.id === id);
+        onValueChange?.(value, option);
       },
-      [onValueChange],
+      [options, onValueChange],
     );
 
     // -----------------------------
@@ -192,43 +155,28 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
       handleSelect(e.target.id, e.target.value);
     };
 
-    // ------------------------------------------------------
-    // ⚡️ handleCustomSelectFocus
-    // - custom-select 요소에 포커스가 들어올 때 호출
-    // - disabled 상태면 아무 동작하지 않음
-    // - Tab 키로 포커스 들어와도 드롭다운은 열지 않고
-    //   포커스 상태만 유지
-    // ------------------------------------------------------
-    const handleCustomSelectFocus = useCallback(() => {
-      if (disabled) return;
-    }, [disabled]);
-
     // -----------------------------------------------------
-    // ✨ 포커스 이동 처리
-    // - 드롭다운이 열려(isOpen) 있고 focusedIndex가 존재할 때
-    // - focusedIndex에 해당하는 옵션 DOM 요소에 포커스(focus()) 적용
-    // - 키보드 방향키 이동 등으로 focus 관리 용도
+    // 🔁 [Keyboard Utils] 다음/이전 활성 옵션 인덱스 계산
+    // - disabled 옵션은 건너뜀
+    // - 범위를 벗어나면 기존 인덱스 유지
     // -----------------------------------------------------
-    useEffect(() => {
-      if (!isOpen) return;
-      if (focusedIndex === null) return;
+    const findNextEnabled = useCallback(
+      (current: number | null, step: 1 | -1) => {
+        if (options.length === 0) return null;
 
-      const el = optionRefs.current[focusedIndex];
-      if (el) {
-        el.focus();
-      }
-    }, [focusedIndex, isOpen]);
+        let idx = current === null ? (step === 1 ? 0 : options.length - 1) : current + step;
 
-    // -----------------------------
-    // ✨ focusedIndex 변화 시 해당 옵션에 포커스 적용
-    // - focusedIndex가 null이 아니면 optionRefs 배열에서 해당 요소 focus
-    // - 키보드 이동이나 검색 결과 변경 시 포커스 동기화
-    // -----------------------------
-    useEffect(() => {
-      if (focusedIndex !== null && optionRefs.current[focusedIndex]) {
-        optionRefs.current[focusedIndex].focus();
-      }
-    }, [focusedIndex, isOpen]);
+        while (idx >= 0 && idx < options.length) {
+          if (!options[idx].disabled) {
+            return idx;
+          }
+          idx += step;
+        }
+
+        return current;
+      },
+      [options],
+    );
 
     // ------------------------------------------------------
     // ⚡️ handleKeyDown
@@ -241,152 +189,93 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
     //   • ArrowUp → 이전 활성 옵션으로 포커스 이동
     //   • Enter / Space → 현재 포커스 옵션 선택, 메뉴 닫기, custom-select로 포커스 이동
     // ------------------------------------------------------
+    const lastKeyEventRef = useRef<{ key: string; timestamp: number } | null>(null);
+
     const handleKeyDown = useCallback(
       <T extends HTMLElement>(e: React.KeyboardEvent<T>) => {
-        if (!isOpen) {
-          switch (e.key) {
-            case 'Enter':
-            case ' ':
-              e.preventDefault();
-              setIsOpen(true);
-          }
-        } else {
-          if (e.key === 'Enter' || e.key === ' ') {
+        const now = Date.now();
+
+        // 50ms 이내 동일 키 중복 방지
+        if (
+          lastKeyEventRef.current &&
+          lastKeyEventRef.current.key === e.key &&
+          now - lastKeyEventRef.current.timestamp < 50
+        ) {
+          e.preventDefault();
+          e.stopPropagation();
+          return;
+        }
+
+        lastKeyEventRef.current = { key: e.key, timestamp: now };
+
+        switch (e.key) {
+          case ' ':
+          case 'Enter': {
             e.preventDefault();
-            if (focusedIndex !== null && !parsedOptions[focusedIndex].disabled) {
-              handleSelect(parsedOptions[focusedIndex].id, parsedOptions[focusedIndex].value);
-              customSelectRef.current?.focus();
+
+            // 🔓 닫혀 있으면 키보드로 열기
+            if (!isOpen) {
+              open('keyboard');
+              return;
+            }
+
+            // 🔒 열려 있고 포커스된 옵션이 있으면 선택
+            if (focusedIndex !== null) {
+              const opt = options[focusedIndex];
+              if (!opt.disabled) {
+                handleSelect(opt.id, opt.value);
+              }
             }
             return;
           }
 
-          switch (e.key) {
-            case 'Escape':
-              e.preventDefault();
-              setIsOpen(false);
-              setFocusedIndex(null);
-              customSelectRef.current?.focus();
-              break;
-            case 'ArrowDown':
-              e.preventDefault();
-              setFocusedIndex(prev => {
-                // prev === null, 즉 포커스가 없는 상태에서 탐색을 시작할 때
-                if (prev === null) {
-                  // 1. 현재 선택된 id 기준으로 parsedOptions에서 포커스를 찾습니다.
-                  let initialFocusIdx = parsedOptions.findIndex(
-                    opt => opt.id === selectedId && !opt.disabled,
-                  );
+          case 'ArrowDown':
+          case 'ArrowUp': {
+            e.preventDefault();
 
-                  // 2. 선택된 항목이 없으면, 첫 번째 비활성화가 아닌 옵션을 찾습니다.
-                  if (initialFocusIdx === -1) {
-                    initialFocusIdx = parsedOptions.findIndex(o => !o.disabled);
-                  }
+            // 🔓 닫혀 있으면 열기만 (포커스 이동은 다음 tick)
+            if (!isOpen) {
+              open('keyboard');
+              return;
+            }
 
-                  // 찾은 항목이 있다면 그곳으로 이동하고, 없다면 null을 유지합니다.
-                  return initialFocusIdx !== -1 ? initialFocusIdx : null;
-                }
+            const step = e.key === 'ArrowDown' ? 1 : -1;
+            let nextIndex: number | null;
 
-                // 포커스가 이미 있다면, 다음 항목으로 이동합니다.
-                let next = prev + 1;
-                while (next < parsedOptions.length && parsedOptions[next].disabled) next++;
-                return next < parsedOptions.length ? next : prev;
-              });
-              break;
-            case 'ArrowUp':
-              e.preventDefault();
-              setFocusedIndex(prev => {
-                if (prev === null) return parsedOptions.length - 1;
-                let next = prev - 1;
-                while (next >= 0 && parsedOptions[next].disabled) next--;
-                return next >= 0 ? next : prev;
-              });
-              break;
-            case 'Tab':
-              if (e.shiftKey) {
-                // Shift + Tab
-                e.preventDefault();
-                setIsOpen(false);
+            if (focusedIndex === null) {
+              if (selectedId) {
+                const idx = options.findIndex(opt => opt.id === selectedId && !opt.disabled);
+                nextIndex = idx !== -1 ? idx : options.findIndex(opt => !opt.disabled);
               } else {
-                // 그냥 Tab
-                e.preventDefault();
-                setIsOpen(false);
+                nextIndex = options.findIndex(opt => !opt.disabled);
               }
-              break;
+              nextIndex = nextIndex !== -1 ? nextIndex : null;
+            } else {
+              nextIndex = findNextEnabled(focusedIndex, step);
+            }
+
+            setFocusedIndex(nextIndex);
+            return;
+          }
+
+          case 'Escape': {
+            if (!isOpen) return;
+            e.preventDefault();
+            close();
+            return;
+          }
+
+          case 'Tab': {
+            // Tab 은 기본 동작 허용 + 리스트만 닫기
+            if (isOpen) {
+              close();
+            }
+            return;
           }
         }
       },
-      [isOpen, parsedOptions, focusedIndex, handleSelect],
+      [isOpen, focusedIndex, selectedId, options, findNextEnabled, handleSelect],
     );
-
-    // ------------------------------------------------------
-    // 🧩 optionListChildren 생성
-    // - OptionList 내부 children을 map하여 OptionItem에 필요한 props 주입
-    // - index, tabIndex, selected, disabled, value, 이벤트 핸들러(onSelect, onKeyDown) 설정
-    // - onMount를 통해 optionRefs에 DOM 요소 저장 → 포커스 관리용
-    // - parsedOptions 기반으로 selected/disabled 상태 동기화
-    // ------------------------------------------------------
-    const optionListChildren = useMemo(() => {
-      return React.Children.map(optionList.props.children, (child, idx) => {
-        if (!React.isValidElement(child)) return child;
-
-        const childTyped = child as React.ReactElement<OptionItemProps>;
-
-        return React.cloneElement(childTyped, {
-          index: idx,
-          tabIndex: -1,
-          selected: parsedOptions[idx].id === selectedId,
-          disabled: parsedOptions[idx].disabled, // ★ 여기 추가
-          value: parsedOptions[idx].value,
-          onSelect: handleSelect,
-          onKeyDown: handleKeyDown, // useCallback 적용
-          onMount: (el: HTMLLIElement | null, index?: number) => {
-            // 변경 후 (포커스 즉시 처리)
-            if (index === undefined) return;
-            optionRefs.current[index] = el!;
-          },
-        });
-      });
-    }, [optionList.props.children, parsedOptions, selectedValue, handleSelect, handleKeyDown]);
-
-    // ------------------------------------------------------
-    // 🧩 memoizedOptionList
-    // - OptionList를 클론하여 필요한 props 주입
-    //   • selectedId: 현재 선택된 옵션 id
-    //   • onOptionSelect: 옵션 선택 핸들러
-    //   • className: 기존 OptionList 클래스 유지
-    //   • children: useMemo로 생성한 OptionItem 리스트
-    // - useMemo 적용 → optionList 또는 children 변경 시에만 리렌더링
-    // ------------------------------------------------------
-    const memoizedOptionList = useMemo(() => {
-      if (!optionList) return null;
-
-      return React.cloneElement(optionList, {
-        selectedId: selectedId,
-        onOptionSelect: handleSelect,
-        className: optionList.props.className,
-        children: optionListChildren, // useMemo로 미리 만들어둔 children
-      });
-    }, [optionList, optionListChildren, selectedValue, handleSelect, isOpen]);
-
-    // -----------------------------------------------------
-    // ♿️ [KWCAG] activeDescendant 계산
-    // - focusedIndex를 기준으로 현재 키보드 포커스가 있는 옵션 ID 반환
-    // - 포커스가 없으면 선택된 옵션(selectedId) ID 반환
-    // - 둘 다 없으면 공백 반환
-    // - 웹 접근성: aria-activedescendant 속성에 사용
-    // -----------------------------------------------------
-    const activeDescendant = useMemo(() => {
-      if (focusedIndex !== null) {
-        const opt = parsedOptions[focusedIndex];
-        if (opt) return `${opt.id}`;
-      }
-
-      // 클릭으로 선택된 옵션 (포커스는 사라졌지만 선택은 유지됨)
-      if (selectedId) return `${selectedId}`;
-
-      // 아무것도 없으면 공백
-      return '';
-    }, [focusedIndex, parsedOptions, selectedId]);
 
     // -----------------------------
     // ✨ [Scroll] 드롭다운 오픈 시 선택된 옵션 자동 스크롤
@@ -404,7 +293,7 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
       if (hasScrolledRef.current) return; // 이미 스크롤 완료 시 더 이상 실행하지 않음
 
       const timeout = setTimeout(() => {
-        const selectedIdx = parsedOptions.findIndex(opt => opt.id === selectedId);
+        const selectedIdx = options.findIndex(opt => opt.id === selectedId);
         if (selectedIdx === -1) return;
 
         const selectedEl = optionRefs.current[selectedIdx];
@@ -415,15 +304,76 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
       }, 0);
 
       return () => clearTimeout(timeout);
-    }, [isOpen, selectedId, parsedOptions]);
+    }, [isOpen, selectedId, options]);
 
-    // -----------------------------
+    // -----------------------------------------------------
+    // ✨ [Accessibility] 활성 옵션 스크롤 동기화
+    // - aria-activedescendant 기반 포커싱에서는
+    //   브라우저가 자동으로 스크롤하지 않으므로
+    //   수동으로 scrollIntoView() 호출
+    // - 키보드로 포커스 이동 시 화면 밖 옵션을 뷰포트로 이동
+    // - block: 'nearest' → 최소한의 스크롤만 발생
+    // -----------------------------------------------------
+    useLayoutEffect(() => {
+      if (!isOpen || !positioned) return;
+      if (focusedIndex === null) return;
+
+      const el = optionRefs.current[focusedIndex];
+      if (!el) return;
+
+      el.scrollIntoView({
+        block: 'nearest',
+        behavior: 'smooth',
+      });
+    }, [isOpen, positioned, focusedIndex]);
+
+    // -----------------------------------------------------
+    // 🖱️ [Interaction] handleOutsideClick
+    // - Combobox 외부 영역 클릭 감지
+    // - input 영역(containerRef)과
+    //   옵션 리스트 포털(portalRef) 모두 포함하지 않을 경우
+    //   → 옵션 리스트 닫기
+    // - 포털 구조에서도 정상 동작하도록 ref 기준 검사
+    // -----------------------------------------------------
+    const handleOutsideClick = useCallback((event: MouseEvent) => {
+      const target = event.target as Node | null;
+
+      const isInsideContainer =
+        containerRef.current && target && containerRef.current.contains(target);
+
+      const isInsidePortal = portalRef.current && target && portalRef.current.contains(target);
+
+      if (isInsideContainer || isInsidePortal) return;
+
+      // ⭐ 핵심: 클릭으로 막 연 경우 무시
+      if (openReasonRef.current === 'click') {
+        openReasonRef.current = null;
+        return;
+      }
+
+      close();
+    }, []);
+
+    // -----------------------------------------------------
+    // ✨ 외부 클릭 이벤트 등록 / 해제
+    // - document 기준 mousedown 이벤트 사용
+    // - 컴포넌트 마운트 시 등록
+    // - 언마운트 시 이벤트 해제
+    // -----------------------------------------------------
+    useEffect(() => {
+      document.addEventListener('mousedown', handleOutsideClick);
+      return () => {
+        document.removeEventListener('mousedown', handleOutsideClick);
+      };
+    }, [handleOutsideClick]);
+
+    // -----------------------------------------------------
     // 🔧 [Portal] updatePosition
-    // - Select 컴포넌트 위치 계산 함수
-    // - Portal/Dropdown 위치를 화면에 맞춰 동적으로 계산
-    // - 기준 요소: customSelectRef 또는 containerRef
-    // - 반환: { top, left, width } 형태의 PortalPosition
-    // -----------------------------
+    // - customInputRef 또는 containerRef 기준으로 위치 측정
+    // - getBoundingClientRect() + window.scrollY/X → 스크롤 반영
+    // - top: 요소 하단 기준, left/width: 요소 좌측 및 너비
+    // - 외부 클릭 닫기 등 포털 렌더링 위치 계산에 사용
+    // -----------------------------------------------------
     const updatePosition = useCallback(() => {
       const el = customSelectRef.current ?? containerRef.current;
       if (!el) return null;
@@ -448,7 +398,6 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
         return;
       }
 
-      // 동기적으로 위치 계산
       const pos = updatePosition();
       if (pos) {
         setPortalPos(pos);
@@ -479,36 +428,13 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
       };
     }, [isOpen, updatePosition]);
 
-    // -----------------------------------------------------
-    // ✨ [Portal] 외부 클릭 감지
-    // - containerRef + portalRef 외부 클릭 시 드롭다운 메뉴 닫기
-    // - 외부 클릭 시 포커스(focusedIndex) 초기화
-    // - useEffect 의존성 배열 [] → 컴포넌트 마운트 시 한 번만 이벤트 등록
-    // - container 내부 클릭은 메뉴 유지
-    // -----------------------------------------------------
-    useEffect(() => {
-      const handleClickOutside = (event: MouseEvent) => {
-        const target = event.target as Node | null;
-        const insideContainer =
-          containerRef.current && target && containerRef.current.contains(target);
-        const insidePortal = portalRef.current && target && portalRef.current.contains(target);
-
-        if (!insideContainer && !insidePortal) {
-          setIsOpen(false);
-          setFocusedIndex(null);
-        }
-      };
-
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
-
     // -----------------------------
     // ▶️ 렌더링
     // -----------------------------
     return (
       <div
-        ref={containerRef}
+        ref={ref}
+        id={id}
         className={clsx(
           `${styles['selectbox']} variant--${variant} color--${color} size--${size}`,
           className,
@@ -516,16 +442,16 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
       >
         {/* native select (보조기기 동기화용) */}
         <select
-          ref={ref}
-          id={id}
-          value={selectedValue}
+          ref={nativeSelectRef}
+          id={selectId}
           tabIndex={-1}
           required={required}
           disabled={disabled}
+          value={selectedValue}
           onChange={handleChange}
         >
-          {parsedOptions.map(opt => (
-            <option key={opt.key} value={opt.value} disabled={opt.disabled}>
+          {options.map(opt => (
+            <option key={opt.id} value={opt.value} disabled={opt.disabled}>
               {opt.value}
             </option>
           ))}
@@ -537,17 +463,28 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
           className='custom-select'
           tabIndex={disabled ? -1 : 0}
           aria-disabled={disabled}
-          onFocus={handleCustomSelectFocus}
-          onKeyDown={handleKeyDown}
-          onClick={() => setIsOpen(prev => !prev)}
-          role='combobox'
-          aria-controls={ariaControls}
-          aria-activedescendant={isOpen ? activeDescendant : ''}
+          aria-activedescendant={activeDescendantId}
+          role={role}
+          aria-controls={listboxId}
           aria-expanded={isOpen}
           aria-haspopup='listbox'
           aria-labelledby={ariaLabelledBy}
+          onClick={e => {
+            if (disabled) return;
+
+            // 이미 열려있으면 닫기
+            if (isOpen) {
+              close();
+              return;
+            }
+
+            open('click');
+          }}
+          onKeyDown={handleKeyDown}
         >
-          <span className='custom-select-text'>{selectedValue || placeholder}</span>
+          <span className='custom-select-text'>
+            {selectedValue === '' ? placeholder : selectedValue}
+          </span>
           <IconButton
             as='div'
             color={color}
@@ -567,9 +504,30 @@ const Selectbox = forwardRef<HTMLSelectElement, SelectboxProps>(
         </div>
 
         {/* OptionList */}
-        {isOpen && portalPos && (
+        {isOpen && positioned && portalPos && (
           <OptionListPortal isOpen={isOpen} position={portalPos} portalRef={portalRef}>
-            {memoizedOptionList}
+            <OptionList id={listboxId} variant={variant} color={color} size={size}>
+              {options.map((opt, idx) => (
+                <OptionItem
+                  ref={el => {
+                    optionRefs.current[idx] = el;
+                  }}
+                  key={opt.id}
+                  variant={variant}
+                  color={color}
+                  size={size}
+                  index={idx}
+                  id={opt.id}
+                  value={opt.value}
+                  placeholder={opt.id === 'placeholder' ? placeholder : undefined}
+                  selected={opt.id === selectedId}
+                  disabled={opt.disabled}
+                  onSelect={handleSelect}
+                  isActive={opt.id === activeDescendantId}
+                  onKeyDown={handleKeyDown}
+                />
+              ))}
+            </OptionList>
           </OptionListPortal>
         )}
       </div>
