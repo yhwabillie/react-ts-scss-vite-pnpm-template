@@ -11,4 +11,5 @@ export interface SelectboxA11yProps {
 
 export interface InputA11yProps {
   role?: 'combobox';
+  name?: string;
 }
