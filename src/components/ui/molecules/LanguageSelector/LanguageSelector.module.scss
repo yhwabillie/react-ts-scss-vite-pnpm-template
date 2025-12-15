@@ -1,0 +1,9 @@
+/* LanguageSelector.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.language-selector {
+  display: inline-flex;
+  align-items: center;
+}

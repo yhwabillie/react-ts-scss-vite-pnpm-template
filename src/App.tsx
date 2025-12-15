@@ -27,6 +27,8 @@ import Searchbar from './components/ui/molecules/Searchbar/Searchbar';
 import { useState } from 'react';
 import type { OptionBase } from './components/ui/molecules/OptionItem/OptionItem';
 import { searchbarOptions } from './components/ui/molecules/Searchbar/Searchbar.mock';
+import LanguageSelector from './components/ui/molecules/LanguageSelector/LanguageSelector';
+import { languageSelectorOptions } from './components/ui/molecules/LanguageSelector/LanguageSelector.mock';
 
 // 타입 정의
 type DisplayLevel = 'd1' | 'd2' | 'd3';
@@ -88,9 +90,24 @@ const btnStyles: Record<ButtonLevel, React.CSSProperties> = {
 
 function App() {
   const [value, setValue] = useState('');
+  const [language, setLanguage] = useState('');
 
   return (
     <>
+      <section style={{ margin: '30px' }}>
+        <LanguageSelector
+          variant='outline'
+          color='primary'
+          size='xl'
+          buttonProps={{
+            shape: 'rounded',
+            labelText: '언어 변경',
+          }}
+          value='ko'
+          options={languageSelectorOptions}
+          onValueChange={setLanguage}
+        />
+      </section>
       <section>
         <Searchbar
           variant='outline'

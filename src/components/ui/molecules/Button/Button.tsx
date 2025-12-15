@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styles from '@/components/ui/molecules/Button/Button.module.scss';
 
 type BaseProps = {
@@ -24,34 +24,40 @@ type BaseProps = {
 /** <button> 전용 Props */
 type ButtonProps = BaseProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button: React.FC<ButtonProps> = ({
-  color,
-  size,
-  variant,
-  shape,
-  children,
-  startIcon,
-  endIcon,
-  startSpinner,
-  endSpinner,
-  ...props
-}) => {
-  const buttonProps = props as ButtonProps;
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      color,
+      size,
+      variant,
+      shape,
+      children,
+      startIcon,
+      endIcon,
+      startSpinner,
+      endSpinner,
+      ...props
+    },
+    ref,
+  ) => {
+    return (
+      <button
+        ref={ref}
+        className={`${styles['btn']} variant--${variant} color--${color} size--${size} shape--${shape}`}
+        {...props}
+      >
+        {startSpinner}
+        {startIcon}
 
-  return (
-    <button
-      className={`${styles['btn']} ${`variant--${variant}`} ${`color--${color}`} ${`size--${size}`} ${`shape--${shape}`}`}
-      {...buttonProps}
-    >
-      {startSpinner && startSpinner}
-      {startIcon && startIcon}
+        <span className={styles['btn-label']}>{children}</span>
 
-      <span className={`${styles['btn-label']}`}>{children}</span>
+        {endIcon}
+        {endSpinner}
+      </button>
+    );
+  },
+);
 
-      {endIcon && endIcon}
-      {endSpinner && endSpinner}
-    </button>
-  );
-};
+Button.displayName = 'Button';
 
 export default Button;
