@@ -1,0 +1,326 @@
+/* Searchbar.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+$searchbar-colors: (
+  primary: (
+    solid: (
+      bg: #dceaff,
+      color: #0a2540,
+      placeholder: #8a9bb0,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #3366cc,
+      color: #1a3a66,
+      placeholder: #9aaac0,
+    ),
+    soft: (
+      bg: #eef5ff,
+      color: #143459,
+      placeholder: #a2afc2,
+    ),
+  ),
+  secondary: (
+    solid: (
+      bg: #d8edff,
+      color: #173a57,
+      placeholder: #95a7b8,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #69b2ff,
+      color: #1f4b73,
+      placeholder: #9db2c4,
+    ),
+    soft: (
+      bg: #eef7ff,
+      color: #1d4268,
+      placeholder: #a8b8c7,
+    ),
+  ),
+  tertiary: (
+    solid: (
+      bg: #e8e8e8,
+      color: #1e1e1e,
+      placeholder: #9a9a9a,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #4d4d4d,
+      color: #252525,
+      placeholder: #a4a4a4,
+    ),
+    soft: (
+      bg: #f5f5f5,
+      color: #232323,
+      placeholder: #ababab,
+    ),
+  ),
+  brand: (
+    solid: (
+      bg: #ffe9e6,
+      placeholder: #c7a8a5,
+      color: #7a2e25,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #ff6f61,
+      placeholder: #b7857f,
+      color: #8f3a30,
+    ),
+    soft: (
+      bg: #fff3f1,
+      placeholder: #d0bebc,
+      color: #8a3a2f,
+    ),
+  ),
+  brand-sub: (
+    solid: (
+      bg: #f3e9fb,
+      placeholder: #c8b7de,
+      color: #4b2b70,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #6a1b9a,
+      placeholder: #b7a2ce,
+      color: #532c7e,
+    ),
+    soft: (
+      bg: #f8f1ff,
+      placeholder: #d8caed,
+      color: #563482,
+    ),
+  ),
+  success: (
+    solid: (
+      bg: #e2f5e9,
+      placeholder: #a9c7b0,
+      color: #2e5938,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #28a745,
+      placeholder: #94b5a1,
+      color: #245c34,
+    ),
+    soft: (
+      bg: #f0faf3,
+      placeholder: #c8dbce,
+      color: #2f6840,
+    ),
+  ),
+  warning: (
+    solid: (
+      bg: #fff4d1,
+      placeholder: #c7b98b,
+      color: #5c4a00,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #f5c84a,
+      placeholder: #cab77c,
+      color: #7a6000,
+    ),
+    soft: (
+      bg: #fff9e8,
+      placeholder: #d6c796,
+      color: #6b5800,
+    ),
+  ),
+  danger: (
+    solid: (
+      bg: #ffe8e8,
+      placeholder: #d3b1b1,
+      color: #6f1a1a,
+    ),
+    outline: (
+      bg: #ffffff,
+      border: #d84a4a,
+      placeholder: #c79b9b,
+      color: #8a1f1f,
+    ),
+    soft: (
+      bg: #fff2f2,
+      placeholder: #d8bebe,
+      color: #7a2222,
+    ),
+  ),
+);
+
+$searchbar-sizes: (
+  xs: (
+    width: rem(220px),
+    height: rem(32px),
+    padding: 0 rem(8px) 0 rem(8px),
+    font-token: var(--project-typo-input3-500),
+    radius: rem(var(--project-border-radius-4)),
+    icon-size: rem(14px),
+  ),
+  sm: (
+    width: rem(240px),
+    height: rem(36px),
+    padding: 0 rem(10px) 0 rem(10px),
+    font-token: var(--project-typo-input2-500),
+    radius: rem(var(--project-border-radius-6)),
+    icon-size: rem(18px),
+  ),
+  md: (
+    width: rem(260px),
+    height: rem(40px),
+    padding: 0 rem(12px) 0 rem(12px),
+    font-token: var(--project-typo-input2-500),
+    radius: rem(var(--project-border-radius-6)),
+    icon-size: rem(20px),
+  ),
+  lg: (
+    width: rem(280px),
+    height: rem(44px),
+    padding: 0 rem(14px) 0 rem(14px),
+    font-token: var(--project-typo-input1-500),
+    radius: rem(var(--project-border-radius-8)),
+    icon-size: rem(22px),
+  ),
+  xl: (
+    width: rem(300px),
+    height: rem(48px),
+    padding: 0 0 0 rem(16px),
+    font-token: var(--project-typo-input1-500),
+    radius: rem(var(--project-border-radius-8)),
+    icon-size: rem(24px),
+  ),
+);
+
+// mixin - input variant [color + vairant]
+@mixin searchbar-variant($variant) {
+  &:global(.variant--#{$variant}) {
+    @each $color-name, $props in $searchbar-colors {
+      $variant-props: map.get($props, $variant);
+
+      @if $variant-props != null {
+        &:global(.color--#{$color-name}) {
+          // variant
+
+          @if $variant == 'solid' or $variant == 'soft' {
+            &:global(.variant--#{$variant}) {
+              :global(.custom-input) {
+                background-color: map.get($variant-props, bg);
+
+                :global(input) {
+                  color: map.get($variant-props, color);
+                }
+
+                :global(.icon) {
+                  color: map.get($variant-props, color);
+                }
+              }
+            }
+          } @else if $variant == 'outline' {
+            &:global(.variant--outline) {
+              input:disabled {
+                &:disabled ~ :global(.custom-input) {
+                  border: rem(1px) solid #c0c4cc !important;
+                }
+              }
+
+              :global(.custom-input) {
+                background-color: map.get($variant-props, bg);
+                border: rem(1px) solid map.get($variant-props, border);
+
+                :global(input) {
+                  color: map.get($variant-props, color);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.searchbar {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+
+  :global(input[type='search']) {
+    -webkit-appearance: textfield;
+    background-color: inherit;
+
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-decoration {
+      -webkit-appearance: none;
+      display: none;
+    }
+  }
+
+  // variant
+  @include searchbar-variant(solid);
+  @include searchbar-variant(soft);
+  @include searchbar-variant(outline);
+
+  // size
+  @each $size-name, $props in $searchbar-sizes {
+    $adorned-start-map: map.get($props, adorned-start);
+    $adorned-end-map: map.get($props, adorned-end);
+
+    &:global(.size--#{$size-name}) {
+      :global(.custom-input) {
+        width: map.get($props, width);
+        height: map.get($props, height);
+        padding: map.get($props, padding);
+        border-radius: map.get($props, radius);
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+
+        :global(input) {
+          font: map.get($props, font-token);
+          height: 100%;
+          border: none;
+          flex: 1 1 auto;
+          @include ell();
+        }
+
+        :global(button) {
+          cursor: pointer;
+
+          &:global(:nth-child(2)) {
+            margin: 0 0 0 rem(8px);
+          }
+
+          &:global(.delete-btn) {
+            width: rem(26px);
+            height: rem(26px);
+            border-radius: var(--project-border-radius-max);
+            background-color: #eeee;
+
+            :global(svg) {
+              width: rem(16px);
+              height: rem(16px);
+            }
+          }
+
+          :global(svg) {
+            fill: none;
+          }
+        }
+
+        :global(.submit-btn.adorned-end) {
+          flex: 0 0 auto;
+          border-top-left-radius: 0px !important;
+          border-bottom-left-radius: 0px !important;
+        }
+
+        :global(.icon) {
+          width: map.get($props, icon-size);
+          height: map.get($props, icon-size);
+          flex: 0 0 auto;
+        }
+      }
+    }
+  }
+}

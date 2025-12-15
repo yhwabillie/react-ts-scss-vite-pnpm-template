@@ -40,6 +40,7 @@ interface IconProps extends React.HTMLAttributes<SVGSVGElement> {
   name: IconName;
   size?: 'sm' | 'md' | 'lg';
   color?: string;
+  strokeWidth?: number;
   strokeLinecap?: 'round' | 'butt' | 'square';
   strokeLinejoin?: 'round' | 'bevel' | 'miter';
 }
@@ -55,6 +56,7 @@ export const Icon: React.FC<IconProps> = ({
   name,
   color,
   size,
+  strokeWidth,
   strokeLinecap,
   strokeLinejoin,
   ...props
@@ -68,6 +70,7 @@ export const Icon: React.FC<IconProps> = ({
   return (
     <SvgIcon
       fill={color}
+      strokeWidth={strokeWidth}
       strokeLinecap={strokeLinecap}
       strokeLinejoin={strokeLinejoin}
       aria-hidden
