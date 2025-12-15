@@ -93,7 +93,7 @@ function App() {
     <>
       <section>
         <Searchbar
-          variant='solid'
+          variant='outline'
           color='primary'
           size='xl'
           shape='rounded'
@@ -112,11 +112,11 @@ function App() {
           actions={{
             utilityAction: {
               type: 'clear',
-              icon: <Icon name='x' />,
+              icon: <Icon name='x' strokeWidth={3} />,
             },
             submitAction: {
               type: 'submit',
-              icon: <Icon name='search' />,
+              icon: <Icon name='search' strokeWidth={2.5} />,
               onClick: () => console.log('submit', value),
             },
           }}

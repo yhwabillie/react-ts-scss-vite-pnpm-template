@@ -580,7 +580,7 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
               /* 식별/형태 */
               variant='ghost'
               color={color}
-              size={size}
+              // size={size}
               shape={shape}
               type='button'
               className={clsx('adorned-end', 'delete-btn')}
@@ -596,28 +596,29 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
               icon={actions.utilityAction.icon}
             />
           )}
+
+          {actions?.submitAction && (
+            <IconButton
+              /* 식별/형태 */
+              variant='ghost'
+              color={color}
+              size={size}
+              shape={shape}
+              type='submit'
+              className={clsx('adorned-end', 'submit-btn')}
+              /* 접근성 */
+              aria-label={
+                actions.submitAction.ariaLabel ?? defaultAriaLabel[actions.submitAction.type]
+              }
+              /* 상태 */
+              disabled={actions.submitAction.disabled}
+              /* 이벤트 */
+              onClick={actions.submitAction.onClick}
+              /* 커스텀 렌더링 */
+              icon={actions.submitAction.icon}
+            />
+          )}
         </div>
-        {actions?.submitAction && (
-          <IconButton
-            /* 식별/형태 */
-            variant='ghost'
-            color={color}
-            size={size}
-            shape={shape}
-            type='submit'
-            className={clsx('adorned-end', 'submit-btn')}
-            /* 접근성 */
-            aria-label={
-              actions.submitAction.ariaLabel ?? defaultAriaLabel[actions.submitAction.type]
-            }
-            /* 상태 */
-            disabled={actions.submitAction.disabled}
-            /* 이벤트 */
-            onClick={actions.submitAction.onClick}
-            /* 커스텀 렌더링 */
-            icon={actions.submitAction.icon}
-          />
-        )}
 
         {/* 최적화된 OptionList 렌더링 */}
         {isOpen && (

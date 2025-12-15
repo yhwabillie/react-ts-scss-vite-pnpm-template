@@ -13,7 +13,7 @@ type BaseProps = {
     | 'success'
     | 'warning'
     | 'danger';
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   shape: 'rounded' | 'square' | 'pill';
   icon: React.ReactNode;
   className?: string;

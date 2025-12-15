@@ -538,6 +538,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
               <Icon
                 name={isOpen ? 'arrow-up' : 'arrow-down'}
                 className='icon'
+                strokeWidth={2.5}
                 strokeLinecap='round'
                 strokeLinejoin='round'
               />
@@ -577,6 +578,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
                   <Icon
                     name='search-x'
                     className='icon'
+                    strokeWidth={2.5}
                     strokeLinecap='round'
                     strokeLinejoin='round'
                   />

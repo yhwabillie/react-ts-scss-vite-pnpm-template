@@ -491,6 +491,7 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
               <Icon
                 name={isOpen ? 'arrow-up' : 'arrow-down'}
                 className='icon'
+                strokeWidth={2.5}
                 strokeLinecap='round'
                 strokeLinejoin='round'
               />
