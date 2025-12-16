@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import styles from '@/components/ui/molecules/Button/Button.module.scss';
+import clsx from 'clsx';
 
 type BaseProps = {
   variant: 'solid' | 'outline' | 'ghost' | 'soft';
@@ -19,6 +20,7 @@ type BaseProps = {
   endIcon?: React.ReactNode;
   startSpinner?: React.ReactNode;
   endSpinner?: React.ReactNode;
+  className?: string;
 };
 
 /** <button> 전용 Props */
@@ -36,6 +38,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       endIcon,
       startSpinner,
       endSpinner,
+      className,
       ...props
     },
     ref,
@@ -43,7 +46,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
-        className={`${styles['btn']} variant--${variant} color--${color} size--${size} shape--${shape}`}
+        className={clsx(
+          `${styles['btn']} variant--${variant} color--${color} size--${size} shape--${shape}`,
+          className,
+        )}
         {...props}
       >
         {startSpinner}

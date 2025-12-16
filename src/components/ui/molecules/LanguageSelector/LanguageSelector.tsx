@@ -24,7 +24,7 @@ interface LanguageSelectorProps extends StyleProps, NativeDivProps {
   };
   value?: LanguageSelectItem['lang'];
   options?: LanguageSelectItem[];
-  onValueChange?: (value: string) => void;
+  onValueChange?: (value: LanguageSelectItem['lang']) => void;
 }
 
 const LanguageSelector = forwardRef<HTMLDivElement, LanguageSelectorProps>(
@@ -69,6 +69,15 @@ const LanguageSelector = forwardRef<HTMLDivElement, LanguageSelectorProps>(
       const index = focusable.indexOf(from);
       return focusable[index + 1] ?? null;
     }
+
+    const handleSelect = useCallback(
+      (lang: LanguageSelectItem['lang']) => {
+        onValueChange?.(lang);
+        setIsOpen(false);
+        buttonRef.current?.focus();
+      },
+      [onValueChange],
+    );
 
     // -----------------------------------------------------
     // 🔧 [Portal] 위치 계산
@@ -220,6 +229,11 @@ const LanguageSelector = forwardRef<HTMLDivElement, LanguageSelectorProps>(
               e.preventDefault();
               setIsOpen(true);
             }
+
+            if (e.key === 'Escape') {
+              e.preventDefault();
+              setIsOpen(false);
+            }
           }}
         >
           {labelText}
@@ -230,29 +244,43 @@ const LanguageSelector = forwardRef<HTMLDivElement, LanguageSelectorProps>(
             <div className='drop-menu'>
               <div className='drop-in'>
                 <ul className='drop-list' role='menu'>
-                  {options?.map((opt, idx) => (
-                    <li key={opt.id}>
-                      <a
-                        ref={idx === 0 ? firstItemRef : undefined}
-                        role='menuitem'
-                        href={opt.href}
-                        target={opt.target}
-                        rel={
-                          opt.target === '_blank' ? (opt.rel ?? 'noopener noreferrer') : undefined
-                        }
-                        lang={opt.lang}
-                        onKeyDown={e => {
-                          if (e.key === 'Tab' && !e.shiftKey && idx === options.length - 1) {
-                            e.preventDefault();
-                            setIsOpen(false);
-                            nextFocusRef.current?.focus();
+                  {options?.map((opt, idx) => {
+                    const isSelected = opt.lang === value;
+
+                    return (
+                      <li key={opt.id}>
+                        <a
+                          ref={idx === 0 ? firstItemRef : undefined}
+                          role='menuitemradio'
+                          aria-checked={isSelected}
+                          href={opt.href}
+                          target={opt.target}
+                          rel={
+                            opt.target === '_blank' ? (opt.rel ?? 'noopener noreferrer') : undefined
                           }
-                        }}
-                      >
-                        {opt.value}
-                      </a>
-                    </li>
-                  ))}
+                          lang={opt.lang}
+                          className={clsx({
+                            'is-selected': isSelected,
+                          })}
+                          onKeyDown={e => {
+                            if (e.key === 'Tab' && !e.shiftKey && idx === options.length - 1) {
+                              e.preventDefault();
+                              setIsOpen(false);
+                              nextFocusRef.current?.focus();
+                            }
+
+                            if (e.key === 'Escape') {
+                              e.preventDefault();
+                              setIsOpen(false);
+                              buttonRef.current?.focus();
+                            }
+                          }}
+                        >
+                          {opt.value}
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>

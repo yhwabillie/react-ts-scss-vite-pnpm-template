@@ -9,15 +9,15 @@ import React, {
   useState,
 } from 'react';
 import clsx from 'clsx';
-import styles from '@/components/ui/molecules/Selectbox/Selectbox.module.scss';
+import styles from '@/components/ui/organisms/Calendar/CalendarSelectbox.module.scss';
 import type { Size, Variant, Color } from '@/types/design/design-tokens.types';
 import IconButton from '@/components/ui/molecules/IconButton/IconButton';
 import Icon from '@/components/ui/atoms/Icon/Icon';
 import type { PortalPosition } from '@/components/ui/molecules/OptionListPortal/OptionListPortal';
 import OptionListPortal from '@/components/ui/molecules/OptionListPortal/OptionListPortal';
-import OptionList from '@/components/ui/molecules/OptionList/OptionList';
 import OptionItem, { type OptionBase } from '@/components/ui/molecules/OptionItem/OptionItem';
 import type { SelectboxA11yProps } from '@/types/a11y/a11y-roles.types';
+import CalendarOptionList from './CalendarOptionList';
 
 interface StyleProps {
   variant: Variant;
@@ -41,7 +41,7 @@ interface SelectboxProps extends StyleProps, SelectboxA11yProps, NativeDivProps 
   onValueChange?: (id: string, option?: OptionBase) => void;
 }
 
-const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
+const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
   (
     {
       variant,
@@ -96,13 +96,10 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
     // - 없으면 초기 선택 없음 (null / '')
     // -----------------------------
     const initialSelectedOption = useMemo(() => {
-      // 1️⃣ defaultOptionId 우선, 단 disabled가 아니어야 함
       if (defaultOptionId) {
         const found = options.find(opt => opt.id === defaultOptionId && !opt.disabled);
         if (found) return found;
       }
-
-      // 2️⃣ options.selected fallback (disabled 아닌 옵션)
       return options.find(opt => opt.selected && !opt.disabled && opt.value !== '') ?? null;
     }, [options, defaultOptionId]);
 
@@ -283,6 +280,11 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
       [isOpen, focusedIndex, selectedId, options, findNextEnabled, handleSelect],
     );
 
+    useEffect(() => {
+      setSelectedId(initialSelectedOption?.id ?? null);
+      setSelectedValue(initialSelectedOption?.value ?? '');
+    }, [initialSelectedOption]);
+
     // -----------------------------
     // ✨ [Scroll] 드롭다운 오픈 시 선택된 옵션 자동 스크롤
     // - isOpen 상태에서만 실행
@@ -437,7 +439,7 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
         ref={ref}
         id={id}
         className={clsx(
-          `${styles['selectbox']} variant--${variant} color--${color} size--${size}`,
+          `${styles['calendar-selectbox']} variant--${variant} color--${color} size--${size}`,
           className,
         )}
       >
@@ -508,7 +510,7 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
         {/* OptionList */}
         {isOpen && positioned && portalPos && (
           <OptionListPortal isOpen={isOpen} position={portalPos} portalRef={portalRef}>
-            <OptionList id={listboxId} variant={variant} color={color} size={size}>
+            <CalendarOptionList id={listboxId} variant={variant} color={color} size={size}>
               {options.map((opt, idx) => (
                 <OptionItem
                   ref={el => {
@@ -529,7 +531,7 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
                   onKeyDown={handleKeyDown}
                 />
               ))}
-            </OptionList>
+            </CalendarOptionList>
           </OptionListPortal>
         )}
       </div>
@@ -537,6 +539,6 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
   },
 );
 
-Selectbox.displayName = 'Selectbox';
+CalendarSelectbox.displayName = 'CalendarSelectbox';
 
-export default Selectbox;
+export default CalendarSelectbox;

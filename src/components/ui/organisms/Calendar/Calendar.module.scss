@@ -1,0 +1,140 @@
+/* Calendar.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.calendar {
+  :global(.calendar-wrap) {
+    width: max-content;
+    overflow: hidden;
+    background-color: #ffffff;
+    border: rem(1px) solid lightgray;
+    border-radius: var(--project-border-radius-12);
+
+    :global(.calendar-head) {
+      display: flex;
+      gap: rem(8px);
+      padding: rem(16px);
+
+      :global(button) {
+        flex-shrink: 0;
+      }
+
+      :global(.calendar-switch-wrap) {
+        flex: 1 1 auto;
+        display: flex;
+        justify-content: center;
+        gap: rem(8px);
+      }
+    }
+
+    :global(.calendar-body) {
+      :global(.calendar-table-wrap) {
+        padding: 0 rem(16px);
+
+        :global(.calendar-table) {
+          position: relative;
+
+          caption {
+            text-align: left;
+            position: absolute;
+            top: rem(36px);
+            font: var(--project-typo-l3-500);
+          }
+
+          thead {
+            tr {
+              th {
+                padding-bottom: rem(46px);
+                font: var(--project-typo-l4-400);
+              }
+            }
+          }
+
+          tbody {
+            tr {
+              td {
+                width: calc(100% / 7);
+
+                &:global(.old) {
+                  :global(.btn-set-date) {
+                    color: lightgray;
+                  }
+                }
+
+                &:global(.today) {
+                  :global(.btn-set-date) {
+                    background-color: #ececed;
+                  }
+                }
+
+                &:global(.selected) {
+                  :global(.btn-set-date) {
+                    background-color: #0052cc;
+                    color: #ffffff;
+                  }
+                }
+
+                :global(button) {
+                  width: rem(44px);
+                  height: rem(44px);
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  flex-direction: column;
+                  margin-inline: auto;
+                  border-radius: var(--project-border-radius-max);
+                  font: var(--project-typo-l4-400);
+
+                  :global(.mark) {
+                    display: inline-block;
+                    width: rem(6px);
+                    height: rem(6px);
+                    border-radius: var(--project-border-radius-max);
+                    background-color: red;
+                    position: relative;
+
+                    &:global(.is-active) {
+                      &::after {
+                        opacity: 1;
+                        transform: translate(-50%, -50%) scale(1);
+                      }
+                    }
+
+                    &::after {
+                      content: attr(data-label);
+                      position: absolute;
+                      top: rem(-30px);
+                      left: 50%;
+
+                      transform: translate(-50%, -50%) scale(0.6);
+                      transform-origin: center center;
+
+                      background-color: skyblue;
+                      color: #000;
+                      padding: rem(3px) rem(6px);
+                      border-radius: var(--project-border-radius-4);
+                      width: max-content;
+
+                      opacity: 0;
+                      transition:
+                        opacity 0.15s ease-out,
+                        transform 0.15s ease-out;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    :global(.calendar-footer) {
+      :global(.calendar-btn-wrap) {
+        width: 100%;
+        padding: rem(16px) rem(16px);
+      }
+    }
+  }
+}
