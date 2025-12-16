@@ -79,6 +79,10 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
     const calendarRef = useRef<HTMLDivElement>(null);
     const buttonRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
 
+    // ✅ 캘린더가 키보드로 열렸는지 추적
+    const [openedByKeyboard, setOpenedByKeyboard] = useState(false);
+    const triggerButtonRef = useRef<HTMLButtonElement>(null);
+
     const formatDate = (date: Date): string => {
       const y = date.getFullYear();
       const m = String(date.getMonth() + 1).padStart(2, '0');
@@ -205,7 +209,7 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
       const pos = updatePosition();
       if (pos) {
         setPortalPos(pos);
-        setPositioned(true);
+        setPositioned(true); // 👈 캘린더가 렌더링을 시작할 수 있는 신호
       }
     }, [isOpen, updatePosition]);
 
@@ -236,29 +240,48 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
       setIsOpen(prev => !prev);
     }, []);
 
-    // -----------------------------------------------------
-    // ⌨️ [Interaction] ESC 키 감지
-    // - ESC 키 입력 시 포털 닫기
-    // -----------------------------------------------------
-    const handleEscapeKey = useCallback((event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsOpen(false);
+    // ⌨️ [Interaction] 달력 트리거 버튼 키다운 핸들러 수정 (이 부분은 유지)
+    const handleTriggerKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+      // Enter 또는 Space 키를 감지
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        // 1. 캘린더 열기
+        setIsOpen(true);
+        // 2. 키보드로 열림 플래그 설정
+        setOpenedByKeyboard(true);
       }
-    }, []);
+    };
 
-    // -----------------------------------------------------
-    // ✨ [Effect] ESC 키 이벤트 등록
-    // - isOpen 상태일 때만 이벤트 리스너 등록
-    // - keydown 이벤트로 ESC 키 감지
-    // -----------------------------------------------------
+    // ✅ 키보드 포커스 제어 로직 통합 및 수정
     useEffect(() => {
-      if (!isOpen) return;
+      // 1. 달력이 열렸고 (isOpen)
+      // 2. 키보드로 열렸으며 (openedByKeyboard)
+      // 3. Portal 내부에 캘린더가 위치가 잡혀서 렌더링되었을 때 (positioned)
+      if (isOpen && openedByKeyboard && positioned) {
+        requestAnimationFrame(() => {
+          if (calendarRef.current) {
+            // 🚨 수정된 부분: 'calendar-wrap' 클래스를 가진 요소 찾기
+            const calendarWrap = calendarRef.current.querySelector<HTMLElement>(
+              '.calendar-wrap[tabindex="0"]', // tabindex="0"이 설정된 요소를 명확히 지정
+            );
 
-      document.addEventListener('keydown', handleEscapeKey);
-      return () => {
-        document.removeEventListener('keydown', handleEscapeKey);
-      };
-    }, [isOpen, handleEscapeKey]);
+            if (calendarWrap) {
+              calendarWrap.focus();
+              setOpenedByKeyboard(false); // 포커스 이동 성공 후 플래그 초기화
+            } else {
+              // calendar-wrap을 찾지 못했다면, 이전에 하려던 날짜 버튼 포커스를 시도 (대비책)
+              const firstDateBtn = calendarRef.current.querySelector<HTMLElement>(
+                '.btn-set-date:not([disabled])',
+              );
+              if (firstDateBtn) {
+                firstDateBtn.focus();
+                setOpenedByKeyboard(false);
+              }
+            }
+          }
+        });
+      }
+    }, [isOpen, openedByKeyboard, positioned]);
 
     // -----------------------------
     // ▶️ 렌더링
@@ -286,6 +309,7 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
 
         {/* 달력 노출 트리거 */}
         <button
+          ref={triggerButtonRef}
           className='trigger-calendar'
           aria-label='달력 열기'
           disabled={inputProps.disabled}
@@ -293,6 +317,7 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
           onClick={() => {
             toggle();
           }}
+          onKeyDown={handleTriggerKeyDown}
         >
           <Icon name='calendar' strokeWidth={2.5} />
         </button>
@@ -310,13 +335,13 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
           >
             {positioned && selectedYear != null && selectedMonth != null && calendar != null && (
               <Calendar
-                ref={calendarRef}
+                calendarRef={calendarRef}
                 variant='outline'
                 color='primary'
                 size='xl'
                 selectedYear={viewYear ?? calendar.selectedYear}
                 selectedMonth={viewMonth ?? calendar.selectedMonth}
-                selectedDate={tempSelectedDate} // ✅ 임시 선택
+                selectedDate={tempSelectedDate}
                 calendarProps={calendar.calendarProps}
                 holidays={calendar.holidays}
                 onYearChange={year => {
@@ -329,22 +354,24 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
                 }}
                 onDateSelect={date => setTempSelectedDate(date)}
                 onCancel={() => {
-                  setTempSelectedDate(confirmedDate); // 선택 전 상태로 복원
+                  setTempSelectedDate(confirmedDate);
                   setIsOpen(false);
+                  // ✅ 트리거 버튼으로 포커스 복귀
+                  triggerButtonRef.current?.focus();
                 }}
                 onConfirm={() => {
                   if (!tempSelectedDate) return;
-
                   const formatted = formatDate(tempSelectedDate);
-
-                  // 부모에게 최종 값 전달
                   onDateChange?.(formatted, tempSelectedDate);
-
-                  // 확정 값에 반영
                   setConfirmedDate(tempSelectedDate);
-
-                  // 달력 닫기
                   setIsOpen(false);
+                  // ✅ 트리거 버튼으로 포커스 복귀
+                  triggerButtonRef.current?.focus();
+                }}
+                onClose={() => {
+                  setIsOpen(false);
+                  // ✅ ESC로 닫을 때도 트리거 버튼으로 포커스 복귀
+                  triggerButtonRef.current?.focus();
                 }}
               />
             )}

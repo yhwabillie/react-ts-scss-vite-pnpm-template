@@ -2,7 +2,7 @@ import type { InputA11yProps } from '@/types/a11y/a11y-roles.types';
 import type { Color, Size, Variant } from '@/types/design/design-tokens.types';
 import styles from '@/components/ui/organisms/Calendar/Calendar.module.scss';
 import clsx from 'clsx';
-import React, { forwardRef, useMemo, useState } from 'react';
+import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import CalendarSelectbox from './CalendarSelectbox';
 import { useCalendarMatrix, type CalendarCell } from './Calendar.mock';
 import Icon from '../../atoms/Icon/Icon';
@@ -25,6 +25,7 @@ type NativeDivProps = Omit<
 >;
 
 interface CalendarProps extends StyleProps, NativeDivProps {
+  calendarRef?: React.RefObject<HTMLDivElement | null>;
   id?: string;
   selectedYear?: number;
   selectedMonth?: number;
@@ -41,11 +42,13 @@ interface CalendarProps extends StyleProps, NativeDivProps {
   onDateChange?: (selectedDate: Date | null) => void;
   onConfirm?: () => void;
   onCancel?: () => void;
+  onClose?: () => void;
 }
 
 const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
   (
     {
+      calendarRef,
       variant,
       color,
       size,
@@ -62,6 +65,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       onDateChange,
       onConfirm,
       onCancel,
+      onClose,
     },
     ref,
   ) => {
@@ -161,9 +165,205 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       );
     }, [derivedYear, derivedMonth, resolvedSelectedDate, holidayMap]);
 
+    // Calendar 컴포넌트 내부 (useMemo, matrix 아래 등)
+
+    // ✅ Selectbox 열림 상태를 외부에서 참조하기 위한 Ref (연도)
+    const isYearSelectboxOpenRef = useRef(false);
+    // ✅ Selectbox 열림 상태를 외부에서 참조하기 위한 Ref (월)
+    const isMonthSelectboxOpenRef = useRef(false);
+
+    // ✅ 연도 Selectbox 열림 상태를 업데이트하는 콜백
+    const updateYearSelectboxOpenState = useCallback((isOpen: boolean) => {
+      isYearSelectboxOpenRef.current = isOpen;
+    }, []);
+
+    // ✅ 월 Selectbox 열림 상태를 업데이트하는 콜백
+    const updateMonthSelectboxOpenState = useCallback((isOpen: boolean) => {
+      isMonthSelectboxOpenRef.current = isOpen;
+    }, []);
+
+    // ✅ 날짜 셀 버튼들의 ref 배열
+    const dateButtonRefs = useRef<(HTMLButtonElement | null)[][]>([]);
+
+    // ✅ 현재 포커스된 날짜 좌표 (Tab으로 들어올 때 어디를 활성화할지)
+    const [focusedCell, setFocusedCell] = useState<{ row: number; col: number } | null>(null);
+
+    // ✅ Tab으로 진입 가능한 날짜 셀 찾기 (선택된 날짜 > 오늘 > 1일 순서)
+    const getTabTargetCell = useCallback(() => {
+      for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+          const cell = matrix[i][j];
+          if (cell.isSelected && !cell.disabled) {
+            return { row: i, col: j };
+          }
+        }
+      }
+
+      for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+          const cell = matrix[i][j];
+          if (cell.isToday && !cell.disabled) {
+            return { row: i, col: j };
+          }
+        }
+      }
+
+      // 1일 찾기
+      for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+          const cell = matrix[i][j];
+          if (cell.day === 1 && !cell.disabled) {
+            return { row: i, col: j };
+          }
+        }
+      }
+
+      return null;
+    }, [matrix]);
+
+    // ✅ 날짜 테이블 내에서 Arrow Key 처리 (재수정)
+    const handleDateKeyDown = useCallback(
+      (e: React.KeyboardEvent, rowIdx: number, colIdx: number) => {
+        const key = e.key;
+
+        if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(key)) {
+          return;
+        }
+
+        e.preventDefault();
+
+        let newRow = rowIdx;
+        let newCol = colIdx;
+        let shouldChangeMonth = false; // 월 변경 플래그
+
+        switch (key) {
+          case 'ArrowUp':
+            newRow = rowIdx - 1;
+            break;
+
+          case 'ArrowDown':
+            newRow = rowIdx + 1;
+            break;
+
+          case 'ArrowLeft':
+            if (colIdx === 0) {
+              // 일요일(0)에서 왼쪽 키를 누르면
+              if (rowIdx === 0) {
+                // 캘린더의 첫 번째 셀에서도 왼쪽 키를 누르면: 이전 달로 이동
+                shouldChangeMonth = true;
+              } else {
+                // 같은 주에서 토요일(6)로 이동
+                newRow = rowIdx - 1;
+                newCol = 6;
+              }
+            } else {
+              newCol = colIdx - 1;
+            }
+            break;
+
+          case 'ArrowRight':
+            if (colIdx === 6) {
+              // 토요일(6)에서 오른쪽 키를 누르면
+              if (rowIdx === matrix.length - 1) {
+                // 캘린더의 마지막 셀에서도 오른쪽 키를 누르면: 다음 달로 이동
+                shouldChangeMonth = true;
+              } else {
+                // 같은 주에서 일요일(0)로 이동
+                newRow = rowIdx + 1;
+                newCol = 0;
+              }
+            } else {
+              newCol = colIdx + 1;
+            }
+            break;
+        }
+
+        // -------------------------------------------------------------------
+        // 1. 월/연도 변경 처리
+        // -------------------------------------------------------------------
+        if (shouldChangeMonth) {
+          // 월이 변경되어 리렌더링이 발생하면, 이 함수의 나머지 부분은 무시됨
+          if (key === 'ArrowLeft') {
+            handlePrevMonth();
+          } else if (key === 'ArrowRight') {
+            handleNextMonth();
+          }
+          return; // 🚨 월 변경 후 함수 종료
+        }
+
+        // -------------------------------------------------------------------
+        // 2. 현재 월 내에서 날짜 이동 처리
+        // -------------------------------------------------------------------
+
+        // 새 위치가 현재 매트릭스 경계를 벗어나지 않았는지 확인 (상하 화살표 이동 시)
+        const targetButton = dateButtonRefs.current[newRow]?.[newCol];
+
+        if (targetButton) {
+          if (!targetButton.disabled) {
+            // 유효한 날짜이고 disabled가 아니면 포커스 이동
+            targetButton.focus();
+            setFocusedCell({ row: newRow, col: newCol });
+          } else {
+            // 새 위치가 disabled (이전/다음 달 날짜)인 경우:
+            // 이 경우는 'ArrowUp'/'ArrowDown'으로 월 경계를 넘어 이동하려 한 경우입니다.
+            // 월 경계를 넘는 상하 이동은 허용하지 않고 현재 위치 유지 (return)
+            return;
+          }
+        }
+      },
+      [matrix, handlePrevMonth, handleNextMonth],
+    ); // 종속성 배열 유지
+
+    // ✅ 캘린더 전체 ESC 처리 (최종 수정된 로직)
+    useEffect(() => {
+      const handleEscape = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          // 🚨 연도 또는 월 Selectbox 중 하나라도 열려 있는지 확인
+          const isAnySelectboxOpen =
+            isYearSelectboxOpenRef.current || isMonthSelectboxOpenRef.current;
+
+          if (isAnySelectboxOpen) {
+            // 🚨 수정: Selectbox가 열려 있다면, Calendar의 닫기 로직을 건너뛰고
+            // 이벤트가 Selectbox 내부로 버블링되도록 허용 (stopPropagation 제거).
+            // Selectbox 내부에서 OptionList를 닫고 포커스를 복귀시켜야 합니다.
+            return;
+          } else {
+            // Selectbox가 닫혀 있고 캘린더에 포커스가 있다면 (캘린더 전체 닫기):
+            e.preventDefault();
+            onClose?.(); // Datepicker로 닫기 요청
+
+            // 🚨 Datepicker의 ESC 리스너는 캡처링이 아니므로 이 이벤트는 Datepicker에 도달해야 함.
+          }
+        }
+      };
+
+      // 캡처링 단계에서 이벤트 감지 (Datepicker보다 먼저 받음)
+      document.addEventListener('keydown', handleEscape, true);
+      return () => document.removeEventListener('keydown', handleEscape, true);
+    }, [onClose]);
+
+    // ✅ 캘린더가 열릴 때 또는 연도/월이 변경될 때 Tab 진입점만 설정 (자동 포커스 X)
+    useEffect(() => {
+      if (!matrix.length) return;
+
+      const target = getTabTargetCell();
+      if (target) {
+        setFocusedCell(target);
+        // ✅ 자동 포커스 제거: Tab으로 진입할 때만 포커스
+      }
+    }, [matrix, getTabTargetCell]);
+
+    // ✅ Selectbox 열림 상태를 외부에서 참조하기 위한 Ref
+    const isSelectboxOpenRef = useRef(false);
+
+    // ✅ Selectbox 열림 상태를 업데이트하는 콜백
+    const updateSelectboxOpenState = useCallback((isOpen: boolean) => {
+      isSelectboxOpenRef.current = isOpen;
+    }, []);
+
     return (
       <div
-        ref={ref}
+        ref={calendarRef}
         className={clsx(`${styles['calendar']} variant--${variant} color--${color} size--${size}`)}
         onMouseDown={e => {
           e.stopPropagation();
@@ -205,6 +405,8 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                   const year = Number(option.value.replace('년', ''));
                   onYearChange?.(year);
                 }}
+                // 🚨 수정: 연도 Selectbox의 열림 상태를 추적
+                onOpenChange={updateYearSelectboxOpenState}
               />
               <CalendarSelectbox
                 variant='outline'
@@ -220,6 +422,8 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                   if (!option) return;
                   onMonthChange?.(Number(option.value.replace('월', '')));
                 }}
+                // 🚨 수정: 월 Selectbox의 열림 상태를 추적
+                onOpenChange={updateMonthSelectboxOpenState}
               />
             </div>
             {/* 다음 달 */}
@@ -252,51 +456,66 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                   </tr>
                 </thead>
                 <tbody>
-                  {matrix.map((week, wIdx) => (
-                    <tr key={wIdx}>
-                      {week.map(cell => (
-                        <td
-                          key={cell.date.toISOString()}
-                          className={clsx({
-                            old: cell.disabled,
-                            today: cell.isToday,
-                            selected: cell.isSelected,
-                            holiday: cell.isHoliday,
-                          })}
-                          role='gridcell'
-                          aria-selected={cell.isSelected}
-                        >
-                          <button
-                            type='button'
-                            className='btn-set-date'
-                            disabled={cell.disabled}
-                            tabIndex={cell.disabled ? -1 : 0}
-                            aria-label={`${cell.day}${cell.isHoliday ? ` ${cell.holidayName}` : ''}${cell.isToday ? ' 오늘' : ''}${cell.isSelected ? ' 선택됨' : ''}`}
-                            onClick={() => handleDateClick(cell)}
-                            onMouseEnter={() =>
-                              cell.isHoliday && setActiveHolidayKey(cell.date.toISOString())
-                            }
-                            onMouseLeave={() => setActiveHolidayKey(null)}
-                            onFocus={() =>
-                              cell.isHoliday && setActiveHolidayKey(cell.date.toISOString())
-                            }
-                            onBlur={() => setActiveHolidayKey(null)}
+                  {matrix.map((week, rowIdx) => {
+                    // ✅ 각 row마다 ref 배열 초기화
+                    if (!dateButtonRefs.current[rowIdx]) {
+                      dateButtonRefs.current[rowIdx] = [];
+                    }
+
+                    return (
+                      <tr key={rowIdx}>
+                        {week.map((cell, colIdx) => (
+                          <td
+                            key={cell.date.toISOString()}
+                            className={clsx({
+                              old: cell.disabled,
+                              today: cell.isToday,
+                              selected: cell.isSelected,
+                              holiday: cell.isHoliday,
+                            })}
+                            role='gridcell'
+                            aria-selected={cell.isSelected}
                           >
-                            <span>{cell.day}</span>
-                            {cell.isHoliday && (
-                              <span
-                                className={clsx('mark', {
-                                  'is-active': activeHolidayKey === cell.date.toISOString(),
-                                })}
-                                data-label={cell.holidayName}
-                                aria-hidden={true}
-                              ></span>
-                            )}
-                          </button>
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
+                            <button
+                              ref={el => {
+                                dateButtonRefs.current[rowIdx][colIdx] = el;
+                              }}
+                              type='button'
+                              className='btn-set-date'
+                              disabled={cell.disabled}
+                              tabIndex={
+                                // ✅ roving tabindex: focusedCell과 일치하는 셀만 tabIndex={0}
+                                focusedCell?.row === rowIdx && focusedCell?.col === colIdx ? 0 : -1
+                              }
+                              aria-label={`${cell.day}${cell.isHoliday ? ` ${cell.holidayName}` : ''}${cell.isToday ? ' 오늘' : ''}${cell.isSelected ? ' 선택됨' : ''}`}
+                              onClick={() => handleDateClick(cell)}
+                              onKeyDown={e => handleDateKeyDown(e, rowIdx, colIdx)}
+                              onMouseEnter={() =>
+                                cell.isHoliday && setActiveHolidayKey(cell.date.toISOString())
+                              }
+                              onMouseLeave={() => setActiveHolidayKey(null)}
+                              onFocus={() => {
+                                setFocusedCell({ row: rowIdx, col: colIdx });
+                                cell.isHoliday && setActiveHolidayKey(cell.date.toISOString());
+                              }}
+                              onBlur={() => setActiveHolidayKey(null)}
+                            >
+                              <span>{cell.day}</span>
+                              {cell.isHoliday && (
+                                <span
+                                  className={clsx('mark', {
+                                    'is-active': activeHolidayKey === cell.date.toISOString(),
+                                  })}
+                                  data-label={cell.holidayName}
+                                  aria-hidden={true}
+                                ></span>
+                              )}
+                            </button>
+                          </td>
+                        ))}
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>

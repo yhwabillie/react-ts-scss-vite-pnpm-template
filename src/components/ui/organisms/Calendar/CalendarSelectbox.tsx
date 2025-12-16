@@ -39,6 +39,7 @@ interface SelectboxProps extends StyleProps, SelectboxA11yProps, NativeDivProps 
   options: OptionBase[];
   defaultOptionId?: string; // controlled
   onValueChange?: (id: string, option?: OptionBase) => void;
+  onOpenChange?: (isOpen: boolean) => void;
 }
 
 const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
@@ -58,6 +59,7 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
       options,
       defaultOptionId,
       onValueChange,
+      onOpenChange,
     },
     ref,
   ) => {
@@ -120,12 +122,18 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
     const open = (reason: 'click' | 'keyboard') => {
       openReasonRef.current = reason;
       setIsOpen(true);
+
+      // 🚨 추가: 열림 상태를 부모에게 알림
+      onOpenChange?.(true);
     };
 
     const close = () => {
       openReasonRef.current = null;
       setIsOpen(false);
       setFocusedIndex(null);
+
+      // 🚨 추가: 닫힘 상태를 부모에게 알림
+      onOpenChange?.(false);
     };
 
     // ------------------------------------------------------
@@ -180,6 +188,30 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
       },
       [options],
     );
+
+    // ------------------------------------------------------
+    // ⚡️ OptionList 내부 ESC 키 처리
+    // - Option List가 열려 있을 때, OptionList 내부의 요소에 포커스가 있으면 호출됨
+    // ------------------------------------------------------
+    const handleOptionListEscape = useCallback(
+      (e: React.KeyboardEvent) => {
+        if (e.key === 'Escape' && isOpen) {
+          e.preventDefault();
+          e.stopPropagation(); // 🚨 OptionList가 닫힐 때 상위 컴포넌트(Calendar, Datepicker)로 전파 방지
+
+          // console.log('Option List ESC 처리'); // 로그 테스트용
+
+          // 1. OptionList 닫기
+          close();
+
+          // 2. 포커스를 트리거 버튼으로 복귀
+          customSelectRef.current?.focus();
+
+          // (이 로직이 실행되면, 아래 handleKeyDown의 'Escape' case는 트리거될 필요가 없습니다.)
+        }
+      },
+      [isOpen, close],
+    ); // close와 isOpen에 의존
 
     // ------------------------------------------------------
     // ⚡️ handleKeyDown
@@ -261,10 +293,12 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
             return;
           }
 
+          // 💡 CalendarSelectbox.tsx (예상되는 handleKeyDown 수정)
           case 'Escape': {
             if (!isOpen) return;
-            e.preventDefault();
-            close();
+            e.preventDefault(); // 기본 브라우저 동작만 막음 (전파는 막지 않음)
+            close(); // setIsOpen(false) 실행
+            customSelectRef.current?.focus(); // 포커스 복귀
             return;
           }
 
@@ -343,19 +377,22 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
     //   → 옵션 리스트 닫기
     // - 포털 구조에서도 정상 동작하도록 ref 기준 검사
     // -----------------------------------------------------
-    const handleOutsideClick = useCallback((event: MouseEvent) => {
-      const target = event.target as Node | null;
+    const handleOutsideClick = useCallback(
+      (event: MouseEvent) => {
+        const target = event.target as Node | null;
 
-      const isInsideContainer =
-        containerRef.current && target && containerRef.current.contains(target);
+        const isInsideContainer =
+          containerRef.current && target && containerRef.current.contains(target);
 
-      const isInsidePortal = portalRef.current && target && portalRef.current.contains(target);
+        const isInsidePortal = portalRef.current && target && portalRef.current.contains(target);
 
-      if (!isInsideContainer && !isInsidePortal) {
-        setIsOpen(false);
-        setFocusedIndex(null);
-      }
-    }, []);
+        // 🚨 수정: 외부 클릭 시 close() 함수를 호출하여 중복 로직 제거 및 onOpenChange 보장
+        if (!isInsideContainer && !isInsidePortal && isOpen) {
+          close();
+        }
+      },
+      [isOpen], // close 함수를 사용하도록 수정했으므로, close의 의존성을 따름
+    );
 
     // -----------------------------------------------------
     // ✨ 외부 클릭 이벤트 등록 / 해제
@@ -510,7 +547,13 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
         {/* OptionList */}
         {isOpen && positioned && portalPos && (
           <OptionListPortal isOpen={isOpen} position={portalPos} portalRef={portalRef}>
-            <CalendarOptionList id={listboxId} variant={variant} color={color} size={size}>
+            <CalendarOptionList
+              id={listboxId}
+              variant={variant}
+              color={color}
+              size={size} // 🚨 Option List의 가장 바깥 요소에 KeyDown 핸들러 등록
+              onKeyDown={handleOptionListEscape}
+            >
               {options.map((opt, idx) => (
                 <OptionItem
                   ref={el => {
@@ -528,7 +571,7 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
                   disabled={opt.disabled}
                   onSelect={handleSelect}
                   isActive={opt.id === activeDescendantId}
-                  onKeyDown={handleKeyDown}
+                  // onKeyDown={handleKeyDown}
                 />
               ))}
             </CalendarOptionList>
