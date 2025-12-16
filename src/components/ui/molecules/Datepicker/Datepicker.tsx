@@ -297,35 +297,27 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
         <div ref={customInputRef} className='custom-input'>
           <input
             ref={nativeInputRef}
-            id={inputProps.id}
             type='text'
+            id={inputProps.id}
             value={confirmedDate ? formatDate(confirmedDate) : inputProps.value || ''}
             readOnly={inputProps.readonly}
             disabled={inputProps.disabled}
-            aria-label='선택된 날짜'
-            aria-describedby='datepicker-description'
+            placeholder='YYYY-MM-DD'
           />
         </div>
-
-        {/* 달력 노출 트리거 */}
         <button
           ref={triggerButtonRef}
           className='trigger-calendar'
-          aria-label='달력 열기'
-          disabled={inputProps.disabled}
           aria-expanded={isOpen}
+          disabled={inputProps.disabled}
           onClick={() => {
             toggle();
           }}
           onKeyDown={handleTriggerKeyDown}
         >
+          <span className='sr-only'>달력 열기</span>
           <Icon name='calendar' strokeWidth={2.5} />
         </button>
-
-        {/* 스크린리더 */}
-        <div id='datepicker-description' className='sr-only'>
-          화살표 키로 날짜 이동, Enter 또는 Space로 선택, Escape로 닫기
-        </div>
 
         {isOpen && (
           <OptionListPortal
@@ -357,7 +349,7 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
                   setTempSelectedDate(confirmedDate);
                   setIsOpen(false);
                   // ✅ 트리거 버튼으로 포커스 복귀
-                  triggerButtonRef.current?.focus();
+                  nativeInputRef.current?.focus();
                 }}
                 onConfirm={() => {
                   if (!tempSelectedDate) return;
@@ -366,12 +358,12 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
                   setConfirmedDate(tempSelectedDate);
                   setIsOpen(false);
                   // ✅ 트리거 버튼으로 포커스 복귀
-                  triggerButtonRef.current?.focus();
+                  nativeInputRef.current?.focus();
                 }}
                 onClose={() => {
                   setIsOpen(false);
                   // ✅ ESC로 닫을 때도 트리거 버튼으로 포커스 복귀
-                  triggerButtonRef.current?.focus();
+                  nativeInputRef.current?.focus();
                 }}
               />
             )}

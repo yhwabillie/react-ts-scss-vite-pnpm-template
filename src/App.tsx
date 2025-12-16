@@ -179,7 +179,7 @@ function App() {
             size='xl'
             inputProps={{
               id: 'datepicker-input',
-              value: '2025-12-03',
+              // value: '2025-12-03',
               readonly: true,
             }}
             calendar={{

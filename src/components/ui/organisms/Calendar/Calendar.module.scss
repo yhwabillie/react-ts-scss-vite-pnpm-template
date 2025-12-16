@@ -35,17 +35,10 @@
         :global(.calendar-table) {
           position: relative;
 
-          caption {
-            text-align: left;
-            position: absolute;
-            top: rem(36px);
-            font: var(--project-typo-l3-500);
-          }
-
           thead {
             tr {
               th {
-                padding-bottom: rem(46px);
+                padding-bottom: rem(16px);
                 font: var(--project-typo-l4-400);
               }
             }

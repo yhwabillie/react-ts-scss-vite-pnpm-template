@@ -50,6 +50,7 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
       size,
       role,
       'aria-labelledby': ariaLabelledBy,
+      'aria-label': ariaLabel,
       id,
       selectId,
       required,
@@ -509,6 +510,7 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
           aria-expanded={isOpen}
           aria-haspopup='listbox'
           aria-labelledby={ariaLabelledBy}
+          aria-label={ariaLabel}
           onClick={e => {
             if (disabled) return;
 

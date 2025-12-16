@@ -88,6 +88,11 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     const currentMonthOptionId = derivedMonth ? `month-${derivedMonth}` : undefined;
 
     // -----------------------------
+    // 📌 요일 이름 정의 (일요일: 0, 토요일: 6)
+    // -----------------------------
+    const WEEKDAY_NAMES = ['일', '월', '화', '수', '목', '금', '토'];
+
+    // -----------------------------
     // 🎯 이전/다음 달 이동
     // -----------------------------
     const handlePrevMonth = () => {
@@ -122,11 +127,22 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     };
 
     // -----------------------------
-    // 🎯 날짜 선택
+    // 🎯 날짜 선택 (수정)
     // -----------------------------
     const handleDateClick = (cell: CalendarCell) => {
       if (cell.disabled) return;
       onDateSelect?.(cell.date);
+
+      // 🚨 추가: 날짜 선택 시 Live Region 업데이트
+      if (calendarAnnouncerRef.current) {
+        const year = cell.date.getFullYear();
+        const month = cell.date.getMonth() + 1;
+        const day = cell.date.getDate();
+        const weekday = WEEKDAY_NAMES[cell.date.getDay()];
+
+        // 포커스 이동과 동시에 스크린 리더에게 선택 사실 공지
+        calendarAnnouncerRef.current.textContent = `${year}년 ${month}월 ${day}일 ${weekday}요일 선택됨`;
+      }
     };
 
     const holidayMap = useMemo(() => {
@@ -184,6 +200,10 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
 
     // ✅ 날짜 셀 버튼들의 ref 배열
     const dateButtonRefs = useRef<(HTMLButtonElement | null)[][]>([]);
+
+    // 📌 Live Region Ref 및 마운트 상태 추적 Ref 추가 (수정)
+    const calendarAnnouncerRef = useRef<HTMLDivElement>(null); // 🚨 monthAnnouncerRef -> calendarAnnouncerRef
+    const isMounted = useRef(false);
 
     // ✅ 현재 포커스된 날짜 좌표 (Tab으로 들어올 때 어디를 활성화할지)
     const [focusedCell, setFocusedCell] = useState<{ row: number; col: number } | null>(null);
@@ -361,6 +381,23 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       isSelectboxOpenRef.current = isOpen;
     }, []);
 
+    // ✅ 월/연도가 변경될 때마다 스크린 리더에게 공지
+    useEffect(() => {
+      if (derivedYear && derivedMonth && calendarAnnouncerRef.current) {
+        // 🚨 calendarAnnouncerRef 사용
+        // 최초 마운트 시에는 공지하지 않고, 그 이후의 변경(월/연도 이동) 시에만 공지
+        if (isMounted.current) {
+          // 🚨 announcementMessage 변수 사용
+          const announcementMessage = `${derivedYear}년 ${derivedMonth}월`;
+          // Live Region의 텍스트 콘텐츠를 직접 업데이트하여 스크린 리더 공지 트리거
+          calendarAnnouncerRef.current.textContent = announcementMessage; // 🚨 calendarAnnouncerRef 사용
+        }
+
+        // 마운트 완료 표시
+        isMounted.current = true;
+      }
+    }, [derivedYear, derivedMonth]);
+
     return (
       <div
         ref={calendarRef}
@@ -368,14 +405,16 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
         onMouseDown={e => {
           e.stopPropagation();
         }}
-        role='dialog'
-        aria-modal='true'
-        aria-labelledby='calendar-title'
       >
-        <h2 id='calendar-title' className='sr-only'>
-          날짜 선택
-        </h2>
-        <div className='calendar-wrap' tabIndex={0}>
+        {/* 🚨 ARIA Live Region 추가: 월/연도 변경 공지 */}
+        <div
+          ref={calendarAnnouncerRef} // 🚨 calendarAnnouncerRef 사용
+          className='sr-only' // 시각적으로 숨기는 클래스 (프로젝트 CSS에 정의되어 있어야 함)
+          aria-live='polite' // 변경 사항을 공손하게 공지
+        >
+          {/* 초기 텍스트는 비워두거나, 스크린 리더에게 최초 정보 제공을 위해 채울 수 있습니다. */}
+        </div>
+        <div className='calendar-wrap' tabIndex={0} aria-label='달력'>
           <div className='calendar-head'>
             {/* 이전 달 */}
             <IconButton
@@ -391,6 +430,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
             {/* 연도, 월 선택 */}
             <div className='calendar-switch-wrap'>
               <CalendarSelectbox
+                aria-label='연도 선택'
                 variant='outline'
                 color='primary'
                 size='xs'
@@ -400,15 +440,15 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                 selectId='year-switch-select'
                 options={yearOptions ?? []}
                 defaultOptionId={currentYearOptionId}
-                onValueChange={(optionId, option) => {
+                onValueChange={(_, option) => {
                   if (!option) return;
                   const year = Number(option.value.replace('년', ''));
                   onYearChange?.(year);
                 }}
-                // 🚨 수정: 연도 Selectbox의 열림 상태를 추적
                 onOpenChange={updateYearSelectboxOpenState}
               />
               <CalendarSelectbox
+                aria-label='월 선택'
                 variant='outline'
                 color='primary'
                 size='xs'
@@ -418,7 +458,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                 selectId='month-switch-select'
                 options={monthOptions ?? []}
                 defaultOptionId={currentMonthOptionId}
-                onValueChange={(optionId, option) => {
+                onValueChange={(_, option) => {
                   if (!option) return;
                   onMonthChange?.(Number(option.value.replace('월', '')));
                 }}
@@ -441,9 +481,6 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
           <div className='calendar-body' role='grid' aria-labelledby='calendar-title'>
             <div className='calendar-table-wrap'>
               <table className='calendar-table'>
-                <caption>
-                  {derivedYear}년 {derivedMonth}월
-                </caption>
                 <thead>
                   <tr>
                     <th scope='col'>일</th>
@@ -474,7 +511,6 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                               holiday: cell.isHoliday,
                             })}
                             role='gridcell'
-                            aria-selected={cell.isSelected}
                           >
                             <button
                               ref={el => {
@@ -487,7 +523,9 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                                 // ✅ roving tabindex: focusedCell과 일치하는 셀만 tabIndex={0}
                                 focusedCell?.row === rowIdx && focusedCell?.col === colIdx ? 0 : -1
                               }
-                              aria-label={`${cell.day}${cell.isHoliday ? ` ${cell.holidayName}` : ''}${cell.isToday ? ' 오늘' : ''}${cell.isSelected ? ' 선택됨' : ''}`}
+                              aria-selected={cell.isSelected}
+                              // 🚨 수정된 aria-label
+                              aria-label={`${derivedYear}년 ${derivedMonth}월 ${cell.day}일 ${WEEKDAY_NAMES[cell.date.getDay()]}요일${cell.isHoliday ? ` ${cell.holidayName}` : ''}${cell.isToday ? ' 오늘' : ''}${cell.isSelected ? ' 선택됨' : ''}`}
                               onClick={() => handleDateClick(cell)}
                               onKeyDown={e => handleDateKeyDown(e, rowIdx, colIdx)}
                               onMouseEnter={() =>
@@ -534,7 +572,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                   오늘
                 </Button>
               </ButtonGroup>
-              <ButtonGroup size='xs' align='right' role='group' ariaLabel='날짜 선택 완료 버튼'>
+              <ButtonGroup size='xs' align='right' role='group' ariaLabel='기능 버튼 그룹'>
                 <Button
                   variant='outline'
                   color={color}
@@ -545,7 +583,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                     onCancel?.();
                   }}
                 >
-                  취소
+                  닫기
                 </Button>
                 <Button
                   variant='solid'
@@ -555,6 +593,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                   className='confirm-btn'
                   onClick={() => {
                     onConfirm?.();
+                    onClose?.(); // 🚨 달력 닫기 요청 추가 (Datepicker가 이 요청을 받고 포커스를 Input으로 복귀시켜야 함)
                   }}
                 >
                   확인
