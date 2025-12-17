@@ -26,7 +26,7 @@ import {
 } from './components/ui/molecules/Combobox/Combobox.mock';
 import { selectboxOptions } from './components/ui/molecules/Selectbox/Selectbox.mock';
 import Searchbar from './components/ui/molecules/Searchbar/Searchbar';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { searchbarOptions } from './components/ui/molecules/Searchbar/Searchbar.mock';
 import LanguageSelector from './components/ui/molecules/LanguageSelector/LanguageSelector';
 import { languageSelectorOptions } from './components/ui/molecules/LanguageSelector/LanguageSelector.mock';
@@ -39,6 +39,8 @@ import {
   useCalendarMatrix,
   type CalendarCell,
 } from './components/ui/organisms/Calendar/Calendar.mock';
+import ModalProvider from './components/ui/molecules/Modal/ModalProvider';
+import { ModalContext } from './components/contexts/ModalContext';
 
 // 타입 정의
 type DisplayLevel = 'd1' | 'd2' | 'd3';
@@ -162,8 +164,69 @@ function App() {
     }
   }, [selectedYear, selectedMonth]);
 
+  const { openModal, closeModal } = useContext(ModalContext);
+
+  // 예시: 삭제 버튼 클릭 시
+  const handleSequenceFlow = () => {
+    openModal('alert', {
+      title: '삭제 확인',
+      subtitle: '삭제하면 복구할 수 없습니다, 삭제하시겠습니까?',
+      cancelText: '취소',
+      onConfirm: (currentId?: string) => {
+        // 1. 현재 모달(1번)을 ID로 정확히 닫음
+        closeModal(currentId || 'alert');
+
+        // 2. 브라우저가 상태를 정리할 시간을 아주 잠깐 준 뒤 새 모달 오픈
+        setTimeout(() => {
+          openModal('alert', {
+            title: '삭제 완료',
+            subtitle: '삭제가 완료 되었습니다.',
+            confirmText: '확인',
+          });
+        }, 0);
+      },
+    });
+  };
+
   return (
     <>
+      <section style={{ margin: '40px' }}>
+        <Button
+          color='danger'
+          variant='solid'
+          size='md'
+          shape='rounded'
+          data-modal='profileEdit'
+          data-modal-config={JSON.stringify({ currentName: '홍길동' })}
+        >
+          프로필 수정하기
+        </Button>
+        <Button
+          color='danger'
+          variant='solid'
+          size='md'
+          shape='rounded'
+          onClick={handleSequenceFlow}
+        >
+          연쇄 모달 테스트 (삭제)
+        </Button>
+        <Button
+          color='primary'
+          variant='solid'
+          size='md'
+          shape='rounded'
+          data-modal='alert'
+          data-modal-config={JSON.stringify({
+            variant: 'default',
+            title: '시스템 점검 안내',
+            subtitle: '오늘 오후 10시부터 점검이 예정되어 있습니다.',
+            description: '서비스 이용에 참고 부탁드립니다.',
+            confirmText: '확인',
+          })}
+        >
+          공지사항 확인
+        </Button>
+      </section>
       <section>
         <FormField
           size='xl'
