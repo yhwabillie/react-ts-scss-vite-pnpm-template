@@ -1,0 +1,10 @@
+/* Datepicker.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.datepicker {
+  border: 1px solid red;
+  display: inline-flex;
+  align-items: center;
+}

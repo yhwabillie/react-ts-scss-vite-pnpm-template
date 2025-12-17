@@ -13,3 +13,5 @@ export interface InputA11yProps {
   role?: 'combobox';
   name?: string;
 }
+
+export interface ButtonA11yProps {}

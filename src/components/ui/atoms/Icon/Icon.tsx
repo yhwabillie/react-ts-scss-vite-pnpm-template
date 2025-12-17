@@ -15,6 +15,10 @@ import ArrowDownIcon from '@/assets/icons/icon-arrow-down.svg?react';
 import ArrowUpIcon from '@/assets/icons/icon-arrow-up.svg?react';
 import RoundCheckIcon from '@/assets/icons/icon-round_check.svg?react';
 import SearchXIcon from '@/assets/icons/icon-search-x.svg?react';
+import GlobeIcon from '@/assets/icons/icon-globe.svg?react';
+import CalendarIcon from '@/assets/icons/icon-calendar.svg?react';
+import ChevronLeftIcon from '@/assets/icons/icon-chevron-left.svg?react';
+import ChevronRightIcon from '@/assets/icons/icon-chevron-right.svg?react';
 
 const iconMap = {
   search: SearchIcon,
@@ -31,6 +35,10 @@ const iconMap = {
   'arrow-up': ArrowUpIcon,
   'round-check': RoundCheckIcon,
   'search-x': SearchXIcon,
+  globe: GlobeIcon,
+  calendar: CalendarIcon,
+  'chevron-left': ChevronLeftIcon,
+  'chevron-right': ChevronRightIcon,
   // 다른 아이콘들도 여기에 추가
 };
 

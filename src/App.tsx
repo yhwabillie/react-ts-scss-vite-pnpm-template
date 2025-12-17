@@ -1,3 +1,5 @@
+// server.js
+
 import Button from '@/components/ui/molecules/Button/Button';
 import Icon from '@/components/ui/atoms/Icon/Icon';
 import LinkButton from '@/components/ui/molecules/Button/LinkButton';
@@ -24,9 +26,19 @@ import {
 } from './components/ui/molecules/Combobox/Combobox.mock';
 import { selectboxOptions } from './components/ui/molecules/Selectbox/Selectbox.mock';
 import Searchbar from './components/ui/molecules/Searchbar/Searchbar';
-import { useState } from 'react';
-import type { OptionBase } from './components/ui/molecules/OptionItem/OptionItem';
+import { useEffect, useState } from 'react';
 import { searchbarOptions } from './components/ui/molecules/Searchbar/Searchbar.mock';
+import LanguageSelector from './components/ui/molecules/LanguageSelector/LanguageSelector';
+import { languageSelectorOptions } from './components/ui/molecules/LanguageSelector/LanguageSelector.mock';
+import type { LanguageSelectItem } from './components/ui/molecules/LanguageSelector/LanguageSelector.mock';
+import Datepicker from './components/ui/molecules/Datepicker/Datepicker';
+import Calendar from './components/ui/organisms/Calendar/Calendar';
+import {
+  calendarMonthOptions,
+  calendarYearOptions,
+  useCalendarMatrix,
+  type CalendarCell,
+} from './components/ui/organisms/Calendar/Calendar.mock';
 
 // 타입 정의
 type DisplayLevel = 'd1' | 'd2' | 'd3';
@@ -86,11 +98,127 @@ const btnStyles: Record<ButtonLevel, React.CSSProperties> = {
   btn3: { font: 'var(--project-typo-btn3-400)' },
 };
 
+export interface Holiday {
+  date: string; // YYYYMMDD
+  name: string;
+}
+
 function App() {
-  const [value, setValue] = useState('');
+  // -----------------------------
+  // 📌 상태 선언
+  // - Controlled 방식 (권장) - 외부에서 초기값 + 상태 관리
+  // -----------------------------
+  const [searchbarValue, setSearchbarValue] = useState('');
+  const [currentLang, setCurrentLang] = useState<LanguageSelectItem['lang']>('ko');
+  const [selectboxId, setSelectboxId] = useState('');
+
+  // 캘린더 - datepicker input 값만 초기값으로 쓰고 싶을 때
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  // 캘린더 - 완전 제어 컴포넌트로 쓰고 싶을 때
+  //   const [selectedDate, setSelectedDate] = useState<Date | null>(
+  //   new Date('2026-01-17'),
+  // );
+
+  // 공휴일
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
+
+  // 공휴일
+  const [holidays, setHolidays] = useState<Holiday[]>([]);
+
+  useEffect(() => {
+    async function fetchHolidays(year: number, month: number) {
+      const url =
+        'https://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getRestDeInfo' +
+        `?serviceKey=${import.meta.env.VITE_OPEN_API_KEY}` +
+        `&solYear=${year}` +
+        `&solMonth=${String(month).padStart(2, '0')}`;
+
+      const res = await fetch(url);
+      const text = await res.text();
+
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(text, 'application/xml');
+
+      const items = Array.from(xmlDoc.getElementsByTagName('item'));
+
+      const parsedHolidays: Holiday[] = items.map(item => ({
+        date: item.getElementsByTagName('locdate')[0]?.textContent ?? '',
+        name: item.getElementsByTagName('dateName')[0]?.textContent ?? '',
+      }));
+
+      setHolidays(parsedHolidays);
+    }
+
+    fetchHolidays(selectedYear, selectedMonth);
+  }, [selectedYear, selectedMonth]);
+
+  useEffect(() => {
+    if (
+      selectedDate &&
+      (selectedDate.getFullYear() !== selectedYear || selectedDate.getMonth() + 1 !== selectedMonth)
+    ) {
+      setSelectedDate(null);
+    }
+  }, [selectedYear, selectedMonth]);
 
   return (
     <>
+      <section>
+        <FormField
+          size='xl'
+          direction='column'
+          id='datepicker-label'
+          htmlFor='datepicker-input'
+          labelText='생년월일'
+        >
+          <Datepicker
+            id='datepicker'
+            variant='outline'
+            color='primary'
+            size='xl'
+            inputProps={{
+              id: 'datepicker-input',
+              // value: '2025-12-03',
+              readonly: true,
+            }}
+            calendar={{
+              selectedYear: selectedYear,
+              selectedMonth: selectedMonth,
+              selectedDate: selectedDate,
+              calendarProps: {
+                yearOptions: calendarYearOptions,
+                monthOptions: calendarMonthOptions,
+              },
+              holidays: holidays,
+              onYearChange: setSelectedYear,
+              onMonthChange: setSelectedMonth,
+              onDateSelect: date => {
+                setSelectedDate(date); // 내부 선택 상태
+              },
+            }}
+            onDateChange={(value, date) => {
+              setSelectedDate(date); // 상태 동기화
+
+              console.log(value);
+            }}
+          />
+        </FormField>
+      </section>
+      <section style={{ margin: '30px' }}>
+        <LanguageSelector
+          variant='outline'
+          color='primary'
+          size='xl'
+          buttonProps={{
+            shape: 'rounded',
+            labelText: '언어 변경',
+          }}
+          value='ko'
+          options={languageSelectorOptions}
+          onValueChange={setCurrentLang}
+        />
+      </section>
       <section>
         <Searchbar
           variant='outline'
@@ -104,9 +232,9 @@ function App() {
             role: 'combobox',
             name: 'searchbar-name',
             placeholder: '검색하세요',
-            value: value,
+            value: searchbarValue,
             // disabled: true,
-            onChange: setValue,
+            onChange: setSearchbarValue,
           }}
           options={searchbarOptions}
           actions={{
@@ -117,7 +245,7 @@ function App() {
             submitAction: {
               type: 'submit',
               icon: <Icon name='search' strokeWidth={2.5} />,
-              onClick: () => console.log('submit', value),
+              onClick: () => console.log('submit', searchbarValue),
             },
           }}
         />
@@ -169,8 +297,10 @@ function App() {
             // disabled={true}
             placeholder='선택해보세요'
             options={selectboxOptions}
-            onValueChange={(value, option) => {
-              console.log(value, option);
+            defaultOptionId='select-3'
+            onValueChange={(optionId, option) => {
+              setSelectboxId(optionId);
+              console.log('선택됨 :', optionId, option);
             }}
           />
         </FormField>

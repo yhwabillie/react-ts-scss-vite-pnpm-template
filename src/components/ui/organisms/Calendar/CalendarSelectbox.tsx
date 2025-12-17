@@ -9,15 +9,15 @@ import React, {
   useState,
 } from 'react';
 import clsx from 'clsx';
-import styles from '@/components/ui/molecules/Selectbox/Selectbox.module.scss';
+import styles from '@/components/ui/organisms/Calendar/CalendarSelectbox.module.scss';
 import type { Size, Variant, Color } from '@/types/design/design-tokens.types';
 import IconButton from '@/components/ui/molecules/IconButton/IconButton';
 import Icon from '@/components/ui/atoms/Icon/Icon';
 import type { PortalPosition } from '@/components/ui/molecules/OptionListPortal/OptionListPortal';
 import OptionListPortal from '@/components/ui/molecules/OptionListPortal/OptionListPortal';
-import OptionList from '@/components/ui/molecules/OptionList/OptionList';
 import OptionItem, { type OptionBase } from '@/components/ui/molecules/OptionItem/OptionItem';
 import type { SelectboxA11yProps } from '@/types/a11y/a11y-roles.types';
+import CalendarOptionList from './CalendarOptionList';
 
 interface StyleProps {
   variant: Variant;
@@ -39,9 +39,10 @@ interface SelectboxProps extends StyleProps, SelectboxA11yProps, NativeDivProps 
   options: OptionBase[];
   defaultOptionId?: string; // controlled
   onValueChange?: (id: string, option?: OptionBase) => void;
+  onOpenChange?: (isOpen: boolean) => void;
 }
 
-const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
+const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
   (
     {
       variant,
@@ -49,6 +50,7 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
       size,
       role,
       'aria-labelledby': ariaLabelledBy,
+      'aria-label': ariaLabel,
       id,
       selectId,
       required,
@@ -58,6 +60,7 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
       options,
       defaultOptionId,
       onValueChange,
+      onOpenChange,
     },
     ref,
   ) => {
@@ -96,13 +99,10 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
     // - 없으면 초기 선택 없음 (null / '')
     // -----------------------------
     const initialSelectedOption = useMemo(() => {
-      // 1️⃣ defaultOptionId 우선, 단 disabled가 아니어야 함
       if (defaultOptionId) {
         const found = options.find(opt => opt.id === defaultOptionId && !opt.disabled);
         if (found) return found;
       }
-
-      // 2️⃣ options.selected fallback (disabled 아닌 옵션)
       return options.find(opt => opt.selected && !opt.disabled && opt.value !== '') ?? null;
     }, [options, defaultOptionId]);
 
@@ -123,12 +123,18 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
     const open = (reason: 'click' | 'keyboard') => {
       openReasonRef.current = reason;
       setIsOpen(true);
+
+      // 🚨 추가: 열림 상태를 부모에게 알림
+      onOpenChange?.(true);
     };
 
     const close = () => {
       openReasonRef.current = null;
       setIsOpen(false);
       setFocusedIndex(null);
+
+      // 🚨 추가: 닫힘 상태를 부모에게 알림
+      onOpenChange?.(false);
     };
 
     // ------------------------------------------------------
@@ -183,6 +189,30 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
       },
       [options],
     );
+
+    // ------------------------------------------------------
+    // ⚡️ OptionList 내부 ESC 키 처리
+    // - Option List가 열려 있을 때, OptionList 내부의 요소에 포커스가 있으면 호출됨
+    // ------------------------------------------------------
+    const handleOptionListEscape = useCallback(
+      (e: React.KeyboardEvent) => {
+        if (e.key === 'Escape' && isOpen) {
+          e.preventDefault();
+          e.stopPropagation(); // 🚨 OptionList가 닫힐 때 상위 컴포넌트(Calendar, Datepicker)로 전파 방지
+
+          // console.log('Option List ESC 처리'); // 로그 테스트용
+
+          // 1. OptionList 닫기
+          close();
+
+          // 2. 포커스를 트리거 버튼으로 복귀
+          customSelectRef.current?.focus();
+
+          // (이 로직이 실행되면, 아래 handleKeyDown의 'Escape' case는 트리거될 필요가 없습니다.)
+        }
+      },
+      [isOpen, close],
+    ); // close와 isOpen에 의존
 
     // ------------------------------------------------------
     // ⚡️ handleKeyDown
@@ -264,10 +294,12 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
             return;
           }
 
+          // 💡 CalendarSelectbox.tsx (예상되는 handleKeyDown 수정)
           case 'Escape': {
             if (!isOpen) return;
-            e.preventDefault();
-            close();
+            e.preventDefault(); // 기본 브라우저 동작만 막음 (전파는 막지 않음)
+            close(); // setIsOpen(false) 실행
+            customSelectRef.current?.focus(); // 포커스 복귀
             return;
           }
 
@@ -282,6 +314,11 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
       },
       [isOpen, focusedIndex, selectedId, options, findNextEnabled, handleSelect],
     );
+
+    useEffect(() => {
+      setSelectedId(initialSelectedOption?.id ?? null);
+      setSelectedValue(initialSelectedOption?.value ?? '');
+    }, [initialSelectedOption]);
 
     // -----------------------------
     // ✨ [Scroll] 드롭다운 오픈 시 선택된 옵션 자동 스크롤
@@ -341,19 +378,22 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
     //   → 옵션 리스트 닫기
     // - 포털 구조에서도 정상 동작하도록 ref 기준 검사
     // -----------------------------------------------------
-    const handleOutsideClick = useCallback((event: MouseEvent) => {
-      const target = event.target as Node | null;
+    const handleOutsideClick = useCallback(
+      (event: MouseEvent) => {
+        const target = event.target as Node | null;
 
-      const isInsideContainer =
-        containerRef.current && target && containerRef.current.contains(target);
+        const isInsideContainer =
+          containerRef.current && target && containerRef.current.contains(target);
 
-      const isInsidePortal = portalRef.current && target && portalRef.current.contains(target);
+        const isInsidePortal = portalRef.current && target && portalRef.current.contains(target);
 
-      if (!isInsideContainer && !isInsidePortal) {
-        setIsOpen(false);
-        setFocusedIndex(null);
-      }
-    }, []);
+        // 🚨 수정: 외부 클릭 시 close() 함수를 호출하여 중복 로직 제거 및 onOpenChange 보장
+        if (!isInsideContainer && !isInsidePortal && isOpen) {
+          close();
+        }
+      },
+      [isOpen], // close 함수를 사용하도록 수정했으므로, close의 의존성을 따름
+    );
 
     // -----------------------------------------------------
     // ✨ 외부 클릭 이벤트 등록 / 해제
@@ -437,7 +477,7 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
         ref={ref}
         id={id}
         className={clsx(
-          `${styles['selectbox']} variant--${variant} color--${color} size--${size}`,
+          `${styles['calendar-selectbox']} variant--${variant} color--${color} size--${size}`,
           className,
         )}
       >
@@ -470,6 +510,7 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
           aria-expanded={isOpen}
           aria-haspopup='listbox'
           aria-labelledby={ariaLabelledBy}
+          aria-label={ariaLabel}
           onClick={e => {
             if (disabled) return;
 
@@ -508,7 +549,13 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
         {/* OptionList */}
         {isOpen && positioned && portalPos && (
           <OptionListPortal isOpen={isOpen} position={portalPos} portalRef={portalRef}>
-            <OptionList id={listboxId} variant={variant} color={color} size={size}>
+            <CalendarOptionList
+              id={listboxId}
+              variant={variant}
+              color={color}
+              size={size} // 🚨 Option List의 가장 바깥 요소에 KeyDown 핸들러 등록
+              onKeyDown={handleOptionListEscape}
+            >
               {options.map((opt, idx) => (
                 <OptionItem
                   ref={el => {
@@ -526,10 +573,10 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
                   disabled={opt.disabled}
                   onSelect={handleSelect}
                   isActive={opt.id === activeDescendantId}
-                  onKeyDown={handleKeyDown}
+                  // onKeyDown={handleKeyDown}
                 />
               ))}
-            </OptionList>
+            </CalendarOptionList>
           </OptionListPortal>
         )}
       </div>
@@ -537,6 +584,6 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
   },
 );
 
-Selectbox.displayName = 'Selectbox';
+CalendarSelectbox.displayName = 'CalendarSelectbox';
 
-export default Selectbox;
+export default CalendarSelectbox;
