@@ -41,6 +41,8 @@ import {
 } from './components/ui/organisms/Calendar/Calendar.mock';
 import ModalProvider from './components/ui/molecules/Modal/ModalProvider';
 import { ModalContext } from './components/contexts/ModalContext';
+import FilePicker from './components/ui/organisms/FilePicker/FilePicker';
+import { useFilePicker } from './components/hooks/useFilePicker';
 
 // 타입 정의
 type DisplayLevel = 'd1' | 'd2' | 'd3';
@@ -104,6 +106,49 @@ export interface Holiday {
   date: string; // YYYYMMDD
   name: string;
 }
+
+const ACCEPT_EXT = ['png', 'jpg', 'jpeg', 'pdf'];
+const MAX_COUNT = 2;
+const MAX_SIZE_MB = 20;
+const ACCEPT_ATTR = ACCEPT_EXT.map(ext => `.${ext}`).join(',');
+
+// ✅ 해결책 1: 컴포넌트를 함수 밖으로 이동
+const FilePickerContainer = () => {
+  const { openModal } = useContext(ModalContext);
+
+  useEffect(() => {
+    console.log('🔵 FilePickerContainer 마운트');
+    return () => console.log('🔴 FilePickerContainer 언마운트');
+  }, []);
+
+  const { files, handleDrop, handleRemove, handleClear } = useFilePicker({
+    acceptExt: ACCEPT_EXT,
+    maxSizeMB: MAX_SIZE_MB,
+    maxCount: MAX_COUNT,
+    onError: message => {
+      console.log('[FilePicker Error]', message);
+
+      openModal('alert', {
+        title: '에러',
+        subtitle: message,
+        confirmText: '확인',
+      });
+    },
+  });
+
+  console.log('📁 현재 파일 개수:', files.length);
+
+  return (
+    <FilePicker
+      files={files}
+      onDrop={handleDrop}
+      onRemove={handleRemove}
+      onClear={handleClear}
+      maxCount={MAX_COUNT}
+      accept={ACCEPT_ATTR}
+    />
+  );
+};
 
 function App() {
   // -----------------------------
@@ -190,6 +235,10 @@ function App() {
 
   return (
     <>
+      <section>
+        <FilePickerContainer />
+      </section>
+
       <section style={{ margin: '40px' }}>
         <Button
           color='danger'
@@ -418,6 +467,8 @@ function App() {
             id='textarea-r-3'
             rows={6}
             placeholder='입력하세요'
+            maxLength={100} // 최대 500자
+            showCount={true} // 카운터 표시
           />
         </FormField>
 
@@ -435,6 +486,8 @@ function App() {
             id='textarea-r-4'
             rows={6}
             placeholder='입력하세요'
+            maxLength={100} // 최대 500자
+            showCount={true} // 카운터 표시
           />
         </FormField>
 

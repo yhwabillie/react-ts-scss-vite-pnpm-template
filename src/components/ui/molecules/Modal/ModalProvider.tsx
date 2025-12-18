@@ -4,6 +4,7 @@ import Modal from '@/components/ui/molecules/Modal/Modal';
 import type { ModalConfig, ModalState } from '@/types/modal.types';
 import AlertModalContent from './AlertModalContent';
 import ProfileEditModal from './ProfileEditModal';
+
 interface ModalProviderProps {
   children: React.ReactNode;
 }
@@ -23,22 +24,29 @@ interface ModalProviderProps {
  *   <YourApp />
  * </ModalProvider>
  *
- * // 버튼에서 사용
- * <Button data-modal="alert">모달 열기</Button>
+ * // 사용
+ * const { openModal } = useContext(ModalContext);
+ * openModal('alert', { title: '알림', subtitle: '내용' });
  * ```
  */
 const ModalProvider = ({ children }: ModalProviderProps) => {
   const [modalStack, setModalStack] = useState<ModalState[]>([]);
   const activeTriggerNode = useRef<HTMLElement | null>(null);
+  const prevModalStackLength = useRef<number>(0); // ✅ 이전 스택 길이 추적
 
   const openModal = (type: string, config?: ModalConfig) => {
     console.log(`[openModal] 타입: ${type}, 현재 스택 길이: ${modalStack.length}`);
 
-    // [수정] 스택이 0이고, '기존에 저장된 트리거 노드가 없을 때만' 저장합니다.
-    // 이렇게 하면 연쇄 모달 도중에 스택이 잠시 0이 되어도 첫 버튼을 끝까지 지킵니다.
     if (modalStack.length === 0 && !activeTriggerNode.current) {
-      activeTriggerNode.current = document.activeElement as HTMLElement;
-      console.log('[openModal] 최초 트리거 저장 완료:', activeTriggerNode.current);
+      const currentFocus = document.activeElement as HTMLElement;
+
+      // ✅ body나 html은 유효한 트리거가 아니므로 저장하지 않음
+      if (currentFocus && currentFocus !== document.body && currentFocus.tagName !== 'HTML') {
+        activeTriggerNode.current = currentFocus;
+        console.log('[openModal] 최초 트리거 저장 완료:', activeTriggerNode.current);
+      } else {
+        console.log('[openModal] body/html은 트리거로 저장하지 않음');
+      }
     } else {
       console.log('[openModal] 트리거 유지 (연쇄 또는 중첩):', activeTriggerNode.current);
     }
@@ -49,9 +57,7 @@ const ModalProvider = ({ children }: ModalProviderProps) => {
 
   const closeModal = (idOrType: string) => {
     setModalStack(prev => {
-      // 1. ID로 먼저 찾고, 없으면 타입으로 찾음
       const index = prev.findIndex(m => m.id === idOrType || m.type === idOrType);
-
       if (index === -1) return prev;
 
       const newStack = [...prev];
@@ -61,69 +67,73 @@ const ModalProvider = ({ children }: ModalProviderProps) => {
   };
 
   useEffect(() => {
-    // 모달 스택이 비었고, 돌아갈 타겟 노드가 있을 때만 실행
-    if (modalStack.length === 0 && activeTriggerNode.current) {
+    // ✅ 모달이 열려있으면 아무것도 안 함
+    if (modalStack.length !== 0) return;
+
+    // ✅ 페이지 로드 시 방지: 이전에 모달이 열려있었을 때만 실행
+    if (prevModalStackLength.current === 0) {
+      console.log('[Focus] 페이지 로드 시에는 포커스 복귀 안 함');
+      return;
+    }
+
+    const timer = setTimeout(() => {
       const targetNode = activeTriggerNode.current;
 
-      const timer = setTimeout(() => {
-        // 1. 노드가 실제로 문서 내에 '연결'되어 있는지 더 정확히 확인 (isConnected)
-        const isVisibleAndConnected =
-          targetNode && targetNode.isConnected && document.body.contains(targetNode);
+      // ✅ 저장된 트리거가 있고 유효한 경우 → 해당 요소로 복귀
+      const isValidTarget =
+        targetNode &&
+        targetNode.isConnected &&
+        document.body.contains(targetNode) &&
+        !(targetNode as HTMLButtonElement).disabled;
 
-        if (isVisibleAndConnected) {
-          // [핵심] 버튼이 비활성화 상태라면 포커스를 받을 수 없으므로 강제 활성화 검사
-          if ((targetNode as HTMLButtonElement).disabled) {
-            console.warn('[Focus] 타겟 버튼이 disabled 상태입니다.');
-          }
+      if (isValidTarget) {
+        targetNode.focus({ preventScroll: false });
+        console.log('[Focus] 원래 트리거로 복귀:', targetNode);
+      } else {
+        // ✅ 트리거가 없거나 유효하지 않은 경우 → fallback 실행
+        console.log('[Focus] 유효한 트리거 없음 → fallback 실행');
 
-          // preventScroll: false로 하여 버튼이 있는 곳으로 화면이 이동하게 함
-          targetNode.focus({ preventScroll: false });
-          console.log('[Focus] 원래 버튼으로 복구 성공:', targetNode);
+        /**
+         * DOM 상단부터 탐색 → 가장 첫 포커스 가능 요소
+         */
+        const allFocusableElements = document.querySelectorAll<HTMLElement>(
+          `
+          button:not([disabled]),
+          a[href],
+          input:not([disabled]),
+          select:not([disabled]),
+          textarea:not([disabled]),
+          [tabindex]:not([tabindex="-1"])
+          `,
+        );
 
-          // 성공적으로 복구했다면 초기화
-          activeTriggerNode.current = null;
-        } else {
-          // 2. 버튼이 있는데도 여기로 들어온다면 타이밍 문제일 확률이 높음
-          console.log('[Focus] 원래 버튼을 찾을 수 없어 Fallback 실행');
-
-          const fallbackTarget =
-            document.querySelector<HTMLElement>('main h1, #root a, button') || document.body;
-
+        // ✅ 포커스 가능한 요소가 있을 때만 포커스 이동
+        if (allFocusableElements.length > 0) {
+          const fallbackTarget = allFocusableElements[0];
           fallbackTarget.focus();
-          activeTriggerNode.current = null;
+          console.log('[Focus] fallback 포커스:', fallbackTarget);
+        } else {
+          console.log('[Focus] 포커스 가능한 요소가 없어 포커스 이동하지 않음');
         }
-      }, 100); // 60ms에서 100ms로 늘려 브라우저 렌더링 완료를 기다림
+      }
 
-      return () => clearTimeout(timer);
-    }
+      // 항상 초기화
+      activeTriggerNode.current = null;
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [modalStack.length]);
 
-  // registerTrigger는 이제 보조 수단으로만 남겨두거나 삭제해도 됩니다.
-  // const registerTrigger = (modalType: string, ref: React.RefObject<HTMLButtonElement | null>) => {
-  //   if (ref.current) activeTriggerNode.current = ref.current;
-  // };
-
-  // ============================================================
-  // Types
-  // ============================================================
-  /**
-   * 모든 모달 컨텐츠 컴포넌트가 받아야 하는 공통 Props
-   */
+  // ✅ 이전 스택 길이 업데이트 (매 렌더링마다 업데이트)
+  useEffect(() => {
+    prevModalStackLength.current = modalStack.length;
+  }, [modalStack.length]);
 
   // ============================================================
   // Modal Components Registry
   // ============================================================
-  /**
-   * 모달 타입과 실제 컴포넌트를 매핑
-   *
-   * 새로운 모달 추가 방법:
-   * 1. ModalContent 컴포넌트 생성 (firstFocusableRef prop 필수)
-   * 2. 여기에 등록: myModal: MyModalContent
-   * 3. 사용: <Button data-modal="myModal">열기</Button>
-   */
-
   const modalComponents: Record<string, React.ComponentType<any>> = {
-    profileEdit: ProfileEditModal, // 이제 openModal('profileEdit')로 호출 가능
+    profileEdit: ProfileEditModal,
     // 새로운 모달을 여기에 추가
   };
 
@@ -141,12 +151,11 @@ const ModalProvider = ({ children }: ModalProviderProps) => {
 
         if (!RegisteredComponent) return null;
 
-        // 1. 여기서 config를 재조립합니다.
         const finalConfig: ModalConfig = {
           variant: 'default',
           title: '알림',
           confirmText: '확인',
-          ...modal.config, // 이 부분이 비어있으면 위 기본값들이 나옵니다.
+          ...modal.config,
         };
 
         return (
@@ -159,8 +168,8 @@ const ModalProvider = ({ children }: ModalProviderProps) => {
           >
             {({ firstFocusableRef }) => (
               <RegisteredComponent
-                id={modal.id} // ID 전달
-                config={finalConfig} // 이제 undefined가 아니므로 에러가 사라집니다
+                id={modal.id}
+                config={finalConfig}
                 onClose={() => closeModal(modal.id)}
                 firstFocusableRef={firstFocusableRef}
               />
