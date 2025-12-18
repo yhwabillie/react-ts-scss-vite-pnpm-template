@@ -57,7 +57,8 @@ const DataTable = <T extends { id: string | number }>({
     return '↕️';
   };
 
-  const isAllSelected = data.length > 0 && selectedRows?.size === data.length;
+  // ✅ 수정: 단순히 개수(length)로 비교하지 말고, 현재 눈앞의 데이터가 모두 Set에 있는지 확인
+  const isAllSelected = data.length > 0 && data.every(row => selectedRows?.has(row.id));
 
   const getAriaSort = (key: string): 'ascending' | 'descending' | 'none' | undefined => {
     if (sortState?.key !== key) return undefined;

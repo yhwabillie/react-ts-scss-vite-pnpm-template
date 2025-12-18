@@ -58,6 +58,8 @@ import Tag from './components/ui/atoms/Tag/Tag';
 import Tooltip from './components/ui/atoms/Tooltip/Tooltip';
 import Avatar from './components/ui/molecules/Avatar/Avatar';
 import ProfilePopover from './components/ui/organisms/ProfilePopover/ProfilePopover';
+import Slider from './components/ui/atoms/Slider/Slider';
+import Skeleton from './components/ui/atoms/Skeleton/Skeleton';
 
 // 타입 정의
 type DisplayLevel = 'd1' | 'd2' | 'd3';
@@ -444,22 +446,6 @@ function App() {
   // sort
   const [sortState, setSortState] = useState<SortState>({ key: '', order: 'none' });
 
-  // 2. 정렬된 데이터를 메모이제이션 (성능 최적화)
-  const sortedData = useMemo(() => {
-    if (sortState.order === 'none' || !sortState.key) return data;
-
-    return [...data].sort((a, b) => {
-      const key = sortState.key as keyof UserData;
-      const aValue = a[key] ?? '';
-      const bValue = b[key] ?? '';
-
-      if (aValue === bValue) return 0;
-
-      const multiplier = sortState.order === 'asc' ? 1 : -1;
-      return aValue < bValue ? -multiplier : multiplier;
-    });
-  }, [sortState, data]); // sortState나 data가 바뀔 때만 다시 계산
-
   const handleSort = (key: string, order: SortOrder) => {
     setSortState({ key, order });
   };
@@ -489,12 +475,25 @@ function App() {
   // 1. 전체 페이지 수 계산
   const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
 
-  // 2. 정렬된 데이터 중 현재 페이지에 해당하는 데이터만 추출
-  const paginatedData = useMemo(() => {
+  const paginatedRawData = useMemo(() => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
-    return sortedData.slice(startIndex, endIndex);
-  }, [sortedData, currentPage]);
+    return data.slice(startIndex, endIndex);
+  }, [data, currentPage]);
+
+  // 2. 정렬된 데이터 중 현재 페이지에 해당하는 데이터만 추출
+  const paginatedSortedData = useMemo(() => {
+    if (sortState.order === 'none' || !sortState.key) return paginatedRawData;
+
+    return [...paginatedRawData].sort((a, b) => {
+      const key = sortState.key as keyof UserData;
+      const aValue = a[key] ?? '';
+      const bValue = b[key] ?? '';
+      if (aValue === bValue) return 0;
+      const multiplier = sortState.order === 'asc' ? 1 : -1;
+      return aValue < bValue ? -multiplier : multiplier;
+    });
+  }, [sortState, paginatedRawData]);
 
   // 페이지 변경 시 핸들러 (선택 영역 초기화 여부는 기획에 따라 결정)
   const handlePageChange = (page: number) => {
@@ -515,14 +514,19 @@ function App() {
 
   // 전체 선택 로직
   const handleSelectAll = (isAll: boolean) => {
+    // ✅ 업데이트: paginatedData 대신 현재 페이지의 '정렬된' 데이터인 paginatedSortedData를 사용합니다.
+    const currentPageData = paginatedSortedData;
+
     if (isAll) {
-      // data 대신 현재 페이지 데이터(paginatedData)의 ID들만 추가
-      const currentPageIds = paginatedData.map(row => row.id);
+      // ✅ 업데이트: 현재 눈에 보이는 페이지의 모든 ID를 추출
+      const currentPageIds = currentPageData.map(row => row.id);
+
+      // 기존 선택 항목에 현재 페이지 항목들을 합침 (Set이 중복은 자동으로 제거함)
       setSelectedRows(new Set([...selectedRows, ...currentPageIds]));
     } else {
-      // 현재 페이지 ID들만 선택 해제
+      // ✅ 업데이트: 현재 페이지의 ID들만 기존 선택 목록에서 찾아 제거
       const newSelected = new Set(selectedRows);
-      paginatedData.forEach(row => newSelected.delete(row.id));
+      currentPageData.forEach(row => newSelected.delete(row.id));
       setSelectedRows(newSelected);
     }
   };
@@ -539,6 +543,11 @@ function App() {
       });
     }
   }, [currentPage]); // currentPage가 바뀔 때마다 실행
+
+  // 페이지가 바뀔 때마다 정렬을 '없음'으로 되돌립니다.
+  useEffect(() => {
+    setSortState({ key: '', order: 'none' });
+  }, [currentPage]);
 
   const width = useWindowSize(); // 윈도우 너비 가져오기
   const isMobile = width < 768; // 768px 미만인지 확인
@@ -571,15 +580,20 @@ function App() {
     image: '/images/profile.png',
   };
 
+  // slider
+  const [volume, setVolume] = useState(50);
+
   return (
     <>
       <section ref={tableRef} style={{ padding: '30px' }}>
         <div className='sr-only' aria-live='polite'>
+          {sortState.key &&
+            `${sortState.key} 항목으로 ${sortState.order === 'asc' ? '오름차순' : '내림차순'} 정렬되었습니다.`}
           {`${totalPages}페이지 중 현재 ${currentPage}페이지입니다.`}
         </div>
         <DataTable
           columns={columns}
-          data={paginatedData} // 정렬된 데이터 전달 sortedData
+          data={paginatedSortedData} // 정렬된 데이터 전달 sortedData
           sortState={sortState}
           onSort={handleSort}
           caption='사용자 계정 관리 목록'
@@ -598,6 +612,24 @@ function App() {
           isMobileUI={isMobile}
         />
       </section>
+      <section style={{ margin: '30px', width: '200px' }}>
+        <Skeleton variant='text' width='50%' />
+        <Skeleton variant='text' width='70%' />
+        <Skeleton variant='rect' height={100} />
+        {/* ✅ 스크린 리더 사용자에게는 현재 로딩 중임을 텍스트로 안내 */}
+        <span className='sr-only'>데이터를 불러오는 중입니다. 잠시만 기다려 주세요.</span>
+      </section>
+      <div style={{ width: '300px', padding: '20px' }}>
+        <Slider
+          label='시스템 볼륨'
+          min={0}
+          max={100}
+          step={1}
+          defaultValue={volume}
+          onChange={val => setVolume(val)}
+        />
+        <p>현재 볼륨: {volume}%</p>
+      </div>
       <nav>
         {/* 아바타를 클릭하면 프로필 카드가 나타남 */}
         <ProfilePopover
