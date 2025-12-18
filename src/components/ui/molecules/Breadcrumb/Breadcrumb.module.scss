@@ -1,0 +1,51 @@
+/* BreadCrumb.module.scss */
+@use 'sass:map';
+@use '../../../../styles/mixins' as *;
+
+.breadcrumbs-nav {
+  padding: 1rem 0;
+
+  .breadcrumbs-list {
+    display: flex;
+    flex-wrap: wrap; // 모바일에서 줄바꿈 대응
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.875rem; // 14px
+    color: #666;
+  }
+
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+
+    .link {
+      color: #666;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover,
+      &:focus {
+        color: #007bff;
+        text-decoration: underline;
+      }
+    }
+
+    .current {
+      font-weight: 700;
+      color: #333;
+    }
+
+    .separator {
+      margin: 0 8px;
+      color: #ccc;
+      user-select: none; // 구분자 텍스트 드래그 방지
+    }
+
+    .icon {
+      margin-right: 4px;
+      display: inline-flex;
+      vertical-align: middle;
+    }
+  }
+}

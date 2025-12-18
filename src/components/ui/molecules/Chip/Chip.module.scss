@@ -1,0 +1,68 @@
+/* Chip.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 16px;
+  background-color: #f1f3f5;
+  color: #495057;
+  font-size: 14px;
+  cursor: default;
+  user-select: none;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+
+  // 삭제될 때 클래스를 부여하거나 라이브러리를 쓰면 더 정교해집니다.
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &.clickable {
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      background-color: #e9ecef;
+    }
+  }
+
+  &.selected {
+    background-color: #e7f5ff;
+    color: #228be6;
+    border-color: #228be6;
+    font-weight: 600;
+  }
+
+  .icon {
+    margin-right: 6px;
+    display: flex;
+  }
+
+  .delete-button {
+    margin-left: 6px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #adb5bd;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+      color: #fa5252;
+    }
+  }
+}

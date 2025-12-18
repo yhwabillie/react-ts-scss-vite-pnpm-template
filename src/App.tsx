@@ -26,7 +26,7 @@ import {
 } from './components/ui/molecules/Combobox/Combobox.mock';
 import { selectboxOptions } from './components/ui/molecules/Selectbox/Selectbox.mock';
 import Searchbar from './components/ui/molecules/Searchbar/Searchbar';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { searchbarOptions } from './components/ui/molecules/Searchbar/Searchbar.mock';
 import LanguageSelector from './components/ui/molecules/LanguageSelector/LanguageSelector';
 import { languageSelectorOptions } from './components/ui/molecules/LanguageSelector/LanguageSelector.mock';
@@ -50,6 +50,11 @@ import DataTable, {
   type SortOrder,
   type SortState,
 } from './components/ui/organisms/DataTable/DataTable';
+import Pagination from './components/ui/molecules/Pagination/Pagination';
+import Breadcrumbs from './components/ui/molecules/Breadcrumb/Breadcrumb';
+import Chip from './components/ui/molecules/Chip/Chip';
+import Badge from './components/ui/atoms/Badge/Badge';
+import Tag from './components/ui/atoms/Tag/Tag';
 
 // 타입 정의
 type DisplayLevel = 'd1' | 'd2' | 'd3';
@@ -398,6 +403,39 @@ function App() {
       commentCount: 30,
       viewCount: 1,
     },
+    {
+      id: 4,
+      title: '제목',
+      file: true,
+      author: '박수미',
+      createdAt: '2025.12.11',
+      likes: 10,
+      status: '활성',
+      commentCount: 30,
+      viewCount: 1,
+    },
+    {
+      id: 5,
+      title: '제목',
+      file: true,
+      author: '박수미',
+      createdAt: '2025.12.11',
+      likes: 10,
+      status: '활성',
+      commentCount: 30,
+      viewCount: 1,
+    },
+    {
+      id: 6,
+      title: '제목',
+      file: true,
+      author: '박수미',
+      createdAt: '2025.12.11',
+      likes: 10,
+      status: '활성',
+      commentCount: 30,
+      viewCount: 1,
+    },
   ];
 
   // sort
@@ -423,6 +461,44 @@ function App() {
     setSortState({ key, order });
   };
 
+  // pagination
+  const useWindowSize = () => {
+    const [windowWidth, setWindowWidth] = useState(
+      typeof window !== 'undefined' ? window.innerWidth : 0,
+    );
+
+    useEffect(() => {
+      // 윈도우 크기가 바뀔 때 실행될 핸들러
+      const handleResize = () => setWindowWidth(window.innerWidth);
+
+      window.addEventListener('resize', handleResize);
+
+      // 컴포넌트가 사라질 때 이벤트 제거 (메모리 누수 방지)
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    return windowWidth;
+  };
+
+  const ITEMS_PER_PAGE = 4; // 한 페이지에 보여줄 개수
+  const [currentPage, setCurrentPage] = useState(1); // 1부터 시작 권장
+
+  // 1. 전체 페이지 수 계산
+  const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
+
+  // 2. 정렬된 데이터 중 현재 페이지에 해당하는 데이터만 추출
+  const paginatedData = useMemo(() => {
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    return sortedData.slice(startIndex, endIndex);
+  }, [sortedData, currentPage]);
+
+  // 페이지 변경 시 핸들러 (선택 영역 초기화 여부는 기획에 따라 결정)
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    setSelectedRows(new Set()); // 페이지 바뀔 때 선택 해제
+  };
+
   // selection
   const [selectedRows, setSelectedRows] = useState<Set<number | string>>(new Set());
 
@@ -436,16 +512,63 @@ function App() {
 
   // 전체 선택 로직
   const handleSelectAll = (isAll: boolean) => {
-    if (isAll) setSelectedRows(new Set(data.map(row => row.id)));
-    else setSelectedRows(new Set());
+    if (isAll) {
+      // data 대신 현재 페이지 데이터(paginatedData)의 ID들만 추가
+      const currentPageIds = paginatedData.map(row => row.id);
+      setSelectedRows(new Set([...selectedRows, ...currentPageIds]));
+    } else {
+      // 현재 페이지 ID들만 선택 해제
+      const newSelected = new Set(selectedRows);
+      paginatedData.forEach(row => newSelected.delete(row.id));
+      setSelectedRows(newSelected);
+    }
+  };
+
+  // App.tsx 또는 DataTable을 감싸는 컨테이너 컴포넌트
+  const tableRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // 페이지가 변경될 때 테이블 상단으로 스크롤 이동
+    if (tableRef.current) {
+      tableRef.current.scrollIntoView({
+        behavior: 'smooth', // 부드럽게 이동
+        block: 'start', // 요소의 시작 지점으로
+      });
+    }
+  }, [currentPage]); // currentPage가 바뀔 때마다 실행
+
+  const width = useWindowSize(); // 윈도우 너비 가져오기
+  const isMobile = width < 768; // 768px 미만인지 확인
+
+  const breadcrumbData = [
+    { label: '홈', href: '/', icon: <Icon name='house' className='icon' /> },
+    { label: '게시판', href: '/board' },
+    { label: '자유게시판' }, // 마지막은 href 생략
+  ];
+
+  // chip
+  // 1. 칩 데이터 상태 관리 (고유 ID가 있는 것이 좋습니다)
+  const [chipList, setChipList] = useState([
+    { id: 1, label: 'React' },
+    { id: 2, label: '컴포넌트' },
+    { id: 3, label: '웹접근성' },
+  ]);
+
+  // 2. 삭제 핸들러 함수
+  const handleDelete = (id: number) => {
+    // 선택한 ID만 제외하고 새로운 배열 생성
+    setChipList(prev => prev.filter(chip => chip.id !== id));
   };
 
   return (
     <>
-      <section style={{ margin: '30px' }}>
+      <section ref={tableRef} style={{ padding: '30px' }}>
+        <div className='sr-only' aria-live='polite'>
+          {`${totalPages}페이지 중 현재 ${currentPage}페이지입니다.`}
+        </div>
         <DataTable
           columns={columns}
-          data={sortedData} // 정렬된 데이터 전달
+          data={paginatedData} // 정렬된 데이터 전달 sortedData
           sortState={sortState}
           onSort={handleSort}
           caption='사용자 계정 관리 목록'
@@ -456,6 +579,54 @@ function App() {
           onSelectRow={handleSelectRow}
           onSelectAll={handleSelectAll}
         />
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages || 1}
+          onPageChange={handlePageChange}
+          // 모바일 기기 감지 로직이나 창 너비에 따라 true/false 전달
+          isMobileUI={isMobile}
+        />
+      </section>
+      <section>
+        <Tag href='/search?q=React' color='primary' icon='#'>
+          React
+        </Tag>
+        <div role='list' aria-label='게시글 태그' style={{ display: 'flex', gap: '4px' }}>
+          <Tag color='outline'>유기농</Tag>
+          <Tag color='outline'>특가</Tag>
+        </div>
+      </section>
+      <section>
+        <Badge variant='status' color='success'>
+          성공
+        </Badge>
+        <Badge variant='status' color='danger'>
+          실패
+        </Badge>
+        <div style={{ position: 'relative', display: 'inline-block' }}>
+          <IconButton
+            color='secondary'
+            size='sm'
+            variant='soft'
+            shape='rounded'
+            icon={<Icon name='bell' />}
+          />
+          <Badge variant='count' color='danger' overlap ariaLabel='새 알림 9개'>
+            9
+          </Badge>
+        </div>
+      </section>
+      <section>
+        {chipList.map(chip => (
+          <Chip
+            key={chip.id}
+            label={chip.label}
+            onDelete={() => handleDelete(chip.id)} // 핸들러 연결
+          />
+        ))}
+      </section>
+      <section>
+        <Breadcrumbs items={breadcrumbData} separator='/' />
       </section>
       <section style={{ marginBottom: '20px' }}>
         <SegmentedControl

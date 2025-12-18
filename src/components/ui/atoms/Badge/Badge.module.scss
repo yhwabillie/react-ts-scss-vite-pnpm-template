@@ -1,0 +1,55 @@
+/* Badge.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-weight: 600;
+  white-space: nowrap;
+
+  // 1. 상태형: 텍스트 가독성 중심
+  &.status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+
+  // 2. 수치형: 숫자/알림 중심
+  &.count {
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 10px;
+    font-size: 11px;
+  }
+
+  // 겹치기 스타일 (아이콘 우측 상단 배치용)
+  &.overlap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+
+  // 색상 테마 (예시)
+  &.primary {
+    background-color: #e7f5ff;
+    color: #228be6;
+  }
+  &.success {
+    background-color: #ebfbee;
+    color: #40c057;
+  } // 활성
+  &.danger {
+    background-color: #fff5f5;
+    color: #fa5252;
+  } // 비활성/오류
+  &.gray {
+    background-color: #f1f3f5;
+    color: #868e96;
+  }
+}
