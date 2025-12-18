@@ -1,0 +1,57 @@
+/* Tooltip.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.tooltip {
+  position: absolute; // Portal 사용 시 필수
+  z-index: 9999;
+  padding: 8px 12px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+
+  &.simple {
+    white-space: nowrap;
+  }
+  &.rich {
+    width: 240px;
+    white-space: normal;
+    line-height: 1.5;
+  }
+
+  .arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+  }
+
+  &.top .arrow {
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: #333;
+  }
+  &.bottom .arrow {
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-color: #333;
+  }
+  &.left .arrow {
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left-color: #333;
+  }
+  &.right .arrow {
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-right-color: #333;
+  }
+}

@@ -55,6 +55,9 @@ import Breadcrumbs from './components/ui/molecules/Breadcrumb/Breadcrumb';
 import Chip from './components/ui/molecules/Chip/Chip';
 import Badge from './components/ui/atoms/Badge/Badge';
 import Tag from './components/ui/atoms/Tag/Tag';
+import Tooltip from './components/ui/atoms/Tooltip/Tooltip';
+import Avatar from './components/ui/molecules/Avatar/Avatar';
+import ProfilePopover from './components/ui/organisms/ProfilePopover/ProfilePopover';
 
 // 타입 정의
 type DisplayLevel = 'd1' | 'd2' | 'd3';
@@ -560,6 +563,14 @@ function App() {
     setChipList(prev => prev.filter(chip => chip.id !== id));
   };
 
+  // profile popover
+  const currentUser = {
+    name: '김테크',
+    email: 'tech_kim@company.com',
+    role: 'Admin',
+    image: '/images/profile.png',
+  };
+
   return (
     <>
       <section ref={tableRef} style={{ padding: '30px' }}>
@@ -586,6 +597,92 @@ function App() {
           // 모바일 기기 감지 로직이나 창 너비에 따라 true/false 전달
           isMobileUI={isMobile}
         />
+      </section>
+      <nav>
+        {/* 아바타를 클릭하면 프로필 카드가 나타남 */}
+        <ProfilePopover
+          userData={currentUser}
+          trigger={
+            <Avatar
+              src={currentUser.image}
+              alt={`${currentUser.name}님의 프로필`}
+              status='online'
+              size='md'
+            />
+          }
+        />
+      </nav>
+      <section>
+        {/* 1. 이미지와 상태가 있는 경우 */}
+        <Avatar src='/path/user.jpg' alt='박지성 님의 프로필 사진' status='online' size='lg' />
+
+        {/* 2. 이미지가 없어 이름 이니셜로 대체되는 경우 */}
+        <Avatar alt='김철수 님의 프로필 사진' name='김철수' size='md' />
+
+        {/* 3. 데이터 테이블 내 작은 아바타 */}
+        <Avatar src='/path/user.jpg' alt='박지성 님의 프로필 사진' size='sm' />
+      </section>
+      <section>
+        <div style={{ display: 'flex', gap: '20px' }}>
+          {/* 오른쪽에 고정 */}
+          <Tooltip id='info-right' content='오른쪽 설명' preferredPosition='right'>
+            <button>오른쪽</button>
+          </Tooltip>
+
+          {/* 왼쪽에 고정 */}
+          <Tooltip id='info-left' content='왼쪽 설명' preferredPosition='left'>
+            <button>왼쪽</button>
+          </Tooltip>
+
+          <Tooltip
+            id='tooltip-top'
+            content='위쪽으로 고정된 툴팁입니다.'
+            preferredPosition='top' // ✅ 이 부분을 추가하면 항상 위로 뜹니다.
+          >
+            <button type='button'>마우스 올려보세요</button>
+          </Tooltip>
+
+          {/* 아래쪽에 고정 */}
+          <Tooltip id='info-bottom' content='아래쪽 설명' preferredPosition='bottom'>
+            <button>아래쪽</button>
+          </Tooltip>
+
+          <Tooltip
+            id='complex-info'
+            variant='rich'
+            content={
+              <div style={{ padding: '4px' }}>
+                <strong style={{ display: 'block', marginBottom: '4px' }}>
+                  비밀번호 보안 등급
+                </strong>
+                {/* 1. 의미 있는 목록 구조 제공 */}
+                <ul style={{ margin: 0, paddingLeft: '16px', fontSize: '11px' }}>
+                  <li>영문 대소문자 포함</li>
+                  <li>특수문자 (!@#$) 포함</li>
+                  <li>8자 이상 16자 이하</li>
+                </ul>
+              </div>
+            }
+          >
+            {/* 2. span 대신 button 사용 (가장 권장되는 접근성 방식) */}
+            <button
+              type='button'
+              style={{
+                cursor: 'help',
+                textDecoration: 'underline',
+                background: 'none',
+                border: 'none',
+                padding: 0,
+                font: 'inherit',
+                color: 'inherit',
+              }}
+              // 스크린 리더에게 이것이 도움말 버튼임을 알림
+              aria-label='비밀번호 보안 등급 도움말 보기'
+            >
+              보안 안내
+            </button>
+          </Tooltip>
+        </div>
       </section>
       <section>
         <Tag href='/search?q=React' color='primary' icon='#'>
