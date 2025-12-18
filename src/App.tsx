@@ -26,7 +26,7 @@ import {
 } from './components/ui/molecules/Combobox/Combobox.mock';
 import { selectboxOptions } from './components/ui/molecules/Selectbox/Selectbox.mock';
 import Searchbar from './components/ui/molecules/Searchbar/Searchbar';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { searchbarOptions } from './components/ui/molecules/Searchbar/Searchbar.mock';
 import LanguageSelector from './components/ui/molecules/LanguageSelector/LanguageSelector';
 import { languageSelectorOptions } from './components/ui/molecules/LanguageSelector/LanguageSelector.mock';
@@ -43,6 +43,13 @@ import ModalProvider from './components/ui/molecules/Modal/ModalProvider';
 import { ModalContext } from './components/contexts/ModalContext';
 import FilePicker from './components/ui/organisms/FilePicker/FilePicker';
 import { useFilePicker } from './components/hooks/useFilePicker';
+import Accordion from './components/ui/molecules/Accordion/Accordion';
+import Tabs from './components/ui/molecules/Tabs/Tabs';
+import SegmentedControl from './components/ui/molecules/SegmentedControl/SegmentedControl';
+import DataTable, {
+  type SortOrder,
+  type SortState,
+} from './components/ui/organisms/DataTable/DataTable';
 
 // 타입 정의
 type DisplayLevel = 'd1' | 'd2' | 'd3';
@@ -150,6 +157,48 @@ const FilePickerContainer = () => {
   );
 };
 
+const accordionData = [
+  {
+    title: 'Depth1',
+    content: '내용',
+    children: [
+      {
+        title: 'Depth2',
+        content: '내용',
+        children: [
+          {
+            title: 'Depth3',
+            content: '내용',
+            children: [
+              {
+                title: 'Depth4',
+                content: '내용',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+// 1. 탭에 들어갈 데이터 정의
+const tabData = [
+  {
+    title: 'TAB-1',
+    content: <p>탭 1 내용</p>,
+  },
+  {
+    title: 'TAB-2',
+    content: <p>탭 2 내용</p>,
+  },
+  { title: 'TAB-3', content: <p>탭 3 내용</p> },
+  { title: 'TAB-4', content: <p>탭 4 내용</p> },
+  { title: 'TAB-5', content: <p>탭 5 내용</p> },
+  { title: 'TAB-6', content: <p>탭 6 내용</p> },
+  { title: 'TAB-7', content: <p>탭 7 내용</p> },
+];
+
 function App() {
   // -----------------------------
   // 📌 상태 선언
@@ -233,12 +282,200 @@ function App() {
     });
   };
 
+  // 1. 선택된 값을 관리할 상태 생성
+  const [viewType, setViewType] = useState('popular');
+
+  // 2. 세그먼트에 표시할 옵션 배열 정의
+  const viewOptions = [
+    { label: '최신순', value: 'latest' },
+    { label: '인기순', value: 'popular' },
+    { label: '가격순', value: 'price' },
+  ];
+
+  // data table
+  const pxToRem = (px: number) => `${px / 16}rem`;
+
+  type UserStatus = '활성' | '비활성';
+  interface UserData {
+    id: number;
+    title: string;
+    file?: boolean;
+    author: string;
+    createdAt?: string;
+    likes?: number;
+    status?: UserStatus;
+    commentCount?: number;
+    viewCount?: number;
+  }
+
+  const columns = [
+    {
+      key: 'id',
+      header: '번호',
+      width: pxToRem(80),
+      sortable: true,
+    },
+    {
+      key: 'title',
+      header: '제목',
+      render: (value: string, row: UserData) => (
+        <a href={`/users/${row.id}`} className='table-link'>
+          {value}
+          <span>[{row.commentCount}]</span>
+        </a>
+      ),
+      minWidth: pxToRem(200),
+    },
+    {
+      key: 'file',
+      header: '파일',
+      width: pxToRem(80),
+      render: (value: boolean) => value && <i>파일</i>,
+      sortable: true,
+    },
+    {
+      key: 'author',
+      header: '작성자',
+      width: pxToRem(120),
+    },
+    {
+      key: 'createdAt',
+      header: '작성일',
+      width: pxToRem(120),
+      sortable: true,
+    },
+    {
+      key: 'likes',
+      header: '추천',
+      width: pxToRem(80),
+      sortable: true,
+    },
+    {
+      key: 'status',
+      header: '처리 상태',
+      width: pxToRem(120),
+      sortable: true,
+    },
+    {
+      key: 'viewCount',
+      header: '조회수',
+      width: pxToRem(80),
+      sortable: true,
+    },
+  ];
+
+  const data: UserData[] = [
+    {
+      id: 1,
+      title: '제목',
+      file: true,
+      author: '홍길동',
+      createdAt: '2025.12.18',
+      likes: 10,
+      status: '비활성',
+      commentCount: 100,
+      viewCount: 12,
+    },
+    {
+      id: 2,
+      title: '제목',
+      file: false,
+      author: '김철수',
+      createdAt: '2025.12.18',
+      likes: 10,
+      status: '활성',
+      commentCount: 30,
+      viewCount: 1,
+    },
+    {
+      id: 3,
+      title: '제목',
+      file: true,
+      author: '박수미',
+      createdAt: '2025.12.11',
+      likes: 10,
+      status: '활성',
+      commentCount: 30,
+      viewCount: 1,
+    },
+  ];
+
+  // sort
+  const [sortState, setSortState] = useState<SortState>({ key: '', order: 'none' });
+
+  // 2. 정렬된 데이터를 메모이제이션 (성능 최적화)
+  const sortedData = useMemo(() => {
+    if (sortState.order === 'none' || !sortState.key) return data;
+
+    return [...data].sort((a, b) => {
+      const key = sortState.key as keyof UserData;
+      const aValue = a[key] ?? '';
+      const bValue = b[key] ?? '';
+
+      if (aValue === bValue) return 0;
+
+      const multiplier = sortState.order === 'asc' ? 1 : -1;
+      return aValue < bValue ? -multiplier : multiplier;
+    });
+  }, [sortState, data]); // sortState나 data가 바뀔 때만 다시 계산
+
+  const handleSort = (key: string, order: SortOrder) => {
+    setSortState({ key, order });
+  };
+
+  // selection
+  const [selectedRows, setSelectedRows] = useState<Set<number | string>>(new Set());
+
+  // 개별 선택 로직
+  const handleSelectRow = (id: number | string) => {
+    const newSelected = new Set(selectedRows);
+    if (newSelected.has(id)) newSelected.delete(id);
+    else newSelected.add(id);
+    setSelectedRows(newSelected);
+  };
+
+  // 전체 선택 로직
+  const handleSelectAll = (isAll: boolean) => {
+    if (isAll) setSelectedRows(new Set(data.map(row => row.id)));
+    else setSelectedRows(new Set());
+  };
+
   return (
     <>
+      <section style={{ margin: '30px' }}>
+        <DataTable
+          columns={columns}
+          data={sortedData} // 정렬된 데이터 전달
+          sortState={sortState}
+          onSort={handleSort}
+          caption='사용자 계정 관리 목록'
+          summary='사용자의 번호, 이름, 역할, 상태 정보를 제공하는 표입니다.'
+          // 체크박스 사용 여부 결정
+          showCheckbox={true}
+          selectedRows={selectedRows}
+          onSelectRow={handleSelectRow}
+          onSelectAll={handleSelectAll}
+        />
+      </section>
+      <section style={{ marginBottom: '20px' }}>
+        <SegmentedControl
+          name='view-mode' // 라디오 그룹 이름 (고유해야 함)
+          options={viewOptions}
+          selectedValue={viewType}
+          onChange={value => setViewType(value)} // 상태 업데이트
+        />
+      </section>
+      <section style={{ width: '500px', margin: 'auto' }}>
+        <Tabs items={tabData} defaultIndex={0} />
+      </section>
+      <section>
+        {accordionData.map(item => (
+          <Accordion key={item.title} {...item} />
+        ))}
+      </section>
       <section>
         <FilePickerContainer />
       </section>
-
       <section style={{ margin: '40px' }}>
         <Button
           color='danger'
