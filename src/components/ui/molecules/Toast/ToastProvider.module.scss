@@ -1,0 +1,70 @@
+/* ToastProvider.module.scss */
+@use 'sass:map';
+@use '../../../../styles/mixins' as *;
+
+.toastContainer {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+  padding: 20px;
+
+  & > * {
+    pointer-events: auto;
+  }
+
+  /* 상단 설정 */
+  &.top-left {
+    top: 0;
+    left: 0;
+    align-items: flex-start;
+  }
+  &.top-center {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+  }
+  &.top-right {
+    top: 0;
+    right: 0;
+    align-items: flex-end;
+  }
+
+  /* 하단 설정 */
+  &.bottom-left {
+    bottom: 0;
+    left: 0;
+    align-items: flex-start;
+    flex-direction: column-reverse;
+  }
+  &.bottom-center {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+  &.bottom-right {
+    bottom: 0;
+    right: 0;
+    align-items: flex-end;
+    flex-direction: column-reverse;
+  }
+
+  /* ✅ 모바일 웹 표준: 작은 화면에서는 접근성을 위해 하단 중앙으로 고정 */
+  @media (max-width: 768px) {
+    top: auto !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    width: 100%;
+    max-width: 400px;
+    align-items: center !important;
+    flex-direction: column-reverse;
+    padding: 16px;
+  }
+}

@@ -1,0 +1,98 @@
+/* Toast.module.scss */
+@use 'sass:map';
+@use '../../../../styles/mixins' as *;
+
+.toast {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 300px;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: #333; // 어두운 테마 기본
+  color: #fff;
+  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+
+  // ✅ KWCAG: 명도 대비 및 상태 구별
+  &.success {
+    border-left: 6px solid #2e7d32;
+    background-color: #1b1b1b;
+  }
+  &.error {
+    border-left: 6px solid #d32f2f;
+    background-color: #1b1b1b;
+  }
+
+  // ✅ 윈도우 고대비 모드 대응
+  @media (forced-colors: active) {
+    border: 2px solid CanvasText;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+}
+
+.orderBadge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #000;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 1px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.message {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    outline: 2px solid #fff; // 키보드 포커스 시각화
+  }
+}
+
+.progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 100%;
+  animation: shrink linear forwards;
+}
+
+@keyframes shrink {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}

@@ -60,6 +60,7 @@ import Avatar from './components/ui/molecules/Avatar/Avatar';
 import ProfilePopover from './components/ui/organisms/ProfilePopover/ProfilePopover';
 import Slider from './components/ui/atoms/Slider/Slider';
 import Skeleton from './components/ui/atoms/Skeleton/Skeleton';
+import { useToast } from './components/ui/molecules/Toast/ToastProvider';
 
 // 타입 정의
 type DisplayLevel = 'd1' | 'd2' | 'd3';
@@ -583,6 +584,48 @@ function App() {
   // slider
   const [volume, setVolume] = useState(50);
 
+  // Toast
+  const { addToast } = useToast();
+  const [count, setCount] = useState(1); // 테스트용 카운터
+
+  const handleSubmit = () => {
+    // 1. 즉시 발생 (startCount)
+    setTimeout(() => {
+      addToast(`워닝 메시지입니다`, 'warning');
+    });
+
+    // 2. 1초 뒤 발생 (startCount + 1)
+    setTimeout(() => {
+      addToast(`워닝 메시지입니다`, 'warning');
+    }, 1000);
+
+    // 3. 2초 뒤 발생 (startCount + 2)
+    setTimeout(() => {
+      addToast(`정보 메시지입니다`, 'info');
+    }, 2000);
+
+    // 4. 3초 뒤 발생 (startCount + 3)
+    setTimeout(() => {
+      addToast(`정보 메시지입니다`, 'info');
+    }, 3000);
+
+    // 다음 테스트를 위해 전체 count 상태 업데이트
+    setCount(prev => prev + 4);
+  };
+
+  useEffect(() => {
+    // ✅ 3000ms(3초) 대기 후에 addToast를 실행합니다.
+    const timer = setTimeout(() => {
+      addToast('게시글이 등록되었습니다.', 'success', undefined, {
+        text: '확인하러 가기',
+        url: '/post/123',
+      });
+    }, 3000);
+
+    // 컴포넌트가 언마운트될 때 타이머를 정리(Cleanup)해주는 것이 안전합니다.
+    return () => clearTimeout(timer);
+  }, [addToast]);
+
   return (
     <>
       <section ref={tableRef} style={{ padding: '30px' }}>
@@ -611,6 +654,11 @@ function App() {
           // 모바일 기기 감지 로직이나 창 너비에 따라 true/false 전달
           isMobileUI={isMobile}
         />
+      </section>
+      <section>
+        <button type='button' onClick={handleSubmit}>
+          Toast
+        </button>
       </section>
       <section style={{ margin: '30px', width: '200px' }}>
         <Skeleton variant='text' width='50%' />
