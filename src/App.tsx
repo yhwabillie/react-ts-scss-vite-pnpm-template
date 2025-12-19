@@ -613,18 +613,18 @@ function App() {
     setCount(prev => prev + 4);
   };
 
-  useEffect(() => {
-    // ✅ 3000ms(3초) 대기 후에 addToast를 실행합니다.
-    const timer = setTimeout(() => {
-      addToast('게시글이 등록되었습니다.', 'success', undefined, {
-        text: '확인하러 가기',
-        url: '/post/123',
-      });
-    }, 3000);
+  // useEffect(() => {
+  //   // ✅ 3000ms(3초) 대기 후에 addToast를 실행합니다.
+  //   const timer = setTimeout(() => {
+  //     addToast('게시글이 등록되었습니다.', 'success', undefined, {
+  //       text: '확인하러 가기',
+  //       url: '/post/123',
+  //     });
+  //   }, 3000);
 
-    // 컴포넌트가 언마운트될 때 타이머를 정리(Cleanup)해주는 것이 안전합니다.
-    return () => clearTimeout(timer);
-  }, [addToast]);
+  //   // 컴포넌트가 언마운트될 때 타이머를 정리(Cleanup)해주는 것이 안전합니다.
+  //   return () => clearTimeout(timer);
+  // }, [addToast]);
 
   return (
     <>

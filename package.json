@@ -12,6 +12,8 @@
     "lint:css:fix": "stylelint 'src/**/*.{css,scss}' --fix --allow-empty-input",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -23,33 +25,40 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^4.1.2",
+    "@chromatic-com/storybook": "^4.1.3",
     "@eslint/js": "^9.39.1",
-    "@storybook/addon-a11y": "^10.0.7",
-    "@storybook/addon-docs": "^10.0.7",
-    "@storybook/addon-vitest": "^10.0.7",
-    "@storybook/react-vite": "^10.0.7",
+    "@storybook/addon-a11y": "10.1.10",
+    "@storybook/addon-console": "^3.0.0",
+    "@storybook/addon-docs": "10.1.10",
+    "@storybook/addon-themes": "10.1.10",
+    "@storybook/addon-vitest": "10.1.10",
+    "@storybook/react-vite": "10.1.10",
+    "@storybook/test-runner": "^0.24.2",
     "@types/node": "^24.10.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@typescript-eslint/eslint-plugin": "^8.46.4",
     "@typescript-eslint/parser": "^8.46.4",
     "@vitejs/plugin-react": "^5.1.0",
-    "@vitest/browser-playwright": "^4.0.9",
+    "@vitest/browser": "^4.0.16",
+    "@vitest/browser-playwright": "^4.0.16",
     "@vitest/coverage-v8": "^4.0.9",
+    "@vitest/ui": "4.0.16",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
-    "eslint-plugin-storybook": "^10.0.7",
+    "eslint-plugin-storybook": "^10.1.10",
     "globals": "^16.5.0",
     "husky": "^8.0.0",
     "lint-staged": "^16.2.6",
+    "msw": "^2.12.4",
+    "msw-storybook-addon": "^2.0.6",
     "playwright": "^1.56.1",
     "prettier": "^3.6.2",
     "sass-embedded": "^1.93.3",
-    "storybook": "^10.0.7",
+    "storybook": "10.1.10",
     "stylelint": "^16.25.0",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recommended-scss": "^16.0.2",
@@ -61,6 +70,11 @@
     "typescript-eslint": "^8.46.3",
     "vite": "^7.2.2",
     "vite-plugin-svgr": "^4.5.0",
-    "vitest": "^4.0.9"
+    "vitest": "^4.0.16"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

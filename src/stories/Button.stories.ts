@@ -19,7 +19,9 @@ const meta = {
     backgroundColor: { control: 'color' },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
-  args: { onClick: fn() },
+  args: {
+    onClick: fn(() => {}),
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -30,6 +32,9 @@ export const Primary: Story = {
   args: {
     primary: true,
     label: 'Button',
+    onClick: fn(() => {
+      console.log('클릭 데이터:');
+    }),
   },
 };
 
@@ -48,7 +53,7 @@ export const Large: Story = {
 
 export const Small: Story = {
   args: {
-    size: 'small',
+    size: 'medium',
     label: 'Button',
   },
 };
