@@ -7,8 +7,9 @@ const config: StorybookConfig = {
     '@chromatic-com/storybook',
     '@storybook/addon-docs',
     '@storybook/addon-a11y',
-    '@storybook/addon-vitest', // ✅ 추가
+    '@storybook/addon-vitest',
     '@storybook/addon-themes',
+    'storybook-react-i18next',
   ],
   framework: {
     name: '@storybook/react-vite',
