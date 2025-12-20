@@ -1,0 +1,28 @@
+/* FilePicker.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.file-picker {
+  :global(.head) {
+    :global(.title) {
+    }
+    :global(.desc) {
+    }
+  }
+
+  :global(.dropzone) {
+    background-color: lightcoral;
+    transition:
+      border-color 0.15s ease,
+      background-color 0.15s ease;
+
+    &:global(.is-dragging) {
+      background-color: blue;
+    }
+  }
+
+  :global(.file-list) {
+    background-color: bisque;
+  }
+}

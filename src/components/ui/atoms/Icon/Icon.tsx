@@ -19,6 +19,13 @@ import GlobeIcon from '@/assets/icons/icon-globe.svg?react';
 import CalendarIcon from '@/assets/icons/icon-calendar.svg?react';
 import ChevronLeftIcon from '@/assets/icons/icon-chevron-left.svg?react';
 import ChevronRightIcon from '@/assets/icons/icon-chevron-right.svg?react';
+import UploadIcon from '@/assets/icons/icon-upload.svg?react';
+import FileDocIcon from '@/assets/icons/icon-file-doc.svg?react';
+import FileImageIcon from '@/assets/icons/icon-file-image.svg?react';
+import FileVideoIcon from '@/assets/icons/icon-file-video.svg?react';
+import FileZipIcon from '@/assets/icons/icon-file-zip.svg?react';
+import HouseIcon from '@/assets/icons/icon-house.svg?react';
+import BellIcon from '@/assets/icons/icon-bell.svg?react';
 
 const iconMap = {
   search: SearchIcon,
@@ -39,6 +46,13 @@ const iconMap = {
   calendar: CalendarIcon,
   'chevron-left': ChevronLeftIcon,
   'chevron-right': ChevronRightIcon,
+  upload: UploadIcon,
+  'file-doc': FileDocIcon,
+  'file-image': FileImageIcon,
+  'file-video': FileVideoIcon,
+  'file-zip': FileZipIcon,
+  house: HouseIcon,
+  bell: BellIcon,
   // 다른 아이콘들도 여기에 추가
 };
 
@@ -71,6 +85,19 @@ export const Icon: React.FC<IconProps> = ({
 }) => {
   const SvgIcon = iconMap[name]; // name에 맞는 아이콘 가져오기
   if (!SvgIcon) return null;
+
+  // ✅ 추가: SvgIcon이 컴포넌트(함수)가 아니라 문자열(경로)일 경우 처리
+  if (typeof SvgIcon === 'string') {
+    const dimensionProps = size ? { width: ICON_SIZES[size], height: ICON_SIZES[size] } : {};
+    return (
+      <img
+        src={SvgIcon}
+        alt={name}
+        style={{ ...dimensionProps }}
+        {...(props as React.ImgHTMLAttributes<HTMLImageElement>)}
+      />
+    );
+  }
 
   // size가 지정되었을 때만 width/height 적용
   const dimensionProps = size ? { width: ICON_SIZES[size], height: ICON_SIZES[size] } : {};

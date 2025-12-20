@@ -1,0 +1,66 @@
+/* Accordion.module.scss */
+@use 'sass:map';
+@use '../../../../styles/mixins' as *;
+
+.accordion {
+  width: 100%;
+  border-bottom: 1px solid #eee;
+
+  .accordion-header {
+    margin: 0;
+  }
+
+  .accordion-trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-weight: bold;
+
+    &:hover {
+      background-color: #f8f9fa;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #007bff;
+      outline-offset: -2px;
+    }
+  }
+
+  .icon {
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+    &.rotate {
+      transform: rotate(180deg);
+    }
+  }
+
+  .accordion-panel {
+    background-color: #fff;
+    .content-inner {
+      padding: 1rem;
+      color: #444;
+      line-height: 1.6;
+    }
+  }
+
+  // 2depth 전용 스타일
+  &.nested {
+    border-bottom: none;
+    margin-top: 4px;
+    border-left: 2px solid #ddd; // 계층을 시각적으로 연결
+    margin-left: 1rem;
+
+    .accordion-trigger {
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      font-weight: normal;
+      background-color: #fafafa;
+    }
+  }
+}

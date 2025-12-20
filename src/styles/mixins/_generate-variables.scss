@@ -73,7 +73,13 @@
     }
 
     $weights: fn.ensure-list(map.get($style, font-weight));
-    $tablet-size-raw: if(map.has-key($style, tablet-size), map.get($style, tablet-size), null);
+
+    // ✅ if() 함수 대신 @if 문으로 안전하게 할당
+    $tablet-size-raw: null;
+    @if map.has-key($style, tablet-size) {
+      $tablet-size-raw: map.get($style, tablet-size);
+    }
+
     @if not $tablet-size-raw {
       @continue;
     }
@@ -103,7 +109,14 @@
     }
 
     $weights: fn.ensure-list(map.get($style, font-weight));
-    $mobile-size-raw: if(map.has-key($style, mobile-size), map.get($style, mobile-size), null);
+
+    // ✅ 수정된 부분: if() 함수를 제거하고 @if 문으로 할당
+    $mobile-size-raw: null;
+    @if map.has-key($style, mobile-size) {
+      $mobile-size-raw: map.get($style, mobile-size);
+    }
+
+    // mobile-size가 없으면 다음 루프로 넘어감
     @if not $mobile-size-raw {
       @continue;
     }

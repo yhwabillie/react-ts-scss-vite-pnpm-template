@@ -1,0 +1,69 @@
+/* Tabs.module.scss */
+@use 'sass:map';
+@use '../../../../styles/mixins' as *;
+
+.tabs-container {
+  width: 100%;
+
+  .tab-controls-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden; // 화살표가 영역 밖으로 나가지 않게
+  }
+
+  .tab-list-viewport {
+    overflow-x: auto;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    scroll-behavior: smooth;
+    width: 100%;
+  }
+
+  .tab-list {
+    display: inline-flex;
+    white-space: nowrap;
+    padding: 0 40px; // 화살표 버튼 자리를 미리 확보
+  }
+
+  .scroll-button {
+    // 실제 disabled가 아니므로 [aria-disabled="true"]로 스타일 제어
+    &[aria-disabled='true'] {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none; // 클릭 방지
+      cursor: default;
+    }
+
+    // 포커스가 갔을 때는 사용자에게 보여야 하므로 강제 노출
+    &:focus-visible {
+      outline: 2px solid #000;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+  }
+
+  .tab-button {
+    padding: 15px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #666;
+    font-weight: 500;
+
+    &.active {
+      color: #000;
+      box-shadow: inset 0 -2px 0 #000; // 밑줄
+    }
+  }
+
+  .tab-panel {
+    padding: 20px 0;
+    &:focus {
+      outline: none;
+    }
+  }
+}

@@ -1,5 +1,3 @@
-import { Button } from '@/stories/Button';
-
 type User = {
   name: string;
 };
@@ -11,7 +9,7 @@ export interface HeaderProps {
   onCreateAccount?: () => void;
 }
 
-export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => (
+export const Header = () => (
   <header>
     <div className='storybook-header'>
       <div>
@@ -34,7 +32,7 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps
         <h1>Acme</h1>
       </div>
       <div>
-        {user ? (
+        {/* {user ? (
           <>
             <span className='welcome'>
               Welcome, <b>{user.name}</b>!
@@ -46,7 +44,7 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps
             <Button size='small' onClick={onLogin} label='Log in' />
             <Button primary size='small' onClick={onCreateAccount} label='Sign up' />
           </>
-        )}
+        )} */}
       </div>
     </div>
   </header>

@@ -1,0 +1,66 @@
+/* Searchbar.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.segment-container {
+  display: flex;
+  position: relative;
+  background-color: #f1f3f5;
+  border-radius: 8px;
+  padding: 2px;
+  width: fit-content;
+  min-width: 200px;
+}
+
+.segment-item {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.segment-input {
+  // 실제 input은 숨기되, 포커스는 잡히도록 설정
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+
+  // 키보드 포커스 시각화
+  &:focus-visible + .segment-label {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+.segment-label {
+  display: block;
+  padding: 8px 16px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #868e96;
+  transition: color 0.2s;
+
+  &.active {
+    color: #212529;
+  }
+}
+
+.segment-indicator {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 0;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  z-index: 0;
+}
