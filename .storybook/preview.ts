@@ -1,11 +1,14 @@
+import { spyOn } from 'storybook/test';
 import type { Preview } from '@storybook/react-vite';
 import { withThemeByClassName } from '@storybook/addon-themes';
 import { initialize, mswLoader } from 'msw-storybook-addon';
 import '@/styles/_index.scss';
 import i18n from '../src/i18n';
 
-// 1. MSW 초기화
-initialize();
+// 1. MSW 초기화 설정 변경
+initialize({
+  onUnhandledRequest: 'bypass',
+});
 
 export const globalTypes = {
   locale: {
@@ -72,3 +75,15 @@ const preview: Preview = {
 };
 
 export default preview;
+
+export const beforeEach = function beforeEach() {
+  spyOn(console, 'log').mockName('console.log');
+  spyOn(console, 'warn').mockName('console.warn');
+  spyOn(console, 'error').mockName('console.error');
+  spyOn(console, 'info').mockName('console.info');
+  spyOn(console, 'debug').mockName('console.debug');
+  spyOn(console, 'trace').mockName('console.trace');
+  spyOn(console, 'count').mockName('console.count');
+  spyOn(console, 'dir').mockName('console.dir');
+  spyOn(console, 'assert').mockName('console.assert');
+};

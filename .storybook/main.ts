@@ -9,6 +9,7 @@ const config: StorybookConfig = {
     '@storybook/addon-vitest',
     '@storybook/addon-themes',
     'storybook-react-i18next',
+    'storybook-addon-pseudo-states'
   ],
   framework: {
     name: '@storybook/react-vite',

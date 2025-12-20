@@ -5,8 +5,9 @@ import clsx from 'clsx';
 import { mergeRefs } from '@/utils/option/mergeRefs';
 import { ModalContext } from '@/components/contexts/ModalContext';
 
+// 1. 공통 스타일 Props 정의
 type BaseProps = {
-  variant: 'solid' | 'outline' | 'ghost' | 'soft';
+  variant?: 'solid' | 'outline' | 'ghost' | 'soft';
   color?:
     | 'primary'
     | 'secondary'
@@ -16,94 +17,101 @@ type BaseProps = {
     | 'success'
     | 'warning'
     | 'danger';
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  shape: 'rounded' | 'square' | 'pill';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  shape?: 'square' | 'rounded' | 'pill';
   children?: React.ReactNode;
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   startSpinner?: React.ReactNode;
   endSpinner?: React.ReactNode;
+  fullWidth?: boolean;
   className?: string;
 };
 
-/** <button> 전용 Props */
-type ButtonProps = BaseProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
+// 2. 다형성 지원을 위한 제네릭 타입 정의
+type PolymorphicButtonProps<T extends React.ElementType> = BaseProps & {
+  as?: T;
+} & Omit<React.ComponentPropsWithoutRef<T>, keyof BaseProps | 'as'>;
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      color,
-      size,
-      variant,
-      shape,
-      children,
-      startIcon,
-      endIcon,
-      startSpinner,
-      endSpinner,
-      className,
-      ...props
-    },
-    ref,
-  ) => {
-    const { openModal, registerTrigger } = useContext(ModalContext);
+// 3. forwardRef의 타입 한계를 극복하기 위한 컴포넌트 전체 타입 선언
+// 이 타입이 외부에서 사용할 때 정확한 속성(href 등)을 추론하게 해줍니다.
+type ButtonComponent = <T extends React.ElementType = 'button'>(
+  props: PolymorphicButtonProps<T> & { ref?: React.ComponentPropsWithRef<T>['ref'] },
+) => React.ReactElement | null;
 
-    // 1. 실제 DOM 요소에 접근할 내부 Ref (객체 형태 유지)
-    const internalRef = useRef<HTMLButtonElement>(null);
+// 4. 내부 구현 (ButtonInner)
+// 내부에서는 타입을 조금 느슨하게(any) 처리하여 forwardRef와의 충돌을 피합니다.
+const ButtonInner = (
+  {
+    as,
+    color = 'primary',
+    size = 'md',
+    variant = 'solid',
+    shape = 'rounded',
+    children,
+    startIcon,
+    endIcon,
+    startSpinner,
+    endSpinner,
+    fullWidth,
+    className,
+    ...props
+  }: PolymorphicButtonProps<React.ElementType>,
+  ref: React.ForwardedRef<any>,
+) => {
+  const { openModal } = useContext(ModalContext);
+  const Component = as || 'button';
 
-    // 2. 외부에서 전달된 ref와 내부 ref 병합 (DOM 연결용 함수)
-    const combinedRef = mergeRefs(ref, internalRef);
+  // 실제 DOM 접근을 위한 내부 ref
+  const internalRef = useRef<HTMLElement>(null);
+  const combinedRef = mergeRefs(ref, internalRef);
 
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-      const modalType = e.currentTarget.getAttribute('data-modal');
-      const modalConfigStr = e.currentTarget.getAttribute('data-modal-config');
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+    const modalType = e.currentTarget.getAttribute('data-modal');
+    const modalConfigStr = e.currentTarget.getAttribute('data-modal-config');
 
-      if (modalType) {
-        // 이제 여기서 registerTrigger를 일일이 호출하지 않아도
-        // ModalProvider의 openModal 안에서 document.activeElement로 잡아냅니다.
-
-        let config = {};
-        if (modalConfigStr) {
-          try {
-            config = JSON.parse(modalConfigStr);
-          } catch (err) {
-            console.error(err);
-          }
-        }
-
-        if (!props.onClick) {
-          openModal(modalType, config);
+    if (modalType) {
+      let config = {};
+      if (modalConfigStr) {
+        try {
+          config = JSON.parse(modalConfigStr);
+        } catch (err) {
+          console.error('Modal config parse error:', err);
         }
       }
+      if (!props.onClick) {
+        openModal(modalType, config);
+      }
+    }
 
-      // 커스텀 onClick 실행 (연쇄 모달 버튼은 이리로 들어옵니다)
-      props.onClick?.(e);
-    };
+    (props.onClick as React.MouseEventHandler<HTMLElement>)?.(e);
+  };
 
-    return (
-      <button
-        ref={combinedRef}
-        // [개선] {...props}를 위로 올리고 onClick을 아래에 두어
-        // 외부에서 들어오는 onClick이 handleClick을 덮어쓰지 않도록 보호합니다.
-        {...props}
-        className={clsx(
-          styles['btn'], // 기본 클래스
-          styles[`variant--${variant}`], // 모듈 방식이라면 이렇게 접근하거나
-          `variant--${variant} color--${color} size--${size} shape--${shape}`, // 전역 방식
-          className,
-        )}
-        onClick={handleClick}
-      >
-        {startSpinner}
-        {startIcon}
-        <span className={styles['btn-label']}>{children}</span>
-        {endIcon}
-        {endSpinner}
-      </button>
-    );
-  },
-);
+  return (
+    <Component
+      ref={combinedRef}
+      {...props}
+      className={clsx(
+        styles['btn'],
+        styles[`variant--${variant}`],
+        `variant--${variant} color--${color} size--${size} shape--${shape}`,
+        fullWidth && 'is-full',
+        className,
+      )}
+      onClick={handleClick}
+    >
+      {startSpinner}
+      {startIcon}
+      <span className={styles['btn-label']}>{children}</span>
+      {endIcon}
+      {endSpinner}
+    </Component>
+  );
+};
 
-Button.displayName = 'Button';
+// 5. ✅ 최종 내보내기: 구현체에 강제로 타입을 매핑
+const Button = forwardRef(ButtonInner) as ButtonComponent;
+
+(Button as any).displayName = 'Button';
 
 export default Button;

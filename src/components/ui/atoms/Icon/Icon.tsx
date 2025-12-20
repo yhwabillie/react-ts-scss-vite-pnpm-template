@@ -86,6 +86,19 @@ export const Icon: React.FC<IconProps> = ({
   const SvgIcon = iconMap[name]; // name에 맞는 아이콘 가져오기
   if (!SvgIcon) return null;
 
+  // ✅ 추가: SvgIcon이 컴포넌트(함수)가 아니라 문자열(경로)일 경우 처리
+  if (typeof SvgIcon === 'string') {
+    const dimensionProps = size ? { width: ICON_SIZES[size], height: ICON_SIZES[size] } : {};
+    return (
+      <img
+        src={SvgIcon}
+        alt={name}
+        style={{ ...dimensionProps }}
+        {...(props as React.ImgHTMLAttributes<HTMLImageElement>)}
+      />
+    );
+  }
+
   // size가 지정되었을 때만 width/height 적용
   const dimensionProps = size ? { width: ICON_SIZES[size], height: ICON_SIZES[size] } : {};
 

@@ -676,7 +676,7 @@ $btn-sizes: (
       tablet: rem(28px),
       mobile: rem(28px),
     ),
-    gap: rem(0px),
+    gap: rem(4px),
     font-token: var(--project-typo-btn1-600),
     padding: (
       pc: 0 rem(8px),
@@ -701,7 +701,7 @@ $btn-sizes: (
       tablet: rem(32px),
       mobile: rem(32px),
     ),
-    gap: rem(0px),
+    gap: rem(4px),
     font-token: var(--project-typo-btn2-600),
     padding: (
       pc: 0 rem(12px),
@@ -726,7 +726,7 @@ $btn-sizes: (
       tablet: rem(44px),
       mobile: rem(44px),
     ),
-    gap: rem(2px),
+    gap: rem(6px),
     font-token: var(--project-typo-btn3-600),
     padding: (
       pc: 0 rem(16px),
@@ -751,7 +751,7 @@ $btn-sizes: (
       tablet: rem(48px),
       mobile: rem(48px),
     ),
-    gap: rem(4px),
+    gap: rem(6px),
     font-token: var(--project-typo-btn4-700),
     padding: (
       pc: 0 rem(20px),
@@ -776,7 +776,7 @@ $btn-sizes: (
       tablet: rem(56px),
       mobile: rem(56px),
     ),
-    gap: rem(6px),
+    gap: rem(8px),
     font-token: var(--project-typo-btn5-700),
     padding: (
       pc: 0 rem(24px),
@@ -903,13 +903,18 @@ $btn-sizes: (
       padding: map.get($padding, pc);
       gap: map.get($props, gap);
 
-      .btn-label {
-        font: map.get($props, font-token);
-      }
-
-      svg {
+      :global(div[class^='_spinner']),
+      :global(.icon) {
+        flex: 0 0 auto;
         width: map.get($icon-size, pc);
         height: map.get($icon-size, pc);
+      }
+
+      .btn-label {
+        flex: 1 1 auto;
+        min-width: 0;
+        font: map.get($props, font-token);
+        @include ell();
       }
     }
 
@@ -974,8 +979,8 @@ $btn-sizes: (
   cursor: pointer;
   user-select: none;
 
-  .btn-label {
-    min-width: max-content;
+  &:global(.is-full) {
+    width: 100%;
   }
 
   // size
