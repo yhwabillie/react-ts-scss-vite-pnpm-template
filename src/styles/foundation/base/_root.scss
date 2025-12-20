@@ -5,39 +5,403 @@
   @include generate-vars-font-family(vars.$g_project-name, ('ko', 'ja', 'en'));
   @include generate-vars-font-weight(vars.$g_project-name, vars.$g_font-weight);
   @include generate-vars-border-radius(vars.$g_project-name, vars.$g_border-radius);
+
+  // outline btn
+  --bg-color-btn-outline: #ffffff;
+
+  // outline btn - Success
+  --success-text-color-btn-outline: #15803d;
+  --success-stroke-color-btn-outline: #15803d;
+
+  --success-hover-bg-color-btn-outline: rgba(21, 128, 61, 0.08);
+  --success-hover-text-color-btn-outline: #15803d;
+
+  --success-active-bg-color-btn-outline: rgba(21, 128, 61, 0.16);
+  --success-active-text-color-btn-outline: #15803d;
+
+  // outline btn - Warning
+  --warning-text-color-btn-outline: #b45309;
+  --warning-stroke-color-btn-outline: #b45309;
+
+  --warning-hover-bg-color-btn-outline: #b45309;
+  --warning-hover-bg-color-btn-outline: rgba(180, 83, 9, 0.08);
+
+  --warning-hover-bg-color-btn-outline: #b45309;
+  --warning-hover-bg-color-btn-outline: rgba(180, 83, 9, 0.16);
+
+  // outline btn - Danger
+  --danger-text-color-btn-outline: #b91c1c;
+  --danger-stroke-color-btn-outline: #b91c1c;
+
+  --danger-hover-bg-color-btn-outline: rgba(185, 28, 28, 0.08);
+  --danger-hover-text-color-btn-outline: #b91c1c;
+
+  --danger-active-bg-color-btn-outline: rgba(185, 28, 28, 0.16);
+  --danger-active-text-color-btn-outline: #b91c1c;
+
+  // spinner - Success (#15803d)
+  --success-track-color-spinner-open-ring: rgba(21, 128, 61, 0.2);
+  --success-path-color-spinner-open-ring: #15803d;
+
+  --success-track-color-spinner-closed-ring: rgba(21, 128, 61, 0.2);
+  --success-path-color-spinner-closed-ring: #15803d;
+
+  --success-solid-track-color-spinner-open-ring: rgba(255, 255, 255, 0.2);
+  --success-solid-path-color-spinner-open-ring: #ffffff;
+
+  --success-solid-track-color-spinner-closed-ring: rgba(255, 255, 255, 0.2);
+  --success-solid-path-color-spinner-closed-ring: #ffffff;
+
+  // spinner - Warning (#b45309)
+  --warning-track-color-spinner-open-ring: rgba(180, 83, 9, 0.2);
+  --warning-path-color-spinner-open-ring: #b45309;
+
+  --warning-track-color-spinner-closed-ring: rgba(180, 83, 9, 0.2);
+  --warning-path-color-spinner-closed-ring: #b45309;
+
+  --warning-solid-track-color-spinner-open-ring: rgba(255, 255, 255, 0.2);
+  --warning-solid-path-color-spinner-open-ring: #ffffff;
+
+  --warning-solid-track-color-spinner-closed-ring: rgba(255, 255, 255, 0.2);
+  --warning-solid-path-color-spinner-closed-ring: #ffffff;
+
+  // spinner - Danger (#b91c1c)
+  --danger-track-color-spinner-open-ring: rgba(185, 28, 28, 0.2);
+  --danger-path-color-spinner-open-ring: #b91c1c;
+
+  --danger-track-color-spinner-closed-ring: rgba(185, 28, 28, 0.2);
+  --danger-path-color-spinner-closed-ring: #b91c1c;
+
+  --danger-solid-track-color-spinner-open-ring: rgba(255, 255, 255, 0.2);
+  --danger-solid-path-color-spinner-open-ring: #ffffff;
+
+  --danger-solid-track-color-spinner-closed-ring: rgba(255, 255, 255, 0.2);
+  --danger-solid-path-color-spinner-closed-ring: #ffffff;
+
+  // disabled
+  --disabled-bg-color-btn: #e0e0e0;
+  --disabled-text-color-btn: #9e9e9e;
+  --disabled-stroke-color-btn: #9e9e9e;
 }
 
 // Lang 속성에 따라 Typograhy 변수 생성
 @include generate-vars-lang-typography;
 
-/* 🎨 1단계: 테마별 포인트 컬러 정의 (Brand) */
-// .theme-sky {
-//   --primary-color: #87ceeb; /* 하늘색 */
-//   --primary-accent: #00bfff;
-// }
+.mode-dark {
+  // outline btn
+  --bg-color-btn-outline: #121212;
 
-// .theme-yellow {
-//   --primary-color: #ffd700; /* 노란색 */
-//   --primary-accent: #ffae00;
-// }
+  // outline btn - Success
+  --success-text-color-btn-outline: #4ade80;
+  --success-stroke-color-btn-outline: #4ade80;
 
-/* 🌓 2단계: 모드별 배경/텍스트 정의 (Mode) */
-/* 브랜드와 상관없이 공통 적용되는 명도값 */
-// .mode-light {
-//   --bg-color: #ffffff;
-//   --text-color: #333333;
-//   --card-bg: #f5f5f5;
-// }
+  --success-hover-bg-color-btn-outline: rgba(74, 222, 128, 0.12);
+  --success-hover-text-color-btn-outline: #4ade80;
 
-// .mode-dark {
-//   --bg-color: #1a1a1a;
-//   --text-color: #f0f0f0;
-//   --card-bg: #2d2d2d;
-// }
+  --success-active-bg-color-btn-outline: rgba(74, 222, 128, 0.24);
+  --success-active-text-color-btn-outline: #4ade80;
 
-/* 🚀 3단계: 실제 컴포넌트 적용 */
-// .button {
-//   background-color: var(--primary-color);
-//   color: var(--text-color);
-//   /* ... */
-// }
+  // outline btn - Warning
+  --warning-text-color-btn-outline: #fbbf24;
+  --warning-stroke-color-btn-outline: #fbbf24;
+
+  --warning-hover-bg-color-btn-outline: rgba(251, 191, 36, 0.12);
+  --warning-hover-text-color-btn-outline: #fbbf24;
+
+  --warning-active-bg-color-btn-outline: rgba(251, 191, 36, 0.24);
+  --warning-active-text-color-btn-outline: #fbbf24;
+
+  // outline btn - Danger
+  --danger-text-color-btn-outline: #f87171;
+  --danger-stroke-color-btn-outline: #f87171;
+
+  --danger-hover-bg-color-btn-outline: rgba(248, 113, 113, 0.12);
+  --danger-hover-text-color-btn-outline: #f87171;
+
+  --danger-active-bg-color-btn-outline: rgba(248, 113, 113, 0.24);
+  --danger-active-text-color-btn-outline: #f87171;
+
+  // spinner - Success
+  --success-track-color-spinner-open-ring: transparent;
+  --success-path-color-spinner-open-ring: #4ade80;
+
+  --success-track-color-spinner-closed-ring: rgba(74, 222, 128, 0.2);
+  --success-path-color-spinner-closed-ring: #4ade80;
+
+  --success-solid-track-color-spinner-open-ring: transparent;
+  --success-solid-path-color-spinner-open-ring: #ffffff;
+
+  --success-solid-track-color-spinner-closed-ring: rgba(74, 222, 128, 0.2);
+  --success-solid-path-color-spinner-closed-ring: #4ade80;
+
+  // spinner - Warning
+  --warning-track-color-spinner-open-ring: transparent;
+  --warning-path-color-spinner-open-ring: #fbbf24;
+
+  --warning-track-color-spinner-closed-ring: rgba(251, 191, 36, 0.2);
+  --warning-path-color-spinner-closed-ring: #fbbf24;
+
+  --warning-solid-track-color-spinner-open-ring: transparent;
+  --warning-solid-path-color-spinner-open-ring: #ffffff;
+
+  --warning-solid-track-color-spinner-closed-ring: rgba(251, 191, 36, 0.2);
+  --warning-solid-path-color-spinner-closed-ring: #fbbf24;
+
+  // spinner - Danger
+  --danger-track-color-spinner-open-ring: transparent;
+  --danger-path-color-spinner-open-ring: #f87171;
+
+  --danger-track-color-spinner-closed-ring: rgba(248, 113, 113, 0.2);
+  --danger-path-color-spinner-closed-ring: #f87171;
+
+  --danger-solid-track-color-spinner-open-ring: transparent;
+  --danger-solid-path-color-spinner-open-ring: #ffffff;
+
+  --danger-solid-track-color-spinner-closed-ring: rgba(248, 113, 113, 0.2);
+  --danger-solid-path-color-spinner-closed-ring: #f87171;
+
+  // disabled
+  --disabled-bg-color-btn: #1e1e1e;
+  --disabled-text-color-btn: #4b5563;
+  --disabled-stroke-color-btn: #374151;
+}
+
+/* TECH 테마 (신뢰/정석) */
+[data-theme='tech'] {
+  // outline btn - primary (핵심 액션)
+  --primary-text-color-btn-outline: #0052cc;
+  --primary-stroke-color-btn-outline: #0052cc;
+
+  --primary-hover-bg-color-btn-outline: rgba(0, 82, 204, 0.1);
+  --primary-hover-text-color-btn-outline: #0052cc;
+
+  --primary-active-bg-color-btn-outline: rgba(0, 82, 204, 0.2);
+  --primary-active-text-color-btn-outline: #0052cc;
+
+  // outline btn - secondary (보조 액션)
+  --secondary-text-color-btn-outline: #475569;
+  --secondary-stroke-color-btn-outline: #475569;
+
+  --secondary-hover-bg-color-btn-outline: rgba(203, 213, 225, 0.3);
+  --secondary-hover-text-color-btn-outline: #334155;
+
+  --secondary-active-bg-color-btn-outline: rgba(148, 163, 184, 0.4);
+  --secondary-active-text-color-btn-outline: #1e293b;
+
+  // outline btn - tertiary (특별한 강조 혹은 분류)
+  --tertiary-text-color-btn-outline: #7c3aed;
+  --tertiary-stroke-color-btn-outline: #7c3aed;
+
+  --tertiary-hover-bg-color-btn-outline: rgba(124, 58, 237, 0.08);
+  --tertiary-hover-text-color-btn-outline: #6d28d9;
+
+  --tertiary-active-bg-color-btn-outline: rgba(124, 58, 237, 0.16);
+  --tertiary-active-text-color-btn-outline: #5b21b6;
+
+  // spinner - primary (핵심 액션 블루)
+  --primary-track-color-spinner-open-ring: transparent;
+  --primary-path-color-spinner-open-ring: #0052cc;
+
+  --primary-track-color-spinner-closed-ring: rgba(0, 82, 204, 0.2);
+  --primary-path-color-spinner-closed-ring: #0052cc;
+
+  --primary-solid-track-color-spinner-open-ring: transparent;
+  --primary-solid-path-color-spinner-open-ring: #ffffff;
+
+  --primary-solid-track-color-spinner-closed-ring: rgba(0, 82, 204, 0.2);
+  --primary-solid-path-color-spinner-closed-ring: #0052cc;
+
+  // spinner - secondary (보조 액션 슬레이트)
+  --secondary-track-color-spinner-open-ring: transparent;
+  --secondary-path-color-spinner-open-ring: #475569;
+
+  --secondary-track-color-spinner-closed-ring: rgba(71, 85, 105, 0.2);
+  --secondary-path-color-spinner-closed-ring: #475569;
+
+  --secondary-solid-track-color-spinner-open-ring: transparent;
+  --secondary-solid-path-color-spinner-open-ring: #ffffff;
+
+  --secondary-solid-track-color-spinner-closed-ring: rgba(71, 85, 105, 0.2);
+  --secondary-solid-path-color-spinner-closed-ring: #475569;
+
+  // spinner - tertiary (특별 강조 퍼플)
+  --tertiary-track-color-spinner-open-ring: transparent;
+  --tertiary-path-color-spinner-open-ring: #7c3aed;
+
+  --tertiary-track-color-spinner-closed-ring: rgba(124, 58, 237, 0.2);
+  --tertiary-path-color-spinner-closed-ring: #7c3aed;
+
+  --tertiary-solid-track-color-spinner-open-ring: transparent;
+  --tertiary-solid-path-color-spinner-open-ring: #ffffff;
+
+  --tertiary-solid-track-color-spinner-closed-ring: rgba(124, 58, 237, 0.2);
+  --tertiary-solid-path-color-spinner-closed-ring: #7c3aed;
+
+  &.mode-dark {
+    // outline btn - primary (핵심 액션)
+    --primary-text-color-btn-outline: #66b2ff;
+    --primary-stroke-color-btn-outline: #66b2ff;
+
+    --primary-hover-bg-color-btn-outline: rgba(102, 178, 255, 0.12);
+    --primary-hover-text-color-btn-outline: #85c2ff;
+
+    --primary-active-bg-color-btn-outline: rgba(102, 178, 255, 0.24);
+    --primary-active-text-color-btn-outline: #85c2ff;
+
+    // outline btn - secondary (보조 액션)
+    --secondary-text-color-btn-outline: #38bdf8;
+    --secondary-stroke-color-btn-outline: #38bdf8;
+
+    --secondary-hover-bg-color-btn-outline: rgba(56, 189, 248, 0.12);
+    --secondary-hover-text-color-btn-outline: #7dd3fc;
+
+    --secondary-active-bg-color-btn-outline: rgba(56, 189, 248, 0.24);
+    --secondary-active-text-color-btn-outline: #7dd3fc;
+
+    // outline btn - tertiary (특별한 강조 혹은 분류)
+    --tertiary-text-color-btn-outline: #a78bfa;
+    --tertiary-stroke-color-btn-outline: #a78bfa;
+
+    --tertiary-hover-bg-color-btn-outline: rgba(167, 139, 250, 0.12);
+    --tertiary-hover-text-color-btn-outline: #c4b5fd;
+
+    --tertiary-active-bg-color-btn-outline: rgba(167, 139, 250, 0.24);
+    --tertiary-active-text-color-btn-outline: #c4b5fd;
+
+    // spinner - primary (핵심 액션 블루: #66b2ff)
+    --primary-track-color-spinner-open-ring: rgba(102, 178, 255, 0.2);
+    --primary-path-color-spinner-open-ring: #66b2ff;
+
+    --primary-track-color-spinner-closed-ring: rgba(102, 178, 255, 0.2);
+    --primary-path-color-spinner-closed-ring: #66b2ff;
+
+    --primary-solid-track-color-spinner-open-ring: rgba(255, 255, 255, 0.2);
+    --primary-solid-path-color-spinner-open-ring: #ffffff;
+
+    --primary-solid-track-color-spinner-closed-ring: rgba(255, 255, 255, 0.2);
+    --primary-solid-path-color-spinner-closed-ring: #ffffff;
+
+    // spinner - secondary (보조 액션 스카이: #38bdf8)
+    --secondary-track-color-spinner-open-ring: rgba(56, 189, 248, 0.2);
+    --secondary-path-color-spinner-open-ring: #38bdf8;
+
+    --secondary-track-color-spinner-closed-ring: rgba(56, 189, 248, 0.2);
+    --secondary-path-color-spinner-closed-ring: #38bdf8;
+
+    --secondary-solid-track-color-spinner-open-ring: rgba(255, 255, 255, 0.2);
+    --secondary-solid-path-color-spinner-open-ring: #ffffff;
+
+    --secondary-solid-track-color-spinner-closed-ring: rgba(255, 255, 255, 0.2);
+    --secondary-solid-path-color-spinner-closed-ring: #ffffff;
+
+    // spinner - tertiary (특별 강조 퍼플: #a78bfa)
+    --tertiary-track-color-spinner-open-ring: rgba(167, 139, 250, 0.2);
+    --tertiary-path-color-spinner-open-ring: #a78bfa;
+
+    --tertiary-track-color-spinner-closed-ring: rgba(167, 139, 250, 0.2);
+    --tertiary-path-color-spinner-closed-ring: #a78bfa;
+
+    --tertiary-solid-track-color-spinner-open-ring: rgba(255, 255, 255, 0.2);
+    --tertiary-solid-path-color-spinner-open-ring: #ffffff;
+
+    --tertiary-solid-track-color-spinner-closed-ring: rgba(255, 255, 255, 0.2);
+    --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
+  }
+}
+
+/* SUNNY 테마 (Tangerine & Copper) */
+[data-theme='warm'] {
+  // --- Light Mode ---
+
+  // outline btn - primary (탠저린: 핵심 액션 - Danger(Red)와 확실히 다름)
+  --primary-text-color-btn-outline: #ea580c; // Orange 600
+  --primary-stroke-color-btn-outline: #ea580c;
+  --primary-hover-bg-color-btn-outline: rgba(234, 88, 12, 0.08);
+  --primary-hover-text-color-btn-outline: #ea580c;
+  --primary-active-bg-color-btn-outline: rgba(234, 88, 12, 0.16);
+  --primary-active-text-color-btn-outline: #ea580c;
+
+  // outline btn - secondary (브론즈/코퍼: 보조 액션 - Warning(Yellow)보다 훨씬 묵직함)
+  --secondary-text-color-btn-outline: #92400e; // Amber 800
+  --secondary-stroke-color-btn-outline: #92400e;
+  --secondary-hover-bg-color-btn-outline: rgba(146, 64, 14, 0.08);
+  --secondary-hover-text-color-btn-outline: #78350f;
+  --secondary-active-bg-color-btn-outline: rgba(146, 64, 14, 0.16);
+  --secondary-active-text-color-btn-outline: #78350f;
+
+  // outline btn - tertiary (토프 그레이: 무채색 기반 따뜻한 보조)
+  --tertiary-text-color-btn-outline: #57534e; // Stone 700
+  --tertiary-stroke-color-btn-outline: #57534e;
+  --tertiary-hover-bg-color-btn-outline: rgba(87, 83, 78, 0.08);
+  --tertiary-hover-text-color-btn-outline: #44403c;
+  --tertiary-active-bg-color-btn-outline: rgba(87, 83, 78, 0.16);
+  --tertiary-active-text-color-btn-outline: #44403c;
+
+  // spinner - primary
+  --primary-track-color-spinner-open-ring: transparent;
+  --primary-path-color-spinner-open-ring: #ea580c;
+  --primary-track-color-spinner-closed-ring: rgba(234, 88, 12, 0.2);
+  --primary-path-color-spinner-closed-ring: #ea580c;
+
+  // spinner - secondary
+  --secondary-track-color-spinner-open-ring: transparent;
+  --secondary-path-color-spinner-open-ring: #92400e;
+  --secondary-track-color-spinner-closed-ring: rgba(146, 64, 14, 0.2);
+  --secondary-path-color-spinner-closed-ring: #92400e;
+
+  // spinner - tertiary
+  --tertiary-track-color-spinner-open-ring: transparent;
+  --tertiary-path-color-spinner-open-ring: #57534e;
+  --tertiary-track-color-spinner-closed-ring: rgba(87, 83, 78, 0.2);
+  --tertiary-path-color-spinner-closed-ring: #57534e;
+
+  &.mode-dark {
+    // --- Dark Mode (#121212 bg) ---
+
+    // outline btn - primary (밝은 탠저린: #fb923c)
+    --primary-text-color-btn-outline: #fb923c;
+    --primary-stroke-color-btn-outline: #fb923c;
+    --primary-hover-bg-color-btn-outline: rgba(251, 146, 60, 0.12);
+    --primary-hover-text-color-btn-outline: #fdba74;
+    --primary-active-bg-color-btn-outline: rgba(251, 146, 60, 0.24);
+    --primary-active-text-color-btn-outline: #fdba74;
+
+    // outline btn - secondary (골든 오렌지: #f59e0b)
+    // Warning(Yellow)보다 붉은 기가 많아 구분됨
+    --secondary-text-color-btn-outline: #f59e0b;
+    --secondary-stroke-color-btn-outline: #f59e0b;
+    --secondary-hover-bg-color-btn-outline: rgba(245, 158, 11, 0.12);
+    --secondary-hover-text-color-btn-outline: #fbbf24;
+    --secondary-active-bg-color-btn-outline: rgba(245, 158, 11, 0.24);
+    --secondary-active-text-color-btn-outline: #fbbf24;
+
+    // outline btn - tertiary (샌드 그레이: #a8a29e)
+    // 유색 버튼들과 완전히 대비되는 무채색
+    --tertiary-text-color-btn-outline: #a8a29e;
+    --tertiary-stroke-color-btn-outline: #a8a29e;
+    --tertiary-hover-bg-color-btn-outline: rgba(168, 162, 158, 0.12);
+    --tertiary-hover-text-color-btn-outline: #d6d3d1;
+    --tertiary-active-bg-color-btn-outline: rgba(168, 162, 158, 0.24);
+    --tertiary-active-text-color-btn-outline: #d6d3d1;
+
+    // spinner - primary
+    --primary-track-color-spinner-open-ring: rgba(251, 146, 60, 0.2);
+    --primary-path-color-spinner-open-ring: #fb923c;
+
+    // spinner - secondary
+    --secondary-track-color-spinner-open-ring: rgba(245, 158, 11, 0.2);
+    --secondary-path-color-spinner-open-ring: #f59e0b;
+
+    // spinner - tertiary
+    --tertiary-track-color-spinner-open-ring: rgba(168, 162, 158, 0.2);
+    --tertiary-path-color-spinner-open-ring: #a8a29e;
+
+    // Solid 스피너 공통 화이트 유지
+    --primary-solid-track-color-spinner-open-ring: rgba(255, 255, 255, 0.2);
+    --primary-solid-path-color-spinner-open-ring: #ffffff;
+    --secondary-solid-track-color-spinner-open-ring: rgba(255, 255, 255, 0.2);
+    --secondary-solid-path-color-spinner-open-ring: #ffffff;
+    --tertiary-solid-track-color-spinner-open-ring: rgba(255, 255, 255, 0.2);
+    --tertiary-solid-path-color-spinner-open-ring: #ffffff;
+  }
+}

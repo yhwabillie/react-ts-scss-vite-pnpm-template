@@ -780,18 +780,6 @@ function App() {
         <Badge variant='status' color='danger'>
           실패
         </Badge>
-        <div style={{ position: 'relative', display: 'inline-block' }}>
-          <IconButton
-            color='secondary'
-            size='sm'
-            variant='soft'
-            shape='rounded'
-            icon={<Icon name='bell' />}
-          />
-          <Badge variant='count' color='danger' overlap ariaLabel='새 알림 9개'>
-            9
-          </Badge>
-        </div>
       </section>
       <section>
         {chipList.map(chip => (
@@ -1041,25 +1029,6 @@ function App() {
         <FormField
           as='div'
           size='xl'
-          id='textarea-r-3-label'
-          htmlFor='textarea-r-3'
-          labelText='Textarea 라벨'
-          direction='column'
-        >
-          <Textarea
-            variant='soft'
-            color='primary'
-            id='textarea-r-3'
-            rows={6}
-            placeholder='입력하세요'
-            maxLength={100} // 최대 500자
-            showCount={true} // 카운터 표시
-          />
-        </FormField>
-
-        <FormField
-          as='div'
-          size='xl'
           id='textarea-r-4-label'
           htmlFor='textarea-r-4'
           labelText='Textarea 라벨'
@@ -1107,25 +1076,6 @@ function App() {
             variant='outline'
             color='primary'
             id='textarea-2'
-            rows={6}
-            placeholder='입력하세요'
-            defaultValue='비활성화 textarea 텍스트'
-            disabled
-          />
-        </FormField>
-
-        <FormField
-          as='div'
-          size='xl'
-          id='textarea-3-label'
-          htmlFor='textarea-3'
-          labelText='Textarea 라벨'
-          direction='column'
-        >
-          <Textarea
-            variant='soft'
-            color='primary'
-            id='textarea-3'
             rows={6}
             placeholder='입력하세요'
             defaultValue='비활성화 textarea 텍스트'
@@ -2257,54 +2207,54 @@ function App() {
             </Button>
           </ButtonGroup>
           <ButtonGroup size='xl' align='right' role='group' ariaLabel='작업 버튼'>
-            <Button color='brand' size='xl' variant='outline' shape='rounded'>
-              Brand XL 버튼
+            <Button color='primary' size='xl' variant='outline' shape='rounded'>
+              primary XL 버튼
             </Button>
-            <Button color='brand' size='xl' variant='solid' shape='rounded'>
-              Brand XL 버튼
+            <Button color='primary' size='xl' variant='solid' shape='rounded'>
+              primary XL 버튼
             </Button>
           </ButtonGroup>
         </ActionBar>
       </section>
       <section>
         <ButtonGroup size='xl' align='left' role='group' ariaLabel='작업 버튼'>
-          <Button color='brand' size='xl' variant='outline' shape='rounded'>
-            Brand XL 버튼
+          <Button color='primary' size='xl' variant='outline' shape='rounded'>
+            primary XL 버튼
           </Button>
-          <Button color='brand' size='xl' variant='solid' shape='rounded'>
-            Brand XL 버튼
+          <Button color='primary' size='xl' variant='solid' shape='rounded'>
+            primary XL 버튼
           </Button>
         </ButtonGroup>
         <ButtonGroup size='lg' align='left' role='group' ariaLabel='작업 버튼'>
-          <Button color='brand' size='lg' variant='outline' shape='rounded'>
-            Brand lg 버튼
+          <Button color='primary' size='lg' variant='outline' shape='rounded'>
+            primary lg 버튼
           </Button>
-          <Button color='brand' size='lg' variant='solid' shape='rounded'>
-            Brand lg 버튼
+          <Button color='primary' size='lg' variant='solid' shape='rounded'>
+            primary lg 버튼
           </Button>
         </ButtonGroup>
         <ButtonGroup size='md' align='left' role='group' ariaLabel='작업 버튼'>
-          <Button color='brand' size='md' variant='outline' shape='rounded'>
-            Brand md 버튼
+          <Button color='primary' size='md' variant='outline' shape='rounded'>
+            primary md 버튼
           </Button>
-          <Button color='brand' size='md' variant='solid' shape='rounded'>
-            Brand md 버튼
+          <Button color='primary' size='md' variant='solid' shape='rounded'>
+            primary md 버튼
           </Button>
         </ButtonGroup>
         <ButtonGroup size='sm' align='left' role='group' ariaLabel='작업 버튼'>
-          <Button color='brand' size='sm' variant='outline' shape='rounded'>
-            Brand sm 버튼
+          <Button color='primary' size='sm' variant='outline' shape='rounded'>
+            primary sm 버튼
           </Button>
-          <Button color='brand' size='sm' variant='solid' shape='rounded'>
-            Brand sm 버튼
+          <Button color='primary' size='sm' variant='solid' shape='rounded'>
+            primary sm 버튼
           </Button>
         </ButtonGroup>
         <ButtonGroup size='xs' align='left' role='group' ariaLabel='작업 버튼'>
-          <Button color='brand' size='xs' variant='outline' shape='rounded'>
-            Brand xs 버튼
+          <Button color='primary' size='xs' variant='outline' shape='rounded'>
+            primary xs 버튼
           </Button>
-          <Button color='brand' size='xs' variant='solid' shape='rounded'>
-            Brand xs 버튼
+          <Button color='primary' size='xs' variant='solid' shape='rounded'>
+            primary xs 버튼
           </Button>
         </ButtonGroup>
       </section>
@@ -2593,43 +2543,7 @@ function App() {
             disabled
           />
         </div>
-        <div>
-          <IconButton
-            color='brand'
-            size='xl'
-            variant='soft'
-            shape='pill'
-            icon={<Icon name='logout' />}
-          />
-          <IconButton
-            color='brand'
-            size='lg'
-            variant='soft'
-            shape='pill'
-            icon={<Icon name='logout' />}
-          />
-          <IconButton
-            color='brand'
-            size='md'
-            variant='soft'
-            shape='pill'
-            icon={<Icon name='logout' />}
-          />
-          <IconButton
-            color='brand'
-            size='sm'
-            variant='soft'
-            shape='pill'
-            icon={<Icon name='logout' />}
-          />
-          <IconButton
-            color='brand'
-            size='xs'
-            variant='soft'
-            shape='pill'
-            icon={<Icon name='logout' />}
-          />
-        </div>
+        <div></div>
         <div>
           <IconButton
             color='brand'
@@ -3058,361 +2972,7 @@ function App() {
           </LinkButton>
         </div>
       </section>
-      <section>
-        <div>
-          <Button
-            color='brand'
-            size='xl'
-            variant='solid'
-            shape='rounded'
-            endIcon={<Icon name='logout' />}
-          >
-            Brand XL 버튼
-          </Button>
-          <Button
-            color='brand'
-            size='lg'
-            variant='solid'
-            shape='rounded'
-            endIcon={<Icon name='logout' />}
-          >
-            Brand LG 버튼
-          </Button>
-          <Button
-            color='brand'
-            size='md'
-            variant='solid'
-            shape='rounded'
-            endIcon={<Icon name='logout' />}
-          >
-            Brand MD 버튼
-          </Button>
-          <Button
-            color='brand'
-            size='sm'
-            variant='solid'
-            shape='rounded'
-            endIcon={<Icon name='logout' />}
-          >
-            Brand SM 버튼
-          </Button>
-          <Button
-            color='brand'
-            size='xs'
-            variant='solid'
-            shape='rounded'
-            endIcon={<Icon name='logout' />}
-          >
-            Brand XS 버튼
-          </Button>
-        </div>
-        <div>
-          <Button
-            color='brand'
-            size='xl'
-            variant='solid'
-            shape='rounded'
-            endIcon={<Icon name='logout' />}
-            disabled
-          >
-            Brand XL 버튼
-          </Button>
-          <Button
-            color='brand'
-            size='lg'
-            variant='solid'
-            shape='rounded'
-            endIcon={<Icon name='logout' />}
-            disabled
-          >
-            Brand LG 버튼
-          </Button>
-          <Button
-            color='brand'
-            size='md'
-            variant='solid'
-            shape='rounded'
-            endIcon={<Icon name='logout' />}
-            disabled
-          >
-            Brand MD 버튼
-          </Button>
-          <Button
-            color='brand'
-            size='sm'
-            variant='solid'
-            shape='rounded'
-            endIcon={<Icon name='logout' />}
-            disabled
-          >
-            Brand SM 버튼
-          </Button>
-          <Button
-            color='brand'
-            size='xs'
-            variant='solid'
-            shape='rounded'
-            endIcon={<Icon name='logout' />}
-            disabled
-          >
-            Brand XS 버튼
-          </Button>
-        </div>
-        <div>
-          <Button
-            color='brand'
-            size='xl'
-            variant='solid'
-            shape='rounded'
-            endSpinner={<RingSpinner color='brand-solid' size='xl' variant='closed-ring' />}
-          >
-            Brand XL 버튼
-          </Button>
-          <Button color='brand' size='lg' variant='solid' shape='rounded'>
-            Brand LG 버튼
-          </Button>
-          <Button color='brand' size='md' variant='solid' shape='rounded'>
-            Brand MD 버튼
-          </Button>
-          <Button color='brand' size='sm' variant='solid' shape='rounded'>
-            Brand SM 버튼
-          </Button>
-          <Button color='brand' size='xs' variant='solid' shape='rounded'>
-            Brand XS 버튼
-          </Button>
-        </div>
-        <div>
-          <Button color='brand' size='xl' variant='solid' shape='rounded' disabled>
-            Brand XL 버튼
-          </Button>
-          <Button color='brand' size='lg' variant='solid' shape='rounded' disabled>
-            Brand LG 버튼
-          </Button>
-          <Button color='brand' size='md' variant='solid' shape='rounded' disabled>
-            Brand MD 버튼
-          </Button>
-          <Button color='brand' size='sm' variant='solid' shape='rounded' disabled>
-            Brand SM 버튼
-          </Button>
-          <Button color='brand' size='xs' variant='solid' shape='rounded' disabled>
-            Brand XS 버튼
-          </Button>
-        </div>
-        <div>
-          <Button
-            color='brand'
-            size='xl'
-            variant='outline'
-            shape='rounded'
-            endSpinner={<RingSpinner color='brand' size='xl' variant='closed-ring' />}
-          >
-            Brand XL 버튼
-          </Button>
-          <Button color='brand' size='lg' variant='outline' shape='rounded'>
-            Brand LG 버튼
-          </Button>
-          <Button color='brand' size='md' variant='outline' shape='rounded'>
-            Brand MD 버튼
-          </Button>
-          <Button color='brand' size='sm' variant='outline' shape='rounded'>
-            Brand SM 버튼
-          </Button>
-          <Button color='brand' size='xs' variant='outline' shape='rounded'>
-            Brand XS 버튼
-          </Button>
-        </div>
-        <div>
-          <Button color='brand' size='xl' variant='outline' shape='rounded' disabled>
-            Brand XL 버튼
-          </Button>
-          <Button color='brand' size='lg' variant='outline' shape='rounded' disabled>
-            Brand LG 버튼
-          </Button>
-          <Button color='brand' size='md' variant='outline' shape='rounded' disabled>
-            Brand MD 버튼
-          </Button>
-          <Button color='brand' size='sm' variant='outline' shape='rounded' disabled>
-            Brand SM 버튼
-          </Button>
-          <Button color='brand' size='xs' variant='outline' shape='rounded' disabled>
-            Brand XS 버튼
-          </Button>
-        </div>
-        <div>
-          <Button
-            color='brand'
-            size='xl'
-            variant='soft'
-            shape='rounded'
-            endSpinner={<RingSpinner color='brand-soft' size='xl' variant='closed-ring' />}
-          >
-            Brand XL 버튼
-          </Button>
-          <Button color='brand' size='lg' variant='soft' shape='rounded'>
-            Brand LG 버튼
-          </Button>
-          <Button color='brand' size='md' variant='soft' shape='rounded'>
-            Brand MD 버튼
-          </Button>
-          <Button color='brand' size='sm' variant='soft' shape='rounded'>
-            Brand SM 버튼
-          </Button>
-          <Button color='brand' size='xs' variant='soft' shape='rounded'>
-            Brand XS 버튼
-          </Button>
-        </div>
-        <div>
-          <Button color='brand' size='xl' variant='soft' shape='rounded' disabled>
-            Brand XL 버튼
-          </Button>
-          <Button color='brand' size='lg' variant='soft' shape='rounded' disabled>
-            Brand LG 버튼
-          </Button>
-          <Button color='brand' size='md' variant='soft' shape='rounded' disabled>
-            Brand MD 버튼
-          </Button>
-          <Button color='brand' size='sm' variant='soft' shape='rounded' disabled>
-            Brand SM 버튼
-          </Button>
-          <Button color='brand' size='xs' variant='soft' shape='rounded' disabled>
-            Brand XS 버튼
-          </Button>
-        </div>
-        <div>
-          <Button
-            color='brand'
-            size='xl'
-            variant='ghost'
-            shape='rounded'
-            endSpinner={<RingSpinner color='brand' size='xl' variant='closed-ring' />}
-          >
-            Brand XL 버튼
-          </Button>
-          <Button color='brand' size='lg' variant='ghost' shape='rounded'>
-            Brand LG 버튼
-          </Button>
-          <Button color='brand' size='md' variant='ghost' shape='rounded'>
-            Brand MD 버튼
-          </Button>
-          <Button color='brand' size='sm' variant='ghost' shape='rounded'>
-            Brand SM 버튼
-          </Button>
-          <Button color='brand' size='xs' variant='ghost' shape='rounded'>
-            Brand XS 버튼
-          </Button>
-        </div>
-        <div>
-          <Button color='brand' size='xl' variant='ghost' shape='rounded' disabled>
-            Brand XL 버튼
-          </Button>
-          <Button color='brand' size='lg' variant='ghost' shape='rounded' disabled>
-            Brand LG 버튼
-          </Button>
-          <Button color='brand' size='md' variant='ghost' shape='rounded' disabled>
-            Brand MD 버튼
-          </Button>
-          <Button color='brand' size='sm' variant='ghost' shape='rounded' disabled>
-            Brand SM 버튼
-          </Button>
-          <Button color='brand' size='xs' variant='ghost' shape='rounded' disabled>
-            Brand XS 버튼
-          </Button>
-        </div>
-      </section>
-      <section>
-        <div>
-          <Button
-            color='brand-sub'
-            size='xl'
-            variant='solid'
-            shape='rounded'
-            endSpinner={<RingSpinner color='brand-sub-solid' size='xl' variant='closed-ring' />}
-          >
-            Brand Sub XL 버튼
-          </Button>
-          <Button color='brand-sub' size='lg' variant='solid' shape='rounded'>
-            Brand Sub LG 버튼
-          </Button>
-          <Button color='brand-sub' size='md' variant='solid' shape='rounded'>
-            Brand Sub MD 버튼
-          </Button>
-          <Button color='brand-sub' size='sm' variant='solid' shape='rounded'>
-            Brand Sub SM 버튼
-          </Button>
-          <Button color='brand-sub' size='xs' variant='solid' shape='rounded'>
-            Brand Sub XS 버튼
-          </Button>
-        </div>
-        <div>
-          <Button
-            color='brand-sub'
-            size='xl'
-            variant='outline'
-            shape='rounded'
-            endSpinner={<RingSpinner color='brand-sub' size='xl' variant='closed-ring' />}
-          >
-            Brand Sub XL 버튼
-          </Button>
-          <Button color='brand-sub' size='lg' variant='outline' shape='rounded'>
-            Brand Sub LG 버튼
-          </Button>
-          <Button color='brand-sub' size='md' variant='outline' shape='rounded'>
-            Brand Sub MD 버튼
-          </Button>
-          <Button color='brand-sub' size='sm' variant='outline' shape='rounded'>
-            Brand Sub SM 버튼
-          </Button>
-          <Button color='brand-sub' size='xs' variant='outline' shape='rounded'>
-            Brand Sub XS 버튼
-          </Button>
-        </div>
-        <div>
-          <Button
-            color='brand-sub'
-            size='xl'
-            variant='soft'
-            shape='rounded'
-            endSpinner={<RingSpinner color='brand-sub-soft' size='xl' variant='closed-ring' />}
-          >
-            Brand Sub XL 버튼
-          </Button>
-          <Button color='brand-sub' size='lg' variant='soft' shape='rounded'>
-            Brand Sub LG 버튼
-          </Button>
-          <Button color='brand-sub' size='md' variant='soft' shape='rounded'>
-            Brand Sub MD 버튼
-          </Button>
-          <Button color='brand-sub' size='sm' variant='soft' shape='rounded'>
-            Brand Sub SM 버튼
-          </Button>
-          <Button color='brand-sub' size='xs' variant='soft' shape='rounded'>
-            Brand Sub XS 버튼
-          </Button>
-        </div>
-        <div>
-          <Button
-            color='brand-sub'
-            size='xl'
-            variant='ghost'
-            shape='rounded'
-            endSpinner={<RingSpinner color='brand-sub' size='xl' variant='closed-ring' />}
-          >
-            Brand Sub XL 버튼
-          </Button>
-          <Button color='brand-sub' size='lg' variant='ghost' shape='rounded'>
-            Brand Sub LG 버튼
-          </Button>
-          <Button color='brand-sub' size='md' variant='ghost' shape='rounded'>
-            Brand Sub MD 버튼
-          </Button>
-          <Button color='brand-sub' size='sm' variant='ghost' shape='rounded'>
-            Brand Sub SM 버튼
-          </Button>
-          <Button color='brand-sub' size='xs' variant='ghost' shape='rounded'>
-            Brand Sub XS 버튼
-          </Button>
-        </div>
-      </section>
+
       <section>
         <div>
           <Button
@@ -3460,29 +3020,7 @@ function App() {
             Primary XS 버튼
           </Button>
         </div>
-        <div>
-          <Button
-            color='primary'
-            size='xl'
-            variant='soft'
-            shape='rounded'
-            endSpinner={<RingSpinner color='primary-soft' size='xl' variant='closed-ring' />}
-          >
-            Primary XL 버튼
-          </Button>
-          <Button color='primary' size='lg' variant='soft' shape='rounded'>
-            Primary LG 버튼
-          </Button>
-          <Button color='primary' size='md' variant='soft' shape='rounded'>
-            Primary MD 버튼
-          </Button>
-          <Button color='primary' size='sm' variant='soft' shape='rounded'>
-            Primary SM 버튼
-          </Button>
-          <Button color='primary' size='xs' variant='soft' shape='rounded'>
-            Primary XS 버튼
-          </Button>
-        </div>
+
         <div>
           <Button
             color='primary'
@@ -3554,29 +3092,7 @@ function App() {
             Secondary XS 버튼
           </Button>
         </div>
-        <div>
-          <Button
-            color='secondary'
-            size='xl'
-            variant='soft'
-            shape='rounded'
-            endSpinner={<RingSpinner color='secondary-soft' size='xl' variant='closed-ring' />}
-          >
-            Secondary XL 버튼
-          </Button>
-          <Button color='secondary' size='lg' variant='soft' shape='rounded'>
-            Secondary LG 버튼
-          </Button>
-          <Button color='secondary' size='md' variant='soft' shape='rounded'>
-            Secondary MD 버튼
-          </Button>
-          <Button color='secondary' size='sm' variant='soft' shape='rounded'>
-            Secondary SM 버튼
-          </Button>
-          <Button color='secondary' size='xs' variant='soft' shape='rounded'>
-            Secondary XS 버튼
-          </Button>
-        </div>
+
         <div>
           <Button
             color='secondary'
@@ -3648,29 +3164,7 @@ function App() {
             Tertiary XS 버튼
           </Button>
         </div>
-        <div>
-          <Button
-            color='tertiary'
-            size='xl'
-            variant='soft'
-            shape='rounded'
-            endSpinner={<RingSpinner color='tertiary' size='xl' variant='closed-ring' />}
-          >
-            Tertiary XL 버튼
-          </Button>
-          <Button color='tertiary' size='lg' variant='soft' shape='rounded'>
-            Tertiary LG 버튼
-          </Button>
-          <Button color='tertiary' size='md' variant='soft' shape='rounded'>
-            Tertiary MD 버튼
-          </Button>
-          <Button color='tertiary' size='sm' variant='soft' shape='rounded'>
-            Tertiary SM 버튼
-          </Button>
-          <Button color='tertiary' size='xs' variant='soft' shape='rounded'>
-            Tertiary XS 버튼
-          </Button>
-        </div>
+
         <div>
           <Button
             color='tertiary'
@@ -3743,29 +3237,7 @@ function App() {
             Success XS 버튼
           </Button>
         </div>
-        <div>
-          <Button
-            color='success'
-            size='xl'
-            variant='soft'
-            shape='rounded'
-            endSpinner={<RingSpinner color='success-soft' size='xl' variant='closed-ring' />}
-          >
-            Success XL 버튼
-          </Button>
-          <Button color='success' size='lg' variant='soft' shape='rounded'>
-            Success LG 버튼
-          </Button>
-          <Button color='success' size='md' variant='soft' shape='rounded'>
-            Success MD 버튼
-          </Button>
-          <Button color='success' size='sm' variant='soft' shape='rounded'>
-            Success SM 버튼
-          </Button>
-          <Button color='success' size='xs' variant='soft' shape='rounded'>
-            Success XS 버튼
-          </Button>
-        </div>
+
         <div>
           <Button
             color='success'
@@ -3837,29 +3309,7 @@ function App() {
             Warning XS 버튼
           </Button>
         </div>
-        <div>
-          <Button
-            color='warning'
-            size='xl'
-            variant='soft'
-            shape='rounded'
-            endSpinner={<RingSpinner color='warning-soft' size='xl' variant='closed-ring' />}
-          >
-            Warning XL 버튼
-          </Button>
-          <Button color='warning' size='lg' variant='soft' shape='rounded'>
-            Warning LG 버튼
-          </Button>
-          <Button color='warning' size='md' variant='soft' shape='rounded'>
-            Warning MD 버튼
-          </Button>
-          <Button color='warning' size='sm' variant='soft' shape='rounded'>
-            Warning SM 버튼
-          </Button>
-          <Button color='warning' size='xs' variant='soft' shape='rounded'>
-            Warning XS 버튼
-          </Button>
-        </div>
+
         <div>
           <Button
             color='warning'
@@ -3931,29 +3381,7 @@ function App() {
             Danger XS 버튼
           </Button>
         </div>
-        <div>
-          <Button
-            color='danger'
-            size='xl'
-            variant='soft'
-            shape='rounded'
-            endSpinner={<RingSpinner color='danger-soft' size='xl' variant='closed-ring' />}
-          >
-            Danger XL 버튼
-          </Button>
-          <Button color='danger' size='lg' variant='soft' shape='rounded'>
-            Danger LG 버튼
-          </Button>
-          <Button color='danger' size='md' variant='soft' shape='rounded'>
-            Danger MD 버튼
-          </Button>
-          <Button color='danger' size='sm' variant='soft' shape='rounded'>
-            Danger SM 버튼
-          </Button>
-          <Button color='danger' size='xs' variant='soft' shape='rounded'>
-            Danger XS 버튼
-          </Button>
-        </div>
+
         <div>
           <Button
             color='danger'

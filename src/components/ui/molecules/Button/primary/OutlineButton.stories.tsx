@@ -150,7 +150,7 @@ export const Sizes: Story = {
   },
   render: args => {
     const { t } = useTranslation();
-
+    const currentColor = args.color || 'primary';
     const sizeOptions: Array<'xl' | 'lg' | 'md' | 'sm' | 'xs'> = ['xl', 'lg', 'md', 'sm', 'xs'];
 
     return (
@@ -210,14 +210,14 @@ export const Sizes: Story = {
             <Button
               {...args}
               size={size}
-              startSpinner={<RingSpinner color='primary' size={size} variant='closed-ring' />}
+              startSpinner={<RingSpinner color={currentColor} size={size} variant='closed-ring' />}
             >
               {t('hello')}
             </Button>
             <Button
               {...args}
               size={size}
-              endSpinner={<RingSpinner color='primary' size={size} variant='closed-ring' />}
+              endSpinner={<RingSpinner color={currentColor} size={size} variant='closed-ring' />}
             >
               {t('hello')}
             </Button>
@@ -239,7 +239,7 @@ export const Shapes: Story = {
   },
   render: args => {
     const { t } = useTranslation();
-
+    const currentColor = args.color || 'primary';
     const sahpeOptions: Array<'square' | 'rounded' | 'pill'> = ['square', 'rounded', 'pill'];
 
     return (
@@ -299,14 +299,14 @@ export const Shapes: Story = {
             <Button
               {...args}
               shape={shape}
-              startSpinner={<RingSpinner color='primary' size='xl' variant='closed-ring' />}
+              startSpinner={<RingSpinner color={currentColor} size='xl' variant='closed-ring' />}
             >
               {t('hello')}
             </Button>
             <Button
               {...args}
               shape={shape}
-              endSpinner={<RingSpinner color='primary' size='xl' variant='closed-ring' />}
+              endSpinner={<RingSpinner color={currentColor} size='xl' variant='closed-ring' />}
             >
               {t('hello')}
             </Button>
@@ -328,6 +328,7 @@ export const Composition: Story = {
   },
   render: args => {
     const { t } = useTranslation();
+    const currentColor = args.color || 'primary';
 
     const cases = [
       {
@@ -361,13 +362,17 @@ export const Composition: Story = {
       {
         label: 'Left Spinner',
         props: {
-          startIcon: <RingSpinner color='primary' size={args.size || 'md'} variant='closed-ring' />,
+          startIcon: (
+            <RingSpinner color={currentColor} size={args.size || 'md'} variant='closed-ring' />
+          ),
         },
       },
       {
         label: 'Right Spinner',
         props: {
-          endIcon: <RingSpinner color='primary' size={args.size || 'md'} variant='closed-ring' />,
+          endIcon: (
+            <RingSpinner color={currentColor} size={args.size || 'md'} variant='closed-ring' />
+          ),
         },
       },
     ];
@@ -381,7 +386,7 @@ export const Composition: Story = {
               style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center' }}
             >
               {/* 캡션 표시 */}
-              <span style={{ fontSize: '11px', color: '#888', fontWeight: '600' }}>
+              <span style={{ fontSize: '11px', color: '#333', fontWeight: '600' }}>
                 {item.label}
               </span>
 
@@ -409,7 +414,7 @@ export const FullWidth: Story = {
     const { t } = useTranslation();
     return (
       <div style={{ width: '500px', border: '1px dashed #ccc', padding: '20px' }}>
-        <p style={{ fontSize: '12px', color: '#999', marginBottom: '10px' }}>
+        <p style={{ fontSize: '12px', color: '#333', marginBottom: '10px' }}>
           Container Width: 500px
         </p>
         <Button {...args} fullWidth={true}>
@@ -434,6 +439,8 @@ export const LongText: Story = {
       '이 버튼의 글자는 매우 길어서 컨테이너를 벗어날 수 있습니다. 말줄임 처리가 필요합니다.',
   },
   render: args => {
+    const currentColor = args.color || 'primary';
+
     return (
       <div style={{ display: 'flex', gap: '20px' }}>
         <div
@@ -444,7 +451,7 @@ export const LongText: Story = {
             borderRadius: '8px',
           }}
         >
-          <p style={{ fontSize: '12px', color: '#999', marginBottom: '10px' }}>
+          <p style={{ fontSize: '12px', color: '#333', marginBottom: '10px' }}>
             Container Width: 200px
           </p>
           <Button {...args} fullWidth={true} />
@@ -457,7 +464,7 @@ export const LongText: Story = {
             borderRadius: '8px',
           }}
         >
-          <p style={{ fontSize: '12px', color: '#999', marginBottom: '10px' }}>
+          <p style={{ fontSize: '12px', color: '#333', marginBottom: '10px' }}>
             Container Width: 200px
           </p>
           <Button
@@ -482,13 +489,13 @@ export const LongText: Story = {
             borderRadius: '8px',
           }}
         >
-          <p style={{ fontSize: '12px', color: '#999', marginBottom: '10px' }}>
+          <p style={{ fontSize: '12px', color: '#333', marginBottom: '10px' }}>
             Container Width: 200px
           </p>
           <Button
             {...args}
             fullWidth={true}
-            endSpinner={<RingSpinner color='primary' size='xl' variant='closed-ring' />}
+            endSpinner={<RingSpinner color={currentColor} size='xl' variant='closed-ring' />}
           />
         </div>
       </div>
@@ -527,7 +534,7 @@ export const PolymorphicLink: Story = {
   render: args => {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        <p style={{ fontSize: '12px', color: '#999' }}>
+        <p style={{ fontSize: '12px', color: '#333' }}>
           ※ 아래 버튼은 HTML `&lt;a&gt;` 태그로 렌더링됩니다.
         </p>
         <Button {...args} />
