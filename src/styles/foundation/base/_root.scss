@@ -11,33 +11,33 @@
 @include generate-vars-lang-typography;
 
 /* 🎨 1단계: 테마별 포인트 컬러 정의 (Brand) */
-.theme-sky {
-  --primary-color: #87ceeb; /* 하늘색 */
-  --primary-accent: #00bfff;
-}
+// .theme-sky {
+//   --primary-color: #87ceeb; /* 하늘색 */
+//   --primary-accent: #00bfff;
+// }
 
-.theme-yellow {
-  --primary-color: #ffd700; /* 노란색 */
-  --primary-accent: #ffae00;
-}
+// .theme-yellow {
+//   --primary-color: #ffd700; /* 노란색 */
+//   --primary-accent: #ffae00;
+// }
 
 /* 🌓 2단계: 모드별 배경/텍스트 정의 (Mode) */
 /* 브랜드와 상관없이 공통 적용되는 명도값 */
-.mode-light {
-  --bg-color: #ffffff;
-  --text-color: #333333;
-  --card-bg: #f5f5f5;
-}
+// .mode-light {
+//   --bg-color: #ffffff;
+//   --text-color: #333333;
+//   --card-bg: #f5f5f5;
+// }
 
-.mode-dark {
-  --bg-color: #1a1a1a;
-  --text-color: #f0f0f0;
-  --card-bg: #2d2d2d;
-}
+// .mode-dark {
+//   --bg-color: #1a1a1a;
+//   --text-color: #f0f0f0;
+//   --card-bg: #2d2d2d;
+// }
 
 /* 🚀 3단계: 실제 컴포넌트 적용 */
-.button {
-  background-color: var(--primary-color);
-  color: var(--text-color);
-  /* ... */
-}
+// .button {
+//   background-color: var(--primary-color);
+//   color: var(--text-color);
+//   /* ... */
+// }

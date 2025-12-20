@@ -673,18 +673,18 @@ $btn-sizes: (
   xs: (
     height: (
       pc: rem(28px),
-      tablet: rem(44px),
-      mobile: rem(44px),
+      tablet: rem(28px),
+      mobile: rem(28px),
     ),
-    gap: rem(4px),
+    gap: rem(0px),
     font-token: var(--project-typo-btn1-600),
     padding: (
-      pc: rem(8px),
-      tablet: rem(8px),
-      mobile: rem(8px),
+      pc: 0 rem(8px),
+      tablet: 0 rem(8px),
+      mobile: 0 rem(8px),
     ),
     radius: (
-      pc: rem(4px),
+      pc: rem(6px),
       tablet: rem(6px),
       mobile: rem(6px),
     ),
@@ -698,49 +698,49 @@ $btn-sizes: (
   sm: (
     height: (
       pc: rem(32px),
-      tablet: rem(44px),
-      mobile: rem(44px),
+      tablet: rem(32px),
+      mobile: rem(32px),
     ),
-    gap: rem(6px),
+    gap: rem(0px),
     font-token: var(--project-typo-btn2-600),
     padding: (
-      pc: rem(12px),
-      tablet: rem(12px),
-      mobile: rem(12px),
+      pc: 0 rem(12px),
+      tablet: 0 rem(12px),
+      mobile: 0 rem(12px),
     ),
     radius: (
-      pc: rem(5px),
+      pc: rem(6px),
       tablet: rem(6px),
       mobile: rem(6px),
     ),
     icon-size: (
       pc: rem(18px),
-      tablet: rem(16px),
+      tablet: rem(18px),
       mobile: rem(18px),
     ),
   ),
 
   md: (
     height: (
-      pc: rem(40px),
+      pc: rem(44px),
       tablet: rem(44px),
-      mobile: rem(48px),
+      mobile: rem(44px),
     ),
-    gap: rem(8px),
+    gap: rem(2px),
     font-token: var(--project-typo-btn3-600),
     padding: (
-      pc: rem(16px),
-      tablet: rem(14px),
-      mobile: rem(16px),
+      pc: 0 rem(16px),
+      tablet: 0 rem(16px),
+      mobile: 0 rem(16px),
     ),
     radius: (
       pc: rem(6px),
       tablet: rem(6px),
-      mobile: rem(7px),
+      mobile: rem(6px),
     ),
     icon-size: (
       pc: rem(20px),
-      tablet: rem(18px),
+      tablet: rem(20px),
       mobile: rem(20px),
     ),
   ),
@@ -749,24 +749,24 @@ $btn-sizes: (
     height: (
       pc: rem(48px),
       tablet: rem(48px),
-      mobile: rem(52px),
+      mobile: rem(48px),
     ),
-    gap: rem(10px),
+    gap: rem(4px),
     font-token: var(--project-typo-btn4-700),
     padding: (
-      pc: rem(20px),
-      tablet: rem(18px),
-      mobile: rem(18px),
+      pc: 0 rem(20px),
+      tablet: 0 rem(20px),
+      mobile: 0 rem(20px),
     ),
     radius: (
-      pc: rem(7px),
-      tablet: rem(7px),
+      pc: rem(8px),
+      tablet: rem(8px),
       mobile: rem(8px),
     ),
     icon-size: (
-      pc: rem(22px),
-      tablet: rem(20px),
-      mobile: rem(20px),
+      pc: rem(24px),
+      tablet: rem(24px),
+      mobile: rem(24px),
     ),
   ),
 
@@ -776,12 +776,12 @@ $btn-sizes: (
       tablet: rem(56px),
       mobile: rem(56px),
     ),
-    gap: rem(12px),
+    gap: rem(6px),
     font-token: var(--project-typo-btn5-700),
     padding: (
-      pc: rem(24px),
-      tablet: rem(20px),
-      mobile: rem(20px),
+      pc: 0 rem(24px),
+      tablet: 0 rem(24px),
+      mobile: 0 rem(24px),
     ),
     radius: (
       pc: rem(8px),
@@ -789,9 +789,9 @@ $btn-sizes: (
       mobile: rem(8px),
     ),
     icon-size: (
-      pc: rem(24px),
-      tablet: rem(22px),
-      mobile: rem(22px),
+      pc: rem(30px),
+      tablet: rem(30px),
+      mobile: rem(30px),
     ),
   ),
 );
@@ -900,7 +900,7 @@ $btn-sizes: (
     // ──────────────── PC 스타일 ────────────────
     &:global(.size--#{$size-name}) {
       height: $height-pc;
-      padding: 0 map.get($padding, pc);
+      padding: map.get($padding, pc);
       gap: map.get($props, gap);
 
       .btn-label {
@@ -917,7 +917,7 @@ $btn-sizes: (
     @media (max-width: 768px) {
       &:global(.size--#{$size-name}) {
         height: $height-tablet;
-        padding: 0 map.get($padding, tablet);
+        padding: map.get($padding, tablet);
 
         svg {
           width: map.get($icon-size, tablet);
@@ -930,7 +930,7 @@ $btn-sizes: (
     @media (max-width: 480px) {
       &:global(.size--#{$size-name}) {
         height: $height-mobile; // 모바일 최소 44px 이미 map에서 보정됨
-        padding: 0 map.get($padding, mobile);
+        padding: map.get($padding, mobile);
 
         svg {
           width: map.get($icon-size, mobile);

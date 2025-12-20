@@ -286,34 +286,34 @@ $spinner-sizes: (
   ),
   sm: (
     size: (
-      pc: rem(16px),
+      pc: rem(14px),
       // 버튼 height 32px → spinner 16px
-      tablet: rem(16px),
-      mobile: rem(16px),
+      tablet: rem(14px),
+      mobile: rem(14px),
     ),
   ),
   md: (
     size: (
-      pc: rem(20px),
+      pc: rem(16px),
       // 버튼 height 40px → spinner 20px
-      tablet: rem(20px),
-      mobile: rem(20px),
+      tablet: rem(16px),
+      mobile: rem(16px),
     ),
   ),
   lg: (
     size: (
-      pc: rem(24px),
+      pc: rem(20px),
       // 버튼 height 48px → spinner 24px
-      tablet: rem(24px),
-      mobile: rem(24px),
+      tablet: rem(20px),
+      mobile: rem(20px),
     ),
   ),
   xl: (
     size: (
-      pc: rem(32px),
-      // 버튼 height 56px → spinner 32px
-      tablet: rem(32px),
-      mobile: rem(32px),
+      pc: rem(24px),
+      // 버튼 height 56px → spinner 28px
+      tablet: rem(24px),
+      mobile: rem(24px),
     ),
   ),
 );

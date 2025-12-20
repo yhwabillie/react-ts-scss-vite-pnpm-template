@@ -7,7 +7,7 @@ import { ModalContext } from '@/components/contexts/ModalContext';
 
 type BaseProps = {
   variant: 'solid' | 'outline' | 'ghost' | 'soft';
-  color:
+  color?:
     | 'primary'
     | 'secondary'
     | 'tertiary'
@@ -18,7 +18,7 @@ type BaseProps = {
     | 'danger';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   shape: 'rounded' | 'square' | 'pill';
-  children: React.ReactNode;
+  children?: React.ReactNode;
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   startSpinner?: React.ReactNode;

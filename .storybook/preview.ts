@@ -17,13 +17,13 @@ export const globalTypes = {
       items: [
         { value: 'ko', title: '한국어', right: '🇰🇷' },
         { value: 'en', title: 'English', right: '🇺🇸' },
+        { value: 'ja', title: 'Japanese', right: '🇯🇵' },
       ],
     },
   },
 };
 
 const preview: Preview = {
-  // 2. 로더 추가 (v8+ 방식)
   loaders: [mswLoader],
   parameters: {
     i18n,
@@ -47,6 +47,18 @@ const preview: Preview = {
     },
   },
   decorators: [
+    (Story, context) => {
+      // 1. 현재 선택된 locale 값
+      const { locale } = context.globals;
+
+      // 2. 순수 자바스크립트로 <html> 태그의 lang 속성을 즉시 변경
+      // 스토리북 미리보기(Canvas)의 <html> 요소에 접근
+      if (typeof document !== 'undefined') {
+        document.documentElement.lang = locale || 'ko';
+      }
+
+      return Story();
+    },
     withThemeByClassName({
       themes: {
         'Sky Light': 'theme-sky mode-light',

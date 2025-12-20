@@ -7,17 +7,16 @@ const resources = {
   ko: {
     translation: {
       hello: '안녕하세요',
-      button: {
-        label: '확인',
-      },
     },
   },
   en: {
     translation: {
       hello: 'Hello',
-      button: {
-        label: 'Confirm',
-      },
+    },
+  },
+  ja: {
+    translation: {
+      hello: 'こんにちは',
     },
   },
 };
