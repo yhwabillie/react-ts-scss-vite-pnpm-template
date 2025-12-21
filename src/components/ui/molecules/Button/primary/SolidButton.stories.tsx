@@ -6,7 +6,7 @@ import RingSpinner from '../../../atoms/Spinner/LoadingSpinner/RingSpinner';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
 const meta = {
-  title: 'UI/Molecules/Button/Primary/Outline',
+  title: 'UI/Molecules/Button/Primary/Solid',
   component: Button,
   tags: ['autodocs'],
   parameters: {
@@ -14,12 +14,12 @@ const meta = {
     docs: {
       description: {
         component:
-          'Outline 버튼은 흰색 배경에 테두리가 있는 스타일로, 보조 동작(Secondary Action)에 주로 사용됩니다.',
+          'Solid 버튼은 테마의 핵심 컬러로 배경이 가득 채워진 스타일이며, 화면에서 가장 강조되어야 하는 핵심 동작(Primary Action)에 사용됩니다.',
       },
     },
   },
   args: {
-    variant: 'outline',
+    variant: 'solid',
     color: 'primary',
     size: 'xl',
     shape: 'rounded',
@@ -527,7 +527,13 @@ export const LongText: Story = {
           <Button
             {...args}
             fullWidth={true}
-            endSpinner={<RingSpinner color={currentColor} size='xl' variant='closed-ring' />}
+            endSpinner={
+              <RingSpinner
+                color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
+                size='xl'
+                variant='closed-ring'
+              />
+            }
           />
         </div>
       </div>

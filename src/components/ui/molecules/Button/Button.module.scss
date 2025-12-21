@@ -6,19 +6,19 @@
 $btn-colors: (
   primary: (
     solid: (
-      bg: #0052cc,
-      label: #ffffff,
+      bg: var(--primary-bg-color-btn-solid),
+      label: var(--primary-text-color-btn-solid),
       hover: (
-        bg: #0041a8,
-        label: #ffffff,
+        bg: var(--primary-hover-bg-color-btn-solid),
+        label: var(--primary-hover-text-color-btn-solid),
       ),
       active: (
-        bg: #003388,
-        label: #ffffff,
+        bg: var(--primary-active-bg-color-btn-solid),
+        label: var(--primary-active-text-color-btn-solid),
       ),
       disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
+        bg: var(--disabled-bg-color-btn),
+        label: var(--disabled-text-color-btn),
       ),
     ),
 
@@ -40,22 +40,23 @@ $btn-colors: (
         ),
       ),
 
+    //
     ghost: (
-      bg: transparent,
-      label: #0052cc,
-      hover: (
-        bg: rgba(0, 82, 204, 0.05),
-        label: #0052cc,
+        bg: var(--primary-bg-color-btn-ghost),
+        label: var(--primary-text-color-btn-ghost),
+        hover: (
+          bg: var(--primary-hover-bg-color-btn-ghost),
+          label: var(--primary-hover-text-color-btn-ghost),
+        ),
+        active: (
+          bg: var(--primary-active-bg-color-btn-ghost),
+          label: var(--primary-active-text-color-btn-ghost),
+        ),
+        disabled: (
+          bg: var(--ghost-disabled-bg-color-btn),
+          label: var(--disabled-text-color-btn),
+        ),
       ),
-      active: (
-        bg: rgba(0, 82, 204, 0.1),
-        label: #0052cc,
-      ),
-      disabled: (
-        bg: transparent,
-        label: #9e9e9e,
-      ),
-    ),
     link: (
       bg: transparent,
       label: #0052cc,
@@ -76,19 +77,19 @@ $btn-colors: (
 
   secondary: (
     solid: (
-      bg: #69b2ff,
-      label: #003366,
+      bg: var(--secondary-bg-color-btn-solid),
+      label: var(--secondary-text-color-btn-solid),
       hover: (
-        bg: #4d9aff,
-        label: #003366,
+        bg: var(--secondary-hover-bg-color-btn-solid),
+        label: var(--secondary-hover-text-color-btn-solid),
       ),
       active: (
-        bg: #3382ff,
-        label: #003366,
+        bg: var(--secondary-active-bg-color-btn-solid),
+        label: var(--secondary-active-text-color-btn-solid),
       ),
       disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
+        bg: var(--disabled-bg-color-btn),
+        label: var(--disabled-text-color-btn),
       ),
     ),
 
@@ -110,22 +111,23 @@ $btn-colors: (
         ),
       ),
 
+    //
     ghost: (
-      bg: transparent,
-      label: #003366,
-      hover: (
-        bg: rgba(0, 51, 102, 0.05),
-        label: #003366,
+        bg: var(--secondary-bg-color-btn-ghost),
+        label: var(--secondary-text-color-btn-ghost),
+        hover: (
+          bg: var(--secondary-hover-bg-color-btn-ghost),
+          label: var(--secondary-hover-text-color-btn-ghost),
+        ),
+        active: (
+          bg: var(--secondary-active-bg-color-btn-ghost),
+          label: var(--secondary-active-text-color-btn-ghost),
+        ),
+        disabled: (
+          bg: var(--ghost-disabled-bg-color-btn),
+          label: var(--disabled-text-color-btn),
+        ),
       ),
-      active: (
-        bg: rgba(0, 51, 102, 0.1),
-        label: #003366,
-      ),
-      disabled: (
-        bg: transparent,
-        label: #9e9e9e,
-      ),
-    ),
     link: (
       bg: transparent,
       label: #69b2ff,
@@ -146,19 +148,19 @@ $btn-colors: (
 
   tertiary: (
     solid: (
-      bg: #e0e0e0,
-      label: #333333,
+      bg: var(--tertiary-bg-color-btn-solid),
+      label: var(--tertiary-text-color-btn-solid),
       hover: (
-        bg: #cfcfcf,
-        label: #333333,
+        bg: var(--tertiary-hover-bg-color-btn-solid),
+        label: var(--tertiary-hover-text-color-btn-solid),
       ),
       active: (
-        bg: #bfbfbf,
-        label: #333333,
+        bg: var(--tertiary-active-bg-color-btn-solid),
+        label: var(--tertiary-active-text-color-btn-solid),
       ),
       disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
+        bg: var(--disabled-bg-color-btn),
+        label: var(--disabled-text-color-btn),
       ),
     ),
 
@@ -180,22 +182,23 @@ $btn-colors: (
         ),
       ),
 
+    //
     ghost: (
-      bg: transparent,
-      label: #333333,
-      hover: (
-        bg: rgba(51, 51, 51, 0.05),
-        label: #333333,
+        bg: var(--tertiary-bg-color-btn-ghost),
+        label: var(--tertiary-text-color-btn-ghost),
+        hover: (
+          bg: var(--tertiary-hover-bg-color-btn-ghost),
+          label: var(--tertiary-hover-text-color-btn-ghost),
+        ),
+        active: (
+          bg: var(--tertiary-active-bg-color-btn-ghost),
+          label: var(--tertiary-active-text-color-btn-ghost),
+        ),
+        disabled: (
+          bg: var(--ghost-disabled-bg-color-btn),
+          label: var(--disabled-text-color-btn),
+        ),
       ),
-      active: (
-        bg: rgba(51, 51, 51, 0.1),
-        label: #333333,
-      ),
-      disabled: (
-        bg: transparent,
-        label: #9e9e9e,
-      ),
-    ),
     link: (
       bg: transparent,
       label: #333333,
@@ -216,19 +219,19 @@ $btn-colors: (
 
   success: (
     solid: (
-      bg: #28a745,
-      label: #ffffff,
+      bg: var(--success-bg-color-btn-solid),
+      label: var(--success-text-color-btn-solid),
       hover: (
-        bg: #218838,
-        label: #ffffff,
+        bg: var(--success-hover-bg-color-btn-solid),
+        label: var(--success-hover-text-color-btn-solid),
       ),
       active: (
-        bg: #1e7e34,
-        label: #ffffff,
+        bg: var(--success-active-bg-color-btn-solid),
+        label: var(--success-active-text-color-btn-solid),
       ),
       disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
+        bg: var(--disabled-bg-color-btn),
+        label: var(--disabled-text-color-btn),
       ),
     ),
 
@@ -250,22 +253,24 @@ $btn-colors: (
         ),
       ),
 
+    //
     ghost: (
-      bg: transparent,
-      label: #28a745,
-      hover: (
-        bg: rgba(40, 167, 69, 0.05),
-        label: #28a745,
+        bg: var(--success-bg-color-btn-ghost),
+        label: var(--success-text-color-btn-ghost),
+        hover: (
+          bg: var(--success-hover-bg-color-btn-ghost),
+          label: var(--success-hover-text-color-btn-ghost),
+        ),
+        active: (
+          bg: var(--success-active-bg-color-btn-ghost),
+          label: var(--success-active-text-color-btn-ghost),
+        ),
+        disabled: (
+          bg: var(--disabled-bg-color-btn),
+          label: var(--disabled-text-color-btn),
+        ),
       ),
-      active: (
-        bg: rgba(40, 167, 69, 0.1),
-        label: #28a745,
-      ),
-      disabled: (
-        bg: transparent,
-        label: #9e9e9e,
-      ),
-    ),
+
     link: (
       bg: transparent,
       label: #28a745,
@@ -286,19 +291,19 @@ $btn-colors: (
 
   warning: (
     solid: (
-      bg: #ff9800,
-      label: #212121,
+      bg: var(--warning-bg-color-btn-solid),
+      label: var(--warning-text-color-btn-solid),
       hover: (
-        bg: #e68a00,
-        label: #212121,
+        bg: var(--warning-hover-bg-color-btn-solid),
+        label: var(--warning-hover-text-color-btn-solid),
       ),
       active: (
-        bg: #cc7a00,
-        label: #212121,
+        bg: var(--warning-active-bg-color-btn-solid),
+        label: var(--warning-active-text-color-btn-solid),
       ),
       disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
+        bg: var(--disabled-bg-color-btn),
+        label: var(--disabled-text-color-btn),
       ),
     ),
 
@@ -320,22 +325,24 @@ $btn-colors: (
         ),
       ),
 
+    //
     ghost: (
-      bg: transparent,
-      label: #ff9800,
-      hover: (
-        bg: rgba(255, 152, 0, 0.05),
-        label: #ff9800,
+        bg: var(--warning-bg-color-btn-ghost),
+        label: var(--warning-text-color-btn-ghost),
+        hover: (
+          bg: var(--warning-hover-bg-color-btn-ghost),
+          label: var(--warning-hover-text-color-btn-ghost),
+        ),
+        active: (
+          bg: var(--warning-active-bg-color-btn-ghost),
+          label: var(--warning-active-text-color-btn-ghost),
+        ),
+        disabled: (
+          bg: var(--disabled-bg-color-btn),
+          label: var(--disabled-text-color-btn),
+        ),
       ),
-      active: (
-        bg: rgba(255, 152, 0, 0.1),
-        label: #ff9800,
-      ),
-      disabled: (
-        bg: transparent,
-        label: #9e9e9e,
-      ),
-    ),
+
     link: (
       bg: transparent,
       label: #ff9800,
@@ -356,19 +363,19 @@ $btn-colors: (
 
   danger: (
     solid: (
-      bg: #d32f2f,
-      label: #ffffff,
+      bg: var(--danger-bg-color-btn-solid),
+      label: var(--danger-text-color-btn-solid),
       hover: (
-        bg: #b72a2a,
-        label: #ffffff,
+        bg: var(--danger-hover-bg-color-btn-solid),
+        label: var(--danger-hover-text-color-btn-solid),
       ),
       active: (
-        bg: #9e2424,
-        label: #ffffff,
+        bg: var(--danger-active-bg-color-btn-solid),
+        label: var(--danger-active-text-color-btn-solid),
       ),
       disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
+        bg: var(--disabled-bg-color-btn),
+        label: var(--disabled-text-color-btn),
       ),
     ),
 
@@ -390,22 +397,24 @@ $btn-colors: (
         ),
       ),
 
+    //
     ghost: (
-      bg: transparent,
-      label: #d32f2f,
-      hover: (
-        bg: rgba(211, 47, 47, 0.05),
-        label: #d32f2f,
+        bg: var(--danger-bg-color-btn-ghost),
+        label: var(--danger-text-color-btn-ghost),
+        hover: (
+          bg: var(--danger-hover-bg-color-btn-ghost),
+          label: var(--danger-hover-text-color-btn-ghost),
+        ),
+        active: (
+          bg: var(--danger-active-bg-color-btn-ghost),
+          label: var(--danger-active-text-color-btn-ghost),
+        ),
+        disabled: (
+          bg: var(--disabled-bg-color-btn),
+          label: var(--disabled-text-color-btn),
+        ),
       ),
-      active: (
-        bg: rgba(211, 47, 47, 0.1),
-        label: #d32f2f,
-      ),
-      disabled: (
-        bg: transparent,
-        label: #9e9e9e,
-      ),
-    ),
+
     link: (
       bg: transparent,
       label: #d32f2f,
@@ -668,6 +677,7 @@ $btn-sizes: (
       }
 
       .btn-label {
+        width: max-content;
         flex: 1 1 auto;
         min-width: 0;
         font: map.get($props, font-token);

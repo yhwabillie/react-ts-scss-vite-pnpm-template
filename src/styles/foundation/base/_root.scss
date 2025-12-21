@@ -19,6 +19,26 @@
   --success-active-bg-color-btn-outline: rgba(21, 128, 61, 0.16);
   --success-active-text-color-btn-outline: #15803d;
 
+  // solid
+  --success-bg-color-btn-solid: #15803d;
+  --success-text-color-btn-solid: #ffffff;
+
+  --success-hover-bg-color-btn-solid: #166534;
+  --success-hover-text-color-btn-solid: #ffffff;
+
+  --success-active-bg-color-btn-solid: #14532d;
+  --success-active-text-color-btn-solid: #ffffff;
+
+  // ghost
+  --success-bg-color-btn-ghost: transparent;
+  --success-text-color-btn-ghost: #15803d;
+
+  --success-hover-bg-color-btn-ghost: rgba(21, 128, 61, 0.05);
+  --success-hover-text-color-btn-ghost: #15803d;
+
+  --success-active-bg-color-btn-ghost: rgba(21, 128, 61, 0.1);
+  --success-active-text-color-btn-ghost: #15803d;
+
   // outline btn - Warning
   --warning-text-color-btn-outline: #b45309;
   --warning-stroke-color-btn-outline: #b45309;
@@ -28,6 +48,26 @@
 
   --warning-hover-bg-color-btn-outline: #b45309;
   --warning-hover-bg-color-btn-outline: rgba(180, 83, 9, 0.16);
+
+  // solid
+  --warning-bg-color-btn-solid: #b45309;
+  --warning-text-color-btn-solid: #ffffff;
+
+  --warning-hover-bg-color-btn-solid: #92400e;
+  --warning-hover-text-color-btn-solid: #ffffff;
+
+  --warning-active-bg-color-btn-solid: #78350f;
+  --warning-active-text-color-btn-solid: #ffffff;
+
+  // ghost
+  --warning-bg-color-btn-ghost: transparent;
+  --warning-text-color-btn-ghost: #b45309;
+
+  --warning-hover-bg-color-btn-ghost: rgba(180, 83, 9, 0.05);
+  --warning-hover-text-color-btn-ghost: #b45309;
+
+  --warning-active-bg-color-btn-ghost: rgba(180, 83, 9, 0.1);
+  --warning-active-text-color-btn-ghost: #b45309;
 
   // outline btn - Danger
   --danger-text-color-btn-outline: #b91c1c;
@@ -39,7 +79,27 @@
   --danger-active-bg-color-btn-outline: rgba(185, 28, 28, 0.16);
   --danger-active-text-color-btn-outline: #b91c1c;
 
-  // spinner - Success (#15803d)
+  // solid
+  --danger-bg-color-btn-solid: #b91c1c;
+  --danger-text-color-btn-solid: #ffffff;
+
+  --danger-hover-bg-color-btn-solid: #991b1b;
+  --danger-hover-text-color-btn-solid: #ffffff;
+
+  --danger-active-bg-color-btn-solid: #7f1d1d;
+  --danger-active-text-color-btn-solid: #ffffff;
+
+  // ghost
+  --danger-bg-color-btn-ghost: transparent;
+  --danger-text-color-btn-ghost: #b91c1c;
+
+  --danger-hover-bg-color-btn-ghost: rgba(185, 28, 28, 0.05);
+  --danger-hover-text-color-btn-ghost: #b91c1c;
+
+  --danger-active-bg-color-btn-ghost: rgba(185, 28, 28, 0.1);
+  --danger-active-text-color-btn-ghost: #b91c1c;
+
+  // spinner - Success
   --success-track-color-spinner-open-ring: rgba(21, 128, 61, 0.2);
   --success-path-color-spinner-open-ring: #15803d;
 
@@ -52,7 +112,7 @@
   --success-solid-track-color-spinner-closed-ring: rgba(255, 255, 255, 0.2);
   --success-solid-path-color-spinner-closed-ring: #ffffff;
 
-  // spinner - Warning (#b45309)
+  // spinner - Warning
   --warning-track-color-spinner-open-ring: rgba(180, 83, 9, 0.2);
   --warning-path-color-spinner-open-ring: #b45309;
 
@@ -65,7 +125,7 @@
   --warning-solid-track-color-spinner-closed-ring: rgba(255, 255, 255, 0.2);
   --warning-solid-path-color-spinner-closed-ring: #ffffff;
 
-  // spinner - Danger (#b91c1c)
+  // spinner - Danger
   --danger-track-color-spinner-open-ring: rgba(185, 28, 28, 0.2);
   --danger-path-color-spinner-open-ring: #b91c1c;
 
@@ -79,6 +139,7 @@
   --danger-solid-path-color-spinner-closed-ring: #ffffff;
 
   // disabled
+  --ghost-disabled-bg-color-btn: transparent;
   --disabled-bg-color-btn: #e0e0e0;
   --disabled-text-color-btn: #9e9e9e;
   --disabled-stroke-color-btn: #9e9e9e;
@@ -101,6 +162,26 @@
   --success-active-bg-color-btn-outline: rgba(74, 222, 128, 0.24);
   --success-active-text-color-btn-outline: #4ade80;
 
+  // solid
+  --success-bg-color-btn-solid: #22c55e;
+  --success-text-color-btn-solid: #ffffff;
+
+  --success-hover-bg-color-btn-solid: #16a34a;
+  --success-hover-text-color-btn-solid: #ffffff;
+
+  --success-active-bg-color-btn-solid: #15803d;
+  --success-active-text-color-btn-solid: #ffffff;
+
+  // ghost
+  --success-bg-color-btn-ghost: transparent;
+  --success-text-color-btn-ghost: #4ade80;
+
+  --success-hover-bg-color-btn-ghost: rgba(74, 222, 128, 0.05);
+  --success-hover-text-color-btn-ghost: #4ade80;
+
+  --success-active-bg-color-btn-ghost: rgba(74, 222, 128, 0.1);
+  --success-active-text-color-btn-ghost: #4ade80;
+
   // outline btn - Warning
   --warning-text-color-btn-outline: #fbbf24;
   --warning-stroke-color-btn-outline: #fbbf24;
@@ -110,6 +191,26 @@
 
   --warning-active-bg-color-btn-outline: rgba(251, 191, 36, 0.24);
   --warning-active-text-color-btn-outline: #fbbf24;
+
+  // solid
+  --warning-bg-color-btn-solid: #f59e0b;
+  --warning-text-color-btn-solid: #ffffff;
+
+  --warning-hover-bg-color-btn-solid: #d97706;
+  --warning-hover-text-color-btn-solid: #ffffff;
+
+  --warning-active-bg-color-btn-solid: #b45309;
+  --warning-active-text-color-btn-solid: #ffffff;
+
+  // ghost
+  --warning-bg-color-btn-ghost: transparent;
+  --warning-text-color-btn-ghost: #fbbf24;
+
+  --warning-hover-bg-color-btn-ghost: rgba(251, 191, 36, 0.05);
+  --warning-hover-text-color-btn-ghost: #fbbf24;
+
+  --warning-active-bg-color-btn-ghost: rgba(251, 191, 36, 0.1);
+  --warning-active-text-color-btn-ghost: #fbbf24;
 
   // outline btn - Danger
   --danger-text-color-btn-outline: #f87171;
@@ -121,6 +222,26 @@
   --danger-active-bg-color-btn-outline: rgba(248, 113, 113, 0.24);
   --danger-active-text-color-btn-outline: #f87171;
 
+  // solid
+  --danger-bg-color-btn-solid: #ef4444;
+  --danger-text-color-btn-solid: #ffffff;
+
+  --danger-hover-bg-color-btn-solid: #dc2626;
+  --danger-hover-text-color-btn-solid: #ffffff;
+
+  --danger-active-bg-color-btn-solid: #b91c1c;
+  --danger-active-text-color-btn-solid: #ffffff;
+
+  // ghost
+  --danger-bg-color-btn-ghost: transparent;
+  --danger-text-color-btn-ghost: #f87171;
+
+  --danger-hover-bg-color-btn-ghost: rgba(248, 113, 113, 0.05);
+  --danger-hover-text-color-btn-ghost: #f87171;
+
+  --danger-active-bg-color-btn-ghost: rgba(248, 113, 113, 0.1);
+  --danger-active-text-color-btn-ghost: #f87171;
+
   // spinner - Success
   --success-track-color-spinner-open-ring: transparent;
   --success-path-color-spinner-open-ring: #4ade80;
@@ -131,8 +252,8 @@
   --success-solid-track-color-spinner-open-ring: transparent;
   --success-solid-path-color-spinner-open-ring: #ffffff;
 
-  --success-solid-track-color-spinner-closed-ring: rgba(74, 222, 128, 0.2);
-  --success-solid-path-color-spinner-closed-ring: #4ade80;
+  --success-solid-track-color-spinner-closed-ring: rgba(255, 255, 255, 0.2);
+  --success-solid-path-color-spinner-closed-ring: #ffffff;
 
   // spinner - Warning
   --warning-track-color-spinner-open-ring: transparent;
@@ -144,8 +265,8 @@
   --warning-solid-track-color-spinner-open-ring: transparent;
   --warning-solid-path-color-spinner-open-ring: #ffffff;
 
-  --warning-solid-track-color-spinner-closed-ring: rgba(251, 191, 36, 0.2);
-  --warning-solid-path-color-spinner-closed-ring: #fbbf24;
+  --warning-solid-track-color-spinner-closed-ring: rgba(255, 255, 255, 0.2);
+  --warning-solid-path-color-spinner-closed-ring: #ffffff;
 
   // spinner - Danger
   --danger-track-color-spinner-open-ring: transparent;
@@ -157,8 +278,8 @@
   --danger-solid-track-color-spinner-open-ring: transparent;
   --danger-solid-path-color-spinner-open-ring: #ffffff;
 
-  --danger-solid-track-color-spinner-closed-ring: rgba(248, 113, 113, 0.2);
-  --danger-solid-path-color-spinner-closed-ring: #f87171;
+  --danger-solid-track-color-spinner-closed-ring: rgba(255, 255, 255, 0.2);
+  --danger-solid-path-color-spinner-closed-ring: #ffffff;
 
   // disabled
   --disabled-bg-color-btn: #1e1e1e;
@@ -178,6 +299,26 @@
   --primary-active-bg-color-btn-outline: rgba(0, 82, 204, 0.2);
   --primary-active-text-color-btn-outline: #0052cc;
 
+  // solid btn
+  --primary-bg-color-btn-solid: #0052cc;
+  --primary-text-color-btn-solid: #ffffff;
+
+  --primary-hover-bg-color-btn-solid: #0041a3;
+  --primary-hover-text-color-btn-solid: #ffffff;
+
+  --primary-active-bg-color-btn-solid: #003385;
+  --primary-active-text-color-btn-solid: #ffffff;
+
+  // ghost btn
+  --primary-bg-color-btn-ghost: transparent;
+  --primary-text-color-btn-ghost: #0052cc;
+
+  --primary-hover-bg-color-btn-ghost: rgba(0, 82, 204, 0.05);
+  --primary-hover-text-color-btn-ghost: #0052cc;
+
+  --primary-active-bg-color-btn-ghost: rgba(0, 82, 204, 0.1);
+  --primary-active-text-color-btn-ghost: #0052cc;
+
   // outline btn - secondary (보조 액션)
   --secondary-text-color-btn-outline: #475569;
   --secondary-stroke-color-btn-outline: #475569;
@@ -187,6 +328,26 @@
 
   --secondary-active-bg-color-btn-outline: rgba(148, 163, 184, 0.4);
   --secondary-active-text-color-btn-outline: #1e293b;
+
+  // solid btn
+  --secondary-bg-color-btn-solid: #475569;
+  --secondary-text-color-btn-solid: #ffffff;
+
+  --secondary-hover-bg-color-btn-solid: #334155;
+  --secondary-hover-text-color-btn-solid: #ffffff;
+
+  --secondary-active-bg-color-btn-solid: #1e293b;
+  --secondary-active-text-color-btn-solid: #ffffff;
+
+  // ghost btn
+  --secondary-bg-color-btn-ghost: transparent;
+  --secondary-text-color-btn-ghost: #475569; /* solid의 메인 배경색을 텍스트로 사용 */
+
+  --secondary-hover-bg-color-btn-ghost: rgba(71, 85, 105, 0.05); /* 5% 불투명도 */
+  --secondary-hover-text-color-btn-ghost: #475569;
+
+  --secondary-active-bg-color-btn-ghost: rgba(71, 85, 105, 0.1); /* 10% 불투명도 */
+  --secondary-active-text-color-btn-ghost: #475569;
 
   // outline btn - tertiary (특별한 강조 혹은 분류)
   --tertiary-text-color-btn-outline: #7c3aed;
@@ -198,6 +359,26 @@
   --tertiary-active-bg-color-btn-outline: rgba(124, 58, 237, 0.16);
   --tertiary-active-text-color-btn-outline: #5b21b6;
 
+  // solid btn
+  --tertiary-bg-color-btn-solid: #7c3aed;
+  --tertiary-text-color-btn-solid: #ffffff;
+
+  --tertiary-hover-bg-color-btn-solid: #6d28d9;
+  --tertiary-hover-text-color-btn-solid: #ffffff;
+
+  --tertiary-active-bg-color-btn-solid: #5b21b6;
+  --tertiary-active-text-color-btn-solid: #ffffff;
+
+  // ghost btn
+  --tertiary-bg-color-btn-ghost: transparent;
+  --tertiary-text-color-btn-ghost: #7c3aed;
+
+  --tertiary-hover-bg-color-btn-ghost: rgba(124, 58, 237, 0.05);
+  --tertiary-hover-text-color-btn-ghost: #7c3aed;
+
+  --tertiary-active-bg-color-btn-ghost: rgba(124, 58, 237, 0.1);
+  --tertiary-active-text-color-btn-ghost: #7c3aed;
+
   // spinner - primary (핵심 액션 블루)
   --primary-track-color-spinner-open-ring: transparent;
   --primary-path-color-spinner-open-ring: #0052cc;
@@ -208,8 +389,8 @@
   --primary-solid-track-color-spinner-open-ring: transparent;
   --primary-solid-path-color-spinner-open-ring: #ffffff;
 
-  --primary-solid-track-color-spinner-closed-ring: rgba(0, 82, 204, 0.2);
-  --primary-solid-path-color-spinner-closed-ring: #0052cc;
+  --primary-solid-track-color-spinner-closed-ring: rgba(255, 255, 255, 0.2);
+  --primary-solid-path-color-spinner-closed-ring: #ffffff;
 
   // spinner - secondary (보조 액션 슬레이트)
   --secondary-track-color-spinner-open-ring: transparent;
@@ -221,8 +402,8 @@
   --secondary-solid-track-color-spinner-open-ring: transparent;
   --secondary-solid-path-color-spinner-open-ring: #ffffff;
 
-  --secondary-solid-track-color-spinner-closed-ring: rgba(71, 85, 105, 0.2);
-  --secondary-solid-path-color-spinner-closed-ring: #475569;
+  --secondary-solid-track-color-spinner-closed-ring: rgba(255, 255, 255, 0.2);
+  --secondary-solid-path-color-spinner-closed-ring: #ffffff;
 
   // spinner - tertiary (특별 강조 퍼플)
   --tertiary-track-color-spinner-open-ring: transparent;
@@ -234,8 +415,8 @@
   --tertiary-solid-track-color-spinner-open-ring: transparent;
   --tertiary-solid-path-color-spinner-open-ring: #ffffff;
 
-  --tertiary-solid-track-color-spinner-closed-ring: rgba(124, 58, 237, 0.2);
-  --tertiary-solid-path-color-spinner-closed-ring: #7c3aed;
+  --tertiary-solid-track-color-spinner-closed-ring: rgba(255, 255, 255, 0.2);
+  --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
     // outline btn - primary (핵심 액션)
@@ -248,6 +429,26 @@
     --primary-active-bg-color-btn-outline: rgba(102, 178, 255, 0.24);
     --primary-active-text-color-btn-outline: #85c2ff;
 
+    // solid
+    --primary-bg-color-btn-solid: #3b82f6;
+    --primary-text-color-btn-solid: #ffffff;
+
+    --primary-hover-bg-color-btn-solid: #2563eb;
+    --primary-hover-text-color-btn-solid: #ffffff;
+
+    --primary-active-bg-color-btn-solid: #1d4ed8;
+    --primary-active-text-color-btn-solid: #ffffff;
+
+    // ghost
+    --primary-bg-color-btn-ghost: transparent;
+    --primary-text-color-btn-ghost: #66b2ff;
+
+    --primary-hover-bg-color-btn-ghost: rgba(102, 178, 255, 0.05);
+    --primary-hover-text-color-btn-ghost: #66b2ff;
+
+    --primary-active-bg-color-btn-ghost: rgba(102, 178, 255, 0.1);
+    --primary-active-text-color-btn-ghost: #66b2ff;
+
     // outline btn - secondary (보조 액션)
     --secondary-text-color-btn-outline: #38bdf8;
     --secondary-stroke-color-btn-outline: #38bdf8;
@@ -258,6 +459,26 @@
     --secondary-active-bg-color-btn-outline: rgba(56, 189, 248, 0.24);
     --secondary-active-text-color-btn-outline: #7dd3fc;
 
+    // solid
+    --secondary-bg-color-btn-solid: #0ea5e9;
+    --secondary-text-color-btn-solid: #ffffff;
+
+    --secondary-hover-bg-color-btn-solid: #0284c7;
+    --secondary-hover-text-color-btn-solid: #ffffff;
+
+    --secondary-active-bg-color-btn-solid: #0369a1;
+    --secondary-active-text-color-btn-solid: #ffffff;
+
+    // ghost
+    --secondary-bg-color-btn-ghost: transparent;
+    --secondary-text-color-btn-ghost: #38bdf8;
+
+    --secondary-hover-bg-color-btn-ghost: rgba(56, 189, 248, 0.05);
+    --secondary-hover-text-color-btn-ghost: #38bdf8;
+
+    --secondary-active-bg-color-btn-ghost: rgba(56, 189, 248, 0.1);
+    --secondary-active-text-color-btn-ghost: #38bdf8;
+
     // outline btn - tertiary (특별한 강조 혹은 분류)
     --tertiary-text-color-btn-outline: #a78bfa;
     --tertiary-stroke-color-btn-outline: #a78bfa;
@@ -267,6 +488,26 @@
 
     --tertiary-active-bg-color-btn-outline: rgba(167, 139, 250, 0.24);
     --tertiary-active-text-color-btn-outline: #c4b5fd;
+
+    // solid
+    --tertiary-bg-color-btn-solid: #8b5cf6;
+    --tertiary-text-color-btn-solid: #ffffff;
+
+    --tertiary-hover-bg-color-btn-solid: #7c3aed;
+    --tertiary-hover-text-color-btn-solid: #ffffff;
+
+    --tertiary-active-bg-color-btn-solid: #6d28d9;
+    --tertiary-active-text-color-btn-solid: #ffffff;
+
+    // ghost
+    --tertiary-bg-color-btn-ghost: transparent;
+    --tertiary-text-color-btn-ghost: #a78bfa;
+
+    --tertiary-hover-bg-color-btn-ghost: rgba(167, 139, 250, 0.05);
+    --tertiary-hover-text-color-btn-ghost: #a78bfa;
+
+    --tertiary-active-bg-color-btn-ghost: rgba(167, 139, 250, 0.1);
+    --tertiary-active-text-color-btn-ghost: #a78bfa;
 
     // spinner - primary (핵심 액션 블루: #66b2ff)
     --primary-track-color-spinner-open-ring: rgba(102, 178, 255, 0.2);
