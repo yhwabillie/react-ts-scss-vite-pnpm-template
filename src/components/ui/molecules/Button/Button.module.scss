@@ -57,22 +57,24 @@ $btn-colors: (
           label: var(--disabled-text-color-btn),
         ),
       ),
+
+    //
     link: (
-      bg: transparent,
-      label: #0052cc,
-      hover: (
-        bg: rgba(0, 82, 204, 0.1),
-        label: #003d99,
+        bg: var(--primary-bg-color-btn-link),
+        label: var(--primary-text-color-btn-link),
+        hover: (
+          bg: var(--primary-hover-bg-color-btn-link),
+          label: var(--primary-hover-text-color-btn-link),
+        ),
+        active: (
+          bg: var(--primary-active-bg-color-btn-link),
+          label: var(--primary-active-text-color-btn-link),
+        ),
+        disabled: (
+          bg: var(--ghost-disabled-bg-color-link),
+          label: var(--ghost-disabled-text-color-link),
+        ),
       ),
-      active: (
-        bg: rgba(0, 82, 204, 0.2),
-        label: #002966,
-      ),
-      disabled: (
-        bg: transparent,
-        label: #9e9e9e,
-      ),
-    ),
   ),
 
   secondary: (
@@ -129,19 +131,19 @@ $btn-colors: (
         ),
       ),
     link: (
-      bg: transparent,
-      label: #69b2ff,
+      bg: var(--secondary-bg-color-btn-link),
+      label: var(--secondary-text-color-btn-link),
       hover: (
-        bg: rgba(105, 178, 255, 0.1),
-        label: #69b2ff,
+        bg: var(--secondary-hover-bg-color-btn-link),
+        label: var(--secondary-hover-text-color-btn-link),
       ),
       active: (
-        bg: rgba(105, 178, 255, 0.2),
-        label: #69b2ff,
+        bg: var(--secondary-active-bg-color-btn-link),
+        label: var(--secondary-active-text-color-btn-link),
       ),
       disabled: (
-        bg: transparent,
-        label: #9e9e9e,
+        bg: var(--ghost-disabled-bg-color-link),
+        label: var(--ghost-disabled-text-color-link),
       ),
     ),
   ),
@@ -199,22 +201,24 @@ $btn-colors: (
           label: var(--disabled-text-color-btn),
         ),
       ),
+
+    //
     link: (
-      bg: transparent,
-      label: #333333,
-      hover: (
-        bg: rgba(51, 51, 51, 0.1),
-        label: #1a1a1a,
+        bg: var(--tertiary-bg-color-btn-link),
+        label: var(--tertiary-text-color-btn-link),
+        hover: (
+          bg: var(--tertiary-hover-bg-color-btn-link),
+          label: var(--tertiary-hover-text-color-btn-link),
+        ),
+        active: (
+          bg: var(--tertiary-active-bg-color-btn-link),
+          label: var(--tertiary-active-text-color-btn-link),
+        ),
+        disabled: (
+          bg: var(--ghost-disabled-bg-color-link),
+          label: var(--ghost-disabled-text-color-link),
+        ),
       ),
-      active: (
-        bg: rgba(51, 51, 51, 0.2),
-        label: #000000,
-      ),
-      disabled: (
-        bg: transparent,
-        label: #9e9e9e,
-      ),
-    ),
   ),
 
   success: (
@@ -266,27 +270,28 @@ $btn-colors: (
           label: var(--success-active-text-color-btn-ghost),
         ),
         disabled: (
-          bg: var(--disabled-bg-color-btn),
+          bg: var(--ghost-disabled-bg-color-btn),
           label: var(--disabled-text-color-btn),
         ),
       ),
 
+    //
     link: (
-      bg: transparent,
-      label: #28a745,
-      hover: (
-        bg: rgba(40, 167, 69, 0.1),
-        label: #218838,
+        bg: var(--success-bg-color-btn-link),
+        label: var(--success-text-color-btn-link),
+        hover: (
+          bg: var(--success-hover-bg-color-btn-link),
+          label: var(--success-hover-text-color-btn-link),
+        ),
+        active: (
+          bg: var(--success-active-bg-color-btn-link),
+          label: var(--success-active-text-color-btn-link),
+        ),
+        disabled: (
+          bg: var(--ghost-disabled-bg-color-link),
+          label: var(--ghost-disabled-text-color-link),
+        ),
       ),
-      active: (
-        bg: rgba(40, 167, 69, 0.2),
-        label: #1e7e34,
-      ),
-      disabled: (
-        bg: transparent,
-        label: #9e9e9e,
-      ),
-    ),
   ),
 
   warning: (
@@ -338,27 +343,28 @@ $btn-colors: (
           label: var(--warning-active-text-color-btn-ghost),
         ),
         disabled: (
-          bg: var(--disabled-bg-color-btn),
+          bg: var(--ghost-disabled-bg-color-btn),
           label: var(--disabled-text-color-btn),
         ),
       ),
 
+    //
     link: (
-      bg: transparent,
-      label: #ff9800,
-      hover: (
-        bg: rgba(255, 152, 0, 0.1),
-        label: #e68a00,
+        bg: var(--warning-bg-color-btn-link),
+        label: var(--warning-text-color-btn-link),
+        hover: (
+          bg: var(--warning-hover-bg-color-btn-link),
+          label: var(--warning-hover-text-color-btn-link),
+        ),
+        active: (
+          bg: var(--warning-active-bg-color-btn-link),
+          label: var(--warning-active-text-color-btn-link),
+        ),
+        disabled: (
+          bg: var(--ghost-disabled-bg-color-link),
+          label: var(--ghost-disabled-text-color-link),
+        ),
       ),
-      active: (
-        bg: rgba(255, 152, 0, 0.2),
-        label: #cc7a00,
-      ),
-      disabled: (
-        bg: transparent,
-        label: #9e9e9e,
-      ),
-    ),
   ),
 
   danger: (
@@ -410,27 +416,28 @@ $btn-colors: (
           label: var(--danger-active-text-color-btn-ghost),
         ),
         disabled: (
-          bg: var(--disabled-bg-color-btn),
+          bg: var(--ghost-disabled-bg-color-btn),
           label: var(--disabled-text-color-btn),
         ),
       ),
 
+    //
     link: (
-      bg: transparent,
-      label: #d32f2f,
-      hover: (
-        bg: rgba(211, 47, 47, 0.1),
-        label: #b72a2a,
+        bg: var(--danger-bg-color-btn-link),
+        label: var(--danger-text-color-btn-link),
+        hover: (
+          bg: var(--danger-hover-bg-color-btn-link),
+          label: var(--danger-hover-text-color-btn-link),
+        ),
+        active: (
+          bg: var(--danger-active-bg-color-btn-link),
+          label: var(--danger-active-text-color-btn-link),
+        ),
+        disabled: (
+          bg: var(--ghost-disabled-bg-color-link),
+          label: var(--ghost-disabled-text-color-link),
+        ),
       ),
-      active: (
-        bg: rgba(211, 47, 47, 0.2),
-        label: #9e2424,
-      ),
-      disabled: (
-        bg: transparent,
-        label: #9e9e9e,
-      ),
-    ),
   ),
 );
 

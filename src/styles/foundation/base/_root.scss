@@ -39,6 +39,16 @@
   --success-active-bg-color-btn-ghost: rgba(21, 128, 61, 0.1);
   --success-active-text-color-btn-ghost: #15803d;
 
+  // link
+  --success-bg-color-btn-link: transparent;
+  --success-text-color-btn-link: #15803d;
+
+  --success-hover-bg-color-btn-link: rgba(21, 128, 61, 0.05);
+  --success-hover-text-color-btn-link: #15803d;
+
+  --success-active-bg-color-btn-link: rgba(21, 128, 61, 0.1);
+  --success-active-text-color-btn-link: #15803d;
+
   // outline btn - Warning
   --warning-text-color-btn-outline: #b45309;
   --warning-stroke-color-btn-outline: #b45309;
@@ -69,6 +79,16 @@
   --warning-active-bg-color-btn-ghost: rgba(180, 83, 9, 0.1);
   --warning-active-text-color-btn-ghost: #b45309;
 
+  // link
+  --warning-bg-color-btn-link: transparent;
+  --warning-text-color-btn-link: #b45309;
+
+  --warning-hover-bg-color-btn-link: rgba(180, 83, 9, 0.05);
+  --warning-hover-text-color-btn-link: #b45309;
+
+  --warning-active-bg-color-btn-link: rgba(180, 83, 9, 0.1);
+  --warning-active-text-color-btn-link: #b45309;
+
   // outline btn - Danger
   --danger-text-color-btn-outline: #b91c1c;
   --danger-stroke-color-btn-outline: #b91c1c;
@@ -98,6 +118,16 @@
 
   --danger-active-bg-color-btn-ghost: rgba(185, 28, 28, 0.1);
   --danger-active-text-color-btn-ghost: #b91c1c;
+
+  // link
+  --danger-bg-color-btn-link: transparent;
+  --danger-text-color-btn-link: #b91c1c;
+
+  --danger-hover-bg-color-btn-link: rgba(185, 28, 28, 0.05);
+  --danger-hover-text-color-btn-link: #b91c1c;
+
+  --danger-active-bg-color-btn-link: rgba(185, 28, 28, 0.1);
+  --danger-active-text-color-btn-link: #b91c1c;
 
   // spinner - Success
   --success-track-color-spinner-open-ring: rgba(21, 128, 61, 0.2);
@@ -139,6 +169,9 @@
   --danger-solid-path-color-spinner-closed-ring: #ffffff;
 
   // disabled
+  --ghost-disabled-bg-color-link: transparent;
+  --ghost-disabled-text-color-link: #9e9e9e;
+
   --ghost-disabled-bg-color-btn: transparent;
   --disabled-bg-color-btn: #e0e0e0;
   --disabled-text-color-btn: #9e9e9e;
@@ -182,6 +215,16 @@
   --success-active-bg-color-btn-ghost: rgba(74, 222, 128, 0.1);
   --success-active-text-color-btn-ghost: #4ade80;
 
+  // link
+  --success-bg-color-btn-link: transparent;
+  --success-text-color-btn-link: #4ade80;
+
+  --success-hover-bg-color-btn-link: rgba(74, 222, 128, 0.05);
+  --success-hover-text-color-btn-link: #4ade80;
+
+  --success-active-bg-color-btn-link: rgba(74, 222, 128, 0.1);
+  --success-active-text-color-btn-link: #4ade80;
+
   // outline btn - Warning
   --warning-text-color-btn-outline: #fbbf24;
   --warning-stroke-color-btn-outline: #fbbf24;
@@ -212,6 +255,16 @@
   --warning-active-bg-color-btn-ghost: rgba(251, 191, 36, 0.1);
   --warning-active-text-color-btn-ghost: #fbbf24;
 
+  // link
+  --warning-bg-color-btn-link: transparent;
+  --warning-text-color-btn-link: #fbbf24;
+
+  --warning-hover-bg-color-btn-link: rgba(251, 191, 36, 0.05);
+  --warning-hover-text-color-btn-link: #fbbf24;
+
+  --warning-active-bg-color-btn-link: rgba(251, 191, 36, 0.1);
+  --warning-active-text-color-btn-link: #fbbf24;
+
   // outline btn - Danger
   --danger-text-color-btn-outline: #f87171;
   --danger-stroke-color-btn-outline: #f87171;
@@ -241,6 +294,16 @@
 
   --danger-active-bg-color-btn-ghost: rgba(248, 113, 113, 0.1);
   --danger-active-text-color-btn-ghost: #f87171;
+
+  // link
+  --danger-bg-color-btn-link: transparent;
+  --danger-text-color-btn-link: #f87171;
+
+  --danger-hover-bg-color-btn-link: rgba(248, 113, 113, 0.05);
+  --danger-hover-text-color-btn-link: #f87171;
+
+  --danger-active-bg-color-btn-link: rgba(248, 113, 113, 0.1);
+  --danger-active-text-color-btn-link: #f87171;
 
   // spinner - Success
   --success-track-color-spinner-open-ring: transparent;
@@ -319,6 +382,16 @@
   --primary-active-bg-color-btn-ghost: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-ghost: #0052cc;
 
+  // link
+  --primary-bg-color-btn-link: transparent;
+  --primary-text-color-btn-link: #0052cc;
+
+  --primary-hover-bg-color-btn-link: rgba(0, 82, 204, 0.05);
+  --primary-hover-text-color-btn-link: #0052cc;
+
+  --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
+  --primary-active-text-color-btn-link: #0052cc;
+
   // outline btn - secondary (보조 액션)
   --secondary-text-color-btn-outline: #475569;
   --secondary-stroke-color-btn-outline: #475569;
@@ -341,13 +414,23 @@
 
   // ghost btn
   --secondary-bg-color-btn-ghost: transparent;
-  --secondary-text-color-btn-ghost: #475569; /* solid의 메인 배경색을 텍스트로 사용 */
+  --secondary-text-color-btn-ghost: #475569;
 
-  --secondary-hover-bg-color-btn-ghost: rgba(71, 85, 105, 0.05); /* 5% 불투명도 */
+  --secondary-hover-bg-color-btn-ghost: rgba(71, 85, 105, 0.05);
   --secondary-hover-text-color-btn-ghost: #475569;
 
-  --secondary-active-bg-color-btn-ghost: rgba(71, 85, 105, 0.1); /* 10% 불투명도 */
+  --secondary-active-bg-color-btn-ghost: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-ghost: #475569;
+
+  // link
+  --secondary-bg-color-btn-link: transparent;
+  --secondary-text-color-btn-link: #475569;
+
+  --secondary-hover-bg-color-btn-link: rgba(71, 85, 105, 0.05);
+  --secondary-hover-text-color-btn-link: #475569;
+
+  --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
+  --secondary-active-text-color-btn-link: #475569;
 
   // outline btn - tertiary (특별한 강조 혹은 분류)
   --tertiary-text-color-btn-outline: #7c3aed;
@@ -378,6 +461,16 @@
 
   --tertiary-active-bg-color-btn-ghost: rgba(124, 58, 237, 0.1);
   --tertiary-active-text-color-btn-ghost: #7c3aed;
+
+  // link
+  --tertiary-bg-color-btn-link: transparent;
+  --tertiary-text-color-btn-link: #7c3aed;
+
+  --tertiary-hover-bg-color-btn-link: rgba(124, 58, 237, 0.05);
+  --tertiary-hover-text-color-btn-link: #7c3aed;
+
+  --tertiary-active-bg-color-btn-link: rgba(124, 58, 237, 0.1);
+  --tertiary-active-text-color-btn-link: #7c3aed;
 
   // spinner - primary (핵심 액션 블루)
   --primary-track-color-spinner-open-ring: transparent;
@@ -449,6 +542,16 @@
     --primary-active-bg-color-btn-ghost: rgba(102, 178, 255, 0.1);
     --primary-active-text-color-btn-ghost: #66b2ff;
 
+    // link
+    --primary-bg-color-btn-link: transparent;
+    --primary-text-color-btn-link: #66b2ff;
+
+    --primary-hover-bg-color-btn-link: rgba(102, 178, 255, 0.05);
+    --primary-hover-text-color-btn-link: #66b2ff;
+
+    --primary-active-bg-color-btn-link: rgba(102, 178, 255, 0.1);
+    --primary-active-text-color-btn-link: #66b2ff;
+
     // outline btn - secondary (보조 액션)
     --secondary-text-color-btn-outline: #38bdf8;
     --secondary-stroke-color-btn-outline: #38bdf8;
@@ -479,6 +582,16 @@
     --secondary-active-bg-color-btn-ghost: rgba(56, 189, 248, 0.1);
     --secondary-active-text-color-btn-ghost: #38bdf8;
 
+    // link
+    --secondary-bg-color-btn-link: transparent;
+    --secondary-text-color-btn-link: #38bdf8;
+
+    --secondary-hover-bg-color-btn-link: rgba(56, 189, 248, 0.05);
+    --secondary-hover-text-color-btn-link: #38bdf8;
+
+    --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.1);
+    --secondary-active-text-color-btn-link: #38bdf8;
+
     // outline btn - tertiary (특별한 강조 혹은 분류)
     --tertiary-text-color-btn-outline: #a78bfa;
     --tertiary-stroke-color-btn-outline: #a78bfa;
@@ -508,6 +621,16 @@
 
     --tertiary-active-bg-color-btn-ghost: rgba(167, 139, 250, 0.1);
     --tertiary-active-text-color-btn-ghost: #a78bfa;
+
+    // link
+    --tertiary-bg-color-btn-link: transparent;
+    --tertiary-text-color-btn-link: #a78bfa;
+
+    --tertiary-hover-bg-color-btn-link: rgba(167, 139, 250, 0.05);
+    --tertiary-hover-text-color-btn-link: #a78bfa;
+
+    --tertiary-active-bg-color-btn-link: rgba(167, 139, 250, 0.1);
+    --tertiary-active-text-color-btn-link: #a78bfa;
 
     // spinner - primary (핵심 액션 블루: #66b2ff)
     --primary-track-color-spinner-open-ring: rgba(102, 178, 255, 0.2);
