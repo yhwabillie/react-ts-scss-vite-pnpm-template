@@ -1,12 +1,12 @@
-import Button from '@/components/ui/molecules/Button/Button';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useTranslation } from 'react-i18next';
 import Icon from '../../../atoms/Icon/Icon';
 import { fn } from 'storybook/test';
+import LinkButton from '../LinkButton';
 
-const meta = {
-  title: 'UI/Molecules/Button/Primary/Link',
-  component: Button,
+const meta: Meta<typeof LinkButton> = {
+  title: 'UI/Molecules/LinkButton/Primary',
+  component: LinkButton,
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
@@ -37,7 +37,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof LinkButton>;
 
 export default meta;
 
@@ -45,7 +45,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Base: Story = {
   args: {
-    as: 'a',
     href: 'https://www.google.com',
     target: '_blank',
     title: '새 창 열기',
@@ -61,7 +60,7 @@ export const Base: Story = {
     },
   },
   render: args => {
-    return <Button {...args}></Button>;
+    return <LinkButton {...args}></LinkButton>;
   },
 };
 
@@ -106,10 +105,10 @@ export const States: Story = {
 
               {/* 버튼 조합들 */}
               <div style={{ display: 'flex', gap: '20px' }}>
-                <Button {...args} className={state.class} {...state.props}>
+                <LinkButton {...args} className={state.class} {...state.props}>
                   {t('hello')}
-                </Button>
-                <Button
+                </LinkButton>
+                <LinkButton
                   {...args}
                   className={state.class}
                   {...state.props}
@@ -124,7 +123,7 @@ export const States: Story = {
                   }
                 >
                   {t('hello')}
-                </Button>
+                </LinkButton>
               </div>
             </div>
           );
@@ -168,9 +167,9 @@ export const Sizes: Story = {
             >
               {size.toUpperCase()}
             </span>
-            <Button {...args} size={size}>
+            <LinkButton {...args} size={size}>
               {t('hello')}
-            </Button>
+            </LinkButton>
           </div>
         ))}
       </div>
@@ -193,9 +192,9 @@ export const FullWidth: Story = {
         <p style={{ fontSize: '12px', color: '#333', marginBottom: '10px' }}>
           Container Width: 500px
         </p>
-        <Button {...args} fullWidth={true}>
-          {t('Full Width Button')}
-        </Button>
+        <LinkButton {...args} fullWidth={true}>
+          {t('Full Width Link Button')}
+        </LinkButton>
       </div>
     );
   },
@@ -228,7 +227,7 @@ export const LongText: Story = {
           <p style={{ fontSize: '12px', color: '#333', marginBottom: '10px' }}>
             Container Width: 200px
           </p>
-          <Button {...args} fullWidth={true} />
+          <LinkButton {...args} fullWidth={true} />
         </div>
       </div>
     );

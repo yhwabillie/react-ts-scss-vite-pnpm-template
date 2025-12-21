@@ -130,22 +130,24 @@ $btn-colors: (
           label: var(--disabled-text-color-btn),
         ),
       ),
+
+    //
     link: (
-      bg: var(--secondary-bg-color-btn-link),
-      label: var(--secondary-text-color-btn-link),
-      hover: (
-        bg: var(--secondary-hover-bg-color-btn-link),
-        label: var(--secondary-hover-text-color-btn-link),
+        bg: var(--secondary-bg-color-btn-link),
+        label: var(--secondary-text-color-btn-link),
+        hover: (
+          bg: var(--secondary-hover-bg-color-btn-link),
+          label: var(--secondary-hover-text-color-btn-link),
+        ),
+        active: (
+          bg: var(--secondary-active-bg-color-btn-link),
+          label: var(--secondary-active-text-color-btn-link),
+        ),
+        disabled: (
+          bg: var(--ghost-disabled-bg-color-link),
+          label: var(--ghost-disabled-text-color-link),
+        ),
       ),
-      active: (
-        bg: var(--secondary-active-bg-color-btn-link),
-        label: var(--secondary-active-text-color-btn-link),
-      ),
-      disabled: (
-        bg: var(--ghost-disabled-bg-color-link),
-        label: var(--ghost-disabled-text-color-link),
-      ),
-    ),
   ),
 
   tertiary: (
@@ -587,6 +589,11 @@ $btn-sizes: (
 
             // link 타입 예외 스타일
             padding: 0 rem(8px);
+            text-align: center;
+
+            :global(span) {
+              width: fit-content;
+            }
           } @else {
             background-color: map.get($variant-props, bg);
             color: map.get($variant-props, label);
