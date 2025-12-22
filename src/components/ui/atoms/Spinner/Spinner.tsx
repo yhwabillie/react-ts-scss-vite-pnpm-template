@@ -2,16 +2,8 @@ import React from 'react';
 import styles from '@/components/ui/atoms/Spinner/Spinner.module.scss';
 
 type BaseProps = {
-  variant: 'open-ring' | 'closed-ring' | 'dots' | 'bars' | 'pulse';
-  color:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'brand'
-    | 'brand-sub'
-    | 'success'
-    | 'warning'
-    | 'danger';
+  variant: 'open-ring' | 'closed-ring';
+  color: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 };
 

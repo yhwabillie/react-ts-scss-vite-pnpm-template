@@ -130,7 +130,7 @@
   --danger-active-text-color-btn-link: #b91c1c;
 
   // spinner - Success
-  --success-track-color-spinner-open-ring: rgba(21, 128, 61, 0.2);
+  --success-track-color-spinner-open-ring: transparent;
   --success-path-color-spinner-open-ring: #15803d;
 
   --success-track-color-spinner-closed-ring: rgba(21, 128, 61, 0.2);
@@ -143,7 +143,7 @@
   --success-solid-path-color-spinner-closed-ring: #ffffff;
 
   // spinner - Warning
-  --warning-track-color-spinner-open-ring: rgba(180, 83, 9, 0.2);
+  --warning-track-color-spinner-open-ring: transparent;
   --warning-path-color-spinner-open-ring: #b45309;
 
   --warning-track-color-spinner-closed-ring: rgba(180, 83, 9, 0.2);
@@ -156,7 +156,7 @@
   --warning-solid-path-color-spinner-closed-ring: #ffffff;
 
   // spinner - Danger
-  --danger-track-color-spinner-open-ring: rgba(185, 28, 28, 0.2);
+  --danger-track-color-spinner-open-ring: transparent;
   --danger-path-color-spinner-open-ring: #b91c1c;
 
   --danger-track-color-spinner-closed-ring: rgba(185, 28, 28, 0.2);
@@ -637,7 +637,7 @@
     --tertiary-active-text-color-btn-link: #a78bfa;
 
     // spinner - primary (핵심 액션 블루: #66b2ff)
-    --primary-track-color-spinner-open-ring: rgba(102, 178, 255, 0.2);
+    --primary-track-color-spinner-open-ring: transparent;
     --primary-path-color-spinner-open-ring: #66b2ff;
 
     --primary-track-color-spinner-closed-ring: rgba(102, 178, 255, 0.2);
@@ -650,7 +650,7 @@
     --primary-solid-path-color-spinner-closed-ring: #ffffff;
 
     // spinner - secondary (보조 액션 스카이: #38bdf8)
-    --secondary-track-color-spinner-open-ring: rgba(56, 189, 248, 0.2);
+    --secondary-track-color-spinner-open-ring: transparent;
     --secondary-path-color-spinner-open-ring: #38bdf8;
 
     --secondary-track-color-spinner-closed-ring: rgba(56, 189, 248, 0.2);
@@ -663,7 +663,7 @@
     --secondary-solid-path-color-spinner-closed-ring: #ffffff;
 
     // spinner - tertiary (특별 강조 퍼플: #a78bfa)
-    --tertiary-track-color-spinner-open-ring: rgba(167, 139, 250, 0.2);
+    --tertiary-track-color-spinner-open-ring: transparent;
     --tertiary-path-color-spinner-open-ring: #a78bfa;
 
     --tertiary-track-color-spinner-closed-ring: rgba(167, 139, 250, 0.2);
@@ -753,15 +753,15 @@
     --tertiary-active-text-color-btn-outline: #d6d3d1;
 
     // spinner - primary
-    --primary-track-color-spinner-open-ring: rgba(251, 146, 60, 0.2);
+    --primary-track-color-spinner-open-ring: transparent;
     --primary-path-color-spinner-open-ring: #fb923c;
 
     // spinner - secondary
-    --secondary-track-color-spinner-open-ring: rgba(245, 158, 11, 0.2);
+    --secondary-track-color-spinner-open-ring: transparent;
     --secondary-path-color-spinner-open-ring: #f59e0b;
 
     // spinner - tertiary
-    --tertiary-track-color-spinner-open-ring: rgba(168, 162, 158, 0.2);
+    --tertiary-track-color-spinner-open-ring: transparent;
     --tertiary-path-color-spinner-open-ring: #a8a29e;
 
     // Solid 스피너 공통 화이트 유지

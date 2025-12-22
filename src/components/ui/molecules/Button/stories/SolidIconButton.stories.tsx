@@ -4,7 +4,7 @@ import { expect, fn, userEvent, within } from 'storybook/test';
 import IconButton from '../../IconButton/IconButton';
 
 const meta: Meta<typeof IconButton> = {
-  title: 'UI/Molecules/IconButton/Primary/Solid',
+  title: 'UI/Molecules/IconButton/Solid',
   component: IconButton,
   tags: ['autodocs'],
   parameters: {

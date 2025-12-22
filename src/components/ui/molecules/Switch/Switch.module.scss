@@ -3,8 +3,8 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
-// switch color variant
-$switch-variants: (
+// switch colors
+$switch-colors: (
   primary: (
     track-on-bg: #2563eb,
     handle-on-bg: #ffffff,
@@ -108,8 +108,8 @@ $switch-sizes: (
   display: inline-flex;
   cursor: pointer;
 
-  @each $variant-name, $props in $switch-variants {
-    &:global(.variant--#{$variant-name}) {
+  @each $color-name, $props in $switch-colors {
+    &:global(.color--#{$color-name}) {
       :global(input[type='checkbox']:checked ~ .label) {
         :global(.track) {
           background-color: map.get($props, track-on-bg);
@@ -183,8 +183,17 @@ $switch-sizes: (
 
   :global(.label) {
     display: inline-flex;
+
     align-items: center;
     gap: rem(8px);
+
+    &:global(.is-start) {
+      flex-direction: row-reverse;
+    }
+
+    &:global(.is-end) {
+      flex-direction: row;
+    }
 
     :global(.track) {
       position: relative;

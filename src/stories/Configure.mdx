@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/addon-docs/blocks";
+import { Meta, IconGallery, IconItem, ColorPalette, ColorItem, Typeset } from "@storybook/addon-docs/blocks";
 
 import Github from "./assets/github.svg";
 import Discord from "./assets/discord.svg";
@@ -14,6 +14,7 @@ import Testing from "./assets/testing.png";
 import Accessibility from "./assets/accessibility.png";
 import Theming from "./assets/theming.png";
 import AddonLibrary from "./assets/addon-library.png";
+import Icon from "./../components/ui/atoms/Icon/Icon"
 
 export const RightArrow = () => <svg 
     viewBox="0 0 14 14" 
@@ -31,7 +32,109 @@ export const RightArrow = () => <svg
   <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z" />
 </svg>
 
+
+
 <Meta title="Configure your project" />
+
+Primary UI component for user interaction
+ 
+```js
+import { Button } from "@storybook/design-system";
+```
+
+export const typography = {
+  type: {
+    primary: '"Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
+  },
+  weight: {
+    regular: '400',
+    bold: '700',
+    extrabold: '800',
+    black: '900',
+  },
+  size: {
+    s1: 12,
+    s2: 14,
+    s3: 16,
+    m1: 20,
+    m2: 24,
+    m3: 28,
+    l1: 32,
+    l2: 40,
+    l3: 48,
+  },
+};
+
+export const SampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+
+# Typography
+ 
+**Font:** Nunito Sans
+ 
+**Weights:** 400(regular), 700(bold), 800(extrabold), 900(black)
+ 
+<Typeset
+  fontSizes={[
+    Number(typography.size.s1),
+    Number(typography.size.s2),
+    Number(typography.size.s3),
+    Number(typography.size.m1),
+    Number(typography.size.m2),
+    Number(typography.size.m3),
+    Number(typography.size.l1),
+    Number(typography.size.l2),
+    Number(typography.size.l3),
+  ]}
+  fontWeight={typography.weight.black}
+  sampleText={SampleText}
+  fontFamily={typography.type.primary}
+/>
+
+<ColorPalette>
+ <ColorItem
+    title="theme.color.greyscale"
+    subtitle="Some of the greys"
+    colors={{ White: '#FFFFFF', Alabaster: '#F8F8F8', Concrete: '#F3F3F3' }}
+  />
+  <ColorItem 
+    title="theme.color.primary" 
+    subtitle="Coral" 
+    colors={{ WildWatermelon: '#FF4785' }} 
+  />
+  <ColorItem 
+    title="theme.color.secondary" 
+    subtitle="Ocean" 
+    colors={{ DodgerBlue: '#1EA7FD' }} 
+  />
+  <ColorItem
+    title="theme.color.positive"
+    subtitle="Green"
+    colors={{
+      Apple: 'rgba(102,191,60,1)',
+      Apple80: 'rgba(102,191,60,.8)',
+      Apple60: 'rgba(102,191,60,.6)',
+      Apple30: 'rgba(102,191,60,.3)',
+    }}
+  />
+  <ColorItem
+    title="gradient"
+    subtitle="Grayscale"
+    colors={{
+      Gradient: 'linear-gradient(to right,white,black)',
+    }}
+  />
+  <ColorItem
+    title="gradient"
+    subtitle="Grayscale"
+    colors={['linear-gradient(65deg,white,black)']}
+  />
+</ColorPalette>
+
+<IconGallery>
+ <IconItem name="house">
+    <Icon name='house' />
+  </IconItem>
+</IconGallery>
 
 <div className="sb-container">
   <div className='sb-section-title'>

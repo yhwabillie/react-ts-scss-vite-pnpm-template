@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Icon from '../../../atoms/Icon/Icon';
+import Icon from '@/components/ui/atoms/Icon/Icon';
 import { expect, fn, userEvent, within } from 'storybook/test';
-import IconButton from '../../IconButton/IconButton';
+import IconButton from '@/components/ui/molecules/IconButton/IconButton';
 
 const meta: Meta<typeof IconButton> = {
-  title: 'UI/Molecules/IconButton/Primary/Outline',
+  title: 'UI/Molecules/IconButton/Outline',
   component: IconButton,
   tags: ['autodocs'],
   parameters: {

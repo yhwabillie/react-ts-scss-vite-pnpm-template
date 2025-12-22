@@ -3,10 +3,10 @@ import styles from '@/components/ui/molecules/Button/Button.module.scss';
 import clsx from 'clsx';
 
 type BaseProps = {
-  variant?: 'solid' | 'outline' | 'ghost' | 'link';
+  variant?: 'link';
   color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  shape?: 'square' | 'rounded' | 'pill';
+  shape?: 'rounded';
   children?: React.ReactNode;
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
@@ -22,8 +22,8 @@ type LinkButtonProps = AnchorProps;
 const LinkButton: React.FC<LinkButtonProps> = ({
   color = 'primary',
   size = 'md',
-  variant = 'solid',
-  shape = 'pill',
+  variant = 'link',
+  shape = 'rounded',
   children,
   startIcon,
   endIcon,

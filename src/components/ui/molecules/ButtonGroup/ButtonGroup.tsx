@@ -3,9 +3,9 @@ import clsx from 'clsx';
 import styles from '@/components/ui/molecules/ButtonGroup/ButtonGroup.module.scss';
 
 type BaseProps = {
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  align: 'left' | 'center' | 'right';
   role?: 'group' | 'toolbar';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  align?: 'left' | 'center' | 'right';
   ariaLabel?: string;
   className?: string;
   children: React.ReactNode;
@@ -14,7 +14,10 @@ type BaseProps = {
 type ButtonGroupProps = BaseProps & Omit<React.HTMLAttributes<HTMLDivElement>, keyof BaseProps>;
 
 const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
-  ({ size, className, align, role, ariaLabel, children, ...rest }, ref) => {
+  (
+    { role = 'group', size = 'md', align = 'center', ariaLabel, className, children, ...rest },
+    ref,
+  ) => {
     return (
       <div
         ref={ref}

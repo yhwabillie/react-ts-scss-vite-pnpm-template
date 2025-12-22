@@ -5,7 +5,7 @@ import { fn } from 'storybook/test';
 import LinkButton from '../LinkButton';
 
 const meta: Meta<typeof LinkButton> = {
-  title: 'UI/Molecules/LinkButton/Primary',
+  title: 'UI/Molecules/LinkButton',
   component: LinkButton,
   tags: ['autodocs'],
   parameters: {
@@ -80,7 +80,7 @@ export const States: Story = {
       { label: 'Hover', class: 'pseudo-hover' },
       { label: 'Focus', class: 'pseudo-focus-visible' },
       { label: 'Active', class: 'pseudo-active' },
-      { label: 'Disabled', props: { disabled: true } },
+      { label: 'Disabled', props: { 'aria-disabled': true } },
     ];
 
     return (

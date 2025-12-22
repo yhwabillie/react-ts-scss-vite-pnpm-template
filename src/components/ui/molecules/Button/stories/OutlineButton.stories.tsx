@@ -1,12 +1,12 @@
 import Button from '@/components/ui/molecules/Button/Button';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useTranslation } from 'react-i18next';
-import Icon from '../../../atoms/Icon/Icon';
-import RingSpinner from '../../../atoms/Spinner/LoadingSpinner/RingSpinner';
+import Icon from '@/components/ui/atoms/Icon/Icon';
+import RingSpinner from '@/components/ui/atoms/Spinner/LoadingSpinner/RingSpinner';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
 const meta = {
-  title: 'UI/Molecules/Button/Primary/Outline',
+  title: 'UI/Molecules/Button/Outline',
   component: Button,
   tags: ['autodocs'],
   parameters: {

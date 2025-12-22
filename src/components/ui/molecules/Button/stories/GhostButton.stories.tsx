@@ -1,12 +1,12 @@
 import Button from '@/components/ui/molecules/Button/Button';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useTranslation } from 'react-i18next';
-import Icon from '../../../atoms/Icon/Icon';
-import RingSpinner from '../../../atoms/Spinner/LoadingSpinner/RingSpinner';
+import Icon from '@/components/ui/atoms/Icon/Icon';
+import RingSpinner from '@/components/ui/atoms/Spinner/LoadingSpinner/RingSpinner';
 import { expect, fn, userEvent, within } from 'storybook/test';
 
 const meta = {
-  title: 'UI/Molecules/Button/Primary/Solid',
+  title: 'UI/Molecules/Button/Ghost',
   component: Button,
   tags: ['autodocs'],
   parameters: {
@@ -14,12 +14,12 @@ const meta = {
     docs: {
       description: {
         component:
-          'Solid 버튼은 테마의 핵심 컬러로 배경이 가득 채워진 스타일이며, 화면에서 가장 강조되어야 하는 핵심 동작(Primary Action)에 사용됩니다.',
+          'Ghost 버튼은 배경과 테두리가 없는 투명한 스타일로, 시각적 무게감이 낮아 취소/닫기 같은 부수적인 동작이나 반복되는 리스트 내 액션에 주로 사용됩니다.',
       },
     },
   },
   args: {
-    variant: 'solid',
+    variant: 'ghost',
     color: 'primary',
     size: 'xl',
     shape: 'rounded',
@@ -210,26 +210,14 @@ export const Sizes: Story = {
             <Button
               {...args}
               size={size}
-              startSpinner={
-                <RingSpinner
-                  color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
-                  size={size}
-                  variant='closed-ring'
-                />
-              }
+              startSpinner={<RingSpinner color={currentColor} size={size} variant='closed-ring' />}
             >
               {t('hello')}
             </Button>
             <Button
               {...args}
               size={size}
-              endSpinner={
-                <RingSpinner
-                  color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
-                  size={size}
-                  variant='closed-ring'
-                />
-              }
+              endSpinner={<RingSpinner color={currentColor} size={size} variant='closed-ring' />}
             >
               {t('hello')}
             </Button>
@@ -311,26 +299,14 @@ export const Shapes: Story = {
             <Button
               {...args}
               shape={shape}
-              startSpinner={
-                <RingSpinner
-                  color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
-                  size='xl'
-                  variant='closed-ring'
-                />
-              }
+              startSpinner={<RingSpinner color={currentColor} size='xl' variant='closed-ring' />}
             >
               {t('hello')}
             </Button>
             <Button
               {...args}
               shape={shape}
-              endSpinner={
-                <RingSpinner
-                  color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
-                  size='xl'
-                  variant='closed-ring'
-                />
-              }
+              endSpinner={<RingSpinner color={currentColor} size='xl' variant='closed-ring' />}
             >
               {t('hello')}
             </Button>
@@ -387,11 +363,7 @@ export const Composition: Story = {
         label: 'Left Spinner',
         props: {
           startIcon: (
-            <RingSpinner
-              color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
-              size={args.size || 'md'}
-              variant='closed-ring'
-            />
+            <RingSpinner color={currentColor} size={args.size || 'md'} variant='closed-ring' />
           ),
         },
       },
@@ -399,11 +371,7 @@ export const Composition: Story = {
         label: 'Right Spinner',
         props: {
           endIcon: (
-            <RingSpinner
-              color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
-              size={args.size || 'md'}
-              variant='closed-ring'
-            />
+            <RingSpinner color={currentColor} size={args.size || 'md'} variant='closed-ring' />
           ),
         },
       },
@@ -527,13 +495,7 @@ export const LongText: Story = {
           <Button
             {...args}
             fullWidth={true}
-            endSpinner={
-              <RingSpinner
-                color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
-                size='xl'
-                variant='closed-ring'
-              />
-            }
+            endSpinner={<RingSpinner color={currentColor} size='xl' variant='closed-ring' />}
           />
         </div>
       </div>
