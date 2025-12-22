@@ -991,7 +991,7 @@ function App() {
         </FormField>
       </section>
 
-      <section style={{ margin: '30px' }}>
+      {/* <section style={{ margin: '30px' }}>
         <FormField
           as='div'
           size='xl'
@@ -1217,8 +1217,8 @@ function App() {
             />
           }
         />
-      </section>
-      <section style={{ margin: '30px' }}>
+      </section> */}
+      {/* <section style={{ margin: '30px' }}>
         <Input
           as='div'
           id='input-outline-1'
@@ -1397,8 +1397,8 @@ function App() {
             />
           }
         />
-      </section>
-      <section style={{ margin: '30px' }}>
+      </section> */}
+      {/* <section style={{ margin: '30px' }}>
         <Input
           as='div'
           id='input-1'
@@ -1461,161 +1461,10 @@ function App() {
           defaultValue='defaultValue'
           placeholder='값을 입력하세요.'
         />
-      </section>
-      {/* <section style={{ margin: '30px' }}>
-        <Switch variant='primary' size='xl' id='switch-label-xl' defaultChecked={true}>
-          <Label size='xl'>스위치 라벨</Label>
-        </Switch>
-        <Switch variant='primary' size='lg' id='switch-label-lg' defaultChecked={true}>
-          <Label size='lg'>스위치 라벨</Label>
-        </Switch>
-        <Switch variant='primary' size='md' id='switch-label-md' defaultChecked={true}>
-          <Label size='md'>스위치 라벨</Label>
-        </Switch>
-        <Switch variant='primary' size='sm' id='switch-label-sm' defaultChecked={true}>
-          <Label size='sm'>스위치 라벨</Label>
-        </Switch>
-        <Switch variant='primary' size='xs' id='switch-label-xs' defaultChecked={true}>
-          <Label size='xs'>스위치 라벨</Label>
-        </Switch>
-      </section>
-      <section>
-        <Switch
-          variant='primary'
-          size='xl'
-          id='switch-primary-xl-1'
-          defaultChecked={true}
-          disabled={true}
-        ></Switch>
-        <Switch
-          variant='primary'
-          size='lg'
-          id='switch-primary-lg-2'
-          defaultChecked={false}
-          disabled={true}
-        ></Switch>
-        <Switch variant='primary' size='md' id='switch-primary-md-3' defaultChecked={true}></Switch>
-        <Switch variant='primary' size='sm' id='switch-primary-sm-4' defaultChecked={true}></Switch>
-        <Switch variant='primary' size='xs' id='switch-primary-xs-5' defaultChecked={true}></Switch>
-        <Switch
-          variant='secondary'
-          size='xl'
-          id='switch-secondary-xl-1'
-          defaultChecked={true}
-        ></Switch>
-        <Switch
-          variant='secondary'
-          size='lg'
-          id='switch-secondary-lg-2'
-          defaultChecked={true}
-        ></Switch>
-        <Switch
-          variant='secondary'
-          size='md'
-          id='switch-secondary-md-3'
-          defaultChecked={true}
-        ></Switch>
-        <Switch
-          variant='secondary'
-          size='sm'
-          id='switch-secondary-sm-4'
-          defaultChecked={true}
-        ></Switch>
-        <Switch
-          variant='secondary'
-          size='xs'
-          id='switch-secondary-xs-5'
-          defaultChecked={true}
-        ></Switch>
-        <Switch
-          variant='tertiary'
-          size='xl'
-          id='switch-tertiary-xl-1'
-          defaultChecked={true}
-        ></Switch>
-        <Switch
-          variant='tertiary'
-          size='lg'
-          id='switch-tertiary-lg-2'
-          defaultChecked={true}
-        ></Switch>
-        <Switch
-          variant='tertiary'
-          size='md'
-          id='switch-tertiary-md-3'
-          defaultChecked={true}
-        ></Switch>
-        <Switch
-          variant='tertiary'
-          size='sm'
-          id='switch-tertiary-sm-4'
-          defaultChecked={true}
-        ></Switch>
-        <Switch
-          variant='tertiary'
-          size='xs'
-          id='switch-tertiary-xs-5'
-          defaultChecked={true}
-        ></Switch>
-
-        <Switch variant='brand' size='xl' id='switch-brand-xl-1' defaultChecked={true}></Switch>
-        <Switch variant='brand' size='lg' id='switch-brand-lg-2' defaultChecked={true}></Switch>
-        <Switch variant='brand' size='md' id='switch-brand-md-3' defaultChecked={true}></Switch>
-        <Switch variant='brand' size='sm' id='switch-brand-sm-4' defaultChecked={true}></Switch>
-        <Switch variant='brand' size='xs' id='switch-brand-xs-5' defaultChecked={true}></Switch>
-
-        <Switch
-          variant='brand-sub'
-          size='xl'
-          id='switch-brand-sub-xl-1'
-          defaultChecked={true}
-        ></Switch>
-        <Switch
-          variant='brand-sub'
-          size='lg'
-          id='switch-brand-sub-lg-2'
-          defaultChecked={true}
-        ></Switch>
-        <Switch
-          variant='brand-sub'
-          size='md'
-          id='switch-brand-sub-md-3'
-          defaultChecked={true}
-        ></Switch>
-        <Switch
-          variant='brand-sub'
-          size='sm'
-          id='switch-brand-sub-sm-4'
-          defaultChecked={true}
-        ></Switch>
-        <Switch
-          variant='brand-sub'
-          size='xs'
-          id='switch-brand-sub-xs-5'
-          defaultChecked={true}
-        ></Switch>
-
-        <Switch variant='success' size='xl' id='switch-success-xl-1' defaultChecked={true}></Switch>
-        <Switch variant='success' size='lg' id='switch-success-lg-2' defaultChecked={true}></Switch>
-        <Switch variant='success' size='md' id='switch-success-md-3' defaultChecked={true}></Switch>
-        <Switch variant='success' size='sm' id='switch-success-sm-4' defaultChecked={true}></Switch>
-        <Switch variant='success' size='xs' id='switch-success-xs-5' defaultChecked={true}></Switch>
-
-        <Switch variant='warning' size='xl' id='switch-warning-xl-1' defaultChecked={true}></Switch>
-        <Switch variant='warning' size='lg' id='switch-warning-lg-2' defaultChecked={true}></Switch>
-        <Switch variant='warning' size='md' id='switch-warning-md-3' defaultChecked={true}></Switch>
-        <Switch variant='warning' size='sm' id='switch-warning-sm-4' defaultChecked={true}></Switch>
-        <Switch variant='warning' size='xs' id='switch-warning-xs-5' defaultChecked={true}></Switch>
-
-        <Switch variant='danger' size='xl' id='switch-danger-xl-1' defaultChecked={true}></Switch>
-        <Switch variant='danger' size='lg' id='switch-danger-lg-2' defaultChecked={true}></Switch>
-        <Switch variant='danger' size='md' id='switch-danger-md-3' defaultChecked={true}></Switch>
-        <Switch variant='danger' size='sm' id='switch-danger-sm-4' defaultChecked={true}></Switch>
-        <Switch variant='danger' size='xs' id='switch-danger-xs-5' defaultChecked={true}></Switch>
       </section> */}
-      <section>
+      {/* <section>
         <FormFieldset size='xl' legend='체크박스 옵션 선택' required={true}>
-          {/* ControlGroup */}
+         
           <ControlGroup
             size='xl'
             direction='row'
@@ -1657,7 +1506,7 @@ function App() {
               <Label size='xl'>체크박스 옵션 3</Label>
             </FormField>
           </ControlGroup>
-          {/* 유효성 검사 문구 */}
+          
           <ValidationMsg
             id='checkbox-error-msg'
             variant='danger'
@@ -1699,10 +1548,10 @@ function App() {
             <span className='text'>유효성검사 문구 : 가이드</span>
           </ValidationMsg>
         </FormFieldset>
-      </section>
-      <section>
+      </section> */}
+      {/* <section>
         <FormFieldset size='xl' legend='라디오 옵션 선택' required={true}>
-          {/* ControlGroup */}
+         
           <ControlGroup size='xl' direction='row'>
             <FormField as='label' htmlFor='formfield-test-4' size='xl' direction='row'>
               <Radio
@@ -1740,7 +1589,7 @@ function App() {
               <Label size='xl'>라디오 옵션 3</Label>
             </FormField>
           </ControlGroup>
-          {/* 유효성 검사 문구 */}
+        
           <ValidationMsg variant='danger' role='alert' ariaLive='assertive' size='xl'>
             <Icon name='x-circle' className='icon' />
             <span className='text'>유효성검사 문구 : 에러</span>
@@ -1758,447 +1607,8 @@ function App() {
             <span className='text'>유효성검사 문구 : 가이드</span>
           </ValidationMsg>
         </FormFieldset>
-      </section>
-      <section>
-        <div>
-          <FormField as='label' htmlFor='formfield-test-7' size='xl' direction='row'>
-            <Checkbox
-              as='span'
-              id='formfield-test-7'
-              name='formfield-checkbox'
-              color='primary'
-              size='xl'
-              value='체크박스 옵션 1'
-              defaultChecked
-            />
-            <Label size='xl'>체크박스 옵션 1</Label>
-          </FormField>
-          <FormField as='label' htmlFor='formfield-test-8' size='lg' direction='row'>
-            <Checkbox
-              as='span'
-              id='formfield-test-8'
-              name='formfield-checkbox'
-              color='primary'
-              size='lg'
-              value='체크박스 옵션 2'
-            />
-            <Label size='lg'>체크박스 옵션 2</Label>
-          </FormField>
-          <FormField as='label' htmlFor='formfield-test-9' size='md' direction='row'>
-            <Checkbox
-              as='span'
-              id='formfield-test-9'
-              name='formfield-checkbox'
-              color='primary'
-              size='md'
-              value='체크박스 옵션 3'
-            />
-            <Label size='md'>체크박스 옵션 3</Label>
-          </FormField>
-          <FormField as='label' htmlFor='formfield-test-10' size='sm' direction='row'>
-            <Checkbox
-              as='span'
-              id='formfield-test-10'
-              name='formfield-checkbox'
-              color='primary'
-              size='sm'
-              value='체크박스 옵션 4'
-            />
-            <Label size='sm'>체크박스 옵션 4</Label>
-          </FormField>
-          <FormField as='label' htmlFor='formfield-test-11' size='xs' direction='row'>
-            <Checkbox
-              as='span'
-              id='formfield-test-11'
-              name='formfield-checkbox'
-              color='primary'
-              size='xs'
-              value='체크박스 옵션 5'
-            />
-            <Label size='xs'>체크박스 옵션 5</Label>
-          </FormField>
-        </div>
-        <div>
-          <FormField as='label' htmlFor='formfield-test-12' size='xl' direction='row'>
-            <Radio
-              as='span'
-              id='formfield-test-12'
-              name='formfield-radio'
-              color='primary'
-              size='xl'
-              value='라디오 옵션 1'
-              defaultChecked
-            />
-            <Label size='xl'>라디오 옵션 1</Label>
-          </FormField>
-          <FormField as='label' htmlFor='formfield-test-13' size='lg' direction='row'>
-            <Radio
-              as='span'
-              id='formfield-test-13'
-              name='formfield-radio'
-              color='primary'
-              size='lg'
-              value='라디오 옵션 2'
-            />
-            <Label size='lg'>라디오 옵션 2</Label>
-          </FormField>
-          <FormField as='label' htmlFor='formfield-test-14' size='md' direction='row'>
-            <Radio
-              as='span'
-              id='formfield-test-14'
-              name='formfield-radio'
-              color='primary'
-              size='md'
-              value='라디오 옵션 3'
-            />
-            <Label size='md'>라디오 옵션 3</Label>
-          </FormField>
-          <FormField as='label' htmlFor='formfield-test-15' size='sm' direction='row'>
-            <Radio
-              as='span'
-              id='formfield-test-15'
-              name='formfield-radio'
-              color='primary'
-              size='sm'
-              value='라디오 옵션 4'
-            />
-            <Label size='sm'>라디오 옵션 4</Label>
-          </FormField>
-          <FormField as='label' htmlFor='formfield-test-16' size='xs' direction='row'>
-            <Radio
-              as='span'
-              id='formfield-test-16'
-              name='formfield-radio'
-              color='primary'
-              size='xs'
-              value='라디오 옵션 5'
-            />
-            <Label size='xs'>라디오 옵션 5</Label>
-          </FormField>
-        </div>
-      </section>
-      <section>
-        <div>
-          <Label size='xl'>라벨 XL</Label>
-          <Label size='lg'>라벨 LG</Label>
-          <Label size='md'>라벨 MD</Label>
-          <Label size='sm'>라벨 SM</Label>
-          <Label size='xs'>라벨 XS</Label>
-        </div>
-      </section>
-      {/* <section>
-        <div>
-          <Checkbox
-            as='label'
-            name='checkbox-standalone-1'
-            color='primary'
-            size='xl'
-            defaultChecked
-          />
-          <Checkbox as='label' name='checkbox-standalone-1' color='primary' size='lg' />
-          <Checkbox as='label' name='checkbox-standalone-1' color='primary' size='md' />
-          <Checkbox as='label' name='checkbox-standalone-1' color='primary' size='sm' />
-          <Checkbox as='label' name='checkbox-standalone-1' color='primary' size='xs' />
-        </div>
-        <div>
-          <Checkbox
-            name='checkbox-standalone-2'
-            color='primary'
-            size='xl'
-            defaultChecked
-            disabled
-          />
-          <Checkbox as='label' name='checkbox-standalone-2' color='primary' size='lg' disabled />
-          <Checkbox as='label' name='checkbox-standalone-2' color='primary' size='md' disabled />
-          <Checkbox as='label' name='checkbox-standalone-2' color='primary' size='sm' disabled />
-          <Checkbox as='label' name='checkbox-standalone-2' color='primary' size='xs' disabled />
-        </div>
-        <div>
-          <Checkbox
-            as='label'
-            name='checkbox-standalone-3'
-            color='secondary'
-            size='xl'
-            defaultChecked
-          />
-          <Checkbox as='label' name='checkbox-standalone-3' color='secondary' size='lg' />
-          <Checkbox as='label' name='checkbox-standalone-3' color='secondary' size='md' />
-          <Checkbox as='label' name='checkbox-standalone-3' color='secondary' size='sm' />
-          <Checkbox as='label' name='checkbox-standalone-3' color='secondary' size='xs' />
-        </div>
-        <div>
-          <Checkbox
-            as='label'
-            name='checkbox-standalone-4'
-            color='tertiary'
-            size='xl'
-            defaultChecked
-          />
-          <Checkbox as='label' name='checkbox-standalone-4' color='tertiary' size='lg' />
-          <Checkbox as='label' name='checkbox-standalone-4' color='tertiary' size='md' />
-          <Checkbox as='label' name='checkbox-standalone-4' color='tertiary' size='sm' />
-          <Checkbox as='label' name='checkbox-standalone-4' color='tertiary' size='xs' />
-        </div>
-        <div>
-          <Checkbox
-            as='label'
-            name='checkbox-standalone-5'
-            color='brand'
-            size='xl'
-            defaultChecked
-          />
-          <Checkbox as='label' name='checkbox-standalone-5' color='brand' size='lg' />
-          <Checkbox as='label' name='checkbox-standalone-5' color='brand' size='md' />
-          <Checkbox as='label' name='checkbox-standalone-5' color='brand' size='sm' />
-          <Checkbox as='label' name='checkbox-standalone-5' color='brand' size='xs' />
-        </div>
+      </section> */}
 
-        <div>
-          <Checkbox
-            as='label'
-            name='checkbox-standalone-6'
-            color='brand-sub'
-            size='xl'
-            defaultChecked
-          />
-          <Checkbox as='label' name='checkbox-standalone-6' color='brand-sub' size='lg' />
-          <Checkbox as='label' name='checkbox-standalone-6' color='brand-sub' size='md' />
-          <Checkbox as='label' name='checkbox-standalone-6' color='brand-sub' size='sm' />
-          <Checkbox as='label' name='checkbox-standalone-6' color='brand-sub' size='xs' />
-        </div>
-        <div>
-          <Checkbox
-            as='label'
-            name='checkbox-standalone-7'
-            color='success'
-            size='xl'
-            defaultChecked
-          />
-          <Checkbox as='label' name='checkbox-standalone-7' color='success' size='lg' />
-          <Checkbox as='label' name='checkbox-standalone-7' color='success' size='md' />
-          <Checkbox as='label' name='checkbox-standalone-7' color='success' size='sm' />
-          <Checkbox as='label' name='checkbox-standalone-7' color='success' size='xs' />
-        </div>
-        <div>
-          <Checkbox
-            as='label'
-            name='checkbox-standalone-8'
-            color='warning'
-            size='xl'
-            defaultChecked
-          />
-          <Checkbox as='label' name='checkbox-standalone-8' color='warning' size='lg' />
-          <Checkbox as='label' name='checkbox-standalone-8' color='warning' size='md' />
-          <Checkbox as='label' name='checkbox-standalone-8' color='warning' size='sm' />
-          <Checkbox as='label' name='checkbox-standalone-8' color='warning' size='xs' />
-        </div>
-        <div>
-          <Checkbox
-            as='label'
-            name='checkbox-standalone-9'
-            color='danger'
-            size='xl'
-            defaultChecked
-          />
-          <Checkbox as='label' name='checkbox-standalone-9' color='danger' size='lg' />
-          <Checkbox as='label' name='checkbox-standalone-9' color='danger' size='md' />
-          <Checkbox as='label' name='checkbox-standalone-9' color='danger' size='sm' />
-          <Checkbox as='label' name='checkbox-standalone-9' color='danger' size='xs' />
-        </div>
-      </section> */}
-      {/* <section>
-        <div>
-          <Radio
-            as='label'
-            name='checkbox-standalone-10'
-            color='primary'
-            size='xl'
-            defaultChecked
-          />
-          <Radio as='label' name='checkbox-standalone-10' color='primary' size='lg' />
-          <Radio as='label' name='checkbox-standalone-10' color='primary' size='md' />
-          <Radio as='label' name='checkbox-standalone-10' color='primary' size='sm' />
-          <Radio as='label' name='checkbox-standalone-10' color='primary' size='xs' />
-        </div>
-        <div>
-          <Radio
-            as='label'
-            name='checkbox-standalone-11'
-            color='primary'
-            size='xl'
-            defaultChecked
-            disabled
-          />
-          <Radio as='label' name='checkbox-standalone-11' color='primary' size='lg' disabled />
-          <Radio as='label' name='checkbox-standalone-11' color='primary' size='md' disabled />
-          <Radio as='label' name='checkbox-standalone-11' color='primary' size='sm' disabled />
-          <Radio as='label' name='checkbox-standalone-11' color='primary' size='xs' disabled />
-        </div>
-        <div>
-          <Radio
-            as='label'
-            name='checkbox-standalone-12'
-            color='secondary'
-            size='xl'
-            defaultChecked
-          />
-          <Radio as='label' name='checkbox-standalone-12' color='secondary' size='lg' />
-          <Radio as='label' name='checkbox-standalone-12' color='secondary' size='md' />
-          <Radio as='label' name='checkbox-standalone-12' color='secondary' size='sm' />
-          <Radio as='label' name='checkbox-standalone-12' color='secondary' size='xs' />
-        </div>
-        <div>
-          <Radio
-            as='label'
-            name='checkbox-standalone-13'
-            color='tertiary'
-            size='xl'
-            defaultChecked
-          />
-          <Radio as='label' name='checkbox-standalone-13' color='tertiary' size='lg' />
-          <Radio as='label' name='checkbox-standalone-13' color='tertiary' size='md' />
-          <Radio as='label' name='checkbox-standalone-13' color='tertiary' size='sm' />
-          <Radio as='label' name='checkbox-standalone-13' color='tertiary' size='xs' />
-        </div>
-        <div>
-          <Radio as='label' name='checkbox-standalone-14' color='brand' size='xl' defaultChecked />
-          <Radio as='label' name='checkbox-standalone-14' color='brand' size='lg' />
-          <Radio as='label' name='checkbox-standalone-14' color='brand' size='md' />
-          <Radio as='label' name='checkbox-standalone-14' color='brand' size='sm' />
-          <Radio as='label' name='checkbox-standalone-14' color='brand' size='xs' />
-        </div>
-        <div>
-          <Radio
-            as='label'
-            name='checkbox-standalone-15'
-            color='brand-sub'
-            size='xl'
-            defaultChecked
-          />
-          <Radio as='label' name='checkbox-standalone-15' color='brand-sub' size='lg' />
-          <Radio as='label' name='checkbox-standalone-15' color='brand-sub' size='md' />
-          <Radio as='label' name='checkbox-standalone-15' color='brand-sub' size='sm' />
-          <Radio as='label' name='checkbox-standalone-15' color='brand-sub' size='xs' />
-        </div>
-        <div>
-          <Radio
-            as='label'
-            name='checkbox-standalone-16'
-            color='success'
-            size='xl'
-            defaultChecked
-          />
-          <Radio as='label' name='checkbox-standalone-16' color='success' size='lg' />
-          <Radio as='label' name='checkbox-standalone-16' color='success' size='md' />
-          <Radio as='label' name='checkbox-standalone-16' color='success' size='sm' />
-          <Radio as='label' name='checkbox-standalone-16' color='success' size='xs' />
-        </div>
-        <div>
-          <Radio
-            as='label'
-            name='checkbox-standalone-17'
-            color='warning'
-            size='xl'
-            defaultChecked
-          />
-          <Radio as='label' name='checkbox-standalone-17' color='warning' size='lg' />
-          <Radio as='label' name='checkbox-standalone-17' color='warning' size='md' />
-          <Radio as='label' name='checkbox-standalone-17' color='warning' size='sm' />
-          <Radio as='label' name='checkbox-standalone-17' color='warning' size='xs' />
-        </div>
-        <div>
-          <Radio as='label' name='checkbox-standalone-18' color='danger' size='xl' defaultChecked />
-          <Radio as='label' name='checkbox-standalone-18' color='danger' size='lg' />
-          <Radio as='label' name='checkbox-standalone-18' color='danger' size='md' />
-          <Radio as='label' name='checkbox-standalone-18' color='danger' size='sm' />
-          <Radio as='label' name='checkbox-standalone-18' color='danger' size='xs' />
-        </div>
-      </section> */}
-      <section>
-        <ValidationMsg variant='danger' size='xl' role='alert' ariaLive='assertive'>
-          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
-        </ValidationMsg>
-        <ValidationMsg variant='warning' size='xl' role='status' ariaLive='polite'>
-          <Icon name='warning-triangle' className='icon' />
-          유효성검사 문구 : 워닝
-        </ValidationMsg>
-        <ValidationMsg variant='success' size='xl' role='status' ariaLive='polite'>
-          <Icon name='check-circle' className='icon' />
-          유효성검사 문구 : 성공
-        </ValidationMsg>
-        <ValidationMsg variant='guide' size='xl' role='status' ariaLive='polite'>
-          <Icon name='info-circle' className='icon' />
-          유효성검사 문구 : 가이드
-        </ValidationMsg>
-      </section>
-      <section>
-        <ValidationMsg variant='danger' size='lg' role='alert' ariaLive='assertive'>
-          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
-        </ValidationMsg>
-        <ValidationMsg variant='warning' size='lg' role='status' ariaLive='polite'>
-          <Icon name='warning-triangle' className='icon' />
-          유효성검사 문구 : 워닝
-        </ValidationMsg>
-        <ValidationMsg variant='success' size='lg' role='status' ariaLive='polite'>
-          <Icon name='check-circle' className='icon' />
-          유효성검사 문구 : 성공
-        </ValidationMsg>
-        <ValidationMsg variant='guide' size='lg' role='status' ariaLive='polite'>
-          <Icon name='info-circle' className='icon' />
-          유효성검사 문구 : 가이드
-        </ValidationMsg>
-      </section>
-      <section>
-        <ValidationMsg variant='danger' size='md' role='alert' ariaLive='assertive'>
-          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
-        </ValidationMsg>
-        <ValidationMsg variant='warning' size='md' role='status' ariaLive='polite'>
-          <Icon name='warning-triangle' className='icon' />
-          유효성검사 문구 : 워닝
-        </ValidationMsg>
-        <ValidationMsg variant='success' size='md' role='status' ariaLive='polite'>
-          <Icon name='check-circle' className='icon' />
-          유효성검사 문구 : 성공
-        </ValidationMsg>
-        <ValidationMsg variant='guide' size='md' role='status' ariaLive='polite'>
-          <Icon name='info-circle' className='icon' />
-          유효성검사 문구 : 가이드
-        </ValidationMsg>
-      </section>
-      <section>
-        <ValidationMsg variant='danger' size='sm' role='alert' ariaLive='assertive'>
-          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
-        </ValidationMsg>
-        <ValidationMsg variant='warning' size='sm' role='status' ariaLive='polite'>
-          <Icon name='warning-triangle' className='icon' />
-          유효성검사 문구 : 워닝
-        </ValidationMsg>
-        <ValidationMsg variant='success' size='sm' role='status' ariaLive='polite'>
-          <Icon name='check-circle' className='icon' />
-          유효성검사 문구 : 성공
-        </ValidationMsg>
-        <ValidationMsg variant='guide' size='sm' role='status' ariaLive='polite'>
-          <Icon name='info-circle' className='icon' />
-          유효성검사 문구 : 가이드
-        </ValidationMsg>
-      </section>
-      <section>
-        <ValidationMsg variant='danger' size='xs' role='alert' ariaLive='assertive'>
-          <Icon name='x-circle' className='icon' /> 유효성검사 문구 : 에러
-        </ValidationMsg>
-        <ValidationMsg variant='warning' size='xs' role='status' ariaLive='polite'>
-          <Icon name='warning-triangle' className='icon' />
-          유효성검사 문구 : 워닝
-        </ValidationMsg>
-        <ValidationMsg variant='success' size='xs' role='status' ariaLive='polite'>
-          <Icon name='check-circle' className='icon' />
-          유효성검사 문구 : 성공
-        </ValidationMsg>
-        <ValidationMsg variant='guide' size='xs' role='status' ariaLive='polite'>
-          <Icon name='info-circle' className='icon' />
-          유효성검사 문구 : 가이드
-        </ValidationMsg>
-      </section>
       <section>
         {/* Display */}
         <h1 style={displayStyles.d1}>

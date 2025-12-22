@@ -89,11 +89,6 @@ const meta = {
     },
 
     // Etc
-    className: {
-      control: 'text',
-      description: '외부 커스텀 스타일을 위한 클래스명입니다.',
-      table: { category: 'Etc' },
-    },
     children: {
       control: 'text',
       description: `
@@ -101,6 +96,11 @@ const meta = {
 - **Text**: 단순한 라벨 문자열을 입력할 수 있습니다.
 - **Component**: 다른 리액트 컴포넌트를 주입할 수 있습니다.
     `,
+      table: { category: 'Etc' },
+    },
+    className: {
+      control: 'text',
+      description: '외부 커스텀 스타일을 위한 클래스명입니다.',
       table: { category: 'Etc' },
     },
   },

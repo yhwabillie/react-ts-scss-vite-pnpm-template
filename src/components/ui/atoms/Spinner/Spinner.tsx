@@ -9,7 +9,12 @@ type BaseProps = {
 
 type SpinnerProps = BaseProps;
 
-const Spinner: React.FC<SpinnerProps> = ({ variant, color, size, ...props }) => {
+const Spinner: React.FC<SpinnerProps> = ({
+  variant = 'closed-ring',
+  color = 'primary',
+  size = 'md',
+  ...props
+}) => {
   const spinnerProps = props as SpinnerProps;
 
   return (

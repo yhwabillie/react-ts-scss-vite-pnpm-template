@@ -3,19 +3,11 @@ import clsx from 'clsx';
 import styles from '@/components/ui/atoms/Input/Input.module.scss';
 
 type BaseProps = {
-  variant: 'solid' | 'outline' | 'ghost' | 'soft';
-  color:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'brand'
-    | 'brand-sub'
-    | 'success'
-    | 'warning'
-    | 'danger';
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  shape: 'rounded' | 'square' | 'pill';
-  type: 'text' | 'number' | 'email';
+  variant?: 'solid' | 'outline' | 'ghost' | 'soft';
+  color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  shape?: 'rounded' | 'square' | 'pill';
+  type?: 'text' | 'number' | 'email';
   role?: 'combobox';
   className?: string;
   as?: React.ElementType;

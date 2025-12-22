@@ -6,59 +6,93 @@
 // radio color
 $radio-colors: (
   primary: (
-    fill: #0052cc,
+    borderColor: var(--stroke-color-radio),
+    bg: var(--bg-color-unchecked-radio),
+    fill: var(--primary-checked-color-radio),
+    hover: (
+      shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-radio),
+    ),
+    active: (
+      shadow: 0 0 0 rem(6px) var(--primary-active-shadow-radio),
+    ),
     disabled: (
-      bg: #e0e0e0,
-      border: #9e9e9e,
+      bg: var(--disabled-bg-color-radio),
+      border: var(--disabled-stroke-color-radio),
     ),
   ),
   secondary: (
-    fill: #69b2ff,
+    borderColor: var(--stroke-color-radio),
+    bg: var(--bg-color-unchecked-radio),
+    fill: var(--secondary-checked-color-radio),
+    hover: (
+      shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-radio),
+    ),
+    active: (
+      shadow: 0 0 0 rem(6px) var(--secondary-active-shadow-radio),
+    ),
     disabled: (
-      bg: #e0e0e0,
-      border: #9e9e9e,
+      bg: var(--disabled-bg-color-radio),
+      border: var(--disabled-stroke-color-radio),
     ),
   ),
   tertiary: (
-    fill: #333333,
-    disabled: (
-      bg: #e0e0e0,
-      border: #9e9e9e,
+    borderColor: var(--stroke-color-radio),
+    bg: var(--bg-color-unchecked-radio),
+    fill: var(--tertiary-checked-color-radio),
+    hover: (
+      shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-radio),
     ),
-  ),
-  brand: (
-    fill: #ff6f61,
-    disabled: (
-      bg: #e0e0e0,
-      border: #9e9e9e,
+    active: (
+      shadow: 0 0 0 rem(6px) var(--tertiary-active-shadow-radio),
     ),
-  ),
-  brand-sub: (
-    fill: #6a1b9a,
     disabled: (
-      bg: #e0e0e0,
-      border: #9e9e9e,
+      bg: var(--disabled-bg-color-radio),
+      border: var(--disabled-stroke-color-radio),
     ),
   ),
   success: (
-    fill: #28a745,
+    borderColor: var(--stroke-color-radio),
+    bg: var(--bg-color-unchecked-radio),
+    fill: var(--success-checked-color-radio),
+    hover: (
+      shadow: 0 0 0 rem(4px) var(--success-hover-shadow-radio),
+    ),
+    active: (
+      shadow: 0 0 0 rem(6px) var(--success-active-shadow-radio),
+    ),
     disabled: (
-      bg: #e0e0e0,
-      border: #9e9e9e,
+      bg: var(--disabled-bg-color-radio),
+      border: var(--disabled-stroke-color-radio),
     ),
   ),
   warning: (
-    fill: #ff9800,
+    borderColor: var(--stroke-color-radio),
+    bg: var(--bg-color-unchecked-radio),
+    fill: var(--warning-checked-color-radio),
+    hover: (
+      shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-radio),
+    ),
+    active: (
+      shadow: 0 0 0 rem(6px) var(--warning-active-shadow-radio),
+    ),
     disabled: (
-      bg: #e0e0e0,
-      border: #9e9e9e,
+      bg: var(--disabled-bg-color-radio),
+      border: var(--disabled-stroke-color-radio),
     ),
   ),
   danger: (
-    fill: #d32f2f,
+    borderColor: var(--stroke-color-radio),
+    bg: var(--bg-color-unchecked-radio),
+    fill: var(--danger-checked-color-radio),
+    hover: (
+      shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-radio),
+    ),
+    active: (
+      shadow: 0 0 0 rem(6px) var(--danger-active-shadow-radio),
+    ),
     disabled: (
-      bg: #e0e0e0,
-      border: #9e9e9e,
+      bg: var(--disabled-bg-color-radio),
+      border: var(--disabled-stroke-color-radio),
     ),
   ),
 );
@@ -102,21 +136,37 @@ $radio-sizes: (
   ),
 );
 
-// mixin - radio variant (color)
-@mixin radio-variant($variant) {
-  $props: map.get($radio-colors, $variant);
+// mixin - radio color
+@mixin radio-variant($color) {
+  $props: map.get($radio-colors, $color);
   $fill: map.get($props, fill);
+  $border-color: map.get($props, borderColor);
+  $bg: map.get($props, bg);
+  $hover-map: map.get($props, hover);
+  $active-map: map.get($props, active);
+
+  // shadow
+  $hover-shadow: map.get($hover-map, shadow);
+  $active-shadow: map.get($active-map, shadow);
 
   // disabled 색상
   $disabled-props: map.get($props, disabled);
   $disabled-bg: map.get($disabled-props, bg);
   $disabled-border: map.get($disabled-props, border);
 
-  &:global(.color--#{$variant}) {
-    border-color: #717171;
+  &:global(.color--#{$color}) {
+    border: rem(1px) solid $border-color;
 
     &:has(input:checked) {
       border-color: $fill;
+    }
+
+    &:hover {
+      box-shadow: $hover-shadow;
+    }
+
+    &:active {
+      box-shadow: $active-shadow;
     }
 
     &:has(input:disabled) {
@@ -176,9 +226,9 @@ $radio-sizes: (
   align-items: center;
   cursor: pointer;
   border-radius: var(--project-border-radius-max);
-  border: rem(1px) solid #717171;
+  // border: rem(1px) solid #717171;
   position: relative;
-  background-color: #ffffff;
+  // background-color: #ffffff;
   transition: all 0.1s;
   overflow: hidden;
   flex: 0 0 auto;
@@ -190,8 +240,6 @@ $radio-sizes: (
   @include radio-variant(primary);
   @include radio-variant(secondary);
   @include radio-variant(tertiary);
-  @include radio-variant(brand);
-  @include radio-variant(brand-sub);
   @include radio-variant(success);
   @include radio-variant(warning);
   @include radio-variant(danger);

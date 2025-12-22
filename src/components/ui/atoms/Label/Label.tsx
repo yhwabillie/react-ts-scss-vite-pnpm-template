@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import styles from '@/components/ui/atoms/Label/Label.module.scss';
 
 type BaseProps = {
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
 };
 

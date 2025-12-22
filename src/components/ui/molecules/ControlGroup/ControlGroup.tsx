@@ -3,18 +3,21 @@ import clsx from 'clsx';
 import styles from '@/components/ui/molecules/ControlGroup/ControlGroup.module.scss';
 
 type BaseProps = {
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  direction: 'row' | 'column';
   role?: 'group' | 'toolbar';
   ariaLabel?: string;
-  className?: string;
+  direction?: 'row' | 'column';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   children: React.ReactNode;
+  className?: string;
 };
 
 type ControlGroupProps = BaseProps & Omit<React.HTMLAttributes<HTMLDivElement>, keyof BaseProps>;
 
 const ControlGroup = forwardRef<HTMLDivElement, ControlGroupProps>(
-  ({ size, direction, className, role, ariaLabel, children, ...rest }, ref) => {
+  (
+    { role = 'group', ariaLabel, direction = 'row', size = 'md', children, className, ...rest },
+    ref,
+  ) => {
     return (
       <div
         ref={ref}
