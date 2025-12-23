@@ -6,18 +6,23 @@
 $legend-sizes: (
   xs: (
     font-token: var(--project-typo-legend5-600),
+    margin: 0 0 rem(24px),
   ),
   sm: (
     font-token: var(--project-typo-legend4-600),
+    margin: 0 0 rem(24px),
   ),
   md: (
     font-token: var(--project-typo-legend3-600),
+    margin: 0 0 rem(24px),
   ),
   lg: (
     font-token: var(--project-typo-legend2-600),
+    margin: 0 0 rem(24px),
   ),
   xl: (
     font-token: var(--project-typo-legend1-600),
+    margin: 0 0 rem(24px),
   ),
 );
 
@@ -26,12 +31,13 @@ $legend-sizes: (
   @each $size-name, $props in $legend-sizes {
     // ──────────────── 기본 데이터 추출 ────────────────
     $font-token: map.get($props, font-token);
+    $margin: map.get($props, margin);
 
     // ──────────────── PC 스타일 ────────────────
     &:global(.size--#{$size-name}) {
       :global(.legend) {
         font: $font-token;
-        margin-bottom: rem(12px);
+        margin: $margin;
         display: inline-flex;
         align-items: center;
         gap: rem(4px);
@@ -47,6 +53,8 @@ $legend-sizes: (
 
 .form-fieldset {
   width: inherit;
+  display: flex;
+  flex-direction: column;
 
   @include legend-size;
 }

@@ -1292,6 +1292,7 @@ $g_typography: (
         mobile-size: 15px,
         font-weight: (
           400,
+          500,
         ),
         line-height: 1.5,
         font-family: ko,
@@ -1299,9 +1300,10 @@ $g_typography: (
       ja: (
         font-size: 16px,
         tablet-size: 16px,
-        mobile-size: 15px,
+        mobile-size: 16px,
         font-weight: (
           400,
+          500,
         ),
         line-height: 1.5,
         font-family: ja,
@@ -1309,9 +1311,10 @@ $g_typography: (
       en: (
         font-size: 16px,
         tablet-size: 16px,
-        mobile-size: 15px,
+        mobile-size: 16px,
         font-weight: (
           400,
+          500,
         ),
         line-height: 1.5,
         font-family: en,
@@ -1321,9 +1324,10 @@ $g_typography: (
     ko: (
       font-size: 14px,
       tablet-size: 14px,
-      mobile-size: 13px,
+      mobile-size: 14px,
       font-weight: (
         400,
+        500,
       ),
       line-height: 1.5,
       font-family: ko,
@@ -1331,9 +1335,10 @@ $g_typography: (
     ja: (
       font-size: 14px,
       tablet-size: 14px,
-      mobile-size: 13px,
+      mobile-size: 14px,
       font-weight: (
         400,
+        500,
       ),
       line-height: 1.5,
       font-family: ja,
@@ -1341,9 +1346,45 @@ $g_typography: (
     en: (
       font-size: 14px,
       tablet-size: 14px,
-      mobile-size: 13px,
+      mobile-size: 14px,
       font-weight: (
         400,
+        500,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+  helper3: (
+    ko: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+        500,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+        500,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+        500,
       ),
       line-height: 1.5,
       font-family: en,

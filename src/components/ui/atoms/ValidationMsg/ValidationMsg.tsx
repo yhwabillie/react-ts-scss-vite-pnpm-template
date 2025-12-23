@@ -3,10 +3,10 @@ import clsx from 'clsx';
 import styles from '@/components/ui/atoms/ValidationMsg/ValidationMsg.module.scss';
 
 type BaseProps = {
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  variant: 'danger' | 'warning' | 'success' | 'guide';
-  role: 'alert' | 'status';
-  ariaLive: 'assertive' | 'polite';
+  variant?: 'danger' | 'warning' | 'success' | 'guide';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  role?: 'alert' | 'status';
+  ariaLive?: 'assertive' | 'polite';
   className?: string;
   children: React.ReactNode;
 };
@@ -14,7 +14,7 @@ type BaseProps = {
 type ValidationMsgProps = BaseProps & Omit<React.HTMLAttributes<HTMLDivElement>, keyof BaseProps>;
 
 const ValidationMsg = forwardRef<HTMLDivElement, ValidationMsgProps>(
-  ({ variant, size, role, ariaLive, className, children, ...rest }, ref) => {
+  ({ variant = 'guide', size = 'md', role, ariaLive, className, children, ...rest }, ref) => {
     return (
       <div
         ref={ref}

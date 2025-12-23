@@ -7,186 +7,238 @@
 $textarea-colors: (
   primary: (
     solid: (
-      bg: #dceaff,
-      color: #0a2540,
-      placeholder: #8a9bb0,
+      bg: var(--primary-bg-color-textarea-solid),
+      color: var(--primary-text-color-textarea-solid),
+      placeholder: var(--primary-placeholder-color-textarea-solid),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-textarea),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-textarea),
+        color: var(--disabled-text-color-textarea),
+        placeholder: var(--disabled-placeholder-color-textarea),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-textarea),
+        color: var(--readonly-text-color-textarea),
+        placeholder: var(--readonly-placeholder-color-textarea),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #3366cc,
-      color: #1a3a66,
-      placeholder: #9aaac0,
-    ),
-    soft: (
-      bg: #eef5ff,
-      color: #143459,
-      placeholder: #a2afc2,
-    ),
-    ghost: (
-      bg: transparent,
-      color: #335c99,
-      placeholder: #aab6c7,
+      bg: var(--primary-bg-color-textarea-outline),
+      border: var(--primary-stroke-color-textarea-outline),
+      color: var(--primary-text-color-textarea-outline),
+      placeholder: var(--primary-placeholder-color-textarea-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-textarea),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-textarea),
+        color: var(--disabled-text-color-textarea),
+        border: var(--disabled-stroke-color-textarea),
+        placeholder: var(--disabled-placeholder-color-textarea),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-textarea),
+        color: var(--readonly-text-color-textarea),
+        border: var(--readonly-stroke-color-textarea),
+        placeholder: var(--readonly-placeholder-color-textarea),
+      ),
     ),
   ),
   secondary: (
     solid: (
-      bg: #d8edff,
-      color: #173a57,
-      placeholder: #95a7b8,
+      bg: var(--secondary-bg-color-textarea-solid),
+      color: var(--secondary-text-color-textarea-solid),
+      placeholder: var(--secondary-placeholder-color-textarea-solid),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-textarea),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-textarea),
+        color: var(--disabled-text-color-textarea),
+        placeholder: var(--disabled-placeholder-color-textarea),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-textarea),
+        color: var(--readonly-text-color-textarea),
+        placeholder: var(--readonly-placeholder-color-textarea),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #69b2ff,
-      color: #1f4b73,
-      placeholder: #9db2c4,
-    ),
-    soft: (
-      bg: #eef7ff,
-      color: #1d4268,
-      placeholder: #a8b8c7,
-    ),
-    ghost: (
-      bg: transparent,
-      color: #4f7ea8,
-      placeholder: #b4bfca,
+      bg: var(--secondary-bg-color-textarea-outline),
+      border: var(--secondary-stroke-color-textarea-outline),
+      color: var(--secondary-text-color-textarea-outline),
+      placeholder: var(--secondary-placeholder-color-textarea-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-textarea),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-textarea),
+        color: var(--disabled-text-color-textarea),
+        placeholder: var(--disabled-placeholder-color-textarea),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-textarea),
+        color: var(--readonly-text-color-textarea),
+        placeholder: var(--readonly-placeholder-color-textarea),
+      ),
     ),
   ),
   tertiary: (
     solid: (
-      bg: #e8e8e8,
-      color: #1e1e1e,
-      placeholder: #9a9a9a,
+      bg: var(--tertiary-bg-color-textarea-solid),
+      color: var(-tertiary-text-color-textarea-solid),
+      placeholder: var(--tertiary-placeholder-color-textarea-solid),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-textarea),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-textarea),
+        color: var(--disabled-text-color-textarea),
+        placeholder: var(--disabled-placeholder-color-textarea),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-textarea),
+        color: var(--readonly-text-color-textarea),
+        placeholder: var(--readonly-placeholder-color-textarea),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #4d4d4d,
-      color: #252525,
-      placeholder: #a4a4a4,
-    ),
-    soft: (
-      bg: #f5f5f5,
-      color: #232323,
-      placeholder: #ababab,
-    ),
-    ghost: (
-      bg: transparent,
-      color: #3a3a3a,
-      placeholder: #b2b2b2,
-    ),
-  ),
-  brand: (
-    solid: (
-      bg: #ffe9e6,
-      placeholder: #c7a8a5,
-      color: #7a2e25,
-    ),
-    outline: (
-      bg: #ffffff,
-      border: #ff6f61,
-      placeholder: #b7857f,
-      color: #8f3a30,
-    ),
-    soft: (
-      bg: #fff3f1,
-      placeholder: #d0bebc,
-      color: #8a3a2f,
-    ),
-    ghost: (
-      bg: transparent,
-      placeholder: #d9c7c5,
-      color: #9a463b,
-    ),
-  ),
-  brand-sub: (
-    solid: (
-      bg: #f3e9fb,
-      placeholder: #c8b7de,
-      color: #4b2b70,
-    ),
-    outline: (
-      bg: #ffffff,
-      border: #6a1b9a,
-      placeholder: #b7a2ce,
-      color: #532c7e,
-    ),
-    soft: (
-      bg: #f8f1ff,
-      placeholder: #d8caed,
-      color: #563482,
-    ),
-    ghost: (
-      bg: transparent,
-      placeholder: #e2d5f3,
-      color: #64428f,
+      bg: var(--tertiary-bg-color-textarea-outline),
+      border: var(--tertiary-stroke-color-textarea-outline),
+      color: var(--tertiary-text-color-textarea-outline),
+      placeholder: var(--tertiary-placeholder-color-textarea-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-textarea),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-textarea),
+        color: var(--disabled-text-color-textarea),
+        placeholder: var(--disabled-placeholder-color-textarea),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-textarea),
+        color: var(--readonly-text-color-textarea),
+        placeholder: var(--readonly-placeholder-color-textarea),
+      ),
     ),
   ),
   success: (
     solid: (
-      bg: #e2f5e9,
-      placeholder: #a9c7b0,
-      color: #2e5938,
+      bg: var(--success-bg-color-textarea-solid),
+      placeholder: var(--success-placeholder-color-textarea-solid),
+      color: var(--success-text-color-textarea-solid),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--success-hover-shadow-textarea),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-textarea),
+        color: var(--disabled-text-color-textarea),
+        placeholder: var(--disabled-placeholder-color-textarea),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-textarea),
+        color: var(--readonly-text-color-textarea),
+        placeholder: var(--readonly-placeholder-color-textarea),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #28a745,
-      placeholder: #94b5a1,
-      color: #245c34,
-    ),
-    soft: (
-      bg: #f0faf3,
-      placeholder: #c8dbce,
-      color: #2f6840,
-    ),
-    ghost: (
-      bg: transparent,
-      placeholder: #d4e4d9,
-      color: #357347,
+      bg: var(--success-bg-color-textarea-outline),
+      border: var(--success-stroke-color-textarea-outline),
+      placeholder: var(--success-placeholder-color-textarea-outline),
+      color: var(--success-text-color-textarea-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--success-hover-shadow-textarea),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-textarea),
+        color: var(--disabled-text-color-textarea),
+        placeholder: var(--disabled-placeholder-color-textarea),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-textarea),
+        color: var(--readonly-text-color-textarea),
+        placeholder: var(--readonly-placeholder-color-textarea),
+      ),
     ),
   ),
   warning: (
     solid: (
-      bg: #fff4d1,
-      placeholder: #c7b98b,
-      color: #5c4a00,
+      bg: var(--warning-bg-color-textarea-solid),
+      placeholder: var(--warning-placeholder-color-textarea-solid),
+      color: var(-warning-text-color-textarea-solid),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-textarea),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-textarea),
+        color: var(--disabled-text-color-textarea),
+        placeholder: var(--disabled-placeholder-color-textarea),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-textarea),
+        color: var(--readonly-text-color-textarea),
+        placeholder: var(--readonly-placeholder-color-textarea),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #f5c84a,
-      placeholder: #cab77c,
-      color: #7a6000,
-    ),
-    soft: (
-      bg: #fff9e8,
-      placeholder: #d6c796,
-      color: #6b5800,
-    ),
-    ghost: (
-      bg: transparent,
-      placeholder: #e2d6a1,
-      color: #a08200,
+      bg: var(--warning-bg-color-textarea-outline),
+      border: var(--warning-stroke-color-textarea-outline),
+      placeholder: var(--warning-placeholder-color-textarea-outline),
+      color: var(--warning-text-color-textarea-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-textarea),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-textarea),
+        color: var(--disabled-text-color-textarea),
+        placeholder: var(--disabled-placeholder-color-textarea),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-textarea),
+        color: var(--readonly-text-color-textarea),
+        placeholder: var(--readonly-placeholder-color-textarea),
+      ),
     ),
   ),
   danger: (
     solid: (
-      bg: #ffe8e8,
-      placeholder: #d3b1b1,
-      color: #6f1a1a,
+      bg: var(--danger-bg-color-textarea-solid),
+      placeholder: var(--danger-placeholder-color-textarea-solid),
+      color: var(--danger-text-color-textarea-solid),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-textarea),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-textarea),
+        color: var(--disabled-text-color-textarea),
+        placeholder: var(--disabled-placeholder-color-textarea),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-textarea),
+        color: var(--readonly-text-color-textarea),
+        placeholder: var(--readonly-placeholder-color-textarea),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #d84a4a,
-      placeholder: #c79b9b,
-      color: #8a1f1f,
-    ),
-    soft: (
-      bg: #fff2f2,
-      placeholder: #d8bebe,
-      color: #7a2222,
-    ),
-    ghost: (
-      bg: transparent,
-      placeholder: #e5c9c9,
-      color: #b43737,
+      bg: var(--danger-bg-color-textarea-outline),
+      border: var(--danger-stroke-color-textarea-outline),
+      placeholder: var(--danger-placeholder-textarea-outline),
+      color: var(--danger-text-color-textarea-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-textarea),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-textarea),
+        color: var(--disabled-text-color-textarea),
+        placeholder: var(--disabled-placeholder-color-textarea),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-textarea),
+        color: var(--readonly-text-color-textarea),
+        placeholder: var(--readonly-placeholder-color-textarea),
+      ),
     ),
   ),
 );
@@ -215,15 +267,17 @@ $textarea-sizes: (
   &:global(.variant--#{$variant}) {
     @each $color-name, $props in $textarea-colors {
       $variant-props: map.get($props, $variant);
+      $hover-props: map.get($variant-props, hover);
+      $shadow-value: map.get($hover-props, shadow);
 
       @if $variant-props != null {
         &:global(.color--#{$color-name}) {
+          &:not(:has(textarea:disabled, textarea:read-only)):hover {
+            box-shadow: $shadow-value;
+          }
+
           @if $variant == 'solid' {
             background-color: map.get($variant-props, bg);
-
-            &:not(:has(textarea:disabled, textarea:read-only)):hover {
-              box-shadow: 0 0 0 rem(4px) red;
-            }
 
             :global(textarea) {
               color: map.get($variant-props, color);
@@ -236,17 +290,8 @@ $textarea-sizes: (
           } @else if $variant == 'outline' {
             background-color: map.get($variant-props, bg);
             border: rem(1px) solid map.get($variant-props, border);
-            :global(textarea) {
-              color: map.get($variant-props, color);
 
-              &::placeholder {
-                color: map.get($variant-props, placeholder);
-              }
-            }
-          } @else if $variant == 'ghost' {
             :global(textarea) {
-              background-color: map.get($variant-props, bg);
-              border: none;
               color: map.get($variant-props, color);
 
               &::placeholder {
@@ -255,32 +300,32 @@ $textarea-sizes: (
             }
           }
 
-          // disabled
+          // 1. 오직 Disabled 일 때만 (Read-only는 제외)
           &:has(textarea:disabled) {
             cursor: not-allowed;
-            background-color: #eeeeee;
-            border-color: #dddddd;
+            background-color: var(--disabled-bg-color-textarea);
+            border-color: var(--disabled-stroke-color-textarea);
 
             :global(textarea) {
-              cursor: inherit;
-              color: #9e9e9e;
-
+              cursor: not-allowed;
+              color: var(--disabled-text-color-textarea);
               &::placeholder {
-                color: #bdbdbd;
+                color: var(--disabled-placeholder-color-textarea);
               }
             }
           }
 
-          // readonly
-          &:has(textarea:read-only) {
-            background-color: #f9f9f9;
-            border-color: #e0e0e0;
+          // 2. 오직 Read-only 일 때만 (Disabled는 제외)
+          &:has(textarea:read-only):not(:has(textarea:disabled)) {
+            cursor: default;
+            background-color: var(--readonly-bg-color-textarea);
+            border-color: var(--readonly-stroke-color-textarea);
 
             :global(textarea) {
-              color: #212121;
-
+              cursor: text;
+              color: var(--readonly-text-color-textarea);
               &::placeholder {
-                color: #757575;
+                color: var(--readonly-placeholder-color-textarea);
               }
             }
           }
@@ -311,11 +356,8 @@ $textarea-sizes: (
   border-radius: var(--project-border-radius-8);
   transition: all 0.2s ease;
 
-  &:global(.is-max) {
-    background-color: red !important;
-  }
-
   :global(textarea) {
+    border: none;
     resize: none;
     width: 100%;
     height: 100%;
@@ -327,14 +369,15 @@ $textarea-sizes: (
 
   // size
   @include textarea-size();
-
   @include textarea-variant(solid);
   @include textarea-variant(outline);
-  @include textarea-variant(soft);
-  @include textarea-variant(ghost);
 }
 
 .textarea-counter {
   align-self: end;
   font: var(--project-typo-l3-500);
+
+  &:global(.is-max) {
+    color: #7f1d1d;
+  }
 }

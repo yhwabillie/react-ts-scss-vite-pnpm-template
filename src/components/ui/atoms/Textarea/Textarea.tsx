@@ -78,8 +78,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <div
         className={clsx(
-          `${styles['textarea']} ${`variant--${variant}`} ${`color--${color}`} ${`size--${size}`}`,
-          isMaxLengthReached && 'is-max',
+          `${styles['textarea']} ${`variant--${variant}`} ${`color--${isMaxLengthReached ? 'danger' : color}`} ${`size--${size}`}`,
           className,
         )}
       >
@@ -97,10 +96,11 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         />
 
         {showCount && maxLength !== undefined && (
-          <div className={styles['textarea-counter']} aria-live='polite'>
-            <span className={clsx(styles['current'], isMaxLengthReached && styles['is-max'])}>
-              {currentLength}
-            </span>
+          <div
+            className={clsx(styles['textarea-counter'], isMaxLengthReached && 'is-max')}
+            aria-live='polite'
+          >
+            <span className={clsx(styles['current'])}>{currentLength}</span>
             <span className={styles['separator']}>/</span>
             <span className={styles['total']}>{maxLength}</span>
           </div>

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, type CSSProperties } from 'react';
 import clsx from 'clsx';
 import styles from '@/components/ui/molecules/FormFieldset/FormFieldset.module.scss';
 
@@ -7,6 +7,7 @@ type BaseProps = {
   required?: boolean;
   className?: string;
   legend: string;
+  style?: CSSProperties;
   children: React.ReactNode;
 };
 
@@ -14,11 +15,12 @@ type FormFieldsetProps = BaseProps &
   Omit<React.HTMLAttributes<HTMLFieldSetElement>, keyof BaseProps>;
 
 const FormFieldset = forwardRef<HTMLFieldSetElement, FormFieldsetProps>(
-  ({ size, required, className, legend, children }, ref) => {
+  ({ size, required, className, legend, style, children }, ref) => {
     return (
       <fieldset
         ref={ref}
         className={clsx(`${styles['form-fieldset']} ${`size--${size}`}`, className)}
+        style={style}
       >
         <legend className='legend'>
           {legend}
