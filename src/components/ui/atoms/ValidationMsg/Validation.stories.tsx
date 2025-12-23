@@ -209,7 +209,6 @@ export const Usage: Story = {
           ariaLive='assertive'
           size={args.size}
         >
-          <Icon name='x-circle' className='icon' />
           <span className='text'>유효성검사 문구 : 에러</span>
         </ValidationMsg>
       </FormFieldset>

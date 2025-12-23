@@ -6,6 +6,15 @@
   @include generate-vars-font-weight(vars.$g_project-name, vars.$g_font-weight);
   @include generate-vars-border-radius(vars.$g_project-name, vars.$g_border-radius);
 
+  --color-surface-sunken: #ffffff; // Lv.0: 가장 밑바닥 (대지)
+  --color-surface-default: #ffffff; // Lv.1: 그 위의 콘텐츠 영역 (카드 등)
+  --color-surface-raised: #ffffff; // Lv.2: 강조가 필요한 오버레이나 컴포넌트 배경
+  --color-text-primary: #191f28; // 텍스트 컬러 (접근성 확보)
+
+  // guide
+  --bg-color-guide: #ecf4ef;
+  --stroke-color-guide: #15803d;
+
   // label
   --text-color-label: #1d1d1d;
 
@@ -228,6 +237,15 @@
 @include generate-vars-lang-typography;
 
 .mode-dark {
+  --color-surface-sunken: #121212; // Lv.0: 가장 밑바닥 (대지)
+  --color-surface-default: #1e1e1e; // Lv.1: 그 위의 콘텐츠 영역 (카드 등)
+  --color-surface-raised: #333333; // Lv.2: 강조가 필요한 오버레이나 컴포넌트 배경
+  --color-text-primary: #f9fafb; // 텍스트 컬러 (접근성 확보)
+
+  // guide
+  --bg-color-guide: rgba(45, 252, 82, 0.05);
+  --stroke-color-guide: #2dfc52;
+
   // label
   --text-color-label: #ffffff;
 

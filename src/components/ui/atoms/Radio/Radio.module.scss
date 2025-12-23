@@ -179,6 +179,7 @@ $radio-sizes: (
 
     input:checked + :global(.mark) {
       color: $fill;
+      background-color: $bg;
     }
 
     input:disabled + :global(.mark) {
@@ -226,7 +227,6 @@ $radio-sizes: (
   align-items: center;
   cursor: pointer;
   border-radius: var(--project-border-radius-max);
-  // border: rem(1px) solid #717171;
   position: relative;
   // background-color: #ffffff;
   transition: all 0.1s;

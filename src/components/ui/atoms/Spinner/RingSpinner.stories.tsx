@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Spinner from './Spinner';
 import RingSpinner from './LoadingSpinner/RingSpinner';
+import { SpecimenCell, SpecimenRow } from '../../guide/Specimen';
 
 const meta: Meta<typeof Spinner> = {
   title: 'UI/Atoms/Spinner/RingSpinner',
@@ -93,7 +94,7 @@ export const Colors: Story = {
     docs: {
       description: {
         story:
-          '디자인 시스템의 6가지 테마 컬러를 적용한 스피너입니다. 각 상태(성공, 경고, 위험 등)에 맞는 적절한 컬러를 선택하여 사용합니다.',
+          '디자인 시스템의 시멘틱 컬러 시스템을 적용한 스피너입니다. 성공(success), 경고(warning), 에러(danger) 등 각 상황의 맥락에 맞는 컬러를 선택하여 사용합니다.',
       },
     },
   },
@@ -103,33 +104,14 @@ export const Colors: Story = {
     > = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'];
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <SpecimenRow>
           {colorOptions.map(color => (
-            <div
-              key={color}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '10px',
-                minWidth: '80px',
-              }}
-            >
+            <SpecimenCell key={color} caption={color}>
               <RingSpinner {...args} color={color} />
-              <span
-                style={{
-                  fontSize: '12px',
-                  color: '#444',
-                  textTransform: 'capitalize',
-                  fontWeight: '500',
-                }}
-              >
-                {color}
-              </span>
-            </div>
+            </SpecimenCell>
           ))}
-        </div>
+        </SpecimenRow>
       </div>
     );
   },
@@ -148,30 +130,13 @@ export const Sizes: Story = {
     const sizeOptions: Array<'xl' | 'lg' | 'md' | 'sm' | 'xs'> = ['xl', 'lg', 'md', 'sm', 'xs'];
 
     return (
-      <div style={{ display: 'inline-flex', gap: '15px', alignItems: 'end' }}>
+      <SpecimenRow>
         {sizeOptions.map(size => (
-          <div
-            key={size}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start',
-              gap: '8px',
-            }}
-          >
-            <span
-              style={{
-                fontSize: '10px',
-                color: '#666',
-                fontWeight: 'bold',
-              }}
-            >
-              {size.toUpperCase()}
-            </span>
+          <SpecimenCell key={size} caption={size}>
             <RingSpinner {...args} size={size} />
-          </div>
+          </SpecimenCell>
         ))}
-      </div>
+      </SpecimenRow>
     );
   },
 };

@@ -68,6 +68,40 @@ const preview: Preview = {
     docs: {
       codePanel: true,
     },
+    options: {
+      storySort: {
+        order: [
+          'UI',
+          [
+            'Atoms',
+            [
+              'Radio',
+              'Checkbox',
+              'Label',
+              'Textarea',
+              ['Solid', 'Outline'],
+              'ValidationMsg',
+              'Spinner',
+              '*',
+            ],
+            'Molecules',
+            [
+              'Button',
+              'LinkButton',
+              'IconButton',
+              'ButtonGroup',
+              'Switch',
+              'Input',
+              'FormField',
+              '*',
+            ],
+            'Organisms',
+            '*',
+          ],
+          '*',
+        ],
+      },
+    },
   },
   decorators: [
     (Story, context) => {
@@ -76,6 +110,7 @@ const preview: Preview = {
       const mode = context.globals.mode || 'light';
 
       useEffect(() => {
+        // 1. i18n 언어 변경
         if (i18n.language !== locale) {
           i18n.changeLanguage(locale).catch(console.error);
         }
@@ -83,38 +118,29 @@ const preview: Preview = {
         const updateDOM = () => {
           const html = document.documentElement;
 
-          if (html.lang !== locale) {
-            html.lang = locale;
-          }
+          // 2. 기본 속성 업데이트
+          if (html.lang !== locale) html.lang = locale;
 
           const validThemes = ['tech', 'warm'];
           const nextTheme = validThemes.includes(theme) ? theme : 'tech';
-
           if (html.getAttribute('data-theme') !== nextTheme) {
             html.setAttribute('data-theme', nextTheme);
           }
 
+          // 3. Mode 클래스 교체 (최적화 업데이트)
           const nextMode = `mode-${mode}`;
-          html.classList.forEach(className => {
-            if (className.startsWith('mode-')) html.classList.remove(className);
-          });
-          html.classList.add(nextMode);
+          if (!html.classList.contains(nextMode)) {
+            html.classList.remove('mode-light', 'mode-dark'); // 명시적 제거로 성능 향상
+            html.classList.add(nextMode);
+          }
 
-          // [UPDATE] .docs-story 및 canvas 배경색 제어
-          // Docs 모드와 Canvas 모드 모두를 대응하기 위해 여러 선택자를 활용합니다.
-          const selectors =
-            mode === 'dark' ? '.docs-story, .sb-show-main' : '.docs-story, .sb-show-main';
-
+          // 4. 대상 영역 한정 (업데이트: .docs-story와 .sb-show-main만 타겟팅)
           const containers = document.querySelectorAll<HTMLElement>('.docs-story, .sb-show-main');
 
           containers.forEach(el => {
-            if (mode === 'dark') {
-              el.style.setProperty('background-color', '#121212', 'important');
-              el.style.setProperty('color', '#ffffff', 'important');
-            } else {
-              el.style.setProperty('background-color', '#ffffff', 'important');
-              el.style.setProperty('color', '#000000', 'important');
-            }
+            // 인라인 스타일로 해당 영역의 배경과 글자색만 강제 (Docs 배경은 유지됨)
+            el.style.setProperty('background-color', 'var(--color-surface-sunken)', 'important');
+            el.style.setProperty('color', 'var(--color-text-primary)', 'important');
           });
         };
 

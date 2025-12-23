@@ -4,6 +4,7 @@ import FormField from '../../molecules/FormField/FormField';
 import Radio from '../Radio/Radio';
 import Checkbox from '../Checkbox/Checkbox';
 import Switch from '../../molecules/Switch/Switch';
+import AnatomyWrapper from '@/components/ui/guide/AnatomyWrapper';
 
 const meta = {
   title: 'UI/Atoms/Label',
@@ -93,7 +94,7 @@ export const Sizes: Story = {
  */
 export const Usage: Story = {
   render: args => (
-    <div style={{ display: 'flex', flexDirection: 'row', gap: '30px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
       <FormField as='label' htmlFor='radio-id' size={args.size}>
         <Radio
           as='span'
@@ -103,8 +104,11 @@ export const Usage: Story = {
           color='primary'
           size={args.size}
         />
-        <Label size={args.size}>라디오 옵션 라벨</Label>
+        <AnatomyWrapper>
+          <Label size={args.size}>라디오 옵션 라벨</Label>
+        </AnatomyWrapper>
       </FormField>
+
       <FormField as='label' htmlFor='checkbox-id' size={args.size}>
         <Checkbox
           as='span'
@@ -114,7 +118,9 @@ export const Usage: Story = {
           color='primary'
           size={args.size}
         />
-        <Label size={args.size}>체크박스 옵션 라벨</Label>
+        <AnatomyWrapper>
+          <Label size={args.size}>체크박스 옵션 라벨</Label>
+        </AnatomyWrapper>
       </FormField>
       <Switch
         color='primary'
@@ -122,7 +128,11 @@ export const Usage: Story = {
         name='switch-name'
         size={args.size}
         defaultChecked
-        children={<Label size={args.size}>라디오 옵션 1</Label>}
+        children={
+          <AnatomyWrapper>
+            <Label size={args.size}>라디오 옵션 1</Label>
+          </AnatomyWrapper>
+        }
       />
     </div>
   ),

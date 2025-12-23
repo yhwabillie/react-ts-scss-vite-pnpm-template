@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Switch from '@/components/ui/molecules/Switch/Switch';
+import Label from '../../atoms/Label/Label';
 
 const meta = {
   title: 'UI/Molecules/Switch',
@@ -327,6 +328,60 @@ export const States: Story = {
           );
         })}
       </>
+    );
+  },
+};
+
+/**
+ * `labelPlacement`와 `children`을 활용하여 스위치와 라벨의 상대적 위치를 결정합니다.
+ * - **start**: 라벨이 스위치의 왼쪽에 배치되어, 사용자가 설정을 읽고 스위치를 조작하는 흐름에 적합합니다.
+ * - **end**: 라벨이 스위치의 오른쪽에 배치되어, 일반적인 체크 리스트나 옵션 선택 UI에 적합합니다.
+ */
+export const Placement: Story = {
+  args: {
+    name: 'switch-placement-group',
+  },
+  render: args => {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', minWidth: '300px' }}>
+        {/* Label Placement: Start */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <span style={{ margin: 'auto', fontSize: '12px', color: '#999', fontWeight: 'bold' }}>
+            PLACEMENT: START
+          </span>
+          <div
+            style={{
+              margin: 'auto',
+              padding: '16px',
+              border: '1px solid #eee',
+              borderRadius: '8px',
+            }}
+          >
+            <Switch {...args} labelPlacement='start' id='placement-start' defaultChecked>
+              <Label size={args.size}>왼쪽 라벨</Label>
+            </Switch>
+          </div>
+        </div>
+
+        {/* Label Placement: End */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <span style={{ margin: 'auto', fontSize: '12px', color: '#999', fontWeight: 'bold' }}>
+            PLACEMENT: END
+          </span>
+          <div
+            style={{
+              margin: 'auto',
+              padding: '16px',
+              border: '1px solid #eee',
+              borderRadius: '8px',
+            }}
+          >
+            <Switch {...args} labelPlacement='end' id='placement-end'>
+              <Label size={args.size}>오른쪽 라벨</Label>
+            </Switch>
+          </div>
+        </div>
+      </div>
     );
   },
 };

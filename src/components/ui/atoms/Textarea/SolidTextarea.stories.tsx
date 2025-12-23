@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Textarea from './Textarea';
+import { SpecimenCell, SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
+import AnatomyWrapper from '../../guide/AnatomyWrapper';
+import React from 'react';
 
 const meta = {
   title: 'UI/Atoms/Textarea/Solid',
@@ -9,49 +12,83 @@ const meta = {
     layout: 'centered',
   },
   argTypes: {
-    // 1. Identification
-    id: { table: { category: 'Identification' } },
+    // Identification
+    id: {
+      control: 'text',
+      table: { category: 'Identification' },
+    },
+    name: {
+      control: 'text',
+      table: { category: 'Identification' },
+    },
 
-    // 2. Styles
+    // Control
+    defaultValue: {
+      control: 'text',
+      table: { category: 'Control' },
+    },
+    value: {
+      control: 'text',
+      table: { category: 'Control' },
+    },
+    onChange: {
+      table: { category: 'Control' },
+    },
+
+    // Styles
     variant: {
       control: 'select',
-      options: ['solid', 'outline', 'soft', 'ghost'],
+      options: ['solid', 'outline', 'ghost'],
       description: '배경색과 테두리 스타일을 결정합니다.',
       table: { category: 'Styles' },
     },
     color: {
       control: 'select',
-      options: [
-        'primary',
-        'secondary',
-        'tertiary',
-        'brand',
-        'brand-sub',
-        'success',
-        'warning',
-        'danger',
-      ],
       description: '컴포넌트의 테마 색상을 결정합니다.',
+      options: ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'],
+      table: { category: 'Styles' },
+    },
+    size: {
+      control: 'inline-radio',
+      description: 'Textarea 크기를 조절합니다.',
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
       table: { category: 'Styles' },
     },
 
-    // 3. Behavioral (Textarea Specific)
+    // Behavioral
+    placeholder: {
+      control: 'text',
+      table: { category: 'Behavioral' },
+    },
     rows: {
       control: { type: 'number', min: 1 },
       description: '기본적으로 보여질 줄 수를 결정합니다.',
       table: { category: 'Behavioral' },
     },
-    placeholder: {
-      control: 'text',
+    maxLength: {
+      control: { type: 'number', max: 400 },
       table: { category: 'Behavioral' },
     },
+
+    // Status
     disabled: { control: 'boolean', table: { category: 'Status' } },
     readOnly: { control: 'boolean', table: { category: 'Status' } },
-  },
-  args: {
-    variant: 'outline',
-    color: 'tertiary',
 
+    // Etc
+    showCount: {
+      control: 'boolean',
+      table: { category: 'Etc' },
+    },
+    className: {
+      control: 'text',
+      table: { category: 'Etc' },
+    },
+  },
+
+  args: {
+    variant: 'solid',
+    color: 'primary',
+    size: 'xs',
     rows: 4,
     placeholder: '내용을 입력해주세요.',
   },
@@ -64,79 +101,214 @@ type Story = StoryObj<typeof meta>;
 /**
  * 기본적인 텍스트 영역 형태입니다.
  */
-export const Default: Story = {};
+export const Base: Story = {
+  parameters: {
+    docs: {
+      canvas: {
+        sourceState: 'shown',
+      },
+    },
+  },
+  args: {},
+  render: args => {
+    /** * Storybook Autodocs에서는 같은 스토리가 여러 번 렌더링될 수 있으므로,
+     * 각 인스턴스가 고유한 name과 id를 갖도록 랜덤값을 활용하거나
+     * 고유한 접미사를 붙여줌.
+     */
+    const uniqueId = `textarea-${Math.random().toString(36).slice(2, 7)}`;
 
-/**
- * 모든 변형(Variant) 상태를 확인합니다. SCSS에 정의된 4가지 타입을 비교합니다.
- */
-export const Variants: Story = {
-  render: args => (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', width: '600px' }}>
-      <Textarea {...args} variant='solid' placeholder='Solid Variant' />
-      <Textarea {...args} variant='outline' placeholder='Outline Variant' />
-      <Textarea {...args} variant='soft' placeholder='Soft Variant' />
-      <Textarea {...args} variant='ghost' placeholder='Ghost Variant' />
-    </div>
-  ),
+    return (
+      <AnatomyWrapper title='부모 요소 : 800px'>
+        <SpecimenRow>
+          <SpecimenCell style={{ width: '800px' }}>
+            <Textarea {...args} id={uniqueId} name={uniqueId} />
+          </SpecimenCell>
+        </SpecimenRow>
+      </AnatomyWrapper>
+    );
+  },
 };
 
-/**
- * 주요 상태(Disabled, ReadOnly)에 따른 스타일 변화를 확인합니다.
- */
-export const Status: Story = {
-  render: args => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '400px' }}>
-      <Textarea {...args} placeholder='Normal State' />
-      <Textarea {...args} disabled placeholder='Disabled State' />
-      <Textarea
-        {...args}
-        readOnly
-        defaultValue='이것은 읽기 전용 텍스트입니다. 수정할 수 없습니다.'
-      />
-    </div>
-  ),
-};
-
-/**
- * 브랜드 색상 및 상태 색상(Success, Danger 등)을 확인합니다.
- */
 export const Colors: Story = {
-  render: args => (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', width: '600px' }}>
-      <Textarea {...args} color='brand' placeholder='Brand Color' />
-      <Textarea {...args} color='brand-sub' placeholder='Brand-Sub Color' />
-      <Textarea {...args} color='success' placeholder='Success Color' />
-      <Textarea {...args} color='danger' placeholder='Danger Color' />
-    </div>
-  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          '디자인 시스템의 시멘틱 컬러를 적용한 모습입니다. 각 컬러에 따라 테두리(Focus), 카운터 숫자, 배경색의 톤이 결정됩니다.',
+      },
+    },
+  },
+  args: {
+    name: 'textarea-color-group',
+  },
+  render: args => {
+    const colorOptions: Array<
+      'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger'
+    > = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'];
+
+    return (
+      <SpecimenWrapper>
+        {colorOptions.map(color => {
+          const uniqueId = `textarea-color-${color}`;
+
+          return (
+            <SpecimenGroup key={color} title={color}>
+              <SpecimenRow>
+                <SpecimenCell caption='Empty'>
+                  <Textarea
+                    {...args}
+                    color={color}
+                    id={`${uniqueId}-empty`}
+                    name={`${uniqueId}-empty`}
+                    defaultValue=''
+                  />
+                </SpecimenCell>
+                <SpecimenCell caption='Filled'>
+                  <Textarea
+                    {...args}
+                    color={color}
+                    id={`${uniqueId}-fill`}
+                    name={`${uniqueId}-fill`}
+                    defaultValue='내용이 입력된 상태입니다.'
+                  />
+                </SpecimenCell>
+              </SpecimenRow>
+            </SpecimenGroup>
+          );
+        })}
+      </SpecimenWrapper>
+    );
+  },
 };
 
-/**
- * CharacterCount와 조합하여 글자 수 제한이 있는 사용 사례입니다.
- */
-// export const WithCharacterCount: Story = {
-//   render: (args) => {
-//     // 스토리 내부에서 글자 수 상태 관리 시뮬레이션
-//     const [text, setText] = useState('');
-//     const maxLength = 200;
+export const Sizes: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'SCSS Map으로 정의된 5가지 표준 너비 규격입니다. 각 사이즈는 가독성을 고려한 max-width를 가집니다.',
+      },
+    },
+  },
+  render: args => {
+    const sizeOptions: Array<'xs' | 'sm' | 'md' | 'lg' | 'xl'> = ['xs', 'sm', 'md', 'lg', 'xl'];
 
-//     return (
-//       <div style={{ width: '500px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-//         <Textarea
-//           {...args}
-//           value={text}
-//           onChange={(e) => setText(e.target.value)}
-//           maxLength={maxLength}
-//           placeholder="내용을 입력해주세요."
-//         />
-//         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-//           <CharacterCount
-//             current={text.length}
-//             max={maxLength}
-//             size={args.size}
-//           />
-//         </div>
-//       </div>
-//     );
-//   },
-// };
+    return (
+      <SpecimenGroup direction='column'>
+        {sizeOptions.map(size => (
+          <React.Fragment key={size}>
+            {size === 'xl' ? (
+              <AnatomyWrapper title='부모 요소 : 800px'>
+                <SpecimenRow>
+                  <SpecimenCell caption='XL (100%)' style={{ width: '800px' }}>
+                    <Textarea {...args} size={size} />
+                  </SpecimenCell>
+                </SpecimenRow>
+              </AnatomyWrapper>
+            ) : (
+              <SpecimenRow>
+                <SpecimenCell caption={size}>
+                  <Textarea {...args} size={size} />
+                </SpecimenCell>
+              </SpecimenRow>
+            )}
+          </React.Fragment>
+        ))}
+      </SpecimenGroup>
+    );
+  },
+};
+
+export const States: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Textarea의 비활성화, 읽기 전용, 글자 수 제한 등 다양한 인터랙션 상태를 확인합니다.',
+      },
+    },
+  },
+  render: args => {
+    const states = [
+      { label: 'Normal', class: '' },
+      { label: 'Hover', class: 'pseudo-hover' },
+      { label: 'Focus', class: 'pseudo-focus-visible' },
+      { label: 'Read Only', props: { readOnly: true } },
+      { label: 'Disabled', props: { disabled: true } },
+    ];
+
+    return (
+      <SpecimenWrapper>
+        {states.map(state => {
+          const uniqueId = `textarea-${Math.random().toString(36).slice(2, 7)}`;
+
+          return (
+            <SpecimenGroup key={uniqueId} title={state.label}>
+              <SpecimenRow>
+                <Textarea
+                  {...args}
+                  className={state.class}
+                  {...state.props}
+                  id={`${uniqueId}-empty`}
+                  name={`${uniqueId}-empty`}
+                />
+                <Textarea
+                  {...args}
+                  className={state.class}
+                  {...state.props}
+                  id={`${uniqueId}-fill`}
+                  name={`${uniqueId}-fill`}
+                  defaultValue='내용이 입력된 상태입니다.'
+                />
+              </SpecimenRow>
+            </SpecimenGroup>
+          );
+        })}
+      </SpecimenWrapper>
+    );
+  },
+};
+
+export const WithCount: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          '`showCount`와 `maxLength`를 조합하여 실시간 글자 수를 표시합니다. 최대치 도달 시 강조 스타일이 적용됩니다.',
+      },
+    },
+  },
+  render: args => {
+    const scenarios = [
+      { label: 'Empty', props: { defaultValue: '', placeholder: '글자를 입력해보세요.' } },
+      { label: 'Typing', props: { defaultValue: '현재 입력 중인 상태입니다.' } },
+      {
+        label: 'Max Limit',
+        props: { defaultValue: '최대 글자 수에 도달하면 카운터 색상이 변합니다.' },
+      },
+    ];
+
+    return (
+      <SpecimenWrapper>
+        {scenarios.map(scenario => {
+          const isMax = scenario.label === 'Max Limit';
+
+          return (
+            <SpecimenGroup key={scenario.label} title={scenario.label}>
+              <SpecimenRow>
+                <SpecimenCell>
+                  <Textarea
+                    {...args}
+                    {...scenario.props}
+                    showCount
+                    // Max Limit 시나리오에서는 글자 수에 딱 맞게 maxLength 설정
+                    maxLength={isMax ? scenario.props.defaultValue.length : 17}
+                  />
+                </SpecimenCell>
+              </SpecimenRow>
+            </SpecimenGroup>
+          );
+        })}
+      </SpecimenWrapper>
+    );
+  },
+};

@@ -1,0 +1,20 @@
+/* AnatomyWrapper.module.scss */
+@use 'sass:map';
+@use '../../../styles/mixins' as *;
+
+.anatomy-wrapper {
+  background-color: var(--bg-color-guide);
+
+  :global(.title) {
+    width: 100%;
+    font: var(--project-typo-l3-500);
+    background-color: var(--color-surface-raised);
+    color: var(--color-text-primary);
+    padding: rem(6px);
+  }
+
+  // '>'를 사용하여 직계 자식(1st Depth)만 선택합니다.
+  & > * {
+    border: rem(1px) dashed var(--stroke-color-guide); // 배경과 대비되도록 조금 더 진한 초록색 권장
+  }
+}
