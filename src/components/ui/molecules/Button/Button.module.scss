@@ -581,6 +581,8 @@ $btn-sizes: (
         &:global(.color--#{$name}) {
           // 기본 색상
           @if $variant == 'link' {
+            display: inline-flex;
+            width: 100%;
             text-decoration: underline;
             text-underline-offset: rem(4px);
             background-color: transparent;
@@ -679,6 +681,7 @@ $btn-sizes: (
 
     // ──────────────── PC 스타일 ────────────────
     &:global(.size--#{$size-name}) {
+      min-width: fit-content;
       height: $height-pc;
       padding: map.get($padding, pc);
       gap: map.get($props, gap);
@@ -691,9 +694,10 @@ $btn-sizes: (
       }
 
       .btn-label {
-        width: max-content;
+        // width: max-content;
+        // width: 100%;
         flex: 1 1 auto;
-        min-width: 0;
+        text-align: center;
         font: map.get($props, font-token);
         @include ell();
       }

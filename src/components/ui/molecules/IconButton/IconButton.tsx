@@ -12,6 +12,7 @@ type BaseProps = {
   as?: React.ElementType;
   href?: string;
   target?: '_blank';
+  ariaLabel?: string;
 };
 
 type ButtonProps = BaseProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
@@ -26,6 +27,7 @@ const IconButton: React.FC<ButtonProps> = ({
   className,
   href,
   target,
+  ariaLabel,
   ...props
 }) => {
   return (
@@ -38,6 +40,7 @@ const IconButton: React.FC<ButtonProps> = ({
         `shape--${shape}`,
         className,
       )}
+      aria-label={ariaLabel}
       href={href}
       target={target}
       {...props}

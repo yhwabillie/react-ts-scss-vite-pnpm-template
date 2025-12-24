@@ -28,6 +28,7 @@ $control-group-sizes: (
 );
 
 .control-group {
+  width: 100%;
   // Row
   &:global(.direction--row) {
     display: grid;

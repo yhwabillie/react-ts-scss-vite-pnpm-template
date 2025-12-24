@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import ButtonGroup from './ButtonGroup';
 import Button from '../Button/Button';
+import AnatomyWrapper from '../../guide/AnatomyWrapper';
+import { SpecimenCell, SpecimenRow } from '../../guide/Specimen';
+import { GuideCell, GuideRow, GuideWrapper } from '../../guide/Guide';
 
 const meta = {
-  title: 'UI/Molecules/ButtonGroup',
+  title: 'UI/Molecules/Button/ButtonGroup',
   component: ButtonGroup,
   tags: ['autodocs'],
   parameters: {
@@ -16,18 +19,47 @@ const meta = {
       },
     },
   },
+
+  argTypes: {
+    // Identification
+    role: {
+      control: 'inline-radio',
+      options: ['group', 'toolbar'],
+      table: { category: 'Identification' },
+    },
+    ariaLabel: {
+      control: 'text',
+      table: { category: 'Identification' },
+    },
+
+    // Styles
+    size: {
+      control: 'inline-radio',
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      table: { category: 'Styles' },
+    },
+    align: {
+      control: 'inline-radio',
+      options: ['left', 'center', 'right'],
+      table: { category: 'Styles' },
+    },
+
+    // ETC
+    children: {
+      table: { category: 'Etc' },
+    },
+    className: {
+      control: 'text',
+      description: '외부 커스텀 스타일을 위한 클래스명입니다.',
+      table: { category: 'Etc' },
+    },
+  },
   args: {
     size: 'xl',
     align: 'center',
     role: 'group',
     ariaLabel: '편집 작업',
     children: undefined,
-  },
-  argTypes: {
-    size: {
-      control: 'inline-radio',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
   },
 } satisfies Meta;
 
@@ -72,17 +104,20 @@ export const AlignLeft: Story = {
   },
   render: args => {
     return (
-      <div style={{ width: '500px', border: '1px dashed #ccc' }}>
-        <p style={{ fontSize: '12px', color: '#333', marginBottom: '10px' }}>부모 요소</p>
-        <ButtonGroup {...args}>
-          <Button variant='outline' size={args.size}>
-            수정
-          </Button>
-          <Button variant='solid' size={args.size}>
-            저장
-          </Button>
-        </ButtonGroup>
-      </div>
+      <AnatomyWrapper title='부모 요소 width: 500px'>
+        <SpecimenRow>
+          <SpecimenCell style={{ width: '500px' }}>
+            <ButtonGroup {...args}>
+              <Button variant='outline' size={args.size}>
+                수정
+              </Button>
+              <Button variant='solid' size={args.size}>
+                저장
+              </Button>
+            </ButtonGroup>
+          </SpecimenCell>
+        </SpecimenRow>
+      </AnatomyWrapper>
     );
   },
 };
@@ -101,17 +136,20 @@ export const AlignCenter: Story = {
   },
   render: args => {
     return (
-      <div style={{ width: '500px', border: '1px dashed #ccc' }}>
-        <p style={{ fontSize: '12px', color: '#333', marginBottom: '10px' }}>부모 요소</p>
-        <ButtonGroup {...args}>
-          <Button variant='outline' size={args.size}>
-            수정
-          </Button>
-          <Button variant='solid' size={args.size}>
-            저장
-          </Button>
-        </ButtonGroup>
-      </div>
+      <AnatomyWrapper title='부모 요소 width: 500px'>
+        <SpecimenRow>
+          <SpecimenCell style={{ width: '500px' }}>
+            <ButtonGroup {...args}>
+              <Button variant='outline' size={args.size}>
+                수정
+              </Button>
+              <Button variant='solid' size={args.size}>
+                저장
+              </Button>
+            </ButtonGroup>
+          </SpecimenCell>
+        </SpecimenRow>
+      </AnatomyWrapper>
     );
   },
 };
@@ -130,17 +168,20 @@ export const AlignRight: Story = {
   },
   render: args => {
     return (
-      <div style={{ width: '500px', border: '1px dashed #ccc' }}>
-        <p style={{ fontSize: '12px', color: '#333', marginBottom: '10px' }}>부모 요소</p>
-        <ButtonGroup {...args}>
-          <Button variant='outline' size={args.size}>
-            수정
-          </Button>
-          <Button variant='solid' size={args.size}>
-            저장
-          </Button>
-        </ButtonGroup>
-      </div>
+      <AnatomyWrapper title='부모 요소 width: 500px'>
+        <SpecimenRow>
+          <SpecimenCell style={{ width: '500px' }}>
+            <ButtonGroup {...args}>
+              <Button variant='outline' size={args.size}>
+                수정
+              </Button>
+              <Button variant='solid' size={args.size}>
+                저장
+              </Button>
+            </ButtonGroup>
+          </SpecimenCell>
+        </SpecimenRow>
+      </AnatomyWrapper>
     );
   },
 };
@@ -165,38 +206,22 @@ export const Sizes: Story = {
         style={{ display: 'inline-flex', gap: '15px', alignItems: 'end', flexDirection: 'column' }}
       >
         {sizeOptions.map(size => (
-          <div
-            key={size}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start',
-              gap: '8px',
-            }}
-          >
-            <span
-              style={{
-                fontSize: '10px',
-                color: '#666',
-                fontWeight: 'bold',
-              }}
-            >
-              {size.toUpperCase()}
-            </span>
-
-            <div style={{ width: '500px', border: '1px dashed #ccc' }}>
-              <p style={{ fontSize: '12px', color: '#333', marginBottom: '10px' }}>부모 요소</p>
-
-              <ButtonGroup {...args} size={size}>
-                <Button variant='outline' size={size}>
-                  수정
-                </Button>
-                <Button variant='solid' size={size}>
-                  저장
-                </Button>
-              </ButtonGroup>
-            </div>
-          </div>
+          <GuideCell caption={size} style={{ alignItems: 'flex-start' }}>
+            <AnatomyWrapper title='부모 요소 width: 500px'>
+              <SpecimenRow>
+                <SpecimenCell style={{ width: '500px' }}>
+                  <ButtonGroup {...args} size={size}>
+                    <Button variant='outline' size={size}>
+                      수정
+                    </Button>
+                    <Button variant='solid' size={size}>
+                      저장
+                    </Button>
+                  </ButtonGroup>
+                </SpecimenCell>
+              </SpecimenRow>
+            </AnatomyWrapper>
+          </GuideCell>
         ))}
       </div>
     );

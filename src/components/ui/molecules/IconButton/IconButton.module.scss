@@ -559,6 +559,10 @@ $btn-sizes: (
   align-items: center;
   transition: all 0.2s ease;
 
+  &:active:not(&:disabled) {
+    transform: scale(0.97);
+  }
+
   @at-root button#{&} {
     cursor: pointer;
   }

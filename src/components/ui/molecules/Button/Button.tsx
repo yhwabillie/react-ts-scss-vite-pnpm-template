@@ -18,6 +18,8 @@ type BaseProps = {
   endSpinner?: React.ReactNode;
   fullWidth?: boolean;
   className?: string;
+  as?: React.ElementType;
+  onClick?: React.MouseEventHandler<HTMLElement>;
 };
 
 // 2. 다형성 지원을 위한 제네릭 타입 정의
@@ -47,6 +49,7 @@ const ButtonInner = (
     endSpinner,
     fullWidth,
     className,
+    onClick,
     ...props
   }: PolymorphicButtonProps<React.ElementType>,
   ref: React.ForwardedRef<any>,
@@ -71,7 +74,7 @@ const ButtonInner = (
           console.error('Modal config parse error:', err);
         }
       }
-      if (!props.onClick) {
+      if (!onClick) {
         openModal(modalType, config);
       }
     }
@@ -101,7 +104,6 @@ const ButtonInner = (
   );
 };
 
-// 5. ✅ 최종 내보내기: 구현체에 강제로 타입을 매핑
 const Button = forwardRef(ButtonInner) as ButtonComponent;
 
 (Button as any).displayName = 'Button';

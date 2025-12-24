@@ -4,6 +4,14 @@ import { useTranslation } from 'react-i18next';
 import Icon from '../../../atoms/Icon/Icon';
 import RingSpinner from '../../../atoms/Spinner/LoadingSpinner/RingSpinner';
 import { expect, fn, userEvent, within } from 'storybook/test';
+import {
+  SpecimenCell,
+  SpecimenGroup,
+  SpecimenRow,
+  SpecimenWrapper,
+} from '@/components/ui/guide/Specimen';
+import AnatomyWrapper from '@/components/ui/guide/AnatomyWrapper';
+import { GuideWrapper, GuideCell, GuideRow, GuideGroup } from '@/components/ui/guide/Guide';
 
 const meta = {
   title: 'UI/Molecules/Button/Solid',
@@ -18,25 +26,116 @@ const meta = {
       },
     },
   },
+
+  argTypes: {
+    // Appearance (가장 많이 건드리는 핵심 스타일)
+    variant: {
+      control: 'select',
+      options: ['solid', 'outline', 'ghost', 'link'],
+      description: '버튼의 시각적 형태를 결정합니다.',
+      table: {
+        category: 'Appearance',
+        type: { summary: 'string' },
+        defaultValue: { summary: 'solid' },
+      },
+    },
+    color: {
+      control: 'select',
+      options: ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'],
+      description: '디자인 시스템에 정의된 의미론적(Semantic) 색상을 적용합니다.',
+      table: {
+        category: 'Appearance',
+        type: { summary: 'string' },
+        defaultValue: { summary: 'primary' },
+      },
+    },
+
+    // Layout & Geometry
+    size: {
+      control: 'inline-radio',
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      description: '버튼의 높이와 패딩을 결정합니다.',
+      table: {
+        category: 'Layout',
+        type: { summary: 'string' },
+        defaultValue: { summary: 'md' },
+      },
+    },
+    shape: {
+      control: 'inline-radio',
+      options: ['square', 'rounded', 'pill'],
+      description: '버튼 모서리의 굴곡(Radius)을 조절합니다.',
+      table: {
+        category: 'Layout',
+        type: { summary: 'string' },
+        defaultValue: { summary: 'rounded' },
+      },
+    },
+    fullWidth: {
+      control: 'boolean',
+      description: '부모 요소의 너비를 100% 채울지 여부입니다.',
+      table: {
+        category: 'Layout',
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+
+    // Content (아이콘 및 텍스트)
+    children: {
+      control: 'text',
+      description: '버튼 내부 텍스트 콘텐츠입니다.',
+      table: { category: 'Content' },
+    },
+    startIcon: {
+      description: '텍스트 왼쪽에 배치될 아이콘입니다.',
+      table: { category: 'Content' },
+    },
+    endIcon: {
+      description: '텍스트 오른쪽에 배치될 아이콘입니다.',
+      table: { category: 'Content' },
+    },
+    startSpinner: {
+      description: '텍스트 왼쪽에 배치될 로딩 스피너입니다.',
+      table: { category: 'Content' },
+    },
+    endSpinner: {
+      description: '텍스트 오른쪽에 배치될 로딩 스피너입니다.',
+      table: { category: 'Content' },
+    },
+
+    // Interaction & Behavior (새로운 카테고리)
+    as: {
+      control: 'select',
+      options: ['button', 'a', 'div', 'span'],
+      description: '컴포넌트가 렌더링될 HTML 태그를 지정합니다.',
+      table: {
+        category: 'Behavior',
+        type: { summary: 'ElementType' },
+        defaultValue: { summary: 'button' },
+      },
+    },
+    onClick: {
+      action: 'clicked',
+      description: '버튼 클릭 시 호출되는 함수입니다.',
+      table: {
+        category: 'Behavior',
+        type: { summary: 'function' },
+      },
+    },
+
+    // Etc
+    className: {
+      control: 'text',
+      table: { category: 'Etc' },
+    },
+  },
+
   args: {
     variant: 'solid',
     color: 'primary',
     size: 'xl',
     shape: 'rounded',
-    fullWidth: false,
-  },
-  argTypes: {
-    size: {
-      control: 'inline-radio',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
-    fullWidth: {
-      control: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
-    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -70,6 +169,79 @@ export const Base: Story = {
   },
 };
 
+export const Colors: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          '디자인 시스템에 정의된 6가지 시멘틱 컬러(Primary, Secondary, Tertiary, Success, Warning, Danger)를 확인합니다. 각 컬러는 해당 상태의 의미를 전달합니다.',
+      },
+    },
+  },
+  args: {
+    size: 'lg',
+  },
+  render: args => {
+    const { t } = useTranslation();
+    const colorOptions: Array<
+      'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger'
+    > = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'];
+
+    // 버튼의 다양한 상태를 정의한 데이터 배열
+    const variations = [
+      { id: 'default', props: {} },
+      {
+        id: 'withIcon',
+        props: {
+          startIcon: (
+            <Icon
+              name='chevron-left'
+              className='icon'
+              strokeWidth={2.5}
+              strokeLinecap='round'
+              strokeLinejoin='round'
+            />
+          ),
+        },
+      },
+      {
+        id: 'withSpinner',
+        // 컬러별로 적절한 스피너 색상 주입
+        getDynamicProps: (color: any) => ({
+          startSpinner: (
+            <RingSpinner
+              size={args.size || 'md'}
+              variant='closed-ring'
+              color={args.variant === 'solid' ? `${color}-solid` : color}
+            />
+          ),
+        }),
+      },
+      { id: 'disabled', props: { disabled: true } },
+    ];
+
+    return (
+      <SpecimenWrapper>
+        {colorOptions.map(color => (
+          <SpecimenGroup key={color} title={color}>
+            {variations.map(({ id, props, getDynamicProps }) => {
+              const variationProps = getDynamicProps ? getDynamicProps(color) : props;
+
+              return (
+                <SpecimenCell key={`${color}-${id}`}>
+                  <Button {...args} color={color} {...variationProps}>
+                    {t('hello')}
+                  </Button>
+                </SpecimenCell>
+              );
+            })}
+          </SpecimenGroup>
+        ))}
+      </SpecimenWrapper>
+    );
+  },
+};
+
 export const States: Story = {
   parameters: {
     docs: {
@@ -90,34 +262,21 @@ export const States: Story = {
     ];
 
     return (
-      <>
-        {states.map((state, index) => {
-          const isLast = index === states.length - 1;
+      <SpecimenWrapper>
+        {states.map(state => {
+          const uniqueId = `button-${Math.random().toString(36).slice(2, 7)}`;
 
           return (
-            <div
-              key={state.label}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '20px',
-                marginBottom: isLast ? '0' : '20px',
-              }}
-            >
-              {/* 왼쪽 라벨 고정 */}
-              <span style={{ width: '80px', fontWeight: 'bold', fontSize: '14px', color: '#666' }}>
-                {state.label}
-              </span>
-
-              {/* 버튼 조합들 */}
-              <div style={{ display: 'flex', gap: '20px' }}>
-                <Button {...args} className={state.class} {...state.props}>
+            <SpecimenGroup key={state.label} title={state.label}>
+              <SpecimenRow>
+                <Button {...args} className={state.class} {...state.props} id={uniqueId}>
                   {t('hello')}
                 </Button>
                 <Button
                   {...args}
                   className={state.class}
                   {...state.props}
+                  id={uniqueId}
                   startIcon={
                     <Icon
                       name='chevron-left'
@@ -130,11 +289,11 @@ export const States: Story = {
                 >
                   {t('hello')}
                 </Button>
-              </div>
-            </div>
+              </SpecimenRow>
+            </SpecimenGroup>
           );
         })}
-      </>
+      </SpecimenWrapper>
     );
   },
 };
@@ -153,89 +312,63 @@ export const Sizes: Story = {
     const currentColor = args.color || 'primary';
     const sizeOptions: Array<'xl' | 'lg' | 'md' | 'sm' | 'xs'> = ['xl', 'lg', 'md', 'sm', 'xs'];
 
+    // 버튼의 다양한 상태를 정의한 데이터 배열
+    const variations = [
+      { id: 'default', props: {} },
+      {
+        id: 'startIcon',
+        props: { startIcon: <Icon name='chevron-left' className='icon' strokeWidth={2.5} /> },
+      },
+      {
+        id: 'endIcon',
+        props: { endIcon: <Icon name='chevron-right' className='icon' strokeWidth={2.5} /> },
+      },
+      {
+        id: 'startSpinner',
+        // 렌더링 시점에 size를 인자로 받아 동적 props 생성
+        getDynamicProps: (size: 'xl' | 'lg' | 'md' | 'sm' | 'xs') => ({
+          startSpinner: (
+            <RingSpinner
+              size={size} // 버튼 크기에 맞춤
+              variant='closed-ring'
+              color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
+            />
+          ),
+        }),
+      },
+      {
+        id: 'endSpinner',
+        getDynamicProps: (size: 'xl' | 'lg' | 'md' | 'sm' | 'xs') => ({
+          endSpinner: (
+            <RingSpinner
+              size={size}
+              variant='closed-ring'
+              color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
+            />
+          ),
+        }),
+      },
+    ];
+
     return (
-      <div style={{ display: 'inline-flex', gap: '15px', alignItems: 'end' }}>
+      <GuideGroup>
         {sizeOptions.map(size => (
-          <div
-            key={size}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start',
-              gap: '8px',
-            }}
-          >
-            <span
-              style={{
-                fontSize: '10px',
-                color: '#666',
-                fontWeight: 'bold',
-              }}
-            >
-              {size.toUpperCase()}
-            </span>
-            <Button {...args} size={size}>
-              {t('hello')}
-            </Button>
-            <Button
-              {...args}
-              size={size}
-              startIcon={
-                <Icon
-                  name='chevron-left'
-                  strokeWidth={2.5}
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  className='icon'
-                />
-              }
-            >
-              {t('hello')}
-            </Button>
-            <Button
-              {...args}
-              size={size}
-              endIcon={
-                <Icon
-                  name='chevron-right'
-                  strokeWidth={2.5}
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  className='icon'
-                />
-              }
-            >
-              {t('hello')}
-            </Button>
-            <Button
-              {...args}
-              size={size}
-              startSpinner={
-                <RingSpinner
-                  color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
-                  size={size}
-                  variant='closed-ring'
-                />
-              }
-            >
-              {t('hello')}
-            </Button>
-            <Button
-              {...args}
-              size={size}
-              endSpinner={
-                <RingSpinner
-                  color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
-                  size={size}
-                  variant='closed-ring'
-                />
-              }
-            >
-              {t('hello')}
-            </Button>
-          </div>
+          <GuideRow key={size} direction='column'>
+            {variations.map(({ id, props, getDynamicProps }) => {
+              // 정적 props와 동적 props를 합침
+              const variationProps = getDynamicProps ? getDynamicProps(size) : props;
+
+              return (
+                <GuideCell key={`${size}-${id}`} caption={id === 'default' ? size : undefined}>
+                  <Button {...args} size={size} {...variationProps}>
+                    {t('hello')}
+                  </Button>
+                </GuideCell>
+              );
+            })}
+          </GuideRow>
         ))}
-      </div>
+      </GuideGroup>
     );
   },
 };
@@ -244,99 +377,66 @@ export const Shapes: Story = {
   parameters: {
     docs: {
       description: {
-        story:
-          '버튼의 모서리 곡률(Square, Rounded, Pill)에 따른 디자인 변화를 확인합니다. 브랜드 가이드라인에 맞춰 선택할 수 있습니다.',
+        story: '버튼의 모서리 곡률(Square, Rounded, Pill)에 따른 디자인 변화를 확인합니다.',
       },
     },
   },
   render: args => {
     const { t } = useTranslation();
     const currentColor = args.color || 'primary';
-    const sahpeOptions: Array<'square' | 'rounded' | 'pill'> = ['square', 'rounded', 'pill'];
+    const shapeOptions: Array<'square' | 'rounded' | 'pill'> = ['square', 'rounded', 'pill'];
+
+    // 버튼의 다양한 상태를 정의한 데이터 배열
+    const variations = [
+      { id: 'default', props: {} },
+      {
+        id: 'startIcon',
+        props: { startIcon: <Icon name='chevron-left' className='icon' strokeWidth={2.5} /> },
+      },
+      {
+        id: 'endIcon',
+        props: { endIcon: <Icon name='chevron-right' className='icon' strokeWidth={2.5} /> },
+      },
+      {
+        id: 'startSpinner',
+        props: {
+          startSpinner: (
+            <RingSpinner
+              size='xl'
+              variant='closed-ring'
+              color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
+            />
+          ),
+        },
+      },
+      {
+        id: 'endSpinner',
+        props: {
+          endSpinner: (
+            <RingSpinner
+              size='xl'
+              variant='closed-ring'
+              color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
+            />
+          ),
+        },
+      },
+    ];
 
     return (
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '20px',
-        }}
-      >
-        {sahpeOptions.map(shape => (
-          <div
-            key={shape}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '8px',
-            }}
-          >
-            <span style={{ fontSize: '10px', color: '#666', fontWeight: 'bold' }}>
-              {shape.toUpperCase()}
-            </span>
-            <Button {...args} shape={shape}>
-              {t('hello')}
-            </Button>
-            <Button
-              {...args}
-              shape={shape}
-              startIcon={
-                <Icon
-                  name='chevron-left'
-                  strokeWidth={2.5}
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  className='icon'
-                />
-              }
-            >
-              {t('hello')}
-            </Button>
-            <Button
-              {...args}
-              shape={shape}
-              endIcon={
-                <Icon
-                  name='chevron-right'
-                  strokeWidth={2.5}
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  className='icon'
-                />
-              }
-            >
-              {t('hello')}
-            </Button>
-            <Button
-              {...args}
-              shape={shape}
-              startSpinner={
-                <RingSpinner
-                  color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
-                  size='xl'
-                  variant='closed-ring'
-                />
-              }
-            >
-              {t('hello')}
-            </Button>
-            <Button
-              {...args}
-              shape={shape}
-              endSpinner={
-                <RingSpinner
-                  color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
-                  size='xl'
-                  variant='closed-ring'
-                />
-              }
-            >
-              {t('hello')}
-            </Button>
-          </div>
+      <GuideGroup>
+        {shapeOptions.map(shape => (
+          <GuideRow key={shape} direction='column'>
+            {variations.map(({ id, props }) => (
+              <GuideCell key={`${shape}-${id}`} caption={id === 'default' ? shape : undefined}>
+                <Button {...args} shape={shape} {...props}>
+                  {t('hello')}
+                </Button>
+              </GuideCell>
+            ))}
+          </GuideRow>
         ))}
-      </div>
+      </GuideGroup>
     );
   },
 };
@@ -410,26 +510,15 @@ export const Composition: Story = {
     ];
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-        <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', alignItems: 'center' }}>
-          {cases.map(item => (
-            <div
-              key={item.label}
-              style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center' }}
-            >
-              {/* 캡션 표시 */}
-              <span style={{ fontSize: '11px', color: '#333', fontWeight: '600' }}>
-                {item.label}
-              </span>
-
-              {/* 버튼 렌더링 */}
-              <Button {...args} {...item.props}>
-                {t('hello')}
-              </Button>
-            </div>
-          ))}
-        </div>
-      </div>
+      <GuideRow direction='row'>
+        {cases.map(item => (
+          <GuideCell key={item.label} caption={item.label}>
+            <Button {...args} {...item.props}>
+              {t('hello')}
+            </Button>
+          </GuideCell>
+        ))}
+      </GuideRow>
     );
   },
 };
@@ -445,14 +534,15 @@ export const FullWidth: Story = {
   render: args => {
     const { t } = useTranslation();
     return (
-      <div style={{ width: '500px', border: '1px dashed #ccc', padding: '20px' }}>
-        <p style={{ fontSize: '12px', color: '#333', marginBottom: '10px' }}>
-          Container Width: 500px
-        </p>
-        <Button {...args} fullWidth={true}>
-          {t('Full Width Button')}
-        </Button>
-      </div>
+      <AnatomyWrapper title='부모 요소 width: 500px'>
+        <SpecimenRow>
+          <SpecimenCell style={{ width: '500px' }}>
+            <Button {...args} fullWidth={true}>
+              {t('Full Width Button')}
+            </Button>
+          </SpecimenCell>
+        </SpecimenRow>
+      </AnatomyWrapper>
     );
   },
 };
@@ -469,73 +559,47 @@ export const LongText: Story = {
   args: {
     children:
       '이 버튼의 글자는 매우 길어서 컨테이너를 벗어날 수 있습니다. 말줄임 처리가 필요합니다.',
+    fullWidth: true,
   },
   render: args => {
     const currentColor = args.color || 'primary';
 
     return (
       <div style={{ display: 'flex', gap: '20px' }}>
-        <div
-          style={{
-            width: '200px',
-            padding: '20px',
-            border: '1px dashed #ccc',
-            borderRadius: '8px',
-          }}
-        >
-          <p style={{ fontSize: '12px', color: '#333', marginBottom: '10px' }}>
-            Container Width: 200px
-          </p>
-          <Button {...args} fullWidth={true} />
-        </div>
-        <div
-          style={{
-            width: '200px',
-            padding: '20px',
-            border: '1px dashed #ccc',
-            borderRadius: '8px',
-          }}
-        >
-          <p style={{ fontSize: '12px', color: '#333', marginBottom: '10px' }}>
-            Container Width: 200px
-          </p>
-          <Button
-            {...args}
-            fullWidth={true}
-            startIcon={
-              <Icon
-                name='chevron-left'
-                strokeWidth={2.5}
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                className='icon'
+        <AnatomyWrapper title='부모 요소 width: 200px' style={{ width: '200px' }}>
+          <SpecimenRow>
+            <SpecimenCell>
+              <Button
+                {...args}
+                startIcon={
+                  <Icon
+                    name='chevron-left'
+                    strokeWidth={2.5}
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    className='icon'
+                  />
+                }
               />
-            }
-          />
-        </div>
-        <div
-          style={{
-            width: '200px',
-            padding: '20px',
-            border: '1px dashed #ccc',
-            borderRadius: '8px',
-          }}
-        >
-          <p style={{ fontSize: '12px', color: '#333', marginBottom: '10px' }}>
-            Container Width: 200px
-          </p>
-          <Button
-            {...args}
-            fullWidth={true}
-            endSpinner={
-              <RingSpinner
-                color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
-                size='xl'
-                variant='closed-ring'
+            </SpecimenCell>
+          </SpecimenRow>
+        </AnatomyWrapper>
+        <AnatomyWrapper title='부모 요소 width: 200px' style={{ width: '200px' }}>
+          <SpecimenRow>
+            <SpecimenCell>
+              <Button
+                {...args}
+                endSpinner={
+                  <RingSpinner
+                    color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
+                    size='xl'
+                    variant='closed-ring'
+                  />
+                }
               />
-            }
-          />
-        </div>
+            </SpecimenCell>
+          </SpecimenRow>
+        </AnatomyWrapper>
       </div>
     );
   },
@@ -571,12 +635,9 @@ export const PolymorphicLink: Story = {
   },
   render: args => {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        <p style={{ fontSize: '12px', color: '#333' }}>
-          ※ 아래 버튼은 HTML `&lt;a&gt;` 태그로 렌더링됩니다.
-        </p>
+      <GuideWrapper title='※ 아래 버튼은 HTML `&lt;a&gt;` 태그로 렌더링됩니다.'>
         <Button {...args} />
-      </div>
+      </GuideWrapper>
     );
   },
 };

@@ -2,9 +2,16 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import Icon from '../../../atoms/Icon/Icon';
 import { expect, fn, userEvent, within } from 'storybook/test';
 import IconButton from '../../IconButton/IconButton';
+import {
+  SpecimenCell,
+  SpecimenGroup,
+  SpecimenRow,
+  SpecimenWrapper,
+} from '@/components/ui/guide/Specimen';
+import { GuideCell, GuideGroup, GuideRow, GuideWrapper } from '@/components/ui/guide/Guide';
 
 const meta: Meta<typeof IconButton> = {
-  title: 'UI/Molecules/IconButton/Solid',
+  title: 'UI/Molecules/Button/IconButton/Solid',
   component: IconButton,
   tags: ['autodocs'],
   parameters: {
@@ -16,18 +23,103 @@ const meta: Meta<typeof IconButton> = {
       },
     },
   },
+
+  argTypes: {
+    // Appearance (가장 많이 건드리는 핵심 스타일)
+    variant: {
+      control: 'select',
+      options: ['solid', 'outline', 'ghost', 'link'],
+      description: '버튼의 시각적 형태를 결정합니다.',
+      table: {
+        category: 'Appearance',
+        type: { summary: 'string' },
+        defaultValue: { summary: 'solid' },
+      },
+    },
+    color: {
+      control: 'select',
+      options: ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'],
+      description: '디자인 시스템에 정의된 의미론적(Semantic) 색상을 적용합니다.',
+      table: {
+        category: 'Appearance',
+        type: { summary: 'string' },
+        defaultValue: { summary: 'primary' },
+      },
+    },
+    icon: {
+      table: {
+        category: 'Appearance',
+      },
+    },
+
+    // Layout & Geometry
+    size: {
+      control: 'inline-radio',
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      description: '버튼의 높이와 패딩을 결정합니다.',
+      table: {
+        category: 'Layout',
+        type: { summary: 'string' },
+        defaultValue: { summary: 'md' },
+      },
+    },
+    shape: {
+      control: 'inline-radio',
+      options: ['square', 'rounded', 'pill'],
+      description: '버튼 모서리의 굴곡(Radius)을 조절합니다.',
+      table: {
+        category: 'Layout',
+        type: { summary: 'string' },
+        defaultValue: { summary: 'rounded' },
+      },
+    },
+
+    // Interaction & Behavior (새로운 카테고리)
+    as: {
+      control: 'select',
+      options: ['button', 'a', 'div', 'span'],
+      description: '컴포넌트가 렌더링될 HTML 태그를 지정합니다.',
+      table: {
+        category: 'Behavior',
+        type: { summary: 'ElementType' },
+        defaultValue: { summary: 'button' },
+      },
+    },
+    onClick: {
+      action: 'clicked',
+      description: '버튼 클릭 시 호출되는 함수입니다.',
+      table: {
+        category: 'Behavior',
+        type: { summary: 'function' },
+      },
+    },
+
+    // Link
+    href: {
+      control: 'text',
+      table: { category: 'Link' },
+    },
+    target: {
+      control: 'text',
+      table: { category: 'Link' },
+    },
+
+    // Etc
+    ariaLabel: {
+      control: 'text',
+      table: { category: 'Etc' },
+    },
+    className: {
+      control: 'text',
+      table: { category: 'Etc' },
+    },
+  },
+
   args: {
     variant: 'solid',
     color: 'primary',
     size: 'xl',
     shape: 'pill',
-    'aria-label': 'solid 아이콘 버튼',
-  },
-  argTypes: {
-    size: {
-      control: 'inline-radio',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
   },
 } satisfies Meta<typeof IconButton>;
 
@@ -62,6 +154,7 @@ export const Base: Story = {
         size={args.size}
         variant={args.variant}
         shape={args.shape}
+        ariaLabel='solid 아이콘 버튼'
         icon={
           <Icon
             name='chevron-left'
@@ -72,6 +165,57 @@ export const Base: Story = {
           />
         }
       />
+    );
+  },
+};
+
+export const Colors: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          '디자인 시스템에 정의된 6가지 시멘틱 컬러(Primary, Secondary, Tertiary, Success, Warning, Danger)를 확인합니다. 각 컬러는 해당 상태의 의미를 전달합니다.',
+      },
+    },
+  },
+  args: {
+    size: 'lg',
+  },
+  render: args => {
+    const colorOptions: Array<
+      'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger'
+    > = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'];
+
+    // 버튼의 다양한 상태를 정의한 데이터 배열
+    const variations = [{ id: 'default' }];
+
+    return (
+      <SpecimenWrapper>
+        {colorOptions.map(color => (
+          <SpecimenGroup key={color} title={color}>
+            {variations.map(({ id }) => {
+              return (
+                <SpecimenCell key={`${color}-${id}`}>
+                  <IconButton
+                    {...args}
+                    ariaLabel='solid 아이콘 버튼'
+                    color={color}
+                    icon={
+                      <Icon
+                        className='icon'
+                        name='chevron-left'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth={2.5}
+                      />
+                    }
+                  />
+                </SpecimenCell>
+              );
+            })}
+          </SpecimenGroup>
+        ))}
+      </SpecimenWrapper>
     );
   },
 };
@@ -94,38 +238,26 @@ export const States: Story = {
     ];
 
     return (
-      <>
-        {states.map((state, index) => {
-          const isLast = index === states.length - 1;
+      <SpecimenWrapper>
+        {states.map(state => {
+          const uniqueId = `icon-button-${Math.random().toString(36).slice(2, 7)}`;
 
           return (
-            <div
-              key={state.label}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '20px',
-                marginBottom: isLast ? '0' : '20px',
-              }}
-            >
-              {/* 왼쪽 라벨 고정 */}
-              <span style={{ width: '80px', fontWeight: 'bold', fontSize: '14px', color: '#666' }}>
-                {state.label}
-              </span>
-
-              {/* 버튼 조합들 */}
-              <div style={{ display: 'flex', gap: '20px' }}>
+            <SpecimenGroup key={state.label} title={state.label}>
+              <SpecimenRow>
                 <IconButton
                   {...args}
                   className={state.class}
                   {...state.props}
+                  id={uniqueId}
+                  ariaLabel='solid 아이콘 버튼'
                   icon={
                     <Icon
+                      className='icon'
                       name='chevron-left'
-                      strokeWidth={2.5}
                       strokeLinecap='round'
                       strokeLinejoin='round'
-                      className='icon'
+                      strokeWidth={2.5}
                     />
                   }
                 />
@@ -133,21 +265,23 @@ export const States: Story = {
                   {...args}
                   className={state.class}
                   {...state.props}
+                  id={uniqueId}
+                  ariaLabel='solid 아이콘 버튼'
                   icon={
                     <Icon
+                      className='icon'
                       name='chevron-left'
-                      strokeWidth={2.5}
                       strokeLinecap='round'
                       strokeLinejoin='round'
-                      className='icon'
+                      strokeWidth={2.5}
                     />
                   }
                 />
-              </div>
-            </div>
+              </SpecimenRow>
+            </SpecimenGroup>
           );
         })}
-      </>
+      </SpecimenWrapper>
     );
   },
 };
@@ -157,50 +291,39 @@ export const Sizes: Story = {
     docs: {
       description: {
         story:
-          '다섯 가지 표준 사이즈(XS ~ XL)에 따른 버튼의 크기 변화와 내부 요소의 비율을 확인합니다.',
+          '다섯 가지 표준 사이즈(XS ~ XL)에 따른 아이콘 버튼의 크기 변화를 확인합니다. 각 사이즈에 맞춰 내부 아이콘의 비율과 패딩이 최적화되어 있는지 검수합니다.',
       },
     },
   },
   render: args => {
     const sizeOptions: Array<'xl' | 'lg' | 'md' | 'sm' | 'xs'> = ['xl', 'lg', 'md', 'sm', 'xs'];
 
+    // 공통 아이콘 설정 (필요 시 사이즈별로 strokeWidth 등을 분기 처리할 수 있습니다)
+    const renderIcon = (size: string) => (
+      <Icon
+        name='chevron-left'
+        strokeWidth={size === 'xs' || size === 'sm' ? 2 : 2.5} // 작은 사이즈에서 가독성을 위한 조정 예시
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        className='icon'
+      />
+    );
+
     return (
-      <div style={{ display: 'inline-flex', gap: '15px', alignItems: 'end' }}>
-        {sizeOptions.map(size => (
-          <div
-            key={size}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start',
-              gap: '8px',
-            }}
-          >
-            <span
-              style={{
-                fontSize: '10px',
-                color: '#666',
-                fontWeight: 'bold',
-              }}
-            >
-              {size.toUpperCase()}
-            </span>
-            <IconButton
-              {...args}
-              size={size}
-              icon={
-                <Icon
-                  name='chevron-left'
-                  strokeWidth={2.5}
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  className='icon'
-                />
-              }
-            />
-          </div>
-        ))}
-      </div>
+      <GuideGroup>
+        <GuideRow direction='row'>
+          {sizeOptions.map(size => (
+            <GuideCell key={size} caption={size}>
+              <IconButton
+                {...args}
+                size={size}
+                icon={renderIcon(size)}
+                ariaLabel='solid 아이콘 버튼'
+              />
+            </GuideCell>
+          ))}
+        </GuideRow>
+      </GuideGroup>
     );
   },
 };
@@ -235,12 +358,13 @@ export const PolymorphicLink: Story = {
   },
   render: args => {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
-        <p style={{ fontSize: '12px', color: '#333' }}>
-          ※ 아래 버튼은 HTML `&lt;a&gt;` 태그로 렌더링됩니다.
-        </p>
+      <GuideWrapper
+        title='※ 아래 버튼은 HTML `&lt;a&gt;` 태그로 렌더링됩니다.'
+        style={{ alignItems: 'center' }}
+      >
         <IconButton
           {...args}
+          ariaLabel='solid 아이콘 버튼'
           icon={
             <Icon
               name='chevron-left'
@@ -251,7 +375,7 @@ export const PolymorphicLink: Story = {
             />
           }
         />
-      </div>
+      </GuideWrapper>
     );
   },
 };

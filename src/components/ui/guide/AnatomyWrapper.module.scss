@@ -4,18 +4,36 @@
 
 .anatomy-wrapper {
   background-color: var(--bg-color-guide);
+  display: flex;
+  flex-direction: column;
+  gap: rem(4px);
+  padding: rem(10px);
+  border-radius: var(--project-border-radius-8);
+  border: rem(1px) dashed var(--stroke-color-guide);
 
   :global(.title) {
     width: 100%;
     font: var(--project-typo-l3-500);
-    background-color: var(--color-surface-raised);
+    // background-color: var(--color-surface-raised);
     color: var(--color-text-primary);
-    padding: rem(6px);
+    padding: 0 rem(10px) 0 rem(10px);
   }
 
   // '>'를 사용하여 직계 자식(1st Depth)만 선택합니다.
-  & > * {
-    border: rem(1px) dashed var(--stroke-color-guide); // 배경과 대비되도록 조금 더 진한 초록색 권장
-    padding: rem(10px);
+  & > *:not(:global(.title)) {
+    border: rem(1px) dashed var(--stroke-color-guide);
+    // padding: rem(10px);
+    border-radius: var(--project-border-radius-8);
+    transition: all 0.2s ease; // 부드러운 전환을 위해 추가 가능
+  }
+
+  &[data-minimal='true'] {
+    padding: 0;
+    border-radius: 0;
+
+    & > * {
+      padding: 0;
+      border-radius: 0;
+    }
   }
 }

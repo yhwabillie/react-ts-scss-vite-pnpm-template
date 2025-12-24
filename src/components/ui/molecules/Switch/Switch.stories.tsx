@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Switch from '@/components/ui/molecules/Switch/Switch';
 import Label from '../../atoms/Label/Label';
+import { SpecimenCell, SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
+import AnatomyWrapper from '../../guide/AnatomyWrapper';
+import { GuideWrapper } from '../../guide/Guide';
 
 const meta = {
   title: 'UI/Molecules/Switch',
@@ -140,7 +143,7 @@ export const Base: Story = {
      */
     const uniqueId = `switch-${Math.random().toString(36).slice(2, 7)}`;
 
-    return <Switch {...args} id={uniqueId} name={uniqueId} />;
+    return <Switch {...args} id={uniqueId} name={`${uniqueId}-name`} />;
   },
 };
 
@@ -161,42 +164,14 @@ export const Colors: Story = {
     const colors = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'] as const;
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      <SpecimenWrapper>
         {colors.map(color => {
           const uniqueId = `switch-color-${color}`;
 
           return (
-            <div
-              key={color}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '40px',
-              }}
-            >
-              {/* 왼쪽 라벨: 테마 명칭 */}
-              <span
-                style={{
-                  width: '100px',
-                  fontWeight: 'bold',
-                  fontSize: '14px',
-                  color: '#666',
-                  textTransform: 'capitalize',
-                }}
-              >
-                {color}
-              </span>
-
-              {/* Switch 조합: Checked & Unchecked */}
-              <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: '4px',
-                  }}
-                >
+            <SpecimenGroup key={color} title={color}>
+              <SpecimenRow>
+                <SpecimenCell caption='ON'>
                   <Switch
                     {...args}
                     color={color}
@@ -204,25 +179,15 @@ export const Colors: Story = {
                     name={`${uniqueId}-on`}
                     defaultChecked
                   />
-                  <span style={{ fontSize: '10px', color: '#999' }}>On</span>
-                </div>
-
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: '4px',
-                  }}
-                >
+                </SpecimenCell>
+                <SpecimenCell caption='OFF'>
                   <Switch {...args} color={color} id={`${uniqueId}-off`} name={`${uniqueId}-off`} />
-                  <span style={{ fontSize: '10px', color: '#999' }}>Off</span>
-                </div>
-              </div>
-            </div>
+                </SpecimenCell>
+              </SpecimenRow>
+            </SpecimenGroup>
           );
         })}
-      </div>
+      </SpecimenWrapper>
     );
   },
 };
@@ -238,16 +203,13 @@ export const Sizes: Story = {
     const sizes = ['xl', 'lg', 'md', 'sm', 'xs'] as const;
 
     return (
-      <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+      <SpecimenRow>
         {sizes.map(size => {
           // 각 사이즈별로 고유한 ID 생성 (접근성 보장)
           const uniqueId = `switch-size-${size}`;
 
           return (
-            <div
-              key={size}
-              style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
-            >
+            <SpecimenCell key={size} caption={size}>
               <Switch
                 {...args}
                 size={size}
@@ -255,13 +217,10 @@ export const Sizes: Story = {
                 // XL 사이즈일 경우에만 체크된 상태로 렌더링
                 defaultChecked={size === 'xl'}
               />
-              <span style={{ fontSize: '12px', color: '#666', fontWeight: 'bold' }}>
-                {size.toUpperCase()}
-              </span>
-            </div>
+            </SpecimenCell>
           );
         })}
-      </div>
+      </SpecimenRow>
     );
   },
 };
@@ -286,28 +245,13 @@ export const States: Story = {
     ];
 
     return (
-      <>
-        {states.map((state, index) => {
-          const isLast = index === states.length - 1;
+      <SpecimenWrapper>
+        {states.map(state => {
           const uniqueId = `switch-${Math.random().toString(36).slice(2, 7)}`;
 
           return (
-            <div
-              key={state.label}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '20px',
-                marginBottom: isLast ? '0' : '20px',
-              }}
-            >
-              {/* 왼쪽 라벨 고정 */}
-              <span style={{ width: '80px', fontWeight: 'bold', fontSize: '14px', color: '#666' }}>
-                {state.label}
-              </span>
-
-              {/* switch 조합들 */}
-              <div style={{ display: 'flex', gap: '20px' }}>
+            <SpecimenGroup key={state.label} title={state.label}>
+              <SpecimenRow>
                 <Switch
                   {...args}
                   className={state.class}
@@ -323,11 +267,11 @@ export const States: Story = {
                   id={uniqueId}
                   name={uniqueId}
                 />
-              </div>
-            </div>
+              </SpecimenRow>
+            </SpecimenGroup>
           );
         })}
-      </>
+      </SpecimenWrapper>
     );
   },
 };
@@ -343,45 +287,25 @@ export const Placement: Story = {
   },
   render: args => {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', minWidth: '300px' }}>
+      <SpecimenRow>
         {/* Label Placement: Start */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <span style={{ margin: 'auto', fontSize: '12px', color: '#999', fontWeight: 'bold' }}>
-            PLACEMENT: START
-          </span>
-          <div
-            style={{
-              margin: 'auto',
-              padding: '16px',
-              border: '1px solid #eee',
-              borderRadius: '8px',
-            }}
-          >
-            <Switch {...args} labelPlacement='start' id='placement-start' defaultChecked>
+        <GuideWrapper title='PLACEMENT: START'>
+          <Switch {...args} labelPlacement='start' id='placement-start' defaultChecked>
+            <AnatomyWrapper minimal={true}>
               <Label size={args.size}>왼쪽 라벨</Label>
-            </Switch>
-          </div>
-        </div>
+            </AnatomyWrapper>
+          </Switch>
+        </GuideWrapper>
 
         {/* Label Placement: End */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <span style={{ margin: 'auto', fontSize: '12px', color: '#999', fontWeight: 'bold' }}>
-            PLACEMENT: END
-          </span>
-          <div
-            style={{
-              margin: 'auto',
-              padding: '16px',
-              border: '1px solid #eee',
-              borderRadius: '8px',
-            }}
-          >
-            <Switch {...args} labelPlacement='end' id='placement-end'>
+        <GuideWrapper title='PLACEMENT: END'>
+          <Switch {...args} labelPlacement='end' id='placement-end'>
+            <AnatomyWrapper minimal={true}>
               <Label size={args.size}>오른쪽 라벨</Label>
-            </Switch>
-          </div>
-        </div>
-      </div>
+            </AnatomyWrapper>
+          </Switch>
+        </GuideWrapper>
+      </SpecimenRow>
     );
   },
 };

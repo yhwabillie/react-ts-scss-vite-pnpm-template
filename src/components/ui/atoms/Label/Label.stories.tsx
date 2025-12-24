@@ -104,7 +104,7 @@ export const Usage: Story = {
           color='primary'
           size={args.size}
         />
-        <AnatomyWrapper>
+        <AnatomyWrapper minimal={true}>
           <Label size={args.size}>라디오 옵션 라벨</Label>
         </AnatomyWrapper>
       </FormField>
@@ -118,7 +118,7 @@ export const Usage: Story = {
           color='primary'
           size={args.size}
         />
-        <AnatomyWrapper>
+        <AnatomyWrapper minimal={true}>
           <Label size={args.size}>체크박스 옵션 라벨</Label>
         </AnatomyWrapper>
       </FormField>
@@ -129,7 +129,7 @@ export const Usage: Story = {
         size={args.size}
         defaultChecked
         children={
-          <AnatomyWrapper>
+          <AnatomyWrapper minimal={true}>
             <Label size={args.size}>라디오 옵션 1</Label>
           </AnatomyWrapper>
         }

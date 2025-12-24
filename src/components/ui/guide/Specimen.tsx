@@ -5,11 +5,13 @@ import clsx from 'clsx';
 export const SpecimenWrapper = ({
   children,
   title,
+  style,
 }: {
   children: React.ReactNode;
   title?: string;
+  style?: React.CSSProperties;
 }) => (
-  <div className={Styles['specimen-wrapper']}>
+  <div className={Styles['specimen-wrapper']} style={style}>
     {title && <p className='title'>{title}</p>}
     {children}
   </div>

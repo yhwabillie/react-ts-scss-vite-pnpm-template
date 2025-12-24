@@ -34,6 +34,16 @@
   // outline btn
   --bg-color-btn-outline: #ffffff;
 
+  // switch
+  --switch-track-off-bg-color: #e5e7eb;
+  --switch-handle-off-bg-color: #ffffff;
+
+  // switch - success
+  --success-track-on-bg-color-switch: #16a34a;
+  --success-handle-on-bg-color-switch: #ffffff;
+  --success-handle-on-border-color-switch: #16a34a;
+  --success-icon-on-color-switch: #15803d;
+
   // validation msg
   --success-bg-color-validation-msg: #edf7ed;
   --success-text-color-validation-msg: #0d3c12;
@@ -103,6 +113,12 @@
   --success-active-bg-color-btn-link: rgba(21, 128, 61, 0.1);
   --success-active-text-color-btn-link: #15803d;
 
+  // switch - warning
+  --warning-track-on-bg-color-switch: #b45309;
+  --warning-handle-on-bg-color-switch: #ffffff;
+  --warning-handle-on-border-color-switch: #b45309;
+  --warning-icon-on-color-switch: #78350f;
+
   // validation msg
   --warning-bg-color-validation-msg: #fffbeb;
   --warning-text-color-validation-msg: #78350f;
@@ -171,6 +187,12 @@
 
   --warning-active-bg-color-btn-link: rgba(180, 83, 9, 0.1);
   --warning-active-text-color-btn-link: #b45309;
+
+  // switch - danger
+  --danger-track-on-bg-color-switch: #dc2626;
+  --danger-handle-on-bg-color-switch: #ffffff;
+  --danger-handle-on-border-color-switch: #dc2626;
+  --danger-icon-on-color-switch: #991b1b;
 
   // validation msg
   --danger-bg-color-validation-msg: #fef2f2;
@@ -341,6 +363,16 @@
   // outline btn
   --bg-color-btn-outline: #121212;
 
+  // switch
+  --switch-track-off-bg-color: #374151;
+  --switch-handle-off-bg-color: #9ca3af;
+
+  // switch - success
+  --success-track-on-bg-color-switch: #15803d;
+  --success-handle-on-bg-color-switch: #ffffff;
+  --success-handle-on-border-color-switch: #15803d;
+  --success-icon-on-color-switch: #14532d;
+
   // validation msg
   --success-bg-color-validation-msg: #064e3b;
   --success-text-color-validation-msg: #f0fdf4;
@@ -381,34 +413,40 @@
   --success-active-text-color-btn-outline: #4ade80;
 
   // solid
-  --success-bg-color-btn-solid: #22c55e;
+  --success-bg-color-btn-solid: #15803d;
   --success-text-color-btn-solid: #ffffff;
 
   --success-hover-bg-color-btn-solid: #16a34a;
   --success-hover-text-color-btn-solid: #ffffff;
 
-  --success-active-bg-color-btn-solid: #15803d;
+  --success-active-bg-color-btn-solid: #14532d;
   --success-active-text-color-btn-solid: #ffffff;
 
   // ghost
   --success-bg-color-btn-ghost: transparent;
   --success-text-color-btn-ghost: #4ade80;
 
-  --success-hover-bg-color-btn-ghost: rgba(74, 222, 128, 0.05);
+  --success-hover-bg-color-btn-ghost: rgba(74, 222, 128, 0.15);
   --success-hover-text-color-btn-ghost: #4ade80;
 
-  --success-active-bg-color-btn-ghost: rgba(74, 222, 128, 0.1);
+  --success-active-bg-color-btn-ghost: rgba(74, 222, 128, 0.25);
   --success-active-text-color-btn-ghost: #4ade80;
 
   // link
   --success-bg-color-btn-link: transparent;
   --success-text-color-btn-link: #4ade80;
 
-  --success-hover-bg-color-btn-link: rgba(74, 222, 128, 0.05);
+  --success-hover-bg-color-btn-link: rgba(74, 222, 128, 0.15);
   --success-hover-text-color-btn-link: #4ade80;
 
-  --success-active-bg-color-btn-link: rgba(74, 222, 128, 0.1);
+  --success-active-bg-color-btn-link: rgba(74, 222, 128, 0.25);
   --success-active-text-color-btn-link: #4ade80;
+
+  // switch - warning
+  --warning-track-on-bg-color-switch: #9a3412;
+  --warning-handle-on-bg-color-switch: #ffffff;
+  --warning-handle-on-border-color-switch: #9a3412;
+  --warning-icon-on-color-switch: #431407;
 
   // validation msg
   --warning-bg-color-validation-msg: #451a03;
@@ -450,34 +488,40 @@
   --warning-active-text-color-btn-outline: #fbbf24;
 
   // solid
-  --warning-bg-color-btn-solid: #f59e0b;
+  --warning-bg-color-btn-solid: #9a3412;
   --warning-text-color-btn-solid: #ffffff;
 
-  --warning-hover-bg-color-btn-solid: #d97706;
+  --warning-hover-bg-color-btn-solid: #b45309;
   --warning-hover-text-color-btn-solid: #ffffff;
 
-  --warning-active-bg-color-btn-solid: #b45309;
+  --warning-active-bg-color-btn-solid: #7c2d12;
   --warning-active-text-color-btn-solid: #ffffff;
 
   // ghost
   --warning-bg-color-btn-ghost: transparent;
   --warning-text-color-btn-ghost: #fbbf24;
 
-  --warning-hover-bg-color-btn-ghost: rgba(251, 191, 36, 0.05);
+  --warning-hover-bg-color-btn-ghost: rgba(251, 191, 36, 0.15);
   --warning-hover-text-color-btn-ghost: #fbbf24;
 
-  --warning-active-bg-color-btn-ghost: rgba(251, 191, 36, 0.1);
+  --warning-active-bg-color-btn-ghost: rgba(251, 191, 36, 0.25);
   --warning-active-text-color-btn-ghost: #fbbf24;
 
   // link
   --warning-bg-color-btn-link: transparent;
   --warning-text-color-btn-link: #fbbf24;
 
-  --warning-hover-bg-color-btn-link: rgba(251, 191, 36, 0.05);
+  --warning-hover-bg-color-btn-link: rgba(251, 191, 36, 0.15);
   --warning-hover-text-color-btn-link: #fbbf24;
 
-  --warning-active-bg-color-btn-link: rgba(251, 191, 36, 0.1);
+  --warning-active-bg-color-btn-link: rgba(251, 191, 36, 0.25);
   --warning-active-text-color-btn-link: #fbbf24;
+
+  // switch - danger
+  --danger-track-on-bg-color-switch: #b91c1c;
+  --danger-handle-on-bg-color-switch: #ffffff;
+  --danger-handle-on-border-color-switch: #b91c1c;
+  --danger-icon-on-color-switch: #7f1d1d;
 
   // validation msg
   --danger-bg-color-validation-msg: #450a0a;
@@ -522,33 +566,33 @@
   --danger-active-text-color-btn-outline: #f87171;
 
   // solid
-  --danger-bg-color-btn-solid: #ef4444;
+  --danger-bg-color-btn-solid: #dc2626;
   --danger-text-color-btn-solid: #ffffff;
 
-  --danger-hover-bg-color-btn-solid: #dc2626;
+  --danger-hover-bg-color-btn-solid: #ef4444;
   --danger-hover-text-color-btn-solid: #ffffff;
 
-  --danger-active-bg-color-btn-solid: #b91c1c;
+  --danger-active-bg-color-btn-solid: #991b1b;
   --danger-active-text-color-btn-solid: #ffffff;
 
   // ghost
   --danger-bg-color-btn-ghost: transparent;
   --danger-text-color-btn-ghost: #f87171;
 
-  --danger-hover-bg-color-btn-ghost: rgba(248, 113, 113, 0.05);
+  --danger-hover-bg-color-btn-ghost: rgba(248, 113, 113, 0.15);
   --danger-hover-text-color-btn-ghost: #f87171;
 
-  --danger-active-bg-color-btn-ghost: rgba(248, 113, 113, 0.1);
+  --danger-active-bg-color-btn-ghost: rgba(248, 113, 113, 0.25);
   --danger-active-text-color-btn-ghost: #f87171;
 
   // link
   --danger-bg-color-btn-link: transparent;
   --danger-text-color-btn-link: #f87171;
 
-  --danger-hover-bg-color-btn-link: rgba(248, 113, 113, 0.05);
+  --danger-hover-bg-color-btn-link: rgba(248, 113, 113, 0.15);
   --danger-hover-text-color-btn-link: #f87171;
 
-  --danger-active-bg-color-btn-link: rgba(248, 113, 113, 0.1);
+  --danger-active-bg-color-btn-link: rgba(248, 113, 113, 0.25);
   --danger-active-text-color-btn-link: #f87171;
 
   // spinner - Success
@@ -885,10 +929,10 @@
     --primary-active-text-color-btn-outline: #85c2ff;
 
     // solid
-    --primary-bg-color-btn-solid: #3b82f6;
+    --primary-bg-color-btn-solid: #2563eb;
     --primary-text-color-btn-solid: #ffffff;
 
-    --primary-hover-bg-color-btn-solid: #2563eb;
+    --primary-hover-bg-color-btn-solid: #3b82f6;
     --primary-hover-text-color-btn-solid: #ffffff;
 
     --primary-active-bg-color-btn-solid: #1d4ed8;
@@ -896,23 +940,23 @@
 
     // ghost
     --primary-bg-color-btn-ghost: transparent;
-    --primary-text-color-btn-ghost: #66b2ff;
+    --primary-text-color-btn-ghost: #60a5fa;
 
-    --primary-hover-bg-color-btn-ghost: rgba(102, 178, 255, 0.05);
-    --primary-hover-text-color-btn-ghost: #66b2ff;
+    --primary-hover-bg-color-btn-ghost: rgba(96, 165, 250, 0.15);
+    --primary-hover-text-color-btn-ghost: #93c5fd;
 
-    --primary-active-bg-color-btn-ghost: rgba(102, 178, 255, 0.1);
-    --primary-active-text-color-btn-ghost: #66b2ff;
+    --primary-active-bg-color-btn-ghost: rgba(96, 165, 250, 0.25);
+    --primary-active-text-color-btn-ghost: #60a5fa;
 
     // link
     --primary-bg-color-btn-link: transparent;
-    --primary-text-color-btn-link: #66b2ff;
+    --primary-text-color-btn-link: #60a5fa;
 
-    --primary-hover-bg-color-btn-link: rgba(102, 178, 255, 0.05);
-    --primary-hover-text-color-btn-link: #66b2ff;
+    --primary-hover-bg-color-btn-link: rgba(96, 165, 250, 0.15);
+    --primary-hover-text-color-btn-link: #93c5fd;
 
-    --primary-active-bg-color-btn-link: rgba(102, 178, 255, 0.1);
-    --primary-active-text-color-btn-link: #66b2ff;
+    --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
+    --primary-active-text-color-btn-link: #60a5fa;
 
     // outline textarea
     --secondary-bg-color-textarea-outline: #1e293b;
@@ -949,33 +993,33 @@
     --secondary-active-text-color-btn-outline: #7dd3fc;
 
     // solid
-    --secondary-bg-color-btn-solid: #0ea5e9;
+    --secondary-bg-color-btn-solid: #0369a1;
     --secondary-text-color-btn-solid: #ffffff;
 
     --secondary-hover-bg-color-btn-solid: #0284c7;
     --secondary-hover-text-color-btn-solid: #ffffff;
 
-    --secondary-active-bg-color-btn-solid: #0369a1;
+    --secondary-active-bg-color-btn-solid: #075985;
     --secondary-active-text-color-btn-solid: #ffffff;
 
     // ghost
     --secondary-bg-color-btn-ghost: transparent;
     --secondary-text-color-btn-ghost: #38bdf8;
 
-    --secondary-hover-bg-color-btn-ghost: rgba(56, 189, 248, 0.05);
-    --secondary-hover-text-color-btn-ghost: #38bdf8;
+    --secondary-hover-bg-color-btn-ghost: rgba(56, 189, 248, 0.15);
+    --secondary-hover-text-color-btn-ghost: #7dd3fc;
 
-    --secondary-active-bg-color-btn-ghost: rgba(56, 189, 248, 0.1);
+    --secondary-active-bg-color-btn-ghost: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-ghost: #38bdf8;
 
     // link
     --secondary-bg-color-btn-link: transparent;
     --secondary-text-color-btn-link: #38bdf8;
 
-    --secondary-hover-bg-color-btn-link: rgba(56, 189, 248, 0.05);
-    --secondary-hover-text-color-btn-link: #38bdf8;
+    --secondary-hover-bg-color-btn-link: rgba(56, 189, 248, 0.15);
+    --secondary-hover-text-color-btn-link: #7dd3fc;
 
-    --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.1);
+    --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
 
     // outline textarea
@@ -1013,10 +1057,10 @@
     --tertiary-active-text-color-btn-outline: #c4b5fd;
 
     // solid
-    --tertiary-bg-color-btn-solid: #8b5cf6;
+    --tertiary-bg-color-btn-solid: #7c3aed;
     --tertiary-text-color-btn-solid: #ffffff;
 
-    --tertiary-hover-bg-color-btn-solid: #7c3aed;
+    --tertiary-hover-bg-color-btn-solid: #8b5cf6;
     --tertiary-hover-text-color-btn-solid: #ffffff;
 
     --tertiary-active-bg-color-btn-solid: #6d28d9;
@@ -1026,20 +1070,20 @@
     --tertiary-bg-color-btn-ghost: transparent;
     --tertiary-text-color-btn-ghost: #a78bfa;
 
-    --tertiary-hover-bg-color-btn-ghost: rgba(167, 139, 250, 0.05);
-    --tertiary-hover-text-color-btn-ghost: #a78bfa;
+    --tertiary-hover-bg-color-btn-ghost: rgba(167, 139, 250, 0.15);
+    --tertiary-hover-text-color-btn-ghost: #c4b5fd;
 
-    --tertiary-active-bg-color-btn-ghost: rgba(167, 139, 250, 0.1);
+    --tertiary-active-bg-color-btn-ghost: rgba(167, 139, 250, 0.25);
     --tertiary-active-text-color-btn-ghost: #a78bfa;
 
     // link
     --tertiary-bg-color-btn-link: transparent;
     --tertiary-text-color-btn-link: #a78bfa;
 
-    --tertiary-hover-bg-color-btn-link: rgba(167, 139, 250, 0.05);
-    --tertiary-hover-text-color-btn-link: #a78bfa;
+    --tertiary-hover-bg-color-btn-link: rgba(167, 139, 250, 0.15);
+    --tertiary-hover-text-color-btn-link: #c4b5fd;
 
-    --tertiary-active-bg-color-btn-link: rgba(167, 139, 250, 0.1);
+    --tertiary-active-bg-color-btn-link: rgba(167, 139, 250, 0.25);
     --tertiary-active-text-color-btn-link: #a78bfa;
 
     // spinner - primary (핵심 액션 블루: #66b2ff)

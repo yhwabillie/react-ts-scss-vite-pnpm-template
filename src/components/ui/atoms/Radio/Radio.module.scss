@@ -228,7 +228,7 @@ $radio-sizes: (
   cursor: pointer;
   border-radius: var(--project-border-radius-max);
   position: relative;
-  // background-color: #ffffff;
+  background-color: var(--bg-color-unchecked-radio);
   transition: all 0.1s;
   overflow: hidden;
   flex: 0 0 auto;

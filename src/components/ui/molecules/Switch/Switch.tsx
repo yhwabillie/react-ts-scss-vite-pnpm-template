@@ -59,6 +59,7 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>(
         ref={ref}
         className={clsx(`${styles['switch']} ${`color--${color}`} ${`size--${size}`}`, className)}
         htmlFor={id}
+        aria-label={isChecked ? '체크 됨' : '체크 해제'}
       >
         <input
           type='checkbox'

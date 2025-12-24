@@ -1,14 +1,21 @@
-/* Specimen.module.scss */
+/* GuideWrapper.module.scss */
 @use 'sass:map';
 @use '../../../styles/mixins' as *;
 
-.specimen-wrapper {
+.guide-wrapper {
   display: flex;
   flex-direction: column;
-  gap: rem(24px);
+  gap: rem(4px);
+
+  :global(.title) {
+    width: 100%;
+    font: var(--project-typo-l3-500);
+    color: var(--color-text-primary);
+    padding: 0 rem(10px) 0 rem(10px);
+  }
 }
 
-.specimen-group {
+.guide-group {
   display: flex;
   align-items: center;
   gap: rem(40px);
@@ -28,14 +35,21 @@
   }
 }
 
-.specimen-row {
+.guide-row {
   display: flex;
   gap: rem(20px);
   align-items: center;
+
+  &:global(.is-column) {
+    flex-direction: column;
+  }
+
+  &:global(.is-row) {
+    flex-direction: row;
+  }
 }
 
-.specimen-cell {
-  // width: 100%;
+.guide-cell {
   display: flex;
   flex-direction: column;
   align-items: center;
