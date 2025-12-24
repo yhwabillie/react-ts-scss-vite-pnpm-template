@@ -101,7 +101,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             aria-live='polite'
           >
             <span className={clsx(styles['current'])}>{currentLength}</span>
-            <span className={styles['separator']}>/</span>
+            <span className={styles['separator']}> / </span>
             <span className={styles['total']}>{maxLength}</span>
           </div>
         )}

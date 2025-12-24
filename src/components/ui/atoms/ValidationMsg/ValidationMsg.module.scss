@@ -4,32 +4,32 @@
 
 // $validation-msg variant
 $validation-msg-variant: (
-  danger: (
-    color: #c62828,
-    bg: #fdecea,
+  success: (
+    bg: var(--success-bg-color-validation-msg),
+    color: var(--success-text-color-validation-msg),
     icon: (
-      fill: #c62828,
+      fill: var(--success-icon-color-validation-msg),
     ),
   ),
   warning: (
-    color: #855600,
-    bg: #fff4e5,
+    bg: var(--warning-bg-color-validation-msg),
+    color: var(--warning-text-color-validation-msg),
     icon: (
-      fill: #ef6c00,
+      fill: var(--warning-icon-color-validation-msg),
     ),
   ),
-  success: (
-    color: #1b5e20,
-    bg: #edf7ed,
+  danger: (
+    bg: var(--danger-bg-color-validation-msg),
+    color: var(--danger-text-color-validation-msg),
     icon: (
-      fill: #2e7d32,
+      fill: var(--danger-icon-color-validation-msg),
     ),
   ),
   guide: (
-    color: #1976d2,
-    bg: #e3f2fd,
+    bg: var(--guide-bg-color-validation-msg),
+    color: var(--guide-text-color-validation-msg),
     icon: (
-      fill: #1976d2,
+      fill: var(--guide-icon-color-validation-msg),
     ),
   ),
 );

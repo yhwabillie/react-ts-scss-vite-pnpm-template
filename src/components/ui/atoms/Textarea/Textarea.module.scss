@@ -88,7 +88,7 @@ $textarea-colors: (
   tertiary: (
     solid: (
       bg: var(--tertiary-bg-color-textarea-solid),
-      color: var(-tertiary-text-color-textarea-solid),
+      color: var(--tertiary-text-color-textarea-solid),
       placeholder: var(--tertiary-placeholder-color-textarea-solid),
       hover: (
         shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-textarea),
@@ -167,7 +167,7 @@ $textarea-colors: (
     solid: (
       bg: var(--warning-bg-color-textarea-solid),
       placeholder: var(--warning-placeholder-color-textarea-solid),
-      color: var(-warning-text-color-textarea-solid),
+      color: var(--warning-text-color-textarea-solid),
       hover: (
         shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-textarea),
       ),
@@ -224,7 +224,7 @@ $textarea-colors: (
     outline: (
       bg: var(--danger-bg-color-textarea-outline),
       border: var(--danger-stroke-color-textarea-outline),
-      placeholder: var(--danger-placeholder-textarea-outline),
+      placeholder: var(--danger-placeholder-color-textarea-outline),
       color: var(--danger-text-color-textarea-outline),
       hover: (
         shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-textarea),
@@ -273,6 +273,10 @@ $textarea-sizes: (
       @if $variant-props != null {
         &:global(.color--#{$color-name}) {
           &:not(:has(textarea:disabled, textarea:read-only)):hover {
+            box-shadow: $shadow-value;
+          }
+
+          &:has(textarea:not(:placeholder-shown, :disabled, :read-only)) {
             box-shadow: $shadow-value;
           }
 
@@ -378,6 +382,6 @@ $textarea-sizes: (
   font: var(--project-typo-l3-500);
 
   &:global(.is-max) {
-    color: #7f1d1d;
+    color: var(--danger-max-text-color-textarea);
   }
 }

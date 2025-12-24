@@ -15,6 +15,11 @@
   --bg-color-guide: #ecf4ef;
   --stroke-color-guide: #15803d;
 
+  // validation msg - guide
+  --guide-bg-color-validation-msg: #f0f9ff;
+  --guide-text-color-validation-msg: #075985;
+  --guide-icon-color-validation-msg: #075985;
+
   // label
   --text-color-label: #1d1d1d;
 
@@ -28,6 +33,11 @@
 
   // outline btn
   --bg-color-btn-outline: #ffffff;
+
+  // validation msg
+  --success-bg-color-validation-msg: #edf7ed;
+  --success-text-color-validation-msg: #0d3c12;
+  --success-icon-color-validation-msg: #1b5e20;
 
   // outline textarea
   --success-bg-color-textarea-outline: #f0fdf4;
@@ -93,6 +103,11 @@
   --success-active-bg-color-btn-link: rgba(21, 128, 61, 0.1);
   --success-active-text-color-btn-link: #15803d;
 
+  // validation msg
+  --warning-bg-color-validation-msg: #fffbeb;
+  --warning-text-color-validation-msg: #78350f;
+  --warning-icon-color-validation-msg: #92400e;
+
   // outline textarea
   --warning-bg-color-textarea-outline: #fff7ed;
   --warning-text-color-textarea-outline: #78350f;
@@ -157,6 +172,11 @@
   --warning-active-bg-color-btn-link: rgba(180, 83, 9, 0.1);
   --warning-active-text-color-btn-link: #b45309;
 
+  // validation msg
+  --danger-bg-color-validation-msg: #fef2f2;
+  --danger-text-color-validation-msg: #7f1d1d;
+  --danger-icon-color-validation-msg: #dc2626;
+
   // outline textarea
   --danger-bg-color-textarea-outline: #fef2f2;
   --danger-text-color-textarea-outline: #7f1d1d;
@@ -167,6 +187,9 @@
   --danger-bg-color-textarea-solid: #fef2f2;
   --danger-text-color-textarea-solid: #7f1d1d;
   --danger-placeholder-color-textarea-solid: #b91c1c;
+
+  // textarea max
+  --danger-max-text-color-textarea: #7f1d1d;
 
   // textarea hover
   --danger-hover-shadow-textarea: rgba(185, 28, 28, 0.25);
@@ -299,6 +322,11 @@
   --bg-color-guide: rgba(45, 252, 82, 0.05);
   --stroke-color-guide: #2dfc52;
 
+  // validation msg
+  --guide-bg-color-validation-msg: #0c4a6e;
+  --guide-text-color-validation-msg: #e0f2fe;
+  --guide-icon-color-validation-msg: #38bdf8;
+
   // label
   --text-color-label: #ffffff;
 
@@ -313,19 +341,24 @@
   // outline btn
   --bg-color-btn-outline: #121212;
 
+  // validation msg
+  --success-bg-color-validation-msg: #064e3b;
+  --success-text-color-validation-msg: #f0fdf4;
+  --success-icon-color-validation-msg: #34d399;
+
   // outline textarea
-  --success-bg-color-textarea-outline: #f0fdf4;
-  --success-text-color-textarea-outline: #064e3b;
-  --success-stroke-color-textarea-outline: #064e3b;
-  --success-placeholder-color-textarea-outline: #166534;
+  --success-bg-color-textarea-outline: #064e3b;
+  --success-text-color-textarea-outline: #f0fdf4;
+  --success-stroke-color-textarea-outline: #065f46;
+  --success-placeholder-color-textarea-outline: #6ee7b7;
 
   // solid textarea
-  --success-bg-color-textarea-solid: #f0fdf4;
-  --success-text-color-textarea-solid: #064e3b;
-  --success-placeholder-color-textarea-solid: #166534;
+  --success-bg-color-textarea-solid: #064e3b;
+  --success-text-color-textarea-solid: #f0fdf4;
+  --success-placeholder-color-textarea-solid: #6ee7b7;
 
   // textarea hover
-  --success-hover-shadow-textarea: rgba(74, 222, 128, 0.25);
+  --success-hover-shadow-textarea: #34d399;
 
   // radio - Success
   --success-checked-color-radio: #4ade80;
@@ -377,19 +410,24 @@
   --success-active-bg-color-btn-link: rgba(74, 222, 128, 0.1);
   --success-active-text-color-btn-link: #4ade80;
 
+  // validation msg
+  --warning-bg-color-validation-msg: #451a03;
+  --warning-text-color-validation-msg: #fffbeb;
+  --warning-icon-color-validation-msg: #fcd34d;
+
   // outline textarea
-  --warning-bg-color-textarea-outline: #fffbeb;
-  --warning-text-color-textarea-outline: #78350f;
+  --warning-bg-color-textarea-outline: #451a03;
+  --warning-text-color-textarea-outline: #fffbeb;
   --warning-stroke-color-textarea-outline: #78350f;
-  --warning-placeholder-color-textarea-outline: #92400e;
+  --warning-placeholder-color-textarea-outline: #fcd34d;
 
   // solid textarea
-  --warning-bg-color-textarea-solid: #fffbeb;
-  --warning-text-color-textarea-solid: #78350f;
-  --warning-placeholder-color-textarea-solid: #92400e;
+  --warning-bg-color-textarea-solid: #451a03;
+  --warning-text-color-textarea-solid: #fffbeb;
+  --warning-placeholder-color-textarea-solid: #fcd34d;
 
   // textarea hover
-  --warning-hover-shadow-textarea: rgba(251, 191, 36, 0.25);
+  --warning-hover-shadow-textarea: #facc15;
 
   // radio - Warning
   --warning-checked-color-radio: #fbbf24;
@@ -441,19 +479,27 @@
   --warning-active-bg-color-btn-link: rgba(251, 191, 36, 0.1);
   --warning-active-text-color-btn-link: #fbbf24;
 
+  // validation msg
+  --danger-bg-color-validation-msg: #450a0a;
+  --danger-text-color-validation-msg: #fef2f2;
+  --danger-icon-color-validation-msg: #f87171;
+
   // outline textarea
-  --danger-bg-color-textarea-outline: #fef2f2;
-  --danger-text-color-textarea-outline: #991b1b;
-  --danger-stroke-color-textarea-outline: #991b1b;
-  --danger-placeholder-color-textarea-outline: #dc2626;
+  --danger-bg-color-textarea-outline: #450a0a;
+  --danger-text-color-textarea-outline: #fef2f2;
+  --danger-stroke-color-textarea-outline: #7f1d1d;
+  --danger-placeholder-color-textarea-outline: #fca5a5;
 
   // solid textarea
-  --danger-bg-color-textarea-solid: #fef2f2;
-  --danger-text-color-textarea-solid: #991b1b;
-  --danger-placeholder-color-textarea-solid: #dc2626;
+  --danger-bg-color-textarea-solid: #450a0a;
+  --danger-text-color-textarea-solid: #fef2f2;
+  --danger-placeholder-color-textarea-solid: #fca5a5;
+
+  // textarea max
+  --danger-max-text-color-textarea: #fef2f2;
 
   // textarea hover
-  --danger-hover-shadow-textarea: rgba(248, 113, 113, 0.12);
+  --danger-hover-shadow-textarea: #ef4444;
 
   // radio - Danger
   --danger-checked-color-radio: #f87171;
@@ -545,16 +591,16 @@
   --danger-solid-path-color-spinner-closed-ring: #ffffff;
 
   // readonly
-  --readonly-bg-color-textarea: #1e1e1e;
-  --readonly-stroke-color-textarea: #333333;
-  --readonly-text-color-textarea: #e0e0e0;
-  --readonly-placeholder-color-textarea: #888888;
+  --readonly-bg-color-textarea: #1e293b;
+  --readonly-stroke-color-textarea: #334155;
+  --readonly-text-color-textarea: #cbd5e1;
+  --readonly-placeholder-color-textarea: #64748b;
 
   // disabled
-  --disabled-bg-color-textarea: #121212;
-  --disabled-stroke-color-textarea: #2c2c2c;
-  --disabled-text-color-textarea: #555555;
-  --disabled-placeholder-color-textarea: #3a3a3a;
+  --disabled-bg-color-textarea: #0f172a;
+  --disabled-stroke-color-textarea: #1e293b;
+  --disabled-text-color-textarea: #475569;
+  --disabled-placeholder-color-textarea: #334155;
 
   --disabled-bg-color-radio: #1e1e1e;
   --disabled-stroke-color-radio: #374151;
@@ -573,9 +619,9 @@
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
   // outline textarea - primary
-  --primary-bg-color-textarea-outline: #ffffff;
+  --primary-bg-color-textarea-outline: #f0f7ff;
   --primary-text-color-textarea-outline: #001a40;
-  --primary-placeholder-color-textarea-outline: #627289;
+  --primary-placeholder-color-textarea-outline: #475569;
   --primary-stroke-color-textarea-outline: #0052cc;
 
   // solid textarea
@@ -805,18 +851,18 @@
 
   &.mode-dark {
     // outline textarea
-    --primary-bg-color-textarea-outline: #f0f7ff;
-    --primary-text-color-textarea-outline: #003a75;
-    --primary-stroke-color-textarea-outline: #003a75;
-    --primary-placeholder-color-textarea-outline: #4d89cc;
+    --primary-bg-color-textarea-outline: #0f172a;
+    --primary-text-color-textarea-outline: #f1f5f9;
+    --primary-stroke-color-textarea-outline: #334155;
+    --primary-placeholder-color-textarea-outline: #94a3b8;
 
     // solid textarea
-    --primary-bg-color-textarea-solid: #f0f7ff;
-    --primary-text-color-textarea-solid: #003a75;
-    --primary-placeholder-color-textarea-solid: #4d89cc;
+    --primary-bg-color-textarea-solid: #1e293b;
+    --primary-text-color-textarea-solid: #f8fafc;
+    --primary-placeholder-color-textarea-solid: #94a3b8;
 
     // textarea hover
-    --primary-hover-shadow-textarea: rgba(102, 178, 255, 0.25);
+    --primary-hover-shadow-textarea: #38bdf8;
 
     // radio - primary
     --primary-checked-color-radio: #66b2ff;
@@ -869,18 +915,18 @@
     --primary-active-text-color-btn-link: #66b2ff;
 
     // outline textarea
-    --secondary-bg-color-textarea-outline: #f0f9ff;
-    --secondary-text-color-textarea-outline: #0c4a6e;
-    --secondary-stroke-color-textarea-outline: #0c4a6e;
-    --secondary-placeholder-color-textarea-outline: #0284c7;
+    --secondary-bg-color-textarea-outline: #1e293b;
+    --secondary-text-color-textarea-outline: #94a3b8;
+    --secondary-stroke-color-textarea-outline: #475569;
+    --secondary-placeholder-color-textarea-outline: #64748b;
 
     // solid textarea
-    --secondary-bg-color-textarea-solid: #f0f9ff;
-    --secondary-text-color-textarea-solid: #0c4a6e;
-    --secondary-placeholder-color-textarea-solid: #0284c7;
+    --secondary-bg-color-textarea-solid: #334155;
+    --secondary-text-color-textarea-solid: #cbd5e1;
+    --secondary-placeholder-color-textarea-solid: #64748b;
 
     // textarea hover
-    --secondary-hover-shadow-textarea: rgba(56, 189, 248, 0.25);
+    --secondary-hover-shadow-textarea: #94a3b8;
 
     // radio - secondary
     --secondary-checked-color-radio: #38bdf8;
@@ -933,18 +979,18 @@
     --secondary-active-text-color-btn-link: #38bdf8;
 
     // outline textarea
-    --tertiary-bg-color-textarea-outline: #f5f7ff;
-    --tertiary-text-color-textarea-outline: #2e1065;
-    --tertiary-stroke-color-textarea-outline: #2e1065;
-    --tertiary-placeholder-color-textarea-outline: #6d28d9;
+    --tertiary-bg-color-textarea-outline: #1e1b4b;
+    --tertiary-text-color-textarea-outline: #f5f3ff;
+    --tertiary-stroke-color-textarea-outline: #4c1d95;
+    --tertiary-placeholder-color-textarea-outline: #a78bfa;
 
     // solid textarea
-    --tertiary-bg-color-textarea-solid: #f5f7ff;
-    --tertiary-text-color-textarea-solid: #2e1065;
-    --tertiary-placeholder-color-textarea-solid: #6d28d9;
+    --tertiary-bg-color-textarea-solid: #2e1065;
+    --tertiary-text-color-textarea-solid: #f5f3ff;
+    --tertiary-placeholder-color-textarea-solid: #a78bfa;
 
     // textarea hover
-    --tertiary-hover-shadow-textarea: rgba(167, 139, 250, 0.25);
+    --tertiary-hover-shadow-textarea: #a78bfa;
 
     // radio - tertiary
     --tertiary-checked-color-radio: #a78bfa;
