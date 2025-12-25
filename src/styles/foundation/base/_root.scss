@@ -41,8 +41,11 @@
   // switch - success
   --success-track-on-bg-color-switch: #16a34a;
   --success-handle-on-bg-color-switch: #ffffff;
-  --success-handle-on-border-color-switch: #16a34a;
-  --success-icon-on-color-switch: #15803d;
+  --success-handle-on-border-color-switch: #15803d;
+  --success-icon-on-color-switch: #14532d;
+
+  --success-hover-shadow-switch: rgba(21, 128, 101, 0.25);
+  --success-active-shadow-switch: rgba(21, 128, 101, 0.25);
 
   // validation msg
   --success-bg-color-validation-msg: #edf7ed;
@@ -119,6 +122,9 @@
   --warning-handle-on-border-color-switch: #b45309;
   --warning-icon-on-color-switch: #78350f;
 
+  --warning-hover-shadow-switch: rgba(180, 83, 9, 0.25);
+  --warning-active-shadow-switch: rgba(180, 83, 9, 0.25);
+
   // validation msg
   --warning-bg-color-validation-msg: #fffbeb;
   --warning-text-color-validation-msg: #78350f;
@@ -193,6 +199,9 @@
   --danger-handle-on-bg-color-switch: #ffffff;
   --danger-handle-on-border-color-switch: #dc2626;
   --danger-icon-on-color-switch: #991b1b;
+
+  --danger-hover-shadow-switch: rgba(220, 38, 38, 0.1);
+  --danger-active-shadow-switch: rgba(220, 38, 38, 0.25);
 
   // validation msg
   --danger-bg-color-validation-msg: #fef2f2;
@@ -312,6 +321,11 @@
   --readonly-placeholder-color-textarea: #757575;
 
   // disabled
+  --disabled-track-on-bg-color-switch: #cdd1d5;
+  --disabled-handle-on-bg-color-switch: #8a949e;
+  --disabled-handle-on-border-color-switch: #cdd1d5;
+  --disabled-icon-on-color-switch: #cdd1d5;
+
   --disabled-bg-color-textarea: #eeeeee;
   --disabled-stroke-color-textarea: #dddddd;
   --disabled-text-color-textarea: #9e9e9e;
@@ -368,10 +382,13 @@
   --switch-handle-off-bg-color: #9ca3af;
 
   // switch - success
-  --success-track-on-bg-color-switch: #15803d;
+  --success-track-on-bg-color-switch: #16a34a;
   --success-handle-on-bg-color-switch: #ffffff;
   --success-handle-on-border-color-switch: #15803d;
   --success-icon-on-color-switch: #14532d;
+
+  --success-hover-shadow-switch: rgba(74, 222, 128, 0.25);
+  --success-active-shadow-switch: rgba(74, 222, 128, 0.25);
 
   // validation msg
   --success-bg-color-validation-msg: #064e3b;
@@ -448,6 +465,9 @@
   --warning-handle-on-border-color-switch: #9a3412;
   --warning-icon-on-color-switch: #431407;
 
+  --warning-hover-shadow-switch: rgba(251, 191, 36, 0.25);
+  --warning-active-shadow-switch: rgba(251, 191, 36, 0.25);
+
   // validation msg
   --warning-bg-color-validation-msg: #451a03;
   --warning-text-color-validation-msg: #fffbeb;
@@ -522,6 +542,9 @@
   --danger-handle-on-bg-color-switch: #ffffff;
   --danger-handle-on-border-color-switch: #b91c1c;
   --danger-icon-on-color-switch: #7f1d1d;
+
+  --danger-hover-shadow-switch: rgba(248, 113, 113, 0.25);
+  --danger-active-shadow-switch: rgba(248, 113, 113, 0.25);
 
   // validation msg
   --danger-bg-color-validation-msg: #450a0a;
@@ -641,6 +664,11 @@
   --readonly-placeholder-color-textarea: #64748b;
 
   // disabled
+  --disabled-track-on-bg-color-switch: #374151;
+  --disabled-handle-on-bg-color-switch: #6b7280;
+  --disabled-handle-on-border-color-switch: #374151;
+  --disabled-icon-on-color-switch: #1f2937;
+
   --disabled-bg-color-textarea: #0f172a;
   --disabled-stroke-color-textarea: #1e293b;
   --disabled-text-color-textarea: #475569;
@@ -662,6 +690,15 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  // switch
+  --primary-track-on-bg-color-switch: #3b82f6;
+  --primary-handle-on-bg-color-switch: #ffffff;
+  --primary-handle-on-border-color-switch: #3b82f6;
+  --primary-icon-on-color-switch: #1d4ed8;
+
+  --primary-hover-shadow-switch: rgba(0, 82, 204, 0.25);
+  --primary-active-shadow-switch: rgba(0, 82, 204, 0.25);
+
   // outline textarea - primary
   --primary-bg-color-textarea-outline: #f0f7ff;
   --primary-text-color-textarea-outline: #001a40;
@@ -726,6 +763,15 @@
   --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-link: #0052cc;
 
+  // switch
+  --secondary-track-on-bg-color-switch: #475569;
+  --secondary-handle-on-bg-color-switch: #ffffff;
+  --secondary-handle-on-border-color-switch: #334155;
+  --secondary-icon-on-color-switch: #1e293b;
+
+  --secondary-hover-shadow-switch: rgba(71, 85, 105, 0.25);
+  --secondary-active-shadow-switch: rgba(71, 85, 105, 0.25);
+
   // outline textarea
   --secondary-bg-color-textarea-outline: #f1f5f9;
   --secondary-text-color-textarea-outline: #1e293b;
@@ -789,6 +835,15 @@
 
   --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-link: #475569;
+
+  // switch
+  --tertiary-track-on-bg-color-switch: #7c3aed;
+  --tertiary-handle-on-bg-color-switch: #ffffff;
+  --tertiary-handle-on-border-color-switch: #6d28d9;
+  --tertiary-icon-on-color-switch: #4c1d95;
+
+  --tertiary-hover-shadow-switch: rgba(124, 58, 237, 0.25);
+  --tertiary-active-shadow-switch: rgba(124, 58, 237, 0.25);
 
   // outline textarea
   --tertiary-bg-color-textarea-outline: #f5f3ff;
@@ -894,6 +949,15 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    // switch
+    --primary-track-on-bg-color-switch: #66b2ff;
+    --primary-handle-on-bg-color-switch: #ffffff;
+    --primary-handle-on-border-color-switch: #66b2ff;
+    --primary-icon-on-color-switch: #003366;
+
+    --primary-hover-shadow-switch: rgba(102, 178, 255, 0.25);
+    --primary-active-shadow-switch: rgba(102, 178, 255, 0.25);
+
     // outline textarea
     --primary-bg-color-textarea-outline: #0f172a;
     --primary-text-color-textarea-outline: #f1f5f9;
@@ -958,6 +1022,15 @@
     --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
     --primary-active-text-color-btn-link: #60a5fa;
 
+    // switch
+    --secondary-track-on-bg-color-switch: #38bdf8;
+    --secondary-handle-on-bg-color-switch: #ffffff;
+    --secondary-handle-on-border-color-switch: #38bdf8;
+    --secondary-icon-on-color-switch: #0c4a6e;
+
+    --secondary-hover-shadow-switch: rgba(56, 189, 248, 0.25);
+    --secondary-active-shadow-switch: rgba(56, 189, 248, 0.25);
+
     // outline textarea
     --secondary-bg-color-textarea-outline: #1e293b;
     --secondary-text-color-textarea-outline: #94a3b8;
@@ -1021,6 +1094,15 @@
 
     --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
+
+    // switch
+    --tertiary-track-on-bg-color-switch: #a78bfa;
+    --tertiary-handle-on-bg-color-switch: #ffffff;
+    --tertiary-handle-on-border-color-switch: #a78bfa;
+    --tertiary-icon-on-color-switch: #4c1d95;
+
+    --tertiary-hover-shadow-switch: rgba(167, 139, 250, 0.25);
+    --tertiary-active-shadow-switch: rgba(167, 139, 250, 0.25);
 
     // outline textarea
     --tertiary-bg-color-textarea-outline: #1e1b4b;

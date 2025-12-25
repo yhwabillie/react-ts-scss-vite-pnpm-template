@@ -21,13 +21,21 @@ export const SpecimenGroup = ({
   children,
   title,
   direction = 'row',
+  flexWrapCenter,
 }: {
   children: React.ReactNode;
   title?: string;
   direction?: 'column' | 'row';
+  flexWrapCenter?: boolean;
 }) => (
-  <div className={clsx(Styles['specimen-group'], direction === 'column' && 'is-column')}>
-    <span className='title'>{title}</span>
+  <div
+    className={clsx(
+      Styles['specimen-group'],
+      direction === 'column' && 'is-column',
+      flexWrapCenter && 'is-wrap-center',
+    )}
+  >
+    {title && <span className='title'>{title}</span>}
     {children}
   </div>
 );

@@ -276,10 +276,6 @@ $textarea-sizes: (
             box-shadow: $shadow-value;
           }
 
-          &:has(textarea:not(:placeholder-shown, :disabled, :read-only)) {
-            box-shadow: $shadow-value;
-          }
-
           @if $variant == 'solid' {
             background-color: map.get($variant-props, bg);
 
@@ -359,6 +355,11 @@ $textarea-sizes: (
   padding: rem(10px) rem(14px);
   border-radius: var(--project-border-radius-8);
   transition: all 0.2s ease;
+
+  &:has(textarea:focus-visible) {
+    outline: 2.5px dashed #2466eb !important;
+    outline-offset: 2px;
+  }
 
   :global(textarea) {
     border: none;

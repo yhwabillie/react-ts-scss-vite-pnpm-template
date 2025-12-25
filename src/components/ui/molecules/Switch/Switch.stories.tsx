@@ -256,7 +256,7 @@ export const States: Story = {
                   {...args}
                   className={state.class}
                   {...state.props}
-                  id={uniqueId}
+                  id={`${uniqueId}-checked`}
                   name={uniqueId}
                   defaultChecked
                 />
@@ -264,7 +264,7 @@ export const States: Story = {
                   {...args}
                   className={state.class}
                   {...state.props}
-                  id={uniqueId}
+                  id={`${uniqueId}-unchecked`}
                   name={uniqueId}
                 />
               </SpecimenRow>

@@ -244,21 +244,25 @@ export const States: Story = {
           return (
             <SpecimenGroup key={uniqueId} title={state.label}>
               <SpecimenRow>
-                <Textarea
-                  {...args}
-                  className={state.class}
-                  {...state.props}
-                  id={`${uniqueId}-empty`}
-                  name={`${uniqueId}-empty`}
-                />
-                <Textarea
-                  {...args}
-                  className={state.class}
-                  {...state.props}
-                  id={`${uniqueId}-fill`}
-                  name={`${uniqueId}-fill`}
-                  defaultValue='내용이 입력된 상태입니다.'
-                />
+                <SpecimenCell caption='Empty'>
+                  <Textarea
+                    {...args}
+                    className={state.class}
+                    {...state.props}
+                    id={`${uniqueId}-empty`}
+                    name={`${uniqueId}-empty`}
+                  />
+                </SpecimenCell>
+                <SpecimenCell caption='Filled'>
+                  <Textarea
+                    {...args}
+                    className={state.class}
+                    {...state.props}
+                    id={`${uniqueId}-fill`}
+                    name={`${uniqueId}-fill`}
+                    defaultValue='내용이 입력된 상태입니다.'
+                  />
+                </SpecimenCell>
               </SpecimenRow>
             </SpecimenGroup>
           );

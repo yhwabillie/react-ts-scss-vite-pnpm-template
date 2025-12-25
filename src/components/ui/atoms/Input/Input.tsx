@@ -1,9 +1,9 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef } from 'react';
 import clsx from 'clsx';
 import styles from '@/components/ui/atoms/Input/Input.module.scss';
 
 type BaseProps = {
-  variant?: 'solid' | 'outline' | 'ghost' | 'soft';
+  variant?: 'solid' | 'outline';
   color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   shape?: 'rounded' | 'square' | 'pill';
@@ -20,11 +20,11 @@ type InputProps = BaseProps & Omit<React.InputHTMLAttributes<HTMLDivElement>, ke
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
-      variant,
-      shape,
-      color,
-      size,
-      type,
+      variant = 'solid',
+      shape = 'rounded',
+      color = 'primary',
+      size = 'md',
+      type = 'text',
       role,
       id,
       as: Component = 'label',

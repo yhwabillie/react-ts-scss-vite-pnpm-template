@@ -82,6 +82,7 @@ $input-colors: (
 
 $input-sizes: (
   xs: (
+    width: rem(120px),
     height: rem(32px),
     padding: 0 rem(8px),
     font-token: var(--project-typo-input3-500),
@@ -96,6 +97,7 @@ $input-sizes: (
     ),
   ),
   sm: (
+    width: rem(200px),
     height: rem(36px),
     padding: 0 rem(10px),
     font-token: var(--project-typo-input2-500),
@@ -110,6 +112,7 @@ $input-sizes: (
     ),
   ),
   md: (
+    width: rem(320px),
     height: rem(40px),
     padding: 0 rem(12px),
     font-token: var(--project-typo-input2-500),
@@ -124,6 +127,7 @@ $input-sizes: (
     ),
   ),
   lg: (
+    width: rem(480px),
     height: rem(44px),
     padding: 0 rem(14px),
     font-token: var(--project-typo-input1-500),
@@ -138,6 +142,7 @@ $input-sizes: (
     ),
   ),
   xl: (
+    width: 100%,
     height: rem(48px),
     padding: 0 rem(16px),
     font-token: var(--project-typo-input1-500),
@@ -191,8 +196,67 @@ $input-sizes: (
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  min-width: rem(240px);
   position: relative;
+
+  &:is(label) {
+    outline: none !important;
+  }
+
+  :global(button) {
+    flex: 0 0 auto;
+  }
+
+  &:global(.adorned-start) {
+    :global(button) {
+      border-top-left-radius: inherit !important;
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+      border-bottom-left-radius: inherit !important;
+
+      &:focus-visible,
+      &:focus {
+        outline-offset: -2px;
+      }
+    }
+
+    :global(input) {
+      border-top-left-radius: 0;
+      border-top-right-radius: inherit;
+      border-bottom-right-radius: inherit;
+      border-bottom-left-radius: 0;
+
+      &:focus-visible,
+      &:focus {
+        outline-offset: -2px;
+      }
+    }
+  }
+
+  &:global(.adorned-end) {
+    :global(button) {
+      border-top-left-radius: 0 !important;
+      border-top-right-radius: inherit !important;
+      border-bottom-right-radius: inherit !important;
+      border-bottom-left-radius: 0 !important;
+
+      &:focus-visible,
+      &:focus {
+        outline-offset: -2px;
+      }
+    }
+
+    :global(input) {
+      border-top-left-radius: inherit;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: inherit;
+
+      &:focus-visible,
+      &:focus {
+        outline-offset: -2px;
+      }
+    }
+  }
 
   // variant
   @include input-variant(solid);
@@ -204,6 +268,7 @@ $input-sizes: (
     $adorned-end-map: map.get($props, adorned-end);
 
     &:global(.size--#{$size-name}) {
+      width: map.get($props, width);
       height: map.get($props, height);
 
       &:global(.shape--squre) {
@@ -261,6 +326,8 @@ $input-sizes: (
     background-color: inherit;
     color: #2d2d2d;
     border-radius: inherit;
+
+    @include ell();
 
     &:global(::placeholder) {
       color: #6f6f6f;

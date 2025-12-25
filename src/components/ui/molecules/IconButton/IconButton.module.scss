@@ -465,7 +465,7 @@ $btn-sizes: (
         &[aria-disabled='true'],
         &:disabled {
           cursor: not-allowed;
-          pointer-events: none;
+          // pointer-events: none;
           $disabled-props: map.get($variant-props, disabled);
           color: map.get($disabled-props, label);
 

@@ -18,6 +18,11 @@
     flex-direction: column;
   }
 
+  &:global(.is-wrap-center) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   :global(.title) {
     flex: 1 1 auto;
     display: inline-block;
