@@ -84,6 +84,16 @@ const meta = {
       table: { category: 'Styles' },
     },
 
+    // Content
+    label: {
+      control: 'text',
+      description: `
+컴포넌트 내부에 표시될 **라벨 텍스트**입니다. 
+\`as="label"\`인 상태에서 이 속성을 사용하면 별도의 외부 라벨 없이도 **웹 접근성(WCAG)** 기준을 충족하며 클릭 범위가 자동으로 확보됩니다.
+      `,
+      table: { category: 'Content' },
+    },
+
     // Etc
     as: {
       control: 'text',
@@ -99,6 +109,7 @@ const meta = {
   args: {
     color: 'primary',
     size: 'xl',
+    label: 'standalone형 체크박스',
   },
 } satisfies Meta<typeof Checkbox>;
 
@@ -249,18 +260,18 @@ export const States: Story = {
                   {...args}
                   className={state.class}
                   {...state.props}
-                  id={uniqueId}
+                  id={`${uniqueId}-checked`}
+                  htmlFor={`${uniqueId}-checked`}
                   name={uniqueId}
-                  htmlFor={uniqueId}
                   defaultChecked
                 />
                 <Checkbox
                   {...args}
                   className={state.class}
                   {...state.props}
-                  id={uniqueId}
+                  id={`${uniqueId}-unchecked`}
+                  htmlFor={`${uniqueId}-unchecked`}
                   name={uniqueId}
-                  htmlFor={uniqueId}
                 />
               </SpecimenRow>
             </SpecimenGroup>

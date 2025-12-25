@@ -14,6 +14,7 @@ type BaseProps = {
   color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
+  label?: string; // 단독으로 쓸 때 사용할 텍스트
 };
 
 type CheckboxProps = BaseProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof BaseProps>;
@@ -32,6 +33,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       color = 'primary',
       size = 'md',
       className,
+      label,
       ...rest
     },
     ref,
@@ -71,6 +73,9 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         {...(Component === 'label' ? { htmlFor: generatedId } : {})}
         className={clsx(`${styles['checkbox']} ${`color--${color}`} ${`size--${size}`}`, className)}
       >
+        {/* Standalone 모드일 때 텍스트 노출 */}
+        {label && <span className='sr-only'>{label}</span>}
+
         <input
           id={generatedId}
           name={name}
