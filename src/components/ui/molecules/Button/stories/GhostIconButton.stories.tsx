@@ -13,18 +13,17 @@ import {
   SpecimenWrapper,
 } from '@/components/ui/guide/Specimen';
 import { GuideCell, GuideGroup, GuideRow } from '@/components/ui/guide/Guide';
+import Input from '@/components/ui/atoms/Input/Input';
 
 /**
  * [Constants]
- * 렌더링 성능 최적화 및 타입 안정성을 위해 상수를 render 함수 외부로 추출합니다.
  */
 const COLOR_OPTIONS = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'] as const;
 const SIZE_OPTIONS = ['xl', 'lg', 'md', 'sm', 'xs'] as const;
 const SHAPE_OPTIONS = ['square', 'rounded', 'pill'] as const;
-const SAMPLE_COUNT = [1, 2, 3];
 
 const meta: Meta<typeof IconButton> = {
-  title: 'UI/Molecules/Button/IconButton/Outline',
+  title: 'UI/Molecules/Button/IconButton/Ghost',
   component: IconButton,
   tags: ['autodocs'],
   parameters: {
@@ -33,16 +32,16 @@ const meta: Meta<typeof IconButton> = {
       description: {
         component: `
 ### 💡 컴포넌트 개요
-**Outline IconButton**은 배경색 없이 보더(Border)로 영역을 구분하는 스타일입니다. Solid 타입보다 시각적 강조도가 낮아 보조적인 동작에 주로 사용됩니다.
+**Ghost IconButton**은 평상시에는 배경과 보더가 노출되지 않다가 인터랙션(Hover/Focus) 시에만 시각적 피드백이 나타나는 스타일입니다. 가장 낮은 위계(Low Emphasis)를 가지며 인터페이스의 복잡도를 낮추는 데 유용합니다.
 
 ### 📝 디자인 가이드 (Designer's Note)
-- **사용 처**: '취소', '이전', '상세보기' 등 보조적 액션(Secondary Action)에 사용합니다.
-- **시각적 조화**: Solid 버튼 옆에 나열하여 액션의 우선순위를 구분할 때 효과적입니다.
-- **가독성 주의**: 복잡한 배경 이미지 위에서는 보더가 묻힐 수 있으므로, 대비가 명확한 배경 위에서 사용을 권장합니다.
+- **사용 처**: 복잡한 데이터 테이블의 액션 버튼, 툴바, 혹은 **Input 컴포넌트 내부의 보조 액션**에 주로 사용합니다.
+- **레이아웃 전략**: 배경이 없으므로 주변 요소와의 간격(Gap) 배치가 중요하며, 여러 개 나열되어도 시각적 부담이 적습니다.
+- **컴포지션**: Input의 \`adornedStart\`, \`adornedEnd\` 슬롯에 배치하여 검색, 비밀번호 보기 등의 기능을 제공할 때 최적입니다.
 
 ### ♿ 접근성 가이드 (A11y)
-- **보더 대비**: 보더 컬러와 배경색의 대비(Contrast Ratio)가 최소 3:1 이상이어야 요소의 형태를 인지할 수 있습니다.
-- **상태 변화**: Hover/Focus 시 보더의 두께나 색상 변화가 뚜렷하여 사용자에게 피드백을 주어야 합니다.
+- **인지 가능성**: 평상시 배경이 없으므로 아이콘의 형태가 명확해야 하며, 충분한 여백을 두어 클릭 영역임을 암시해야 합니다.
+- **상태 피드백**: Hover 시 나타나는 배경색이 배경과 충분히 대비되어야 합니다.
         `,
       },
     },
@@ -52,7 +51,7 @@ const meta: Meta<typeof IconButton> = {
       control: 'select',
       options: ['solid', 'outline', 'ghost', 'link'],
       description: '버튼의 시각적 테마',
-      table: { category: 'Appearance', defaultValue: { summary: 'outline' } },
+      table: { category: 'Appearance', defaultValue: { summary: 'ghost' } },
     },
     color: {
       control: 'select',
@@ -85,7 +84,7 @@ const meta: Meta<typeof IconButton> = {
     },
   },
   args: {
-    variant: 'outline', // Outline 스토리이므로 기본값 변경
+    variant: 'ghost',
     color: 'primary',
     size: 'xl',
     shape: 'pill',
@@ -111,18 +110,12 @@ type Story = StoryObj<typeof meta>;
  * 가장 기본이 되는 단일 컴포넌트 명세입니다.
  */
 export const Base: Story = {
-  parameters: {
-    docs: {
-      canvas: { sourceState: 'shown' },
-    },
-  },
   render: args => <IconButton {...args} />,
 };
 
 /**
  * [02. Colors]
- * Outline 스타일에서의 컬러 시스템 적용 예시입니다.
- * 배경색이 아닌 보더와 아이콘/텍스트 컬러에 시멘틱 컬러가 적용됩니다.
+ * Ghost 스타일은 배경이 투명하므로 아이콘 자체의 색상으로 의미를 전달합니다.
  */
 export const Colors: Story = {
   render: args => {
@@ -145,7 +138,8 @@ export const Colors: Story = {
 
 /**
  * [03. States]
- * Outline 버튼은 인터랙션 시 배경색이 옅게 채워지거나 보더가 강조되는 등의 피드백을 제공합니다.
+ * Ghost 버튼은 인터랙션이 발생하기 전까지 투명한 상태를 유지합니다.
+ * 인터랙션 시 배경이 살짝 채워지는 피드백을 확인합니다.
  */
 export const States: Story = {
   render: args => {
@@ -176,7 +170,6 @@ export const States: Story = {
 
 /**
  * [04. Sizes]
- * 각 사이즈별 보더 두께와 아이콘 크기의 조화를 확인합니다.
  */
 export const Sizes: Story = {
   render: args => {
@@ -196,56 +189,46 @@ export const Sizes: Story = {
 };
 
 /**
- * [05. Shapes]
- * Outline 스타일에서는 보더의 곡률이 시각적으로 더 뚜렷하게 느껴집니다.
+ * [05. Composition]
+ * 내부 슬롯(adornedStart, adornedEnd)에 Ghost IconButton이 배치된 결합 형태입니다.
+ * 요소 간의 간격(Gap)과 클릭 영역이 충분히 확보되었는지 레이아웃을 검수합니다.
  */
-export const Shapes: Story = {
+export const Composition: Story = {
   render: args => {
     const baseId = useId();
-    const strokeWidth = args.size === 'xs' || args.size === 'sm' ? 2 : 2.5;
-
     return (
-      <GuideGroup direction='row'>
-        {SHAPE_OPTIONS.map(shape => (
-          <GuideRow key={`${baseId}-${shape}`} direction='column'>
-            {SAMPLE_COUNT.map(idx => (
-              <GuideCell
-                key={`${baseId}-${shape}-${idx}`}
-                caption={idx === 1 ? shape.toUpperCase() : undefined}
-              >
+      <GuideGroup>
+        <GuideRow direction='column'>
+          <GuideCell caption='Input with Left Ghost Icon'>
+            <Input
+              id={`${baseId}-left`}
+              size={args.size}
+              className='adorned-start'
+              adornedStart={
                 <IconButton
                   {...args}
-                  shape={shape}
-                  icon={<Icon name='chevron-left' strokeWidth={strokeWidth} />}
+                  ariaLabel='검색 버튼'
+                  icon={<Icon name='search' strokeWidth={2.5} />}
                 />
-              </GuideCell>
-            ))}
-          </GuideRow>
-        ))}
+              }
+            />
+          </GuideCell>
+          <GuideCell caption='Input with Right Ghost Icon'>
+            <Input
+              id={`${baseId}-right`}
+              size={args.size}
+              className='adorned-end'
+              adornedEnd={
+                <IconButton
+                  {...args}
+                  ariaLabel='검색 삭제'
+                  icon={<Icon name='x' strokeWidth={2.5} />}
+                />
+              }
+            />
+          </GuideCell>
+        </GuideRow>
       </GuideGroup>
     );
   },
-};
-
-/**
- * [06. Polymorphic Link]
- * '자세히 보기'와 같은 내비게이션 링크를 Outline 스타일의 버튼으로 구성할 때 사용합니다.
- */
-export const PolymorphicLink: Story = {
-  args: {
-    as: 'a',
-    href: 'https://www.google.com',
-    target: '_blank',
-    rel: 'noopener noreferrer',
-    ariaLabel: '구글로 이동 (새 창)',
-  },
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
-    const link = canvas.getByRole('link');
-    await step('태그 및 속성 검증', async () => {
-      await expect(link.tagName).toBe('A');
-      await expect(link).toHaveAttribute('href', 'https://www.google.com');
-    });
-  },
-  render: args => <IconButton {...args} />,
 };
