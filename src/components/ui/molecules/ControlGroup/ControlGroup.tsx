@@ -5,7 +5,6 @@ import styles from '@/components/ui/molecules/ControlGroup/ControlGroup.module.s
 type BaseProps = {
   role?: 'group' | 'toolbar';
   ariaLabel?: string;
-  direction?: 'row' | 'column';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   children: React.ReactNode;
   className?: string;
@@ -14,17 +13,11 @@ type BaseProps = {
 type ControlGroupProps = BaseProps & Omit<React.HTMLAttributes<HTMLDivElement>, keyof BaseProps>;
 
 const ControlGroup = forwardRef<HTMLDivElement, ControlGroupProps>(
-  (
-    { role = 'group', ariaLabel, direction = 'row', size = 'md', children, className, ...rest },
-    ref,
-  ) => {
+  ({ role = 'group', ariaLabel, size = 'md', children, className, ...rest }, ref) => {
     return (
       <div
         ref={ref}
-        className={clsx(
-          `${styles['control-group']} ${`size--${size}`} ${`direction--${direction}`}`,
-          className,
-        )}
+        className={clsx(`${styles['control-group']} ${`size--${size}`}`, className)}
         role={role}
         aria-label={ariaLabel}
         {...rest}

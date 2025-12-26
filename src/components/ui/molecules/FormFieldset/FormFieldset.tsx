@@ -3,10 +3,11 @@ import clsx from 'clsx';
 import styles from '@/components/ui/molecules/FormFieldset/FormFieldset.module.scss';
 
 type BaseProps = {
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  legend: string;
+  direction?: 'column' | 'row';
   required?: boolean;
   className?: string;
-  legend: string;
   style?: CSSProperties;
   children: React.ReactNode;
 };
@@ -15,11 +16,14 @@ type FormFieldsetProps = BaseProps &
   Omit<React.HTMLAttributes<HTMLFieldSetElement>, keyof BaseProps>;
 
 const FormFieldset = forwardRef<HTMLFieldSetElement, FormFieldsetProps>(
-  ({ size, required, className, legend, style, children }, ref) => {
+  ({ size = 'md', legend, direction = 'row', required, className, style, children }, ref) => {
     return (
       <fieldset
         ref={ref}
-        className={clsx(`${styles['form-fieldset']} ${`size--${size}`}`, className)}
+        className={clsx(
+          `${styles['form-fieldset']} ${`size--${size}`} ${`direction--${direction}`}`,
+          className,
+        )}
         style={style}
       >
         <legend className='legend'>

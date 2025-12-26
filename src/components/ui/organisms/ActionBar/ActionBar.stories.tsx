@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import ActionBar from './ActionBar';
 import ButtonGroup from '../../molecules/ButtonGroup/ButtonGroup';
 import Button from '../../molecules/Button/Button';
+import AnatomyWrapper from '../../guide/AnatomyWrapper';
 
 const meta = {
   title: 'UI/Organisms/ActionBar',
@@ -9,138 +10,86 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
-    docs: {
-      description: {
-        component:
-          'ActionBar는 페이지 하단이나 폼(Form)의 끝에서 주요 액션을 실행하기 위한 레이아웃 컴포넌트입니다. <br />' +
-          '좌우 공간을 활용하여 "목록으로 이동"과 같은 보조 액션과 "저장/수정"과 같은 주요 액션을 시각적으로 분리하여 배치하는 역할을 합니다.',
-      },
-    },
   },
+  // 공통 기본값 설정
   args: {
-    size: 'xl',
+    size: 'md',
     role: 'group',
-    ariaLabel: '편집 작업',
-    children: undefined,
+    children: null, // 필수 props 초기화
   },
   argTypes: {
     size: {
       control: 'inline-radio',
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      table: { category: 'Styles' },
     },
+    role: { table: { category: 'Advanced' } },
+    ariaLabel: { name: 'aria-label', table: { category: 'Advanced' } },
+    children: { control: false, table: { category: 'Contents' } },
+    className: { table: { category: 'Styles' } },
   },
-} satisfies Meta;
+} satisfies Meta<typeof ActionBar>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+/**
+ * 헬퍼 함수: ActionBar 내부 표준 버튼 구성을 생성합니다. (2025-12-27 리팩토링)
+ * 각 사이즈별로 동일한 구조를 안전하게 복제하기 위해 분리했습니다.
+ */
+const renderActionBarContent = (size: 'xs' | 'sm' | 'md' | 'lg' | 'xl') => (
+  <>
+    <ButtonGroup size={size} align='left'>
+      <Button as='a' href='#' color='tertiary' size={size} variant='outline' shape='rounded'>
+        목록
+      </Button>
+    </ButtonGroup>
+    <ButtonGroup size={size} align='right' role='group' ariaLabel='편집 작업'>
+      <Button color='primary' size={size} variant='outline' shape='rounded'>
+        수정
+      </Button>
+      <Button color='primary' size={size} variant='solid' shape='rounded'>
+        저장
+      </Button>
+    </ButtonGroup>
+  </>
+);
+
 export const Base: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'ActionBar의 가장 전형적인 구성입니다. <br> 좌측에는 목록 이동 등 현재 맥락을 벗어나는 버튼을, ' +
-          '우측에는 데이터 보존 및 변경을 위한 핵심 버튼 그룹을 배치하여 사용자의 시선 흐름을 유도합니다.',
-      },
-    },
+  args: {
+    size: 'xl',
   },
-  args: {},
   render: args => {
+    // args.size가 undefined일 경우를 대비한 안전장치
+    const size = args.size ?? 'md';
     return (
-      <div style={{ width: '800px', border: '1px dashed #ccc' }}>
-        <p style={{ fontSize: '12px', color: '#333', marginBottom: '10px' }}>부모 요소</p>
-        <ActionBar {...args}>
-          <ButtonGroup size={args.size} align='left'>
-            <Button
-              as='a'
-              href='#'
-              color='tertiary'
-              size={args.size}
-              variant='outline'
-              shape='rounded'
-            >
-              목록
-            </Button>
-          </ButtonGroup>
-          <ButtonGroup size={args.size} align='right' role='group' ariaLabel='편집 작업'>
-            <Button color='primary' size={args.size} variant='outline' shape='rounded'>
-              수정
-            </Button>
-            <Button color='primary' size={args.size} variant='solid' shape='rounded'>
-              저장
-            </Button>
-          </ButtonGroup>
-        </ActionBar>
-      </div>
+      <AnatomyWrapper title='부모 요소 (800px)' style={{ width: '800px' }}>
+        <ActionBar {...args}>{renderActionBarContent(size)}</ActionBar>
+      </AnatomyWrapper>
     );
   },
 };
 
 export const Sizes: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          '다양한 뷰포트나 컨텐츠의 중요도에 따라 5가지 사이즈를 제공합니다. <br>' +
-          'ActionBar 내부의 모든 구성 요소(ButtonGroup, Button)는 일관된 수직 리듬을 유지하기 위해 상위 레벨에서 정의된 동일한 사이즈를 상속받아 사용합니다.',
-      },
-    },
+  args: {
+    ...meta.args,
   },
   render: args => {
     const sizeOptions: Array<'xl' | 'lg' | 'md' | 'sm' | 'xs'> = ['xl', 'lg', 'md', 'sm', 'xs'];
 
     return (
-      <div
-        style={{ display: 'inline-flex', gap: '15px', alignItems: 'end', flexDirection: 'column' }}
-      >
+      <div style={{ display: 'inline-flex', gap: '24px', flexDirection: 'column' }}>
         {sizeOptions.map(size => (
-          <div
+          <AnatomyWrapper
             key={size}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start',
-              gap: '8px',
-            }}
+            title={`Size: ${size.toUpperCase()}`}
+            style={{ width: '800px' }}
           >
-            <span
-              style={{
-                fontSize: '10px',
-                color: '#666',
-                fontWeight: 'bold',
-              }}
-            >
-              {size.toUpperCase()}
-            </span>
-
-            <div style={{ width: '800px', border: '1px dashed #ccc' }}>
-              <p style={{ fontSize: '12px', color: '#333', marginBottom: '10px' }}>부모 요소</p>
-
-              <ActionBar {...args}>
-                <ButtonGroup size={size} align='left'>
-                  <Button
-                    as='a'
-                    href='#'
-                    color='tertiary'
-                    size={size}
-                    variant='outline'
-                    shape='rounded'
-                  >
-                    목록
-                  </Button>
-                </ButtonGroup>
-                <ButtonGroup size={size} align='right' role='group' ariaLabel='편집 작업'>
-                  <Button color='primary' size={size} variant='outline' shape='rounded'>
-                    수정
-                  </Button>
-                  <Button color='primary' size={size} variant='solid' shape='rounded'>
-                    저장
-                  </Button>
-                </ButtonGroup>
-              </ActionBar>
-            </div>
-          </div>
+            <ActionBar {...args} size={size}>
+              {renderActionBarContent(size)}
+            </ActionBar>
+          </AnatomyWrapper>
         ))}
       </div>
     );

@@ -5,22 +5,62 @@
 // legend size
 $legend-sizes: (
   xs: (
+    row: (
+      label-gap: rem(26px),
+      div-gap: rem(14px),
+    ),
+    col: (
+      label-gap: rem(2px),
+      div-gap: rem(2px),
+    ),
     font-token: var(--project-typo-legend5-600),
     margin: 0 0 rem(24px),
   ),
   sm: (
+    row: (
+      label-gap: rem(28px),
+      div-gap: rem(16px),
+    ),
+    col: (
+      label-gap: rem(4px),
+      div-gap: rem(4px),
+    ),
     font-token: var(--project-typo-legend4-600),
     margin: 0 0 rem(24px),
   ),
   md: (
+    row: (
+      label-gap: rem(30px),
+      div-gap: rem(18px),
+    ),
+    col: (
+      label-gap: rem(6px),
+      div-gap: rem(6px),
+    ),
     font-token: var(--project-typo-legend3-600),
     margin: 0 0 rem(24px),
   ),
   lg: (
+    row: (
+      label-gap: rem(32px),
+      div-gap: rem(20px),
+    ),
+    col: (
+      label-gap: rem(8px),
+      div-gap: rem(8px),
+    ),
     font-token: var(--project-typo-legend2-600),
     margin: 0 0 rem(24px),
   ),
   xl: (
+    row: (
+      label-gap: rem(36px),
+      div-gap: rem(24px),
+    ),
+    col: (
+      label-gap: rem(10px),
+      div-gap: rem(10px),
+    ),
     font-token: var(--project-typo-legend1-600),
     margin: 0 0 rem(24px),
   ),
@@ -32,19 +72,48 @@ $legend-sizes: (
     // ──────────────── 기본 데이터 추출 ────────────────
     $font-token: map.get($props, font-token);
     $margin: map.get($props, margin);
+    $row-props: map.get($props, row);
+    $col-props: map.get($props, col);
 
     // ──────────────── PC 스타일 ────────────────
     &:global(.size--#{$size-name}) {
+      // Row
+      &:global(.direction--row) {
+        flex-direction: row;
+        align-items: center;
+
+        &:is(fieldset) {
+          gap: map.get($row-props, label-gap);
+        }
+
+        &:is(div) {
+          gap: map.get($row-props, div-gap);
+        }
+      }
+
+      // Column
+      &:global(.direction--column) {
+        flex-direction: column;
+
+        &:is(fieldset) {
+          gap: map.get($col-props, label-gap);
+        }
+
+        &:is(div) {
+          gap: map.get($col-props, div-gap);
+        }
+      }
+
       :global(.legend) {
         font: $font-token;
-        margin: $margin;
-        display: inline-flex;
-        align-items: center;
-        gap: rem(4px);
-        flex-wrap: wrap;
+        // margin: $margin;
+        // display: inline-flex;
+        // align-items: center;
+        // gap: rem(4px);
+        // flex-wrap: wrap;
 
         :global(.requried) {
-          color: #d32f2f;
+          color: var(--required-asterisk-color);
         }
       }
     }
@@ -52,8 +121,7 @@ $legend-sizes: (
 }
 
 .form-fieldset {
-  width: inherit;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
 
   @include legend-size;

@@ -23,6 +23,9 @@
   // label
   --text-color-label: #1d1d1d;
 
+  // required
+  --required-asterisk-color: #d32f2f;
+
   // radio
   --bg-color-unchecked-radio: #ffffff;
   --stroke-color-radio: #717171;
@@ -37,6 +40,19 @@
   // switch
   --switch-track-off-bg-color: #e5e7eb;
   --switch-handle-off-bg-color: #ffffff;
+
+  // input
+  --success-bg-color-input-outline: #f0fdf4;
+  --success-text-color-input-outline: #14532d;
+  --success-stroke-color-input-outline: #14532d;
+  --success-placeholder-color-input-outline: #15803d;
+
+  --success-bg-color-input-solid: #f0fdf4;
+  --success-text-color-input-solid: #14532d;
+  --success-placeholder-color-input-solid: #15803d;
+
+  // input hover
+  --success-hover-shadow-input: rgba(21, 128, 101, 0.25);
 
   // switch - success
   --success-track-on-bg-color-switch: #16a34a;
@@ -116,6 +132,19 @@
   --success-active-bg-color-btn-link: rgba(21, 128, 61, 0.1);
   --success-active-text-color-btn-link: #15803d;
 
+  // input
+  --warning-bg-color-input-outline: #fff7ed;
+  --warning-text-color-input-outline: #78350f;
+  --warning-stroke-color-input-outline: #78350f;
+  --warning-placeholder-color-input-outline: #b45309;
+
+  --warning-bg-color-input-solid: #fff7ed;
+  --warning-text-color-input-solid: #78350f;
+  --warning-placeholder-color-input-solid: #b45309;
+
+  // input hover
+  --warning-hover-shadow-input: rgba(180, 83, 9, 0.25);
+
   // switch - warning
   --warning-track-on-bg-color-switch: #b45309;
   --warning-handle-on-bg-color-switch: #ffffff;
@@ -193,6 +222,19 @@
 
   --warning-active-bg-color-btn-link: rgba(180, 83, 9, 0.1);
   --warning-active-text-color-btn-link: #b45309;
+
+  // input
+  --danger-bg-color-input-outline: #fef2f2;
+  --danger-text-color-input-outline: #7f1d1d;
+  --danger-stroke-color-input-outline: #7f1d1d;
+  --danger-placeholder-color-input-outline: #b91c1c;
+
+  --danger-bg-color-input-solid: #fef2f2;
+  --danger-text-color-input-solid: #7f1d1d;
+  --danger-placeholder-color-input-solid: #b91c1c;
+
+  // input hover
+  --danger-hover-shadow-input: rgba(185, 28, 28, 0.25);
 
   // switch - danger
   --danger-track-on-bg-color-switch: #dc2626;
@@ -315,12 +357,22 @@
   --danger-solid-path-color-spinner-closed-ring: #ffffff;
 
   // readonly
+  --readonly-bg-color-input: #f9f9f9;
+  --readonly-stroke-color-input: #e0e0e0;
+  --readonly-text-color-input: #212121;
+  --readonly-placeholder-color-input: #757575;
+
   --readonly-bg-color-textarea: #f9f9f9;
   --readonly-stroke-color-textarea: #e0e0e0;
   --readonly-text-color-textarea: #212121;
   --readonly-placeholder-color-textarea: #757575;
 
   // disabled
+  --disabled-bg-color-input: #eeeeee;
+  --disabled-stroke-color-input: #dddddd;
+  --disabled-text-color-input: #9e9e9e;
+  --disabled-placeholder-color-input: #bdbdbd;
+
   --disabled-track-on-bg-color-switch: #cdd1d5;
   --disabled-handle-on-bg-color-switch: #8a949e;
   --disabled-handle-on-border-color-switch: #cdd1d5;
@@ -366,6 +418,9 @@
   // label
   --text-color-label: #ffffff;
 
+  // required
+  --required-asterisk-color: #ff8a80;
+
   // radio
   --bg-color-unchecked-radio: #121212;
   --stroke-color-radio: #ffffff;
@@ -380,6 +435,19 @@
   // switch
   --switch-track-off-bg-color: #374151;
   --switch-handle-off-bg-color: #9ca3af;
+
+  // input
+  --success-bg-color-input-outline: #064e3b;
+  --success-text-color-input-outline: #f0fdf4;
+  --success-stroke-color-input-outline: #065f46;
+  --success-placeholder-color-input-outline: #6ee7b7;
+
+  --success-bg-color-input-solid: #064e3b;
+  --success-text-color-input-solid: #f0fdf4;
+  --success-placeholder-color-input-solid: #6ee7b7;
+
+  // input hover
+  --success-hover-shadow-input: #34d399;
 
   // switch - success
   --success-track-on-bg-color-switch: #16a34a;
@@ -459,6 +527,19 @@
   --success-active-bg-color-btn-link: rgba(74, 222, 128, 0.25);
   --success-active-text-color-btn-link: #4ade80;
 
+  // input
+  --warning-bg-color-input-outline: #451a03;
+  --warning-text-color-input-outline: #fffbeb;
+  --warning-stroke-color-input-outline: #78350f;
+  --warning-placeholder-color-input-outline: #fcd34d;
+
+  --warning-bg-color-input-solid: #451a03;
+  --warning-text-color-input-solid: #fffbeb;
+  --warning-placeholder-color-input-solid: #fcd34d;
+
+  // input hover
+  --warning-hover-shadow-input: #facc15;
+
   // switch - warning
   --warning-track-on-bg-color-switch: #9a3412;
   --warning-handle-on-bg-color-switch: #ffffff;
@@ -536,6 +617,19 @@
 
   --warning-active-bg-color-btn-link: rgba(251, 191, 36, 0.25);
   --warning-active-text-color-btn-link: #fbbf24;
+
+  // input
+  --danger-bg-color-input-outline: #450a0a;
+  --danger-text-color-input-outline: #fef2f2;
+  --danger-stroke-color-input-outline: #7f1d1d;
+  --danger-placeholder-color-input-outline: #fca5a5;
+
+  --danger-bg-color-input-solid: #450a0a;
+  --danger-text-color-input-solid: #fef2f2;
+  --danger-placeholder-color-input-solid: #fca5a5;
+
+  // input hover
+  --danger-hover-shadow-input: #ef4444;
 
   // switch - danger
   --danger-track-on-bg-color-switch: #b91c1c;
@@ -658,12 +752,22 @@
   --danger-solid-path-color-spinner-closed-ring: #ffffff;
 
   // readonly
+  --readonly-bg-color-input: #1e293b;
+  --readonly-stroke-color-input: #334155;
+  --readonly-text-color-input: #cbd5e1;
+  --readonly-placeholder-color-input: #64748b;
+
   --readonly-bg-color-textarea: #1e293b;
   --readonly-stroke-color-textarea: #334155;
   --readonly-text-color-textarea: #cbd5e1;
   --readonly-placeholder-color-textarea: #64748b;
 
   // disabled
+  --disabled-bg-color-input: #0f172a;
+  --disabled-stroke-color-input: #1e293b;
+  --disabled-text-color-input: #475569;
+  --disabled-placeholder-color-input: #334155;
+
   --disabled-track-on-bg-color-switch: #374151;
   --disabled-handle-on-bg-color-switch: #6b7280;
   --disabled-handle-on-border-color-switch: #374151;
@@ -690,6 +794,19 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  // input
+  --primary-bg-color-input-outline: #e6f0ff;
+  --primary-text-color-input-outline: #003380;
+  --primary-placeholder-color-input-outline: #5c7899;
+  --primary-stroke-color-input-outline: #0052cc;
+
+  --primary-bg-color-input-solid: #e6f0ff;
+  --primary-text-color-input-solid: #003380;
+  --primary-placeholder-color-input-solid: #5c7899;
+
+  // input hover
+  --primary-hover-shadow-input: rgba(0, 82, 204, 0.25);
+
   // switch
   --primary-track-on-bg-color-switch: #3b82f6;
   --primary-handle-on-bg-color-switch: #ffffff;
@@ -763,6 +880,19 @@
   --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-link: #0052cc;
 
+  // input
+  --secondary-bg-color-input-outline: #f1f5f9;
+  --secondary-text-color-input-outline: #1e293b;
+  --secondary-stroke-color-input-outline: #1e293b;
+  --secondary-placeholder-color-input-outline: #64748b;
+
+  --secondary-bg-color-input-solid: #f1f5f9;
+  --secondary-text-color-input-solid: #1e293b;
+  --secondary-placeholder-color-input-solid: #64748b;
+
+  // input hover
+  --secondary-hover-shadow-input: rgba(71, 85, 105, 0.25);
+
   // switch
   --secondary-track-on-bg-color-switch: #475569;
   --secondary-handle-on-bg-color-switch: #ffffff;
@@ -835,6 +965,19 @@
 
   --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-link: #475569;
+
+  // input
+  --tertiary-bg-color-input-outline: #f5f3ff;
+  --tertiary-text-color-input-outline: #4c1d95;
+  --tertiary-stroke-color-input-outline: #4c1d95;
+  --tertiary-placeholder-color-input-outline: #7c3aed;
+
+  --tertiary-bg-color-input-solid: #f5f3ff;
+  --tertiary-text-color-input-solid: #4c1d95;
+  --tertiary-placeholder-color-input-solid: #7c3aed;
+
+  // input hover
+  --tertiary-hover-shadow-input: rgba(124, 58, 237, 0.25);
 
   // switch
   --tertiary-track-on-bg-color-switch: #7c3aed;
@@ -949,6 +1092,19 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    // input
+    --primary-bg-color-input-outline: #0f172a;
+    --primary-text-color-input-outline: #f1f5f9;
+    --primary-stroke-color-input-outline: #334155;
+    --primary-placeholder-color-input-outline: #94a3b8;
+
+    --primary-bg-color-input-solid: #1e293b;
+    --primary-text-color-input-solid: #f8fafc;
+    --primary-placeholder-color-input-solid: #94a3b8;
+
+    // input hover
+    --primary-hover-shadow-input: #38bdf8;
+
     // switch
     --primary-track-on-bg-color-switch: #66b2ff;
     --primary-handle-on-bg-color-switch: #ffffff;
@@ -1022,6 +1178,19 @@
     --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
     --primary-active-text-color-btn-link: #60a5fa;
 
+    // input
+    --secondary-bg-color-input-outline: #1e293b;
+    --secondary-text-color-input-outline: #94a3b8;
+    --secondary-stroke-color-input-outline: #475569;
+    --secondary-placeholder-color-input-outline: #64748b;
+
+    --secondary-bg-color-input-solid: #334155;
+    --secondary-text-color-input-solid: #cbd5e1;
+    --secondary-placeholder-color-input-solid: #64748b;
+
+    // input hover
+    --secondary-hover-shadow-input: #94a3b8;
+
     // switch
     --secondary-track-on-bg-color-switch: #38bdf8;
     --secondary-handle-on-bg-color-switch: #ffffff;
@@ -1094,6 +1263,19 @@
 
     --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
+
+    // input
+    --tertiary-bg-color-input-outline: #1e1b4b;
+    --tertiary-text-color-input-outline: #f5f3ff;
+    --tertiary-stroke-color-input-outline: #4c1d95;
+    --tertiary-placeholder-color-input-outline: #a78bfa;
+
+    --tertiary-bg-color-input-solid: #2e1065;
+    --tertiary-text-color-input-solid: #f5f3ff;
+    --tertiary-placeholder-color-input-solid: #a78bfa;
+
+    // input hover
+    --tertiary-hover-shadow-input: #a78bfa;
 
     // switch
     --tertiary-track-on-bg-color-switch: #a78bfa;

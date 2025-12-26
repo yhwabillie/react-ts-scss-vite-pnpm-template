@@ -14,7 +14,7 @@ import { GuideCell, GuideGroup, GuideRow } from '@/components/ui/guide/Guide';
 import AnatomyWrapper from '@/components/ui/guide/AnatomyWrapper';
 
 const meta: Meta<typeof LinkButton> = {
-  title: 'UI/Molecules/Button/Link',
+  title: 'UI/Molecules/Button/LinkButton',
   component: LinkButton,
   tags: ['autodocs'],
   parameters: {

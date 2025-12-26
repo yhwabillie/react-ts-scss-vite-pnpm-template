@@ -202,11 +202,13 @@ export const Composition: Story = {
           <GuideCell caption='Input with Left Ghost Icon'>
             <Input
               id={`${baseId}-left`}
-              size={args.size}
+              size='md'
               className='adorned-start'
+              placeholder='정보를 입력해 주세요'
               adornedStart={
                 <IconButton
                   {...args}
+                  size='md'
                   ariaLabel='검색 버튼'
                   icon={<Icon name='search' strokeWidth={2.5} />}
                 />
@@ -216,13 +218,15 @@ export const Composition: Story = {
           <GuideCell caption='Input with Right Ghost Icon'>
             <Input
               id={`${baseId}-right`}
-              size={args.size}
+              size='md'
               className='adorned-end'
+              placeholder='정보를 입력해 주세요'
               adornedEnd={
                 <IconButton
                   {...args}
-                  ariaLabel='검색 삭제'
-                  icon={<Icon name='x' strokeWidth={2.5} />}
+                  size='md'
+                  ariaLabel='검색 버튼'
+                  icon={<Icon name='search' strokeWidth={2.5} />}
                 />
               }
             />

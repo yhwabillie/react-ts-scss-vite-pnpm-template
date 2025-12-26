@@ -4,7 +4,7 @@
 @use '../../../../styles/mixins' as *;
 
 .action-bar {
-  width: inherit;
+  width: 100%;
   display: flex;
   align-items: center;
 

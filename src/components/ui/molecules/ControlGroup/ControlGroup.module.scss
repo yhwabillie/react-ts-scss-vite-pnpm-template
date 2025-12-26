@@ -7,39 +7,31 @@
 $control-group-sizes: (
   xs: (
     font-token: var(--project-typo-legend5-600),
-    gap: rem(4px),
+    gap: rem(10px),
   ),
   sm: (
     font-token: var(--project-typo-legend4-600),
-    gap: rem(8px),
+    gap: rem(10px),
   ),
   md: (
     font-token: var(--project-typo-legend3-600),
-    gap: rem(12px),
+    gap: rem(18px),
   ),
   lg: (
     font-token: var(--project-typo-legend2-600),
-    gap: rem(1rem (6px)),
+    gap: rem(18px),
   ),
   xl: (
     font-token: var(--project-typo-legend1-600),
-    gap: rem(20px),
+    gap: rem(18px),
   ),
 );
 
 .control-group {
   width: 100%;
-  // Row
-  &:global(.direction--row) {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-  }
-
-  // Column
-  &:global(.direction--column) {
-    display: flex;
-    flex-direction: column;
-  }
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
 
   @each $size-name, $props in $control-group-sizes {
     // ──────────────── 기본 데이터 추출 ────────────────

@@ -17,46 +17,59 @@ const meta = {
     layout: 'centered',
   },
   argTypes: {
-    // Accessibility
+    // 1. Accessibility (접근성 및 시맨틱)
     role: {
       control: 'inline-radio',
       options: ['group', 'toolbar'],
-      description: '컴포넌트의 접근성 역할을 정의합니다.',
-      table: { category: 'Accessibility' },
+      description: `
+컴포넌트의 논리적 역할을 정의합니다.
+- **group**: 관련 있는 입력 요소들의 집합 (예: 설문 항목)
+- **toolbar**: 공통 작업을 수행하는 버튼들의 집합 (예: 에디터 도구모음)
+      `,
+      table: {
+        category: 'Accessibility',
+        defaultValue: { summary: 'group' },
+      },
     },
     ariaLabel: {
       control: 'text',
-      description: '스크린 리더를 위한 그룹 설명입니다.',
+      description:
+        '시각적 라벨이 없을 때 스크린 리더가 이 그룹의 목적을 식별할 수 있도록 제공하는 설명입니다.',
       table: { category: 'Accessibility' },
     },
 
-    // Styles
+    // 2. Styles & Layout (시각적 규격 및 배치)
     size: {
       control: 'inline-radio',
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
-      description: '내부 요소들의 전반적인 크기를 결정합니다.',
-      table: { category: 'Styles' },
-    },
-    direction: {
-      control: 'inline-radio',
-      options: ['row', 'column'],
-      description: '요소들의 배치 방향을 결정합니다.',
-      table: { category: 'Styles' },
+      description: '내부 아이템(Button, Input 등)의 공통 크기 규격입니다.',
+      table: {
+        category: 'Styles',
+        defaultValue: { summary: 'md' },
+      },
     },
 
-    // Etc
+    // 3. Contents & Utility (내부 요소 및 확장)
     children: {
-      table: { category: 'Etc' },
+      control: false,
+      description: '그룹 내부에 배치될 구성 요소들입니다.',
+      table: {
+        category: 'Advanced',
+        type: { summary: 'ReactNode' },
+      },
     },
     className: {
       control: 'text',
-      table: { category: 'Etc' },
+      description: '커스텀 스타일 및 여백(Margin/Padding) 조정을 위한 클래스명입니다.',
+      table: { category: 'Advanced' },
     },
   },
   args: {
     size: 'xl',
-    direction: 'row',
+
+    role: 'group',
     children: undefined,
+    ariaLabel: '선택 옵션 그룹',
   },
 } satisfies Meta<typeof ControlGroup>;
 
@@ -65,22 +78,20 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * 라디오 버튼들을 세로로 나열하여 선택지를 명확히 보여주는 형태입니다.
+ * Radio 및 Checkbox 등 선택형 요소들을 그룹화하여 일관된 레이아웃과 접근성을 제공하는 기본 구성입니다.
+ * - **복합 구성**: 단일 그룹 내에서 `FormField`와 결합하여 라벨 클릭 범위 확장 및 시각적 위계를 관리합니다.
+ * - **ID 관리**: `useId`와 맵핑 로직을 통해 `htmlFor`와 `id`를 동기화하여 접근성 결함을 방지합니다.
  */
 export const Base: Story = {
-  args: {
-    direction: 'row',
-  },
   render: args => {
-    // 스토리 세션 내에서 고유한 prefix 생성
     const baseId = useId();
 
-    const controlTypes = [
+    const CONTROL_TYPES = [
       { type: 'radio', label: 'Radio ControlGroup', Component: Radio },
       { type: 'checkbox', label: 'Checkbox ControlGroup', Component: Checkbox },
-    ];
+    ] as const;
 
-    const options = [
+    const OPTIONS = [
       { label: '옵션 1', defaultChecked: true },
       { label: '옵션 2' },
       { label: '옵션 3' },
@@ -88,31 +99,23 @@ export const Base: Story = {
 
     return (
       <GuideGroup direction='column'>
-        {controlTypes.map(({ type, label, Component }) => {
-          // 각 그룹별 고유 ID 생성
+        {CONTROL_TYPES.map(({ type, label, Component }) => {
           const groupId = `${baseId}-${type}`;
 
           return (
             <GuideWrapper key={groupId} title={label}>
               <SpecimenRow>
                 <SpecimenCell>
-                  <AnatomyWrapper style={{ width: '600px' }} minimal={true}>
+                  <AnatomyWrapper minimal={true}>
                     <ControlGroup {...args}>
-                      {options.map((option, optIndex) => {
-                        // 각 옵션별 고유 ID 자동 발급
-                        const uniqueId = `${groupId}-opt-${optIndex}`;
+                      {OPTIONS.map((option, idx) => {
+                        const fieldId = `${groupId}-opt-${idx}`;
 
                         return (
-                          <FormField
-                            key={uniqueId}
-                            as='label'
-                            htmlFor={uniqueId}
-                            size={args.size}
-                            direction={args.direction}
-                          >
+                          <FormField key={fieldId} as='label' htmlFor={fieldId} size={args.size}>
                             <Component
                               as='span'
-                              id={uniqueId}
+                              id={fieldId}
                               name={groupId}
                               color='primary'
                               size={args.size}
@@ -136,29 +139,24 @@ export const Base: Story = {
 };
 
 /**
- * 5가지 표준 사이즈(XL ~ XS)에 따른 그룹 내 요소들의 변화를 확인합니다.
- * 모든 자식 요소(FormField, Radio, Checkbox, Label)의 사이즈가 부모와 동기화되는지 검증합니다.
+ * [02. Sizes / Scaling Synchronization]
+ * 시스템 표준 5가지 사이즈(XL ~ XS)에 따른 그룹 내 요소들의 시각적 조화를 확인합니다.
+ * - **동기화**: 부모(`ControlGroup`)의 사이즈가 모든 자식(`FormField`, `Radio/Checkbox`, `Label`)에 전파되는지 확인합니다.
+ * - **가독성**: 작은 사이즈(SM, XS)에서도 체크 표시나 라벨의 텍스트가 뭉쳐 보이지 않는지 검수합니다.
+ * - **터치 영역**: XS 사이즈의 경우, 접근성 가이드에 따라 최소 클릭 영역이 확보되었는지 체크합니다.
  */
 export const Sizes: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story: 'XS부터 XL까지 각 사이즈별 컨트롤 요소와 라벨의 정렬 및 비율을 확인합니다.',
-      },
-    },
-  },
   render: args => {
     const baseId = useId();
-    const sizes = ['xl', 'lg', 'md', 'sm', 'xs'] as const;
 
-    // 반복되는 컴포넌트 타입 정의
-    const controlTypes = [
+    // 1. 상수 데이터 추출 (렌더링 최적화 및 가독성)
+    const SIZE_OPTIONS = ['xl', 'lg', 'md', 'sm', 'xs'] as const;
+    const CONTROL_TYPES = [
       { type: 'radio', Component: Radio },
       { type: 'checkbox', Component: Checkbox },
-    ];
+    ] as const;
 
-    // 옵션 데이터
-    const options = [
+    const SAMPLE_OPTIONS = [
       { label: '옵션 1', defaultChecked: true },
       { label: '옵션 2' },
       { label: '옵션 3' },
@@ -166,30 +164,25 @@ export const Sizes: Story = {
 
     return (
       <GuideGroup direction='column'>
-        {sizes.map(size => (
-          <div key={size} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {controlTypes.map(({ type, Component }) => {
+        {SIZE_OPTIONS.map(size => (
+          <GuideWrapper key={`${baseId}-${size}`} title={`${size.toUpperCase()}`}>
+            {CONTROL_TYPES.map(({ type, Component }) => {
               const groupId = `${baseId}-${size}-${type}`;
 
               return (
                 <SpecimenRow key={groupId}>
-                  <GuideWrapper title={type === 'radio' ? size.toUpperCase() : undefined}>
-                    <AnatomyWrapper style={{ width: '600px' }} minimal={true}>
-                      <ControlGroup {...args}>
-                        {options.map((option, index) => {
-                          const uniqueId = `${groupId}-${index}`;
+                  <SpecimenCell>
+                    <AnatomyWrapper minimal={true}>
+                      <ControlGroup {...args} size={size}>
+                        {SAMPLE_OPTIONS.map((option, idx) => {
+                          const fieldId = `${groupId}-opt-${idx}`;
+
                           return (
-                            <FormField
-                              key={uniqueId}
-                              as='label'
-                              htmlFor={uniqueId}
-                              size={size}
-                              direction={args.direction}
-                            >
+                            <FormField key={fieldId} as='label' htmlFor={fieldId} size={size}>
                               <Component
                                 as='span'
-                                id={uniqueId}
-                                name={groupId}
+                                id={fieldId}
+                                name={type === 'radio' ? groupId : fieldId}
                                 color='primary'
                                 size={size}
                                 value={option.label}
@@ -201,11 +194,11 @@ export const Sizes: Story = {
                         })}
                       </ControlGroup>
                     </AnatomyWrapper>
-                  </GuideWrapper>
+                  </SpecimenCell>
                 </SpecimenRow>
               );
             })}
-          </div>
+          </GuideWrapper>
         ))}
       </GuideGroup>
     );

@@ -6,6 +6,7 @@ import { SpecimenCell, SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../..
 import React, { useId } from 'react';
 import { GuideCell, GuideGroup, GuideRow, GuideWrapper } from '../../guide/Guide';
 import IconButton from '../../molecules/IconButton/IconButton';
+import clsx from 'clsx';
 
 const meta = {
   title: 'UI/Molecules/Input/Outline',
@@ -149,16 +150,17 @@ export const Colors: Story = {
             <SpecimenGroup key={color} title={color}>
               <SpecimenRow>
                 <SpecimenCell caption='Empty'>
-                  <Input {...args} id={`${uniqueId}-${color}-emtpy`} />
+                  <Input {...args} color={color} id={`${uniqueId}-${color}-emtpy`} />
                   <Input
                     {...args}
+                    color={color}
                     id={`${uniqueId}-${color}-emtpy-adorned-start`}
                     className='adorned-start'
                     adornedStart={
                       <IconButton
                         variant='ghost'
-                        color='primary'
-                        shape='rounded'
+                        color={color}
+                        shape={args.shape}
                         size={args.size}
                         ariaLabel='검색 버튼'
                         icon={
@@ -175,13 +177,14 @@ export const Colors: Story = {
                   />
                   <Input
                     {...args}
+                    color={color}
                     id={`${uniqueId}-${color}-emtpy-adorned-end`}
                     className='adorned-end'
                     adornedEnd={
                       <IconButton
                         variant='ghost'
-                        color='primary'
-                        shape='rounded'
+                        color={color}
+                        shape={args.shape}
                         size={args.size}
                         ariaLabel='검색 버튼'
                         icon={
@@ -200,19 +203,21 @@ export const Colors: Story = {
                 <SpecimenCell caption='Filled'>
                   <Input
                     {...args}
+                    color={color}
                     id={`${uniqueId}-${color}-filled`}
                     defaultValue='내용이 입력된 상태입니다.'
                   />
                   <Input
                     {...args}
+                    color={color}
                     id={`${uniqueId}-${color}-filled-adorned-start`}
                     defaultValue='내용이 입력된 상태입니다.'
                     className='adorned-start'
                     adornedStart={
                       <IconButton
                         variant='ghost'
-                        color='primary'
-                        shape='rounded'
+                        color={color}
+                        shape={args.shape}
                         size={args.size}
                         ariaLabel='검색 버튼'
                         icon={
@@ -229,14 +234,15 @@ export const Colors: Story = {
                   />
                   <Input
                     {...args}
+                    color={color}
                     id={`${uniqueId}-${color}-filled-adorned-end`}
                     defaultValue='내용이 입력된 상태입니다.'
                     className='adorned-end'
                     adornedEnd={
                       <IconButton
                         variant='ghost'
-                        color='primary'
-                        shape='rounded'
+                        color={color}
+                        shape={args.shape}
                         size={args.size}
                         ariaLabel='검색 버튼'
                         icon={
@@ -448,12 +454,12 @@ export const States: Story = {
                     {...args}
                     {...state.props}
                     id={`${uniqueId}-empty-adorned-start`}
-                    className='adorned-start'
+                    className={clsx('adorned-start', state.props.className)}
                     adornedStart={
                       <IconButton
                         variant='ghost'
-                        color='primary'
-                        shape='rounded'
+                        color={args.color}
+                        shape={args.shape}
                         size={args.size}
                         ariaLabel='검색 버튼'
                         disabled={state.props.disabled || state.props.readOnly}
@@ -473,12 +479,12 @@ export const States: Story = {
                     {...args}
                     {...state.props}
                     id={`${uniqueId}-empty-adorned-end`}
-                    className='adorned-end'
+                    className={clsx('adorned-end', state.props.className)}
                     adornedEnd={
                       <IconButton
                         variant='ghost'
-                        color='primary'
-                        shape='rounded'
+                        color={args.color}
+                        shape={args.shape}
                         size={args.size}
                         ariaLabel='검색 버튼'
                         disabled={state.props.disabled || state.props.readOnly}
@@ -507,12 +513,12 @@ export const States: Story = {
                     {...state.props}
                     id={`${uniqueId}-filled-adorned-start`}
                     defaultValue='내용이 입력된 상태입니다.'
-                    className='adorned-start'
+                    className={clsx('adorned-start', state.props.className)}
                     adornedStart={
                       <IconButton
                         variant='ghost'
-                        color='primary'
-                        shape='rounded'
+                        color={args.color}
+                        shape={args.shape}
                         size={args.size}
                         ariaLabel='검색 버튼'
                         disabled={state.props.disabled || state.props.readOnly}
@@ -533,12 +539,12 @@ export const States: Story = {
                     {...state.props}
                     id={`${uniqueId}-filled-adorned-end`}
                     defaultValue='내용이 입력된 상태입니다.'
-                    className='adorned-end'
+                    className={clsx('adorned-end', state.props.className)}
                     adornedEnd={
                       <IconButton
                         variant='ghost'
-                        color='primary'
-                        shape='rounded'
+                        color={args.color}
+                        shape={args.shape}
                         size={args.size}
                         ariaLabel='검색 버튼'
                         disabled={state.props.disabled || state.props.readOnly}
