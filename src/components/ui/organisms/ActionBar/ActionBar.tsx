@@ -3,8 +3,8 @@ import clsx from 'clsx';
 import styles from '@/components/ui/organisms/ActionBar/ActionBar.module.scss';
 
 type BaseProps = {
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   role?: 'group' | 'toolbar';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   ariaLabel?: string;
   className?: string;
   children: React.ReactNode;
@@ -13,7 +13,7 @@ type BaseProps = {
 type ActionBarProps = BaseProps & Omit<React.HtmlHTMLAttributes<HTMLDivElement>, keyof BaseProps>;
 
 const ActionBar = forwardRef<HTMLDivElement, ActionBarProps>(
-  ({ size, children, role, ariaLabel, className, ...rest }, ref) => {
+  ({ role = 'group', size = 'md', ariaLabel, className, children, ...rest }, ref) => {
     return (
       <div
         ref={ref}

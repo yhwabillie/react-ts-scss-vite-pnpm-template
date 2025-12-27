@@ -7,16 +7,8 @@ import { ModalContext } from '@/components/contexts/ModalContext';
 
 // 1. 공통 스타일 Props 정의
 type BaseProps = {
-  variant?: 'solid' | 'outline' | 'ghost' | 'soft';
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'brand'
-    | 'brand-sub'
-    | 'success'
-    | 'warning'
-    | 'danger';
+  variant?: 'solid' | 'outline' | 'ghost' | 'link';
+  color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   shape?: 'square' | 'rounded' | 'pill';
   children?: React.ReactNode;

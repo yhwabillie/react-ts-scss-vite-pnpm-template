@@ -24,7 +24,7 @@ type NativeDivProps = Omit<
   keyof StyleProps | keyof InputA11yProps
 >;
 
-interface CalendarProps extends StyleProps, NativeDivProps {
+export interface CalendarProps extends StyleProps, NativeDivProps {
   calendarRef?: React.RefObject<HTMLDivElement | null>;
   id?: string;
   selectedYear?: number;
@@ -418,7 +418,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
           <div className='calendar-head'>
             {/* 이전 달 */}
             <IconButton
-              variant='soft'
+              variant='solid'
               color='primary'
               size='xs'
               shape='pill'
@@ -468,7 +468,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
             </div>
             {/* 다음 달 */}
             <IconButton
-              variant='soft'
+              variant='solid'
               color='primary'
               size='xs'
               shape='pill'

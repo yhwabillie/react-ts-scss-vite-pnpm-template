@@ -1,0 +1,55 @@
+/* Specimen.module.scss */
+@use 'sass:map';
+@use '../../../styles/mixins' as *;
+
+.specimen-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: rem(24px);
+}
+
+.specimen-group {
+  display: flex;
+  align-items: center;
+  gap: rem(40px);
+  flex-direction: row;
+
+  &:global(.is-column) {
+    flex-direction: column;
+  }
+
+  &:global(.is-wrap-center) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  :global(.title) {
+    flex: 1 1 auto;
+    display: inline-block;
+    font-weight: var(--project-font-weight-700);
+    font-size: rem(14px);
+    color: var(--color-text-primary);
+    text-transform: capitalize;
+  }
+}
+
+.specimen-row {
+  display: flex;
+  gap: rem(20px);
+  align-items: center;
+}
+
+.specimen-cell {
+  // width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: rem(10px);
+
+  :global(.caption) {
+    font-size: rem(12px);
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    font-weight: var(--project-font-weight-700);
+  }
+}

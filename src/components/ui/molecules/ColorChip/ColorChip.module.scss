@@ -1,0 +1,61 @@
+/* ColorChip.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.container {
+  margin-bottom: 30px;
+  font-family: sans-serif;
+
+  .header {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: baseline;
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--text-main);
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-sub);
+      margin-left: 8px;
+    }
+  }
+
+  .grid {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+}
+
+.chipWrapper {
+  width: 120px;
+
+  .chip {
+    height: 60px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 8px;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+
+  .name {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--text-main);
+  }
+
+  .value {
+    font-size: 11px;
+    color: var(--text-sub);
+    text-transform: uppercase;
+  }
+}

@@ -3,55 +3,79 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
-// switch color variant
-$switch-variants: (
+// switch colors
+$switch-colors: (
   primary: (
-    track-on-bg: #2563eb,
-    handle-on-bg: #ffffff,
-    handle-on-border: #2563eb,
-    icon-on-color: #2563eb,
+    track-on-bg: var(--primary-track-on-bg-color-switch),
+    handle-on-bg: var(--primary-handle-on-bg-color-switch),
+    handle-on-border: var(--primary-handle-on-border-color-switch),
+    icon-on-color: var(--primary-icon-on-color-switch),
+    hover: (
+      shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-switch),
+    ),
+    active: (
+      shadow: 0 0 0 rem(6px) var(--primary-active-shadow-switch),
+    ),
   ),
   secondary: (
-    track-on-bg: #69b2ff,
-    handle-on-bg: #ffffff,
-    handle-on-border: #69b2ff,
-    icon-on-color: #69b2ff,
+    track-on-bg: var(--secondary-track-on-bg-color-switch),
+    handle-on-bg: var(--secondary-handle-on-bg-color-switch),
+    handle-on-border: var(--secondary-handle-on-border-color-switch),
+    icon-on-color: var(--secondary-icon-on-color-switch),
+    hover: (
+      shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-switch),
+    ),
+    active: (
+      shadow: 0 0 0 rem(6px) var(--secondary-active-shadow-switch),
+    ),
   ),
   tertiary: (
-    track-on-bg: #111827,
-    handle-on-bg: #ffffff,
-    handle-on-border: #111827,
-    icon-on-color: #111827,
-  ),
-  brand: (
-    track-on-bg: #ff6f61,
-    handle-on-bg: #ffffff,
-    handle-on-border: #ff6f61,
-    icon-on-color: #ff6f61,
-  ),
-  brand-sub: (
-    track-on-bg: #6a1b9a,
-    handle-on-bg: #ffffff,
-    handle-on-border: #6a1b9a,
-    icon-on-color: #6a1b9a,
+    track-on-bg: var(--tertiary-track-on-bg-color-switch),
+    handle-on-bg: var(--tertiary-handle-on-bg-color-switch),
+    handle-on-border: var(--tertiary-handle-on-border-color-switch),
+    icon-on-color: var(--tertiary-icon-on-color-switch),
+    hover: (
+      shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-switch),
+    ),
+    active: (
+      shadow: 0 0 0 rem(6px) var(--tertiary-active-shadow-switch),
+    ),
   ),
   success: (
-    track-on-bg: #10b981,
-    handle-on-bg: #ffffff,
-    handle-on-border: #10b981,
-    icon-on-color: #10b981,
+    track-on-bg: var(--success-track-on-bg-color-switch),
+    handle-on-bg: var(--success-handle-on-bg-color-switch),
+    handle-on-border: var(--success-handle-on-border-color-switch),
+    icon-on-color: var(--success-icon-on-color-switch),
+    hover: (
+      shadow: 0 0 0 rem(4px) var(--success-hover-shadow-switch),
+    ),
+    active: (
+      shadow: 0 0 0 rem(6px) var(--success-active-shadow-switch),
+    ),
   ),
   warning: (
-    track-on-bg: #f59e0b,
-    handle-on-bg: #ffffff,
-    handle-on-border: #f59e0b,
-    icon-on-color: #f59e0b,
+    track-on-bg: var(--warning-track-on-bg-color-switch),
+    handle-on-bg: var(--warning-handle-on-bg-color-switch),
+    handle-on-border: var(--warning-handle-on-border-color-switch),
+    icon-on-color: var(--warning-icon-on-color-switch),
+    hover: (
+      shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-switch),
+    ),
+    active: (
+      shadow: 0 0 0 rem(6px) var(--warning-active-shadow-switch),
+    ),
   ),
   danger: (
-    track-on-bg: #ef4444,
-    handle-on-bg: #ffffff,
-    handle-on-border: #ef4444,
-    icon-on-color: #ef4444,
+    track-on-bg: var(--danger-track-on-bg-color-switch),
+    handle-on-bg: var(--danger-handle-on-bg-color-switch),
+    handle-on-border: var(--danger-handle-on-border-color-switch),
+    icon-on-color: var(--danger-icon-on-color-switch),
+    hover: (
+      shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-switch),
+    ),
+    active: (
+      shadow: 0 0 0 rem(6px) var(--danger-active-shadow-switch),
+    ),
   ),
 );
 
@@ -108,8 +132,18 @@ $switch-sizes: (
   display: inline-flex;
   cursor: pointer;
 
-  @each $variant-name, $props in $switch-variants {
-    &:global(.variant--#{$variant-name}) {
+  @each $color-name, $props in $switch-colors {
+    $props: map.get($switch-colors, $color-name);
+    $hover-map: map.get($props, hover);
+    $active-map: map.get($props, active);
+
+    // shadow
+    $hover-shadow: map.get($hover-map, shadow);
+    $active-shadow: map.get($active-map, shadow);
+
+    &:global(.color--#{$color-name}) {
+      transition: all 0.2s ease;
+
       :global(input[type='checkbox']:checked ~ .label) {
         :global(.track) {
           background-color: map.get($props, track-on-bg);
@@ -126,20 +160,30 @@ $switch-sizes: (
         cursor: not-allowed;
 
         :global(.track) {
-          background-color: #cdd1d5;
+          background-color: var(--disabled-track-on-bg-color-switch);
 
           :global(.handle) {
-            border-color: #cdd1d5;
-            color: #cdd1d5;
-            background-color: #8a949e;
+            border-color: var(--disabled-handle-on-border-color-switch);
+            color: var(--disabled-icon-on-color-switch);
+            background-color: var(--disabled-handle-on-bg-color-switch);
           }
         }
+      }
+
+      &:not(:has(input:disabled)):hover {
+        box-shadow: $hover-shadow;
+      }
+
+      &:not(:has(input:disabled)):active {
+        box-shadow: $active-shadow;
       }
     }
   }
 
   @each $size-name, $props in $switch-sizes {
     &:global(.size--#{$size-name}) {
+      border-radius: map.get($props, track-radius);
+
       :global(input[type='checkbox']:checked ~ .label) {
         :global(.track) {
           :global(.handle) {
@@ -183,8 +227,17 @@ $switch-sizes: (
 
   :global(.label) {
     display: inline-flex;
+
     align-items: center;
     gap: rem(8px);
+
+    &:global(.is-start) {
+      flex-direction: row-reverse;
+    }
+
+    &:global(.is-end) {
+      flex-direction: row;
+    }
 
     :global(.track) {
       position: relative;

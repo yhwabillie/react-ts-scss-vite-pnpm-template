@@ -169,6 +169,12 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
+/* legend가 flex flow를 방해하지 않도록 처리 */
+.legend {
+  flex-shrink: 0; /* 너비 유지 */
+  float: left; /* 일부 구형 브라우저 대응 */
+}
+
 /* scroll */
 ::-webkit-scrollbar {
   width: 6px;

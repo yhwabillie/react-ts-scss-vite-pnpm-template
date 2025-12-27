@@ -4,13 +4,14 @@ import styles from '@/components/ui/molecules/FormField/FormField.module.scss';
 
 type BaseProps = {
   id?: string;
+  htmlFor?: string;
+  as?: React.ElementType;
   required?: boolean;
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  className?: string;
-  as?: React.ElementType; // 최상위 태그 변경 가능
-  htmlFor?: string; // label일 경우 적용 가능
+  direction?: 'column' | 'row';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   labelText?: string; // label일 경우 텍스트
-  direction: 'column' | 'row';
+  children?: React.ReactNode;
+  className?: string;
 };
 
 type FormFieldProps = BaseProps & Omit<React.HTMLAttributes<HTMLElement>, keyof BaseProps>;
@@ -19,14 +20,14 @@ const FormField = forwardRef<HTMLElement, FormFieldProps>(
   (
     {
       id,
-      required,
-      size,
-      className,
-      as: Component = 'div',
       htmlFor,
+      as: Component = 'div',
+      required,
+      direction = 'row',
+      size = 'md',
       labelText,
-      direction,
       children,
+      className,
       ...rest
     },
     ref,

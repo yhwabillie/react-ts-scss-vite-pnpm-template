@@ -1,54 +1,190 @@
-/* Slider.module.scss */
 @use 'sass:map';
 @use 'sass:meta';
+@use 'sass:math';
 @use '../../../../styles/mixins' as *;
 
-.sliderWrapper {
-  margin: 20px 0;
-  
-  .label {
-    display: block;
-    margin-bottom: 12px;
-    font-size: 14px;
-    font-weight: 600;
-  }
-}
+// 💡 1. 컬러 시스템 정의
+$slider-colors: (
+  primary: (
+    thumb-bg: var(--primary-thumb-bg-color-slider),
+    thumb-border: var(--primary-thumb-stroke-color-slider),
+    fill-bg: var(--primary-fill-bg-color-slider),
+  ),
+  secondary: (
+    thumb-bg: var(--secondary-thumb-bg-color-slider),
+    thumb-border: var(--secondary-thumb-stroke-color-slider),
+    fill-bg: var(--secondary-fill-bg-color-slider),
+  ),
+  tertiary: (
+    thumb-bg: var(--tertiary-thumb-bg-color-slider),
+    thumb-border: var(--tertiary-thumb-stroke-color-slider),
+    fill-bg: var(--tertiary-fill-bg-color-slider),
+  ),
+);
 
-.track {
+$slider-sizes: (
+  xs: (
+    width: rem(100px),
+    thumb-size: 14px,
+    track-height: 5px,
+  ),
+  sm: (
+    width: rem(160px),
+    thumb-size: 16px,
+    track-height: 7px,
+  ),
+  md: (
+    width: rem(240px),
+    thumb-size: 18px,
+    track-height: 8px,
+  ),
+  lg: (
+    width: rem(320px),
+    thumb-size: 22px,
+    track-height: 10px,
+  ),
+  xl: (
+    width: rem(480px),
+    thumb-size: 24px,
+    track-height: 12px,
+  ),
+);
+
+.slider {
   position: relative;
-  width: 100%;
-  height: 6px;
-  background: #e0e0e0;
-  border-radius: 3px;
-  cursor: pointer;
-}
+  display: flex;
+  align-items: center;
 
-.fill {
-  position: absolute;
-  height: 100%;
-  background: #007bff;
-  border-radius: 3px;
-}
-
-.thumb {
-  position: absolute;
-  top: 50%;
-  width: 20px;
-  height: 20px;
-  background: #fff;
-  border: 2px solid #007bff;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  outline: none;
-  transition: box-shadow 0.2s;
-
-  // ✅ 고대비 모드 및 키보드 접근성 시각화
-  &:focus {
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.4);
-    border-color: #0056b3;
+  // 인터랙션 & 툴팁 로직 (Disabled가 아닐 때만 작동)
+  &:not(:global(.disabled)) {
+    // 실제 브라우저 상태 감지 (input이 active일 때 부모가 감지)
+    // 스토리북용 pseudo 클래스 감지
+    &:global(:has(.native-range-input:active)),
+    &:global(:has(.native-range-input.pseudo-active)),
+    &:global(:has(.input-wrapper:hover)),
+    &:global(:has(.thumb:focus-visible)),
+    &:global(:has(.thumb.pseudo-focus-visible)) {
+      :global(.thumb) :global(.tooltip) {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
   }
 
-  &:hover {
-    background: #f8f9fa;
+  // Disabled 상태 (강제 고정 스타일)
+  &:global(:has(.native-range-input:disabled)) {
+    opacity: 0.6;
+
+    :global(.native-range-input) {
+      cursor: not-allowed;
+    }
+    :global(.track) {
+      background-color: var(--disabled-track-bg-color-slider);
+      :global(.fill) {
+        background-color: var(--disabled-fill-bg-color-slider) !important;
+      }
+    }
+    :global(.thumb) {
+      background-color: var(--disabled-thumb-bg-color-slider);
+      border-color: var(--disabled-thumb-stroke-color-slider) !important;
+      cursor: not-allowed;
+      :global(.tooltip) {
+        display: none !important;
+      }
+    }
+  }
+
+  @each $size-name, $props in $slider-sizes {
+    $t-size: map.get($props, thumb-size);
+
+    &:global(.size--#{$size-name}) {
+      width: map.get($props, width);
+
+      :global(.input-wrapper) {
+        position: relative;
+        width: 100%;
+        height: rem(32px);
+        display: flex;
+        align-items: center;
+      }
+
+      :global(.native-range-input) {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        opacity: 0;
+        z-index: 10;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+
+        &::-webkit-slider-thumb {
+          appearance: none;
+          width: rem($t-size);
+          height: rem($t-size);
+        }
+      }
+
+      :global(.track) {
+        position: absolute;
+        width: 100%;
+        height: rem(map.get($props, track-height));
+        background-color: var(--track-bg-color-slider);
+        border-radius: var(--project-border-radius-max);
+        overflow: hidden;
+
+        :global(.fill) {
+          height: 100%;
+          border-radius: inherit;
+        }
+      }
+
+      :global(.thumb) {
+        position: absolute;
+        width: rem($t-size);
+        height: rem($t-size);
+        border: 2px solid transparent; // 아래 컬러 루프에서 칠함
+        border-radius: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+
+        :global(.tooltip) {
+          position: absolute;
+          bottom: 150%;
+          left: 50%;
+          transform: translateX(-50%) translateY(rem(8px));
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+          padding: rem(4px) rem(8px);
+          background-color: var(--tooltip-bg-color-slider);
+          color: var(--tooltip-text-color-slider);
+          border-radius: rem(4px);
+          font-size: rem(12px);
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  @each $name, $color in $slider-colors {
+    &:global(.color--#{$name}) {
+      :global(.fill) {
+        background-color: map.get($color, fill-bg);
+      }
+      :global(.thumb) {
+        border-color: map.get($color, thumb-border);
+        background-color: map.get($color, thumb-bg);
+
+        &:focus-visible,
+        &:global(.pseudo-focus-visible) {
+          outline: 2.5px dashed #2466eb !important;
+          outline-offset: 2px;
+        }
+      }
+    }
   }
 }

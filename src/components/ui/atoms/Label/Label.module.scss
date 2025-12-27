@@ -6,14 +6,10 @@
 // label size
 $label-sizes: (
   xs: var(--project-typo-l5-500),
-  // 12px 체크박스
   sm: var(--project-typo-l4-500),
-  // 16px 체크박스
   md: var(--project-typo-l3-500),
-  // 20px 체크박스
   lg: var(--project-typo-l2-500),
-  // 24px 체크박스
-  xl: var(--project-typo-l1-500), // 28px 체크박스
+  xl: var(--project-typo-l1-500),
 );
 
 // mixin - label sizes
@@ -26,7 +22,7 @@ $label-sizes: (
 }
 
 .label {
-  color: #1d1d1d;
+  color: var(--text-color-label);
   cursor: pointer;
   flex: 1 1 auto;
 

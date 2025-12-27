@@ -10,17 +10,9 @@ export interface OptionBase {
   disabled?: boolean;
   selected?: any;
 }
-interface BaseProps extends OptionBase {
-  variant: 'solid' | 'soft' | 'outline' | 'ghost';
-  color:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'brand'
-    | 'brand-sub'
-    | 'success'
-    | 'warning'
-    | 'danger';
+export interface BaseProps extends OptionBase {
+  variant: 'solid' | 'outline' | 'ghost';
+  color: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   index?: number; // Optional로 추가
   className?: string;

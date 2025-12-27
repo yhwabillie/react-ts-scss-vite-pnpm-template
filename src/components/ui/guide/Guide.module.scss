@@ -1,0 +1,64 @@
+/* GuideWrapper.module.scss */
+@use 'sass:map';
+@use '../../../styles/mixins' as *;
+
+.guide-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: rem(4px);
+
+  :global(.title) {
+    width: 100%;
+    font: var(--project-typo-l3-500);
+    color: var(--color-text-primary);
+    padding: 0 rem(10px) 0 rem(10px);
+  }
+}
+
+.guide-group {
+  display: flex;
+  align-items: center;
+  gap: rem(40px);
+  flex-direction: row;
+
+  &:global(.is-column) {
+    flex-direction: column;
+  }
+
+  :global(.title) {
+    flex: 1 1 auto;
+    display: inline-block;
+    font-weight: var(--project-font-weight-700);
+    font-size: rem(14px);
+    color: var(--color-text-primary);
+    text-transform: capitalize;
+  }
+}
+
+.guide-row {
+  display: flex;
+  gap: rem(20px);
+  align-items: center;
+
+  &:global(.is-column) {
+    flex-direction: column;
+  }
+
+  &:global(.is-row) {
+    flex-direction: row;
+  }
+}
+
+.guide-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: rem(10px);
+
+  :global(.caption) {
+    font-size: rem(12px);
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    font-weight: var(--project-font-weight-700);
+  }
+}

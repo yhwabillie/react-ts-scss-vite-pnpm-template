@@ -6,535 +6,323 @@
 $btn-colors: (
   primary: (
     solid: (
-      bg: #0052cc,
-      label: #ffffff,
+      bg: var(--primary-bg-color-btn-solid),
+      label: var(--primary-text-color-btn-solid),
       hover: (
-        bg: #0041a8,
-        label: #ffffff,
+        bg: var(--primary-hover-bg-color-btn-solid),
+        label: var(--primary-hover-text-color-btn-solid),
       ),
       active: (
-        bg: #003388,
-        label: #ffffff,
+        bg: var(--primary-active-bg-color-btn-solid),
+        label: var(--primary-active-text-color-btn-solid),
       ),
       disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
+        bg: var(--disabled-bg-color-btn),
+        label: var(--disabled-text-color-btn),
       ),
     ),
+
     outline: (
-      bg: transparent,
-      label: #0052cc,
+      bg: var(--bg-color-btn-outline),
+      label: var(--primary-text-color-btn-outline),
       hover: (
-        bg: rgba(0, 82, 204, 0.1),
-        label: #0052cc,
+        bg: var(--primary-hover-bg-color-btn-outline),
+        label: var(--primary-hover-text-color-btn-outline),
       ),
       active: (
-        bg: rgba(0, 82, 204, 0.2),
-        label: #0052cc,
+        bg: var(--primary-active-bg-color-btn-outline),
+        label: var(--primary-active-text-color-btn-outline),
       ),
       disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
+        bg: var(--disabled-bg-color-btn),
+        label: var(--disabled-text-color-btn),
       ),
     ),
-    soft: (
-      bg: #cce0ff,
-      label: #0052cc,
-      hover: (
-        bg: #b3d1ff,
-        label: #0052cc,
-      ),
-      active: (
-        bg: #99c2ff,
-        label: #0052cc,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
+
     ghost: (
-      bg: transparent,
-      label: #0052cc,
+      bg: var(--primary-bg-color-btn-ghost),
+      label: var(--primary-text-color-btn-ghost),
       hover: (
-        bg: rgba(0, 82, 204, 0.05),
-        label: #0052cc,
+        bg: var(--primary-hover-bg-color-btn-ghost),
+        label: var(--primary-hover-text-color-btn-ghost),
       ),
       active: (
-        bg: rgba(0, 82, 204, 0.1),
-        label: #0052cc,
+        bg: var(--primary-active-bg-color-btn-ghost),
+        label: var(--primary-active-text-color-btn-ghost),
       ),
       disabled: (
-        bg: transparent,
-        label: #9e9e9e,
+        bg: var(--ghost-disabled-bg-color-btn),
+        label: var(--disabled-text-color-btn),
       ),
     ),
   ),
 
   secondary: (
+    //
     solid: (
-      bg: #69b2ff,
-      label: #003366,
-      hover: (
-        bg: #4d9aff,
-        label: #003366,
+        bg: var(--secondary-bg-color-btn-solid),
+        label: var(--secondary-text-color-btn-solid),
+        hover: (
+          bg: var(--secondary-hover-bg-color-btn-solid),
+          label: var(--secondary-hover-text-color-btn-solid),
+        ),
+        active: (
+          bg: var(--secondary-active-bg-color-btn-solid),
+          label: var(--secondary-active-text-color-btn-solid),
+        ),
+        disabled: (
+          bg: var(--disabled-bg-color-btn),
+          label: var(--disabled-text-color-btn),
+        ),
       ),
-      active: (
-        bg: #3382ff,
-        label: #003366,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
+
+    //
     outline: (
-      bg: transparent,
-      label: #69b2ff,
-      hover: (
-        bg: rgba(105, 178, 255, 0.1),
-        label: #69b2ff,
+        bg: var(--bg-color-btn-outline),
+        label: var(--secondary-text-color-btn-outline),
+        hover: (
+          bg: var(--secondary-hover-bg-color-btn-outline),
+          label: var(--secondary-hover-text-color-btn-outline),
+        ),
+        active: (
+          bg: var(--secondary-active-bg-color-btn-outline),
+          label: var(--secondary-active-text-color-btn-outline),
+        ),
+        disabled: (
+          bg: var(--disabled-bg-color-btn),
+          label: var(--disabled-text-color-btn),
+        ),
       ),
-      active: (
-        bg: rgba(105, 178, 255, 0.2),
-        label: #69b2ff,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
-    soft: (
-      bg: #e6f2ff,
-      label: #003366,
-      hover: (
-        bg: #d9ebff,
-        label: #003366,
-      ),
-      active: (
-        bg: #cce5ff,
-        label: #003366,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
+
+    //
     ghost: (
-      bg: transparent,
-      label: #003366,
-      hover: (
-        bg: rgba(0, 51, 102, 0.05),
-        label: #003366,
+        bg: var(--secondary-bg-color-btn-ghost),
+        label: var(--secondary-text-color-btn-ghost),
+        hover: (
+          bg: var(--secondary-hover-bg-color-btn-ghost),
+          label: var(--secondary-hover-text-color-btn-ghost),
+        ),
+        active: (
+          bg: var(--secondary-active-bg-color-btn-ghost),
+          label: var(--secondary-active-text-color-btn-ghost),
+        ),
+        disabled: (
+          bg: var(--ghost-disabled-bg-color-btn),
+          label: var(--disabled-text-color-btn),
+        ),
       ),
-      active: (
-        bg: rgba(0, 51, 102, 0.1),
-        label: #003366,
-      ),
-      disabled: (
-        bg: transparent,
-        label: #9e9e9e,
-      ),
-    ),
   ),
 
   tertiary: (
+    //
     solid: (
-      bg: #e0e0e0,
-      label: #333333,
-      hover: (
-        bg: #cfcfcf,
-        label: #333333,
+        bg: var(--tertiary-bg-color-btn-solid),
+        label: var(--tertiary-text-color-btn-solid),
+        hover: (
+          bg: var(--tertiary-hover-bg-color-btn-solid),
+          label: var(--tertiary-hover-text-color-btn-solid),
+        ),
+        active: (
+          bg: var(--tertiary-active-bg-color-btn-solid),
+          label: var(--tertiary-active-text-color-btn-solid),
+        ),
+        disabled: (
+          bg: var(--disabled-bg-color-btn),
+          label: var(--disabled-text-color-btn),
+        ),
       ),
-      active: (
-        bg: #bfbfbf,
-        label: #333333,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
-    outline: (
-      bg: transparent,
-      label: #333333,
-      hover: (
-        bg: rgba(51, 51, 51, 0.1),
-        label: #333333,
-      ),
-      active: (
-        bg: rgba(51, 51, 51, 0.2),
-        label: #333333,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
-    soft: (
-      bg: #f5f5f5,
-      label: #333333,
-      hover: (
-        bg: #ebebeb,
-        label: #333333,
-      ),
-      active: (
-        bg: #e0e0e0,
-        label: #333333,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
-    ghost: (
-      bg: transparent,
-      label: #333333,
-      hover: (
-        bg: rgba(51, 51, 51, 0.05),
-        label: #333333,
-      ),
-      active: (
-        bg: rgba(51, 51, 51, 0.1),
-        label: #333333,
-      ),
-      disabled: (
-        bg: transparent,
-        label: #9e9e9e,
-      ),
-    ),
-  ),
 
-  brand: (
-    solid: (
-      bg: #ff6f61,
-      label: #ffffff,
-      hover: (
-        bg: #e65c50,
-        label: #ffffff,
-      ),
-      active: (
-        bg: #cc5044,
-        label: #ffffff,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
+    //
     outline: (
-      bg: transparent,
-      label: #ff6f61,
-      hover: (
-        bg: rgba(255, 111, 97, 0.1),
-        label: #ff6f61,
+        bg: var(--bg-color-btn-outline),
+        label: var(--tertiary-text-color-btn-outline),
+        hover: (
+          bg: var(--tertiary-hover-bg-color-btn-outline),
+          label: var(--tertiary-hover-text-color-btn-outline),
+        ),
+        active: (
+          bg: var(--tertiary-active-bg-color-btn-outline),
+          label: var(--tertiary-active-text-color-btn-outline),
+        ),
+        disabled: (
+          bg: var(--disabled-bg-color-btn),
+          label: var(--disabled-text-color-btn),
+        ),
       ),
-      active: (
-        bg: rgba(255, 111, 97, 0.2),
-        label: #ff6f61,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
-    soft: (
-      bg: #ffd9d0,
-      label: #ff6f61,
-      hover: (
-        bg: #ffc4b8,
-        label: #ff6f61,
-      ),
-      active: (
-        bg: #ffb0a1,
-        label: #ff6f61,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
-    ghost: (
-      bg: transparent,
-      label: #ff6f61,
-      hover: (
-        bg: rgba(255, 111, 97, 0.05),
-        label: #ff6f61,
-      ),
-      active: (
-        bg: rgba(255, 111, 97, 0.1),
-        label: #ff6f61,
-      ),
-      disabled: (
-        bg: transparent,
-        label: #9e9e9e,
-      ),
-    ),
-  ),
 
-  'brand-sub': (
-    solid: (
-      bg: #6a1b9a,
-      label: #ffffff,
-      hover: (
-        bg: #5a157f,
-        label: #ffffff,
-      ),
-      active: (
-        bg: #4b1169,
-        label: #ffffff,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
-    outline: (
-      bg: transparent,
-      label: #6a1b9a,
-      hover: (
-        bg: rgba(106, 27, 154, 0.1),
-        label: #6a1b9a,
-      ),
-      active: (
-        bg: rgba(106, 27, 154, 0.2),
-        label: #6a1b9a,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
-    soft: (
-      bg: #e1bee7,
-      label: #6a1b9a,
-      hover: (
-        bg: #d4a6dc,
-        label: #6a1b9a,
-      ),
-      active: (
-        bg: #c791d0,
-        label: #6a1b9a,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
     ghost: (
-      bg: transparent,
-      label: #6a1b9a,
+      bg: var(--tertiary-bg-color-btn-ghost),
+      label: var(--tertiary-text-color-btn-ghost),
       hover: (
-        bg: rgba(106, 27, 154, 0.05),
-        label: #6a1b9a,
+        bg: var(--tertiary-hover-bg-color-btn-ghost),
+        label: var(--tertiary-hover-text-color-btn-ghost),
       ),
       active: (
-        bg: rgba(106, 27, 154, 0.1),
-        label: #6a1b9a,
+        bg: var(--tertiary-active-bg-color-btn-ghost),
+        label: var(--tertiary-active-text-color-btn-ghost),
       ),
       disabled: (
-        bg: transparent,
-        label: #9e9e9e,
+        bg: var(--ghost-disabled-bg-color-btn),
+        label: var(--disabled-text-color-btn),
       ),
     ),
   ),
 
   success: (
+    //
     solid: (
-      bg: #28a745,
-      label: #ffffff,
-      hover: (
-        bg: #218838,
-        label: #ffffff,
+        bg: var(--success-bg-color-btn-solid),
+        label: var(--success-text-color-btn-solid),
+        hover: (
+          bg: var(--success-hover-bg-color-btn-solid),
+          label: var(--success-hover-text-color-btn-solid),
+        ),
+        active: (
+          bg: var(--success-active-bg-color-btn-solid),
+          label: var(--success-active-text-color-btn-solid),
+        ),
+        disabled: (
+          bg: var(--disabled-bg-color-btn),
+          label: var(--disabled-text-color-btn),
+        ),
       ),
-      active: (
-        bg: #1e7e34,
-        label: #ffffff,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
+
+    //
     outline: (
-      bg: transparent,
-      label: #28a745,
-      hover: (
-        bg: rgba(40, 167, 69, 0.1),
-        label: #28a745,
+        bg: var(--bg-color-btn-outline),
+        label: var(--success-text-color-btn-outline),
+        hover: (
+          bg: var(--success-hover-bg-color-btn-outline),
+          label: var(--success-hover-text-color-btn-outline),
+        ),
+        active: (
+          bg: var(--success-active-bg-color-btn-outline),
+          label: var(--success-active-text-color-btn-outline),
+        ),
+        disabled: (
+          bg: var(--disabled-bg-color-btn),
+          label: var(--disabled-text-color-btn),
+        ),
       ),
-      active: (
-        bg: rgba(40, 167, 69, 0.2),
-        label: #28a745,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
-    soft: (
-      bg: #d4edda,
-      label: #28a745,
-      hover: (
-        bg: #c3e6cb,
-        label: #28a745,
-      ),
-      active: (
-        bg: #b1dfbb,
-        label: #28a745,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
+
+    //
     ghost: (
-      bg: transparent,
-      label: #28a745,
-      hover: (
-        bg: rgba(40, 167, 69, 0.05),
-        label: #28a745,
+        bg: var(--success-bg-color-btn-ghost),
+        label: var(--success-text-color-btn-ghost),
+        hover: (
+          bg: var(--success-hover-bg-color-btn-ghost),
+          label: var(--success-hover-text-color-btn-ghost),
+        ),
+        active: (
+          bg: var(--success-active-bg-color-btn-ghost),
+          label: var(--success-active-text-color-btn-ghost),
+        ),
+        disabled: (
+          bg: var(--ghost-disabled-bg-color-btn),
+          label: var(--disabled-text-color-btn),
+        ),
       ),
-      active: (
-        bg: rgba(40, 167, 69, 0.1),
-        label: #28a745,
-      ),
-      disabled: (
-        bg: transparent,
-        label: #9e9e9e,
-      ),
-    ),
   ),
 
   warning: (
     solid: (
-      bg: #ff9800,
-      label: #212121,
+      bg: var(--warning-bg-color-btn-solid),
+      label: var(--warning-text-color-btn-solid),
       hover: (
-        bg: #e68a00,
-        label: #212121,
+        bg: var(--warning-hover-bg-color-btn-solid),
+        label: var(--warning-hover-text-color-btn-solid),
       ),
       active: (
-        bg: #cc7a00,
-        label: #212121,
+        bg: var(--warning-active-bg-color-btn-solid),
+        label: var(--warning-active-text-color-btn-solid),
       ),
       disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
+        bg: var(--disabled-bg-color-btn),
+        label: var(--disabled-text-color-btn),
       ),
     ),
     outline: (
-      bg: transparent,
-      label: #ff9800,
+      bg: var(--bg-color-btn-outline),
+      label: var(--warning-text-color-btn-outline),
       hover: (
-        bg: rgba(255, 152, 0, 0.1),
-        label: #ff9800,
+        bg: var(--warning-hover-bg-color-btn-outline),
+        label: var(--warning-hover-text-color-btn-outline),
       ),
       active: (
-        bg: rgba(255, 152, 0, 0.2),
-        label: #ff9800,
+        bg: var(--warning-active-bg-color-btn-outline),
+        label: var(--warning-active-text-color-btn-outline),
       ),
       disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
+        bg: var(--disabled-bg-color-btn),
+        label: var(--disabled-text-color-btn),
       ),
     ),
-    soft: (
-      bg: #fff3e0,
-      label: #ff9800,
-      hover: (
-        bg: #ffe0b2,
-        label: #ff9800,
-      ),
-      active: (
-        bg: #ffd699,
-        label: #ff9800,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
+
     ghost: (
-      bg: transparent,
-      label: #ff9800,
+      bg: var(--warning-bg-color-btn-ghost),
+      label: var(--warning-text-color-btn-ghost),
       hover: (
-        bg: rgba(255, 152, 0, 0.05),
-        label: #ff9800,
+        bg: var(--warning-hover-bg-color-btn-ghost),
+        label: var(--warning-hover-text-color-btn-ghost),
       ),
       active: (
-        bg: rgba(255, 152, 0, 0.1),
-        label: #ff9800,
+        bg: var(--warning-active-bg-color-btn-ghost),
+        label: var(--warning-active-text-color-btn-ghost),
       ),
       disabled: (
-        bg: transparent,
-        label: #9e9e9e,
+        bg: var(--ghost-disabled-bg-color-btn),
+        label: var(--disabled-text-color-btn),
       ),
     ),
   ),
   danger: (
     solid: (
-      bg: #d32f2f,
-      label: #ffffff,
+      bg: var(--danger-bg-color-btn-solid),
+      label: var(--danger-text-color-btn-solid),
       hover: (
-        bg: #b72a2a,
-        label: #ffffff,
+        bg: var(--danger-hover-bg-color-btn-solid),
+        label: var(--danger-hover-text-color-btn-solid),
       ),
       active: (
-        bg: #9e2424,
-        label: #ffffff,
+        bg: var(--danger-active-bg-color-btn-solid),
+        label: var(--danger-active-text-color-btn-solid),
       ),
       disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
+        bg: var(--disabled-bg-color-btn),
+        label: var(--disabled-text-color-btn),
       ),
     ),
     outline: (
-      bg: transparent,
-      label: #d32f2f,
+      bg: var(--bg-color-btn-outline),
+      label: var(--danger-text-color-btn-outline),
       hover: (
-        bg: rgba(211, 47, 47, 0.1),
-        label: #d32f2f,
+        bg: var(--danger-hover-bg-color-btn-outline),
+        label: var(--danger-hover-text-color-btn-outline),
       ),
       active: (
-        bg: rgba(211, 47, 47, 0.2),
-        label: #d32f2f,
+        bg: var(--danger-active-bg-color-btn-outline),
+        label: var(--danger-active-text-color-btn-outline),
       ),
       disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
+        bg: var(--disabled-bg-color-btn),
+        label: var(--disabled-text-color-btn),
       ),
     ),
-    soft: (
-      bg: #f8d7da,
-      label: #d32f2f,
-      hover: (
-        bg: #f5b7b9,
-        label: #d32f2f,
-      ),
-      active: (
-        bg: #f1a3a5,
-        label: #d32f2f,
-      ),
-      disabled: (
-        bg: #e0e0e0,
-        label: #9e9e9e,
-      ),
-    ),
+
     ghost: (
-      bg: transparent,
-      label: #d32f2f,
+      bg: var(--danger-bg-color-btn-ghost),
+      label: var(--danger-text-color-btn-ghost),
       hover: (
-        bg: rgba(211, 47, 47, 0.05),
-        label: #d32f2f,
+        bg: var(--danger-hover-bg-color-btn-ghost),
+        label: var(--danger-hover-text-color-btn-ghost),
       ),
       active: (
-        bg: rgba(211, 47, 47, 0.1),
-        label: #d32f2f,
+        bg: var(--danger-active-bg-color-btn-ghost),
+        label: var(--danger-active-text-color-btn-ghost),
       ),
       disabled: (
-        bg: transparent,
-        label: #9e9e9e,
+        bg: var(--ghost-disabled-bg-color-btn),
+        label: var(--disabled-text-color-btn),
       ),
     ),
   ),
@@ -677,8 +465,9 @@ $btn-sizes: (
         &[aria-disabled='true'],
         &:disabled {
           cursor: not-allowed;
-          pointer-events: none;
+          // pointer-events: none;
           $disabled-props: map.get($variant-props, disabled);
+          color: map.get($disabled-props, label);
 
           @if $disabled-props != null {
             @if $variant == 'outline' {
@@ -769,6 +558,10 @@ $btn-sizes: (
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease;
+
+  &:active:not(&:disabled) {
+    transform: scale(0.97);
+  }
 
   @at-root button#{&} {
     cursor: pointer;

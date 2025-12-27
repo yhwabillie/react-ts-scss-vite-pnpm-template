@@ -6,58 +6,117 @@
 // checkbox size
 $formfield-sizes: (
   xs: (
-    gap: rem(4px),
+    row: (
+      label-gap: rem(4px),
+      div-gap: rem(26px),
+    ),
+    col: (
+      label-gap: rem(4px),
+      div-gap: rem(2px),
+    ),
     font-token: var(--project-typo-legend5-600),
   ),
   sm: (
-    gap: rem(6px),
+    row: (
+      label-gap: rem(6px),
+      div-gap: rem(28px),
+    ),
+    col: (
+      label-gap: rem(6px),
+      div-gap: rem(4px),
+    ),
     font-token: var(--project-typo-legend4-600),
   ),
   md: (
-    gap: rem(8px),
+    row: (
+      label-gap: rem(8px),
+      div-gap: rem(30px),
+    ),
+    col: (
+      label-gap: rem(8px),
+      div-gap: rem(6px),
+    ),
     font-token: var(--project-typo-legend3-600),
   ),
   lg: (
-    gap: rem(10px),
+    row: (
+      label-gap: rem(10px),
+      div-gap: rem(32px),
+    ),
+    col: (
+      label-gap: rem(10px),
+      div-gap: rem(8px),
+    ),
     font-token: var(--project-typo-legend2-600),
   ),
   xl: (
-    gap: rem(12px),
+    row: (
+      label-gap: rem(12px),
+      div-gap: rem(36px),
+    ),
+    col: (
+      label-gap: rem(12px),
+      div-gap: rem(10px),
+    ),
     font-token: var(--project-typo-legend1-600),
   ),
 );
 
 .formfield {
   display: inline-flex;
-  width: inherit;
-
-  // Row
-  &:global(.direction--row) {
-    flex-direction: row;
-  }
-
-  // Column
-  &:global(.direction--column) {
-    flex-direction: column;
-  }
 
   // size
   @each $size-name, $props in $formfield-sizes {
     // ──────────────── 기본 데이터 추출 ────────────────
     $font-token: map.get($props, font-token);
+    $row-props: map.get($props, row);
+    $col-props: map.get($props, col);
 
     &:global(.size--#{$size-name}) {
-      gap: map.get($props, gap);
+      // Row
+      &:global(.direction--row) {
+        flex-direction: row;
+        align-items: center;
+
+        &:is(label) {
+          gap: map.get($row-props, label-gap);
+        }
+
+        &:is(div) {
+          gap: map.get($row-props, div-gap);
+        }
+      }
+
+      // Column
+      &:global(.direction--column) {
+        flex-direction: column;
+
+        &:is(label) {
+          gap: map.get($col-props, label-gap);
+        }
+
+        &:is(div) {
+          gap: map.get($col-props, div-gap);
+        }
+      }
 
       :global(.label) {
         font: $font-token;
-        display: inline-flex;
-        align-items: center;
-        gap: rem(4px);
-        flex-wrap: wrap;
+        // flex: 0 0 auto;
+        // width: fit-content;
+        // display: inline-flex;
+        // align-items: center;
+        // gap: rem(4px);
+        // flex-wrap: wrap;
 
         :global(.requried) {
-          color: #d32f2f;
+          color: var(--required-asterisk-color);
+          vertical-align: super;
+          line-height: 0;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          margin-left: rem(4px);
         }
       }
     }

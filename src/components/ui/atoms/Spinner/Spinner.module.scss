@@ -20,256 +20,132 @@ $spinner-colors: (
   // Primary
   primary: (
       open-ring: (
-        track: transparent,
-        path: #0052cc,
+        track: var(--primary-track-color-spinner-open-ring),
+        path: var(--primary-path-color-spinner-open-ring),
       ),
       closed-ring: (
-        track: rgba(0, 82, 204, 0.2),
-        path: #0052cc,
+        track: var(--primary-track-color-spinner-closed-ring),
+        path: var(--primary-path-color-spinner-closed-ring),
       ),
     ),
   primary-solid: (
     open-ring: (
-      track: transparent,
-      path: #ffffff,
+      track: var(--primary-solid-track-color-spinner-open-ring),
+      path: var(--primary-solid-path-color-spinner-open-ring),
     ),
     closed-ring: (
-      track: rgba(255, 255, 255, 0.2),
-      path: #ffffff,
-    ),
-  ),
-  primary-soft: (
-    open-ring: (
-      track: transparent,
-      path: #0052cc,
-    ),
-    closed-ring: (
-      track: rgba(0, 82, 204, 0.2),
-      path: #0052cc,
+      track: var(--primary-solid-track-color-spinner-closed-ring),
+      path: var(--primary-solid-path-color-spinner-closed-ring),
     ),
   ),
 
   // Secondary
   secondary: (
       open-ring: (
-        track: transparent,
-        path: #69b2ff,
+        track: var(--secondary-track-color-spinner-open-ring),
+        path: var(--secondary-path-color-spinner-open-ring),
       ),
       closed-ring: (
-        track: rgba(105, 178, 255, 0.2),
-        path: #69b2ff,
+        track: var(--secondary-track-color-spinner-closed-ring),
+        path: var(--secondary-path-color-spinner-closed-ring),
       ),
     ),
   secondary-solid: (
     open-ring: (
-      track: transparent,
-      path: #003366,
+      track: var(--secondary-solid-track-color-spinner-open-ring),
+      path: var(--secondary-solid-path-color-spinner-open-ring),
     ),
     closed-ring: (
-      track: rgba(0, 51, 102, 0.2),
-      path: #003366,
-    ),
-  ),
-  secondary-soft: (
-    open-ring: (
-      track: transparent,
-      path: #003366,
-    ),
-    closed-ring: (
-      track: rgba(0, 51, 102, 0.2),
-      path: #003366,
+      track: var(--secondary-solid-track-color-spinner-closed-ring),
+      path: var(--secondary-solid-path-color-spinner-closed-ring),
     ),
   ),
 
   // Tertiary
   tertiary: (
       open-ring: (
-        track: transparent,
-        path: #333333,
+        track: var(--tertiary-track-color-spinner-open-ring),
+        path: var(--tertiary-path-color-spinner-open-ring),
       ),
       closed-ring: (
-        track: rgba(51, 51, 51, 0.2),
-        path: #333333,
+        track: var(--tertiary-track-color-spinner-closed-ring),
+        path: var(--tertiary-path-color-spinner-closed-ring),
       ),
     ),
   tertiary-solid: (
     open-ring: (
-      track: transparent,
-      path: #333333,
+      track: var(--tertiary-solid-track-color-spinner-open-ring),
+      path: var(--tertiary-solid-path-color-spinner-open-ring),
     ),
     closed-ring: (
-      track: rgba(51, 51, 51, 0.2),
-      path: #333333,
-    ),
-  ),
-  tertiary-soft: (
-    open-ring: (
-      track: transparent,
-      path: #333333,
-    ),
-    closed-ring: (
-      track: rgba(51, 51, 51, 0.2),
-      path: #333333,
-    ),
-  ),
-
-  // Brand
-  brand: (
-      open-ring: (
-        track: transparent,
-        path: #ff6f61,
-      ),
-      closed-ring: (
-        track: rgba(255, 111, 97, 0.2),
-        path: #ff6f61,
-      ),
-    ),
-  brand-solid: (
-    open-ring: (
-      track: transparent,
-      path: #ffffff,
-    ),
-    closed-ring: (
-      track: rgba(255, 255, 255, 0.2),
-      path: #ffffff,
-    ),
-  ),
-  brand-soft: (
-    open-ring: (
-      track: transparent,
-      path: #ff6f61,
-    ),
-    closed-ring: (
-      track: rgba(255, 111, 97, 0.2),
-      path: #ff6f61,
-    ),
-  ),
-
-  // Brand Sub
-  'brand-sub': (
-      open-ring: (
-        track: transparent,
-        path: #6a1b9a,
-      ),
-      closed-ring: (
-        track: rgba(106, 27, 154, 0.2),
-        path: #6a1b9a,
-      ),
-    ),
-  brand-sub-solid: (
-    open-ring: (
-      track: transparent,
-      path: #ffffff,
-    ),
-    closed-ring: (
-      track: rgba(255, 255, 255, 0.2),
-      path: #ffffff,
-    ),
-  ),
-  brand-sub-soft: (
-    open-ring: (
-      track: transparent,
-      path: #6a1b9a,
-    ),
-    closed-ring: (
-      track: rgba(106, 27, 154, 0.2),
-      path: #6a1b9a,
+      track: var(--tertiary-solid-track-color-spinner-closed-ring),
+      path: var(--tertiary-solid-path-color-spinner-closed-ring),
     ),
   ),
 
   // Success
   success: (
       open-ring: (
-        track: transparent,
-        path: #28a745,
+        track: var(--success-track-color-spinner-open-ring),
+        path: var(--success-path-color-spinner-open-ring),
       ),
       closed-ring: (
-        track: rgba(40, 167, 69, 0.2),
-        path: #28a745,
+        track: var(--success-track-color-spinner-closed-ring),
+        path: var(--success-path-color-spinner-closed-ring),
       ),
     ),
   success-solid: (
     open-ring: (
-      track: transparent,
-      path: #ffffff,
+      track: var(-success-solid-track-color-spinner-open-ring),
+      path: var(--success-solid-path-color-spinner-open-ring),
     ),
     closed-ring: (
-      track: rgba(255, 255, 255, 0.2),
-      path: #ffffff,
-    ),
-  ),
-  success-soft: (
-    open-ring: (
-      track: transparent,
-      path: #28a745,
-    ),
-    closed-ring: (
-      track: rgba(40, 167, 69, 0.2),
-      path: #28a745,
+      track: var(--success-solid-track-color-spinner-closed-ring),
+      path: var(--success-solid-path-color-spinner-closed-ring),
     ),
   ),
 
   // Warning
   warning: (
       open-ring: (
-        track: transparent,
-        path: #ff9800,
+        track: var(--warning-track-color-spinner-open-ring),
+        path: var(--warning-path-color-spinner-open-ring),
       ),
       closed-ring: (
-        track: rgba(255, 152, 0, 0.2),
-        path: #ff9800,
+        track: var(--warning-track-color-spinner-closed-ring),
+        path: var(--warning-path-color-spinner-closed-ring),
       ),
     ),
   warning-solid: (
     open-ring: (
-      track: transparent,
-      path: #212121,
+      track: var(--warning-solid-track-color-spinner-open-ring),
+      path: var(--warning-solid-path-color-spinner-open-ring),
     ),
     closed-ring: (
-      track: rgba(33, 33, 33, 0.2),
-      path: #212121,
-    ),
-  ),
-  warning-soft: (
-    open-ring: (
-      track: transparent,
-      path: #ff9800,
-    ),
-    closed-ring: (
-      track: rgba(255, 152, 0, 0.2),
-      path: #ff9800,
+      track: var(--warning-solid-track-color-spinner-closed-ring),
+      path: var(--warning-solid-path-color-spinner-closed-ring),
     ),
   ),
 
   // Danger
   danger: (
       open-ring: (
-        track: transparent,
-        path: #d32f2f,
+        track: var(--danger-track-color-spinner-open-ring),
+        path: var(--danger-path-color-spinner-open-ring),
       ),
       closed-ring: (
-        track: rgba(211, 47, 47, 0.2),
-        path: #d32f2f,
+        track: var(--danger-track-color-spinner-closed-ring),
+        path: var(--danger-path-color-spinner-closed-ring),
       ),
     ),
   danger-solid: (
     open-ring: (
-      track: transparent,
-      path: #ffffff,
+      track: var(--danger-solid-track-color-spinner-open-ring),
+      path: var(--danger-solid-path-color-spinner-open-ring),
     ),
     closed-ring: (
-      track: rgba(255, 255, 255, 0.2),
-      path: #ffffff,
-    ),
-  ),
-  danger-soft: (
-    open-ring: (
-      track: transparent,
-      path: #d32f2f,
-    ),
-    closed-ring: (
-      track: rgba(211, 47, 47, 0.2),
-      path: #d32f2f,
+      track: var(--danger-solid-track-color-spinner-closed-ring),
+      path: var(--danger-solid-path-color-spinner-closed-ring),
     ),
   )
 );

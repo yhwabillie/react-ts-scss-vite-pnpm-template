@@ -8,147 +8,328 @@
 $input-colors: (
   primary: (
     solid: (
-      bg: #f5f6f7,
+      bg: var(--primary-bg-color-input-solid),
+      color: var(--primary-text-color-input-solid),
+      placeholder: var(--primary-placeholder-color-input-solid),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-input),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-input),
+        color: var(--disabled-text-color-input),
+        border: var(--disabled-stroke-color-input),
+        placeholder: var(--disabled-placeholder-color-input),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-input),
+        color: var(--readonly-text-color-input),
+        border: var(--readonly-stroke-color-input),
+        placeholder: var(--readonly-placeholder-color-input),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #0052cc,
+      bg: var(--primary-bg-color-input-outline),
+      color: var(--primary-text-color-input-outline),
+      border: var(--primary-stroke-color-input-outline),
+      placeholder: var(--primary-placeholder-color-input-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-input),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-input),
+        color: var(--disabled-text-color-input),
+        border: var(--disabled-stroke-color-input),
+        placeholder: var(--disabled-placeholder-color-input),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-input),
+        color: var(--readonly-text-color-input),
+        border: var(--readonly-stroke-color-input),
+        placeholder: var(--readonly-placeholder-color-input),
+      ),
     ),
   ),
   secondary: (
     solid: (
-      bg: #f5f6f7,
+      bg: var(--secondary-bg-color-input-solid),
+      color: var(--secondary-text-color-input-solid),
+      placeholder: var(--secondary-placeholder-color-input-solid),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-input),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-input),
+        color: var(--disabled-text-color-input),
+        border: var(--disabled-stroke-color-input),
+        placeholder: var(--disabled-placeholder-color-input),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-input),
+        color: var(--readonly-text-color-input),
+        border: var(--readonly-stroke-color-input),
+        placeholder: var(--readonly-placeholder-color-input),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #69b2ff,
+      bg: var(--secondary-bg-color-input-outline),
+      color: var(--secondary-text-color-input-outline),
+      border: var(--secondary-stroke-color-input-outline),
+      placeholder: var(--secondary-placeholder-color-input-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-input),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-input),
+        color: var(--disabled-text-color-input),
+        border: var(--disabled-stroke-color-input),
+        placeholder: var(--disabled-placeholder-color-input),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-input),
+        color: var(--readonly-text-color-input),
+        border: var(--readonly-stroke-color-input),
+        placeholder: var(--readonly-placeholder-color-input),
+      ),
     ),
   ),
   tertiary: (
     solid: (
-      bg: #f5f6f7,
+      bg: var(--tertiary-bg-color-input-solid),
+      color: var(--tertiary-text-color-input-solid),
+      placeholder: var(--tertiary-placeholder-color-input-solid),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-input),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-input),
+        color: var(--disabled-text-color-input),
+        border: var(--disabled-stroke-color-input),
+        placeholder: var(--disabled-placeholder-color-input),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-input),
+        color: var(--readonly-text-color-input),
+        border: var(--readonly-stroke-color-input),
+        placeholder: var(--readonly-placeholder-color-input),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #d1d5db,
-    ),
-  ),
-  brand: (
-    solid: (
-      bg: #f5f6f7,
-    ),
-    outline: (
-      bg: #ffffff,
-      border: #ff6f61,
-    ),
-  ),
-  brand-sub: (
-    solid: (
-      bg: #f5f6f7,
-    ),
-    outline: (
-      bg: #ffffff,
-      border: #6a1b9a,
+      bg: var(--tertiary-bg-color-input-outline),
+      color: var(--tertiary-text-color-input-outline),
+      border: var(--tertiary-stroke-color-input-outline),
+      placeholder: var(--tertiary-placeholder-color-input-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-input),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-input),
+        color: var(--disabled-text-color-input),
+        border: var(--disabled-stroke-color-input),
+        placeholder: var(--disabled-placeholder-color-input),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-input),
+        color: var(--readonly-text-color-input),
+        border: var(--readonly-stroke-color-input),
+        placeholder: var(--readonly-placeholder-color-input),
+      ),
     ),
   ),
   success: (
     solid: (
-      bg: #f5f6f7,
+      bg: var(--success-bg-color-input-solid),
+      color: var(--success-text-color-input-solid),
+      placeholder: var(--success-placeholder-color-input-solid),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--success-hover-shadow-input),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-input),
+        color: var(--disabled-text-color-input),
+        border: var(--disabled-stroke-color-input),
+        placeholder: var(--disabled-placeholder-color-input),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-input),
+        color: var(--readonly-text-color-input),
+        border: var(--readonly-stroke-color-input),
+        placeholder: var(--readonly-placeholder-color-input),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #28a745,
+      bg: var(--success-bg-color-input-outline),
+      color: var(--success-text-color-input-outline),
+      border: var(--success-stroke-color-input-outline),
+      placeholder: var(--success-placeholder-color-input-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--success-hover-shadow-input),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-input),
+        color: var(--disabled-text-color-input),
+        border: var(--disabled-stroke-color-input),
+        placeholder: var(--disabled-placeholder-color-input),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-input),
+        color: var(--readonly-text-color-input),
+        border: var(--readonly-stroke-color-input),
+        placeholder: var(--readonly-placeholder-color-input),
+      ),
     ),
   ),
   warning: (
     solid: (
-      bg: #f5f6f7,
+      bg: var(--warning-bg-color-input-solid),
+      color: var(--warning-text-color-input-solid),
+      placeholder: var(--warning-placeholder-color-input-solid),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-input),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-input),
+        color: var(--disabled-text-color-input),
+        border: var(--disabled-stroke-color-input),
+        placeholder: var(--disabled-placeholder-color-input),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-input),
+        color: var(--readonly-text-color-input),
+        border: var(--readonly-stroke-color-input),
+        placeholder: var(--readonly-placeholder-color-input),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #ff9800,
+      bg: var(--warning-bg-color-input-outline),
+      color: var(--warning-text-color-input-outline),
+      border: var(--warning-stroke-color-input-outline),
+      placeholder: var(--warning-placeholder-color-input-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-input),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-input),
+        color: var(--disabled-text-color-input),
+        border: var(--disabled-stroke-color-input),
+        placeholder: var(--disabled-placeholder-color-input),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-input),
+        color: var(--readonly-text-color-input),
+        border: var(--readonly-stroke-color-input),
+        placeholder: var(--readonly-placeholder-color-input),
+      ),
     ),
   ),
   danger: (
     solid: (
-      bg: #f5f6f7,
+      bg: var(--danger-bg-color-input-solid),
+      color: var(--danger-text-color-input-solid),
+      placeholder: var(--danger-placeholder-color-input-solid),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-input),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-input),
+        color: var(--disabled-text-color-input),
+        border: var(--disabled-stroke-color-input),
+        placeholder: var(--disabled-placeholder-color-input),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-input),
+        color: var(--readonly-text-color-input),
+        border: var(--readonly-stroke-color-input),
+        placeholder: var(--readonly-placeholder-color-input),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #d32f2f,
+      bg: var(--danger-bg-color-input-outline),
+      color: var(--danger-text-color-input-outline),
+      border: var(--danger-stroke-color-input-outline),
+      placeholder: var(--danger-placeholder-color-input-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-input),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-input),
+        color: var(--disabled-text-color-input),
+        border: var(--disabled-stroke-color-input),
+        placeholder: var(--disabled-placeholder-color-input),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-input),
+        color: var(--readonly-text-color-input),
+        border: var(--readonly-stroke-color-input),
+        placeholder: var(--readonly-placeholder-color-input),
+      ),
     ),
   ),
 );
 
 $input-sizes: (
   xs: (
+    width: rem(200px),
     height: rem(32px),
     padding: 0 rem(8px),
     font-token: var(--project-typo-input3-500),
     radius: rem(var(--project-border-radius-4)),
     adorned-start: (
-      padding: 0 rem(8px) 0 rem(32px),
-      radius: 0 rem(4px) rem(4px) 0,
+      padding: 0 rem(8px) 0 0,
     ),
     adorned-end: (
-      padding: 0 rem(32px) 0 rem(8px),
-      radius: rem(4px) 0 0 rem(4px),
+      padding: 0 0 0 rem(8px),
     ),
   ),
   sm: (
+    width: rem(260px),
     height: rem(36px),
     padding: 0 rem(10px),
     font-token: var(--project-typo-input2-500),
     radius: rem(var(--project-border-radius-6)),
     adorned-start: (
-      padding: 0 rem(10px) 0 rem(36px),
-      radius: 0 rem(6px) rem(6px) 0,
+      padding: 0 rem(10px) 0 0,
     ),
     adorned-end: (
-      padding: 0 rem(36px) 0 rem(10px),
-      radius: rem(6px) 0 0 rem(6px),
+      padding: 0 0 0 rem(10px),
     ),
   ),
   md: (
+    width: rem(320px),
     height: rem(40px),
     padding: 0 rem(12px),
     font-token: var(--project-typo-input2-500),
     radius: rem(var(--project-border-radius-6)),
     adorned-start: (
-      padding: 0 rem(12px) 0 rem(40px),
-      radius: 0 rem(6px) rem(6px) 0,
+      padding: 0 rem(12px) 0 0,
     ),
     adorned-end: (
-      padding: 0 rem(40px) 0 rem(12px),
-      radius: rem(6px) 0 0 rem(6px),
+      padding: 0 0 0 rem(12px),
     ),
   ),
   lg: (
+    width: rem(480px),
     height: rem(44px),
     padding: 0 rem(14px),
     font-token: var(--project-typo-input1-500),
     radius: rem(var(--project-border-radius-8)),
     adorned-start: (
-      padding: 0 rem(14px) 0 rem(44px),
-      radius: 0 rem(8px) rem(8px) 0,
+      padding: 0 rem(14px) 0 0,
     ),
     adorned-end: (
-      padding: 0 rem(44px) 0 rem(14px),
-      radius: rem(8px) 0 0 rem(8px),
+      padding: 0 0 0 rem(14px),
     ),
   ),
   xl: (
+    width: 100%,
     height: rem(48px),
     padding: 0 rem(16px),
     font-token: var(--project-typo-input1-500),
     radius: rem(var(--project-border-radius-8)),
     adorned-start: (
-      padding: 0 rem(16px) 0 rem(48px),
-      radius: 0 rem(8px) rem(8px) 0,
+      padding: 0 rem(16px) 0 0,
     ),
     adorned-end: (
-      padding: 0 rem(48px) 0 rem(16px),
-      radius: rem(8px) 0 0 rem(8px),
+      padding: 0 0 0 rem(16px),
     ),
   ),
 );
@@ -158,28 +339,101 @@ $input-sizes: (
   &:global(.variant--#{$variant}) {
     @each $name, $props in $input-colors {
       $variant-props: map.get($props, $variant);
+      $readonly-props: map.get($variant-props, readonly);
+      $disabled-props: map.get($variant-props, disabled);
+      $hover-props: map.get($variant-props, hover);
+      $shadow-value: map.get($hover-props, shadow);
 
       @if $variant-props != null {
         &:global(.color--#{$name}) {
-          // variant
+          &:not(:has(input:disabled, input:read-only)):hover {
+            box-shadow: $shadow-value;
+          }
 
+          // variant
           @if $variant == 'solid' {
             &:global(.variant--solid) {
               background-color: map.get($variant-props, bg);
+              color: map.get($variant-props, color);
+
+              &::placeholder {
+                color: map.get($variant-props, placeholder);
+              }
+
+              :global(input) {
+                &:disabled {
+                  background-color: map.get($disabled-props, bg);
+                  color: map.get($disabled-props, color);
+
+                  &::placeholder {
+                    color: map.get($disabled-props, placeholder) !important;
+                  }
+                }
+
+                &:read-only:not(:disabled) {
+                  background-color: map.get($readonly-props, bg);
+                  color: map.get($readonly-props, color);
+
+                  &::placeholder {
+                    color: map.get($readonly-props, placeholder);
+                  }
+                }
+              }
+
+              // 만약 input이 disabled일 때 부모 요소 컬러 변경
+              &:has(input:disabled) {
+                background-color: map.get($disabled-props, bg);
+              }
+
+              &:has(input:read-only:not(:disabled)) {
+                background-color: map.get($readonly-props, bg);
+              }
             }
           } @else if $variant == 'outline' {
             &:global(.variant--outline) {
               background-color: map.get($variant-props, bg);
+              color: map.get($variant-props, color);
               border: rem(1px) solid map.get($variant-props, border);
 
-              &:global(:has(input:disabled)) {
-                border: rem(1px) solid #d9d9d9;
+              &::placeholder {
+                color: map.get($variant-props, placeholder);
               }
 
-              &:global(:has(input:read-only)) {
-                border: rem(1px) solid #c0c4cc;
+              :global(input) {
+                &:disabled {
+                  background-color: map.get($disabled-props, bg);
+                  color: map.get($disabled-props, color);
+
+                  &::placeholder {
+                    color: map.get($disabled-props, placeholder) !important;
+                  }
+                }
+
+                &:read-only:not(:disabled) {
+                  background-color: map.get($readonly-props, bg);
+                  color: map.get($readonly-props, color);
+
+                  &::placeholder {
+                    color: map.get($readonly-props, placeholder);
+                  }
+                }
+              }
+
+              // 만약 input이 disabled일 때 부모 요소 컬러 변경
+              &:has(input:disabled) {
+                background-color: map.get($disabled-props, bg);
+                border: rem(1px) solid map.get($disabled-props, border);
+              }
+
+              &:has(input:read-only:not(:disabled)) {
+                background-color: map.get($readonly-props, bg);
+                border: rem(1px) solid map.get($readonly-props, border);
               }
             }
+          }
+
+          :global(input::placeholder) {
+            color: map.get($variant-props, placeholder);
           }
         }
       }
@@ -191,8 +445,75 @@ $input-sizes: (
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  min-width: rem(240px);
   position: relative;
+  transition: all 0.2s ease;
+
+  &:is(label) {
+    outline: none !important;
+  }
+
+  &:global(.pseudo-focus-visible) {
+    input {
+      outline: 2.5px dashed #2466eb !important;
+      outline-offset: 0px;
+    }
+  }
+
+  :global(button) {
+    flex: 0 0 auto;
+  }
+
+  &:global(.adorned-start) {
+    :global(button) {
+      border-top-left-radius: inherit !important;
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+      border-bottom-left-radius: inherit !important;
+
+      &:focus-visible,
+      &:focus {
+        outline-offset: -2px;
+      }
+    }
+
+    :global(input) {
+      border-top-left-radius: 0;
+      border-top-right-radius: inherit;
+      border-bottom-right-radius: inherit;
+      border-bottom-left-radius: 0;
+
+      &:focus-visible,
+      &:focus {
+        outline-offset: -2px;
+      }
+    }
+  }
+
+  &:global(.adorned-end) {
+    :global(button) {
+      border-top-left-radius: 0 !important;
+      border-top-right-radius: inherit !important;
+      border-bottom-right-radius: inherit !important;
+      border-bottom-left-radius: 0 !important;
+
+      &:focus-visible,
+      &:focus {
+        outline-offset: -2px;
+      }
+    }
+
+    :global(input) {
+      border-top-left-radius: inherit;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: inherit;
+
+      &:focus-visible,
+      &:focus {
+        outline-offset: -2px;
+      }
+    }
+  }
 
   // variant
   @include input-variant(solid);
@@ -204,6 +525,7 @@ $input-sizes: (
     $adorned-end-map: map.get($props, adorned-end);
 
     &:global(.size--#{$size-name}) {
+      width: map.get($props, width);
       height: map.get($props, height);
 
       &:global(.shape--squre) {
@@ -223,33 +545,16 @@ $input-sizes: (
         font: map.get($props, font-token);
       }
 
-      // adorned start, end
-      &:global(:has(.adorned-start)) {
+      &:global(.adorned-start) {
         :global(input) {
           padding: map.get($adorned-start-map, padding);
         }
       }
 
-      &:global(:has(.adorned-end)) {
+      &:global(.adorned-end) {
         :global(input) {
           padding: map.get($adorned-end-map, padding);
         }
-      }
-
-      :global(.adorned-start) {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        border-radius: map.get($adorned-start-map, radius);
-      }
-
-      :global(.adorned-end) {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translateY(-50%);
-        border-radius: map.get($adorned-start-map, radius);
       }
     }
   }
@@ -259,21 +564,9 @@ $input-sizes: (
     height: 100%;
     border: none;
     background-color: inherit;
-    color: #2d2d2d;
+    color: inherit;
     border-radius: inherit;
 
-    &:global(::placeholder) {
-      color: #6f6f6f;
-    }
-
-    &:global(:disabled) {
-      background-color: #e5e7eb;
-      cursor: not-allowed;
-      color: #9ca3af;
-    }
-
-    &:global(:read-only) {
-      background-color: #f0f1f3;
-    }
+    @include ell();
   }
 }
