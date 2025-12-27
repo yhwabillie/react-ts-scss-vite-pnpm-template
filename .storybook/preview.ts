@@ -74,16 +74,7 @@ const preview: Preview = {
           'UI',
           [
             'Atoms',
-            [
-              'Radio',
-              'Checkbox',
-              'Label',
-              'Textarea',
-              ['Solid', 'Outline'],
-              'ValidationMsg',
-              'Spinner',
-              '*',
-            ],
+            ['Radio', 'Checkbox', 'Label', 'Textarea', ['Solid', 'Outline'], 'Spinner', '*'],
             'Molecules',
             [
               'Button',
@@ -102,6 +93,7 @@ const preview: Preview = {
               'FormField',
               'ControlGroup',
               'FormFieldset',
+              'ValidationMsg',
               'Searchbar',
             ],
             'Organisms',

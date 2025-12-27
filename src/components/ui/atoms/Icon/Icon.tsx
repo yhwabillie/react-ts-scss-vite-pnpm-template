@@ -26,6 +26,8 @@ import FileVideoIcon from '@/assets/icons/icon-file-video.svg?react';
 import FileZipIcon from '@/assets/icons/icon-file-zip.svg?react';
 import HouseIcon from '@/assets/icons/icon-house.svg?react';
 import BellIcon from '@/assets/icons/icon-bell.svg?react';
+import VolumeOnIcon from '@/assets/icons/icon-volume-on.svg?react';
+import VolumeOffIcon from '@/assets/icons/icon-volume-off.svg?react';
 
 const iconMap = {
   search: SearchIcon,
@@ -53,6 +55,8 @@ const iconMap = {
   'file-zip': FileZipIcon,
   house: HouseIcon,
   bell: BellIcon,
+  'volume-on': VolumeOnIcon,
+  'volume-off': VolumeOffIcon,
   // 다른 아이콘들도 여기에 추가
 };
 

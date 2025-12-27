@@ -1,5 +1,6 @@
 /* ValidationMsg.module.scss */
 @use 'sass:map';
+@use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
 // $validation-msg variant
@@ -36,65 +37,86 @@ $validation-msg-variant: (
 
 $validation-msg-sizes: (
   xs: (
-    font-token: var(--project-typo-helper3-500),
-    gap: rem(4px),
-    icon-size: rem(14px),
-    padding: rem(6px) rem(10px),
+    font-token: var(--project-typo-helper5-500),
+    gap: rem(6px),
+    icon: (
+      sizes: rem(14px),
+      margin: rem(1.5px) 0 0,
+    ),
+    padding: rem(4px) rem(8px),
     radius: rem(4px),
     margin: rem(20px) 0 0,
   ),
   sm: (
-    font-token: var(--project-typo-helper2-500),
-    gap: rem(6px),
-    icon-size: rem(16px),
-    padding: rem(8px) rem(12px),
+    font-token: var(--project-typo-helper4-500),
+    gap: rem(8px),
+    icon: (
+      sizes: rem(16px),
+      margin: rem(2px) 0 0,
+    ),
+    padding: rem(6px) rem(12px),
     radius: rem(6px),
     margin: rem(20px) 0 0,
   ),
   md: (
-    font-token: var(--project-typo-helper1-500),
-    gap: rem(8px),
-    icon-size: rem(18px),
-    padding: rem(10px) rem(16px),
-    radius: rem(6px),
+    font-token: var(--project-typo-helper3-500),
+    gap: rem(10px),
+    icon: (
+      sizes: rem(18px),
+      margin: rem(1px) 0 0,
+    ),
+    padding: rem(8px) rem(14px),
+    radius: rem(8px),
     margin: rem(20px) 0 0,
   ),
   lg: (
-    font-token: var(--project-typo-helper1-500),
-    gap: rem(10px),
-    icon-size: rem(20px),
-    padding: rem(12px) rem(20px),
+    font-token: var(--project-typo-helper2-500),
+    gap: rem(12px),
+    icon: (
+      sizes: rem(20px),
+      margin: rem(1px) 0 0,
+    ),
+    padding: rem(10px) rem(16px),
     radius: rem(8px),
     margin: rem(20px) 0 0,
   ),
   xl: (
     font-token: var(--project-typo-helper1-500),
-    gap: rem(12px),
-    icon-size: rem(22px),
-    padding: rem(16px) rem(24px),
+    gap: rem(14px),
+    icon: (
+      sizes: rem(24px),
+      margin: rem(1px) 0 0,
+    ),
+    padding: rem(12px) rem(18px),
     radius: rem(10px),
     margin: rem(20px) 0 0,
   ),
 );
 
 .validation-msg {
-  width: 100%;
+  width: inherit;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  align-items: self-start;
+  // flex-wrap: wrap;
 
   // size 적용
   @each $size-name, $props in $validation-msg-sizes {
     &:global(.size--#{$size-name}) {
-      font: map.get($props, font-token);
+      $size-props: map.get($props, $size-name);
+      $icon-map: map.get($props, 'icon');
+
       gap: map.get($props, gap);
       padding: map.get($props, padding);
       border-radius: map.get($props, radius);
-      margin: map.get($props, margin);
+
+      :global(.text) {
+        font: map.get($props, font-token);
+      }
 
       :global(.icon) {
-        width: map.get($props, icon-size);
-        height: map.get($props, icon-size);
+        width: map.get($icon-map, sizes);
+        height: map.get($icon-map, sizes);
+        margin: map.get($icon-map, margin);
       }
     }
   }

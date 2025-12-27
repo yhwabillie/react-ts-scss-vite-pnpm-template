@@ -20,6 +20,11 @@
   --guide-text-color-validation-msg: #075985;
   --guide-icon-color-validation-msg: #075985;
 
+  // slider
+  --track-bg-color-slider: #e0e0e0;
+  --tooltip-bg-color-slider: #333333;
+  --tooltip-text-color-slider: #ffffff;
+
   // label
   --text-color-label: #1d1d1d;
 
@@ -368,6 +373,11 @@
   --readonly-placeholder-color-textarea: #757575;
 
   // disabled
+  --disabled-track-bg-color-slider: #e9ecef;
+  --disabled-fill-bg-color-slider: #adb5bd;
+  --disabled-thumb-bg-color-slider: #ffffff;
+  --disabled-thumb-stroke-color-slider: #adb5bd;
+
   --disabled-bg-color-input: #eeeeee;
   --disabled-stroke-color-input: #dddddd;
   --disabled-text-color-input: #9e9e9e;
@@ -414,6 +424,11 @@
   --guide-bg-color-validation-msg: #0c4a6e;
   --guide-text-color-validation-msg: #e0f2fe;
   --guide-icon-color-validation-msg: #38bdf8;
+
+  // slider
+  --track-bg-color-slider: #333333;
+  --tooltip-bg-color-slider: #e0e0e0;
+  --tooltip-text-color-slider: #444444;
 
   // label
   --text-color-label: #ffffff;
@@ -763,6 +778,11 @@
   --readonly-placeholder-color-textarea: #64748b;
 
   // disabled
+  --disabled-track-bg-color-slider: #343a40;
+  --disabled-fill-bg-color-slider: #495057;
+  --disabled-thumb-bg-color-slider: #6c757d;
+  --disabled-thumb-stroke-color-slider: #495057;
+
   --disabled-bg-color-input: #0f172a;
   --disabled-stroke-color-input: #1e293b;
   --disabled-text-color-input: #475569;
@@ -794,6 +814,11 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  // slider
+  --primary-thumb-bg-color-slider: #ffffff;
+  --primary-thumb-stroke-color-slider: #2466eb;
+  --primary-fill-bg-color-slider: #2466eb;
+
   // input
   --primary-bg-color-input-outline: #e6f0ff;
   --primary-text-color-input-outline: #003380;
@@ -880,6 +905,11 @@
   --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-link: #0052cc;
 
+  // slider
+  --secondary-thumb-bg-color-slider: #ffffff;
+  --secondary-thumb-stroke-color-slider: #6c757d;
+  --secondary-fill-bg-color-slider: #6c757d;
+
   // input
   --secondary-bg-color-input-outline: #f1f5f9;
   --secondary-text-color-input-outline: #1e293b;
@@ -965,6 +995,11 @@
 
   --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-link: #475569;
+
+  // slider
+  --tertiary-thumb-bg-color-slider: #ffffff;
+  --tertiary-thumb-stroke-color-slider: #6f42c1;
+  --tertiary-fill-bg-color-slider: #6f42c1;
 
   // input
   --tertiary-bg-color-input-outline: #f5f3ff;
@@ -1092,6 +1127,11 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    // slider
+    --primary-thumb-bg-color-slider: #ffffff;
+    --primary-thumb-stroke-color-slider: #4d82f3;
+    --primary-fill-bg-color-slider: #4d82f3;
+
     // input
     --primary-bg-color-input-outline: #0f172a;
     --primary-text-color-input-outline: #f1f5f9;
@@ -1178,6 +1218,11 @@
     --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
     --primary-active-text-color-btn-link: #60a5fa;
 
+    // slider
+    --secondary-thumb-bg-color-slider: #ffffff;
+    --secondary-thumb-stroke-color-slider: #adb5bd;
+    --secondary-fill-bg-color-slider: #adb5bd;
+
     // input
     --secondary-bg-color-input-outline: #1e293b;
     --secondary-text-color-input-outline: #94a3b8;
@@ -1263,6 +1308,11 @@
 
     --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
+
+    // slider
+    --tertiary-thumb-bg-color-slider: #ffffff;
+    --tertiary-thumb-stroke-color-slider: #a278ff;
+    --tertiary-fill-bg-color-slider: #a278ff;
 
     // input
     --tertiary-bg-color-input-outline: #1e1b4b;

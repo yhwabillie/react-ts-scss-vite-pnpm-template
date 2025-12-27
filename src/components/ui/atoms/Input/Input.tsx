@@ -7,7 +7,7 @@ type BaseProps = {
   color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   shape?: 'rounded' | 'square' | 'pill';
-  type?: 'text' | 'number' | 'email';
+  type?: 'text' | 'number' | 'email' | 'password';
   role?: 'combobox';
   className?: string;
   as?: React.ElementType;

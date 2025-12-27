@@ -1287,9 +1287,9 @@ $g_typography: (
   // ==========================================================================
   helper1: (
       ko: (
-        font-size: 16px,
-        tablet-size: 16px,
-        mobile-size: 15px,
+        font-size: 18px,
+        tablet-size: 18px,
+        mobile-size: 18px,
         font-weight: (
           400,
           500,
@@ -1298,9 +1298,9 @@ $g_typography: (
         font-family: ko,
       ),
       ja: (
-        font-size: 16px,
-        tablet-size: 16px,
-        mobile-size: 16px,
+        font-size: 18px,
+        tablet-size: 18px,
+        mobile-size: 18px,
         font-weight: (
           400,
           500,
@@ -1309,9 +1309,9 @@ $g_typography: (
         font-family: ja,
       ),
       en: (
-        font-size: 16px,
-        tablet-size: 16px,
-        mobile-size: 16px,
+        font-size: 18px,
+        tablet-size: 18px,
+        mobile-size: 18px,
         font-weight: (
           400,
           500,
@@ -1321,6 +1321,41 @@ $g_typography: (
       ),
     ),
   helper2: (
+    ko: (
+      font-size: 16px,
+      tablet-size: 16px,
+      mobile-size: 16px,
+      font-weight: (
+        400,
+        500,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 16px,
+      tablet-size: 16px,
+      mobile-size: 16px,
+      font-weight: (
+        400,
+        500,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 16px,
+      tablet-size: 16px,
+      mobile-size: 16px,
+      font-weight: (
+        400,
+        500,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+  helper3: (
     ko: (
       font-size: 14px,
       tablet-size: 14px,
@@ -1355,7 +1390,42 @@ $g_typography: (
       font-family: en,
     ),
   ),
-  helper3: (
+  helper4: (
+    ko: (
+      font-size: 13px,
+      tablet-size: 13px,
+      mobile-size: 13px,
+      font-weight: (
+        400,
+        500,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 13px,
+      tablet-size: 13px,
+      mobile-size: 13px,
+      font-weight: (
+        400,
+        500,
+      ),
+      line-height: 1.5,
+      font-family: ja,
+    ),
+    en: (
+      font-size: 13px,
+      tablet-size: 13px,
+      mobile-size: 13px,
+      font-weight: (
+        400,
+        500,
+      ),
+      line-height: 1.5,
+      font-family: en,
+    ),
+  ),
+  helper5: (
     ko: (
       font-size: 12px,
       tablet-size: 12px,
