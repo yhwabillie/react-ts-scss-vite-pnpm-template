@@ -3,17 +3,9 @@ import clsx from 'clsx';
 import styles from '@/components/ui/organisms/Calendar/CalendarOptionList.module.scss';
 import type { OptionBase } from '../../molecules/OptionItem/OptionItem';
 
-interface BaseProps extends Pick<OptionBase, 'id'> {
-  variant: 'solid' | 'soft' | 'outline' | 'ghost';
-  color:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'brand'
-    | 'brand-sub'
-    | 'success'
-    | 'warning'
-    | 'danger';
+export interface BaseProps extends Pick<OptionBase, 'id'> {
+  variant: 'solid' | 'outline' | 'ghost';
+  color: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   selectedId?: string;
   className?: string;

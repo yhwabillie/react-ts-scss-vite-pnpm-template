@@ -102,6 +102,7 @@ const preview: Preview = {
               'FormField',
               'ControlGroup',
               'FormFieldset',
+              'Searchbar',
             ],
             'Organisms',
             '*',

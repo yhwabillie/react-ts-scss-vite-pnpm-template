@@ -31,7 +31,7 @@ type NativeDivProps = Omit<
   keyof StyleProps | keyof ComboboxA11yProps
 >;
 
-interface ComboboxProps extends StyleProps, ComboboxA11yProps, NativeDivProps {
+export interface ComboboxProps extends StyleProps, ComboboxA11yProps, NativeDivProps {
   id?: string;
   inputId?: string;
   required?: boolean;

@@ -3,17 +3,9 @@ import clsx from 'clsx';
 import styles from '@/components/ui/molecules/OptionList/OptionList.module.scss';
 import type { OptionBase, OptionItemProps } from '../OptionItem/OptionItem';
 
-interface BaseProps extends Pick<OptionBase, 'id'> {
+export interface BaseProps extends Pick<OptionBase, 'id'> {
   variant: 'solid' | 'soft' | 'outline' | 'ghost';
-  color:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'brand'
-    | 'brand-sub'
-    | 'success'
-    | 'warning'
-    | 'danger';
+  color: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   selectedId?: string;
   className?: string;

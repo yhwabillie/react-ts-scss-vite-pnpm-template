@@ -1,16 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Styles from '@/components/ui/atoms/Slider/Slider.module.scss';
 
-interface SliderProps {
-  label: string;
-  min?: number;
-  max?: number;
-  step?: number;
-  defaultValue?: number;
-  onChange?: (value: number) => void;
-}
-
-interface SliderProps {
+export interface SliderProps {
   label: string;
   min?: number;
   max?: number;

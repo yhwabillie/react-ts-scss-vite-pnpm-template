@@ -34,7 +34,7 @@ interface SearchbarAction {
   icon: React.ReactNode;
 }
 
-interface SearchbarProps extends StyleProps, NativeDivProps {
+export interface SearchbarProps extends StyleProps, NativeDivProps {
   id?: string;
   inputProps?: InputA11yProps & {
     inputId?: string;

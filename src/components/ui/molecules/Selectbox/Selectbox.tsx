@@ -30,7 +30,7 @@ type NativeDivProps = Omit<
   keyof StyleProps | keyof SelectboxA11yProps
 >;
 
-interface SelectboxProps extends StyleProps, SelectboxA11yProps, NativeDivProps {
+export interface SelectboxProps extends StyleProps, SelectboxA11yProps, NativeDivProps {
   id?: string;
   selectId?: string;
   required?: boolean;

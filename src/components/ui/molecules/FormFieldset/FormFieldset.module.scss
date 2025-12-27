@@ -114,6 +114,12 @@ $legend-sizes: (
 
         :global(.requried) {
           color: var(--required-asterisk-color);
+          vertical-align: super;
+          line-height: 0;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          margin-left: rem(4px);
         }
       }
     }

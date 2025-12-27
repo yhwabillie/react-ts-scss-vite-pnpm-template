@@ -21,7 +21,7 @@ type NativeDivPorps = Omit<
   keyof StyleProps | keyof InputA11yProps
 >;
 
-interface DatepickerProps extends StyleProps, NativeDivPorps {
+export interface DatepickerProps extends StyleProps, NativeDivPorps {
   id?: string;
   inputProps?: {
     id?: string;
