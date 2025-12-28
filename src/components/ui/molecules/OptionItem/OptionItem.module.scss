@@ -7,689 +7,349 @@
 $option-item-colors: (
   primary: (
     solid: (
-      bg: #d2e4ff,
-      label: #003f99,
+      bg: var(--primary-bg-color-option-item-solid),
+      label: var(--primary-text-color-option-item-solid),
       hover: (
-        bg: #c4dbff,
-        label: #003f99,
+        bg: var(--primary-hover-bg-color-option-item-solid),
+        label: var(--primary-hover-text-color-option-item-solid),
       ),
       active: (
-        bg: #b3cefc,
-        label: #003f99,
+        bg: var(--primary-active-bg-option-item-solid),
+        label: var(--primary-active-text-option-item-solid),
       ),
       selected: (
-        bg: #b3cefc,
-        label: #003f99,
+        bg: var(--primary-selected-bg-option-item-solid),
+        label: var(--primary-selected-text-option-item-solid),
       ),
       selected-hover: (
-        bg: #a3c0f5,
-        label: #003f99,
+        bg: var(--primary-hover-selected-bg-option-item-solid),
+        label: var(--primary-hover-selected-text-option-item-solid),
       ),
       selected-active: (
-        bg: #94b3ee,
-        label: #003f99,
+        bg: var(--primary-active-selected-bg-option-item-solid),
+        label: var(--primary-active-selected-text-option-item-solid),
       ),
       disabled: (
-        bg: #f0f0f0,
-        label: #b5b5b5,
-      ),
-    ),
-    soft: (
-      bg: #f7faff,
-      label: #003f99,
-      hover: (
-        bg: #eef4ff,
-        label: #003f99,
-      ),
-      active: (
-        bg: #e4edff,
-        label: #003f99,
-      ),
-      selected: (
-        bg: #e4edff,
-        label: #003f99,
-      ),
-      selected-hover: (
-        bg: #d5e2fb,
-        label: #003f99,
-      ),
-      selected-active: (
-        bg: #c7d6f5,
-        label: #003f99,
-      ),
-      disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
+        bg: var(--disabled-bg-color-option-item),
+        label: var(--disabled-text-color-option-item),
       ),
     ),
     ghost: (
-      bg: transparent,
-      label: #003f99,
+      bg: var(--primary-bg-color-option-item-ghost),
+      label: var(--primary-text-color-option-item-ghost),
       hover: (
-        bg: #eef4ff,
-        label: #003f99,
+        bg: var(--primary-hover-bg-color-option-item-ghost),
+        label: var(--primary-hover-text-color-option-item-ghost),
       ),
       active: (
-        bg: #e4edff,
-        label: #003f99,
+        bg: var(--primary-active-bg-option-item-ghost),
+        label: var(--primary-active-text-option-item-ghost),
       ),
       selected: (
-        bg: #e4edff,
-        label: #003f99,
+        bg: var(--primary-selected-bg-option-item-ghost),
+        label: var(--primary-selected-text-option-item-ghost),
       ),
       selected-hover: (
-        bg: #d5e2fb,
-        label: #003f99,
+        bg: var(--primary-hover-selected-bg-option-item-ghost),
+        label: var(--primary-hover-selected-text-option-item-ghost),
       ),
       selected-active: (
-        bg: #c7d6f5,
-        label: #003f99,
+        bg: var(--primary-active-selected-bg-option-item-ghost),
+        label: var(--primary-active-selected-text-option-item-ghost),
       ),
       disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
+        bg: var(--disabled-bg-color-option-item),
+        label: var(--disabled-text-color-option-item),
       ),
     ),
   ),
   secondary: (
     solid: (
-      bg: #d8f0ff,
-      label: #003355,
+      bg: var(--secondary-bg-color-option-item-solid),
+      label: var(--secondary-text-color-option-item-solid),
       hover: (
-        bg: #cce8ff,
-        label: #003355,
+        bg: var(--secondary-hover-bg-color-option-item-solid),
+        label: var(--secondary-hover-text-color-option-item-solid),
       ),
       active: (
-        bg: #b8ddff,
-        label: #003355,
+        bg: var(--secondary-active-bg-option-item-solid),
+        label: var(--secondary-active-text-option-item-solid),
       ),
       selected: (
-        bg: #b8ddff,
-        label: #003355,
+        bg: var(--secondary-selected-bg-option-item-solid),
+        label: var(--secondary-selected-text-option-item-solid),
       ),
       selected-hover: (
-        bg: #a8d1f5,
-        label: #003355,
+        bg: var(--secondary-hover-selected-bg-option-item-solid),
+        label: var(--secondary-hover-selected-text-option-item-solid),
       ),
       selected-active: (
-        bg: #99c5eb,
-        label: #003355,
+        bg: var(--secondary-active-selected-bg-option-item-solid),
+        label: var(--secondary-active-selected-text-option-item-solid),
       ),
       disabled: (
-        bg: #f0f0f0,
-        label: #b5b5b5,
-      ),
-    ),
-    soft: (
-      bg: #f0faff,
-      label: #003355,
-      hover: (
-        bg: #e4f2ff,
-        label: #003355,
-      ),
-      active: (
-        bg: #d8ebff,
-        label: #003355,
-      ),
-      selected: (
-        bg: #d8ebff,
-        label: #003355,
-      ),
-      selected-hover: (
-        bg: #c6e0f5,
-        label: #003355,
-      ),
-      selected-active: (
-        bg: #b3d4eb,
-        label: #003355,
-      ),
-      disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
+        bg: var(--disabled-bg-color-option-item),
+        label: var(--disabled-text-color-option-item),
       ),
     ),
     ghost: (
-      bg: transparent,
-      label: #003355,
+      bg: var(--secondary-bg-color-option-item-ghost),
+      label: var(--secondary-text-color-option-item-ghost),
       hover: (
-        bg: #e4f2ff,
-        label: #003355,
+        bg: var(--secondary-hover-bg-color-option-item-ghost),
+        label: var(--secondary-hover-text-color-option-item-ghost),
       ),
       active: (
-        bg: #d8ebff,
-        label: #003355,
+        bg: var(--secondary-active-bg-option-item-ghost),
+        label: var(--secondary-active-text-option-item-ghost),
       ),
       selected: (
-        bg: #d8ebff,
-        label: #003355,
+        bg: var(--secondary-selected-bg-option-item-ghost),
+        label: var(--secondary-selected-text-option-item-ghost),
       ),
       selected-hover: (
-        bg: #c6e0f5,
-        label: #003355,
+        bg: var(--secondary-hover-selected-bg-option-item-ghost),
+        label: var(--secondary-hover-selected-text-option-item-ghost),
       ),
       selected-active: (
-        bg: #b3d4eb,
-        label: #003355,
+        bg: var(--secondary-active-selected-bg-option-item-ghost),
+        label: var(--secondary-active-selected-text-option-item-ghost),
       ),
       disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
+        bg: var(--disabled-bg-color-option-item),
+        label: var(--disabled-text-color-option-item),
       ),
     ),
   ),
   tertiary: (
     solid: (
-      bg: #e8e8e8,
-      label: #1a1a1a,
+      bg: var(--tertiary-bg-color-option-item-solid),
+      label: var(--tertiary-text-color-option-item-solid),
       hover: (
-        bg: #dbdbdb,
-        label: #1a1a1a,
+        bg: var(--tertiary-hover-bg-color-option-item-solid),
+        label: var(--tertiary-hover-text-color-option-item-solid),
       ),
       active: (
-        bg: #cfcfcf,
-        label: #1a1a1a,
+        bg: var(--tertiary-active-bg-option-item-solid),
+        label: var(--tertiary-active-text-option-item-solid),
       ),
       selected: (
-        bg: #cfcfcf,
-        label: #1a1a1a,
+        bg: var(--tertiary-selected-bg-option-item-solid),
+        label: var(--tertiary-selected-text-option-item-solid),
       ),
       selected-hover: (
-        bg: #c3c3c3,
-        label: #1a1a1a,
+        bg: var(--tertiary-hover-selected-bg-option-item-solid),
+        label: var(--tertiary-hover-selected-text-option-item-solid),
       ),
       selected-active: (
-        bg: #b7b7b7,
-        label: #1a1a1a,
+        bg: var(--tertiary-active-selected-bg-option-item-solid),
+        label: var(--tertiary-active-selected-text-option-item-solid),
       ),
       disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
-      ),
-    ),
-    soft: (
-      bg: #f5f5f5,
-      label: #1a1a1a,
-      hover: (
-        bg: #ebebeb,
-        label: #1a1a1a,
-      ),
-      active: (
-        bg: #e0e0e0,
-        label: #1a1a1a,
-      ),
-      selected: (
-        bg: #e0e0e0,
-        label: #1a1a1a,
-      ),
-      selected-hover: (
-        bg: #d4d4d4,
-        label: #1a1a1a,
-      ),
-      selected-active: (
-        bg: #c8c8c8,
-        label: #1a1a1a,
-      ),
-      disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
+        bg: var(--disabled-bg-color-option-item),
+        label: var(--disabled-text-color-option-item),
       ),
     ),
     ghost: (
-      bg: transparent,
-      label: #1a1a1a,
+      bg: var(--tertiary-bg-color-option-item-ghost),
+      label: var(--tertiary-text-color-option-item-ghost),
       hover: (
-        bg: #ebebeb,
-        label: #1a1a1a,
+        bg: var(--tertiary-hover-bg-color-option-item-ghost),
+        label: var(--tertiary-hover-text-color-option-item-ghost),
       ),
       active: (
-        bg: #e0e0e0,
-        label: #1a1a1a,
+        bg: var(--tertiary-active-bg-option-item-ghost),
+        label: var(--tertiary-active-text-option-item-ghost),
       ),
       selected: (
-        bg: #e0e0e0,
-        label: #1a1a1a,
+        bg: var(--tertiary-selected-bg-option-item-ghost),
+        label: var(--tertiary-selected-text-option-item-ghost),
       ),
       selected-hover: (
-        bg: #d4d4d4,
-        label: #1a1a1a,
+        bg: var(--tertiary-hover-selected-bg-option-item-ghost),
+        label: var(--tertiary-hover-selected-text-option-item-ghost),
       ),
       selected-active: (
-        bg: #c8c8c8,
-        label: #1a1a1a,
+        bg: var(--tertiary-active-selected-bg-option-item-ghost),
+        label: var(--tertiary-active-selected-text-option-item-ghost),
       ),
       disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
-      ),
-    ),
-  ),
-  brand: (
-    solid: (
-      bg: #ffe9e6,
-      label: #7a2e25,
-      hover: (
-        bg: #ffd6d1,
-        label: #7a2e25,
-      ),
-      active: (
-        bg: #ffc1bb,
-        label: #7a2e25,
-      ),
-      selected: (
-        bg: #ffc1bb,
-        label: #7a2e25,
-      ),
-      selected-hover: (
-        bg: #ffaea8,
-        label: #7a2e25,
-      ),
-      selected-active: (
-        bg: #ff9b95,
-        label: #7a2e25,
-      ),
-      disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
-      ),
-    ),
-    soft: (
-      bg: #fff3f1,
-      label: #7a2e25,
-      hover: (
-        bg: #ffe7e2,
-        label: #7a2e25,
-      ),
-      active: (
-        bg: #ffdbd5,
-        label: #7a2e25,
-      ),
-      selected: (
-        bg: #ffdbd5,
-        label: #7a2e25,
-      ),
-      selected-hover: (
-        bg: #ffcfc9,
-        label: #7a2e25,
-      ),
-      selected-active: (
-        bg: #ffc3bd,
-        label: #7a2e25,
-      ),
-      disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
-      ),
-    ),
-    ghost: (
-      bg: transparent,
-      label: #7a2e25,
-      hover: (
-        bg: #ffe7e2,
-        label: #7a2e25,
-      ),
-      active: (
-        bg: #ffdbd5,
-        label: #7a2e25,
-      ),
-      selected: (
-        bg: #ffdbd5,
-        label: #7a2e25,
-      ),
-      selected-hover: (
-        bg: #ffcfc9,
-        label: #7a2e25,
-      ),
-      selected-active: (
-        bg: #ffc3bd,
-        label: #7a2e25,
-      ),
-      disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
-      ),
-    ),
-  ),
-  brand-sub: (
-    solid: (
-      bg: #f3e9fb,
-      label: #4b2b70,
-      hover: (
-        bg: #e8d7f7,
-        label: #4b2b70,
-      ),
-      active: (
-        bg: #dcbff2,
-        label: #4b2b70,
-      ),
-      selected: (
-        bg: #dcbff2,
-        label: #4b2b70,
-      ),
-      selected-hover: (
-        bg: #d0aeea,
-        label: #4b2b70,
-      ),
-      selected-active: (
-        bg: #c3a0e2,
-        label: #4b2b70,
-      ),
-      disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
-      ),
-    ),
-    soft: (
-      bg: #f8f1ff,
-      label: #4b2b70,
-      hover: (
-        bg: #f1e3fb,
-        label: #4b2b70,
-      ),
-      active: (
-        bg: #e6d2f7,
-        label: #4b2b70,
-      ),
-      selected: (
-        bg: #e6d2f7,
-        label: #4b2b70,
-      ),
-      selected-hover: (
-        bg: #d9c0f3,
-        label: #4b2b70,
-      ),
-      selected-active: (
-        bg: #cdb0ee,
-        label: #4b2b70,
-      ),
-      disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
-      ),
-    ),
-    ghost: (
-      bg: transparent,
-      label: #4b2b70,
-      hover: (
-        bg: #f1e3fb,
-        label: #4b2b70,
-      ),
-      active: (
-        bg: #e6d2f7,
-        label: #4b2b70,
-      ),
-      selected: (
-        bg: #e6d2f7,
-        label: #4b2b70,
-      ),
-      selected-hover: (
-        bg: #d9c0f3,
-        label: #4b2b70,
-      ),
-      selected-active: (
-        bg: #cdb0ee,
-        label: #4b2b70,
-      ),
-      disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
+        bg: var(--disabled-bg-color-option-item),
+        label: var(--disabled-text-color-option-item),
       ),
     ),
   ),
   success: (
     solid: (
-      bg: #d7f2df,
-      label: #2e5938,
+      bg: var(--success-bg-color-option-item-solid),
+      label: var(--success-text-color-option-item-solid),
       hover: (
-        bg: #c9ebd0,
-        label: #2e5938,
+        bg: var(--success-hover-bg-color-option-item-solid),
+        label: var(--success-hover-text-color-option-item-solid),
       ),
       active: (
-        bg: #b9e2c0,
-        label: #2e5938,
+        bg: var(--success-active-bg-option-item-solid),
+        label: var(--success-active-text-option-item-solid),
       ),
       selected: (
-        bg: #b9e2c0,
-        label: #2e5938,
+        bg: var(--success-selected-bg-option-item-solid),
+        label: var(--success-selected-text-option-item-solid),
       ),
       selected-hover: (
-        bg: #aad9b0,
-        label: #2e5938,
+        bg: var(--success-hover-selected-bg-option-item-solid),
+        label: var(--success-hover-selected-text-option-item-solid),
       ),
       selected-active: (
-        bg: #9bce9f,
-        label: #2e5938,
+        bg: var(--success-active-selected-bg-option-item-solid),
+        label: var(--success-active-selected-text-option-item-solid),
       ),
       disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
-      ),
-    ),
-    soft: (
-      bg: #eef9f0,
-      label: #2e5938,
-      hover: (
-        bg: #e2f4e2,
-        label: #2e5938,
-      ),
-      active: (
-        bg: #d4edcf,
-        label: #2e5938,
-      ),
-      selected: (
-        bg: #d4edcf,
-        label: #2e5938,
-      ),
-      selected-hover: (
-        bg: #c4e3be,
-        label: #2e5938,
-      ),
-      selected-active: (
-        bg: #b4d8ad,
-        label: #2e5938,
-      ),
-      disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
+        bg: var(--disabled-bg-color-option-item),
+        label: var(--disabled-text-color-option-item),
       ),
     ),
     ghost: (
-      bg: transparent,
-      label: #2e5938,
+      bg: var(--success-bg-color-option-item-ghost),
+      label: var(--success-text-color-option-item-ghost),
       hover: (
-        bg: #e2f4e2,
-        label: #2e5938,
+        bg: var(--success-hover-bg-color-option-item-ghost),
+        label: var(--success-hover-text-color-option-item-ghost),
       ),
       active: (
-        bg: #d4edcf,
-        label: #2e5938,
+        bg: var(--success-active-bg-option-item-ghost),
+        label: var(--success-active-text-option-item-ghost),
       ),
       selected: (
-        bg: #d4edcf,
-        label: #2e5938,
+        bg: var(--success-selected-bg-option-item-ghost),
+        label: var(--success-selected-text-option-item-ghost),
       ),
       selected-hover: (
-        bg: #c4e3be,
-        label: #2e5938,
+        bg: var(--success-hover-selected-bg-option-item-ghost),
+        label: var(--success-hover-selected-text-option-item-ghost),
       ),
       selected-active: (
-        bg: #b4d8ad,
-        label: #2e5938,
+        bg: var(--success-active-selected-bg-option-item-ghost),
+        label: var(--success-active-selected-text-option-item-ghost),
       ),
       disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
+        bg: var(--disabled-bg-color-option-item),
+        label: var(--disabled-text-color-option-item),
       ),
     ),
   ),
   warning: (
     solid: (
-      bg: #fff4d1,
-      label: #5c4a00,
+      bg: var(--warning-bg-color-option-item-solid),
+      label: var(--warning-text-color-option-item-solid),
       hover: (
-        bg: #fff0b8,
-        label: #5c4a00,
+        bg: var(--warning-hover-bg-color-option-item-solid),
+        label: var(--warning-hover-text-color-option-item-solid),
       ),
       active: (
-        bg: #ffeb9f,
-        label: #5c4a00,
+        bg: var(--warning-active-bg-option-item-solid),
+        label: var(--warning-active-text-option-item-solid),
       ),
       selected: (
-        bg: #ffeb9f,
-        label: #5c4a00,
+        bg: var(--warning-selected-bg-option-item-solid),
+        label: var(--warning-selected-text-option-item-solid),
       ),
       selected-hover: (
-        bg: #ffe486,
-        label: #5c4a00,
+        bg: var(--warning-hover-selected-bg-option-item-solid),
+        label: var(--warning-hover-selected-text-option-item-solid),
       ),
       selected-active: (
-        bg: #ffdd6d,
-        label: #5c4a00,
+        bg: var(--warning-active-selected-bg-option-item-solid),
+        label: var(--warning-active-selected-text-option-item-solid),
       ),
       disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
-      ),
-    ),
-    soft: (
-      bg: #fff9e8,
-      label: #5c4a00,
-      hover: (
-        bg: #fff4d1,
-        label: #5c4a00,
-      ),
-      active: (
-        bg: #ffefb8,
-        label: #5c4a00,
-      ),
-      selected: (
-        bg: #ffefb8,
-        label: #5c4a00,
-      ),
-      selected-hover: (
-        bg: #ffe986,
-        label: #5c4a00,
-      ),
-      selected-active: (
-        bg: #ffe26d,
-        label: #5c4a00,
-      ),
-      disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
+        bg: var(--disabled-bg-color-option-item),
+        label: var(--disabled-text-color-option-item),
       ),
     ),
     ghost: (
-      bg: transparent,
-      label: #5c4a00,
+      bg: var(--warning-bg-color-option-item-ghost),
+      label: var(--warning-text-color-option-item-ghost),
       hover: (
-        bg: #fff4d1,
-        label: #5c4a00,
+        bg: var(--warning-hover-bg-color-option-item-ghost),
+        label: var(--warning-hover-text-color-option-item-ghost),
       ),
       active: (
-        bg: #ffefb8,
-        label: #5c4a00,
+        bg: var(--warning-active-bg-option-item-ghost),
+        label: var(--warning-active-text-option-item-ghost),
       ),
       selected: (
-        bg: #ffefb8,
-        label: #5c4a00,
+        bg: var(--warning-selected-bg-option-item-ghost),
+        label: var(--warning-selected-text-option-item-ghost),
       ),
       selected-hover: (
-        bg: #ffe986,
-        label: #5c4a00,
+        bg: var(--warning-hover-selected-bg-option-item-ghost),
+        label: var(--warning-hover-selected-text-option-item-ghost),
       ),
       selected-active: (
-        bg: #ffe26d,
-        label: #5c4a00,
+        bg: var(--warning-active-selected-bg-option-item-ghost),
+        label: var(--warning-active-selected-text-option-item-ghost),
       ),
       disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
+        bg: var(--disabled-bg-color-option-item),
+        label: var(--disabled-text-color-option-item),
       ),
     ),
   ),
   danger: (
     solid: (
-      bg: #ffb5b5,
-      label: #6f1a1a,
+      bg: var(--danger-bg-color-option-item-solid),
+      label: var(--danger-text-color-option-item-solid),
       hover: (
-        bg: #ffa3a3,
-        label: #6f1a1a,
+        bg: var(--danger-hover-bg-color-option-item-solid),
+        label: var(--danger-hover-text-color-option-item-solid),
       ),
       active: (
-        bg: #ff8f8f,
-        label: #6f1a1a,
+        bg: var(--danger-active-bg-option-item-solid),
+        label: var(--danger-active-text-option-item-solid),
       ),
       selected: (
-        bg: #ff8f8f,
-        label: #6f1a1a,
+        bg: var(--danger-selected-bg-option-item-solid),
+        label: var(--danger-selected-text-option-item-solid),
       ),
       selected-hover: (
-        bg: #ff7d7d,
-        label: #6f1a1a,
+        bg: var(--danger-hover-selected-bg-option-item-solid),
+        label: var(--danger-hover-selected-text-option-item-solid),
       ),
       selected-active: (
-        bg: #ff6b6b,
-        label: #6f1a1a,
+        bg: var(--danger-active-selected-bg-option-item-solid),
+        label: var(--danger-active-selected-text-option-item-solid),
       ),
       disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
-      ),
-    ),
-    soft: (
-      bg: #ffe5e5,
-      label: #6f1a1a,
-      hover: (
-        bg: #ffd6d6,
-        label: #6f1a1a,
-      ),
-      active: (
-        bg: #ffc7c7,
-        label: #6f1a1a,
-      ),
-      selected: (
-        bg: #ffc7c7,
-        label: #6f1a1a,
-      ),
-      selected-hover: (
-        bg: #ffb8b8,
-        label: #6f1a1a,
-      ),
-      selected-active: (
-        bg: #ffaaaa,
-        label: #6f1a1a,
-      ),
-      disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
+        bg: var(--disabled-bg-color-option-item),
+        label: var(--disabled-text-color-option-item),
       ),
     ),
     ghost: (
-      bg: transparent,
-      label: #6f1a1a,
+      bg: var(--danger-bg-color-option-item-ghost),
+      label: var(--danger-text-color-option-item-ghost),
       hover: (
-        bg: #ffd6d6,
-        label: #6f1a1a,
+        bg: var(--danger-hover-bg-color-option-item-ghost),
+        label: var(--danger-hover-text-color-option-item-ghost),
       ),
       active: (
-        bg: #ffc7c7,
-        label: #6f1a1a,
+        bg: var(--danger-active-bg-option-item-ghost),
+        label: var(--danger-active-text-option-item-ghost),
       ),
       selected: (
-        bg: #ffc7c7,
-        label: #6f1a1a,
+        bg: var(--danger-selected-bg-option-item-ghost),
+        label: var(--danger-selected-text-option-item-ghost),
       ),
       selected-hover: (
-        bg: #ffb8b8,
-        label: #6f1a1a,
+        bg: var(--danger-hover-selected-bg-option-item-ghost),
+        label: var(--danger-hover-selected-text-option-item-ghost),
       ),
       selected-active: (
-        bg: #ffaaaa,
-        label: #6f1a1a,
+        bg: var(--danger-active-selected-bg-option-item-ghost),
+        label: var(--danger-active-selected-text-option-item-ghost),
       ),
       disabled: (
-        bg: #f4f4f4,
-        label: #b5b5b5,
+        bg: var(--disabled-bg-color-option-item),
+        label: var(--disabled-text-color-option-item),
       ),
     ),
   ),
@@ -869,10 +529,10 @@ $option-item-sizes: (
     outline-offset: -2px;
   }
 
-  &[aria-disabled='true'][aria-selected='true']:hover {
-    background-color: #f4f4f4 !important;
-    color: #b5b5b5 !important;
-  }
+  // &[aria-disabled='true'][aria-selected='true']:hover {
+  //   background-color: #f4f4f4 !important;
+  //   color: #b5b5b5 !important;
+  // }
 
   :global(.icon) {
     flex: 0 0 auto;

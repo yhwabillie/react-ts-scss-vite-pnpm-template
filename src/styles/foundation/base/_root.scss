@@ -137,6 +137,44 @@
   --success-active-bg-color-btn-link: rgba(21, 128, 61, 0.1);
   --success-active-text-color-btn-link: #15803d;
 
+  // option item - solid
+  --warning-bg-color-option-item-solid: #fff4d1;
+  --warning-text-color-option-item-solid: #5c4a00;
+
+  --warning-hover-bg-color-option-item-solid: #fff0b8;
+  --warning-hover-text-color-option-item-solid: #453700;
+
+  --warning-selected-bg-option-item-solid: #ffeb9f;
+  --warning-selected-text-option-item-solid: #332900;
+
+  --warning-hover-selected-bg-option-item-solid: #ffe486;
+  --warning-hover-selected-text-option-item-solid: #1f1900;
+
+  --warning-active-bg-option-item-solid: #ffeb9f; /* 번쩍거림 방지 */
+  --warning-active-text-option-item-solid: #332900;
+
+  --warning-active-selected-bg-option-item-solid: #ffdd6d;
+  --warning-active-selected-text-option-item-solid: #000000;
+
+  // option item - ghost
+  --warning-bg-color-option-item-ghost: transparent;
+  --warning-text-color-option-item-ghost: #5c4a00;
+
+  --warning-hover-bg-color-option-item-ghost: #fff4d1;
+  --warning-hover-text-color-option-item-ghost: #453700;
+
+  --warning-active-bg-option-item-ghost: #ffeb9f;
+  --warning-active-text-option-item-ghost: #332900;
+
+  --warning-selected-bg-option-item-ghost: #ffeb9f;
+  --warning-selected-text-option-item-ghost: #332900;
+
+  --warning-hover-selected-bg-option-item-ghost: #ffe486;
+  --warning-hover-selected-text-option-item-ghost: #1f1900;
+
+  --warning-active-selected-bg-option-item-ghost: #ffdd6d;
+  --warning-active-selected-text-option-item-ghost: #000000;
+
   // input
   --warning-bg-color-input-outline: #fff7ed;
   --warning-text-color-input-outline: #78350f;
@@ -227,6 +265,44 @@
 
   --warning-active-bg-color-btn-link: rgba(180, 83, 9, 0.1);
   --warning-active-text-color-btn-link: #b45309;
+
+  // option item - solid
+  --danger-bg-color-option-item-solid: #ffb5b5;
+  --danger-text-color-option-item-solid: #6f1a1a;
+
+  --danger-hover-bg-color-option-item-solid: #ffa3a3;
+  --danger-hover-text-color-option-item-solid: #5a1515;
+
+  --danger-active-bg-option-item-solid: #ff8f8f;
+  --danger-active-text-option-item-solid: #4a1010;
+
+  --danger-selected-bg-option-item-solid: #ff8f8f;
+  --danger-selected-text-option-item-solid: #4a1010;
+
+  --danger-hover-selected-bg-option-item-solid: #ff7d7d;
+  --danger-hover-selected-text-option-item-solid: #3a0c0c;
+
+  --danger-active-selected-bg-option-item-solid: #ff6b6b;
+  --danger-active-selected-text-option-item-solid: #000000;
+
+  // option item - ghost
+  --danger-bg-color-option-item-ghost: transparent;
+  --danger-text-color-option-item-ghost: #6f1a1a;
+
+  --danger-hover-bg-color-option-item-ghost: #ffb5b5;
+  --danger-hover-text-color-option-item-ghost: #5a1515;
+
+  --danger-active-bg-option-item-ghost: #ff8f8f;
+  --danger-active-text-option-item-ghost: #4a1010;
+
+  --danger-selected-bg-option-item-ghost: #ff8f8f;
+  --danger-selected-text-option-item-ghost: #4a1010;
+
+  --danger-hover-selected-bg-option-item-ghost: #ff7d7d;
+  --danger-hover-selected-text-option-item-ghost: #3a0c0c;
+
+  --danger-active-selected-bg-option-item-ghost: #ff6b6b;
+  --danger-active-selected-text-option-item-ghost: #000000;
 
   // input
   --danger-bg-color-input-outline: #fef2f2;
@@ -322,6 +398,41 @@
   --danger-active-bg-color-btn-link: rgba(185, 28, 28, 0.1);
   --danger-active-text-color-btn-link: #b91c1c;
 
+  // option item - solid
+  --success-bg-color-option-item-solid: #d7f2df;
+  --success-text-color-option-item-solid: #2e5938;
+
+  --success-hover-bg-color-option-item-solid: #c9ebd0;
+  --success-hover-text-color-option-item-solid: #1e3b25;
+
+  --success-selected-bg-option-item-solid: #b9e2c0;
+  --success-selected-text-option-item-solid: #142a1a;
+
+  --success-hover-selected-bg-option-item-solid: #aad9b0;
+  --success-hover-selected-text-option-item-solid: #0d1c11;
+
+  --success-active-bg-option-item-solid: #b9e2c0;
+  --success-active-text-option-item-solid: #142a1a;
+
+  --success-active-selected-bg-option-item-solid: #9bce9f;
+  --success-active-selected-text-option-item-solid: #000000;
+
+  // option item - ghost
+  ---success-bg-color-option-item-ghost: transparent;
+  --success-text-color-option-item-ghost: #2e5938;
+
+  --success-hover-bg-color-option-item-ghost: #d7f2df;
+  --success-hover-text-color-option-item-ghost: #1e3b25;
+
+  --success-selected-bg-option-item-ghost: #b9e2c0;
+  --success-selected-text-option-item-ghost: #142a1a;
+
+  --success-hover-selected-bg-option-item-ghost: #aad9b0;
+  --success-hover-selected-text-option-item-ghost: #0d1c11;
+
+  --success-active-bg-option-item-ghost: #9bce9f;
+  --success-active-text-option-item-ghost: #000000;
+
   // spinner - Success
   --success-track-color-spinner-open-ring: transparent;
   --success-path-color-spinner-open-ring: #15803d;
@@ -373,6 +484,9 @@
   --readonly-placeholder-color-textarea: #757575;
 
   // disabled
+  --disabled-bg-color-option-item: #eeeeee;
+  --disabled-text-color-option-item: #9e9e9e;
+
   --disabled-bg-color-segmented-control: #f1f3f5;
   --disabled-indicator-color-segmented-control: #dee2e6;
   --disabled-text-color-segmented-control: #adb5bd;
@@ -455,6 +569,44 @@
   // switch
   --switch-track-off-bg-color: #374151;
   --switch-handle-off-bg-color: #9ca3af;
+
+  // option item - solid
+  --success-bg-color-option-item-solid: #1e293b;
+  --success-text-color-option-item-solid: #a7d4b4;
+
+  --success-hover-bg-color-option-item-solid: #1a2d24;
+  --success-hover-text-color-option-item-solid: #c9ebd0;
+
+  --success-active-bg-option-item-solid: #244031;
+  --success-active-text-option-item-solid: #d7f2df;
+
+  --success-selected-bg-option-item-solid: #2e5938;
+  --success-selected-text-option-item-solid: #ffffff;
+
+  --success-hover-selected-bg-option-item-solid: #3a6e46;
+  --success-hover-selected-text-option-item-solid: #ffffff;
+
+  --success-active-selected-bg-option-item-solid: #1e3b25;
+  --success-active-selected-text-option-item-solid: #ffffff;
+
+  // option item - ghost
+  --success-bg-color-option-item-ghost: transparent;
+  --success-text-color-option-item-ghost: #a7d4b4;
+
+  --success-hover-bg-color-option-item-ghost: #1a2d24;
+  --success-hover-text-color-option-item-ghost: #c9ebd0;
+
+  --success-active-bg-option-item-ghost: #244031;
+  --success-active-text-option-item-ghost: #d7f2df;
+
+  --success-selected-bg-option-item-ghost: #2e5938;
+  --success-selected-text-option-item-ghost: #ffffff;
+
+  --success-hover-selected-bg-option-item-ghost: #3a6e46;
+  --success-hover-selected-text-option-item-ghost: #ffffff;
+
+  --success-active-selected-bg-option-item-ghost: #1e3b25;
+  --success-active-selected-text-option-item-ghost: #ffffff;
 
   // input
   --success-bg-color-input-outline: #064e3b;
@@ -547,6 +699,44 @@
   --success-active-bg-color-btn-link: rgba(74, 222, 128, 0.25);
   --success-active-text-color-btn-link: #4ade80;
 
+  // option item - solid
+  --warning-bg-color-option-item-solid: #1e293b;
+  --warning-text-color-option-item-solid: #fde68a;
+
+  --warning-hover-bg-color-option-item-solid: #2d2410;
+  --warning-hover-text-color-option-item-solid: #ffffff;
+
+  --warning-active-bg-option-item-solid: #3d300c;
+  --warning-active-text-option-item-solid: #ffffff;
+
+  --warning-selected-bg-option-item-solid: #b45309;
+  --warning-selected-text-option-item-solid: #ffffff;
+
+  --warning-hover-selected-bg-option-item-solid: #92400e;
+  --warning-hover-selected-text-option-item-solid: #ffffff;
+
+  --warning-active-selected-bg-option-item-solid: #78350f;
+  --warning-active-selected-text-option-item-solid: #ffffff;
+
+  // option item - ghost
+  --warning-bg-color-option-item-ghost: transparent;
+  --warning-text-color-option-item-ghost: #fde68a;
+
+  --warning-hover-bg-color-option-item-ghost: #2d2410;
+  --warning-hover-text-color-option-item-ghost: #ffffff;
+
+  --warning-active-bg-option-item-ghost: #3d300c;
+  --warning-active-text-option-item-ghost: #ffffff;
+
+  --warning-selected-bg-option-item-ghost: #b45309;
+  --warning-selected-text-option-item-ghost: #ffffff;
+
+  --warning-hover-selected-bg-option-item-ghost: #92400e;
+  --warning-hover-selected-text-option-item-ghost: #ffffff;
+
+  --warning-active-selected-bg-option-item-ghost: #78350f;
+  --warning-active-selected-text-option-item-ghost: #ffffff;
+
   // input
   --warning-bg-color-input-outline: #451a03;
   --warning-text-color-input-outline: #fffbeb;
@@ -637,6 +827,44 @@
 
   --warning-active-bg-color-btn-link: rgba(251, 191, 36, 0.25);
   --warning-active-text-color-btn-link: #fbbf24;
+
+  // option item - solid
+  --danger-bg-color-option-item-solid: #1e293b;
+  --danger-text-color-option-item-solid: #fecaca;
+
+  --danger-hover-bg-color-option-item-solid: #2d1a1a;
+  --danger-hover-text-color-option-item-solid: #ffffff;
+
+  --danger-active-bg-option-item-solid: #3f1d1d;
+  --danger-active-text-option-item-solid: #ffffff;
+
+  --danger-selected-bg-option-item-solid: #991b1b;
+  --danger-selected-text-option-item-solid: #ffffff;
+
+  --danger-hover-selected-bg-option-item-solid: #7f1d1d;
+  --danger-hover-selected-text-option-item-solid: #ffffff;
+
+  --danger-active-selected-bg-option-item-solid: #6c1616;
+  --danger-active-selected-text-option-item-solid: #ffffff;
+
+  // option item - ghost
+  --danger-bg-color-option-item-ghost: transparent;
+  --danger-text-color-option-item-ghost: #fecaca;
+
+  --danger-hover-bg-color-option-item-ghost: #2d1a1a;
+  --danger-hover-text-color-option-item-ghost: #ffffff;
+
+  --danger-active-bg-option-item-ghost: #3f1d1d;
+  --danger-active-text-option-item-ghost: #ffffff;
+
+  --danger-selected-bg-option-item-ghost: #991b1b;
+  --danger-selected-text-option-item-ghost: #ffffff;
+
+  --danger-hover-selected-bg-option-item-ghost: #7f1d1d;
+  --danger-hover-selected-text-option-item-ghost: #ffffff;
+
+  --danger-active-selected-bg-option-item-ghost: #6c1616;
+  --danger-active-selected-text-option-item-ghost: #ffffff;
 
   // input
   --danger-bg-color-input-outline: #450a0a;
@@ -783,6 +1011,9 @@
   --readonly-placeholder-color-textarea: #64748b;
 
   // disabled
+  --disabled-bg-color-option-item: #0f172a;
+  --disabled-text-color-option-item: #475569;
+
   --disabled-bg-color-segmented-control: rgba(255, 255, 255, 0.05);
   --disabled-indicator-color-segmented-control: #343a40;
   --disabled-text-color-segmented-control: #495057;
@@ -824,6 +1055,44 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  // option item - solid
+  --primary-bg-color-option-item-solid: #d2e4ff;
+  --primary-text-color-option-item-solid: #1e3a8a;
+
+  --primary-hover-bg-color-option-item-solid: #c4dbff;
+  --primary-hover-text-color-option-item-solid: #1e3a8a;
+
+  --primary-selected-bg-option-item-solid: #b3cefc;
+  --primary-selected-text-option-item-solid: #172554;
+
+  --primary-hover-selected-bg-option-item-solid: #a3c0f5;
+  --primary-hover-selected-text-option-item-solid: #172554;
+
+  --primary-active-bg-option-item-solid: #94b3ee;
+  --primary-active-text-option-item-solid: #0f172a;
+
+  --primary-active-selected-bg-option-item-solid: #85a9e6;
+  --primary-active-selected-text-option-item-solid: #001133;
+
+  // option item - ghost
+  --primary-bg-color-option-item-ghost: transparent;
+  --primary-text-color-option-item-ghost: #1e3a8a;
+
+  --primary-hover-bg-color-option-item-ghost: #c4dbff;
+  --primary-hover-text-color-option-item-ghost: #1e3a8a;
+
+  --primary-selected-bg-option-item-ghost: #b3cefc;
+  --primary-selected-text-option-item-ghost: #172554;
+
+  --primary-hover-selected-bg-option-item-ghost: #a3c0f5;
+  --primary-hover-selected-text-option-item-ghost: #172554;
+
+  --primary-active-bg-option-item-ghost: #94b3ee;
+  --primary-active-text-option-item-ghost: #0f172a;
+
+  --primary-active-selected-bg-option-item-ghost: #85a9e6;
+  --primary-active-selected-text-option-item-ghost: #001133;
+
   // segmented control
   --primary-bg-color-segmented-control: rgba(0, 82, 204, 0.08);
   --primary-indicator-color-segmented-control: #0052cc;
@@ -921,6 +1190,41 @@
   --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-link: #0052cc;
 
+  // option item - solid
+  --secondary-bg-color-option-item-solid: #f1f5f9;
+  --secondary-text-color-option-item-solid: #334155;
+
+  --secondary-hover-bg-color-option-item-solid: #e2e8f0;
+  --secondary-hover-text-color-option-item-solid: #1e293b;
+
+  --secondary-selected-bg-option-item-solid: #cbd5e1;
+  --secondary-selected-text-option-item-solid: #0f172a;
+
+  --secondary-hover-selected-bg-option-item-solid: #b9c9db;
+  --secondary-hover-selected-text-option-item-solid: #0f172a;
+
+  --secondary-active-bg-option-item-solid: #cbd5e1;
+  --secondary-active-text-option-item-solid: #0f172a;
+
+  --secondary-active-selected-bg-option-item-solid: #a8bacf;
+  --secondary-active-selected-text-option-item-solid: #000000;
+
+  // option item - ghost
+  --secondary-bg-color-option-item-ghost: transparent;
+  --secondary-text-color-option-item-ghost: #1e293b;
+
+  --secondary-hover-bg-color-option-item-ghost: #e2e8f0;
+  --secondary-hover-text-color-option-item-ghost: #1e293b;
+
+  --secondary-selected-bg-option-item-ghost: #cbd5e1;
+  --secondary-selected-text-option-item-ghost: #0f172a;
+
+  --secondary-hover-selected-bg-option-item-ghost: #b9c9db;
+  --secondary-hover-selected-text-option-item-ghost: #0f172a;
+
+  --secondary-active-bg-option-item-ghost: #cbd5e1;
+  --secondary-active-text-option-item-ghost: #0f172a;
+
   // segmented control
   --secondary-bg-color-segmented-control: rgba(71, 85, 105, 0.08);
   --secondary-indicator-color-segmented-control: #334155;
@@ -1017,6 +1321,44 @@
 
   --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-link: #475569;
+
+  // option item - solid
+  --tertiary-bg-color-option-item-solid: #f5f3ff;
+  --tertiary-text-color-option-item-solid: #7c3aed;
+
+  --tertiary-hover-bg-color-option-item-solid: #ede9fe;
+  --tertiary-hover-text-color-option-item-solid: #6d28d9;
+
+  --tertiary-selected-bg-option-item-solid: #ddd6fe;
+  --tertiary-selected-text-option-item-solid: #6d28d9;
+
+  --tertiary-hover-selected-bg-option-item-solid: #d1c4ff;
+  --tertiary-hover-selected-text-option-item-solid: #5b21b6;
+
+  --tertiary-active-bg-option-item-solid: #c4b5fd;
+  --tertiary-active-text-option-item-solid: #4c1d95;
+
+  --tertiary-active-selected-bg-option-item-solid: #b7a4fe;
+  --tertiary-active-selected-text-option-item-solid: #4c1d95;
+
+  // option item - ghost
+  --tertiary-bg-color-option-item-ghost: transparent;
+  --tertiary-text-color-option-item-ghost: #7c3aed;
+
+  --tertiary-hover-bg-color-option-item-ghost: #f5f3ff;
+  --tertiary-hover-text-color-option-item-ghost: #6d28d9;
+
+  --tertiary-selected-bg-option-item-ghost: #ddd6fe;
+  --tertiary-selected-text-option-item-ghost: #6d28d9;
+
+  --tertiary-hover-selected-bg-option-item-ghost: #d1c4ff;
+  --tertiary-hover-selected-text-option-item-ghost: #5b21b6;
+
+  --tertiary-active-bg-option-item-ghost: #c4b5fd;
+  --tertiary-active-text-option-item-ghost: #4c1d95;
+
+  --tertiary-active-selected-bg-option-item-ghost: #b7a4fe;
+  --tertiary-active-selected-text-option-item-ghost: #4c1d95;
 
   // segmented control
   --tertiary-bg-color-segmented-control: rgba(124, 58, 237, 0.08);
@@ -1155,6 +1497,41 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    // option item - solid
+    --primary-bg-color-option-item-solid: #1e293b;
+    --primary-text-color-option-item-solid: #94a3b8;
+
+    --primary-hover-bg-color-option-item-solid: #151c2c;
+    --primary-hover-text-color-option-item-solid: #bfdbfe;
+
+    --primary-active-bg-option-item-solid: #0f172a;
+    --primary-active-text-option-item-solid: #3b82f6;
+
+    --primary-selected-bg-option-item-solid: #3b82f6;
+    --primary-selected-text-option-item-solid: #ffffff;
+
+    --primary-hover-selected-bg-option-item-solid: #2563eb;
+    --primary-hover-selected-text-option-item-solid: #ffffff;
+
+    --primary-active-selected-bg-option-item-solid: #1d4ed8;
+    --primary-active-selected-text-option-item-solid: #ffffff;
+
+    // otpion item - ghost
+    --primary-bg-color-option-item-ghost: transparent;
+    --primary-text-color-option-item-ghost: #94a3b8;
+
+    --primary-hover-bg-color-option-item-ghost: rgba(15, 23, 42, 0.5);
+    --primary-hover-text-color-option-item-ghost: #bfdbfe;
+
+    --primary-selected-bg-option-item-ghost: #3b82f6;
+    --primary-selected-text-option-item-ghost: #ffffff;
+
+    --primary-hover-selected-bg-option-item-ghost: #2563eb;
+    --primary-hover-selected-text-option-item-ghost: #ffffff;
+
+    --primary-active-bg-option-item-ghost: #1d4ed8;
+    --primary-active-text-option-item-ghost: #ffffff;
+
     // segmented control
     --primary-bg-color-segmented-control: rgba(0, 82, 204, 0.2);
     --primary-indicator-color-segmented-control: #0047b3;
@@ -1252,6 +1629,41 @@
     --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
     --primary-active-text-color-btn-link: #60a5fa;
 
+    // option item - solid
+    --secondary-bg-color-option-item-solid: #1e293b;
+    --secondary-text-color-option-item-solid: #94a3b8;
+
+    --secondary-hover-bg-color-option-item-solid: #151c2c;
+    --secondary-hover-text-color-option-item-solid: #cbd5e1;
+
+    --secondary-active-bg-option-item-solid: #0f172a;
+    --secondary-active-text-option-item-solid: #e2e8f0;
+
+    --secondary-selected-bg-option-item-solid: #475569;
+    --secondary-selected-text-option-item-solid: #ffffff;
+
+    --secondary-hover-selected-bg-option-item-solid: #64748b;
+    --secondary-hover-selected-text-option-item-solid: #ffffff;
+
+    --secondary-active-selected-bg-option-item-solid: #334155;
+    --secondary-active-selected-text-option-item-solid: #ffffff;
+
+    // option item - ghost
+    --secondary-bg-color-option-item-ghost: transparent;
+    --secondary-text-color-option-item-ghost: #94a3b8;
+
+    --secondary-hover-bg-color-option-item-ghost: rgba(15, 23, 42, 0.5);
+    --secondary-hover-text-color-option-item-ghost: #cbd5e1;
+
+    --secondary-selected-bg-option-item-ghost: #475569;
+    --secondary-selected-text-option-item-ghost: #ffffff;
+
+    --secondary-hover-selected-bg-option-item-ghost: #64748b;
+    --secondary-hover-selected-text-option-item-ghost: #ffffff;
+
+    --secondary-active-bg-option-item-ghost: #334155;
+    --secondary-active-text-option-item-ghost: #ffffff;
+
     // segmented control
     --secondary-bg-color-segmented-control: rgba(148, 163, 184, 0.15);
     --secondary-indicator-color-segmented-control: #94a3b8;
@@ -1348,6 +1760,41 @@
 
     --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
+
+    // option item - solid
+    --tertiary-bg-color-option-item-solid: #1e293b;
+    --tertiary-text-color-option-item-solid: #c4b5fd;
+
+    --tertiary-hover-bg-color-option-item-solid: #151c2c;
+    --tertiary-hover-text-color-option-item-solid: #ddd6fe;
+
+    --tertiary-active-bg-option-item-solid: #0f172a;
+    --tertiary-active-text-option-item-solid: #a78bfa;
+
+    --tertiary-selected-bg-option-item-solid: #7c3aed;
+    --tertiary-selected-text-option-item-solid: #ffffff;
+
+    --tertiary-hover-selected-bg-option-item-solid: #8b5cf6;
+    --tertiary-hover-selected-text-option-item-solid: #ffffff;
+
+    --tertiary-active-selected-bg-option-item-solid: #6d28d9;
+    --tertiary-active-selected-text-option-item-solid: #ffffff;
+
+    // option item - ghost
+    --tertiary-bg-color-option-item-ghost: transparent;
+    --tertiary-text-color-option-item-ghost: #c4b5fd;
+
+    --tertiary-hover-bg-color-option-item-ghost: rgba(15, 23, 42, 0.5);
+    --tertiary-hover-text-color-option-item-ghost: #ddd6fe;
+
+    --tertiary-selected-bg-option-item-ghost: #7c3aed;
+    --tertiary-selected-text-option-item-ghost: #ffffff;
+
+    --tertiary-hover-selected-bg-option-item-ghost: #8b5cf6;
+    --tertiary-hover-selected-text-option-item-ghost: #ffffff;
+
+    --tertiary-active-bg-option-item-ghost: #6d28d9;
+    --tertiary-active-text-option-item-ghost: #ffffff;
 
     // segmented control
     --tertiary-bg-color-segmented-control: rgba(167, 139, 250, 0.15);

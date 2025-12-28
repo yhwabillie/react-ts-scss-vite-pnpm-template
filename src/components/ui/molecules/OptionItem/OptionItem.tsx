@@ -82,7 +82,13 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
         </span>
 
         {selected && value !== '' && (
-          <Icon name='round-check' className='icon' strokeLinecap='round' strokeLinejoin='round' />
+          <Icon
+            name='round-check'
+            className='icon'
+            strokeWidth={3}
+            strokeLinecap='round'
+            strokeLinejoin='round'
+          />
         )}
       </li>
     );
