@@ -373,6 +373,11 @@
   --readonly-placeholder-color-textarea: #757575;
 
   // disabled
+  --disabled-bg-color-segmented-control: #f1f3f5;
+  --disabled-indicator-color-segmented-control: #dee2e6;
+  --disabled-text-color-segmented-control: #adb5bd;
+  --disabled-text-active-color-segmented-control: #868e96;
+
   --disabled-track-bg-color-slider: #e9ecef;
   --disabled-fill-bg-color-slider: #adb5bd;
   --disabled-thumb-bg-color-slider: #ffffff;
@@ -778,6 +783,11 @@
   --readonly-placeholder-color-textarea: #64748b;
 
   // disabled
+  --disabled-bg-color-segmented-control: rgba(255, 255, 255, 0.05);
+  --disabled-indicator-color-segmented-control: #343a40;
+  --disabled-text-color-segmented-control: #495057;
+  --disabled-text-active-color-segmented-control: #adb5bd;
+
   --disabled-track-bg-color-slider: #343a40;
   --disabled-fill-bg-color-slider: #495057;
   --disabled-thumb-bg-color-slider: #6c757d;
@@ -814,6 +824,12 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  // segmented control
+  --primary-bg-color-segmented-control: rgba(0, 82, 204, 0.08);
+  --primary-indicator-color-segmented-control: #0052cc;
+  --primary-text-color-segmented-control: #1e3a8a;
+  --primary-text-active-color-segmented-control: #ffffff;
+
   // slider
   --primary-thumb-bg-color-slider: #ffffff;
   --primary-thumb-stroke-color-slider: #2466eb;
@@ -905,6 +921,12 @@
   --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-link: #0052cc;
 
+  // segmented control
+  --secondary-bg-color-segmented-control: rgba(71, 85, 105, 0.08);
+  --secondary-indicator-color-segmented-control: #334155;
+  --secondary-text-color-segmented-control: #475569;
+  --secondary-text-active-color-segmented-control: #ffffff;
+
   // slider
   --secondary-thumb-bg-color-slider: #ffffff;
   --secondary-thumb-stroke-color-slider: #6c757d;
@@ -995,6 +1017,12 @@
 
   --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-link: #475569;
+
+  // segmented control
+  --tertiary-bg-color-segmented-control: rgba(124, 58, 237, 0.08);
+  --tertiary-indicator-color-segmented-control: #6d28d9;
+  --tertiary-text-color-segmented-control: #5b21b6;
+  --tertiary-text-active-color-segmented-control: #ffffff;
 
   // slider
   --tertiary-thumb-bg-color-slider: #ffffff;
@@ -1127,6 +1155,12 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    // segmented control
+    --primary-bg-color-segmented-control: rgba(0, 82, 204, 0.2);
+    --primary-indicator-color-segmented-control: #0047b3;
+    --primary-text-color-segmented-control: #cbd5e1;
+    --primary-text-active-color-segmented-control: #ffffff;
+
     // slider
     --primary-thumb-bg-color-slider: #ffffff;
     --primary-thumb-stroke-color-slider: #4d82f3;
@@ -1218,6 +1252,12 @@
     --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
     --primary-active-text-color-btn-link: #60a5fa;
 
+    // segmented control
+    --secondary-bg-color-segmented-control: rgba(148, 163, 184, 0.15);
+    --secondary-indicator-color-segmented-control: #94a3b8;
+    --secondary-text-color-segmented-control: #cbd5e1;
+    --secondary-text-active-color-segmented-control: #0f172a;
+
     // slider
     --secondary-thumb-bg-color-slider: #ffffff;
     --secondary-thumb-stroke-color-slider: #adb5bd;
@@ -1308,6 +1348,12 @@
 
     --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
+
+    // segmented control
+    --tertiary-bg-color-segmented-control: rgba(167, 139, 250, 0.15);
+    --tertiary-indicator-color-segmented-control: #a78bfa;
+    --tertiary-text-color-segmented-control: #ddd6fe;
+    --tertiary-text-active-color-segmented-control: #2e1065;
 
     // slider
     --tertiary-thumb-bg-color-slider: #ffffff;

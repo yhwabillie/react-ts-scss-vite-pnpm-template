@@ -25,28 +25,28 @@ $slider-colors: (
 $slider-sizes: (
   xs: (
     width: rem(100px),
-    thumb-size: 14px,
-    track-height: 5px,
+    thumb-size: rem(14px),
+    track-height: rem(5px),
   ),
   sm: (
     width: rem(160px),
-    thumb-size: 16px,
-    track-height: 7px,
+    thumb-size: rem(16px),
+    track-height: rem(7px),
   ),
   md: (
     width: rem(240px),
-    thumb-size: 18px,
-    track-height: 8px,
+    thumb-size: rem(18px),
+    track-height: rem(8px),
   ),
   lg: (
     width: rem(320px),
-    thumb-size: 22px,
-    track-height: 10px,
+    thumb-size: rem(22px),
+    track-height: rem(10px),
   ),
   xl: (
     width: rem(480px),
-    thumb-size: 24px,
-    track-height: 12px,
+    thumb-size: rem(24px),
+    track-height: rem(12px),
   ),
 );
 

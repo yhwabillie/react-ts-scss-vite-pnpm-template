@@ -667,17 +667,6 @@ function App() {
         {/* ✅ 스크린 리더 사용자에게는 현재 로딩 중임을 텍스트로 안내 */}
         <span className='sr-only'>데이터를 불러오는 중입니다. 잠시만 기다려 주세요.</span>
       </section>
-      <div style={{ width: '300px', padding: '20px' }}>
-        <Slider
-          label='시스템 볼륨'
-          min={0}
-          max={100}
-          step={1}
-          defaultValue={volume}
-          onChange={val => setVolume(val)}
-        />
-        <p>현재 볼륨: {volume}%</p>
-      </div>
       <nav>
         {/* 아바타를 클릭하면 프로필 카드가 나타남 */}
         <ProfilePopover

@@ -1,66 +1,204 @@
-/* Searchbar.module.scss */
+/* SegmentedControl.module.scss */
 @use 'sass:map';
+@use 'sass:math';
 @use 'sass:meta';
-@use '../../../../styles/mixins' as *;
+@use '../../../../styles/mixins' as *; // rem 함수 포함
 
-.segment-container {
+// 💡 1. 컬러 시스템 맵 (보라색 계열 tertiary 반영)
+$segmented-colors: (
+  primary: (
+    bg: var(--primary-bg-color-segmented-control),
+    indicator-bg: var(--primary-indicator-color-segmented-control),
+    text-default: var(--primary-text-color-segmented-control),
+    text-active: var(--primary-text-active-color-segmented-control),
+  ),
+  secondary: (
+    bg: var(--secondary-bg-color-segmented-control),
+    indicator-bg: var(--secondary-indicator-color-segmented-control),
+    text-default: var(--secondary-text-color-segmented-control),
+    text-active: var(--secondary-text-active-color-segmented-control),
+  ),
+  tertiary: (
+    bg: var(--tertiary-bg-color-segmented-control),
+    indicator-bg: var(--tertiary-indicator-color-segmented-control),
+    text-default: var(--tertiary-text-color-segmented-control),
+    text-active: var(--tertiary-text-active-color-segmented-control),
+  ),
+);
+
+// 💡 2. 사이즈 시스템 맵 (XS 정렬 보정 포함)
+$segmented-sizes: (
+  xs: (
+    height: rem(28px),
+    item-min-width: rem(56px),
+    font-size: rem(12px),
+    radius: rem(6px),
+    gutter: rem(2px),
+  ),
+  sm: (
+    height: rem(32px),
+    item-min-width: rem(60px),
+    font-size: rem(13px),
+    radius: rem(10px),
+    gutter: rem(3px),
+  ),
+  md: (
+    height: rem(36px),
+    item-min-width: rem(80px),
+    font-size: rem(14px),
+    radius: rem(10px),
+    gutter: rem(3px),
+  ),
+  lg: (
+    height: rem(44px),
+    item-min-width: rem(100px),
+    font-size: rem(15px),
+    radius: rem(12px),
+    gutter: rem(4px),
+  ),
+  xl: (
+    height: rem(52px),
+    item-min-width: rem(120px),
+    font-size: rem(16px),
+    radius: rem(14px),
+    gutter: rem(5px),
+  ),
+);
+
+.segmented-control {
   display: flex;
   position: relative;
-  background-color: #f1f3f5;
-  border-radius: 8px;
-  padding: 2px;
   width: fit-content;
-  min-width: 200px;
-}
+  box-sizing: border-box;
+  overflow: hidden; // 내부 요소가 부모 곡률을 벗어나지 않도록 함
 
-.segment-item {
-  flex: 1;
-  position: relative;
-  z-index: 1;
-}
+  // 💡 3. 컬러 루프 적용
+  @each $color, $c-props in $segmented-colors {
+    &:global(.color--#{$color}) {
+      background-color: map.get($c-props, bg);
 
-.segment-input {
-  // 실제 input은 숨기되, 포커스는 잡히도록 설정
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+      :global(.segmented-indicator) {
+        background-color: map.get($c-props, indicator-bg);
+      }
 
-  // 키보드 포커스 시각화
-  &:focus-visible + .segment-label {
-    outline: 2px solid #000;
-    outline-offset: 2px;
-    border-radius: 6px;
+      :global(.segmented-label) {
+        color: map.get($c-props, text-default);
+        &:global(.is-active) {
+          color: map.get($c-props, text-active);
+        }
+      }
+
+      &:focus-visible {
+        :global(.segmented-indicator) {
+          outline: 2.5px solid #2466eb !important;
+          outline-offset: 1px;
+        }
+      }
+
+      &:has(:global(.native-segmented-input:disabled)) {
+        background-color: var(--disabled-bg-color-segmented-control);
+
+        :global(.segmented-indicator) {
+          background-color: var(--disabled-indicator-color-segmented-control);
+        }
+
+        :global(.segmented-item) {
+          :global(.segmented-label) {
+            color: var(--disabled-text-color-segmented-control);
+            cursor: not-allowed;
+
+            &:global(.is-active) {
+              color: var(--disabled-text-active-color-segmented-control);
+            }
+          }
+        }
+      }
+    }
   }
-}
 
-.segment-label {
-  display: block;
-  padding: 8px 16px;
-  text-align: center;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  color: #868e96;
-  transition: color 0.2s;
+  // 💡 4. 사이즈 및 Shape(Rounded/Pill) 루프 적용
+  @each $size, $props in $segmented-sizes {
+    &:global(.size--#{$size}) {
+      $height: map.get($props, height);
+      $gutter: map.get($props, gutter);
+      $base-radius: map.get($props, radius);
 
-  &.active {
-    color: #212529;
+      --slider-gutter: #{$gutter};
+      height: $height;
+      padding: $gutter;
+
+      // Rounded 형태
+      &:global(.shape--rounded) {
+        border-radius: $base-radius;
+        :global(.segmented-indicator) {
+          border-radius: calc(#{$base-radius} - #{$gutter});
+        }
+      }
+
+      // Pill 형태 (알약)
+      &:global(.shape--pill) {
+        border-radius: calc(#{$height} / 2);
+        :global(.segmented-indicator) {
+          border-radius: calc((#{$height} / 2) - #{$gutter});
+        }
+      }
+
+      :global(.segmented-item) {
+        min-width: map.get($props, item-min-width);
+      }
+
+      :global(.segmented-label) {
+        font-size: map.get($props, font-size);
+      }
+    }
   }
-}
 
-.segment-indicator {
-  position: absolute;
-  top: 2px;
-  bottom: 2px;
-  left: 0;
-  background-color: #fff;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
-  z-index: 0;
+  // 💡 5. 공통 내부 요소 스타일
+  :global(.segmented-indicator) {
+    position: absolute;
+    top: var(--slider-gutter);
+    bottom: var(--slider-gutter);
+    left: var(--slider-gutter);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  :global(.segmented-item) {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    :global(.native-segmented-input) {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    :global(.segmented-label) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 0 rem(4px);
+      text-align: center;
+      cursor: pointer;
+      font-weight: 500;
+      transition: color 0.2s;
+      white-space: nowrap;
+      user-select: none;
+    }
+  }
 }
