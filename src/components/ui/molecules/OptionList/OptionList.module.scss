@@ -7,99 +7,56 @@
 $option-list-colors: (
   primary: (
     solid: (
-      bg: #dceaff,
+      bg: var(--primary-bg-color-option-list-solid),
     ),
     outline: (
-      bg: #ffffff,
-      border: #3366cc,
-    ),
-    soft: (
-      bg: #eef5ff,
+      bg: var(--primary-bg-color-option-list-outline),
+      border: var(--primary-stroke-color-option-list-outline),
     ),
   ),
   secondary: (
     solid: (
-      bg: #d8edff,
+      bg: var(--secondary-bg-color-option-list-solid),
     ),
     outline: (
-      bg: #ffffff,
-      border: #69b2ff,
-    ),
-    soft: (
-      bg: #eef7ff,
+      bg: var(--secondary-bg-color-option-list-outline),
+      border: var(--secondary-stroke-color-option-list-outline),
     ),
   ),
   tertiary: (
     solid: (
-      bg: #e8e8e8,
+      bg: var(--tertiary-bg-color-option-list-solid),
     ),
     outline: (
-      bg: #ffffff,
-      border: #4d4d4d,
-    ),
-    soft: (
-      bg: #f5f5f5,
-      color: #232323,
-    ),
-  ),
-  brand: (
-    solid: (
-      bg: #ffe9e6,
-    ),
-    outline: (
-      bg: #ffffff,
-      border: #ff6f61,
-    ),
-    soft: (
-      bg: #fff3f1,
-    ),
-  ),
-  brand-sub: (
-    solid: (
-      bg: #f3e9fb,
-    ),
-    outline: (
-      bg: #ffffff,
-      border: #6a1b9a,
-    ),
-    soft: (
-      bg: #f8f1ff,
+      bg: var(--tertiary-bg-color-option-list-outline),
+      border: var(--tertiary-stroke-color-option-list-outline),
     ),
   ),
   success: (
     solid: (
-      bg: #e2f5e9,
+      bg: var(--success-bg-color-option-list-solid),
     ),
     outline: (
-      bg: #ffffff,
-      border: #28a745,
-    ),
-    soft: (
-      bg: #f0faf3,
+      bg: var(--success-bg-color-option-list-outline),
+      border: var(--success-stroke-color-option-list-outline),
     ),
   ),
   warning: (
     solid: (
-      bg: #fff4d1,
+      bg: var(--warning-bg-color-option-list-solid),
     ),
     outline: (
-      bg: #ffffff,
-      border: #f5c84a,
-    ),
-    soft: (
-      bg: #fff9e8,
+      bg: var(--warning-bg-color-option-list-outline),
+      border: var(--warning-stroke-color-option-list-outline),
     ),
   ),
   danger: (
     solid: (
-      bg: #ffe8e8,
+      bg: var(--danger-bg-color-option-list-solid),
     ),
     outline: (
-      bg: #ffffff,
-      border: #d84a4a,
-    ),
-    soft: (
-      bg: #fff2f2,
+      bg: var(--danger-bg-color-option-list-outline),
+      border: var(--danger-stroke-color-option-list-outline),
     ),
   ),
 );
@@ -110,31 +67,31 @@ $option-list-sizes: (
     width: rem(220px),
     radius: rem(8px),
     padding: rem(6px) rem(6px),
-    shadow: drop-shadow(0 rem(5px) rem(10px) rgba(0, 0, 0, 0.1)),
+    shadow: drop-shadow(0 rem(5px) rem(10px) var(--shadow-bg-color-option-list)),
   ),
   sm: (
     width: rem(240px),
     radius: rem(10px),
     padding: rem(8px) rem(8px),
-    shadow: drop-shadow(0 rem(6px) rem(12px) rgba(0, 0, 0, 0.1)),
+    shadow: drop-shadow(0 rem(6px) rem(12px) var(--shadow-bg-color-option-list)),
   ),
   md: (
     width: rem(260px),
     radius: rem(12px),
     padding: rem(10px) rem(10px),
-    shadow: drop-shadow(0 rem(7px) rem(14px) rgba(0, 0, 0, 0.1)),
+    shadow: drop-shadow(0 rem(7px) rem(14px) var(--shadow-bg-color-option-list)),
   ),
   lg: (
     width: rem(280px),
     radius: rem(12px),
     padding: rem(12px) rem(12px),
-    shadow: drop-shadow(0 rem(8px) rem(16px) rgba(0, 0, 0, 0.1)),
+    shadow: drop-shadow(0 rem(8px) rem(16px) var(--shadow-bg-color-option-list)),
   ),
   xl: (
     width: rem(300px),
     radius: rem(14px),
     padding: rem(14px) rem(14px),
-    shadow: drop-shadow(0 rem(10px) rem(20px) rgba(0, 0, 0, 0.1)),
+    shadow: drop-shadow(0 rem(10px) rem(20px) var(--shadow-bg-color-option-list)),
   ),
 );
 
