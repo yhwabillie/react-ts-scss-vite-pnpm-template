@@ -49,6 +49,14 @@
   --switch-track-off-bg-color: #e5e7eb;
   --switch-handle-off-bg-color: #ffffff;
 
+  // selectbox
+  --success-hover-shadow-selectbox: rgba(21, 128, 101, 0.25);
+
+  --success-bg-color-selectbox-outline: #ffffff;
+  --success-stroke-color-selectbox-outline: #16a34a;
+  --success-text-color-selectbox-outline: #14532d;
+  --success-placeholder-color-selectbox-outline: #166534;
+
   // input
   --success-bg-color-input-outline: #f0fdf4;
   --success-text-color-input-outline: #14532d;
@@ -140,6 +148,14 @@
   --success-active-bg-color-btn-link: rgba(21, 128, 61, 0.1);
   --success-active-text-color-btn-link: #15803d;
 
+  // selectbox
+  --warning-hover-shadow-selectbox: rgba(180, 83, 9, 0.25);
+
+  --warning-bg-color-selectbox-outline: #ffffff;
+  --warning-stroke-color-selectbox-outline: #d97706;
+  --warning-text-color-selectbox-outline: #78350f;
+  --warning-placeholder-color-selectbox-outline: #92400e;
+
   // optionList
   --warning-bg-color-option-list-solid: #fff4d1;
 
@@ -159,7 +175,7 @@
   --warning-hover-selected-bg-option-item-solid: #ffe486;
   --warning-hover-selected-text-option-item-solid: #1f1900;
 
-  --warning-active-bg-option-item-solid: #ffeb9f; /* 번쩍거림 방지 */
+  --warning-active-bg-option-item-solid: #ffeb9f;
   --warning-active-text-option-item-solid: #332900;
 
   --warning-active-selected-bg-option-item-solid: #ffdd6d;
@@ -274,6 +290,14 @@
 
   --warning-active-bg-color-btn-link: rgba(180, 83, 9, 0.1);
   --warning-active-text-color-btn-link: #b45309;
+
+  // selectbox
+  --danger-hover-shadow-selectbox: rgba(185, 28, 28, 0.25);
+
+  --danger-bg-color-selectbox-outline: #ffffff;
+  --danger-stroke-color-selectbox-outline: #dc2626;
+  --danger-text-color-selectbox-outline: #7f1d1d;
+  --danger-placeholder-color-selectbox-outline: #991b1b;
 
   // optionList
   --danger-bg-color-option-list-solid: #ffe8e8;
@@ -494,6 +518,10 @@
   --danger-solid-path-color-spinner-closed-ring: #ffffff;
 
   // readonly
+  --readonly-bg-color-selectbox: #f9f9f9;
+  --readonly-stroke-color-selectbox: #e0e0e0;
+  --readonly-text-color-selectbox: #212121;
+
   --readonly-bg-color-input: #f9f9f9;
   --readonly-stroke-color-input: #e0e0e0;
   --readonly-text-color-input: #212121;
@@ -505,6 +533,10 @@
   --readonly-placeholder-color-textarea: #757575;
 
   // disabled
+  --disabled-bg-color-selectbox: #eeeeee;
+  --disabled-text-color-selectbox: #9e9e9e;
+  --disabled-stroke-color-selectbox: #9e9e9e;
+
   --disabled-bg-color-option-item: #eeeeee;
   --disabled-text-color-option-item: #9e9e9e;
 
@@ -593,6 +625,14 @@
   // switch
   --switch-track-off-bg-color: #374151;
   --switch-handle-off-bg-color: #9ca3af;
+
+  // selectbox
+  --success-hover-shadow-selectbox: #34d399;
+
+  --success-bg-color-selectbox-outline: #064e3b;
+  --success-stroke-color-selectbox-outline: #059669;
+  --success-text-color-selectbox-outline: #f0fdf4;
+  --success-placeholder-color-selectbox-outline: #6ee7b7;
 
   // optionList
   --success-bg-color-option-list-solid: #064e3b;
@@ -729,6 +769,14 @@
   --success-active-bg-color-btn-link: rgba(74, 222, 128, 0.25);
   --success-active-text-color-btn-link: #4ade80;
 
+  // selectbox
+  --warning-hover-shadow-selectbox: #facc15;
+
+  --warning-bg-color-selectbox-outline: #451a03;
+  --warning-stroke-color-selectbox-outline: #f59e0b;
+  --warning-text-color-selectbox-outline: #fef3c7;
+  --warning-placeholder-color-selectbox-outline: #fbbf24;
+
   // optionList
   --warning-bg-color-option-list-solid: #451a03;
 
@@ -863,6 +911,14 @@
 
   --warning-active-bg-color-btn-link: rgba(251, 191, 36, 0.25);
   --warning-active-text-color-btn-link: #fbbf24;
+
+  // selectbox
+  --danger-hover-shadow-selectbox: #ef4444;
+
+  --danger-bg-color-selectbox-outline: #450a0a;
+  --danger-stroke-color-selectbox-outline: #ef4444;
+  --danger-text-color-selectbox-outline: #fef2f2;
+  --danger-placeholder-color-selectbox-outline: #fca5a5;
 
   // optionList
   --danger-bg-color-option-list-solid: #450a0a;
@@ -1042,6 +1098,10 @@
   --danger-solid-path-color-spinner-closed-ring: #ffffff;
 
   // readonly
+  --readonly-bg-color-selectbox: #1e293b;
+  --readonly-stroke-color-selectbox: #334155;
+  --readonly-text-color-selectbox: #cbd5e1;
+
   --readonly-bg-color-input: #1e293b;
   --readonly-stroke-color-input: #334155;
   --readonly-text-color-input: #cbd5e1;
@@ -1053,6 +1113,10 @@
   --readonly-placeholder-color-textarea: #64748b;
 
   // disabled
+  --disabled-bg-color-selectbox: #0f172a;
+  --disabled-text-color-selectbox: #475569;
+  --disabled-stroke-color-selectbox: #475569;
+
   --disabled-bg-color-option-item: #0f172a;
   --disabled-text-color-option-item: #475569;
 
@@ -1097,6 +1161,14 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  // selectbox
+  --primary-hover-shadow-selectbox: #dceaff;
+
+  --primary-bg-color-selectbox-outline: #ffffff;
+  --primary-stroke-color-selectbox-outline: #3366cc;
+  --primary-text-color-selectbox-outline: #1a3a66;
+  --primary-placeholder-color-selectbox-outline: #9aaac0;
+
   // optionList
   --primary-bg-color-option-list-solid: #dceaff;
 
@@ -1238,6 +1310,14 @@
   --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-link: #0052cc;
 
+  // selectbox
+  --secondary-hover-shadow-selectbox: rgba(71, 85, 105, 0.25);
+
+  --secondary-bg-color-selectbox-outline: #ffffff;
+  --secondary-stroke-color-selectbox-outline: #334155;
+  --secondary-text-color-selectbox-outline: #0f172a;
+  --secondary-placeholder-color-selectbox-outline: #64748b;
+
   // optionList
   --secondary-bg-color-option-list-solid: #d8edff;
 
@@ -1375,6 +1455,14 @@
 
   --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-link: #475569;
+
+  // selectbox
+  --tertiary-hover-shadow-selectbox: rgba(124, 58, 237, 0.25);
+
+  --tertiary-bg-color-selectbox-outline: #ffffff;
+  --tertiary-stroke-color-selectbox-outline: #7c3aed;
+  --tertiary-text-color-selectbox-outline: #7c3aed;
+  --tertiary-placeholder-color-selectbox-outline: #8b5cf6;
 
   // optionList
   --tertiary-bg-color-option-list-solid: #e8e8e8;
@@ -1557,6 +1645,14 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    // selectbox
+    --primary-hover-shadow-selectbox: #38bdf8;
+
+    --primary-bg-color-selectbox-outline: #1e1e1e;
+    --primary-stroke-color-selectbox-outline: #3b82f6;
+    --primary-text-color-selectbox-outline: #e0e6ed;
+    --primary-placeholder-color-selectbox-outline: #8b95a5;
+
     // optionList
     --primary-bg-color-option-list-solid: #1e293b;
 
@@ -1698,6 +1794,14 @@
     --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
     --primary-active-text-color-btn-link: #60a5fa;
 
+    // selectbox
+    --secondary-hover-shadow-selectbox: #94a3b8;
+
+    --secondary-bg-color-selectbox-outline: #0f172a;
+    --secondary-stroke-color-selectbox-outline: #334155;
+    --secondary-text-color-selectbox-outline: #f1f5f9;
+    --secondary-placeholder-color-selectbox-outline: #94a3b8;
+
     // optionList
     --secondary-bg-color-option-list-solid: #1e293b;
 
@@ -1838,6 +1942,14 @@
 
     --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
+
+    // selectbox
+    --tertiary-hover-shadow-selectbox: #a78bfa;
+
+    --tertiary-bg-color-selectbox-outline: #1e1b4b;
+    --tertiary-stroke-color-selectbox-outline: #a78bfa;
+    --tertiary-text-color-selectbox-outline: #f5f3ff;
+    --tertiary-placeholder-color-selectbox-outline: #c4b5fd;
 
     // optionList
     --tertiary-bg-color-option-list-solid: #2e1065;

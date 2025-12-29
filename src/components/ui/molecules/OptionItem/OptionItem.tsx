@@ -11,7 +11,7 @@ export interface OptionBase {
   selected?: any;
 }
 export interface BaseProps extends OptionBase {
-  variant: 'solid' | 'outline' | 'ghost';
+  variant: 'solid' | 'ghost';
   color: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   index?: number; // Optional로 추가

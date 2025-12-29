@@ -434,7 +434,6 @@ export const States: Story = {
     const states = [
       { label: 'Normal', props: {} },
       { label: 'Hover', props: { className: 'pseudo-hover' } },
-      // 타이핑 중(Focus + Value) 상태를 명확히 확인할 수 있는 지점
       { label: 'Focus (Typing)', props: { className: 'pseudo-focus-visible' } },
       { label: 'Read Only', props: { readOnly: true } },
       { label: 'Disabled', props: { disabled: true } },

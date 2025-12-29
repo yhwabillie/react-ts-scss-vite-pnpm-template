@@ -9,17 +9,36 @@ $selectbox-colors: (
       bg: #dceaff,
       color: #0a2540,
       placeholder: #8a9bb0,
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-selectbox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-selectbox),
+        color: var(--disabled-text-color-selectbox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-selectbox),
+        color: var(--readonly-text-color-selectbox),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #3366cc,
-      color: #1a3a66,
-      placeholder: #9aaac0,
-    ),
-    soft: (
-      bg: #eef5ff,
-      color: #143459,
-      placeholder: #a2afc2,
+      bg: var(--primary-bg-color-selectbox-outline),
+      border: var(--primary-stroke-color-selectbox-outline),
+      color: var(--primary-text-color-selectbox-outline),
+      placeholder: var(--primary-placeholder-color-selectbox-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-selectbox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-selectbox),
+        border: var(--disabled-stroke-color-selectbox),
+        color: var(--disabled-text-color-selectbox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-selectbox),
+        border: var(--readonly-stroke-color-selectbox),
+        color: var(--readonly-text-color-selectbox),
+      ),
     ),
   ),
   secondary: (
@@ -27,17 +46,36 @@ $selectbox-colors: (
       bg: #d8edff,
       color: #173a57,
       placeholder: #95a7b8,
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-selectbox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-selectbox),
+        color: var(--disabled-text-color-selectbox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-selectbox),
+        color: var(--readonly-text-color-selectbox),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #69b2ff,
-      color: #1f4b73,
-      placeholder: #9db2c4,
-    ),
-    soft: (
-      bg: #eef7ff,
-      color: #1d4268,
-      placeholder: #a8b8c7,
+      bg: var(--secondary-bg-color-selectbox-outline),
+      border: var(--secondary-stroke-color-selectbox-outline),
+      color: var(--secondary-text-color-selectbox-outline),
+      placeholder: var(--secondary-placeholder-color-selectbox-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-selectbox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-selectbox),
+        border: var(--disabled-stroke-color-selectbox),
+        color: var(--disabled-text-color-selectbox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-selectbox),
+        border: var(--readonly-stroke-color-selectbox),
+        color: var(--readonly-text-color-selectbox),
+      ),
     ),
   ),
   tertiary: (
@@ -45,53 +83,36 @@ $selectbox-colors: (
       bg: #e8e8e8,
       color: #1e1e1e,
       placeholder: #9a9a9a,
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-selectbox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-selectbox),
+        color: var(--disabled-text-color-selectbox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-selectbox),
+        color: var(--readonly-text-color-selectbox),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #4d4d4d,
-      color: #252525,
-      placeholder: #a4a4a4,
-    ),
-    soft: (
-      bg: #f5f5f5,
-      color: #232323,
-      placeholder: #ababab,
-    ),
-  ),
-  brand: (
-    solid: (
-      bg: #ffe9e6,
-      placeholder: #c7a8a5,
-      color: #7a2e25,
-    ),
-    outline: (
-      bg: #ffffff,
-      border: #ff6f61,
-      placeholder: #b7857f,
-      color: #8f3a30,
-    ),
-    soft: (
-      bg: #fff3f1,
-      placeholder: #d0bebc,
-      color: #8a3a2f,
-    ),
-  ),
-  brand-sub: (
-    solid: (
-      bg: #f3e9fb,
-      placeholder: #c8b7de,
-      color: #4b2b70,
-    ),
-    outline: (
-      bg: #ffffff,
-      border: #6a1b9a,
-      placeholder: #b7a2ce,
-      color: #532c7e,
-    ),
-    soft: (
-      bg: #f8f1ff,
-      placeholder: #d8caed,
-      color: #563482,
+      bg: var(--tertiary-bg-color-selectbox-outline),
+      border: var(--tertiary-stroke-color-selectbox-outline),
+      color: var(--tertiary-text-color-selectbox-outline),
+      placeholder: var(--tertiary-placeholder-color-selectbox-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-selectbox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-selectbox),
+        border: var(--disabled-stroke-color-selectbox),
+        color: var(--disabled-text-color-selectbox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-selectbox),
+        border: var(--readonly-stroke-color-selectbox),
+        color: var(--readonly-text-color-selectbox),
+      ),
     ),
   ),
   success: (
@@ -99,17 +120,36 @@ $selectbox-colors: (
       bg: #e2f5e9,
       placeholder: #a9c7b0,
       color: #2e5938,
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--success-hover-shadow-selectbox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-selectbox),
+        color: var(--disabled-text-color-selectbox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-selectbox),
+        color: var(--readonly-text-color-selectbox),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #28a745,
-      placeholder: #94b5a1,
-      color: #245c34,
-    ),
-    soft: (
-      bg: #f0faf3,
-      placeholder: #c8dbce,
-      color: #2f6840,
+      bg: var(--success-bg-color-selectbox-outline),
+      border: var(--success-stroke-color-selectbox-outline),
+      color: var(--success-text-color-selectbox-outline),
+      placeholder: var(--success-placeholder-color-selectbox-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--success-hover-shadow-selectbox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-selectbox),
+        border: var(--disabled-stroke-color-selectbox),
+        color: var(--disabled-text-color-selectbox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-selectbox),
+        border: var(--readonly-stroke-color-selectbox),
+        color: var(--readonly-text-color-selectbox),
+      ),
     ),
   ),
   warning: (
@@ -117,17 +157,36 @@ $selectbox-colors: (
       bg: #fff4d1,
       placeholder: #c7b98b,
       color: #5c4a00,
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-selectbox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-selectbox),
+        color: var(--disabled-text-color-selectbox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-selectbox),
+        color: var(--readonly-text-color-selectbox),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #f5c84a,
-      placeholder: #cab77c,
-      color: #7a6000,
-    ),
-    soft: (
-      bg: #fff9e8,
-      placeholder: #d6c796,
-      color: #6b5800,
+      bg: var(--warning-bg-color-selectbox-outline),
+      border: var(--warning-stroke-color-selectbox-outline),
+      color: var(--warning-text-color-selectbox-outline),
+      placeholder: var(--warning-placeholder-color-selectbox-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-selectbox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-selectbox),
+        border: var(--disabled-stroke-color-selectbox),
+        color: var(--disabled-text-color-selectbox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-selectbox),
+        border: var(--readonly-stroke-color-selectbox),
+        color: var(--readonly-text-color-selectbox),
+      ),
     ),
   ),
   danger: (
@@ -135,17 +194,36 @@ $selectbox-colors: (
       bg: #ffe8e8,
       placeholder: #d3b1b1,
       color: #6f1a1a,
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-selectbox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-selectbox),
+        color: var(--disabled-text-color-selectbox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-selectbox),
+        color: var(--readonly-text-color-selectbox),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #d84a4a,
-      placeholder: #c79b9b,
-      color: #8a1f1f,
-    ),
-    soft: (
-      bg: #fff2f2,
-      placeholder: #d8bebe,
-      color: #7a2222,
+      bg: var(--danger-bg-color-selectbox-outline),
+      border: var(--danger-stroke-color-selectbox-outline),
+      color: var(--danger-text-color-selectbox-outline),
+      placeholder: var(--danger-placeholder-color-selectbox-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-selectbox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-selectbox),
+        border: var(--disabled-stroke-color-selectbox),
+        color: var(--disabled-text-color-selectbox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-selectbox),
+        border: var(--readonly-stroke-color-selectbox),
+        color: var(--readonly-text-color-selectbox),
+      ),
     ),
   ),
 );
@@ -201,9 +279,29 @@ $selectbox-sizes: (
 
       @if $variant-props != null {
         &:global(.color--#{$color-name}) {
-          // variant
+          // hover
+          select:not(:disabled) {
+            &:not(:disabled) ~ :not(:global(.custom-select[aria-readonly='true'])):hover {
+              $hover-props: map.get($variant-props, hover);
+              box-shadow: map.get($hover-props, shadow);
+            }
+          }
 
-          @if $variant == 'solid' or $variant == 'soft' {
+          // disabled
+          select:disabled {
+            &:disabled ~ :global(.custom-select) {
+              $disabled-props: map.get($variant-props, disabled);
+              background-color: map.get($disabled-props, bg);
+              cursor: not-allowed;
+
+              :global(.custom-select-text),
+              :global(.icon) {
+                color: map.get($disabled-props, color);
+              }
+            }
+          }
+
+          @if $variant == 'solid' {
             &:global(.variant--#{$variant}) {
               :global(.custom-select) {
                 background-color: map.get($variant-props, bg);
@@ -220,9 +318,28 @@ $selectbox-sizes: (
             }
           } @else if $variant == 'outline' {
             &:global(.variant--outline) {
+              // readonly
+              :global(.custom-select[aria-readonly='true']) {
+                $readonly-props: map.get($variant-props, readonly);
+                border: rem(1px) solid map.get($readonly-props, border);
+
+                :global(.custom-select-text),
+                :global(.icon) {
+                  color: map.get($readonly-props, color);
+                }
+              }
+
+              // readonly
+              :global(.custom-select[aria-readonly='true']) {
+                $readonly-props: map.get($variant-props, readonly);
+                background-color: map.get($readonly-props, bg);
+              }
+
+              // disabled
               select:disabled {
                 &:disabled ~ :global(.custom-select) {
-                  border: rem(1px) solid #c0c4cc !important;
+                  $disabled-props: map.get($variant-props, disabled);
+                  border: rem(1px) solid map.get($disabled-props, border);
                 }
               }
 
@@ -263,19 +380,19 @@ $selectbox-sizes: (
     white-space: nowrap !important;
     border: 0 !important;
 
-    &:disabled ~ :global(.custom-select) {
-      background-color: #f0f1f3 !important;
-      cursor: not-allowed;
-      pointer-events: none;
+    // &:disabled ~ :global(.custom-select) {
+    //   background-color: #f0f1f3 !important;
+    //   cursor: not-allowed;
+    //   pointer-events: none;
 
-      :global(.custom-select-text) {
-        color: #9ca3af !important;
-      }
+    //   :global(.custom-select-text) {
+    //     color: #9ca3af !important;
+    //   }
 
-      :global(.icon) {
-        fill: #9ca3af !important;
-      }
-    }
+    //   :global(.icon) {
+    //     fill: #9ca3af !important;
+    //   }
+    // }
   }
 
   // variant
@@ -297,6 +414,7 @@ $selectbox-sizes: (
         display: inline-flex;
         align-items: center;
         cursor: pointer;
+        transition: all 0.2s ease;
 
         :global(.custom-select-text) {
           font: map.get($props, font-token);
