@@ -13,7 +13,7 @@ import Icon from '../../atoms/Icon/Icon';
  * - **Actions**: 검색어 삭제(Clear) 및 검색 실행(Submit) 액션을 커스텀할 수 있습니다.
  */
 const meta = {
-  title: 'UI/Molecules/Searchbar/Outline',
+  title: 'UI/Molecules/Combobox/Searchbar',
   component: Searchbar,
   tags: ['autodocs'],
   parameters: {

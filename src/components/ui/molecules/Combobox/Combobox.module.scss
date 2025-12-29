@@ -11,15 +11,25 @@ $combobox-colors: (
       placeholder: #8a9bb0,
     ),
     outline: (
-      bg: #ffffff,
-      border: #3366cc,
-      color: #1a3a66,
-      placeholder: #9aaac0,
-    ),
-    soft: (
-      bg: #eef5ff,
-      color: #143459,
-      placeholder: #a2afc2,
+      bg: var(--primary-bg-color-combobox-outline),
+      border: var(--primary-stroke-color-combobox-outline),
+      color: var(--primary-text-color-combobox-outline),
+      placeholder: var(--primary-placeholder-color-combobox-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-combobox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-combobox),
+        border: var(--disabled-stroke-color-combobox),
+        color: var(--disabled-text-color-combobox),
+        placeholder: var(--disabled-placeholder-color-combobox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-combobox),
+        border: var(--readonly-stroke-color-combobox),
+        color: var(--readonly-text-color-combobox),
+        placeholder: var(--readonly-placeholder-color-combobox),
+      ),
     ),
   ),
   secondary: (
@@ -29,15 +39,25 @@ $combobox-colors: (
       placeholder: #95a7b8,
     ),
     outline: (
-      bg: #ffffff,
-      border: #69b2ff,
-      color: #1f4b73,
-      placeholder: #9db2c4,
-    ),
-    soft: (
-      bg: #eef7ff,
-      color: #1d4268,
-      placeholder: #a8b8c7,
+      bg: var(--secondary-bg-color-combobox-outline),
+      border: var(--secondary-stroke-color-combobox-outline),
+      color: var(--secondary-text-color-combobox-outline),
+      placeholder: var(--secondary-placeholder-color-combobox-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-combobox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-combobox),
+        border: var(--disabled-stroke-color-combobox),
+        color: var(--disabled-text-color-combobox),
+        placeholder: var(--disabled-placeholder-color-combobox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-combobox),
+        border: var(--readonly-stroke-color-combobox),
+        color: var(--readonly-text-color-combobox),
+        placeholder: var(--readonly-placeholder-color-combobox),
+      ),
     ),
   ),
   tertiary: (
@@ -47,51 +67,25 @@ $combobox-colors: (
       placeholder: #9a9a9a,
     ),
     outline: (
-      bg: #ffffff,
-      border: #4d4d4d,
-      color: #252525,
-      placeholder: #a4a4a4,
-    ),
-    soft: (
-      bg: #f5f5f5,
-      color: #232323,
-      placeholder: #ababab,
-    ),
-  ),
-  brand: (
-    solid: (
-      bg: #ffe9e6,
-      placeholder: #c7a8a5,
-      color: #7a2e25,
-    ),
-    outline: (
-      bg: #ffffff,
-      border: #ff6f61,
-      placeholder: #b7857f,
-      color: #8f3a30,
-    ),
-    soft: (
-      bg: #fff3f1,
-      placeholder: #d0bebc,
-      color: #8a3a2f,
-    ),
-  ),
-  brand-sub: (
-    solid: (
-      bg: #f3e9fb,
-      placeholder: #c8b7de,
-      color: #4b2b70,
-    ),
-    outline: (
-      bg: #ffffff,
-      border: #6a1b9a,
-      placeholder: #b7a2ce,
-      color: #532c7e,
-    ),
-    soft: (
-      bg: #f8f1ff,
-      placeholder: #d8caed,
-      color: #563482,
+      bg: var(--tertiary-bg-color-combobox-outline),
+      border: var(--tertiary-stroke-color-combobox-outline),
+      color: var(--tertiary-text-color-combobox-outline),
+      placeholder: var(--tertiary-placeholder-color-combobox-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-combobox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-combobox),
+        border: var(--disabled-stroke-color-combobox),
+        color: var(--disabled-text-color-combobox),
+        placeholder: var(--disabled-placeholder-color-combobox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-combobox),
+        border: var(--readonly-stroke-color-combobox),
+        color: var(--readonly-text-color-combobox),
+        placeholder: var(--readonly-placeholder-color-combobox),
+      ),
     ),
   ),
   success: (
@@ -101,15 +95,25 @@ $combobox-colors: (
       color: #2e5938,
     ),
     outline: (
-      bg: #ffffff,
-      border: #28a745,
-      placeholder: #94b5a1,
-      color: #245c34,
-    ),
-    soft: (
-      bg: #f0faf3,
-      placeholder: #c8dbce,
-      color: #2f6840,
+      bg: var(--success-bg-color-combobox-outline),
+      border: var(--success-stroke-color-combobox-outline),
+      color: var(--success-text-color-combobox-outline),
+      placeholder: var(--success-placeholder-color-combobox-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--success-hover-shadow-combobox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-combobox),
+        border: var(--disabled-stroke-color-combobox),
+        color: var(--disabled-text-color-combobox),
+        placeholder: var(--disabled-placeholder-color-combobox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-combobox),
+        border: var(--readonly-stroke-color-combobox),
+        color: var(--readonly-text-color-combobox),
+        placeholder: var(--readonly-placeholder-color-combobox),
+      ),
     ),
   ),
   warning: (
@@ -119,15 +123,25 @@ $combobox-colors: (
       color: #5c4a00,
     ),
     outline: (
-      bg: #ffffff,
-      border: #f5c84a,
-      placeholder: #cab77c,
-      color: #7a6000,
-    ),
-    soft: (
-      bg: #fff9e8,
-      placeholder: #d6c796,
-      color: #6b5800,
+      bg: var(--warning-bg-color-combobox-outline),
+      border: var(--warning-stroke-color-combobox-outline),
+      color: var(--warning-text-color-combobox-outline),
+      placeholder: var(--warning-placeholder-color-combobox-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-combobox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-combobox),
+        border: var(--disabled-stroke-color-combobox),
+        color: var(--disabled-text-color-combobox),
+        placeholder: var(--disabled-placeholder-color-combobox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-combobox),
+        border: var(--readonly-stroke-color-combobox),
+        color: var(--readonly-text-color-combobox),
+        placeholder: var(--readonly-placeholder-color-combobox),
+      ),
     ),
   ),
   danger: (
@@ -137,15 +151,25 @@ $combobox-colors: (
       color: #6f1a1a,
     ),
     outline: (
-      bg: #ffffff,
-      border: #d84a4a,
-      placeholder: #c79b9b,
-      color: #8a1f1f,
-    ),
-    soft: (
-      bg: #fff2f2,
-      placeholder: #d8bebe,
-      color: #7a2222,
+      bg: var(--danger-bg-color-combobox-outline),
+      border: var(--danger-stroke-color-combobox-outline),
+      color: var(--danger-text-color-combobox-outline),
+      placeholder: var(--danger-placeholder-color-combobox-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-combobox),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-combobox),
+        border: var(--disabled-stroke-color-combobox),
+        color: var(--disabled-text-color-combobox),
+        placeholder: var(--disabled-placeholder-color-combobox),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-combobox),
+        border: var(--readonly-stroke-color-combobox),
+        color: var(--readonly-text-color-combobox),
+        placeholder: var(--readonly-placeholder-color-combobox),
+      ),
     ),
   ),
 );
@@ -201,9 +225,7 @@ $combobox-sizes: (
 
       @if $variant-props != null {
         &:global(.color--#{$color-name}) {
-          // variant
-
-          @if $variant == 'solid' or $variant == 'soft' {
+          @if $variant == 'solid' {
             &:global(.variant--#{$variant}) {
               :global(.custom-input) {
                 background-color: map.get($variant-props, bg);
@@ -220,9 +242,48 @@ $combobox-sizes: (
             }
           } @else if $variant == 'outline' {
             &:global(.variant--outline) {
-              input:disabled {
-                &:disabled ~ :global(.custom-input) {
-                  border: rem(1px) solid #c0c4cc !important;
+              // hover
+              &:not(:has(input:disabled)):not(:has(input[readonly])) {
+                &:hover {
+                  :global(.custom-input) {
+                    $hover-props: map.get($variant-props, hover);
+
+                    @if $hover-props != null {
+                      box-shadow: map.get($hover-props, shadow);
+                    }
+                  }
+                }
+              }
+
+              // readonly
+              :global(.custom-input:has(input[readonly]:not(:disabled))) {
+                $readonly-props: map.get($variant-props, readonly);
+
+                @if $readonly-props != null {
+                  border: rem(1px) solid map.get($readonly-props, border);
+                  background-color: map.get($readonly-props, bg);
+                  color: map.get($readonly-props, color);
+
+                  input::placeholder,
+                  :global(.icon) {
+                    color: map.get($readonly-props, placeholder);
+                  }
+                }
+              }
+
+              // disabled
+              :global(.custom-input:has(input:disabled)) {
+                $disabled-props: map.get($variant-props, disabled);
+
+                @if $disabled-props != null {
+                  border: rem(1px) solid map.get($disabled-props, border);
+                  background-color: map.get($disabled-props, bg);
+                  color: map.get($disabled-props, color);
+
+                  input::placeholder,
+                  :global(.icon) {
+                    color: map.get($disabled-props, placeholder);
+                  }
                 }
               }
 
@@ -232,6 +293,11 @@ $combobox-sizes: (
 
                 :global(.custom-input-text) {
                   color: map.get($variant-props, color);
+                  background-color: inherit;
+
+                  &::placeholder {
+                    color: map.get($variant-props, placeholder);
+                  }
                 }
 
                 :global(.icon) {
@@ -254,7 +320,6 @@ $combobox-sizes: (
 
   // variant
   @include selectbox-variant(solid);
-  @include selectbox-variant(soft);
   @include selectbox-variant(outline);
 
   // size
@@ -271,6 +336,7 @@ $combobox-sizes: (
         display: inline-flex;
         align-items: center;
         cursor: pointer;
+        transition: all 0.2s ease;
 
         :global(.custom-input-text) {
           display: inline-flex;

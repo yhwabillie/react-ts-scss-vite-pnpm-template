@@ -379,20 +379,6 @@ $selectbox-sizes: (
     clip: rect(0, 0, 0, 0) !important;
     white-space: nowrap !important;
     border: 0 !important;
-
-    // &:disabled ~ :global(.custom-select) {
-    //   background-color: #f0f1f3 !important;
-    //   cursor: not-allowed;
-    //   pointer-events: none;
-
-    //   :global(.custom-select-text) {
-    //     color: #9ca3af !important;
-    //   }
-
-    //   :global(.icon) {
-    //     fill: #9ca3af !important;
-    //   }
-    // }
   }
 
   // variant

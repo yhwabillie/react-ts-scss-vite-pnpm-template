@@ -17,6 +17,10 @@
 
   // optionList
   --shadow-bg-color-option-list: rgba(0, 0, 0, 0.1);
+  --empty-state-bg-color-option-list: #f8fafc;
+  --empty-state-icon-color-option-list: #1e293b;
+  --empty-state-title-color-option-list: #1e293b;
+  --empty-state-desc-color-option-list: #64748b;
 
   // validation msg - guide
   --guide-bg-color-validation-msg: #f0f9ff;
@@ -48,6 +52,14 @@
   // switch
   --switch-track-off-bg-color: #e5e7eb;
   --switch-handle-off-bg-color: #ffffff;
+
+  // combobox
+  --success-hover-shadow-combobox: rgba(21, 128, 101, 0.25);
+
+  --success-bg-color-combobox-outline: #ffffff;
+  --success-stroke-color-combobox-outline: #16a34a;
+  --success-text-color-combobox-outline: #14532d;
+  --success-placeholder-color-combobox-outline: #166534;
 
   // selectbox
   --success-hover-shadow-selectbox: rgba(21, 128, 101, 0.25);
@@ -147,6 +159,14 @@
 
   --success-active-bg-color-btn-link: rgba(21, 128, 61, 0.1);
   --success-active-text-color-btn-link: #15803d;
+
+  // combobox
+  --warning-hover-shadow-combobox: rgba(180, 83, 9, 0.25);
+
+  --warning-bg-color-combobox-outline: #ffffff;
+  --warning-stroke-color-combobox-outline: #d97706;
+  --warning-text-color-combobox-outline: #78350f;
+  --warning-placeholder-color-combobox-outline: #92400e;
 
   // selectbox
   --warning-hover-shadow-selectbox: rgba(180, 83, 9, 0.25);
@@ -290,6 +310,14 @@
 
   --warning-active-bg-color-btn-link: rgba(180, 83, 9, 0.1);
   --warning-active-text-color-btn-link: #b45309;
+
+  // combobox
+  --danger-hover-shadow-combobox: rgba(185, 28, 28, 0.25);
+
+  --danger-bg-color-combobox-outline: #ffffff;
+  --danger-stroke-color-combobox-outline: #dc2626;
+  --danger-text-color-combobox-outline: #7f1d1d;
+  --danger-placeholder-color-combobox-outline: #991b1b;
 
   // selectbox
   --danger-hover-shadow-selectbox: rgba(185, 28, 28, 0.25);
@@ -518,6 +546,11 @@
   --danger-solid-path-color-spinner-closed-ring: #ffffff;
 
   // readonly
+  --readonly-bg-color-combobox: #f9f9f9;
+  --readonly-stroke-color-combobox: #e0e0e0;
+  --readonly-text-color-combobox: #212121;
+  --readonly-placeholder-color-combobox: #212121;
+
   --readonly-bg-color-selectbox: #f9f9f9;
   --readonly-stroke-color-selectbox: #e0e0e0;
   --readonly-text-color-selectbox: #212121;
@@ -533,6 +566,11 @@
   --readonly-placeholder-color-textarea: #757575;
 
   // disabled
+  --disabled-bg-color-combobox: #eeeeee;
+  --disabled-text-color-combobox: #9e9e9e;
+  --disabled-stroke-color-combobox: #9e9e9e;
+  --disabled-placeholder-color-combobox: #9e9e9e;
+
   --disabled-bg-color-selectbox: #eeeeee;
   --disabled-text-color-selectbox: #9e9e9e;
   --disabled-stroke-color-selectbox: #9e9e9e;
@@ -594,6 +632,10 @@
 
   // optionList
   --shadow-bg-color-option-list: rgba(255, 255, 255, 0.1);
+  --empty-state-bg-color-option-list: #1e293b;
+  --empty-state-icon-color-option-list: #94a3b8;
+  --empty-state-title-color-option-list: #94a3b8;
+  --empty-state-desc-color-option-list: #94a3b8;
 
   // validation msg
   --guide-bg-color-validation-msg: #0c4a6e;
@@ -625,6 +667,14 @@
   // switch
   --switch-track-off-bg-color: #374151;
   --switch-handle-off-bg-color: #9ca3af;
+
+  // combobox
+  --success-hover-shadow-combobox: #34d399;
+
+  --success-bg-color-combobox-outline: #064e3b;
+  --success-stroke-color-combobox-outline: #059669;
+  --success-text-color-combobox-outline: #f0fdf4;
+  --success-placeholder-color-combobox-outline: #6ee7b7;
 
   // selectbox
   --success-hover-shadow-selectbox: #34d399;
@@ -769,6 +819,14 @@
   --success-active-bg-color-btn-link: rgba(74, 222, 128, 0.25);
   --success-active-text-color-btn-link: #4ade80;
 
+  // combobox
+  --warning-hover-shadow-combobox: #facc15;
+
+  --warning-bg-color-combobox-outline: #451a03;
+  --warning-stroke-color-combobox-outline: #f59e0b;
+  --warning-text-color-combobox-outline: #fef3c7;
+  --warning-placeholder-color-combobox-outline: #fbbf24;
+
   // selectbox
   --warning-hover-shadow-selectbox: #facc15;
 
@@ -911,6 +969,14 @@
 
   --warning-active-bg-color-btn-link: rgba(251, 191, 36, 0.25);
   --warning-active-text-color-btn-link: #fbbf24;
+
+  // combobox
+  --danger-hover-shadow-combobox: #ef4444;
+
+  --danger-bg-color-combobox-outline: #450a0a;
+  --danger-stroke-color-combobox-outline: #ef4444;
+  --danger-text-color-combobox-outline: #fef2f2;
+  --danger-placeholder-color-combobox-outline: #fca5a5;
 
   // selectbox
   --danger-hover-shadow-selectbox: #ef4444;
@@ -1098,6 +1164,11 @@
   --danger-solid-path-color-spinner-closed-ring: #ffffff;
 
   // readonly
+  --readonly-bg-color-combobox: #1e293b;
+  --readonly-stroke-color-combobox: #334155;
+  --readonly-text-color-combobox: #cbd5e1;
+  --readonly-placeholder-color-combobox: #64748b;
+
   --readonly-bg-color-selectbox: #1e293b;
   --readonly-stroke-color-selectbox: #334155;
   --readonly-text-color-selectbox: #cbd5e1;
@@ -1113,6 +1184,11 @@
   --readonly-placeholder-color-textarea: #64748b;
 
   // disabled
+  --disabled-bg-color-combobox: #0f172a;
+  --disabled-stroke-color-combobox: #475569;
+  --disabled-text-color-combobox: #475569;
+  --disabled-placeholder-color-combobox: #334155;
+
   --disabled-bg-color-selectbox: #0f172a;
   --disabled-text-color-selectbox: #475569;
   --disabled-stroke-color-selectbox: #475569;
@@ -1161,6 +1237,14 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  // combobox
+  --primary-hover-shadow-combobox: #dceaff;
+
+  --primary-bg-color-combobox-outline: #ffffff;
+  --primary-stroke-color-combobox-outline: #3366cc;
+  --primary-text-color-combobox-outline: #1a3a66;
+  --primary-placeholder-color-combobox-outline: #9aaac0;
+
   // selectbox
   --primary-hover-shadow-selectbox: #dceaff;
 
@@ -1310,6 +1394,14 @@
   --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-link: #0052cc;
 
+  // combobox
+  --secondary-hover-shadow-combobox: rgba(71, 85, 105, 0.25);
+
+  --secondary-bg-color-combobox-outline: #ffffff;
+  --secondary-stroke-color-combobox-outline: #334155;
+  --secondary-text-color-combobox-outline: #0f172a;
+  --secondary-placeholder-color-combobox-outline: #64748b;
+
   // selectbox
   --secondary-hover-shadow-selectbox: rgba(71, 85, 105, 0.25);
 
@@ -1455,6 +1547,14 @@
 
   --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-link: #475569;
+
+  // combobox
+  --tertiary-hover-shadow-combobox: rgba(124, 58, 237, 0.25);
+
+  --tertiary-bg-color-combobox-outline: #ffffff;
+  --tertiary-stroke-color-combobox-outline: #7c3aed;
+  --tertiary-text-color-combobox-outline: #7c3aed;
+  --tertiary-placeholder-color-combobox-outline: #8b5cf6;
 
   // selectbox
   --tertiary-hover-shadow-selectbox: rgba(124, 58, 237, 0.25);
@@ -1645,6 +1745,14 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    // combobox
+    --primary-hover-shadow-combobox: #38bdf8;
+
+    --primary-bg-color-combobox-outline: #1e1e1e;
+    --primary-stroke-color-combobox-outline: #3b82f6;
+    --primary-text-color-combobox-outline: #e0e6ed;
+    --primary-placeholder-color-combobox-outline: #8b95a5;
+
     // selectbox
     --primary-hover-shadow-selectbox: #38bdf8;
 
@@ -1794,6 +1902,14 @@
     --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
     --primary-active-text-color-btn-link: #60a5fa;
 
+    // combobox
+    --secondary-hover-shadow-combobox: #94a3b8;
+
+    --secondary-bg-color-combobox-outline: #0f172a;
+    --secondary-stroke-color-combobox-outline: #334155;
+    --secondary-text-color-combobox-outline: #f1f5f9;
+    --secondary-placeholder-color-combobox-outline: #94a3b8;
+
     // selectbox
     --secondary-hover-shadow-selectbox: #94a3b8;
 
@@ -1942,6 +2058,14 @@
 
     --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
+
+    // combobox
+    --tertiary-hover-shadow-combobox: #a78bfa;
+
+    --tertiary-bg-color-combobox-outline: #1e1b4b;
+    --tertiary-stroke-color-combobox-outline: #a78bfa;
+    --tertiary-text-color-combobox-outline: #f5f3ff;
+    --tertiary-placeholder-color-combobox-outline: #c4b5fd;
 
     // selectbox
     --tertiary-hover-shadow-selectbox: #a78bfa;
