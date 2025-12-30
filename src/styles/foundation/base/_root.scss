@@ -11,6 +11,11 @@
   --color-surface-raised: #ffffff; // Lv.2: 강조가 필요한 오버레이나 컴포넌트 배경
   --color-text-primary: #191f28; // 텍스트 컬러 (접근성 확보)
 
+  // scroll
+  --scrollbar-thumb-bg-color: rgba(55, 55, 55, 0.4);
+  --scrollbar-hover-thumb-bg-color: rgba(55, 55, 55, 0.6);
+  --scrollbar-track-bg-color: rgba(55, 55, 55, 0.05);
+
   // guide
   --bg-color-guide: #ecf4ef;
   --stroke-color-guide: #15803d;
@@ -657,6 +662,13 @@
   --color-surface-default: #1e1e1e; // Lv.1: 그 위의 콘텐츠 영역 (카드 등)
   --color-surface-raised: #333333; // Lv.2: 강조가 필요한 오버레이나 컴포넌트 배경
   --color-text-primary: #f9fafb; // 텍스트 컬러 (접근성 확보)
+
+  /* 배경이 어두우므로 썸(Thumb)은 더 밝은 흰색 계열로 설정 */
+  --scrollbar-thumb-bg-color: rgba(255, 255, 255, 0.25);
+  --scrollbar-hover-thumb-bg-color: rgba(255, 255, 255, 0.45);
+
+  /* 트랙은 배경보다 미세하게 밝거나 아예 투명하게 유지 */
+  --scrollbar-track-bg-color: rgba(255, 255, 255, 0.05);
 
   // guide
   --bg-color-guide: rgba(45, 252, 82, 0.05);

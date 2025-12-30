@@ -547,6 +547,11 @@ $option-item-sizes: (
       border-radius: map.get($props, radius);
       font: map.get($props, font-token);
 
+      :global(.icon) {
+        width: map.get($props, icon-size);
+        height: map.get($props, icon-size);
+      }
+
       &:has(a) {
         padding: 0 !important;
 

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { type RefObject } from 'react';
 import styles from '@/components/ui/molecules/IconButton/IconButton.module.scss';
 import clsx from 'clsx';
 
 type BaseProps = {
+  ref?: RefObject<HTMLButtonElement | null>;
   variant?: 'solid' | 'outline' | 'ghost';
   color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';

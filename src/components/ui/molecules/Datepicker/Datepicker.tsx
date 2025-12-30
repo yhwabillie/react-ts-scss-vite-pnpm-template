@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import styles from '@/components/ui/molecules/Datepicker/Datepicker.module.scss';
 import clsx from 'clsx';
 import type { Color, Size, Variant } from '@/types/design/design-tokens.types';
@@ -9,9 +9,11 @@ import OptionListPortal from '../OptionListPortal/OptionListPortal';
 import type { OptionBase } from '../OptionItem/OptionItem';
 import type { Holiday } from '@/App';
 import Calendar from '../../organisms/Calendar/Calendar';
+import IconButton from '../IconButton/IconButton';
 
 interface StyleProps {
-  variant: Variant;
+  variant: 'solid' | 'outline';
+  shape?: 'square' | 'rounded' | 'pill';
   color: Color;
   size: Size;
 }
@@ -23,11 +25,17 @@ type NativeDivPorps = Omit<
 
 export interface DatepickerProps extends StyleProps, NativeDivPorps {
   id?: string;
+  as?: React.ElementType;
+  className?: string;
   inputProps?: {
     id?: string;
     value?: string;
-    readonly?: boolean;
+    readOnly?: boolean;
     disabled?: boolean;
+    placeholder?: string;
+  };
+  buttonProps?: {
+    variant: 'ghost' | 'solid';
   };
   calendar?: {
     selectedYear: number;
@@ -46,7 +54,25 @@ export interface DatepickerProps extends StyleProps, NativeDivPorps {
 }
 
 const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
-  ({ variant, color, size, id, inputProps = {}, calendar, onDateChange }, ref) => {
+  (
+    {
+      variant,
+      shape = 'rounded',
+      color,
+      size,
+      id,
+      'aria-labelledby': ariaLabelledBy,
+      className,
+      as: Component = 'label',
+      inputProps = {},
+      buttonProps = {
+        variant: 'ghost',
+      },
+      calendar,
+      onDateChange,
+    },
+    ref,
+  ) => {
     const {
       selectedYear,
       selectedMonth,
@@ -237,11 +263,17 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
     }, [isOpen, updatePosition]);
 
     const toggle = useCallback(() => {
+      // readOnly일 경우 함수 실행을 즉시 중단
+      if (inputProps.readOnly) return;
+
       setIsOpen(prev => !prev);
-    }, []);
+    }, [inputProps.readOnly]);
 
     // ⌨️ [Interaction] 달력 트리거 버튼 키다운 핸들러 수정 (이 부분은 유지)
     const handleTriggerKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+      // readOnly일 경우 키 이벤트를 무시
+      if (inputProps.readOnly) return;
+
       // Enter 또는 Space 키를 감지
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -283,41 +315,85 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
       }
     }, [isOpen, openedByKeyboard, positioned]);
 
+    // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하지 않는 것
+    const filteredClassName = useMemo(() => {
+      if (!className) return '';
+
+      return className
+        .split(' ')
+        .filter(name => {
+          // 1. 'pseudo-'로 시작하지 않는 일반 클래스는 무조건 통과
+          if (!name.startsWith('pseudo-')) return true;
+
+          // 2. 'pseudo-'로 시작하더라도 'pseudo-hover'인 경우는 통과
+          return name === 'pseudo-hover';
+        })
+        .join(' ');
+    }, [className]);
+
+    // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하는 것
+    const pseudoClassName = useMemo(() => {
+      if (!className) return '';
+
+      return className
+        .split(' ')
+        .filter(name => name.startsWith('pseudo-') && name !== 'pseudo-hover') // ✅ pseudo-로 시작하지만, pseudo-hover는 아닐 때만 남김
+        .join(' ');
+    }, [className]);
+
     // -----------------------------
     // ▶️ 렌더링
     // -----------------------------
     return (
-      <div
+      <Component
+        {...(Component === 'label' ? { htmlFor: id } : {})}
         ref={containerRef}
         id={id}
         className={clsx(
-          `${styles['datepicker']} variant--${variant} color--${color} size--${size}`,
+          `${styles['datepicker']} variant--${variant} ${`shape--${shape}`} color--${color} size--${size}`,
+          filteredClassName,
         )}
       >
         <div ref={customInputRef} className='custom-input'>
           <input
             ref={nativeInputRef}
             type='text'
-            id={inputProps.id}
+            className={clsx('custom-input-text', pseudoClassName)}
+            {...inputProps}
+            aria-labelledby={ariaLabelledBy}
+            // 1. 확정된 날짜가 있으면 포맷팅된 값을 보여주고, 없으면 inputProps의 초기값 사용
             value={confirmedDate ? formatDate(confirmedDate) : inputProps.value || ''}
-            readOnly={inputProps.readonly}
+            readOnly={inputProps.readOnly}
+          />
+          <span id={ariaLabelledBy} className='sr-only'>
+            {inputProps?.placeholder}
+          </span>
+          <IconButton
+            ref={triggerButtonRef}
+            className='trigger-calendar'
+            aria-expanded={isOpen}
             disabled={inputProps.disabled}
-            placeholder='YYYY-MM-DD'
+            type='button'
+            aria-label={isOpen ? '달력 닫기' : '달력 열기'}
+            onClick={() => {
+              toggle();
+            }}
+            onKeyDown={handleTriggerKeyDown}
+            variant={buttonProps.variant}
+            color={color}
+            shape={shape}
+            size={size}
+            icon={
+              <Icon
+                className='icon'
+                name='calendar'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth={2.5}
+              />
+            }
           />
         </div>
-        <button
-          ref={triggerButtonRef}
-          className='trigger-calendar'
-          aria-expanded={isOpen}
-          disabled={inputProps.disabled}
-          onClick={() => {
-            toggle();
-          }}
-          onKeyDown={handleTriggerKeyDown}
-        >
-          <span className='sr-only'>달력 열기</span>
-          <Icon name='calendar' strokeWidth={2.5} />
-        </button>
 
         {isOpen && (
           <OptionListPortal
@@ -369,7 +445,7 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
             )}
           </OptionListPortal>
         )}
-      </div>
+      </Component>
     );
   },
 );
