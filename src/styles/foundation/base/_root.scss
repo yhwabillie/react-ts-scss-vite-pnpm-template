@@ -70,6 +70,14 @@
   --success-text-color-searchbar-outline: #14532d;
   --success-placeholder-color-searchbar-outline: #166534;
 
+  // datepicker
+  --success-hover-shadow-datepicker: rgba(21, 128, 101, 0.25);
+
+  --success-bg-color-datepicker-outline: #ffffff;
+  --success-stroke-color-datepicker-outline: #16a34a;
+  --success-text-color-datepicker-outline: #14532d;
+  --success-placeholder-color-datepicker-outline: #166534;
+
   // combobox
   --success-hover-shadow-combobox: rgba(21, 128, 101, 0.25);
 
@@ -176,6 +184,14 @@
 
   --success-active-bg-color-btn-link: rgba(21, 128, 61, 0.1);
   --success-active-text-color-btn-link: #15803d;
+
+  // datepicker
+  --warning-hover-shadow-datepicker: rgba(180, 83, 9, 0.25);
+
+  --warning-bg-color-datepicker-outline: #ffffff;
+  --warning-stroke-color-datepicker-outline: #d97706;
+  --warning-text-color-datepicker-outline: #78350f;
+  --warning-placeholder-color-datepicker-outline: #92400e;
 
   // searchbar
   --warning-hover-shadow-searchbar: rgba(180, 83, 9, 0.25);
@@ -345,6 +361,14 @@
   --danger-stroke-color-searchbar-outline: #dc2626;
   --danger-text-color-searchbar-outline: #7f1d1d;
   --danger-placeholder-color-searchbar-outline: #991b1b;
+
+  // datepicker
+  --danger-hover-shadow-datepicker: rgba(185, 28, 28, 0.25);
+
+  --danger-bg-color-datepicker-outline: #ffffff;
+  --danger-stroke-color-datepicker-outline: #dc2626;
+  --danger-text-color-datepicker-outline: #7f1d1d;
+  --danger-placeholder-color-datepicker-outline: #991b1b;
 
   // combobox
   --danger-hover-shadow-combobox: rgba(185, 28, 28, 0.25);
@@ -583,6 +607,11 @@
   --danger-solid-path-color-spinner-closed-ring: #ffffff;
 
   // readonly
+  --readonly-bg-color-datepicker: #f9f9f9;
+  --readonly-stroke-color-datepicker: #e0e0e0;
+  --readonly-text-color-datepicker: #212121;
+  --readonly-placeholder-color-datepicker: #212121;
+
   --readonly-bg-color-combobox: #f9f9f9;
   --readonly-stroke-color-combobox: #e0e0e0;
   --readonly-text-color-combobox: #212121;
@@ -603,6 +632,11 @@
   --readonly-placeholder-color-textarea: #757575;
 
   // disabled
+  --disabled-bg-color-datepicker: #eeeeee;
+  --disabled-text-color-datepicker: #9e9e9e;
+  --disabled-stroke-color-datepicker: #9e9e9e;
+  --disabled-placeholder-color-datepicker: #9e9e9e;
+
   --disabled-bg-color-combobox: #eeeeee;
   --disabled-text-color-combobox: #9e9e9e;
   --disabled-stroke-color-combobox: #9e9e9e;
@@ -723,6 +757,14 @@
   --success-stroke-color-searchbar-outline: #059669;
   --success-text-color-searchbar-outline: #f0fdf4;
   --success-placeholder-color-searchbar-outline: #6ee7b7;
+
+  // datepicker
+  --success-hover-shadow-datepicker: #34d399;
+
+  --success-bg-color-datepicker-outline: #064e3b;
+  --success-stroke-color-datepicker-outline: #059669;
+  --success-text-color-datepicker-outline: #f0fdf4;
+  --success-placeholder-color-datepicker-outline: #6ee7b7;
 
   // combobox
   --success-hover-shadow-combobox: #34d399;
@@ -885,6 +927,14 @@
   --warning-text-color-searchbar-outline: #fef3c7;
   --warning-placeholder-color-searchbar-outline: #fbbf24;
 
+  // datepicker
+  --warning-hover-shadow-datepicker: #facc15;
+
+  --warning-bg-color-datepicker-outline: #451a03;
+  --warning-stroke-color-datepicker-outline: #f59e0b;
+  --warning-text-color-datepicker-outline: #fef3c7;
+  --warning-placeholder-color-datepicker-outline: #fbbf24;
+
   // combobox
   --warning-hover-shadow-combobox: #facc15;
 
@@ -1045,6 +1095,14 @@
   --danger-stroke-color-searchbar-outline: #ef4444;
   --danger-text-color-searchbar-outline: #fef2f2;
   --danger-placeholder-color-searchbar-outline: #fca5a5;
+
+  // datepicker
+  --danger-hover-shadow-datepicker: #ef4444;
+
+  --danger-bg-color-datepicker-outline: #450a0a;
+  --danger-stroke-color-datepicker-outline: #ef4444;
+  --danger-text-color-datepicker-outline: #fef2f2;
+  --danger-placeholder-color-datepicker-outline: #fca5a5;
 
   // combobox
   --danger-hover-shadow-combobox: #ef4444;
@@ -1242,6 +1300,11 @@
   --danger-solid-path-color-spinner-closed-ring: #ffffff;
 
   // readonly
+  --readonly-bg-color-datepicker: #1e293b;
+  --readonly-stroke-color-datepicker: #334155;
+  --readonly-text-color-datepicker: #cbd5e1;
+  --readonly-placeholder-color-datepicker: #64748b;
+
   --readonly-bg-color-combobox: #1e293b;
   --readonly-stroke-color-combobox: #334155;
   --readonly-text-color-combobox: #cbd5e1;
@@ -1262,6 +1325,11 @@
   --readonly-placeholder-color-textarea: #64748b;
 
   // disabled
+  --disabled-bg-color-datepicker: #0f172a;
+  --disabled-stroke-color-datepicker: #475569;
+  --disabled-text-color-datepicker: #475569;
+  --disabled-placeholder-color-datepicker: #334155;
+
   --disabled-bg-color-combobox: #0f172a;
   --disabled-stroke-color-combobox: #475569;
   --disabled-text-color-combobox: #475569;
@@ -1322,6 +1390,14 @@
   --primary-stroke-color-searchbar-outline: #3366cc;
   --primary-text-color-searchbar-outline: #1a3a66;
   --primary-placeholder-color-searchbar-outline: #9aaac0;
+
+  // datepicker
+  --primary-hover-shadow-datepicker: #dceaff;
+
+  --primary-bg-color-datepicker-outline: #ffffff;
+  --primary-stroke-color-datepicker-outline: #3366cc;
+  --primary-text-color-datepicker-outline: #1a3a66;
+  --primary-placeholder-color-datepicker-outline: #9aaac0;
 
   // combobox
   --primary-hover-shadow-combobox: #dceaff;
@@ -1490,6 +1566,14 @@
   --secondary-text-color-searchbar-outline: #0f172a;
   --secondary-placeholder-color-searchbar-outline: #64748b;
 
+  // datepicker
+  --secondary-hover-shadow-datepicker: rgba(71, 85, 105, 0.25);
+
+  --secondary-bg-color-datepicker-outline: #ffffff;
+  --secondary-stroke-color-datepicker-outline: #334155;
+  --secondary-text-color-datepicker-outline: #0f172a;
+  --secondary-placeholder-color-datepicker-outline: #64748b;
+
   // combobox
   --secondary-hover-shadow-combobox: rgba(71, 85, 105, 0.25);
 
@@ -1653,6 +1737,14 @@
   --tertiary-stroke-color-searchbar-outline: #7c3aed;
   --tertiary-text-color-searchbar-outline: #7c3aed;
   --tertiary-placeholder-color-searchbar-outline: #8b5cf6;
+
+  // datepicker
+  --tertiary-hover-shadow-datepicker: rgba(124, 58, 237, 0.25);
+
+  --tertiary-bg-color-datepicker-outline: #ffffff;
+  --tertiary-stroke-color-datepicker-outline: #7c3aed;
+  --tertiary-text-color-datepicker-outline: #7c3aed;
+  --tertiary-placeholder-color-datepicker-outline: #8b5cf6;
 
   // combobox
   --tertiary-hover-shadow-combobox: rgba(124, 58, 237, 0.25);
@@ -1861,6 +1953,14 @@
     --primary-text-color-searchbar-outline: #e0e6ed;
     --primary-placeholder-color-searchbar-outline: #8b95a5;
 
+    // datepicker
+    --primary-hover-shadow-datepicker: #38bdf8;
+
+    --primary-bg-color-datepicker-outline: #1e1e1e;
+    --primary-stroke-color-datepicker-outline: #3b82f6;
+    --primary-text-color-datepicker-outline: #e0e6ed;
+    --primary-placeholder-color-datepicker-outline: #8b95a5;
+
     // combobox
     --primary-hover-shadow-combobox: #38bdf8;
 
@@ -2028,6 +2128,14 @@
     --secondary-text-color-searchbar-outline: #f1f5f9;
     --secondary-placeholder-color-searchbar-outline: #94a3b8;
 
+    // datepicker
+    --secondary-hover-shadow-datepicker: #94a3b8;
+
+    --secondary-bg-color-datepicker-outline: #0f172a;
+    --secondary-stroke-color-datepicker-outline: #334155;
+    --secondary-text-color-datepicker-outline: #f1f5f9;
+    --secondary-placeholder-color-datepicker-outline: #94a3b8;
+
     // combobox
     --secondary-hover-shadow-combobox: #94a3b8;
 
@@ -2194,6 +2302,14 @@
     --tertiary-stroke-color-searchbar-outline: #a78bfa;
     --tertiary-text-color-searchbar-outline: #f5f3ff;
     --tertiary-placeholder-color-searchbar-outline: #c4b5fd;
+
+    // datepicker
+    --tertiary-hover-shadow-datepicker: #a78bfa;
+
+    --tertiary-bg-color-datepicker-outline: #1e1b4b;
+    --tertiary-stroke-color-datepicker-outline: #a78bfa;
+    --tertiary-text-color-datepicker-outline: #f5f3ff;
+    --tertiary-placeholder-color-datepicker-outline: #c4b5fd;
 
     // combobox
     --tertiary-hover-shadow-combobox: #a78bfa;

@@ -838,7 +838,7 @@ function App() {
           공지사항 확인
         </Button>
       </section>
-      <section>
+      {/* <section>
         <FormField
           size='xl'
           direction='column'
@@ -878,7 +878,7 @@ function App() {
             }}
           />
         </FormField>
-      </section>
+      </section> */}
       <section style={{ margin: '30px' }}>
         <LanguageSelector
           variant='outline'
@@ -893,7 +893,7 @@ function App() {
           onValueChange={setCurrentLang}
         />
       </section>
-      <section>
+      {/* <section>
         <Searchbar
           variant='outline'
           color='primary'
@@ -923,8 +923,8 @@ function App() {
             },
           }}
         />
-      </section>
-      <section>
+      </section> */}
+      {/* <section>
         <FormField
           size='xl'
           direction='column'
@@ -951,7 +951,7 @@ function App() {
             }}
           />
         </FormField>
-      </section>
+      </section> */}
       {/* <section>
         <FormField
           size='xl'
