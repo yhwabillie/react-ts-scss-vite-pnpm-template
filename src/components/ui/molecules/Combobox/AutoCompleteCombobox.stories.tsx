@@ -346,13 +346,13 @@ export const Controlled: Story = {
 
     await step('2. Empty State 검증: 없는 값 입력 시 안내 문구 노출 확인', async () => {
       await userEvent.clear(input);
-      // 옵션에 없는 값 입력
       await userEvent.type(input, 'unknown-value', { delay: 100 });
 
       await waitFor(() => {
-        // Portal 영역에서 Empty State 메시지 확인
-        const emptyState = within(document.body).getByText(/검색 결과가 없습니다/i);
-        expect(emptyState).toBeInTheDocument();
+        // 🎯 방법 1: .title 클래스를 가진 요소를 특정하여 중복 회피
+        const emptyStateTitle = document.body.querySelector('.empty-state .title');
+        expect(emptyStateTitle).toBeInTheDocument();
+        expect(emptyStateTitle).toHaveTextContent('검색 결과가 없습니다.');
       });
     });
 

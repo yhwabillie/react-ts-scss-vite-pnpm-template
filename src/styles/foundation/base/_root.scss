@@ -15,6 +15,10 @@
   --bg-color-guide: #ecf4ef;
   --stroke-color-guide: #15803d;
 
+  // searchbar
+  --link-icon-bg-color-searchbar: #f2f2f2;
+  --link-icon-color-searchbar: #404040;
+
   // optionList
   --shadow-bg-color-option-list: rgba(0, 0, 0, 0.1);
   --empty-state-bg-color-option-list: #f8fafc;
@@ -52,6 +56,14 @@
   // switch
   --switch-track-off-bg-color: #e5e7eb;
   --switch-handle-off-bg-color: #ffffff;
+
+  // searchbar
+  --success-hover-shadow-searchbar: rgba(21, 128, 101, 0.25);
+
+  --success-bg-color-searchbar-outline: #ffffff;
+  --success-stroke-color-searchbar-outline: #16a34a;
+  --success-text-color-searchbar-outline: #14532d;
+  --success-placeholder-color-searchbar-outline: #166534;
 
   // combobox
   --success-hover-shadow-combobox: rgba(21, 128, 101, 0.25);
@@ -159,6 +171,14 @@
 
   --success-active-bg-color-btn-link: rgba(21, 128, 61, 0.1);
   --success-active-text-color-btn-link: #15803d;
+
+  // searchbar
+  --warning-hover-shadow-searchbar: rgba(180, 83, 9, 0.25);
+
+  --warning-bg-color-searchbar-outline: #ffffff;
+  --warning-stroke-color-searchbar-outline: #d97706;
+  --warning-text-color-searchbar-outline: #78350f;
+  --warning-placeholder-color-searchbar-outline: #92400e;
 
   // combobox
   --warning-hover-shadow-combobox: rgba(180, 83, 9, 0.25);
@@ -312,6 +332,14 @@
 
   --warning-active-bg-color-btn-link: rgba(180, 83, 9, 0.1);
   --warning-active-text-color-btn-link: #b45309;
+
+  // searchbar
+  --danger-hover-shadow-searchbar: rgba(185, 28, 28, 0.25);
+
+  --danger-bg-color-searchbar-outline: #ffffff;
+  --danger-stroke-color-searchbar-outline: #dc2626;
+  --danger-text-color-searchbar-outline: #7f1d1d;
+  --danger-placeholder-color-searchbar-outline: #991b1b;
 
   // combobox
   --danger-hover-shadow-combobox: rgba(185, 28, 28, 0.25);
@@ -634,6 +662,10 @@
   --bg-color-guide: rgba(45, 252, 82, 0.05);
   --stroke-color-guide: #2dfc52;
 
+  // searchbar
+  --link-icon-bg-color-searchbar: #94a3b8;
+  --link-icon-color-searchbar: #1e293b;
+
   // optionList
   --shadow-bg-color-option-list: rgba(255, 255, 255, 0.1);
   --empty-state-bg-color-option-list: #1e293b;
@@ -671,6 +703,14 @@
   // switch
   --switch-track-off-bg-color: #374151;
   --switch-handle-off-bg-color: #9ca3af;
+
+  // searchbar
+  --success-hover-shadow-searchbar: #34d399;
+
+  --success-bg-color-searchbar-outline: #064e3b;
+  --success-stroke-color-searchbar-outline: #059669;
+  --success-text-color-searchbar-outline: #f0fdf4;
+  --success-placeholder-color-searchbar-outline: #6ee7b7;
 
   // combobox
   --success-hover-shadow-combobox: #34d399;
@@ -825,6 +865,14 @@
   --success-active-bg-color-btn-link: rgba(74, 222, 128, 0.25);
   --success-active-text-color-btn-link: #4ade80;
 
+  // searchbar
+  --warning-hover-shadow-searchbar: #facc15;
+
+  --warning-bg-color-searchbar-outline: #451a03;
+  --warning-stroke-color-searchbar-outline: #f59e0b;
+  --warning-text-color-searchbar-outline: #fef3c7;
+  --warning-placeholder-color-searchbar-outline: #fbbf24;
+
   // combobox
   --warning-hover-shadow-combobox: #facc15;
 
@@ -977,6 +1025,14 @@
 
   --warning-active-bg-color-btn-link: rgba(251, 191, 36, 0.25);
   --warning-active-text-color-btn-link: #fbbf24;
+
+  // searchbar
+  --danger-hover-shadow-searchbar: #ef4444;
+
+  --danger-bg-color-searchbar-outline: #450a0a;
+  --danger-stroke-color-searchbar-outline: #ef4444;
+  --danger-text-color-searchbar-outline: #fef2f2;
+  --danger-placeholder-color-searchbar-outline: #fca5a5;
 
   // combobox
   --danger-hover-shadow-combobox: #ef4444;
@@ -1247,6 +1303,14 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  // searchbar
+  --primary-hover-shadow-searchbar: #dceaff;
+
+  --primary-bg-color-searchbar-outline: #ffffff;
+  --primary-stroke-color-searchbar-outline: #3366cc;
+  --primary-text-color-searchbar-outline: #1a3a66;
+  --primary-placeholder-color-searchbar-outline: #9aaac0;
+
   // combobox
   --primary-hover-shadow-combobox: #dceaff;
 
@@ -1406,6 +1470,14 @@
   --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-link: #0052cc;
 
+  // searchbar
+  --secondary-hover-shadow-searchbar: rgba(71, 85, 105, 0.25);
+
+  --secondary-bg-color-searchbar-outline: #ffffff;
+  --secondary-stroke-color-searchbar-outline: #334155;
+  --secondary-text-color-searchbar-outline: #0f172a;
+  --secondary-placeholder-color-searchbar-outline: #64748b;
+
   // combobox
   --secondary-hover-shadow-combobox: rgba(71, 85, 105, 0.25);
 
@@ -1561,6 +1633,14 @@
 
   --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-link: #475569;
+
+  // searchbar
+  --tertiary-hover-shadow-searchbar: rgba(124, 58, 237, 0.25);
+
+  --tertiary-bg-color-searchbar-outline: #ffffff;
+  --tertiary-stroke-color-searchbar-outline: #7c3aed;
+  --tertiary-text-color-searchbar-outline: #7c3aed;
+  --tertiary-placeholder-color-searchbar-outline: #8b5cf6;
 
   // combobox
   --tertiary-hover-shadow-combobox: rgba(124, 58, 237, 0.25);
@@ -1761,6 +1841,14 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    // searchbar
+    --primary-hover-shadow-searchbar: #38bdf8;
+
+    --primary-bg-color-searchbar-outline: #1e1e1e;
+    --primary-stroke-color-searchbar-outline: #3b82f6;
+    --primary-text-color-searchbar-outline: #e0e6ed;
+    --primary-placeholder-color-searchbar-outline: #8b95a5;
+
     // combobox
     --primary-hover-shadow-combobox: #38bdf8;
 
@@ -1920,6 +2008,14 @@
     --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
     --primary-active-text-color-btn-link: #60a5fa;
 
+    // searchbar
+    --secondary-hover-shadow-searchbar: #94a3b8;
+
+    --secondary-bg-color-searchbar-outline: #0f172a;
+    --secondary-stroke-color-searchbar-outline: #334155;
+    --secondary-text-color-searchbar-outline: #f1f5f9;
+    --secondary-placeholder-color-searchbar-outline: #94a3b8;
+
     // combobox
     --secondary-hover-shadow-combobox: #94a3b8;
 
@@ -2078,6 +2174,14 @@
 
     --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
+
+    // searchbar
+    --tertiary-hover-shadow-searchbar: #a78bfa;
+
+    --tertiary-bg-color-searchbar-outline: #1e1b4b;
+    --tertiary-stroke-color-searchbar-outline: #a78bfa;
+    --tertiary-text-color-searchbar-outline: #f5f3ff;
+    --tertiary-placeholder-color-searchbar-outline: #c4b5fd;
 
     // combobox
     --tertiary-hover-shadow-combobox: #a78bfa;

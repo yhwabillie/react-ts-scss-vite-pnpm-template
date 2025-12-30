@@ -68,30 +68,50 @@ $option-list-sizes: (
     radius: rem(8px),
     padding: rem(6px) rem(6px),
     shadow: drop-shadow(0 rem(5px) rem(10px) var(--shadow-bg-color-option-list)),
+    emtpy: (
+      icon-size: rem(14px),
+      font: var(--project-typo-input3-500),
+    ),
   ),
   sm: (
     width: rem(240px),
     radius: rem(10px),
     padding: rem(8px) rem(8px),
     shadow: drop-shadow(0 rem(6px) rem(12px) var(--shadow-bg-color-option-list)),
+    emtpy: (
+      icon-size: rem(16px),
+      font: var(--project-typo-input3-500),
+    ),
   ),
   md: (
     width: rem(260px),
     radius: rem(12px),
     padding: rem(10px) rem(10px),
     shadow: drop-shadow(0 rem(7px) rem(14px) var(--shadow-bg-color-option-list)),
+    emtpy: (
+      icon-size: rem(18px),
+      font: var(--project-typo-input2-500),
+    ),
   ),
   lg: (
     width: rem(280px),
     radius: rem(12px),
     padding: rem(12px) rem(12px),
     shadow: drop-shadow(0 rem(8px) rem(16px) var(--shadow-bg-color-option-list)),
+    emtpy: (
+      icon-size: rem(20px),
+      font: var(--project-typo-input2-500),
+    ),
   ),
   xl: (
     width: rem(300px),
     radius: rem(14px),
     padding: rem(14px) rem(14px),
     shadow: drop-shadow(0 rem(10px) rem(20px) var(--shadow-bg-color-option-list)),
+    emtpy: (
+      icon-size: rem(24px),
+      font: var(--project-typo-input1-500),
+    ),
   ),
 );
 
@@ -141,6 +161,10 @@ $option-list-sizes: (
       filter: map.get($props, shadow);
 
       :global(.empty-state) {
+        $empty-map: map.get($props, emtpy);
+
+        // @debug '#{meta.inspect(map.get($props, emtpy))}';
+
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -153,17 +177,17 @@ $option-list-sizes: (
           fill: none;
           color: var(--empty-state-icon-color-option-list);
           margin-bottom: rem(6px);
-          width: rem(20px);
-          height: rem(20px);
+          width: map.get($empty-map, icon-size);
+          height: map.get($empty-map, icon-size);
         }
 
         :global(.title) {
-          font: var(--project-typo-input2-500);
+          font: map.get($empty-map, font);
           color: var(--empty-state-title-color-option-list);
         }
 
         :global(.desc) {
-          font: var(--project-typo-input2-500);
+          font: map.get($empty-map, font);
           color: var(--empty-state-desc-color-option-list);
         }
       }

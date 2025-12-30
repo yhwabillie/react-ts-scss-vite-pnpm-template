@@ -362,7 +362,7 @@ $option-item-sizes: (
     radius: rem(4px),
     padding: rem(4px) rem(8px),
     font-token: var(--project-typo-input3-500),
-    icon-size: rem(14px),
+    icon-size: rem(12px),
   ),
   sm: (
     height: rem(32px),
@@ -376,21 +376,21 @@ $option-item-sizes: (
     radius: rem(8px),
     padding: rem(8px) rem(12px),
     font-token: var(--project-typo-input2-500),
-    icon-size: rem(16px),
+    icon-size: rem(18px),
   ),
   lg: (
     height: rem(40px),
     radius: rem(8px),
     padding: rem(10px) rem(14px),
     font-token: var(--project-typo-input1-500),
-    icon-size: rem(18px),
+    icon-size: rem(20px),
   ),
   xl: (
     height: rem(44px),
     radius: rem(10px),
     padding: rem(12px) rem(16px),
     font-token: var(--project-typo-input1-500),
-    icon-size: rem(20px),
+    icon-size: rem(24px),
   ),
 );
 
@@ -519,7 +519,7 @@ $option-item-sizes: (
   padding: rem(8px);
   border-radius: var(--project-border-radius-8);
   cursor: pointer;
-  background-color: #ffffff;
+  // background-color: #ffffff;
   transition: background-color 0.2s ease;
 
   &:focus,
@@ -528,11 +528,6 @@ $option-item-sizes: (
     outline: 2.5px dashed #2466eb;
     outline-offset: -2px;
   }
-
-  // &[aria-disabled='true'][aria-selected='true']:hover {
-  //   background-color: #f4f4f4 !important;
-  //   color: #b5b5b5 !important;
-  // }
 
   :global(.icon) {
     flex: 0 0 auto;
@@ -552,9 +547,38 @@ $option-item-sizes: (
       border-radius: map.get($props, radius);
       font: map.get($props, font-token);
 
-      :global(.icon) {
-        width: map.get($props, icon-size);
-        height: map.get($props, icon-size);
+      &:has(a) {
+        padding: 0 !important;
+
+        :global(a) {
+          display: inline-flex;
+          align-items: center;
+          flex: 1 1 auto;
+          padding: map.get($props, padding);
+          border-radius: inherit;
+          gap: rem(14px);
+
+          &:focus-visible {
+            outline-offset: -4px !important;
+          }
+
+          :global(.icon-wrapper) {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: map.get($props, icon-size);
+            height: map.get($props, icon-size);
+            background-color: var(--link-icon-bg-color-searchbar);
+            border-radius: var(--project-border-radius-max);
+            flex: 0 0 auto;
+
+            :global(.icon) {
+              flex: initial;
+              color: var(--link-icon-color-searchbar);
+            }
+          }
+        }
       }
     }
   }
