@@ -782,14 +782,14 @@ function App() {
       <section>
         <Breadcrumbs items={breadcrumbData} separator='/' />
       </section>
-      <section style={{ marginBottom: '20px' }}>
+      {/* <section style={{ marginBottom: '20px' }}>
         <SegmentedControl
           name='view-mode' // 라디오 그룹 이름 (고유해야 함)
           options={viewOptions}
           selectedValue={viewType}
           onChange={value => setViewType(value)} // 상태 업데이트
         />
-      </section>
+      </section> */}
       <section style={{ width: '500px', margin: 'auto' }}>
         <Tabs items={tabData} defaultIndex={0} />
       </section>

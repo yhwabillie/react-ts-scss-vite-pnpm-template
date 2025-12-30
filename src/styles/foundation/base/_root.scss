@@ -225,10 +225,12 @@
   --warning-text-color-input-outline: #78350f;
   --warning-stroke-color-input-outline: #78350f;
   --warning-placeholder-color-input-outline: #b45309;
+  --warning-icon-color-input-outline: #b45309;
 
   --warning-bg-color-input-solid: #fff7ed;
   --warning-text-color-input-solid: #78350f;
   --warning-placeholder-color-input-solid: #b45309;
+  --warning-icon-color-input-solid: #b45309;
 
   // input hover
   --warning-hover-shadow-input: rgba(180, 83, 9, 0.25);
@@ -376,10 +378,12 @@
   --danger-text-color-input-outline: #7f1d1d;
   --danger-stroke-color-input-outline: #7f1d1d;
   --danger-placeholder-color-input-outline: #b91c1c;
+  --danger-icon-color-input-outline: #b91c1c;
 
   --danger-bg-color-input-solid: #fef2f2;
   --danger-text-color-input-solid: #7f1d1d;
   --danger-placeholder-color-input-solid: #b91c1c;
+  --danger-icon-color-input-solid: #b91c1c;
 
   // input hover
   --danger-hover-shadow-input: rgba(185, 28, 28, 0.25);
@@ -733,10 +737,12 @@
   --success-text-color-input-outline: #f0fdf4;
   --success-stroke-color-input-outline: #065f46;
   --success-placeholder-color-input-outline: #6ee7b7;
+  --success-icon-color-input-outline: #15803d;
 
   --success-bg-color-input-solid: #064e3b;
   --success-text-color-input-solid: #f0fdf4;
   --success-placeholder-color-input-solid: #6ee7b7;
+  --success-icon-color-input-solid: #15803d;
 
   // input hover
   --success-hover-shadow-input: #34d399;
@@ -884,10 +890,12 @@
   --warning-text-color-input-outline: #fffbeb;
   --warning-stroke-color-input-outline: #78350f;
   --warning-placeholder-color-input-outline: #fcd34d;
+  --warning-icon-color-input-outline: #fbbf24;
 
   --warning-bg-color-input-solid: #451a03;
   --warning-text-color-input-solid: #fffbeb;
   --warning-placeholder-color-input-solid: #fcd34d;
+  --warning-icon-color-input-solid: #fbbf24;
 
   // input hover
   --warning-hover-shadow-input: #facc15;
@@ -1035,10 +1043,12 @@
   --danger-text-color-input-outline: #fef2f2;
   --danger-stroke-color-input-outline: #7f1d1d;
   --danger-placeholder-color-input-outline: #fca5a5;
+  --danger-icon-color-input-outline: #f87171;
 
   --danger-bg-color-input-solid: #450a0a;
   --danger-text-color-input-solid: #fef2f2;
   --danger-placeholder-color-input-solid: #fca5a5;
+  --danger-icon-color-input-solid: #f87171;
 
   // input hover
   --danger-hover-shadow-input: #ef4444;
@@ -1313,10 +1323,12 @@
   --primary-text-color-input-outline: #003380;
   --primary-placeholder-color-input-outline: #5c7899;
   --primary-stroke-color-input-outline: #0052cc;
+  --primary-icon-color-input-outline: #0052cc;
 
   --primary-bg-color-input-solid: #e6f0ff;
   --primary-text-color-input-solid: #003380;
   --primary-placeholder-color-input-solid: #5c7899;
+  --primary-icon-color-input-solid: #0052cc;
 
   // input hover
   --primary-hover-shadow-input: rgba(0, 82, 204, 0.25);
@@ -1467,10 +1479,12 @@
   --secondary-text-color-input-outline: #1e293b;
   --secondary-stroke-color-input-outline: #1e293b;
   --secondary-placeholder-color-input-outline: #64748b;
+  --secondary-icon-color-input-outline: #475569;
 
   --secondary-bg-color-input-solid: #f1f5f9;
   --secondary-text-color-input-solid: #1e293b;
   --secondary-placeholder-color-input-solid: #64748b;
+  --secondary-icon-color-input-solid: #475569;
 
   // input hover
   --secondary-hover-shadow-input: rgba(71, 85, 105, 0.25);
@@ -1624,10 +1638,12 @@
   --tertiary-text-color-input-outline: #4c1d95;
   --tertiary-stroke-color-input-outline: #4c1d95;
   --tertiary-placeholder-color-input-outline: #7c3aed;
+  --tertiary-icon-color-input-outline: #7c3aed;
 
   --tertiary-bg-color-input-solid: #f5f3ff;
   --tertiary-text-color-input-solid: #4c1d95;
   --tertiary-placeholder-color-input-solid: #7c3aed;
+  --tertiary-icon-color-input-solid: #7c3aed;
 
   // input hover
   --tertiary-hover-shadow-input: rgba(124, 58, 237, 0.25);
@@ -1821,10 +1837,12 @@
     --primary-text-color-input-outline: #f1f5f9;
     --primary-stroke-color-input-outline: #334155;
     --primary-placeholder-color-input-outline: #94a3b8;
+    --primary-icon-color-input-outline: #60a5fa;
 
     --primary-bg-color-input-solid: #1e293b;
     --primary-text-color-input-solid: #f8fafc;
     --primary-placeholder-color-input-solid: #94a3b8;
+    --primary-icon-color-input-solid: #60a5fa;
 
     // input hover
     --primary-hover-shadow-input: #38bdf8;
@@ -1978,10 +1996,12 @@
     --secondary-text-color-input-outline: #94a3b8;
     --secondary-stroke-color-input-outline: #475569;
     --secondary-placeholder-color-input-outline: #64748b;
+    --secondary-icon-color-input-outline: #38bdf8;
 
     --secondary-bg-color-input-solid: #334155;
     --secondary-text-color-input-solid: #cbd5e1;
     --secondary-placeholder-color-input-solid: #64748b;
+    --secondary-icon-color-input-solid: #38bdf8;
 
     // input hover
     --secondary-hover-shadow-input: #94a3b8;
@@ -2132,10 +2152,12 @@
     --tertiary-text-color-input-outline: #f5f3ff;
     --tertiary-stroke-color-input-outline: #4c1d95;
     --tertiary-placeholder-color-input-outline: #a78bfa;
+    --tertiary-icon-color-input-outline: #a78bfa;
 
     --tertiary-bg-color-input-solid: #2e1065;
     --tertiary-text-color-input-solid: #f5f3ff;
     --tertiary-placeholder-color-input-solid: #a78bfa;
+    --tertiary-icon-color-input-solid: #a78bfa;
 
     // input hover
     --tertiary-hover-shadow-input: #a78bfa;

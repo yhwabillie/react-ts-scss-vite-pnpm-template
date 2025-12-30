@@ -28,6 +28,7 @@ import HouseIcon from '@/assets/icons/icon-house.svg?react';
 import BellIcon from '@/assets/icons/icon-bell.svg?react';
 import VolumeOnIcon from '@/assets/icons/icon-volume-on.svg?react';
 import VolumeOffIcon from '@/assets/icons/icon-volume-off.svg?react';
+import MapPinIcon from '@/assets/icons/icon-map-pin.svg?react';
 
 const iconMap = {
   search: SearchIcon,
@@ -57,6 +58,7 @@ const iconMap = {
   bell: BellIcon,
   'volume-on': VolumeOnIcon,
   'volume-off': VolumeOffIcon,
+  'map-pin': MapPinIcon,
   // 다른 아이콘들도 여기에 추가
 };
 

@@ -9,6 +9,10 @@ import Button from '../Button/Button';
 import { within, userEvent, expect, waitFor } from 'storybook/test';
 import type { OptionBase } from '../OptionItem/OptionItem';
 
+const comboboxOptionsWithoutPlaceholder = comboboxOptions.filter(
+  option => option.id !== 'placeholder',
+);
+
 /**
  * [Combobox]
  * 사용자의 입력에 따라 옵션을 필터링하고 제안하는 컴포넌트입니다.
@@ -106,6 +110,10 @@ const meta = {
       control: 'object',
       table: { category: 'Infrastructure' },
     },
+    role: {
+      control: 'text',
+      table: { category: 'Infrastructure' },
+    },
 
     // --- Events 카테고리 ---
     onValueChange: {
@@ -123,9 +131,8 @@ const meta = {
     color: 'primary',
     size: 'md',
     role: 'combobox',
-    options: comboboxOptions,
+    options: comboboxOptionsWithoutPlaceholder,
     inputProps: comboboxInputProps,
-    defaultValue: '',
   },
 } satisfies Meta<typeof Combobox>;
 

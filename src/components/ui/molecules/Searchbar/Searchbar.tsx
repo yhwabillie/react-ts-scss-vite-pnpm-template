@@ -11,7 +11,7 @@ import OptionList from '../OptionList/OptionList';
 import OptionItem, { type OptionBase } from '../OptionItem/OptionItem';
 
 interface StyleProps {
-  variant: Variant;
+  variant: 'solid' | 'outline';
   color: Color;
   size: Size;
   shape: Shape;
@@ -637,7 +637,7 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
                           optionRefs.current[idx] = el;
                         }}
                         key={opt.id}
-                        variant={variant}
+                        variant={variant === 'outline' ? 'ghost' : 'solid'}
                         color={color}
                         size={size}
                         index={idx}

@@ -11,6 +11,7 @@ $input-colors: (
       bg: var(--primary-bg-color-input-solid),
       color: var(--primary-text-color-input-solid),
       placeholder: var(--primary-placeholder-color-input-solid),
+      icon-color: var(--primary-icon-color-input-solid),
       hover: (
         shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-input),
       ),
@@ -32,6 +33,7 @@ $input-colors: (
       color: var(--primary-text-color-input-outline),
       border: var(--primary-stroke-color-input-outline),
       placeholder: var(--primary-placeholder-color-input-outline),
+      icon-color: var(--primary-icon-color-input-outline),
       hover: (
         shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-input),
       ),
@@ -54,6 +56,7 @@ $input-colors: (
       bg: var(--secondary-bg-color-input-solid),
       color: var(--secondary-text-color-input-solid),
       placeholder: var(--secondary-placeholder-color-input-solid),
+      icon-color: var(--secondary-icon-color-input-solid),
       hover: (
         shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-input),
       ),
@@ -75,6 +78,7 @@ $input-colors: (
       color: var(--secondary-text-color-input-outline),
       border: var(--secondary-stroke-color-input-outline),
       placeholder: var(--secondary-placeholder-color-input-outline),
+      icon-color: var(--secondary-icon-color-input-outline),
       hover: (
         shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-input),
       ),
@@ -97,6 +101,7 @@ $input-colors: (
       bg: var(--tertiary-bg-color-input-solid),
       color: var(--tertiary-text-color-input-solid),
       placeholder: var(--tertiary-placeholder-color-input-solid),
+      icon-color: var(--tertiary-icon-color-input-outline),
       hover: (
         shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-input),
       ),
@@ -118,6 +123,7 @@ $input-colors: (
       color: var(--tertiary-text-color-input-outline),
       border: var(--tertiary-stroke-color-input-outline),
       placeholder: var(--tertiary-placeholder-color-input-outline),
+      icon-color: var(--tertiary-icon-color-input-outline),
       hover: (
         shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-input),
       ),
@@ -140,6 +146,7 @@ $input-colors: (
       bg: var(--success-bg-color-input-solid),
       color: var(--success-text-color-input-solid),
       placeholder: var(--success-placeholder-color-input-solid),
+      icon-color: var(--success-icon-color-input-solid),
       hover: (
         shadow: 0 0 0 rem(4px) var(--success-hover-shadow-input),
       ),
@@ -161,6 +168,7 @@ $input-colors: (
       color: var(--success-text-color-input-outline),
       border: var(--success-stroke-color-input-outline),
       placeholder: var(--success-placeholder-color-input-outline),
+      icon-color: var(--success-icon-color-input-outline),
       hover: (
         shadow: 0 0 0 rem(4px) var(--success-hover-shadow-input),
       ),
@@ -183,6 +191,7 @@ $input-colors: (
       bg: var(--warning-bg-color-input-solid),
       color: var(--warning-text-color-input-solid),
       placeholder: var(--warning-placeholder-color-input-solid),
+      icon-color: var(--warning-icon-color-input-outline),
       hover: (
         shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-input),
       ),
@@ -204,6 +213,7 @@ $input-colors: (
       color: var(--warning-text-color-input-outline),
       border: var(--warning-stroke-color-input-outline),
       placeholder: var(--warning-placeholder-color-input-outline),
+      icon-color: var(--warning-icon-color-input-outline),
       hover: (
         shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-input),
       ),
@@ -226,6 +236,7 @@ $input-colors: (
       bg: var(--danger-bg-color-input-solid),
       color: var(--danger-text-color-input-solid),
       placeholder: var(--danger-placeholder-color-input-solid),
+      icon-color: var(--danger-icon-color-input-solid),
       hover: (
         shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-input),
       ),
@@ -247,6 +258,7 @@ $input-colors: (
       color: var(--danger-text-color-input-outline),
       border: var(--danger-stroke-color-input-outline),
       placeholder: var(--danger-placeholder-color-input-outline),
+      icon-color: var(--danger-icon-color-input-outline),
       hover: (
         shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-input),
       ),
@@ -360,6 +372,22 @@ $input-sizes: (
                 color: map.get($variant-props, placeholder);
               }
 
+              :global(.icon) {
+                color: map.get($variant-props, icon-color);
+              }
+
+              &:global(:has(input:read-only:not(:disabled))) {
+                :global(.icon) {
+                  color: map.get($readonly-props, placeholder);
+                }
+              }
+
+              &:global(:has(input:disabled)) {
+                :global(.icon) {
+                  color: map.get($disabled-props, placeholder);
+                }
+              }
+
               :global(input) {
                 &:disabled {
                   background-color: map.get($disabled-props, bg);
@@ -397,6 +425,22 @@ $input-sizes: (
 
               &::placeholder {
                 color: map.get($variant-props, placeholder);
+              }
+
+              :global(.icon) {
+                color: map.get($variant-props, icon-color);
+              }
+
+              &:global(:has(input:read-only:not(:disabled))) {
+                :global(.icon) {
+                  color: map.get($readonly-props, placeholder);
+                }
+              }
+
+              &:global(:has(input:disabled)) {
+                :global(.icon) {
+                  color: map.get($disabled-props, placeholder);
+                }
               }
 
               :global(input) {
