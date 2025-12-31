@@ -20,8 +20,8 @@ import type { SelectboxA11yProps } from '@/types/a11y/a11y-roles.types';
 import CalendarOptionList from './CalendarOptionList';
 
 interface StyleProps {
-  variant: Variant;
-  color: Color;
+  variant: 'solid' | 'outline';
+  color: 'primary' | 'secondary' | 'tertiary';
   size: Size;
 }
 
@@ -474,7 +474,7 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
     // -----------------------------
     return (
       <div
-        ref={ref}
+        ref={containerRef}
         id={id}
         className={clsx(
           `${styles['calendar-selectbox']} variant--${variant} color--${color} size--${size}`,
@@ -490,6 +490,7 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
           disabled={disabled}
           value={selectedValue}
           onChange={handleChange}
+          aria-hidden={true}
         >
           {options.map(opt => (
             <option key={opt.id} value={opt.value} disabled={opt.disabled}>
@@ -506,25 +507,21 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
           aria-disabled={disabled}
           aria-activedescendant={activeDescendantId}
           role={role}
-          aria-controls={listboxId}
+          aria-controls={isOpen ? listboxId : undefined}
           aria-expanded={isOpen}
           aria-haspopup='listbox'
           aria-labelledby={ariaLabelledBy}
           aria-label={ariaLabel}
           onClick={e => {
             if (disabled) return;
+            e.stopPropagation(); // document로의 전파만 막습니다.
 
-            // 이미 열려있으면 닫기
-            if (isOpen) {
-              close();
-              return;
-            }
-
-            open('click');
+            if (isOpen) close();
+            else open('click');
           }}
           onKeyDown={handleKeyDown}
         >
-          <span className='custom-select-text'>
+          <span id={ariaLabelledBy} className='custom-select-text'>
             {selectedValue === '' ? placeholder : selectedValue}
           </span>
           <IconButton
@@ -553,7 +550,6 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
               id={listboxId}
               variant={variant}
               color={color}
-              size={size} // 🚨 Option List의 가장 바깥 요소에 KeyDown 핸들러 등록
               onKeyDown={handleOptionListEscape}
             >
               {options.map((opt, idx) => (
@@ -562,7 +558,7 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
                     optionRefs.current[idx] = el;
                   }}
                   key={opt.id}
-                  variant={variant}
+                  variant='ghost'
                   color={color}
                   size={size}
                   index={idx}

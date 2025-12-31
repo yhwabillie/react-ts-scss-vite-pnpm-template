@@ -383,7 +383,6 @@ $selectbox-sizes: (
 
   // variant
   @include selectbox-variant(solid);
-  @include selectbox-variant(soft);
   @include selectbox-variant(outline);
 
   // size

@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import CalendarSelectbox from './CalendarSelectbox';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
-import { SpecimenGroup, SpecimenWrapper } from '../../guide/Specimen';
+import { SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
+import { calendarMonthOptions, calendarYearOptions } from './Calendar.mock';
+import { useId } from 'react';
 
 const mockOptions = [
   { id: '2023', value: '2023년', selected: false, disabled: false },
@@ -18,25 +20,21 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
+
+  argTypes: {
+    variant: { control: 'inline-radio', options: ['solid', 'outline', 'ghost'] },
+    color: { control: 'select', options: ['primary', 'secondary', 'tertiary'] },
+    size: { control: 'inline-radio', options: ['xs', 'sm', 'md'] },
+    onValueChange: { action: 'yearChanged' },
+    onOpenChange: { action: 'openStateChanged' },
+  },
+
   args: {
-    // 실제 사용 코드의 스펙 반영
-    'aria-label': '연도 선택',
     variant: 'outline',
     color: 'primary',
     size: 'xs',
     role: 'combobox',
-    id: 'year-switch-component',
-    selectId: 'year-switch-select',
-    options: mockOptions,
-    defaultOptionId: '2024',
-    placeholder: '연도 선택',
-  },
-  argTypes: {
-    variant: { control: 'inline-radio', options: ['solid', 'outline', 'ghost'] },
-    color: { control: 'select', options: ['primary', 'secondary', 'tertiary', 'error'] },
-    size: { control: 'inline-radio', options: ['xs', 'sm', 'md'] },
-    onValueChange: { action: 'yearChanged' },
-    onOpenChange: { action: 'openStateChanged' },
+    options: undefined,
   },
 } satisfies Meta<typeof CalendarSelectbox>;
 
@@ -44,58 +42,78 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-/**
- * [01. Year Switcher Case]
- * 실제 캘린더 헤더에서 연도를 변경하는 시나리오를 시뮬레이션합니다.
- * '2024년' -> 2024 (Number) 변환 로직이 포함되어 있습니다.
- */
-export const YearSwitcher: Story = {
-  render: (args, { updateArgs }) => {
-    const handleYearChange = (id: string, option?: any) => {
-      if (!option) return;
+export const Base: Story = {
+  render: args => {
+    const uniqueId = useId();
 
-      // 1. 실제 사용처의 데이터 변환 로직 검증
-      const yearValue = Number(option.value.replace('년', ''));
-      console.log(`변환된 연도 데이터: ${yearValue} (Type: ${typeof yearValue})`);
-
-      // 2. 스토리북 UI 동기화 (context 사용)
-      updateArgs({ defaultOptionId: id });
-
-      // 3. Actions 패널 기록
-      args.onValueChange?.(id, option);
-    };
-
-    return <CalendarSelectbox {...args} onValueChange={handleYearChange} />;
+    return (
+      <SpecimenGroup>
+        <SpecimenRow>
+          <AnatomyWrapper title='연도 선택'>
+            <CalendarSelectbox
+              {...args}
+              selectId={`${uniqueId}-year`}
+              options={calendarYearOptions}
+              defaultOptionId='year-2020'
+              aria-label='연도 선택'
+            />
+          </AnatomyWrapper>
+        </SpecimenRow>
+        <SpecimenRow>
+          <AnatomyWrapper title='월 선택'>
+            <CalendarSelectbox
+              {...args}
+              selectId={`${uniqueId}-month`}
+              options={calendarMonthOptions}
+              defaultOptionId='month-3'
+              aria-label='월 선택'
+            />
+          </AnatomyWrapper>
+        </SpecimenRow>
+      </SpecimenGroup>
+    );
   },
 };
 
 /**
- * [02. Accessibility Check]
- * aria-labelledby와 id가 제대로 연결되어 스크린 리더가 인식하는지 확인합니다.
+ * CalendarSelectbox의 주요 브랜드 컬러(`primary`, `secondary`, `tertiary`)별
+ * 시각적 렌더링과 테마 적용 상태를 확인하기 위한 스토리입니다.
+ * * 🛠️ 주요 로직:
+ * 1. `colorOptions` 배열을 순회하며 각 테마별 셀렉트박스를 생성합니다.
+ * 2. `useId`를 사용하여 접근성(A11y)을 위한 고유 식별자를 각 인스턴스에 부여합니다.
+ * - `selectId`: 네이티브 select 요소와 동기화
+ * - `aria-labelledby`: 보조기기가 읽어줄 레이블과의 연결
+ * 3. `defaultOptionId`를 'month-3'으로 설정하여 초기 제어(Controlled) 상태를 테스트합니다.
  */
-export const Accessibility: Story = {
-  render: args => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-      <label id='year-switch-label' style={{ fontSize: '12px', color: '#666' }}>
-        연도 선택 (Label 연결 확인)
-      </label>
-      <CalendarSelectbox {...args} aria-labelledby='year-switch-label' />
-    </div>
-  ),
-};
+export const Colors: Story = {
+  render: args => {
+    const colorOptions: Array<'primary' | 'secondary' | 'tertiary'> = [
+      'primary',
+      'secondary',
+      'tertiary',
+    ];
 
-/**
- * [03. Long Year Range]
- * 10년 이상의 연도 리스트에서 자동 스크롤(Auto-focus)이 정상 작동하는지 확인합니다.
- */
-export const LongYearRange: Story = {
-  args: {
-    defaultOptionId: 'y-2030',
-    options: Array.from({ length: 20 }, (_, i) => ({
-      id: `y-${2020 + i}`,
-      value: `${2020 + i}년`,
-      selected: 2020 + i === 2030,
-      disabled: false,
-    })),
+    return (
+      <SpecimenWrapper>
+        {colorOptions.map(color => {
+          const uniqueId = useId();
+
+          return (
+            <SpecimenGroup key={color} title={color}>
+              <SpecimenRow>
+                <CalendarSelectbox
+                  {...args}
+                  color={color}
+                  selectId={`${uniqueId}-month`}
+                  aria-labelledby={`${uniqueId}-month-label`}
+                  options={calendarMonthOptions}
+                  defaultOptionId='month-3'
+                />
+              </SpecimenRow>
+            </SpecimenGroup>
+          );
+        })}
+      </SpecimenWrapper>
+    );
   },
 };
