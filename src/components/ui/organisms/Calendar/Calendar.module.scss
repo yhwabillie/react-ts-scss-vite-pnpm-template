@@ -3,18 +3,100 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
+$calendar-colors: (
+  primary: (
+    outline: (
+      color: var(--primary-text-color-input-outline),
+      border: var(--primary-panel-stroke-color-calendar),
+      day-text: var(--primary-day-text-color-calendar),
+      selected-bg: var(--primary-selected-date-bg-color-calendar),
+      selected-text: var(--primary-selected-date-text-color-calendar),
+    ),
+  ),
+  secondary: (
+    outline: (
+      color: var(--secondary-text-color-input-outline),
+      border: var(--secondary-panel-stroke-color-calendar),
+      day-text: var(--secondary-day-text-color-calendar),
+      selected-bg: var(--secondary-selected-date-bg-color-calendar),
+      selected-text: var(--secondary-selected-date-text-color-calendar),
+    ),
+  ),
+  tertiary: (
+    outline: (
+      color: var(--tertiary-text-color-input-outline),
+      border: var(--tertiary-panel-stroke-color-calendar),
+      day-text: var(--tertiary-day-text-color-calendar),
+      selected-bg: var(--tertiary-selected-date-bg-color-calendar),
+      selected-text: var(--tertiary-selected-date-text-color-calendar),
+    ),
+  ),
+);
+
 .calendar {
+  @each $name, $props in $calendar-colors {
+    &:global(.color--#{$name}) {
+      :global(.calendar-wrap) {
+        $outline-map: map.get($props, outline);
+
+        background-color: var(--bg-color-calendar);
+        border: rem(1px) solid map.get($outline-map, border);
+        filter: drop-shadow(0 0.375rem 0.75rem var(--shadow-bg-color-calendar));
+        color: var(--date-text-color-calendar);
+
+        :global(.calendar-body) {
+          :global(.calendar-table-wrap) {
+            :global(.calendar-table) {
+              thead {
+                tr {
+                  th {
+                    color: map.get($outline-map, 'day-text');
+                  }
+                }
+              }
+
+              tbody {
+                tr {
+                  td {
+                    &:global(.old) {
+                      :global(.btn-set-date) {
+                        color: var(--old-date-text-color-calendar);
+                        font-weight: var(--project-font-weight-400);
+                      }
+                    }
+
+                    &:global(.today) {
+                      :global(.btn-set-date) {
+                        background-color: var(--today-date-bg-color-calendar);
+                        color: var(--today-date-text-color-calendar);
+                      }
+                    }
+
+                    &:global(.selected) {
+                      :global(.btn-set-date) {
+                        background-color: map.get($outline-map, selected-bg);
+                        color: map.get($outline-map, selected-text);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   :global(.calendar-wrap) {
     width: max-content;
     overflow: hidden;
-    background-color: #ffffff;
-    border: rem(1px) solid lightgray;
     border-radius: var(--project-border-radius-12);
 
     :global(.calendar-head) {
       display: flex;
       gap: rem(8px);
-      padding: rem(16px);
+      padding: rem(16px) rem(16px) rem(24px);
 
       :global(button) {
         flex-shrink: 0;
@@ -39,7 +121,7 @@
             tr {
               th {
                 padding-bottom: rem(16px);
-                font: var(--project-typo-l4-400);
+                font: var(--project-typo-calendarTable1-600);
               }
             }
           }
@@ -48,25 +130,6 @@
             tr {
               td {
                 width: calc(100% / 7);
-
-                &:global(.old) {
-                  :global(.btn-set-date) {
-                    color: lightgray;
-                  }
-                }
-
-                &:global(.today) {
-                  :global(.btn-set-date) {
-                    background-color: #ececed;
-                  }
-                }
-
-                &:global(.selected) {
-                  :global(.btn-set-date) {
-                    background-color: #0052cc;
-                    color: #ffffff;
-                  }
-                }
 
                 :global(button) {
                   width: rem(44px);
@@ -77,14 +140,14 @@
                   flex-direction: column;
                   margin-inline: auto;
                   border-radius: var(--project-border-radius-max);
-                  font: var(--project-typo-l4-400);
+                  font: var(--project-typo-calendarTable1-600);
 
                   :global(.mark) {
                     display: inline-block;
                     width: rem(6px);
                     height: rem(6px);
                     border-radius: var(--project-border-radius-max);
-                    background-color: red;
+                    background-color: var(--holiday-dot-dot-color-calendar);
                     position: relative;
 
                     &:global(.is-active) {
@@ -103,8 +166,8 @@
                       transform: translate(-50%, -50%) scale(0.6);
                       transform-origin: center center;
 
-                      background-color: skyblue;
-                      color: #000;
+                      background-color: var(--holiday-tooltip-bg-color-calendar);
+                      color: var(--holiday-tooltip-text-color-calendar);
                       padding: rem(3px) rem(6px);
                       border-radius: var(--project-border-radius-4);
                       width: max-content;

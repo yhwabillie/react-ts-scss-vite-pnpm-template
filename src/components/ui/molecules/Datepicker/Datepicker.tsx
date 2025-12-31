@@ -406,7 +406,6 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
                 calendarRef={calendarRef}
                 variant='outline'
                 color='primary'
-                size='xl'
                 selectedYear={viewYear ?? calendar.selectedYear}
                 selectedMonth={viewMonth ?? calendar.selectedMonth}
                 selectedDate={tempSelectedDate}

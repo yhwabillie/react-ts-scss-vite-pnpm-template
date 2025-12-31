@@ -2,7 +2,7 @@ import type { InputA11yProps } from '@/types/a11y/a11y-roles.types';
 import type { Color, Size, Variant } from '@/types/design/design-tokens.types';
 import styles from '@/components/ui/organisms/Calendar/Calendar.module.scss';
 import clsx from 'clsx';
-import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { forwardRef, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import CalendarSelectbox from './CalendarSelectbox';
 import { useCalendarMatrix, type CalendarCell } from './Calendar.mock';
 import Icon from '../../atoms/Icon/Icon';
@@ -15,8 +15,7 @@ import type { Holiday } from '@/App';
 
 interface StyleProps {
   variant: Variant;
-  color: Color;
-  size: Size;
+  color: 'primary' | 'secondary' | 'tertiary';
 }
 
 type NativeDivProps = Omit<
@@ -26,7 +25,6 @@ type NativeDivProps = Omit<
 
 export interface CalendarProps extends StyleProps, NativeDivProps {
   calendarRef?: React.RefObject<HTMLDivElement | null>;
-  id?: string;
   selectedYear?: number;
   selectedMonth?: number;
   selectedDate?: Date | null;
@@ -51,11 +49,9 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       calendarRef,
       variant,
       color,
-      size,
-      id,
       selectedYear,
       selectedMonth,
-      selectedDate, // 최초 값
+      selectedDate,
       initialSelectedDate = null,
       calendarProps = {},
       holidays = [],
@@ -66,6 +62,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       onConfirm,
       onCancel,
       onClose,
+      ...rest
     },
     ref,
   ) => {
@@ -398,10 +395,13 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       }
     }, [derivedYear, derivedMonth]);
 
+    const uniqueId = useId();
+    const bodyLabel = `${color || ''} ${derivedYear}년 ${derivedMonth}월 날짜 선택`.trim();
+
     return (
       <div
         ref={calendarRef}
-        className={clsx(`${styles['calendar']} variant--${variant} color--${color} size--${size}`)}
+        className={clsx(`${styles['calendar']} variant--${variant} color--${color}`)}
         onMouseDown={e => {
           e.stopPropagation();
         }}
@@ -414,17 +414,30 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
         >
           {/* 초기 텍스트는 비워두거나, 스크린 리더에게 최초 정보 제공을 위해 채울 수 있습니다. */}
         </div>
-        <div className='calendar-wrap' tabIndex={0} aria-label='달력'>
+        <div
+          className='calendar-wrap'
+          role='region'
+          aria-label={`${rest['aria-label']} 달력`}
+          tabIndex={0}
+        >
           <div className='calendar-head'>
             {/* 이전 달 */}
             <IconButton
               variant='solid'
-              color='primary'
+              color={color}
               size='xs'
               shape='pill'
               className='prev-month-btn'
               aria-label='이전 달'
-              icon={<Icon name='chevron-left' />}
+              icon={
+                <Icon
+                  className='icon'
+                  name='chevron-left'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth={3}
+                />
+              }
               onClick={handlePrevMonth}
             />
             {/* 연도, 월 선택 */}
@@ -432,12 +445,12 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
               <CalendarSelectbox
                 aria-label='연도 선택'
                 variant='outline'
-                color='primary'
+                color={color}
                 size='xs'
                 role='combobox'
-                aria-labelledby='year-switch-label'
-                id='year-switch-component'
-                selectId='year-switch-select'
+                aria-labelledby={`year-switch-label-${uniqueId}`}
+                id={`year-switch-component-${uniqueId}`}
+                selectId={`year-switch-select-${uniqueId}`}
                 options={yearOptions ?? []}
                 defaultOptionId={currentYearOptionId}
                 onValueChange={(_, option) => {
@@ -450,46 +463,67 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
               <CalendarSelectbox
                 aria-label='월 선택'
                 variant='outline'
-                color='primary'
+                color={color}
                 size='xs'
                 role='combobox'
-                aria-labelledby='month-switch-label'
-                id='month-switch-component'
-                selectId='month-switch-select'
+                aria-labelledby={`month-switch-label-${uniqueId}`}
+                id={`month-switch-component-${uniqueId}`}
+                selectId={`month-switch-select-${uniqueId}`}
                 options={monthOptions ?? []}
                 defaultOptionId={currentMonthOptionId}
                 onValueChange={(_, option) => {
                   if (!option) return;
                   onMonthChange?.(Number(option.value.replace('월', '')));
                 }}
-                // 🚨 수정: 월 Selectbox의 열림 상태를 추적
                 onOpenChange={updateMonthSelectboxOpenState}
               />
             </div>
             {/* 다음 달 */}
             <IconButton
               variant='solid'
-              color='primary'
+              color={color}
               size='xs'
               shape='pill'
               className='prev-month-btn'
               aria-label='다음 달'
-              icon={<Icon name='chevron-right' />}
+              icon={
+                <Icon
+                  className='icon'
+                  name='chevron-right'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth={3}
+                />
+              }
               onClick={handleNextMonth}
             />
           </div>
-          <div className='calendar-body' role='grid' aria-labelledby='calendar-title'>
+          <div className='calendar-body' role='region' aria-label={bodyLabel}>
             <div className='calendar-table-wrap'>
-              <table className='calendar-table'>
+              <table className='calendar-table' role='grid'>
                 <thead>
-                  <tr>
-                    <th scope='col'>일</th>
-                    <th scope='col'>월</th>
-                    <th scope='col'>화</th>
-                    <th scope='col'>수</th>
-                    <th scope='col'>목</th>
-                    <th scope='col'>금</th>
-                    <th scope='col'>토</th>
+                  <tr role='row'>
+                    <th scope='col' role='columnheader'>
+                      일
+                    </th>
+                    <th scope='col' role='columnheader'>
+                      월
+                    </th>
+                    <th scope='col' role='columnheader'>
+                      화
+                    </th>
+                    <th scope='col' role='columnheader'>
+                      수
+                    </th>
+                    <th scope='col' role='columnheader'>
+                      목
+                    </th>
+                    <th scope='col' role='columnheader'>
+                      금
+                    </th>
+                    <th scope='col' role='columnheader'>
+                      토
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -500,24 +534,25 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                     }
 
                     return (
-                      <tr key={rowIdx}>
+                      <tr key={rowIdx} role='row'>
                         {week.map((cell, colIdx) => (
                           <td
                             key={cell.date.toISOString()}
+                            role='presentation'
                             className={clsx({
                               old: cell.disabled,
                               today: cell.isToday,
                               selected: cell.isSelected,
                               holiday: cell.isHoliday,
                             })}
-                            role='gridcell'
                           >
                             <button
                               ref={el => {
                                 dateButtonRefs.current[rowIdx][colIdx] = el;
                               }}
                               type='button'
-                              className='btn-set-date'
+                              role='gridcell'
+                              className={clsx('btn-set-date')}
                               disabled={cell.disabled}
                               tabIndex={
                                 // ✅ roving tabindex: focusedCell과 일치하는 셀만 tabIndex={0}
@@ -541,9 +576,11 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                               <span>{cell.day}</span>
                               {cell.isHoliday && (
                                 <span
-                                  className={clsx('mark', {
-                                    'is-active': activeHolidayKey === cell.date.toISOString(),
-                                  })}
+                                  className={clsx(
+                                    'mark',
+                                    activeHolidayKey === cell.date.toISOString() && 'is-active',
+                                    rest.className && 'is-active',
+                                  )}
                                   data-label={cell.holidayName}
                                   aria-hidden={true}
                                 ></span>
@@ -563,7 +600,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
               <ButtonGroup size='xs' align='left'>
                 <Button
                   variant='outline'
-                  color='tertiary'
+                  color={color}
                   size='xs'
                   shape='rounded'
                   className='today-btn'

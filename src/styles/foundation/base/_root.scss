@@ -20,6 +20,16 @@
   --bg-color-guide: #ecf4ef;
   --stroke-color-guide: #15803d;
 
+  // calendar
+  --shadow-bg-color-calendar: rgba(0, 0, 0, 0.1);
+  --bg-color-calendar: #ffffff;
+  --date-text-color-calendar: #333333;
+  --old-date-text-color-calendar: #767676;
+  --today-date-bg-color-calendar: #ececed;
+  --holiday-tooltip-bg-color-calendar: #333333;
+  --holiday-tooltip-text-color-calendar: #ffffff;
+  --holiday-dot-dot-color-calendar: #d32f2f;
+
   // searchbar
   --link-icon-bg-color-searchbar: #f2f2f2;
   --link-icon-color-searchbar: #404040;
@@ -708,6 +718,17 @@
   --bg-color-guide: rgba(45, 252, 82, 0.05);
   --stroke-color-guide: #2dfc52;
 
+  // calendar
+  --shadow-bg-color-calendar: rgba(255, 255, 255, 0.1);
+  --bg-color-calendar: #1e1e1e;
+  --date-text-color-calendar: #ffffff;
+  --old-date-text-color-calendar: #767676;
+  --today-date-bg-color-calendar: #575757;
+  --today-date-text-color-calendar: #ffffff;
+  --holiday-tooltip-bg-color-calendar: #444444;
+  --holiday-tooltip-text-color-calendar: #ffffff;
+  --holiday-dot-dot-color-calendar: #ff8a80;
+
   // searchbar
   --link-icon-bg-color-searchbar: #94a3b8;
   --link-icon-color-searchbar: #1e293b;
@@ -1383,6 +1404,12 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  // calendar
+  --primary-panel-stroke-color-calendar: #0052cc;
+  --primary-day-text-color-calendar: #0052cc;
+  --primary-selected-date-bg-color-calendar: #0052cc;
+  --primary-selected-date-text-color-calendar: #ffffff;
+
   // searchbar
   --primary-hover-shadow-searchbar: #dceaff;
 
@@ -1558,6 +1585,12 @@
   --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-link: #0052cc;
 
+  // calendar
+  --secondary-panel-stroke-color-calendar: #475569;
+  --secondary-day-text-color-calendar: #475569;
+  --secondary-selected-date-bg-color-calendar: #475569;
+  --secondary-selected-date-text-color-calendar: #ffffff;
+
   // searchbar
   --secondary-hover-shadow-searchbar: rgba(71, 85, 105, 0.25);
 
@@ -1729,6 +1762,12 @@
 
   --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-link: #475569;
+
+  // calendar
+  --tertiary-panel-stroke-color-calendar: #7c3aed;
+  --tertiary-day-text-color-calendar: #7c3aed;
+  --tertiary-selected-date-bg-color-calendar: #7c3aed;
+  --tertiary-selected-date-text-color-calendar: #ffffff;
 
   // searchbar
   --tertiary-hover-shadow-searchbar: rgba(124, 58, 237, 0.25);
@@ -1945,6 +1984,12 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    // calendar
+    --primary-panel-stroke-color-calendar: #5c9aff;
+    --primary-day-text-color-calendar: #5c9aff;
+    --primary-selected-date-bg-color-calendar: #2563eb;
+    --primary-selected-date-text-color-calendar: #ffffff;
+
     // searchbar
     --primary-hover-shadow-searchbar: #38bdf8;
 
@@ -2120,6 +2165,12 @@
     --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
     --primary-active-text-color-btn-link: #60a5fa;
 
+    // calendar
+    --secondary-panel-stroke-color-calendar: #38bdf8;
+    --secondary-day-text-color-calendar: #38bdf8;
+    --secondary-selected-date-bg-color-calendar: #0369a1;
+    --secondary-selected-date-text-color-calendar: #ffffff;
+
     // searchbar
     --secondary-hover-shadow-searchbar: #94a3b8;
 
@@ -2294,6 +2345,12 @@
 
     --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
+
+    // calendar
+    --tertiary-panel-stroke-color-calendar: #a78bfa;
+    --tertiary-day-text-color-calendar: #a78bfa;
+    --tertiary-selected-date-bg-color-calendar: #7c3aed;
+    --tertiary-selected-date-text-color-calendar: #ffffff;
 
     // searchbar
     --tertiary-hover-shadow-searchbar: #a78bfa;

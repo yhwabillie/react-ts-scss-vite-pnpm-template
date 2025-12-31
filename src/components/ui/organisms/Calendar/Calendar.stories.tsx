@@ -6,7 +6,8 @@ import {
   TODAY_YEAR,
   TODAY_MONTH,
 } from './Calendar.mock';
-import AnatomyWrapper from '../../guide/AnatomyWrapper';
+import { useState } from 'react';
+import { GuideGroup } from '../../guide/Guide';
 
 /**
  * [Calendar]
@@ -22,32 +23,111 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
+
+  argTypes: {
+    calendarRef: {
+      control: false,
+      table: { category: 'Ref' },
+    },
+    // 🎨 Style 관련 그룹
+    variant: {
+      control: 'inline-radio',
+      options: ['solid', 'outline'],
+      description: '캘린더의 시각적 스타일 변형',
+      table: { category: 'Style' },
+    },
+    color: {
+      control: 'select',
+      options: ['primary', 'secondary', 'tertiary'],
+      description: '컴포넌트의 주요 테마 색상',
+      table: { category: 'Style' },
+    },
+
+    // 📅 Data & State 관련 그룹
+    selectedYear: {
+      control: { type: 'number' },
+      description: '현재 선택된 연도',
+      table: { category: 'State' },
+    },
+    selectedMonth: {
+      control: { type: 'number', min: 1, max: 12 },
+      description: '현재 선택된 월 (1-12)',
+      table: { category: 'State' },
+    },
+    selectedDate: {
+      control: 'date',
+      description: '현재 선택된 날짜 객체',
+      table: { category: 'State' },
+    },
+    initialSelectedDate: {
+      control: 'date',
+      description: '초기 선택값으로 설정될 날짜',
+      table: { category: 'State' },
+    },
+    holidays: {
+      control: 'object',
+      description: '공휴일 정보 배열',
+      table: { category: 'Data' },
+    },
+    calendarProps: {
+      control: 'object',
+      description: '연도/월 선택 박스의 옵션 커스텀 설정',
+      table: { category: 'Data' },
+    },
+
+    // ⚡️ Events 관련 그룹
+    onYearChange: {
+      action: 'year changed',
+      description: '연도 변경 시 실행되는 콜백',
+      table: { category: 'Events' },
+    },
+    onMonthChange: {
+      action: 'month changed',
+      description: '월 변경 시 실행되는 콜백',
+      table: { category: 'Events' },
+    },
+    onDateSelect: {
+      action: 'date selected',
+      description: '날짜를 클릭했을 때 실행되는 콜백',
+      table: { category: 'Events' },
+    },
+    onDateChange: {
+      action: 'date changed',
+      description: '최종 선택 날짜가 변경되었을 때 실행되는 콜백',
+      table: { category: 'Events' },
+    },
+    onConfirm: {
+      action: 'confirmed',
+      description: '확인 버튼 클릭 시 실행',
+      table: { category: 'Events' },
+    },
+    onCancel: {
+      action: 'cancelled',
+      description: '취소 버튼 클릭 시 실행',
+      table: { category: 'Events' },
+    },
+    onClose: {
+      action: 'closed',
+      description: '캘린더 닫기 액션 발생 시 실행',
+      table: { category: 'Events' },
+    },
+  },
+
   args: {
     variant: 'outline',
     color: 'primary',
-    size: 'md',
     selectedYear: TODAY_YEAR,
     selectedMonth: TODAY_MONTH,
-    selectedDate: new Date(),
     calendarProps: {
       yearOptions: calendarYearOptions,
       monthOptions: calendarMonthOptions,
     },
     holidays: [
-      { date: '20250101', name: '신정' },
-      { date: '20250128', name: '설날 연휴' },
-      { date: '20250129', name: '설날' },
-      { date: '20250130', name: '설날 연휴' },
+      { date: '20260101', name: '신정' },
+      { date: '20260128', name: '설날 연휴' },
+      { date: '20260129', name: '설날' },
+      { date: '20260130', name: '설날 연휴' },
     ],
-  },
-  argTypes: {
-    variant: { control: 'inline-radio', options: ['solid', 'outline'] },
-    color: { control: 'select', options: ['primary', 'secondary', 'tertiary'] },
-    size: { control: 'inline-radio', options: ['xs', 'sm', 'md', 'lg', 'xl'] },
-    onYearChange: { action: 'yearChanged' },
-    onMonthChange: { action: 'monthChanged' },
-    onDateSelect: { action: 'dateSelected' },
-    onClose: { action: 'calendarClosed' },
   },
 } satisfies Meta<typeof Calendar>;
 
@@ -55,88 +135,113 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-/**
- * [01. Interactive Calendar]
- * 연도/월 변경 및 날짜 선택 시 state가 동기화되는 실제 동작 버전입니다.
- */
-export const Interactive: Story = {
-  render: (args, { updateArgs }) => {
-    // 1. 연도 변경 핸들러
-    const handleYearChange = (year: number) => {
-      updateArgs({ selectedYear: year });
-      args.onYearChange?.(year);
-    };
+export const Base: Story = {
+  args: {
+    selectedDate: new Date(2025, 11, 12),
+  },
+  render: args => {
+    const [year, setYear] = useState(args.selectedYear);
+    const [month, setMonth] = useState(args.selectedMonth);
 
-    // 2. 월 변경 핸들러
-    const handleMonthChange = (month: number) => {
-      updateArgs({ selectedMonth: month });
-      args.onMonthChange?.(month);
-    };
-
-    // 3. 날짜 선택 핸들러
-    const handleDateSelect = (date: Date) => {
-      updateArgs({ selectedDate: date });
-      args.onDateSelect?.(date);
-    };
+    const [selectedDate, setSelectedDate] = useState<Date | null>(
+      args.selectedDate ? new Date(args.selectedDate) : args.initialSelectedDate || new Date(),
+    );
 
     return (
-      <AnatomyWrapper title='Interactive Calendar' style={{ width: '340px' }}>
-        <Calendar
-          {...args}
-          onYearChange={handleYearChange}
-          onMonthChange={handleMonthChange}
-          onDateSelect={handleDateSelect}
-        />
-      </AnatomyWrapper>
+      <Calendar
+        {...args}
+        selectedYear={year}
+        selectedMonth={month}
+        selectedDate={selectedDate}
+        onYearChange={y => setYear(y)}
+        onMonthChange={m => setMonth(m)}
+        onDateSelect={date => {
+          setSelectedDate(date);
+          args.onDateSelect?.(date);
+        }}
+      />
     );
   },
 };
 
-/**
- * [02. Holiday Display]
- * 공휴일 데이터가 주입되었을 때의 시각적 피드백과 마크 표시를 확인합니다.
- */
-export const WithHolidays: Story = {
-  args: {
-    selectedYear: 2025,
-    selectedMonth: 1,
-  },
-  render: args => (
-    <AnatomyWrapper title='January 2025 with Holidays' style={{ width: '340px' }}>
-      <Calendar {...args} />
-    </AnatomyWrapper>
-  ),
-};
+export const Colors: Story = {
+  render: args => {
+    const colorOptions: Array<'primary' | 'secondary' | 'tertiary'> = [
+      'primary',
+      'secondary',
+      'tertiary',
+    ];
 
-/**
- * [03. Size Variation]
- * 디자인 시스템의 크기별 레이아웃 대응을 확인합니다.
- */
-export const Sizes: Story = {
-  render: args => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
-      <div style={{ display: 'flex', gap: '20px' }}>
-        <AnatomyWrapper title='Size: XS' style={{ width: '280px' }}>
-          <Calendar {...args} size='xs' />
-        </AnatomyWrapper>
-        <AnatomyWrapper title='Size: SM' style={{ width: '300px' }}>
-          <Calendar {...args} size='sm' />
-        </AnatomyWrapper>
+    // 1. 각 컬러별 캘린더가 독립적인 상태를 갖도록 내부 컴포넌트 정의
+    const ColorCalendarItem = ({
+      colorTheme,
+    }: {
+      colorTheme: 'primary' | 'secondary' | 'tertiary';
+    }) => {
+      const [year, setYear] = useState(args.selectedYear || 2025);
+      const [month, setMonth] = useState(args.selectedMonth || 12);
+      const [selectedDate, setSelectedDate] = useState<Date | null>(new Date(2025, 11, 12));
+
+      return (
+        <GuideGroup title={colorTheme}>
+          <Calendar
+            {...args}
+            aria-label={colorTheme}
+            color={colorTheme}
+            selectedYear={year}
+            selectedMonth={month}
+            selectedDate={selectedDate}
+            onYearChange={y => setYear(y)}
+            onMonthChange={m => setMonth(m)}
+            onDateSelect={date => setSelectedDate(date)}
+          />
+        </GuideGroup>
+      );
+    };
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
+        {colorOptions.map(color => (
+          <ColorCalendarItem key={color} colorTheme={color} />
+        ))}
       </div>
-      <AnatomyWrapper title='Size: MD (Default)' style={{ width: '340px' }}>
-        <Calendar {...args} size='md' />
-      </AnatomyWrapper>
-    </div>
-  ),
+    );
+  },
 };
 
-/**
- * [04. Empty Selection]
- * 선택된 날짜가 없을 때(오늘 날짜 중심)의 초기 상태를 확인합니다.
- */
-export const NoSelection: Story = {
+export const Holiday: Story = {
   args: {
-    selectedDate: null,
-    initialSelectedDate: null,
+    selectedYear: 2026,
+    selectedMonth: 1, // 2월 페이지를 보여줌
+    holidays: [
+      { date: '20260101', name: '신정' },
+      { date: '20260128', name: '설날 연휴' },
+      { date: '20260129', name: '설날' },
+      { date: '20260130', name: '설날 연휴' },
+    ],
+  },
+  render: args => {
+    const [year, setYear] = useState(args.selectedYear);
+    const [month, setMonth] = useState(args.selectedMonth);
+
+    const [selectedDate, setSelectedDate] = useState<Date | null>(new Date(2026, 0, 6));
+
+    return (
+      <GuideGroup title='Holidays (February 2026)'>
+        <Calendar
+          {...args}
+          selectedYear={year}
+          selectedMonth={month}
+          selectedDate={selectedDate}
+          onYearChange={y => setYear(y)}
+          onMonthChange={m => setMonth(m)}
+          onDateSelect={date => {
+            setSelectedDate(date);
+            args.onDateSelect?.(date);
+          }}
+          className='is-active'
+        />
+      </GuideGroup>
+    );
   },
 };
