@@ -227,7 +227,7 @@ export const Holiday: Story = {
     const [selectedDate, setSelectedDate] = useState<Date | null>(new Date(2026, 0, 6));
 
     return (
-      <GuideGroup title='Holidays (February 2026)'>
+      <GuideGroup title='Holidays'>
         <Calendar
           {...args}
           selectedYear={year}

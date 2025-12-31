@@ -9,6 +9,7 @@ import {
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
 import { GuideCell, GuideGroup, GuideRow } from '../../guide/Guide';
+import { useState } from 'react';
 
 /**
  * [Datepicker]
@@ -36,7 +37,7 @@ const meta = {
     color: {
       description: '브랜드 컬러 시스템을 적용합니다.',
       control: 'select',
-      options: ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'],
+      options: ['primary', 'secondary', 'tertiary'],
       table: { category: 'Style', type: { summary: 'Color' } },
     },
     size: {
@@ -172,9 +173,11 @@ export const Base: Story = {
  */
 export const Colors: Story = {
   render: args => {
-    const colorOptions: Array<
-      'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger'
-    > = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'];
+    const colorOptions: Array<'primary' | 'secondary' | 'tertiary'> = [
+      'primary',
+      'secondary',
+      'tertiary',
+    ];
 
     return (
       <SpecimenWrapper>
@@ -268,7 +271,7 @@ export const States: Story = {
  * - **PILL**: 유연하고 모던한 느낌을 주며, 버튼이나 태그 위주의 UI와 잘 어우러집니다.
  */
 export const Shapes: Story = {
-  render: (args, context) => {
+  render: args => {
     const shapeOptions: Array<'square' | 'rounded' | 'pill'> = ['square', 'rounded', 'pill'];
 
     return (
@@ -323,4 +326,34 @@ export const PortalTest: Story = {
       <Datepicker {...args} />
     </AnatomyWrapper>
   ),
+};
+
+/**
+ * * 외부 상태(State)에 의해 날짜가 제어되는 케이스입니다.
+ */
+export const Controlled: Story = {
+  render: args => {
+    // 외부에서 2026년 1월 1일로 상태 관리
+    const [selectedDate, setSelectedDate] = useState<Date | null>(new Date(2026, 0, 1));
+    const [year, setYear] = useState(2026);
+    const [month, setMonth] = useState(1);
+
+    return (
+      <GuideGroup title='Controlled Datepicker (2026-01-01)'>
+        <Datepicker
+          {...args}
+          calendar={{
+            ...args.calendar,
+            selectedDate: selectedDate,
+            selectedYear: year,
+            selectedMonth: month,
+          }}
+          onDateChange={(value, date) => {
+            setSelectedDate(date);
+            console.log('선택된 날짜 문자열:', value);
+          }}
+        />
+      </GuideGroup>
+    );
+  },
 };

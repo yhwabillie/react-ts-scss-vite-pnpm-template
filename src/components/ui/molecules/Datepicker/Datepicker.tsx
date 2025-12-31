@@ -14,7 +14,7 @@ import IconButton from '../IconButton/IconButton';
 interface StyleProps {
   variant: 'solid' | 'outline';
   shape?: 'square' | 'rounded' | 'pill';
-  color: Color;
+  color: 'primary' | 'secondary' | 'tertiary';
   size: Size;
 }
 
@@ -196,14 +196,23 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
       }
     }, []);
 
+    // -----------------------------------------------------
+    // ✨ [Effect] 달력이 열릴 때 초기 뷰(Year/Month) 설정
+    // -----------------------------------------------------
     useEffect(() => {
       if (!isOpen) return;
 
-      const baseDate = resolvedSelectedDate ?? new Date();
+      // 1. 확정된 날짜(confirmedDate)가 있으면 그것을 기준으로,
+      // 2. 없으면 resolvedSelectedDate(props 기반),
+      // 3. 그것도 없으면 오늘 날짜를 기준으로 설정합니다.
+      const baseDate = confirmedDate ?? resolvedSelectedDate ?? new Date();
 
       setViewYear(baseDate.getFullYear());
       setViewMonth(baseDate.getMonth() + 1);
-    }, [isOpen]);
+
+      // 만약 달력 내부의 임시 선택값(tempSelectedDate)도 확정된 값과 맞추고 싶다면 추가
+      setTempSelectedDate(confirmedDate ?? resolvedSelectedDate);
+    }, [isOpen, confirmedDate, resolvedSelectedDate]);
 
     // -----------------------------------------------------
     // ✨ [Effect] 외부 클릭 이벤트 등록
@@ -405,7 +414,7 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
               <Calendar
                 calendarRef={calendarRef}
                 variant='outline'
-                color='primary'
+                color={color}
                 selectedYear={viewYear ?? calendar.selectedYear}
                 selectedMonth={viewMonth ?? calendar.selectedMonth}
                 selectedDate={tempSelectedDate}

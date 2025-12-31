@@ -838,7 +838,7 @@ function App() {
           공지사항 확인
         </Button>
       </section>
-      {/* <section>
+      <section>
         <FormField
           size='xl'
           direction='column'
@@ -854,7 +854,7 @@ function App() {
             inputProps={{
               id: 'datepicker-input',
               // value: '2025-12-03',
-              readonly: true,
+              // readonly: true,
             }}
             calendar={{
               selectedYear: selectedYear,
@@ -878,7 +878,7 @@ function App() {
             }}
           />
         </FormField>
-      </section> */}
+      </section>
       <section style={{ margin: '30px' }}>
         <LanguageSelector
           variant='outline'
