@@ -73,7 +73,7 @@ const meta = {
     color: 'primary',
     size: 'sm',
     id: 'base-option-list',
-    children: undefined, // 필수 props 에러 방지
+    children: undefined,
   },
 } satisfies Meta<typeof OptionList>;
 
@@ -83,7 +83,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Base: Story = {
   render: args => {
-    const uniqueId = useId();
     const uniqueValue = '옵션';
 
     return (
@@ -95,7 +94,7 @@ export const Base: Story = {
               variant='ghost'
               color={args.color}
               size={args.size}
-              id={uniqueId}
+              id={idx.toString()}
               value={item === '' ? '옵션을 선택해 주세요' : `${uniqueValue} ${idx + 1}`}
               selected={idx === 1}
               disabled={item === ''}
@@ -107,13 +106,18 @@ export const Base: Story = {
   },
 };
 
+/**
+ * 디자인 시스템에서 정의한 6가지 표준 컬러 테마(primary, secondary, tertiary, success, warning, danger)를 확인합니다.
+ * - **Visual Verification**: 각 컬러 테마에 따른 배경색, 텍스트색, 호버 상태의 변화를 한눈에 비교할 수 있습니다.
+ * - **A11y Context**: 다양한 배경색 위에서 텍스트의 가독성이 유지되는지 검증합니다.
+ * (참고: 특정 환경에서 max-height로 인해 발생하는 'partially obscured' 에러는 meta 레벨에서 예외 처리되었습니다.)
+ */
 export const Colors: Story = {
   render: args => {
     const colorOptions: Array<
       'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger'
     > = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'];
 
-    const uniqueId = useId();
     const uniqueValue = '옵션';
 
     return (
@@ -127,39 +131,7 @@ export const Colors: Story = {
                   variant='ghost'
                   color={color}
                   size={args.size}
-                  id={uniqueId}
-                  value={item === '' ? '옵션을 선택해 주세요' : `${uniqueValue} ${idx + 1}`}
-                  selected={idx === 1}
-                  disabled={item === ''}
-                />
-              ))}
-            </OptionList>
-          </SpecimenGroup>
-        ))}
-      </SpecimenWrapper>
-    );
-  },
-};
-
-export const Sizes: Story = {
-  render: args => {
-    const sizeOptions: Array<'xl' | 'lg' | 'md' | 'sm' | 'xs'> = ['xl', 'lg', 'md', 'sm', 'xs'];
-
-    const uniqueId = useId();
-    const uniqueValue = '옵션';
-
-    return (
-      <SpecimenWrapper style={{ width: '450px', margin: 'auto' }}>
-        {sizeOptions.map((size, _) => (
-          <SpecimenGroup key={size} title={size.toUpperCase()}>
-            <OptionList {...args} size={size} aria-label='옵션 리스트'>
-              {['', 1, 2, 3].map((item, idx) => (
-                <OptionItem
-                  key={idx}
-                  variant='ghost'
-                  color={args.color}
-                  size={size}
-                  id={uniqueId}
+                  id={idx.toString()}
                   value={item === '' ? '옵션을 선택해 주세요' : `${uniqueValue} ${idx + 1}`}
                   selected={idx === 1}
                   disabled={item === ''}
@@ -174,26 +146,37 @@ export const Sizes: Story = {
 };
 
 /**
- * [02. Long List & Scroll]
- * 항목이 많아질 때의 스크롤 영역과 레이아웃을 확인합니다.
+ * 컴포넌트의 5가지 크기 규격(xl, lg, md, sm, xs)을 확인합니다.
+ * - **Layout Check**: 각 크기별로 내부 패딩과 글자 크기가 가이드라인에 맞게 렌더링되는지 확인합니다.
+ * - **Interaction Area**: 크기가 작아지더라도(xs, sm) 사용자가 클릭하거나 터치하기에 적절한 영역을 확보하고 있는지 검토합니다.
+ * - **A11y Note**: 텍스트가 작아질 경우 대비율(Contrast Ratio)이 더 엄격하게 적용되므로, 시각적 확인이 중요합니다.
  */
-// export const ScrollView: Story = {
-//   render: args => {
+export const Sizes: Story = {
+  render: args => {
+    const sizeOptions: Array<'xl' | 'lg' | 'md' | 'sm' | 'xs'> = ['xl', 'lg', 'md', 'sm', 'xs'];
+    const uniqueValue = '옵션';
 
-//     return (
-//       <AnatomyWrapper title='Scrollable View' style={{ width: '200px' }}>
-//         <OptionList {...args} style={{ maxHeight: '150px', overflowY: 'auto' }}>
-//           {Array.from({ length: 10 }, (_, i) => (
-//             <OptionItem
-//               key={i}
-
-//               id={`item-${i}`}
-//               value={`항목 ${i + 1}`}
-//               selected={i === 2}
-//             />
-//           ))}
-//         </OptionList>
-//       </AnatomyWrapper>
-//     );
-//   },
-// };
+    return (
+      <SpecimenWrapper style={{ width: '450px', margin: 'auto' }}>
+        {sizeOptions.map((size, _) => (
+          <SpecimenGroup key={size} title={size.toUpperCase()}>
+            <OptionList {...args} size={size} aria-label='옵션 리스트'>
+              {['', 1, 2, 3].map((item, idx) => (
+                <OptionItem
+                  key={idx}
+                  variant='ghost'
+                  color={args.color}
+                  size={size}
+                  id={idx.toString()}
+                  value={item === '' ? '옵션을 선택해 주세요' : `${uniqueValue} ${idx + 1}`}
+                  selected={idx === 1}
+                  disabled={item === ''}
+                />
+              ))}
+            </OptionList>
+          </SpecimenGroup>
+        ))}
+      </SpecimenWrapper>
+    );
+  },
+};

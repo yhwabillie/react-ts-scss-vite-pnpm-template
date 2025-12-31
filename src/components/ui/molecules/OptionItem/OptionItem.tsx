@@ -77,9 +77,7 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
         onClick={handleClick}
         onKeyDown={onKeyDown}
       >
-        <span className='label' title={value || undefined}>
-          {value || placeholder}
-        </span>
+        <span className='label'>{value || placeholder}</span>
 
         {selected && value !== '' && (
           <Icon
