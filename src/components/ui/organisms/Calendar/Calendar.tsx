@@ -12,6 +12,7 @@ import Button from '../../molecules/Button/Button';
 import ButtonGroup from '../../molecules/ButtonGroup/ButtonGroup';
 import type { OptionBase } from '../../molecules/OptionItem/OptionItem';
 import type { Holiday } from '@/App';
+import CalendarSkeleton from '../../atoms/Skeleton/CalendarSkeleton';
 
 interface StyleProps {
   variant: Variant;
@@ -41,6 +42,7 @@ export interface CalendarProps extends StyleProps, NativeDivProps {
   onConfirm?: () => void;
   onCancel?: () => void;
   onClose?: () => void;
+  isLoading?: boolean;
 }
 
 const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
@@ -62,6 +64,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       onConfirm,
       onCancel,
       onClose,
+      isLoading,
       ...rest
     },
     ref,
@@ -398,10 +401,19 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     const uniqueId = useId();
     const bodyLabel = `${color || ''} ${derivedYear}년 ${derivedMonth}월 날짜 선택`.trim();
 
+    // -----------------------------
+    // 🎨 Skeleton 전용 행/열 생성 (6행 7열)
+    // -----------------------------
+    const skeletonRows = Array.from({ length: 6 });
+    const skeletonCols = Array.from({ length: 7 });
+
     return (
       <div
         ref={calendarRef}
-        className={clsx(`${styles['calendar']} variant--${variant} color--${color}`)}
+        className={clsx(
+          `${styles['calendar']} variant--${variant} color--${color} ${isLoading && 'is-loading'}`,
+        )}
+        aria-busy={isLoading}
         onMouseDown={e => {
           e.stopPropagation();
         }}
@@ -412,7 +424,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
           className='sr-only' // 시각적으로 숨기는 클래스 (프로젝트 CSS에 정의되어 있어야 함)
           aria-live='polite' // 변경 사항을 공손하게 공지
         >
-          {/* 초기 텍스트는 비워두거나, 스크린 리더에게 최초 정보 제공을 위해 채울 수 있습니다. */}
+          {isLoading ? '공휴일 정보를 불러오는 중입니다.' : ''}
         </div>
         <div
           className='calendar-wrap'
@@ -439,6 +451,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                 />
               }
               onClick={handlePrevMonth}
+              disabled={isLoading}
             />
             {/* 연도, 월 선택 */}
             <div className='calendar-switch-wrap'>
@@ -459,6 +472,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                   onYearChange?.(year);
                 }}
                 onOpenChange={updateYearSelectboxOpenState}
+                disabled={isLoading}
               />
               <CalendarSelectbox
                 aria-label='월 선택'
@@ -476,6 +490,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                   onMonthChange?.(Number(option.value.replace('월', '')));
                 }}
                 onOpenChange={updateMonthSelectboxOpenState}
+                disabled={isLoading}
               />
             </div>
             {/* 다음 달 */}
@@ -496,6 +511,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                 />
               }
               onClick={handleNextMonth}
+              disabled={isLoading}
             />
           </div>
           <div className='calendar-body' role='region' aria-label={bodyLabel}>
@@ -527,70 +543,82 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                   </tr>
                 </thead>
                 <tbody>
-                  {matrix.map((week, rowIdx) => {
-                    // ✅ 각 row마다 ref 배열 초기화
-                    if (!dateButtonRefs.current[rowIdx]) {
-                      dateButtonRefs.current[rowIdx] = [];
-                    }
+                  {isLoading ? (
+                    // -----------------------------
+                    // 🦴 Skeleton UI 렌더링
+                    // -----------------------------
+                    <CalendarSkeleton />
+                  ) : (
+                    // -----------------------------
+                    // 📅 실제 데이터 렌더링 (기존 로직)
+                    // -----------------------------
+                    matrix.map((week, rowIdx) => {
+                      // ✅ 각 row마다 ref 배열 초기화
+                      if (!dateButtonRefs.current[rowIdx]) {
+                        dateButtonRefs.current[rowIdx] = [];
+                      }
 
-                    return (
-                      <tr key={rowIdx} role='row'>
-                        {week.map((cell, colIdx) => (
-                          <td
-                            key={cell.date.toISOString()}
-                            role='presentation'
-                            className={clsx({
-                              old: cell.disabled,
-                              today: cell.isToday,
-                              selected: cell.isSelected,
-                              holiday: cell.isHoliday,
-                            })}
-                          >
-                            <button
-                              ref={el => {
-                                dateButtonRefs.current[rowIdx][colIdx] = el;
-                              }}
-                              type='button'
-                              role='gridcell'
-                              className={clsx('btn-set-date')}
-                              disabled={cell.disabled}
-                              tabIndex={
-                                // ✅ roving tabindex: focusedCell과 일치하는 셀만 tabIndex={0}
-                                focusedCell?.row === rowIdx && focusedCell?.col === colIdx ? 0 : -1
-                              }
-                              aria-selected={cell.isSelected}
-                              // 🚨 수정된 aria-label
-                              aria-label={`${derivedYear}년 ${derivedMonth}월 ${cell.day}일 ${WEEKDAY_NAMES[cell.date.getDay()]}요일${cell.isHoliday ? ` ${cell.holidayName}` : ''}${cell.isToday ? ' 오늘' : ''}${cell.isSelected ? ' 선택됨' : ''}`}
-                              onClick={() => handleDateClick(cell)}
-                              onKeyDown={e => handleDateKeyDown(e, rowIdx, colIdx)}
-                              onMouseEnter={() =>
-                                cell.isHoliday && setActiveHolidayKey(cell.date.toISOString())
-                              }
-                              onMouseLeave={() => setActiveHolidayKey(null)}
-                              onFocus={() => {
-                                setFocusedCell({ row: rowIdx, col: colIdx });
-                                cell.isHoliday && setActiveHolidayKey(cell.date.toISOString());
-                              }}
-                              onBlur={() => setActiveHolidayKey(null)}
+                      return (
+                        <tr key={rowIdx} role='row'>
+                          {week.map((cell, colIdx) => (
+                            <td
+                              key={cell.date.toISOString()}
+                              role='presentation'
+                              className={clsx({
+                                old: cell.disabled,
+                                today: cell.isToday,
+                                selected: cell.isSelected,
+                                holiday: cell.isHoliday,
+                              })}
                             >
-                              <span>{cell.day}</span>
-                              {cell.isHoliday && (
-                                <span
-                                  className={clsx(
-                                    'mark',
-                                    activeHolidayKey === cell.date.toISOString() && 'is-active',
-                                    rest.className && 'is-active',
-                                  )}
-                                  data-label={cell.holidayName}
-                                  aria-hidden={true}
-                                ></span>
-                              )}
-                            </button>
-                          </td>
-                        ))}
-                      </tr>
-                    );
-                  })}
+                              <button
+                                ref={el => {
+                                  dateButtonRefs.current[rowIdx][colIdx] = el;
+                                }}
+                                type='button'
+                                role='gridcell'
+                                className={clsx('btn-set-date')}
+                                disabled={cell.disabled}
+                                tabIndex={
+                                  // ✅ roving tabindex: focusedCell과 일치하는 셀만 tabIndex={0}
+                                  focusedCell?.row === rowIdx && focusedCell?.col === colIdx
+                                    ? 0
+                                    : -1
+                                }
+                                aria-selected={cell.isSelected}
+                                // 🚨 수정된 aria-label
+                                aria-label={`${derivedYear}년 ${derivedMonth}월 ${cell.day}일 ${WEEKDAY_NAMES[cell.date.getDay()]}요일${cell.isHoliday ? ` ${cell.holidayName}` : ''}${cell.isToday ? ' 오늘' : ''}${cell.isSelected ? ' 선택됨' : ''}`}
+                                onClick={() => handleDateClick(cell)}
+                                onKeyDown={e => handleDateKeyDown(e, rowIdx, colIdx)}
+                                onMouseEnter={() =>
+                                  cell.isHoliday && setActiveHolidayKey(cell.date.toISOString())
+                                }
+                                onMouseLeave={() => setActiveHolidayKey(null)}
+                                onFocus={() => {
+                                  setFocusedCell({ row: rowIdx, col: colIdx });
+                                  cell.isHoliday && setActiveHolidayKey(cell.date.toISOString());
+                                }}
+                                onBlur={() => setActiveHolidayKey(null)}
+                              >
+                                <span>{cell.day}</span>
+                                {cell.isHoliday && (
+                                  <span
+                                    className={clsx(
+                                      'mark',
+                                      activeHolidayKey === cell.date.toISOString() && 'is-active',
+                                      rest.className && 'is-active',
+                                    )}
+                                    data-label={cell.holidayName}
+                                    aria-hidden={true}
+                                  ></span>
+                                )}
+                              </button>
+                            </td>
+                          ))}
+                        </tr>
+                      );
+                    })
+                  )}
                 </tbody>
               </table>
             </div>
@@ -605,6 +633,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                   shape='rounded'
                   className='today-btn'
                   onClick={handleTodayClick}
+                  disabled={isLoading}
                 >
                   오늘
                 </Button>
@@ -619,6 +648,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                   onClick={() => {
                     onCancel?.();
                   }}
+                  disabled={isLoading}
                 >
                   닫기
                 </Button>
@@ -632,6 +662,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                     onConfirm?.();
                     onClose?.(); // 🚨 달력 닫기 요청 추가 (Datepicker가 이 요청을 받고 포커스를 Input으로 복귀시켜야 함)
                   }}
+                  disabled={isLoading}
                 >
                   확인
                 </Button>

@@ -290,27 +290,17 @@ export const AsyncHolidays: Story = {
           {/* 실제 구현 시 Calendar 컴포넌트 내부에 isLoading props가 있거나, 
             Skeleton 전용 컴포넌트를 따로 배치할 수 있습니다.
           */}
-          {isLoading ? (
-            <div style={{ minHeight: '400px' }}>
-              {/* 여기에 준비하신 CalendarSkeleton 컴포넌트를 배치하세요 */}
-              <p>공휴일 데이터를 불러오는 중...</p>
-              <div className='skeleton-calendar-wrapper' style={{ opacity: 0.5 }}>
-                {/* 시각적 예시를 위해 투명도를 조절한 캘린더 노출 */}
-                <Calendar {...args} selectedYear={year} selectedMonth={month} holidays={[]} />
-              </div>
-            </div>
-          ) : (
-            <Calendar
-              {...args}
-              selectedYear={year}
-              selectedMonth={month}
-              selectedDate={selectedDate}
-              holidays={holidays}
-              onYearChange={y => setYear(y)}
-              onMonthChange={m => setMonth(m)}
-              onDateSelect={date => setSelectedDate(date)}
-            />
-          )}
+          <Calendar
+            {...args}
+            selectedYear={year}
+            selectedMonth={month}
+            selectedDate={selectedDate}
+            holidays={holidays}
+            onYearChange={y => setYear(y)}
+            onMonthChange={m => setMonth(m)}
+            onDateSelect={date => setSelectedDate(date)}
+            isLoading={isLoading}
+          />
         </div>
       </GuideGroup>
     );
