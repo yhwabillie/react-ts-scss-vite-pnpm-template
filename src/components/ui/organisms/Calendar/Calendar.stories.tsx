@@ -165,6 +165,10 @@ export const Base: Story = {
   },
 };
 
+/**
+ * 목적: 캘린더의 다양한 컬러 테마(Primary, Secondary, Tertiary)를 시각적으로 확인합니다.
+ * 특징: 각 컬러별로 독립적인 상태(연/월/선택일)를 유지하여 인터랙션 시 서로 영향을 주지 않도록 구현되었습니다.
+ */
 export const Colors: Story = {
   render: args => {
     const colorOptions: Array<'primary' | 'secondary' | 'tertiary'> = [
@@ -210,6 +214,12 @@ export const Colors: Story = {
   },
 };
 
+/**
+ * 목적: 캘린더 내 공휴일 데이터 바인딩 및 시각적 표시(Mark)를 확인합니다.
+ * 특징:
+ * - 신정, 설날 등 공휴일 정보를 `holidays` prop으로 주입합니다.
+ * - `aria-label`을 통해 스크린 리더 사용자에게 공휴일 명칭이 올바르게 공지되는지 확인하는 기준이 됩니다.
+ */
 export const Holiday: Story = {
   args: {
     selectedYear: 2026,
@@ -247,6 +257,14 @@ export const Holiday: Story = {
   },
 };
 
+/**
+ * 목적: 비동기 데이터 로딩 상황에서의 스켈레톤 UI와 인터랙션을 테스트합니다.
+ * 검증 포인트:
+ * 1. isLoading 상태일 때 `CalendarSkeleton`이 올바르게 노출되는지 확인 (aria-busy="true").
+ * 2. 데이터 로드 후 스켈레톤이 제거되고 실제 공휴일 정보가 렌더링되는지 확인.
+ * 3. 캘린더 날짜 셀은 `role="gridcell"`을 사용하므로, findByRole('gridcell')을 통해 접근성 표준 준수 여부를 테스트합니다.
+ * 4. 선택 상태 확인 시 `is-active` 클래스 대신 표준 속성인 `aria-selected`를 검증합니다.
+ */
 export const AsyncHolidays: Story = {
   parameters: {
     // 웹접근성 검사 차단, storybook 검사 도구 한계

@@ -117,3 +117,44 @@ export const Colors: Story = {
     );
   },
 };
+
+/**
+ * 목적: CalendarSelectbox 컴포넌트의 다양한 상태(Normal, Hover, Focus, Disabled)에 따른 시각적 스타일을 검증합니다.
+ * 특징:
+ * 1. pseudo-class(hover, focus-visible)를 시뮬레이션하는 클래스를 사용하여, 별도의 인터랙션 없이도 디자인 시스템의 상태별 UI를 한 화면에서 비교할 수 있습니다.
+ * 2. Disabled 상태에서 사용자 입력이 차단되는지, 그리고 시각적으로 비활성화 처리가 명확한지 확인합니다.
+ * 3. 각 상태별로 독립적인 ID를 부여하여 웹 접근성(aria-labelledby)이 올바르게 매핑되도록 구성되었습니다.
+ */
+export const States: Story = {
+  render: args => {
+    const states = [
+      { label: 'Normal', props: {} },
+      { label: 'Hover', props: { className: 'pseudo-hover' } },
+      { label: 'Focus', props: { className: 'pseudo-focus-visible' } },
+      { label: 'Disabled', props: { disabled: true } },
+    ];
+
+    return (
+      <SpecimenWrapper>
+        {states.map(state => {
+          const uniqueId = useId();
+
+          return (
+            <SpecimenGroup key={uniqueId} title={state.label}>
+              <SpecimenRow>
+                <CalendarSelectbox
+                  {...args}
+                  {...state.props}
+                  selectId={`${uniqueId}-month`}
+                  aria-labelledby={`${uniqueId}-month-label`}
+                  options={calendarMonthOptions}
+                  defaultOptionId='month-3'
+                />
+              </SpecimenRow>
+            </SpecimenGroup>
+          );
+        })}
+      </SpecimenWrapper>
+    );
+  },
+};

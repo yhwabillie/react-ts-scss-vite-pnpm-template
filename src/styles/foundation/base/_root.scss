@@ -20,6 +20,20 @@
   --bg-color-guide: #ecf4ef;
   --stroke-color-guide: #15803d;
 
+  // toast
+  --text-color-toast: rgba(255, 255, 255, 0.95);
+  --stroke-color-toast: rgba(255, 255, 255, 0.1);
+  --shadow-color-toast: rgba(0, 0, 0, 0.3);
+  --bg-color-toast: rgba(25, 25, 25, 0.8);
+  --info-icon-color-toast: #ffffff;
+  --success-icon-color-toast: #2ecc71;
+  --warning-icon-color-toast: #ffad13;
+  --error-icon-color-toast: #ff5c5c;
+  --close-btn-bg-color-toast: #000000;
+  --hover-close-btn-color-toast: #3b82f6;
+  --link-btn-bg-color-toast: #191919;
+  --hover-link-btn-bg-color-toast: #3b82f6;
+
   // calendar
   --shadow-bg-color-calendar: rgba(0, 0, 0, 0.1);
   --bg-color-calendar: #ffffff;
@@ -720,6 +734,19 @@
   // guide
   --bg-color-guide: rgba(45, 252, 82, 0.05);
   --stroke-color-guide: #2dfc52;
+
+  // toast
+  --bg-color-toast: rgba(25, 25, 25, 0.8);
+  --text-color-toast: rgba(255, 255, 255, 0.95);
+  --stroke-color-toast: rgba(255, 255, 255, 0.1);
+  --shadow-color-toast: rgba(0, 0, 0, 0.3);
+  --info-icon-color-toast: #ffffff;
+  --success-icon-color-toast: #2ecc71;
+  --warning-icon-color-toast: #ffad13;
+  --error-icon-color-toast: #ff5c5c;
+  --close-btn-bg-color-toast: #333333;
+  --link-btn-bg-color-toast: #333333;
+  --hover-link-btn-bg-color-toast: #3b82f6;
 
   // calendar
   --shadow-bg-color-calendar: rgba(255, 255, 255, 0.1);

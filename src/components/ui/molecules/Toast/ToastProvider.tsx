@@ -31,7 +31,7 @@ interface ToastItem {
   type: ToastType;
   duration?: number;
   order: number;
-  link?: { text: string; url: string; external?: boolean };
+  link?: { text?: string; url: string; external?: boolean };
 }
 
 interface ToastContextType {

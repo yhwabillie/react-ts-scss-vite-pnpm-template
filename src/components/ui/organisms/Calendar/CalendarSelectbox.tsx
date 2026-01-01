@@ -469,6 +469,26 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
       };
     }, [isOpen, updatePosition]);
 
+    // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하지 않는 것
+    const filteredClassName = useMemo(() => {
+      if (!className) return '';
+
+      return className
+        .split(' ')
+        .filter(name => !name.startsWith('pseudo-'))
+        .join(' ');
+    }, [className]);
+
+    // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하는 것
+    const pseudoClassName = useMemo(() => {
+      if (!className) return '';
+
+      return className
+        .split(' ')
+        .filter(name => name.startsWith('pseudo-')) // ✅ 'pseudo-'로 시작하는 것만 남김
+        .join(' ');
+    }, [className]);
+
     // -----------------------------
     // ▶️ 렌더링
     // -----------------------------
@@ -478,7 +498,7 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
         id={id}
         className={clsx(
           `${styles['calendar-selectbox']} variant--${variant} color--${color} size--${size}`,
-          className,
+          filteredClassName,
         )}
       >
         {/* native select (보조기기 동기화용) */}
@@ -502,7 +522,7 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
         {/* 커스텀 셀렉트 트리거 */}
         <div
           ref={customSelectRef}
-          className='custom-select'
+          className={clsx('custom-select', pseudoClassName)}
           tabIndex={disabled ? -1 : 0}
           aria-disabled={disabled}
           aria-activedescendant={activeDescendantId}

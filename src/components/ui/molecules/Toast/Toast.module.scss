@@ -3,78 +3,173 @@
 @use '../../../../styles/mixins' as *;
 
 .toast {
-  position: relative;
   display: flex;
+  gap: rem(12px);
   align-items: center;
-  gap: 12px;
-  min-width: 300px;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  background-color: #333; // 어두운 테마 기본
-  color: #fff;
-  margin-bottom: 10px;
-  position: relative;
-  overflow: hidden;
+  width: rem(320px);
+  padding: rem(14px) rem(12px);
+  border: rem(1px) solid var(--stroke-color-toast);
+  border-radius: rem(10px);
+  box-shadow: 0 rem(8px) rem(32px) 0 var(--shadow-color-toast);
+  background-color: var(--bg-color-toast);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  margin-top: rem(12px);
 
-  // ✅ KWCAG: 명도 대비 및 상태 구별
-  &.success {
-    border-left: 6px solid #2e7d32;
-    background-color: #1b1b1b;
-  }
-  &.error {
-    border-left: 6px solid #d32f2f;
-    background-color: #1b1b1b;
+  // ✅ [중요] 부모나 본인에게 충분한 원근감(perspective)을 주어야 사다리꼴이 선명합니다.
+  transform-style: preserve-3d;
+  transform-origin: bottom center;
+  backface-visibility: hidden;
+
+  // ✅ 핵심: 평소 높이를 고정값이 아닌 유동적으로 잡되, 애니메이션을 위해 유지
+  max-height: rem(200px);
+  opacity: 1;
+
+  // 나타날 때 애니메이션 (기존 유지)
+  animation: toastPop 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+  // ✅ 3. "뿅" 튀어나오는 애니메이션 정의
+  @keyframes toastPop {
+    0% {
+      opacity: 0;
+      transform: scale(0.5) translateY(20px); // 작게 시작해서 아래에 위치
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0); // 정사이즈로 올라오면서 살짝 튕김
+    }
   }
 
-  // ✅ 윈도우 고대비 모드 대응
-  @media (forced-colors: active) {
-    border: 2px solid CanvasText;
-    background-color: Canvas;
-    color: CanvasText;
+  /* 기존 progress 애니메이션 하단에 유지 */
+  @keyframes shrink {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 0%;
+    }
+  }
+
+  &.fadeOut {
+    // ✅ 클래스 내부에서 max-height: 0 !important; 를 절대 쓰지 마세요.
+    // 대신 애니메이션만 연결합니다.
+    animation: toastTrapezoidOut 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    pointer-events: none;
+    overflow: visible;
+  }
+
+  @keyframes toastTrapezoidOut {
+    0% {
+      opacity: 1;
+      margin-top: rem(12px);
+      transform: perspective(600px) rotateX(0deg) translateY(0);
+    }
+    // ✅ 60% 지점까지는 높이를 유지해서 젖혀지는 모습이 다 보이게 합니다.
+    60% {
+      opacity: 0.5;
+      margin-top: rem(12px);
+      transform: perspective(600px) rotateX(50deg) translateY(20);
+    }
+    // ✅ 마지막 100%에서 모든 수치를 0으로 수렴시켜 아래 토스트를 끌어올립니다.
+    100% {
+      opacity: 0;
+      margin-top: 0;
+      transform: perspective(600px) rotateX(80deg) translateY(40px);
+    }
+  }
+
+  &:global(.is-info) {
+    :global(.icon) {
+      fill: var(--info-icon-color-toast);
+    }
+  }
+
+  &:global(.is-success) {
+    :global(.icon) {
+      fill: var(--success-icon-color-toast);
+    }
+  }
+  &:global(.is-warning) {
+    :global(.icon) {
+      fill: var(--warning-icon-color-toast);
+    }
+  }
+
+  &:global(.is-error) {
+    :global(.icon) {
+      fill: var(--error-icon-color-toast);
+    }
+  }
+
+  :global(.icon) {
+    width: rem(26px);
+    height: rem(26px);
+    flex: 0 0 auto;
   }
 }
 
-.orderBadge {
+.close-btn {
+  background-color: var(--close-btn-bg-color-toast);
+  width: rem(28px);
+  height: rem(28px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  top: 8px;
-  left: 8px;
-  background-color: #000;
-  color: #fff;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  font-size: 11px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  border: 1px solid #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.message {
-  flex: 1;
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
-.closeButton {
-  background: none;
-  border: none;
-  color: inherit;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
+  top: rem(-8px);
+  right: rem(-8px);
+  border-radius: var(--project-border-radius-max);
+  transition: all 0.3s ease;
+  color: var(--text-color-toast);
 
   &:hover,
-  &:focus {
-    background-color: rgba(255, 255, 255, 0.1);
-    outline: 2px solid #fff; // 키보드 포커스 시각화
+  &:focus-visible {
+    background-color: var(--hover-close-btn-color-toast);
+  }
+
+  :global(.icon) {
+    flex: 0 0 auto;
+    width: 55% !important;
+    height: 55% !important;
+  }
+}
+
+.info-area {
+  display: flex;
+  gap: rem(10px);
+  align-items: center;
+
+  :global {
+    .icon {
+      flex: 0 0 auto;
+    }
+
+    p {
+      font: var(--project-typo-ToasMsg1-500);
+      flex: 1 1 auto;
+      margin: 0;
+      color: var(--text-color-toast);
+      word-break: keep-all;
+    }
+  }
+}
+
+.link-btn {
+  height: fit-content;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  font: var(--project-typo-ToasMsg2-500);
+  padding: rem(6px) rem(16px);
+  background-color: var(--link-btn-bg-color-toast);
+  border-radius: var(--project-border-radius-max);
+  transition: all 0.3s ease;
+  color: var(--text-color-toast);
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--hover-link-btn-bg-color-toast);
   }
 }
 

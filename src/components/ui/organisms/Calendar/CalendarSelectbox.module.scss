@@ -22,6 +22,11 @@ $selectbox-colors: (
         shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-selectbox),
       ),
     ),
+    disabled: (
+      bg: var(--disabled-bg-color-selectbox),
+      border: var(--disabled-stroke-color-selectbox),
+      color: var(--disabled-text-color-selectbox),
+    ),
   ),
   secondary: (
     solid: (
@@ -41,6 +46,11 @@ $selectbox-colors: (
         shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-selectbox),
       ),
     ),
+    disabled: (
+      bg: var(--disabled-bg-color-selectbox),
+      border: var(--disabled-stroke-color-selectbox),
+      color: var(--disabled-text-color-selectbox),
+    ),
   ),
   tertiary: (
     solid: (
@@ -59,6 +69,11 @@ $selectbox-colors: (
       hover: (
         shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-selectbox),
       ),
+    ),
+    disabled: (
+      bg: var(--disabled-bg-color-selectbox),
+      border: var(--disabled-stroke-color-selectbox),
+      color: var(--disabled-text-color-selectbox),
     ),
   ),
 );
@@ -123,18 +138,18 @@ $selectbox-sizes: (
           }
 
           // disabled
-          // select:disabled {
-          //   &:disabled ~ :global(.custom-select) {
-          //     $disabled-props: map.get($variant-props, disabled);
-          //     background-color: map.get($disabled-props, bg);
-          //     cursor: not-allowed;
+          select:disabled {
+            &:disabled ~ :global(.custom-select) {
+              $disabled-props: map.get($props, disabled);
+              background-color: map.get($disabled-props, bg);
+              cursor: not-allowed;
 
-          //     :global(.custom-select-text),
-          //     :global(.icon) {
-          //       color: map.get($disabled-props, color);
-          //     }
-          //   }
-          // }
+              :global(.custom-select-text),
+              :global(.icon) {
+                color: map.get($disabled-props, color);
+              }
+            }
+          }
 
           @if $variant == 'solid' {
             &:global(.variant--#{$variant}) {
@@ -171,12 +186,12 @@ $selectbox-sizes: (
               // }
 
               // disabled
-              // select:disabled {
-              //   &:disabled ~ :global(.custom-select) {
-              //     $disabled-props: map.get($variant-props, disabled);
-              //     border: rem(1px) solid map.get($disabled-props, border);
-              //   }
-              // }
+              select:disabled {
+                &:disabled ~ :global(.custom-select) {
+                  $disabled-props: map.get($props, disabled);
+                  border: rem(1px) solid map.get($disabled-props, border);
+                }
+              }
 
               :global(.custom-select) {
                 background-color: map.get($variant-props, bg);

@@ -2,59 +2,71 @@ import React, { useEffect, useState, useRef } from 'react';
 import Styles from '@/components/ui/molecules/Toast/Toast.module.scss';
 import clsx from 'clsx';
 import { useToast } from './ToastProvider';
+import Icon from '../../atoms/Icon/Icon';
+import IconFrame from '../IconFrame/IconFrame';
+import IconButton from '../IconButton/IconButton';
 
 export type ToastType = 'success' | 'error' | 'info' | 'warning';
 
-// ✅ 링크 데이터 인터페이스 정의
+// 링크 데이터 인터페이스 정의
 interface ToastLink {
-  text: string;
   url: string;
   external?: boolean; // 외부 링크 여부
 }
 
-interface ToastProps {
+export interface ToastProps {
   id: string;
   message: string;
   type?: ToastType;
-  duration?: number; // ✅ 추가
+  duration?: number;
   onClose: (id: string) => void;
   index: number; // 현재 렌더링된 visibleToasts 중에서의 순서 (1, 2, 3)
-  link?: ToastLink; // ✅ 링크 props 추가
+  link?: ToastLink;
 }
 
 const Toast = ({ id, message, type = 'info', duration, onClose, index, link }: ToastProps) => {
   const { restoreFocus } = useToast();
   const [liveMessage, setLiveMessage] = useState('');
   const [isPaused, setIsPaused] = useState(false);
+  const [isClosing, setIsClosing] = useState(false); // 닫히는 중인지 상태값 추가
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // 닫기 로직을 래핑함
+  const handleClose = () => {
+    setIsClosing(true); // 닫기 애니메이션 시작
+    setTimeout(() => {
+      onClose(id); // 0.3초(애니메이션 시간) 후에 실제로 제거
+    }, 300);
+  };
 
   useEffect(() => {
     const timeout = setTimeout(() => setLiveMessage(message), 50);
     return () => clearTimeout(timeout);
   }, [message]);
 
-  // ✅ [수정] 순차적 포커스 관리: 이제 영역 전체에 포커스를 줍니다.
+  //  순차적 포커스 관리
   useEffect(() => {
     if (index === 1 && containerRef.current) {
       containerRef.current.focus();
     }
   }, [index]);
 
+  // 타이머 로직 수정 (onClose 대신 handleClose 호출)
   useEffect(() => {
     if (!duration || isPaused) return;
-    const timer = setTimeout(() => onClose(id), duration);
+    const timer = setTimeout(() => handleClose(), duration);
     return () => clearTimeout(timer);
-  }, [id, duration, onClose, isPaused]);
+  }, [id, duration, isPaused]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    // ✅ 1. ESC 키: 토스트는 유지하고 포커스만 이전 요소로 복구
+    // ESC 키: 토스트는 유지하고 포커스만 이전 요소로 복구
     if (e.key === 'Escape') {
       e.preventDefault(); // 브라우저 기본 동작 방지
       restoreFocus(); // 포커스만 이동
       return;
     }
 
-    // ✅ 2. Shift + Tab: 첫 번째 토스트에서 밖으로 나가려 할 때 포커스 복구
+    // Shift + Tab: 첫 번째 토스트에서 밖으로 나가려 할 때 포커스 복구
     if (e.shiftKey && e.key === 'Tab') {
       if (index === 1) {
         e.preventDefault();
@@ -65,50 +77,70 @@ const Toast = ({ id, message, type = 'info', duration, onClose, index, link }: T
 
   return (
     <div
-      ref={containerRef} // ✅ 컨테이너에 Ref 연결
-      className={clsx(Styles.toast, Styles[type])}
+      ref={containerRef}
+      className={clsx(Styles.toast, `is-${type}`, isClosing && Styles.fadeOut)}
       role={type === 'error' ? 'alert' : 'status'}
-      tabIndex={0} // ✅ 프로그램적으로 포커스를 받을 수 있도록 설정
+      tabIndex={0}
       onKeyDown={handleKeyDown}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocus={() => setIsPaused(true)}
       onBlur={() => setIsPaused(false)}
-      /* ✅ 영역에 포커스가 갔을 때 스크린 리더가 메시지를 읽도록 연결 */
+      /* 영역에 포커스가 갔을 때 스크린 리더가 메시지를 읽도록 연결 */
       aria-labelledby={`msg-${id}`}
     >
-      <div className={Styles.orderBadge} aria-hidden='true'>
+      {/* 순서 index */}
+      {/* <div className={Styles.orderBadge} aria-hidden='true'>
         {index}
-      </div>
-      <div className={Styles.icon} aria-hidden='true'></div>
+      </div> */}
 
-      {/* ✅ 2. 메시지에 ID를 부여하여 위labelledby와 연결합니다. */}
-      <p id={`msg-${id}`}>{liveMessage}</p>
+      {/* 아이콘 */}
+      <Icon
+        className='icon'
+        name={
+          type === 'info'
+            ? 'info-circle'
+            : type === 'success'
+              ? 'check-circle'
+              : type === 'warning'
+                ? 'warning-triangle'
+                : 'x-circle'
+        }
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        strokeWidth={2.5}
+      />
 
-      <div className={Styles.actionArea}>
-        {/* ✅ 링크가 있을 경우 렌더링 */}
+      <div className={Styles['info-area']}>
+        {/* 메시지 */}
+        <p id={`msg-${id}`}>{liveMessage}</p>
+
+        {/* 액션 영역 */}
         {link && (
           <a
             href={link.url}
-            className={Styles.link}
+            className={Styles['link-btn']}
             target={link.external ? '_blank' : undefined}
             rel={link.external ? 'noopener noreferrer' : undefined}
-            // ✅ 링크 클릭 시 토스트를 닫음으로써 포커스 복구 트리거
+            // 링크 클릭 시 토스트를 닫음으로써 포커스 복구 트리거
             onClick={() => onClose(id)}
           >
-            {link.text}
+            바로가기
           </a>
         )}
-
-        <button
-          type='button'
-          className={Styles.closeButton}
-          onClick={() => onClose(id)}
-          aria-label='닫기'
-        >
-          <span aria-hidden='true'>&times;</span>
-        </button>
       </div>
+
+      {/* 닫기 */}
+      <button type='button' className={Styles['close-btn']} onClick={handleClose}>
+        <Icon
+          className='icon'
+          name='x'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          strokeWidth={2.5}
+        />
+        <span className='sr-only'>닫기</span>
+      </button>
 
       {duration && !isPaused && (
         <div className={Styles.progress} style={{ animationDuration: `${duration}ms` }} />
