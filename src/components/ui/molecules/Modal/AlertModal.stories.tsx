@@ -1,14 +1,11 @@
 /* Modal.stories.tsx */
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import React, { useContext, useId, useRef } from 'react';
+import { useContext } from 'react';
 import ModalProvider from './ModalProvider';
 import { ModalContext } from '@/components/contexts/ModalContext';
 import Button from '../Button/Button';
 import { GuideCell, GuideGroup, GuideRow, GuideWrapper } from '../../guide/Guide';
-import Modal from './Modal';
 import AlertModalContent, { type AlertModalContentProps } from './AlertModalContent';
-import { fn } from '@storybook/test';
-import { SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
 
 const meta: Meta = {
   title: 'UI/Organisms/Modal/AlertModal',
@@ -123,17 +120,56 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-/**
- * [Story Case] AlertModalContent 기본 구성 (Base)
- * * 💡 시나리오:
- * - 컴포넌트의 가장 전형적인 두 가지 형태(단순 정보 전달 및 사용자 확인)를 가이드함.
- * - 'Information' 케이스: 단일 확인 버튼으로 사용자의 인지만 확인.
- * - 'Confirmation' 케이스: 취소/확인 버튼을 통해 사용자의 명시적 의사결정을 유도.
- * * 🎯 가이드 포인트:
- * 1. 텍스트 레이아웃: 긴 문장의 description이 포함될 때 모달의 너비와 텍스트 정렬이 깨지지 않는지 확인.
- * 2. 버튼 그룹: 버튼이 1개일 때와 2개일 때의 정렬(우측 정렬) 및 간격이 일관적인지 확인.
- */
 export const Base: Story = {
+  args: {
+    config: {
+      title: '알림',
+      description: '작업이 성공적으로 완료되었습니다.',
+      confirmText: '확인',
+    },
+  },
+  render: args => {
+    const props = args as AlertModalContentProps;
+
+    return (
+      <GuideWrapper style={{ margin: 'auto', width: 'fit-content', gap: '80px' }}>
+        <GuideGroup direction='row'>
+          <GuideRow direction='column'>
+            <GuideCell>
+              <AlertModalContent
+                {...props}
+                config={{
+                  ...props.config,
+                  variant: 'alert-info',
+                  title: '복사 완료',
+                  description:
+                    '링크가 클립보드에 복사되었습니다. 이제 원하는 곳에 붙여넣기 할 수 있습니다.',
+                }}
+              />
+            </GuideCell>
+          </GuideRow>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
+};
+
+/**
+ * [Story Case] Interaction Pattern (Alert vs Confirm)
+ * * @description
+ * 모달의 목적에 따른 두 가지 핵심 상호작용 패턴을 정의합니다.
+ * * 1. Information (Alert):
+ * - 사용자의 명시적 확인(Acknowledgement)이 목적입니다.
+ * - 주로 작업 완료, 시스템 안내 등에 사용하며 '확인' 버튼 1개만 노출합니다.
+ * * 2. Confirmation (Confirm):
+ * - 사용자의 의사 결정(Decision Making)이 목적입니다.
+ * - 실행 전 단계에서 동의를 구하거나 취소할 기회를 제공하며 '확인/취소' 버튼 2개를 노출합니다.
+ * * @accessibility_points
+ * - [Focus Trap]: 모달 오픈 시 컨텐츠 본체(div)에 포커스를 선점하여 배경 요소로의 접근을 차단합니다.
+ * - [Title Collision]: 포커스가 내부로 강제됨으로써 배경 버튼의 'title' 속성 툴팁이 활성 모달 위로 튀어나오는 현상을 방지합니다.
+ * - [Partially Obscured]: 모노톤 라이트 모드에서 Dimmed(0.5) 처리를 통해 활성 레이어의 시각적 위계(Hierarchy)를 보장합니다.
+ */
+export const InteractionPattern: Story = {
   args: {
     config: {
       title: '알림',

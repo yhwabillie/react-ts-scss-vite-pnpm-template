@@ -1,4 +1,4 @@
-export type ModalVariant = 'default' | 'alert-info' | 'alert-danger';
+export type ModalVariant = 'custom' | 'alert-info' | 'alert-danger';
 
 export interface ModalConfig {
   variant?: ModalVariant;
@@ -11,6 +11,8 @@ export interface ModalConfig {
   onConfirm?: () => void;
   onCancel?: () => void;
   showCloseButton?: boolean;
+  scrollType?: 'outer' | 'inner';
+  children?: React.ReactNode;
 }
 
 export interface ModalState {

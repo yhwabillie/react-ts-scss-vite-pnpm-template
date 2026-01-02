@@ -13,19 +13,19 @@ export interface AlertModalContentProps {
 
 const AlertModalContent = ({ id, config, onClose, firstFocusableRef }: AlertModalContentProps) => {
   const modalClassMap = {
-    default: '',
     'alert-info': styles['alert-info-modal'],
     'alert-danger': styles['alert-danger-modal'],
   };
 
-  const currentVariant = config.variant ?? 'default';
-  const modalClassName = modalClassMap[currentVariant];
+  // variant가 있을 때만 map에서 찾고, 타입 시스템에 해당 키가 map 안에 있음을 알립니다.
+  const modalClassName = config.variant
+    ? modalClassMap[config.variant as keyof typeof modalClassMap]
+    : '';
 
   const isDangerVariant = config.variant === 'alert-danger';
 
-  // 2. [추가] 공통으로 사용할 닫기 헬퍼 함수
   const handleClose = () => {
-    onClose(id); // ✅ 이제 id를 인자로 전달하므로 에러가 해결됩니다.
+    onClose(id);
   };
 
   return (
@@ -35,7 +35,7 @@ const AlertModalContent = ({ id, config, onClose, firstFocusableRef }: AlertModa
       tabIndex={-1}
     >
       <div className='modal-body'>
-        {config.title && <h2 className='modal-title'>{config.title}</h2>}
+        {config.title && <h3 className='modal-title'>{config.title}</h3>}
         {config.description && <p className='modal-desc'>{config.description}</p>}
 
         {/* 만약 subtitle도 description도 없다면 테스트용 텍스트라도 출력 */}

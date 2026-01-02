@@ -72,14 +72,19 @@ const Modal = ({ isOpen, zIndex, children, onClose }: ModalProps) => {
   if (!isOpen) return null;
 
   return createPortal(
-    <div className={styles['modal']} style={{ zIndex }}>
-      {/* Content */}
+    <div
+      ref={modalRef}
+      className={styles['modal']}
+      role='dialog'
+      aria-modal='true'
+      // ✅ 1. 배경 클릭 시에만 onClose 실행
+      onClick={onClose}
+      style={{ zIndex }}
+    >
       <div
-        ref={modalRef}
-        className='modal-content'
-        role='dialog'
-        aria-modal='true'
-        onClick={onClose}
+        // ✅ 2. 콘텐츠 영역 클릭 시 이벤트가 부모(배경)로 퍼지지 않게 차단
+        onClick={e => e.stopPropagation()}
+        style={{ display: 'contents' }} // 레이아웃에 영향을 주지 않으면서 버블링만 차단
       >
         {children({ firstFocusableRef })}
       </div>

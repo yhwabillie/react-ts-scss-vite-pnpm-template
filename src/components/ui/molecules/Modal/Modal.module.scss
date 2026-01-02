@@ -4,24 +4,27 @@
 @use '../../../../styles/mixins' as *;
 
 .modal {
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
+  align-items: center;
+  overflow-y: auto;
   width: 100%;
+  min-width: rem(290px);
   height: 100%;
+  padding: rem(15px);
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 
-  :global(.modal-content) {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    overflow-y: auto;
-    will-change: transform;
-    backface-visibility: hidden;
-    animation: modalFadeIn 0.2s ease-out forwards;
-  }
+  opacity: 0;
+  will-change: transform;
+  backface-visibility: hidden;
+  animation: modalFadeIn 0.2s ease-out forwards;
+  padding: rem(15px);
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 @keyframes modalFadeIn {

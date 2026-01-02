@@ -160,6 +160,11 @@ svg {
   box-sizing: border-box;
 }
 
+/* 전역 스타일 혹은 Modal.module.scss */
+body.modal-open {
+  overflow: hidden;
+}
+
 /* 모든 요소 포커스 기본 제거 */
 :focus,
 :focus-visible,
