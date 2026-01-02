@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ModalContext } from '@/components/contexts/ModalContext';
 import Modal from '@/components/ui/molecules/Modal/Modal';
-import type { ModalConfig, ModalState } from '@/types/modal.types';
+import type { ModalConfig, ModalState, ModalVariant } from '@/types/modal.types';
 import AlertModalContent from './AlertModalContent';
 import ProfileEditModal from './ProfileEditModal';
+import styles from '@/components/ui/molecules/Modal/Modal.module.scss';
 
 interface ModalProviderProps {
   children: React.ReactNode;
@@ -34,7 +35,7 @@ const ModalProvider = ({ children }: ModalProviderProps) => {
   const activeTriggerNode = useRef<HTMLElement | null>(null);
   const prevModalStackLength = useRef<number>(0); // ✅ 이전 스택 길이 추적
 
-  const openModal = (type: string, config?: ModalConfig) => {
+  const openModal = (type: ModalVariant, config?: ModalConfig) => {
     console.log(`[openModal] 타입: ${type}, 현재 스택 길이: ${modalStack.length}`);
 
     if (modalStack.length === 0 && !activeTriggerNode.current) {
@@ -147,12 +148,12 @@ const ModalProvider = ({ children }: ModalProviderProps) => {
       {/* 모달 렌더링 */}
       {modalStack.map((modal, index) => {
         const RegisteredComponent =
-          modal.type === 'alert' ? AlertModalContent : modalComponents[modal.type];
+          modal.type === 'default' ? modalComponents[modal.type] : AlertModalContent;
 
         if (!RegisteredComponent) return null;
 
         const finalConfig: ModalConfig = {
-          variant: 'default',
+          variant: modal.type,
           title: '알림',
           confirmText: '확인',
           ...modal.config,
@@ -162,7 +163,7 @@ const ModalProvider = ({ children }: ModalProviderProps) => {
           <Modal
             key={modal.id}
             isOpen={true}
-            modalType={modal.type}
+            modalVariant={modal.type}
             onClose={() => closeModal(modal.id)}
             zIndex={1000 + index * 10}
           >

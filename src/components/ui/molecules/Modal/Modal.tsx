@@ -1,16 +1,17 @@
 import React, { forwardRef, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import type { StyleProps } from '@/types/design/design-tokens.types';
+import styles from '@/components/ui/molecules/Modal/Modal.module.scss';
+import type { ModalVariant } from '@/types/modal.types';
 
 interface ModalProps {
   isOpen: boolean;
-  modalType: string;
+  modalVariant: ModalVariant;
   zIndex: number;
   children: (refs: { firstFocusableRef: React.RefObject<HTMLElement | null> }) => React.ReactNode;
   onClose: () => void;
 }
 
-const Modal = ({ isOpen, modalType, zIndex, children, onClose }: ModalProps) => {
+const Modal = ({ isOpen, zIndex, children, onClose }: ModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const firstFocusableRef = useRef<HTMLElement>(null);
 
@@ -71,11 +72,15 @@ const Modal = ({ isOpen, modalType, zIndex, children, onClose }: ModalProps) => 
   if (!isOpen) return null;
 
   return createPortal(
-    <div className='modal' style={{ zIndex }}>
-      {/* Overlay */}
-      <div className='modal-overlay' aria-hidden={true} onClick={onClose} />
+    <div className={styles['modal']} style={{ zIndex }}>
       {/* Content */}
-      <div ref={modalRef} className='modal-content' role='dialog' aria-modal='true'>
+      <div
+        ref={modalRef}
+        className='modal-content'
+        role='dialog'
+        aria-modal='true'
+        onClick={onClose}
+      >
         {children({ firstFocusableRef })}
       </div>
     </div>,

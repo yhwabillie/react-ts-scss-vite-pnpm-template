@@ -148,7 +148,7 @@ const FilePickerContainer = () => {
 
       openModal('alert', {
         title: '에러',
-        subtitle: message,
+        subTitle: message,
         confirmText: '확인',
       });
     },
@@ -275,7 +275,7 @@ function App() {
   const handleSequenceFlow = () => {
     openModal('alert', {
       title: '삭제 확인',
-      subtitle: '삭제하면 복구할 수 없습니다, 삭제하시겠습니까?',
+      subTitle: '삭제하면 복구할 수 없습니다, 삭제하시겠습니까?',
       cancelText: '취소',
       onConfirm: (currentId?: string) => {
         // 1. 현재 모달(1번)을 ID로 정확히 닫음
@@ -285,7 +285,7 @@ function App() {
         setTimeout(() => {
           openModal('alert', {
             title: '삭제 완료',
-            subtitle: '삭제가 완료 되었습니다.',
+            subTitle: '삭제가 완료 되었습니다.',
             confirmText: '확인',
           });
         }, 0);
@@ -655,11 +655,7 @@ function App() {
           isMobileUI={isMobile}
         />
       </section>
-      <section>
-        <button type='button' onClick={handleSubmit}>
-          Toast
-        </button>
-      </section>
+      {/*  */}
       <section style={{ margin: '30px', width: '200px' }}>
         <Skeleton variant='text' width='50%' />
         <Skeleton variant='text' width='70%' />
@@ -782,14 +778,7 @@ function App() {
       <section>
         <Breadcrumbs items={breadcrumbData} separator='/' />
       </section>
-      {/* <section style={{ marginBottom: '20px' }}>
-        <SegmentedControl
-          name='view-mode' // 라디오 그룹 이름 (고유해야 함)
-          options={viewOptions}
-          selectedValue={viewType}
-          onChange={value => setViewType(value)} // 상태 업데이트
-        />
-      </section> */}
+
       <section style={{ width: '500px', margin: 'auto' }}>
         <Tabs items={tabData} defaultIndex={0} />
       </section>
@@ -853,6 +842,19 @@ function App() {
         />
       </section>
 
+      {/* <section style={{ marginBottom: '20px' }}>
+        <SegmentedControl
+          name='view-mode' // 라디오 그룹 이름 (고유해야 함)
+          options={viewOptions}
+          selectedValue={viewType}
+          onChange={value => setViewType(value)} // 상태 업데이트
+        />
+      </section> */}
+      {/* <section>
+        <button type='button' onClick={handleSubmit}>
+          Toast
+        </button>
+      </section> */}
       {/* <section>
         <FormField
           size='xl'

@@ -26,7 +26,7 @@ const ProfileEditModal = ({ onClose, firstFocusableRef }: ProfileEditModalProps)
         <p className='helper-text'>실명을 입력해 주세요.</p>
       </div>
       <div className='modal-footer'>
-        <Button variant='solid' color='brand' shape='rounded' size='md' onClick={onClose}>
+        <Button variant='solid' shape='rounded' size='md' onClick={onClose}>
           저장하기
         </Button>
       </div>

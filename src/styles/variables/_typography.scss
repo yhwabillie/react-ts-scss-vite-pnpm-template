@@ -1626,5 +1626,91 @@ $g_typography: (
       line-height: 1.5,
       font-family: ko,
     ),
+  ),
+
+  // ==========================================================================
+  // Modal
+  // ==========================================================================
+  ModalText1: (
+      ko: (
+        font-size: 20px,
+        tablet-size: 20px,
+        mobile-size: 20px,
+        font-weight: (
+          400,
+          500,
+          600,
+          700,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+      ja: (
+        font-size: 20px,
+        tablet-size: 20px,
+        mobile-size: 20px,
+        font-weight: (
+          400,
+          500,
+          600,
+          700,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+      en: (
+        font-size: 20px,
+        tablet-size: 20px,
+        mobile-size: 20px,
+        font-weight: (
+          400,
+          500,
+          600,
+          700,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+    ),
+  ModalText2: (
+    ko: (
+      font-size: 16px,
+      tablet-size: 16px,
+      mobile-size: 16px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 16px,
+      tablet-size: 16px,
+      mobile-size: 16px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    en: (
+      font-size: 16px,
+      tablet-size: 16px,
+      mobile-size: 16px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
   )
 );
