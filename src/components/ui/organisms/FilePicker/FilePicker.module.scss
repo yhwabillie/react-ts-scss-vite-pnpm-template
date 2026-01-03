@@ -3,26 +3,156 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
+// file-picker colors
+$file-picker-colors: (
+  primary: (
+    accent-text: var(--primary-accent-text-color-file-picker),
+  ),
+  secondary: (
+    accent-text: var(--secondary-accent-text-color-file-picker),
+  ),
+  tertiary: (
+    accent-text: var(--tertiary-accent-text-color-file-picker),
+  ),
+);
+
 .file-picker {
-  :global(.head) {
-    :global(.title) {
+  padding: rem(30px);
+  border: rem(1px) solid var(--stroke-color-file-picker);
+  background-color: var(--bg-color-file-picker);
+  border-radius: var(--project-border-radius-12);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  gap: rem(24px);
+
+  @each $color-name, $props in $file-picker-colors {
+    &:global(.color--#{$color-name}) {
+      :global(.count-current, .icon) {
+        color: map.get($props, accent-text);
+      }
+
+      :global(.file-item) {
+        :global(.file-volume) {
+          color: map.get($props, accent-text);
+        }
+      }
     }
-    :global(.desc) {
+  }
+
+  :global(.head) {
+    width: 100%;
+
+    :global(.head-title) {
+      font: var(--project-typo-FilePickerTitle-700);
+      margin-bottom: rem(16px);
+    }
+    :global(.head-desc) {
+      font: var(--project-typo-FilePickerDesc-400);
     }
   }
 
   :global(.dropzone) {
-    background-color: lightcoral;
+    width: 100%;
+    padding: rem(60px) rem(40px);
+    border-radius: var(--project-border-radius-12);
+    background-color: var(--dropzone-bg-color-file-picker);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: rem(20px);
     transition:
       border-color 0.15s ease,
       background-color 0.15s ease;
 
+    :global(.hint-msg) {
+      word-break: keep-all;
+      font: var(--project-typo-FilePickerDesc-400);
+    }
+
     &:global(.is-dragging) {
-      background-color: blue;
+      background-color: var(--dropzone-dragging-bg-color-file-picker);
+      border: rem(1px) dashed var(--focus-ring-color);
+    }
+
+    &:global(.is-disabled) {
+      pointer-events: auto;
+      opacity: 0.6;
+      background-color: var(--disabled-dropzone-bg-color-file-picker);
+      border: rem(1px) solid var(--disabled-dropzone-stroke-color-file-picker);
+
+      :global(.hint-msg) {
+        color: var(--disabled-dropzone-hint-text-color-file-picker);
+      }
     }
   }
 
   :global(.file-list) {
-    background-color: bisque;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    :global(.head) {
+      display: flex;
+      align-items: center;
+      margin-bottom: rem(20px);
+
+      :global(.count) {
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        gap: rem(4px);
+        font: var(--project-typo-FilePickerCountText-600);
+      }
+    }
+
+    :global(.file-items) {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: rem(10px);
+
+      :global(.file-item) {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: rem(8px) rem(8px) rem(8px) rem(8px);
+        border: rem(1px) solid var(--file-item-stroke-color-file-picker);
+        min-height: rem(56px);
+        gap: rem(4px);
+        border-radius: var(--project-border-radius-8);
+
+        :global(.file-item-container) {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          margin: auto;
+
+          :global(.file-info) {
+            flex: 1 1 auto;
+            display: flex;
+            align-items: center;
+            font: var(--project-typo-FilePickerFileInfoText1-400);
+
+            :global(.file-name) {
+              display: flex;
+              align-items: center;
+              margin-right: rem(4px);
+
+              :global(.basename) {
+                @include ell();
+              }
+            }
+            :global(.file-volume) {
+              flex: 0 0 auto;
+              font-weight: var(--project-font-weight-600);
+            }
+          }
+        }
+      }
+    }
   }
 }

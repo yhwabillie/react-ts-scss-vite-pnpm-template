@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { spyOn } from '@storybook/test';
+import { spyOn } from 'storybook/test';
 import type { Preview } from '@storybook/react-vite';
 import { initialize, mswLoader } from 'msw-storybook-addon';
 import '@/styles/_index.scss';
@@ -53,11 +53,13 @@ const preview: Preview = {
   loaders: [mswLoader],
   parameters: {
     i18n,
+
     initialGlobals: {
       locale: 'ko',
       theme: 'tech',
       mode: 'light',
     },
+
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -65,9 +67,11 @@ const preview: Preview = {
       },
       sort: 'requiredFirst',
     },
+
     docs: {
       codePanel: true,
     },
+
     options: {
       storySort: {
         order: [
@@ -109,6 +113,13 @@ const preview: Preview = {
           '*',
         ],
       },
+    },
+
+    a11y: {
+      // 'todo' - show a11y violations in the test UI only
+      // 'error' - fail CI on a11y violations
+      // 'off' - skip a11y checks entirely
+      test: 'todo',
     },
   },
   decorators: [

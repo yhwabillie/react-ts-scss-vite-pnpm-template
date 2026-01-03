@@ -5,7 +5,7 @@ import { SpecimenCell, SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../..
 import { searchbarOptions } from './Searchbar.mock';
 import Icon from '../../atoms/Icon/Icon';
 import { useId } from 'react';
-import { userEvent, within, expect, waitFor } from '@storybook/test';
+import { userEvent, within, expect, waitFor } from 'storybook/test';
 import { GuideCell, GuideGroup, GuideRow } from '../../guide/Guide';
 
 const meta = {

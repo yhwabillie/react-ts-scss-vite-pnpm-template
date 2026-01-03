@@ -789,7 +789,7 @@ function App() {
       <section>
         <FilePickerContainer />
       </section>
-      <section style={{ margin: '30px' }}>
+      {/* <section style={{ margin: '30px' }}>
         <LanguageSelector
           variant='outline'
           color='primary'
@@ -802,8 +802,7 @@ function App() {
           options={languageSelectorOptions}
           onValueChange={setCurrentLang}
         />
-      </section>
-
+      </section> */}
       {/* <section style={{ margin: '40px' }}>
         <Button
           color='danger'

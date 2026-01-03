@@ -447,9 +447,9 @@ $btn-colors: (
 $btn-sizes: (
   xs: (
     height: (
-      pc: rem(28px),
-      tablet: rem(28px),
-      mobile: rem(28px),
+      pc: rem(32px),
+      tablet: rem(32px),
+      mobile: rem(32px),
     ),
     gap: rem(4px),
     font-token: var(--project-typo-btn1-600),

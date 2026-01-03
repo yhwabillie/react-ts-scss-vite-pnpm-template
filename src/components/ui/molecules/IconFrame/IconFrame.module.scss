@@ -95,6 +95,28 @@ $icon-frame-sizes: (
   ),
 );
 
+// icon frame colors
+$icon-frame-colors: (
+  primary: (
+    fill: var(--primary-fill-color-icon-frame),
+  ),
+  secondary: (
+    fill: var(--secondary-fill-color-icon-frame),
+  ),
+  tertiary: (
+    fill: var(--tertiary-fill-color-icon-frame),
+  ),
+  success: (
+    fill: var(--success-fill-color-icon-frame),
+  ),
+  warning: (
+    fill: var(--warning-fill-color-icon-frame),
+  ),
+  danger: (
+    fill: var(--danger-fill-color-icon-frame),
+  ),
+);
+
 // mixins - btn size
 @mixin icon-frame-size {
   @each $size-name, $props in $icon-frame-sizes {
@@ -145,6 +167,14 @@ $icon-frame-sizes: (
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
+
+  @each $color-name, $props in $icon-frame-colors {
+    &:global(.color--#{$color-name}) {
+      svg {
+        color: map.get($props, fill);
+      }
+    }
+  }
 
   // size
   @include icon-frame-size;

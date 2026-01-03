@@ -30,6 +30,8 @@ import VolumeOnIcon from '@/assets/icons/icon-volume-on.svg?react';
 import VolumeOffIcon from '@/assets/icons/icon-volume-off.svg?react';
 import MapPinIcon from '@/assets/icons/icon-map-pin.svg?react';
 import ArrowUpRightIcon from '@/assets/icons/icon-arrow-up-right.svg?react';
+import TrashcanIcon from '@/assets/icons/icon-trash-can.svg?react';
+import FileIcon from '@/assets/icons/icon-file.svg?react';
 
 const iconMap = {
   search: SearchIcon,
@@ -61,6 +63,8 @@ const iconMap = {
   'volume-off': VolumeOffIcon,
   'map-pin': MapPinIcon,
   'arrow-up-right': ArrowUpRightIcon,
+  trashcan: TrashcanIcon,
+  file: FileIcon,
   // 다른 아이콘들도 여기에 추가
 };
 

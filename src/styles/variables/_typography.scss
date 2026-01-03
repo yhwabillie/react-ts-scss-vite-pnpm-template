@@ -1712,5 +1712,172 @@ $g_typography: (
       line-height: 1.5,
       font-family: ko,
     ),
+  ),
+  // ==========================================================================
+  // FilePicker
+  // ==========================================================================
+  FilePickerTitle: (
+      ko: (
+        font-size: 20px,
+        tablet-size: 20px,
+        mobile-size: 20px,
+        font-weight: (
+          400,
+          500,
+          600,
+          700,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+      ja: (
+        font-size: 20px,
+        tablet-size: 20px,
+        mobile-size: 20px,
+        font-weight: (
+          400,
+          500,
+          600,
+          700,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+      en: (
+        font-size: 20px,
+        tablet-size: 20px,
+        mobile-size: 20px,
+        font-weight: (
+          400,
+          500,
+          600,
+          700,
+        ),
+        line-height: 1.5,
+        font-family: ko,
+      ),
+    ),
+  FilePickerDesc: (
+    ko: (
+      font-size: 16px,
+      tablet-size: 16px,
+      mobile-size: 16px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 16px,
+      tablet-size: 16px,
+      mobile-size: 16px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    en: (
+      font-size: 16px,
+      tablet-size: 16px,
+      mobile-size: 16px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+  ),
+  FilePickerCountText: (
+    ko: (
+      font-size: 16px,
+      tablet-size: 16px,
+      mobile-size: 16px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 16px,
+      tablet-size: 16px,
+      mobile-size: 16px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    en: (
+      font-size: 16px,
+      tablet-size: 16px,
+      mobile-size: 16px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+  ),
+  FilePickerFileInfoText1: (
+    ko: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 14px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 14px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    en: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 14px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
   )
 );

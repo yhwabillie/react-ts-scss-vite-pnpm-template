@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Toast, { type ToastProps } from './Toast';
 import { ToastProvider, useToast, type ToastPosition } from './ToastProvider';
-import { within, userEvent, expect } from '@storybook/test';
+import { within, userEvent, expect } from 'storybook/test';
 import React, { useEffect } from 'react';
 import Button from '../Button/Button';
 import { GuideCell, GuideGroup, GuideRow, GuideWrapper } from '../../guide/Guide';

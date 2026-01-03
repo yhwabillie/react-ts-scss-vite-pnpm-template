@@ -215,6 +215,7 @@ const LanguageSelector = forwardRef<HTMLDivElement, LanguageSelectorProps>(
           color={color}
           size={size}
           shape={shape}
+          aria-label={`언어 선택 (현재: ${buttonLabel})`}
           aria-haspopup='menu'
           aria-expanded={isOpen}
           startIcon={
@@ -315,7 +316,9 @@ const LanguageSelector = forwardRef<HTMLDivElement, LanguageSelectorProps>(
                             // handleSelect(opt.lang);
                           }}
                         >
-                          <span className='drop-list-item-label'>{opt.value}</span>
+                          <span className='drop-list-item-label' lang={opt.lang}>
+                            {opt.value}
+                          </span>
                         </a>
                       </li>
                     );

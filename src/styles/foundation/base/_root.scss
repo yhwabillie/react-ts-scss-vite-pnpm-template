@@ -23,6 +23,13 @@
   --bg-color-guide: #ecf4ef;
   --stroke-color-guide: #15803d;
 
+  // file picker
+  --stroke-color-file-picker: #d6e0eb;
+  --bg-color-file-picker: #ffffff;
+  --dropzone-bg-color-file-picker: #e6e8ea;
+  --dropzone-dragging-bg-color-file-picker: #d2d3d5;
+  --file-item-stroke-color-file-picker: #d6e0eb;
+
   // custom modal
   --shadow-bg-color-custom-modal: rgba(0, 0, 0, 0.05);
   --bg-color-custom-modal: #ffffff;
@@ -103,6 +110,9 @@
   // switch
   --switch-track-off-bg-color: #e5e7eb;
   --switch-handle-off-bg-color: #ffffff;
+
+  // icon frame
+  --success-fill-color-icon-frame: #15803d;
 
   // searchbar
   --success-hover-shadow-searchbar: rgba(21, 128, 101, 0.25);
@@ -234,6 +244,9 @@
   --warning-stroke-color-datepicker-outline: #d97706;
   --warning-text-color-datepicker-outline: #78350f;
   --warning-placeholder-color-datepicker-outline: #92400e;
+
+  // icon frame
+  --warning-fill-color-icon-frame: #b45309;
 
   // searchbar
   --warning-hover-shadow-searchbar: rgba(180, 83, 9, 0.25);
@@ -395,6 +408,9 @@
 
   --warning-active-bg-color-btn-link: rgba(180, 83, 9, 0.1);
   --warning-active-text-color-btn-link: #b45309;
+
+  // icon frame
+  --danger-fill-color-icon-frame: #b91c1c;
 
   // searchbar
   --danger-hover-shadow-searchbar: rgba(185, 28, 28, 0.25);
@@ -674,6 +690,10 @@
   --readonly-placeholder-color-textarea: #757575;
 
   // disabled
+  --disabled-dropzone-bg-color-file-picker: #eeeeee;
+  --disabled-dropzone-stroke-color-file-picker: #9e9e9e;
+  --disabled-dropzone-hint-text-color-file-picker: #9e9e9e;
+
   --disabled-bg-color-datepicker: #eeeeee;
   --disabled-text-color-datepicker: #9e9e9e;
   --disabled-stroke-color-datepicker: #9e9e9e;
@@ -752,6 +772,13 @@
   // guide
   --bg-color-guide: rgba(45, 252, 82, 0.05);
   --stroke-color-guide: #2dfc52;
+
+  // file picker
+  --stroke-color-file-picker: #383b3e;
+  --bg-color-file-picker: #1e1e1e;
+  --dropzone-bg-color-file-picker: #25282a;
+  --dropzone-dragging-bg-color-file-picker: #2f3336;
+  --file-item-stroke-color-file-picker: #2a2d30;
 
   // custom modal
   --bg-color-custom-modal: #1e1e1e;
@@ -834,6 +861,9 @@
   // switch
   --switch-track-off-bg-color: #374151;
   --switch-handle-off-bg-color: #9ca3af;
+
+  // icon frame
+  --success-fill-color-icon-frame: #4ade80;
 
   // searchbar
   --success-hover-shadow-searchbar: #34d399;
@@ -1004,6 +1034,9 @@
   --success-active-bg-color-btn-link: rgba(74, 222, 128, 0.25);
   --success-active-text-color-btn-link: #4ade80;
 
+  // icon frame
+  --warning-fill-color-icon-frame: #fbbf24;
+
   // searchbar
   --warning-hover-shadow-searchbar: #facc15;
 
@@ -1172,6 +1205,9 @@
 
   --warning-active-bg-color-btn-link: rgba(251, 191, 36, 0.25);
   --warning-active-text-color-btn-link: #fbbf24;
+
+  // icon frame
+  --danger-fill-color-icon-frame: #f87171;
 
   // searchbar
   --danger-hover-shadow-searchbar: #ef4444;
@@ -1410,6 +1446,10 @@
   --readonly-placeholder-color-textarea: #64748b;
 
   // disabled
+  --disabled-dropzone-bg-color-file-picker: #1a1a1a;
+  --disabled-dropzone-stroke-color-file-picker: #333639;
+  --disabled-dropzone-hint-text-color-file-picker: #757575;
+
   --disabled-bg-color-datepicker: #0f172a;
   --disabled-stroke-color-datepicker: #475569;
   --disabled-text-color-datepicker: #475569;
@@ -1468,6 +1508,12 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  // icon frame
+  --primary-fill-color-icon-frame: #0052cc;
+
+  // file picker
+  --primary-accent-text-color-file-picker: #0052cc;
+
   // calendar
   --primary-panel-stroke-color-calendar: #0052cc;
   --primary-day-text-color-calendar: #0052cc;
@@ -1649,6 +1695,12 @@
   --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-link: #0052cc;
 
+  // icon frame
+  --secondary-fill-color-icon-frame: #475569;
+
+  // file picker
+  --secondary-accent-text-color-file-picker: #475569;
+
   // calendar
   --secondary-panel-stroke-color-calendar: #475569;
   --secondary-day-text-color-calendar: #475569;
@@ -1826,6 +1878,12 @@
 
   --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-link: #475569;
+
+  // icon frame
+  --tertiary-fill-color-icon-frame: #7c3aed;
+
+  // file picker
+  --tertiary-accent-text-color-file-picker: #7c3aed;
 
   // calendar
   --tertiary-panel-stroke-color-calendar: #7c3aed;
@@ -2048,6 +2106,12 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    // icon frame
+    --primary-fill-color-icon-frame: #66b2ff;
+
+    // file picker
+    --primary-accent-text-color-file-picker: #66b2ff;
+
     // calendar
     --primary-panel-stroke-color-calendar: #5c9aff;
     --primary-day-text-color-calendar: #5c9aff;
@@ -2229,6 +2293,12 @@
     --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
     --primary-active-text-color-btn-link: #60a5fa;
 
+    // icon frame
+    --secondary-fill-color-icon-frame: #38bdf8;
+
+    // file picker
+    --secondary-accent-text-color-file-picker: #38bdf8;
+
     // calendar
     --secondary-panel-stroke-color-calendar: #38bdf8;
     --secondary-day-text-color-calendar: #38bdf8;
@@ -2409,6 +2479,12 @@
 
     --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
+
+    // icon frame
+    --tertiary-fill-color-icon-frame: #a78bfa;
+
+    // file picker
+    --tertiary-accent-text-color-file-picker: #a78bfa;
 
     // calendar
     --tertiary-panel-stroke-color-calendar: #a78bfa;
