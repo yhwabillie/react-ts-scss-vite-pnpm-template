@@ -3,7 +3,213 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
+$language-selector-sizes: (
+  xs: (
+    gap: 0,
+    padding: 0,
+  ),
+  sm: (
+    gap: rem(12px),
+    padding: 0 rem(6px),
+  ),
+  md: (
+    gap: rem(16px),
+    padding: 0 rem(8px),
+  ),
+  lg: (
+    gap: rem(20px),
+    padding: 0 rem(10px),
+  ),
+  xl: (
+    gap: rem(24px),
+    padding: 0 rem(12px),
+  ),
+);
+
+$drop-down-menu-sizes: (
+  xs: (
+    height: rem(28px),
+    radius: rem(4px),
+    padding: rem(4px) rem(8px),
+    font-token: var(--project-typo-input3-500),
+  ),
+  sm: (
+    height: rem(32px),
+    radius: rem(6px),
+    padding: rem(6px) rem(10px),
+    font-token: var(--project-typo-input2-500),
+  ),
+  md: (
+    height: rem(36px),
+    radius: rem(8px),
+    padding: rem(8px) rem(12px),
+    font-token: var(--project-typo-input2-500),
+  ),
+  lg: (
+    height: rem(40px),
+    radius: rem(8px),
+    padding: rem(10px) rem(14px),
+    font-token: var(--project-typo-input1-500),
+  ),
+  xl: (
+    height: rem(44px),
+    radius: rem(10px),
+    padding: rem(12px) rem(16px),
+    font-token: var(--project-typo-input1-500),
+  ),
+);
+
+// drop-down-menu colors
+$drop-down-menu-colors: (
+  primary: (
+    solid: (
+      bg: var(--primary-bg-color-option-list-solid),
+      label: var(--primary-text-color-btn-solid),
+      hover: (
+        bg: var(--primary-hover-bg-color-btn-solid),
+        label: var(--primary-hover-text-color-btn-solid),
+      ),
+    ),
+    outline: (
+      bg: var(--primary-bg-color-option-list-outline),
+      label: var(--primary-text-color-btn-outline),
+      border: var(--primary-stroke-color-option-list-outline),
+      hover: (
+        bg: var(--primary-hover-bg-color-btn-outline),
+        label: var(--primary-hover-text-color-btn-outline),
+      ),
+    ),
+  ),
+  secondary: (
+    solid: (
+      bg: var(--secondary-bg-color-option-list-solid),
+      label: var(--secondary-text-color-btn-solid),
+      hover: (
+        bg: var(--secondary-hover-bg-color-btn-solid),
+        label: var(--secondary-hover-text-color-btn-solid),
+      ),
+    ),
+    outline: (
+      bg: var(--secondary-bg-color-option-list-outline),
+      label: var(--secondary-text-color-btn-outline),
+      border: var(--secondary-stroke-color-option-list-outline),
+      hover: (
+        bg: var(--secondary-hover-bg-color-btn-outline),
+        label: var(--secondary-hover-text-color-btn-outline),
+      ),
+    ),
+  ),
+  tertiary: (
+    solid: (
+      bg: var(--tertiary-bg-color-option-list-solid),
+      label: var(--tertiary-text-color-btn-solid),
+      hover: (
+        bg: var(--tertiary-hover-bg-color-btn-solid),
+        label: var(--tertiary-hover-text-color-btn-solid),
+      ),
+    ),
+    outline: (
+      bg: var(--tertiary-bg-color-option-list-outline),
+      label: var(--tertiary-text-color-btn-outline),
+      border: var(--tertiary-stroke-color-option-list-outline),
+      hover: (
+        bg: var(--tertiary-hover-bg-color-btn-outline),
+        label: var(--tertiary-hover-text-color-btn-outline),
+      ),
+    ),
+  ),
+);
+
 .language-selector {
+  width: fit-content;
   display: inline-flex;
   align-items: center;
+
+  :global(button) {
+    @each $size-name, $props in $language-selector-sizes {
+      &:global(.size--#{$size-name}) {
+        gap: map.get($props, gap);
+        padding: map.get($props, padding);
+      }
+    }
+  }
+}
+
+// mixin - drop-down-menu-variant [color + variant]
+@mixin drop-down-menu-variant($variant) {
+  &:global(.variant--#{$variant}) {
+    @each $name, $props in $drop-down-menu-colors {
+      $variant-props: map.get($props, $variant);
+      $hover-map: map.get($variant-props, hover);
+
+      @if $variant-props != null {
+        &:global(.color--#{$name}) {
+          // variant
+          @if $variant == 'solid' {
+            &:global(.variant--#{$variant}) {
+            }
+          } @else if $variant == 'outline' {
+            &:global(.variant--#{$variant}) {
+              background-color: map.get($variant-props, bg);
+              border: rem(1px) solid map.get($variant-props, border);
+
+              :global(.drop-down-menu-container) {
+                :global(.drop-list) {
+                  :global(.drop-list-item) {
+                    :global(a) {
+                      &:hover {
+                        background-color: map.get($hover-map, bg);
+
+                        :global(.drop-list-item-label) {
+                          color: map.get($hover-map, label);
+                        }
+                      }
+
+                      :global(.drop-list-item-label) {
+                        color: map.get($variant-props, label);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.drop-down-menu {
+  // variant
+  @include drop-down-menu-variant(outline);
+
+  @each $size-name, $props in $drop-down-menu-sizes {
+    &:global(.size--#{$size-name}) {
+      padding: rem(10px);
+      border-radius: map.get($props, radius);
+
+      :global(.drop-down-menu-container) {
+        :global(.drop-list) {
+          :global(.drop-list-item) {
+            height: map.get($props, height);
+
+            :global(a) {
+              width: 100%;
+              height: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-radius: map.get($props, radius);
+              transition: all 0.2s ease;
+
+              :global(.drop-list-item-label) {
+                font: map.get($props, font-token);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

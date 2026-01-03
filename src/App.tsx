@@ -146,7 +146,7 @@ const FilePickerContainer = () => {
     onError: message => {
       console.log('[FilePicker Error]', message);
 
-      openModal('alert', {
+      openModal('alert-danger', {
         title: '에러',
         subTitle: message,
         confirmText: '확인',
@@ -273,7 +273,7 @@ function App() {
 
   // 예시: 삭제 버튼 클릭 시
   const handleSequenceFlow = () => {
-    openModal('alert', {
+    openModal('alert-info', {
       title: '삭제 확인',
       subTitle: '삭제하면 복구할 수 없습니다, 삭제하시겠습니까?',
       cancelText: '취소',
@@ -283,7 +283,7 @@ function App() {
 
         // 2. 브라우저가 상태를 정리할 시간을 아주 잠깐 준 뒤 새 모달 오픈
         setTimeout(() => {
-          openModal('alert', {
+          openModal('alert-info', {
             title: '삭제 완료',
             subTitle: '삭제가 완료 되었습니다.',
             confirmText: '확인',
@@ -778,7 +778,6 @@ function App() {
       <section>
         <Breadcrumbs items={breadcrumbData} separator='/' />
       </section>
-
       <section style={{ width: '500px', margin: 'auto' }}>
         <Tabs items={tabData} defaultIndex={0} />
       </section>
@@ -790,7 +789,22 @@ function App() {
       <section>
         <FilePickerContainer />
       </section>
-      <section style={{ margin: '40px' }}>
+      <section style={{ margin: '30px' }}>
+        <LanguageSelector
+          variant='outline'
+          color='primary'
+          size='xl'
+          buttonProps={{
+            shape: 'rounded',
+            labelText: '언어 변경',
+          }}
+          value='ko'
+          options={languageSelectorOptions}
+          onValueChange={setCurrentLang}
+        />
+      </section>
+
+      {/* <section style={{ margin: '40px' }}>
         <Button
           color='danger'
           variant='solid'
@@ -826,22 +840,7 @@ function App() {
         >
           공지사항 확인
         </Button>
-      </section>
-      <section style={{ margin: '30px' }}>
-        <LanguageSelector
-          variant='outline'
-          color='primary'
-          size='xl'
-          buttonProps={{
-            shape: 'rounded',
-            labelText: '언어 변경',
-          }}
-          value='ko'
-          options={languageSelectorOptions}
-          onValueChange={setCurrentLang}
-        />
-      </section>
-
+      </section> */}
       {/* <section style={{ marginBottom: '20px' }}>
         <SegmentedControl
           name='view-mode' // 라디오 그룹 이름 (고유해야 함)

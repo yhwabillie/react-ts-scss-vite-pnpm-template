@@ -1,7 +1,9 @@
+export type LanguageCode = 'ko' | 'en' | 'ja' | 'zh';
+
 export type LanguageSelectItem = {
   id: string;
   value: string;
-  lang: 'ko' | 'en' | 'ja' | 'zh';
+  lang: LanguageCode;
   selected: boolean;
   href?: string;
   target?: '_self' | '_blank';
@@ -12,21 +14,21 @@ const mockOptions: LanguageSelectItem[] = [
   { id: 'lang-1', value: '한국어', lang: 'ko', selected: false, href: '/ko' },
   {
     id: 'lang-2',
-    value: 'English (영어)',
+    value: 'English',
     lang: 'en',
     selected: false,
     href: '/en',
   },
   {
     id: 'lang-3',
-    value: '日本語 (일본어)',
+    value: '日本語',
     lang: 'ja',
     selected: false,
     href: '/ja',
   },
   {
     id: 'lang-4',
-    value: '中文 (중국어)',
+    value: '中文',
     lang: 'zh',
     selected: false,
     href: '/zh',

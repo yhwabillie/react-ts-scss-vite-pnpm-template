@@ -4,6 +4,7 @@ import clsx from 'clsx';
 
 import { mergeRefs } from '@/utils/option/mergeRefs';
 import { ModalContext } from '@/components/contexts/ModalContext';
+import type { ModalVariant } from '@/types/modal.types';
 
 // 1. 공통 스타일 Props 정의
 type BaseProps = {
@@ -59,7 +60,7 @@ const ButtonInner = (
   const combinedRef = mergeRefs(ref, internalRef);
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-    const modalType = e.currentTarget.getAttribute('data-modal');
+    const modalType = e.currentTarget.getAttribute('data-modal') as ModalVariant;
     const modalConfigStr = e.currentTarget.getAttribute('data-modal-config');
 
     if (modalType) {

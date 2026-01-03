@@ -11,6 +11,9 @@
   --color-surface-raised: #ffffff; // Lv.2: 강조가 필요한 오버레이나 컴포넌트 배경
   --color-text-primary: #191f28; // 텍스트 컬러 (접근성 확보)
 
+  // focus ring
+  --focus-ring-color: #2466eb;
+
   // scroll
   --scrollbar-thumb-bg-color: rgba(55, 55, 55, 0.4);
   --scrollbar-hover-thumb-bg-color: rgba(55, 55, 55, 0.6);
@@ -19,6 +22,18 @@
   // guide
   --bg-color-guide: #ecf4ef;
   --stroke-color-guide: #15803d;
+
+  // custom modal
+  --shadow-bg-color-custom-modal: rgba(0, 0, 0, 0.05);
+  --bg-color-custom-modal: #ffffff;
+  --stroke-color-custom-modal: #e4e4e4;
+  --modal-body-bg-color-custom-modal: #f5f5f5;
+  --modal-footer-bg-color-custom-modal: #f5f5f5;
+
+  // alert modal
+  --shadow-bg-color-alert-modal: rgba(0, 0, 0, 0.05);
+  --bg-color-alert-modal: #ffffff;
+  --desc-text-color-alert-modal: #6f6f6f;
 
   // toast
   --text-color-toast: rgba(255, 255, 255, 0.95);
@@ -724,6 +739,9 @@
   --color-surface-raised: #333333; // Lv.2: 강조가 필요한 오버레이나 컴포넌트 배경
   --color-text-primary: #f9fafb; // 텍스트 컬러 (접근성 확보)
 
+  // focus ring
+  --focus-ring-color: #ffd60a;
+
   /* 배경이 어두우므로 썸(Thumb)은 더 밝은 흰색 계열로 설정 */
   --scrollbar-thumb-bg-color: rgba(255, 255, 255, 0.25);
   --scrollbar-hover-thumb-bg-color: rgba(255, 255, 255, 0.45);
@@ -734,6 +752,19 @@
   // guide
   --bg-color-guide: rgba(45, 252, 82, 0.05);
   --stroke-color-guide: #2dfc52;
+
+  // custom modal
+  --bg-color-custom-modal: #1e1e1e;
+  --modal-body-bg-color-custom-modal: #252525;
+  --modal-footer-bg-color-custom-modal: #252525;
+  --stroke-color-custom-modal: #333333;
+  --shadow-bg-color-custom-modal: rgba(0, 0, 0, 0.4);
+
+  // alert modal
+  --bg-color-alert-modal: #1e1e1e;
+  --shadow-bg-color-alert-modal: rgba(0, 0, 0, 0.5);
+  --desc-text-color-alert-modal: #b0b0b0;
+  --title-text-color-alert-modal: #ececec;
 
   // toast
   --bg-color-toast: rgba(25, 25, 25, 0.8);
