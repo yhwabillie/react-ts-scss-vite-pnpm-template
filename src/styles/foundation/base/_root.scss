@@ -244,6 +244,15 @@
   --success-active-bg-color-btn-link: rgba(21, 128, 61, 0.1);
   --success-active-text-color-btn-link: #15803d;
 
+  // badge
+  --warning-bg-color-badge-solid: #ca8a04;
+  --warning-text-color-badge-solid: #ffffff;
+  --warning-stroke-color-badge-solid: transparent;
+
+  --warning-bg-color-badge-outline: transparent;
+  --warning-text-color-badge-outline: #a16207;
+  --warning-stroke-color-badge-outline: #a16207;
+
   // datepicker
   --warning-hover-shadow-datepicker: rgba(180, 83, 9, 0.25);
 
@@ -415,6 +424,15 @@
 
   --warning-active-bg-color-btn-link: rgba(180, 83, 9, 0.1);
   --warning-active-text-color-btn-link: #b45309;
+
+  // badge
+  --danger-bg-color-badge-solid: #dc2626;
+  --danger-text-color-badge-solid: #ffffff;
+  --danger-stroke-color-badge-solid: transparent;
+
+  --danger-bg-color-badge-outline: transparent;
+  --danger-text-color-badge-outline: #b91c1c;
+  --danger-stroke-color-badge-outline: #b91c1c;
 
   // icon frame
   --danger-fill-color-icon-frame: #b91c1c;
@@ -590,6 +608,15 @@
 
   --danger-active-bg-color-btn-link: rgba(185, 28, 28, 0.1);
   --danger-active-text-color-btn-link: #b91c1c;
+
+  // badge
+  --success-bg-color-badge-solid: #16a34a;
+  --success-text-color-badge-solid: #ffffff;
+  --success-stroke-color-badge-solid: transparent;
+
+  --success-bg-color-badge-outline: transparent;
+  --success-text-color-badge-outline: #15803d;
+  --success-stroke-color-badge-outline: #15803d;
 
   // optionList
   --success-bg-color-option-list-solid: #e2f5e9;
@@ -875,6 +902,15 @@
   --switch-track-off-bg-color: #374151;
   --switch-handle-off-bg-color: #9ca3af;
 
+  // badge
+  --success-bg-color-badge-solid: #15803d;
+  --success-text-color-badge-solid: #ffffff;
+  --success-stroke-color-badge-solid: transparent;
+
+  --success-bg-color-badge-outline: transparent;
+  --success-text-color-badge-outline: #4ade80;
+  --success-stroke-color-badge-outline: #4ade80;
+
   // icon frame
   --success-fill-color-icon-frame: #4ade80;
 
@@ -1047,6 +1083,15 @@
   --success-active-bg-color-btn-link: rgba(74, 222, 128, 0.25);
   --success-active-text-color-btn-link: #4ade80;
 
+  // badge
+  --warning-bg-color-badge-solid: #9a3412;
+  --warning-text-color-badge-solid: #ffffff;
+  --warning-stroke-color-badge-solid: transparent;
+
+  --warning-bg-color-badge-outline: transparent;
+  --warning-text-color-badge-outline: #fbbf24;
+  --warning-stroke-color-badge-outline: #fbbf24;
+
   // icon frame
   --warning-fill-color-icon-frame: #fbbf24;
 
@@ -1218,6 +1263,15 @@
 
   --warning-active-bg-color-btn-link: rgba(251, 191, 36, 0.25);
   --warning-active-text-color-btn-link: #fbbf24;
+
+  // badge
+  --danger-bg-color-badge-solid: #dc2626;
+  --danger-text-color-badge-solid: #ffffff;
+  --danger-stroke-color-badge-solid: transparent;
+
+  --danger-bg-color-badge-outline: transparent;
+  --danger-text-color-badge-outline: #f87171;
+  --danger-stroke-color-badge-outline: #f87171;
 
   // icon frame
   --danger-fill-color-icon-frame: #f87171;
@@ -1521,6 +1575,15 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  // badge
+  --primary-bg-color-badge-solid: #0052cc;
+  --primary-text-color-badge-solid: #ffffff;
+  --primary-stroke-color-badge-solid: transparent;
+
+  --primary-bg-color-badge-outline: transparent;
+  --primary-text-color-badge-outline: #0052cc;
+  --primary-stroke-color-badge-outline: #0052cc;
+
   // data table
   --primary-outer-stroke-color-data-table-solid: transparent;
   --primary-tbody-stroke-color-data-table-solid: transparent;
@@ -1725,6 +1788,15 @@
   --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-link: #0052cc;
 
+  // badge
+  --secondary-bg-color-badge-solid: #475569;
+  --secondary-text-color-badge-solid: #ffffff;
+  --secondary-stroke-color-badge-solid: transparent;
+
+  --secondary-bg-color-badge-outline: transparent;
+  --secondary-text-color-badge-outline: #475569;
+  --secondary-stroke-color-badge-outline: #475569;
+
   // data table
   --secondary-outer-stroke-color-data-table-solid: transparent;
   --secondary-tbody-stroke-color-data-table-solid: transparent;
@@ -1925,6 +1997,15 @@
 
   --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-link: #475569;
+
+  // badge
+  --tertiary-bg-color-badge-solid: #7c3aed;
+  --tertiary-text-color-badge-solid: #ffffff;
+  --tertiary-stroke-color-badge-solid: transparent;
+
+  --tertiary-bg-color-badge-outline: transparent;
+  --tertiary-text-color-badge-outline: #7c3aed;
+  --tertiary-stroke-color-badge-outline: #7c3aed;
 
   // data table
   --tertiary-outer-stroke-color-data-table-solid: transparent;
@@ -2170,6 +2251,15 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    // badge
+    --primary-bg-color-badge-solid: #2563eb;
+    --primary-text-color-badge-solid: #ffffff;
+    --primary-stroke-color-badge-solid: transparent;
+
+    --primary-bg-color-badge-outline: transparent;
+    --primary-text-color-badge-outline: #66b2ff;
+    --primary-stroke-color-badge-outline: #66b2ff;
+
     // data table
     --primary-outer-stroke-color-data-table-solid: transparent;
     --primary-tbody-stroke-color-data-table-solid: transparent;
@@ -2374,6 +2464,15 @@
     --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
     --primary-active-text-color-btn-link: #60a5fa;
 
+    // badge
+    --secondary-bg-color-badge-solid: #0369a1;
+    --secondary-text-color-badge-solid: #ffffff;
+    --secondary-stroke-color-badge-solid: transparent;
+
+    --secondary-bg-color-badge-outline: transparent;
+    --secondary-text-color-badge-outline: #38bdf8;
+    --secondary-stroke-color-badge-outline: #38bdf8;
+
     // data table
     --secondary-outer-stroke-color-data-table-solid: transparent;
     --secondary-tbody-stroke-color-data-table-solid: transparent;
@@ -2577,6 +2676,15 @@
 
     --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
+
+    // badge
+    --tertiary-bg-color-badge-solid: #7c3aed;
+    --tertiary-text-color-badge-solid: #ffffff;
+    --tertiary-stroke-color-badge-solid: transparent;
+
+    --tertiary-bg-color-badge-outline: transparent;
+    --tertiary-text-color-badge-outline: #a78bfa;
+    --tertiary-stroke-color-badge-outline: #a78bfa;
 
     // data table
     --tertiary-outer-stroke-color-data-table-solid: transparent;

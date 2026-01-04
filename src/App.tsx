@@ -628,33 +628,6 @@ function App() {
 
   return (
     <>
-      <section ref={tableRef} style={{ padding: '30px' }}>
-        <div className='sr-only' aria-live='polite'>
-          {sortState.key &&
-            `${sortState.key} 항목으로 ${sortState.order === 'asc' ? '오름차순' : '내림차순'} 정렬되었습니다.`}
-          {`${totalPages}페이지 중 현재 ${currentPage}페이지입니다.`}
-        </div>
-        <DataTable
-          columns={columns}
-          data={paginatedSortedData} // 정렬된 데이터 전달 sortedData
-          sortState={sortState}
-          onSort={handleSort}
-          caption='사용자 계정 관리 목록'
-          summary='사용자의 번호, 이름, 역할, 상태 정보를 제공하는 표입니다.'
-          // 체크박스 사용 여부 결정
-          showCheckbox={true}
-          selectedRows={selectedRows}
-          onSelectRow={handleSelectRow}
-          onSelectAll={handleSelectAll}
-        />
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages || 1}
-          onPageChange={handlePageChange}
-          // 모바일 기기 감지 로직이나 창 너비에 따라 true/false 전달
-          isMobileUI={isMobile}
-        />
-      </section>
       {/*  */}
       <section style={{ margin: '30px', width: '200px' }}>
         <Skeleton variant='text' width='50%' />
@@ -786,6 +759,35 @@ function App() {
           <Accordion key={item.title} {...item} />
         ))}
       </section>
+
+      {/* 
+            <section ref={tableRef} style={{ padding: '30px' }}>
+        <div className='sr-only' aria-live='polite'>
+          {sortState.key &&
+            `${sortState.key} 항목으로 ${sortState.order === 'asc' ? '오름차순' : '내림차순'} 정렬되었습니다.`}
+          {`${totalPages}페이지 중 현재 ${currentPage}페이지입니다.`}
+        </div>
+        <DataTable
+          columns={columns}
+          data={paginatedSortedData} // 정렬된 데이터 전달 sortedData
+          sortState={sortState}
+          onSort={handleSort}
+          caption='사용자 계정 관리 목록'
+          summary='사용자의 번호, 이름, 역할, 상태 정보를 제공하는 표입니다.'
+          // 체크박스 사용 여부 결정
+          showCheckbox={true}
+          selectedRows={selectedRows}
+          onSelectRow={handleSelectRow}
+          onSelectAll={handleSelectAll}
+        />
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages || 1}
+          onPageChange={handlePageChange}
+          // 모바일 기기 감지 로직이나 창 너비에 따라 true/false 전달
+          isMobileUI={isMobile}
+        />
+      </section> */}
       {/* <section>
         <FilePickerContainer />
       </section> */}

@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import DataTable, { type Column, type SortOrder } from './DataTable';
 import { GuideCell, GuideGroup, GuideWrapper } from '../../guide/Guide';
 import Icon from '../../atoms/Icon/Icon';
 import IconFrame from '../../molecules/IconFrame/IconFrame';
+import Badge from '../../atoms/Badge/Badge';
 
 // 테스트용 데이터 타입 정의
 interface User {
@@ -116,14 +117,9 @@ const columns: Column<User>[] = [
     key: 'status',
     header: '상태',
     render: value => (
-      <span
-        style={{
-          color: value === 'active' ? 'green' : 'red',
-          fontWeight: 'bold',
-        }}
-      >
+      <Badge variant='outline' color={value === 'active' ? 'success' : 'danger'} size='md'>
         {value.toUpperCase()}
-      </span>
+      </Badge>
     ),
   },
 ];
@@ -143,26 +139,32 @@ export const Base: Story = {
  * Outline: 테두리 중심의 정갈한 스타일
  */
 export const Variants: Story = {
-  render: args => (
-    <GuideWrapper>
-      <GuideGroup title='Solid'>
-        <GuideCell>
-          <DataTable {...args} variant='solid' />
-        </GuideCell>
-      </GuideGroup>
-      <GuideGroup title='Outline'>
-        <GuideCell>
-          <DataTable {...args} variant='outline' />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: args => {
+    return (
+      <GuideWrapper>
+        <GuideGroup title='Solid'>
+          <GuideCell>
+            <DataTable {...args} variant='solid' aria-label='Solid Table' caption='Solid Table' />
+          </GuideCell>
+        </GuideGroup>
+        <GuideGroup title='Outline'>
+          <GuideCell>
+            <DataTable
+              {...args}
+              variant='outline'
+              aria-label='Outline Table'
+              caption='Outline Table'
+            />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
   args: {
     columns,
     data: mockData,
     color: 'primary',
     size: 'md',
-    caption: 'Variant Comparison Table',
   },
 };
 
