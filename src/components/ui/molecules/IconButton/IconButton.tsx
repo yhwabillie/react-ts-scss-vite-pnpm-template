@@ -2,7 +2,7 @@ import React, { type RefObject } from 'react';
 import styles from '@/components/ui/molecules/IconButton/IconButton.module.scss';
 import clsx from 'clsx';
 
-type BaseProps = {
+export type IconButtonBaseProps = {
   ref?: RefObject<HTMLButtonElement | null>;
   variant?: 'solid' | 'outline' | 'ghost';
   color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
@@ -16,7 +16,7 @@ type BaseProps = {
   ariaLabel?: string;
 };
 
-type ButtonProps = BaseProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
+type ButtonProps = IconButtonBaseProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const IconButton: React.FC<ButtonProps> = ({
   as: Component = 'button',

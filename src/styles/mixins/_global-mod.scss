@@ -1,0 +1,5 @@
+@mixin global-mod($name) {
+  &:global(.#{$name}) {
+    @content;
+  }
+}

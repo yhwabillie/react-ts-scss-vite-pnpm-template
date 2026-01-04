@@ -1,6 +1,9 @@
 import { useId, type ReactNode } from 'react';
 import Styles from './DataTable.module.scss';
 import Checkbox from '../../atoms/Checkbox/Checkbox';
+import Icon from '../../atoms/Icon/Icon';
+import clsx from 'clsx';
+import IconButton from '../../molecules/IconButton/IconButton';
 
 export type SortOrder = 'asc' | 'desc' | 'none';
 
@@ -19,6 +22,9 @@ export interface Column<T> {
 }
 
 interface DataTableProps<T extends { id: string | number }> {
+  variant?: 'solid' | 'outline';
+  color?: 'primary' | 'secondary' | 'tertiary';
+  size?: 'sm' | 'md' | 'lg';
   caption: string;
   summary?: string;
   columns: Column<T>[];
@@ -29,19 +35,24 @@ interface DataTableProps<T extends { id: string | number }> {
   selectedRows?: Set<number | string>;
   onSelectRow?: (id: number | string) => void;
   onSelectAll?: (isAll: boolean) => void;
+  notices?: T[]; // 공지사항 전용 데이터 추가
 }
 
 const DataTable = <T extends { id: string | number }>({
+  variant = 'solid',
+  color = 'primary',
+  size = 'md',
   caption,
   summary,
   columns,
   data,
   onSort,
   sortState,
-  showCheckbox, // 추가됨
-  selectedRows, // 추가됨
-  onSelectRow, // 추가됨
-  onSelectAll, // 추가됨
+  showCheckbox,
+  selectedRows,
+  onSelectRow,
+  onSelectAll,
+  notices,
 }: DataTableProps<T>) => {
   const tableId = useId();
   const summaryId = `${tableId}-summary`;
@@ -51,10 +62,10 @@ const DataTable = <T extends { id: string | number }>({
   const minWidthPercentage = `${100 / totalCols}%`;
 
   const getSortIcon = (key: string) => {
-    if (sortState?.key !== key) return '↕️';
-    if (sortState.order === 'asc') return '↑';
-    if (sortState.order === 'desc') return '↓';
-    return '↕️';
+    if (sortState?.key !== key) return <Icon name='arrow-down-up' strokeWidth={2.5} />;
+    if (sortState.order === 'asc') return <Icon name='arrow-up-narrow-wide' strokeWidth={2.5} />;
+    if (sortState.order === 'desc') return <Icon name='arrow-down-wide-narrow' strokeWidth={2.5} />;
+    return <Icon name='arrow-down-up' strokeWidth={2.5} />;
   };
 
   // ✅ 수정: 단순히 개수(length)로 비교하지 말고, 현재 눈앞의 데이터가 모두 Set에 있는지 확인
@@ -69,7 +80,7 @@ const DataTable = <T extends { id: string | number }>({
 
   return (
     <div
-      className={Styles['table-container']}
+      className={clsx(`${Styles['data-table']} variant--${variant} color--${color} size--${size}`)}
       role='region'
       aria-labelledby={`${tableId}-caption`}
       tabIndex={0}
@@ -79,47 +90,49 @@ const DataTable = <T extends { id: string | number }>({
           {summary}
         </span>
       )}
-      <table className={Styles['data-table']} aria-describedby={summary ? summaryId : undefined}>
-        <caption id={`${tableId}-caption`} className={Styles['table-caption']}>
+      <table className='data-table__root' aria-describedby={summary ? summaryId : undefined}>
+        <caption id={`${tableId}-caption`} className='data-table__caption'>
           {caption}
           {summary && <span className='sr-only'>: {summary}</span>}
         </caption>
-
         <colgroup>
-          {/* ✅ 업데이트: 체크박스용 col 추가 */}
-          {showCheckbox && <col style={{ width: '70px' }} />}
+          {showCheckbox && <col style={{ width: '60px' }} />}
           {columns.map((col, index) => (
             <col
               key={index}
               style={{
                 width: col.width || 'auto',
-                minWidth: col.minWidth || (col.width ? 'auto' : minWidthPercentage), // ✅ 업데이트: 자동 최소 너비 로직
+                minWidth: col.minWidth || (col.width ? 'auto' : minWidthPercentage),
               }}
             />
           ))}
         </colgroup>
         <thead>
           <tr>
-            {/* ✅ 수정: 조건부 렌더링 블록 사이의 공백 제거 (Hydration 에러 방지) */}
             {showCheckbox && (
               <th scope='col'>
-                <Checkbox
-                  as='label'
-                  color='primary'
-                  size='md'
-                  id='chk-all'
-                  checked={isAllSelected}
-                  onChange={e => onSelectAll?.(e.target.checked)}
-                  aria-label='전체 행 선택'
-                />
+                <div className='data-table__checkbox-cell'>
+                  <Checkbox
+                    as='label'
+                    id='chk-all'
+                    color={color}
+                    size='md'
+                    checked={isAllSelected}
+                    onChange={e => onSelectAll?.(e.target.checked)}
+                    aria-label='전체 행 선택'
+                  />
+                </div>
               </th>
             )}
             {columns.map(col => (
               <th key={String(col.key)} scope='col' aria-sort={getAriaSort(String(col.key))}>
-                <div className={Styles['header-cell']}>
+                <div className='data-table__thead-cell'>
                   {col.header}
                   {col.sortable && onSort && (
-                    <button
+                    <IconButton
+                      variant='ghost'
+                      size='xs'
+                      shape='rounded'
                       type='button'
                       onClick={() => {
                         const nextOrder =
@@ -133,9 +146,8 @@ const DataTable = <T extends { id: string | number }>({
                         onSort(col.key as keyof T, nextOrder);
                       }}
                       aria-label={`${col.header} 정렬`}
-                    >
-                      {getSortIcon(String(col.key))}
-                    </button>
+                      icon={getSortIcon(String(col.key))}
+                    />
                   )}
                 </div>
               </th>
@@ -143,43 +155,69 @@ const DataTable = <T extends { id: string | number }>({
           </tr>
         </thead>
         <tbody>
+          {/* 공지사항 데이터 루프 */}
+          {notices &&
+            notices.length > 0 &&
+            notices.map((notice, index) => (
+              <tr key={`notice-${notice.id || index}`} className='data-table__notice-row'>
+                <td>
+                  <div className='data-table__notice-cell'>
+                    <Icon
+                      name='megaphone'
+                      className='icon'
+                      size={size}
+                      strokeWidth={2.5}
+                      aria-label='공지'
+                    />
+                  </div>
+                </td>
+
+                {/* 데이터 영역: idx === 0인 '번호' 컬럼을 건너뜁니다 */}
+                {columns.map((col, idx) => {
+                  // '번호' 컬럼(idx 0)은 이미 위에서 아이콘 td가 자리를 차지했으므로 렌더링하지 않음
+                  if (idx === 0) return null;
+
+                  const value = notice[col.key as keyof T];
+                  return (
+                    <td key={String(col.key)}>
+                      {col.render ? col.render(value, notice) : (value as ReactNode)}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+
+          {/* 일반 데이터 */}
           {data.length > 0 ? (
             data.map((row, rowIndex) => (
               <tr key={row.id || rowIndex}>
-                {/* ✅ 수정: 체크박스와 데이터 셀 사이의 공백 텍스트 노드 제거 */}
                 {showCheckbox && (
                   <td>
-                    <Checkbox
-                      as='label'
-                      color='primary'
-                      size='md'
-                      id={`chk-${row.id}`}
-                      checked={selectedRows?.has(row.id) || false}
-                      onChange={() => onSelectRow?.(row.id)}
-                      aria-label={`${row.id}번 행 선택`}
-                    />
+                    <div className='data-table__checkbox-cell'>
+                      <Checkbox
+                        as='label'
+                        color={color}
+                        size='md'
+                        id={`chk-${row.id}`}
+                        checked={selectedRows?.has(row.id) || false}
+                        onChange={() => onSelectRow?.(row.id)}
+                        aria-label={`${row.id}번 행 선택`}
+                      />
+                    </div>
                   </td>
                 )}
                 {columns.map((col, colIndex) => {
                   const value = row[col.key as keyof T];
-                  // ✅ 해결 2: content가 ReactNode임을 명시하거나, 렌더링 가능한 형태로 변환
                   const content = col.render ? col.render(value, row) : (value as ReactNode);
 
-                  if (colIndex === 0 && !showCheckbox) {
-                    return (
-                      <th key={String(col.key)} scope='row'>
-                        {content}
-                      </th>
-                    );
-                  }
                   return <td key={String(col.key)}>{content}</td>;
                 })}
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan={totalCols} style={{ textAlign: 'center', padding: '2rem' }}>
-                데이터가 없습니다.
+              <td colSpan={totalCols}>
+                <div className='data-table__empty-state'>데이터가 없습니다.</div>
               </td>
             </tr>
           )}

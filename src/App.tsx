@@ -786,9 +786,9 @@ function App() {
           <Accordion key={item.title} {...item} />
         ))}
       </section>
-      <section>
+      {/* <section>
         <FilePickerContainer />
-      </section>
+      </section> */}
       {/* <section style={{ margin: '30px' }}>
         <LanguageSelector
           variant='outline'

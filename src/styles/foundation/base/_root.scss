@@ -23,6 +23,13 @@
   --bg-color-guide: #ecf4ef;
   --stroke-color-guide: #15803d;
 
+  // data table
+  --outer-stroke-color-data-table: #ddd;
+  --table-stroke-color-data-table: #f0f0f0;
+  --thead-th-bg-color-data-table: #9999;
+  --tbody-th-bg-color-data-table: #ffffff;
+  --tbody-bg-color-data-table: #e6e5e599;
+
   // file picker
   --stroke-color-file-picker: #d6e0eb;
   --bg-color-file-picker: #ffffff;
@@ -773,6 +780,12 @@
   --bg-color-guide: rgba(45, 252, 82, 0.05);
   --stroke-color-guide: #2dfc52;
 
+  // data table
+  --outer-stroke-color-data-table: #333639;
+  --table-stroke-color-data-table: #25282a;
+  --thead-th-bg-color-data-table: #1e1e1e;
+  --tbody-th-bg-color-data-table: #121212;
+
   // file picker
   --stroke-color-file-picker: #383b3e;
   --bg-color-file-picker: #1e1e1e;
@@ -1508,6 +1521,23 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  // data table
+  --primary-outer-stroke-color-data-table-solid: transparent;
+  --primary-tbody-stroke-color-data-table-solid: transparent;
+  --primary-thead-bg-color-data-table-solid: #0052cc;
+  --primary-thead-text-color-data-table-solid: #ffffff;
+  --primary-tbody-bg-color-data-table-solid: #f1f3f5;
+  --primary-tbody-text-color-data-table-solid: #1a1a1a;
+  --primary-notice-tr-bg-color-data-table-solid: #e1e9f5;
+
+  --primary-outer-stroke-color-data-table-outline: #0052cc;
+  --primary-tbody-stroke-color-data-table-outline: #e2e8f0;
+  --primary-thead-bg-color-data-table-outline: #ffffff;
+  --primary-thead-text-color-data-table-outline: #0052cc;
+  --primary-tbody-bg-color-data-table-outline: #ffffff;
+  --primary-tbody-text-color-data-table-outline: #1a1a1a;
+  --primary-notice-tr-bg-color-data-table-outline: #f0f7ff;
+
   // icon frame
   --primary-fill-color-icon-frame: #0052cc;
 
@@ -1695,6 +1725,23 @@
   --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-link: #0052cc;
 
+  // data table
+  --secondary-outer-stroke-color-data-table-solid: transparent;
+  --secondary-tbody-stroke-color-data-table-solid: transparent;
+  --secondary-thead-bg-color-data-table-solid: #475569;
+  --secondary-thead-text-color-data-table-solid: #ffffff;
+  --secondary-tbody-bg-color-data-table-solid: #f1f3f5;
+  --secondary-tbody-text-color-data-table-solid: #1e293b;
+  --secondary-notice-tr-bg-color-data-table-solid: #e2e8f0;
+
+  --secondary-outer-stroke-color-data-table-outline: #475569;
+  --secondary-tbody-stroke-color-data-table-outline: #cbd5e1;
+  --secondary-thead-bg-color-data-table-outline: #ffffff;
+  --secondary-thead-text-color-data-table-outline: #475569;
+  --secondary-tbody-bg-color-data-table-outline: #ffffff;
+  --secondary-tbody-text-color-data-table-outline: #1e293b;
+  --secondary-notice-tr-bg-color-data-table-outline: #e2e8f0;
+
   // icon frame
   --secondary-fill-color-icon-frame: #475569;
 
@@ -1878,6 +1925,23 @@
 
   --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-link: #475569;
+
+  // data table
+  --tertiary-outer-stroke-color-data-table-solid: transparent;
+  --tertiary-tbody-stroke-color-data-table-solid: transparent;
+  --tertiary-thead-bg-color-data-table-solid: #7c3aed;
+  --tertiary-thead-text-color-data-table-solid: #ffffff;
+  --tertiary-tbody-bg-color-data-table-solid: #f1f3f5;
+  --tertiary-tbody-text-color-data-table-solid: #1a1a1a;
+  --tertiary-notice-tr-bg-color-data-table-solid: #ede9fe;
+
+  --tertiary-outer-stroke-color-data-table-outline: #7c3aed;
+  --tertiary-tbody-stroke-color-data-table-outline: #ddd6fe;
+  --tertiary-thead-bg-color-data-table-outline: #ffffff;
+  --tertiary-thead-text-color-data-table-outline: #7c3aed;
+  --tertiary-tbody-bg-color-data-table-outline: #ffffff;
+  --tertiary-tbody-text-color-data-table-outline: #1a1a1a;
+  --tertiary-notice-tr-bg-color-data-table-outline: #ede9fe;
 
   // icon frame
   --tertiary-fill-color-icon-frame: #7c3aed;
@@ -2106,6 +2170,23 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    // data table
+    --primary-outer-stroke-color-data-table-solid: transparent;
+    --primary-tbody-stroke-color-data-table-solid: transparent;
+    --primary-thead-bg-color-data-table-solid: #1a73e8;
+    --primary-thead-text-color-data-table-solid: #ffffff;
+    --primary-tbody-bg-color-data-table-solid: #0f172a;
+    --primary-tbody-text-color-data-table-solid: #e2e8f0;
+    --primary-notice-tr-bg-color-data-table-solid: #1e293b;
+
+    --primary-outer-stroke-color-data-table-outline: #4285f4;
+    --primary-tbody-stroke-color-data-table-outline: rgba(66, 133, 244, 0.2);
+    --primary-thead-bg-color-data-table-outline: #1e1e1e;
+    --primary-thead-text-color-data-table-outline: #4285f4;
+    --primary-tbody-bg-color-data-table-outline: #121212;
+    --primary-tbody-text-color-data-table-outline: #e2e8f0;
+    --primary-notice-tr-bg-color-data-table-outline: #1e293b;
+
     // icon frame
     --primary-fill-color-icon-frame: #66b2ff;
 
@@ -2293,6 +2374,23 @@
     --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
     --primary-active-text-color-btn-link: #60a5fa;
 
+    // data table
+    --secondary-outer-stroke-color-data-table-solid: transparent;
+    --secondary-tbody-stroke-color-data-table-solid: transparent;
+    --secondary-thead-bg-color-data-table-solid: #64748b;
+    --secondary-thead-text-color-data-table-solid: #ffffff;
+    --secondary-tbody-bg-color-data-table-solid: #0f172a;
+    --secondary-tbody-text-color-data-table-solid: #e2e8f0;
+    --secondary-notice-tr-bg-color-data-table-solid: #1e293b;
+
+    --secondary-outer-stroke-color-data-table-outline: #94a3b8;
+    --secondary-tbody-stroke-color-data-table-outline: rgba(148, 163, 184, 0.2);
+    --secondary-thead-bg-color-data-table-outline: #1e1e1e;
+    --secondary-thead-text-color-data-table-outline: #94a3b8;
+    --secondary-tbody-bg-color-data-table-outline: #121212;
+    --secondary-tbody-text-color-data-table-outline: #e2e8f0;
+    --secondary-notice-tr-bg-color-data-table-outline: #1e293b;
+
     // icon frame
     --secondary-fill-color-icon-frame: #38bdf8;
 
@@ -2479,6 +2577,23 @@
 
     --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
+
+    // data table
+    --tertiary-outer-stroke-color-data-table-solid: transparent;
+    --tertiary-tbody-stroke-color-data-table-solid: transparent;
+    --tertiary-thead-bg-color-data-table-solid: #763af5;
+    --tertiary-thead-text-color-data-table-solid: #ffffff;
+    --tertiary-tbody-bg-color-data-table-solid: #121826;
+    --tertiary-tbody-text-color-data-table-solid: #e2e8f0;
+    --tertiary-notice-tr-bg-color-data-table-solid: #1e1b4b;
+
+    --tertiary-outer-stroke-color-data-table-outline: #a78bfa;
+    --tertiary-tbody-stroke-color-data-table-outline: rgba(167, 139, 250, 0.2);
+    --tertiary-thead-bg-color-data-table-outline: #1e1e1e;
+    --tertiary-thead-text-color-data-table-outline: #a78bfa;
+    --tertiary-tbody-bg-color-data-table-outline: #121212;
+    --tertiary-tbody-text-color-data-table-outline: #e2e8f0;
+    --tertiary-notice-tr-bg-color-data-table-outline: #1e1b4b;
 
     // icon frame
     --tertiary-fill-color-icon-frame: #a78bfa;

@@ -3,54 +3,357 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
-.table-container {
-  width: 100%;
-  overflow-x: auto;
-  border: 1px solid #ddd;
+// data-table sizes
+$data-table-sizes: (
+  sm: (
+    min-height: rem(32px),
+    th-padding: rem(4px) rem(8px),
+    td-padding: rem(9.5px) rem(8px),
+    border-spacing: 0 rem(1px),
+    th-radius: rem(8px),
+    th-gap: rem(0px),
+    th-font: var(--project-typo-DataTableText3-700),
+    font: var(--project-typo-DataTableText3-400),
+    empty-state-font: var(--project-typo-DataTableText3-500),
+    notice-icon-size: rem(14px),
+  ),
+  md: (
+    min-height: rem(36px),
+    th-padding: rem(4px) rem(8px),
+    td-padding: rem(9.5px) rem(8px),
+    border-spacing: 0 rem(1px),
+    th-radius: rem(8px),
+    th-gap: rem(0px),
+    th-font: var(--project-typo-DataTableText2-700),
+    font: var(--project-typo-DataTableText2-400),
+    empty-state-font: var(--project-typo-DataTableText2-500),
+    notice-icon-size: rem(18px),
+  ),
+  lg: (
+    min-height: rem(40px),
+    th-padding: rem(4px) rem(8px),
+    td-padding: rem(9.5px) rem(8px),
+    border-spacing: 0 rem(1px),
+    th-radius: rem(8px),
+    th-gap: rem(0px),
+    th-font: var(--project-typo-DataTableText1-700),
+    font: var(--project-typo-DataTableText1-400),
+    empty-state-font: var(--project-typo-DataTableText1-500),
+    notice-icon-size: rem(18px),
+  ),
+);
 
-  &:focus-visible {
-    outline: 2px solid #007bff;
-    outline-offset: -2px;
-  }
-}
+// data-table colors
+$data-table-colors: (
+  primary: (
+    solid: (
+      border: var(--primary-outer-stroke-color-data-table-solid),
+      tbody-border: var(--primary-tbody-stroke-color-data-table-solid),
+      th-bg: var(--primary-thead-bg-color-data-table-solid),
+      th-text: var(--primary-thead-text-color-data-table-solid),
+      tbody-bg: var(--primary-tbody-bg-color-data-table-solid),
+      tbody-text: var(--primary-tbody-text-color-data-table-solid),
+      notice-tr-bg: var(--primary-notice-tr-bg-color-data-table-solid),
+    ),
+    outline: (
+      border: var(--primary-outer-stroke-color-data-table-outline),
+      tbody-border: var(--primary-tbody-stroke-color-data-table-outline),
+      th-bg: var(--primary-thead-bg-color-data-table-outline),
+      th-text: var(--primary-thead-text-color-data-table-outline),
+      tbody-bg: var(--primary-tbody-bg-color-data-table-outline),
+      tbody-text: var(--primary-tbody-text-color-data-table-outline),
+      notice-tr-bg: var(--primary-notice-tr-bg-color-data-table-outline),
+    ),
+  ),
+  secondary: (
+    solid: (
+      border: var(--secondary-outer-stroke-color-data-table-solid),
+      tbody-border: var(--secondary-tbody-stroke-color-data-table-solid),
+      th-bg: var(--secondary-thead-bg-color-data-table-solid),
+      th-text: var(--secondary-thead-text-color-data-table-solid),
+      tbody-bg: var(--secondary-tbody-bg-color-data-table-solid),
+      tbody-text: var(--secondary-tbody-text-color-data-table-solid),
+      notice-tr-bg: var(--secondary-notice-tr-bg-color-data-table-solid),
+    ),
+    outline: (
+      border: var(--secondary-outer-stroke-color-data-table-outline),
+      tbody-border: var(--secondary-tbody-stroke-color-data-table-outline),
+      th-bg: var(--secondary-thead-bg-color-data-table-outline),
+      th-text: var(--secondary-thead-text-color-data-table-outline),
+      tbody-bg: var(--secondary-tbody-bg-color-data-table-outline),
+      tbody-text: var(--secondary-tbody-text-color-data-table-outline),
+      notice-tr-bg: var(--secondary-notice-tr-bg-color-data-table-outline),
+    ),
+  ),
+  tertiary: (
+    solid: (
+      border: var(--tertiary-outer-stroke-color-data-table-solid),
+      tbody-border: var(--tertiary-tbody-stroke-color-data-table-solid),
+      th-bg: var(--tertiary-thead-bg-color-data-table-solid),
+      th-text: var(--tertiary-thead-text-color-data-table-solid),
+      tbody-bg: var(--tertiary-tbody-bg-color-data-table-solid),
+      tbody-text: var(--tertiary-tbody-text-color-data-table-solid),
+      notice-tr-bg: var(--tertiary-notice-tr-bg-color-data-table-solid),
+    ),
+    outline: (
+      border: var(--tertiary-outer-stroke-color-data-table-outline),
+      tbody-border: var(--tertiary-tbody-stroke-color-data-table-outline),
+      th-bg: var(--tertiary-thead-bg-color-data-table-outline),
+      th-text: var(--tertiary-thead-text-color-data-table-outline),
+      tbody-bg: var(--tertiary-tbody-bg-color-data-table-outline),
+      tbody-text: var(--tertiary-tbody-text-color-data-table-outline),
+      notice-tr-bg: var(--tertiary-notice-tr-bg-color-data-table-outline),
+    ),
+  ),
+);
 
 .data-table {
   width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 14px;
+
+  &:focus-visible {
+    outline: 1px solid var(--focus-ring-color);
+    outline-offset: -2px;
+  }
 
   th,
   td {
-    padding: 12px 16px;
-    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+    text-align: center;
   }
 
   thead th {
-    background-color: #f8f9fa;
-    font-weight: 600;
-    color: #333;
-    // 제목 셀 강조
+    word-break: break-word;
+    line-height: initial;
   }
 
-  tbody th {
-    font-weight: 500;
-    background-color: #ffffff;
+  tbody tr {
+    transition: all 0.2s ease-out;
   }
 
-  tbody tr:hover {
-    background-color: #fafafa;
-  }
-}
+  @each $size-name, $props in $data-table-sizes {
+    @include global-mod('size--#{$size-name}') {
+      @include global-mod('variant--solid') {
+        thead {
+          tr {
+            &:first-child {
+              th:first-child {
+                border-top-left-radius: map.get($props, th-radius);
+              }
+              th:last-child {
+                border-top-right-radius: map.get($props, th-radius);
+              }
+            }
+          }
+        }
 
-.table-caption {
-  // 웹 접근성을 위해 텍스트는 유지하되 화면에서 숨기는 기법
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+        tbody {
+          tr {
+            &:first-child {
+              th:first-child {
+                border-top-left-radius: map.get($props, th-radius);
+              }
+              th:last-child {
+                border-top-right-radius: map.get($props, th-radius);
+              }
+            }
+
+            &:last-child {
+              td:first-child {
+                border-bottom-left-radius: map.get($props, th-radius);
+              }
+              td:last-child {
+                border-bottom-right-radius: map.get($props, th-radius);
+              }
+            }
+          }
+        }
+
+        :global(.data-table__root) {
+          border-collapse: separate;
+        }
+      }
+
+      @include global-mod('variant--outline') {
+        :global(.data-table__root) {
+          border-collapse: collapse;
+        }
+      }
+
+      thead {
+        th {
+          padding: map.get($props, th-padding);
+        }
+      }
+
+      tbody {
+        tr {
+          td {
+            min-height: map.get($props, min-height);
+            padding: map.get($props, td-padding);
+            font: map.get($props, font);
+            word-break: break-word;
+          }
+        }
+      }
+
+      :global {
+        .data-table__root {
+          border-spacing: map.get($props, border-spacing);
+        }
+
+        .data-table__status-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .icon {
+            width: map.get($props, notice-icon-size);
+            height: map.get($props, notice-icon-size);
+          }
+        }
+
+        .data-table__thead-cell {
+          min-height: map.get($props, min-height);
+          font: map.get($props, th-font);
+          gap: map.get($props, th-gap);
+        }
+
+        .data-table__notice-cell {
+          :global(.icon) {
+            width: map.get($props, notice-icon-size);
+            height: map.get($props, notice-icon-size);
+          }
+        }
+
+        .data-table__empty-state {
+          font: map.get($props, empty-state-font);
+        }
+      }
+    }
+  }
+
+  @each $color-name, $variants in $data-table-colors {
+    // colors
+    @include global-mod('color--#{$color-name}') {
+      @each $variant-name, $props in $variants {
+        // variant
+        @include global-mod('variant--#{$variant-name}') {
+          @if $variant-name == 'solid' {
+            border: rem(1px) solid map.get($props, border);
+
+            thead {
+              tr {
+                th {
+                  background-color: map.get($props, th-bg);
+                  color: map.get($props, th-text);
+                }
+              }
+            }
+
+            tbody {
+              background-color: map.get($props, tbody-bg);
+              color: map.get($props, tbody-text);
+
+              tr {
+                border-top: rem(1px) solid map.get($props, tbody-border);
+              }
+            }
+
+            :global {
+              .data-table__notice-row {
+                background-color: map.get($props, notice-tr-bg);
+              }
+            }
+          } @else if $variant-name == 'outline' {
+            border-top: rem(1px) solid map.get($props, border);
+            border-bottom: rem(1px) solid map.get($props, border);
+
+            thead {
+              tr {
+                th {
+                  background-color: map.get($props, th-bg);
+                  color: map.get($props, th-text);
+                }
+              }
+            }
+
+            tbody {
+              background-color: map.get($props, tbody-bg);
+              color: map.get($props, tbody-text);
+
+              tr {
+                border-top: rem(1px) solid map.get($props, tbody-border);
+              }
+            }
+
+            :global {
+              .data-table__notice-row {
+                background-color: map.get($props, notice-tr-bg);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  :global {
+    .data-table__root {
+      width: 100%;
+    }
+    .data-table__caption {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    .data-table__checkbox-cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .data-table__notice-row {
+      .data-table__link {
+        font-weight: var(--project-font-weight-700);
+      }
+    }
+
+    .data-table__link {
+      display: inline-flex;
+      align-items: center;
+      width: 100%;
+      text-align: left;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .data-table__link-title {
+      @include ell();
+    }
+    .data-table__comment-count {
+      flex: 0 0 auto;
+      margin-left: rem(10px);
+    }
+
+    .data-table__thead-cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      word-break: break-all;
+    }
+    .data-table__empty-state {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: rem(200px);
+    }
+  }
 }

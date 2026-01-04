@@ -32,6 +32,11 @@ import MapPinIcon from '@/assets/icons/icon-map-pin.svg?react';
 import ArrowUpRightIcon from '@/assets/icons/icon-arrow-up-right.svg?react';
 import TrashcanIcon from '@/assets/icons/icon-trash-can.svg?react';
 import FileIcon from '@/assets/icons/icon-file.svg?react';
+import ArrowDownUpIcon from '@/assets/icons/icon-arrow-down-up.svg?react';
+import ArrowDownWideNarrowIcon from '@/assets/icons/icon-arrow-down-wide-narrow.svg?react';
+import ArrowUpNarrowWideIcon from '@/assets/icons/icon-arrow-up-narrow-wide.svg?react';
+import MegaphoneIcon from '@/assets/icons/icon-megaphone.svg?react';
+import LockIcon from '@/assets/icons/icon-lock.svg?react';
 
 const iconMap = {
   search: SearchIcon,
@@ -65,6 +70,11 @@ const iconMap = {
   'arrow-up-right': ArrowUpRightIcon,
   trashcan: TrashcanIcon,
   file: FileIcon,
+  'arrow-down-up': ArrowDownUpIcon,
+  'arrow-down-wide-narrow': ArrowDownWideNarrowIcon,
+  'arrow-up-narrow-wide': ArrowUpNarrowWideIcon,
+  megaphone: MegaphoneIcon,
+  lock: LockIcon,
   // 다른 아이콘들도 여기에 추가
 };
 
