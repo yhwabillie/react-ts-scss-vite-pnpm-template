@@ -731,14 +731,7 @@ function App() {
           <Tag color='outline'>특가</Tag>
         </div>
       </section>
-      <section>
-        <Badge variant='status' color='success'>
-          성공
-        </Badge>
-        <Badge variant='status' color='danger'>
-          실패
-        </Badge>
-      </section>
+
       <section>
         {chipList.map(chip => (
           <Chip
@@ -760,6 +753,14 @@ function App() {
         ))}
       </section>
 
+      {/* <section>
+        <Badge variant='outline' color='success'>
+          성공
+        </Badge>
+        <Badge variant='outline' color='danger'>
+          실패
+        </Badge>
+      </section> */}
       {/* 
             <section ref={tableRef} style={{ padding: '30px' }}>
         <div className='sr-only' aria-live='polite'>

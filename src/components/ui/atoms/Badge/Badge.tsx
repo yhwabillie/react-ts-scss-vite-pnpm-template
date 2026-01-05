@@ -3,8 +3,8 @@ import clsx from 'clsx';
 
 interface BadgeProps {
   children: React.ReactNode;
-  variant?: 'solid' | 'outline';
-  shape?: 'square' | 'rounded' | 'circle';
+  variant?: 'solid' | 'outline' | 'dot';
+  shape?: 'square' | 'rounded' | 'pill' | 'circle';
   color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
   size?: 'sm' | 'md' | 'lg';
   ariaLabel?: string;
@@ -22,11 +22,11 @@ const Badge = ({
   return (
     <div
       className={clsx(
-        `${Styles['badge']} variant--${variant} size--${size} color--${color} shape--${shape}`,
+        `${Styles['badge']} variant--${variant} size--${size} color--${color} ${variant !== 'dot' ? `shape--${shape}` : ''}`,
       )}
       aria-label={ariaLabel}
     >
-      <span className='badge__label'>{children}</span>
+      <span className={clsx('badge__label', variant === 'dot' && 'sr-only')}>{children}</span>
     </div>
   );
 };

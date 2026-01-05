@@ -10,6 +10,7 @@ $badge-sizes: (
     font: var(--project-typo-BadgeText3-500),
     min-width: rem(40px),
     radius: rem(4px),
+    dot-size: rem(6px),
   ),
   md: (
     height: rem(28px),
@@ -17,6 +18,7 @@ $badge-sizes: (
     font: var(--project-typo-BadgeText2-500),
     min-width: rem(50px),
     radius: rem(4px),
+    dot-size: rem(8px),
   ),
   lg: (
     height: rem(32px),
@@ -24,6 +26,7 @@ $badge-sizes: (
     font: var(--project-typo-BadgeText1-500),
     min-width: rem(60px),
     radius: rem(5px),
+    dot-size: rem(10px),
   ),
 );
 
@@ -39,6 +42,9 @@ $badge-colors: (
       text: var(--primary-text-color-badge-outline),
       border: var(--primary-stroke-color-badge-outline),
     ),
+    dot: (
+      bg: var(--primary-bg-color-badge-solid),
+    ),
   ),
   secondary: (
     solid: (
@@ -50,6 +56,9 @@ $badge-colors: (
       bg: var(--secondary-bg-color-badge-outline),
       text: var(--secondary-text-color-badge-outline),
       border: var(--secondary-stroke-color-badge-outline),
+    ),
+    dot: (
+      bg: var(--secondary-bg-color-badge-solid),
     ),
   ),
   tertiary: (
@@ -63,6 +72,9 @@ $badge-colors: (
       text: var(--tertiary-text-color-badge-outline),
       border: var(--tertiary-stroke-color-badge-outline),
     ),
+    dot: (
+      bg: var(--tertiary-bg-color-badge-solid),
+    ),
   ),
   success: (
     solid: (
@@ -74,6 +86,9 @@ $badge-colors: (
       bg: var(--success-bg-color-badge-outline),
       text: var(--success-text-color-badge-outline),
       border: var(--success-stroke-color-badge-outline),
+    ),
+    dot: (
+      bg: var(--success-bg-color-badge-solid),
     ),
   ),
   warning: (
@@ -87,6 +102,9 @@ $badge-colors: (
       text: var(--warning-text-color-badge-outline),
       border: var(--warning-stroke-color-badge-outline),
     ),
+    dot: (
+      bg: var(--warning-bg-color-badge-solid),
+    ),
   ),
   danger: (
     solid: (
@@ -98,6 +116,9 @@ $badge-colors: (
       bg: var(--danger-bg-color-badge-outline),
       text: var(--danger-text-color-badge-outline),
       border: var(--danger-stroke-color-badge-outline),
+    ),
+    dot: (
+      bg: var(--danger-bg-color-badge-solid),
     ),
   ),
 );
@@ -115,11 +136,22 @@ $badge-colors: (
       height: map.get($props, height);
       padding: map.get($props, padding);
       font: map.get($props, font);
-
       border-radius: map.get($props, radius);
+
+      @include global-mod('variant--dot') {
+        min-width: initial;
+        width: map.get($props, dot-size);
+        height: map.get($props, dot-size);
+        border-radius: var(--project-border-radius-max);
+        padding: 0;
+      }
 
       @include global-mod('shape--square') {
         border-radius: 0;
+      }
+
+      @include global-mod('shape--pill') {
+        border-radius: var(--project-border-radius-max);
       }
 
       @include global-mod('shape--circle') {
@@ -145,38 +177,11 @@ $badge-colors: (
             background-color: map.get($props, bg);
             color: map.get($props, text);
             border: rem(1px) solid map.get($props, border);
+          } @else if $variant-name == 'dot' {
+            background-color: map.get($props, bg);
           }
         }
       }
     }
   }
-
-  // :global {
-  //   .badge__label {
-  //   }
-  // }
-
-  // // 1. 상태형: 텍스트 가독성 중심
-  // &.status {
-  //   padding: 4px 8px;
-  //   border-radius: 4px;
-  //   font-size: 12px;
-  // }
-
-  // // 2. 수치형: 숫자/알림 중심
-  // &.count {
-  //   min-width: 18px;
-  //   height: 18px;
-  //   padding: 0 5px;
-  //   border-radius: 10px;
-  //   font-size: 11px;
-  // }
-
-  // // 겹치기 스타일 (아이콘 우측 상단 배치용)
-  // &.overlap {
-  //   position: absolute;
-  //   top: 0;
-  //   right: 0;
-  //   transform: translate(50%, -50%);
-  // }
 }

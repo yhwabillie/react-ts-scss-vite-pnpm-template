@@ -33,7 +33,7 @@ const meta: Meta<typeof Badge> = {
     // --- Layout 카테고리 ---
     shape: {
       control: 'select',
-      options: ['square', 'rounded', 'circle'],
+      options: ['square', 'rounded', 'pill', 'circle', 'dot'],
       description: '배지의 모서리 곡률 및 형태를 설정합니다.',
       table: {
         category: 'Layout',
@@ -117,8 +117,18 @@ export const Sizes: Story = {
           </Badge>
         </GuideCell>
         <GuideCell>
+          <Badge size='sm' shape='pill' color='danger'>
+            +999
+          </Badge>
+        </GuideCell>
+        <GuideCell>
           <Badge size='sm' color='danger' shape='circle'>
             N
+          </Badge>
+        </GuideCell>
+        <GuideCell>
+          <Badge size='sm' color='danger' variant='dot'>
+            신규 알림 있음
           </Badge>
         </GuideCell>
       </GuideGroup>
@@ -134,8 +144,18 @@ export const Sizes: Story = {
           </Badge>
         </GuideCell>
         <GuideCell>
+          <Badge size='md' shape='pill' color='danger'>
+            +999
+          </Badge>
+        </GuideCell>
+        <GuideCell>
           <Badge size='md' color='danger' shape='circle'>
             N
+          </Badge>
+        </GuideCell>
+        <GuideCell>
+          <Badge size='md' color='danger' variant='dot'>
+            신규 알림 있음
           </Badge>
         </GuideCell>
       </GuideGroup>
@@ -151,8 +171,18 @@ export const Sizes: Story = {
           </Badge>
         </GuideCell>
         <GuideCell>
+          <Badge size='lg' shape='pill' color='danger'>
+            +999
+          </Badge>
+        </GuideCell>
+        <GuideCell>
           <Badge size='lg' color='danger' shape='circle'>
             N
+          </Badge>
+        </GuideCell>
+        <GuideCell>
+          <Badge size='lg' color='danger' variant='dot'>
+            신규 알림 있음
           </Badge>
         </GuideCell>
       </GuideGroup>
@@ -262,6 +292,11 @@ export const Variants: Story = {
         <GuideCell caption='Outline'>
           <Badge variant='outline'>공지</Badge>
         </GuideCell>
+        <GuideCell caption='Dot'>
+          <Badge color='danger' variant='dot'>
+            신규 알림 있음
+          </Badge>
+        </GuideCell>
       </GuideGroup>
     </GuideWrapper>
   ),
@@ -287,6 +322,14 @@ export const Shapes: Story = {
           <Badge shape='rounded'>공지</Badge>
           <Badge variant='outline' shape='rounded'>
             공지
+          </Badge>
+        </GuideCell>
+        <GuideCell caption='Pill'>
+          <Badge shape='pill' color='danger'>
+            +999
+          </Badge>
+          <Badge variant='outline' shape='pill' color='danger'>
+            +999
           </Badge>
         </GuideCell>
         <GuideCell caption='Circle'>

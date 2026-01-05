@@ -37,6 +37,9 @@ import ArrowDownWideNarrowIcon from '@/assets/icons/icon-arrow-down-wide-narrow.
 import ArrowUpNarrowWideIcon from '@/assets/icons/icon-arrow-up-narrow-wide.svg?react';
 import MegaphoneIcon from '@/assets/icons/icon-megaphone.svg?react';
 import LockIcon from '@/assets/icons/icon-lock.svg?react';
+import ChevronsLeftIcon from '@/assets/icons/icon-chevrons-left.svg?react';
+import ChevronsRightIcon from '@/assets/icons/icon-chevrons-right.svg?react';
+import EllipsisIcon from '@/assets/icons/icon-ellipsis.svg?react';
 
 const iconMap = {
   search: SearchIcon,
@@ -75,6 +78,9 @@ const iconMap = {
   'arrow-up-narrow-wide': ArrowUpNarrowWideIcon,
   megaphone: MegaphoneIcon,
   lock: LockIcon,
+  'chevrons-left': ChevronsLeftIcon,
+  'chevrons-right': ChevronsRightIcon,
+  ellipsis: EllipsisIcon,
   // 다른 아이콘들도 여기에 추가
 };
 
