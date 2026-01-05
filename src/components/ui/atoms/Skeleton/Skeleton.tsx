@@ -1,4 +1,3 @@
-import React from 'react';
 import Styles from '@/components/ui/atoms/Skeleton/Skeleton.module.scss';
 
 interface SkeletonProps {

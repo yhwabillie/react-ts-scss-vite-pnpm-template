@@ -5,15 +5,15 @@ import clsx from 'clsx';
 interface AccordionProps {
   title: string;
   content: string;
-  children?: AccordionProps[];
+  items?: AccordionProps[];
   isNested?: boolean;
   level?: number; // 제목 수준 (1depth 기본값 h3)
 }
 
 const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
-  ({ title, content, children, isNested = false, level = 3 }, ref) => {
+  ({ title, content, items, isNested = false, level = 3 }, ref) => {
     const [isOpen, setIsOpen] = useState(false);
-    const hasChildren = children && children.length > 0;
+    const hasChildren = items && items.length > 0;
 
     // 웹 접근성을 위한 고유 ID 생성
     const headerId = useId();
@@ -57,10 +57,10 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
             {/* 재귀적 2depth 렌더링: level을 1 증가시켜 전달 */}
             {hasChildren && (
               <div className={Styles['nested-group']}>
-                {children.map((child, index) => (
+                {items.map((item, index) => (
                   <Accordion
-                    key={`${child.title}-${index}`}
-                    {...child}
+                    key={`${item.title}-${index}`}
+                    {...item}
                     isNested={true}
                     level={level + 1}
                   />
