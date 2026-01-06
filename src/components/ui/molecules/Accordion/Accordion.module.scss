@@ -5,111 +5,152 @@
 // accordion sizes
 $accordion-sizes: (
   sm: (
-    header-font: var(--project-typo-AccordionText3-700),
-    header-padding: 0,
-    panel-padding: 0,
-    panel-min-height: rem(54px),
-    radius: 0,
-    content-font: var(--project-typo-AccordionText3-500),
-    content-padding: rem(12px) rem(20px),
-    content-radius: 0,
-    sub-content-font: var(--project-typo-AccordionSubText3-500),
-    trigger-min-height: rem(54px),
-    trigger-padding: 0 rem(20px),
+    width: rem(360px),
+    radius: rem(6px),
+    first-margin: rem(18px) 0 0 0,
+    trigger: (
+      font: var(--project-typo-AccordionText3-700),
+      padding: rem(10px) rem(18px),
+      min-height: rem(44px),
+      icon-size: rem(20px),
+    ),
+    panel: (
+      padding: rem(18px),
+    ),
+    content: (
+      font: var(--project-typo-AccordionText3-500),
+    ),
+    nested: (
+      trigger-font: var(--project-typo-AccordionSubText4-700),
+      trigger-min-height: rem(27px),
+      trigger-padding: rem(10px) rem(16px),
+      content-font: var(--project-typo-AccordionSubText4-500),
+      panel-padding: rem(16px),
+      group-margin: rem(16px) 0 0 0,
+      group-gap: rem(16px),
+      icon-size: rem(18px),
+    ),
   ),
   md: (
-    header-font: var(--project-typo-AccordionText2-700),
-    header-padding: 0,
-    panel-padding: 0,
-    panel-min-height: rem(54px),
-    radius: 0,
-    content-font: var(--project-typo-AccordionText2-500),
-    content-padding: rem(12px) rem(20px),
-    content-radius: 0,
-    sub-content-font: var(--project-typo-AccordionSubText2-500),
-    trigger-min-height: rem(54px),
-    trigger-padding: 0 rem(20px),
+    width: rem(768px),
+    radius: rem(8px),
+    first-margin: rem(16px) 0 0 0,
+    trigger: (
+      font: var(--project-typo-AccordionText2-700),
+      padding: rem(12px) rem(24px),
+      min-height: rem(52px),
+      icon-size: rem(22px),
+    ),
+    panel: (
+      padding: rem(16px) rem(24px),
+    ),
+    content: (
+      font: var(--project-typo-AccordionText2-500),
+    ),
+    nested: (
+      trigger-font: var(--project-typo-AccordionSubText2-700),
+      trigger-min-height: rem(26px),
+      trigger-padding: rem(12px) rem(18px),
+      content-font: var(--project-typo-AccordionSubText2-500),
+      panel-padding: rem(18px),
+      group-margin: rem(18px) 0 0 0,
+      group-gap: rem(18px),
+      icon-size: rem(20px),
+    ),
   ),
   lg: (
-    header-font: var(--project-typo-AccordionText1-700),
-    header-padding: 0,
-    panel-padding: 0,
-    panel-min-height: rem(54px),
-    radius: 0,
-    content-font: var(--project-typo-AccordionText1-500),
-    content-padding: rem(12px) rem(20px),
-    content-radius: 0,
-    sub-content-font: var(--project-typo-AccordionSubText1-500),
-    trigger-min-height: rem(54px),
-    trigger-padding: 0 rem(20px),
+    width: 100%,
+    radius: rem(10px),
+    first-margin: rem(26px) 0 0 0,
+    trigger: (
+      font: var(--project-typo-AccordionText1-700),
+      padding: rem(14px) rem(28px),
+      min-height: rem(60px),
+      icon-size: rem(26px),
+    ),
+    panel: (
+      padding: rem(26px),
+    ),
+    content: (
+      font: var(--project-typo-AccordionText1-500),
+    ),
+    nested: (
+      trigger-font: var(--project-typo-AccordionSubText1-700),
+      trigger-min-height: rem(31px),
+      trigger-padding: rem(14px) rem(20px),
+      content-font: var(--project-typo-AccordionSubText1-500),
+      panel-padding: rem(20px),
+      group-margin: rem(20px) 0 0 0,
+      group-gap: rem(20px),
+      icon-size: rem(22px),
+    ),
   ),
 );
 
 // accordion colors
 $accordion-colors: (
   primary: (
-    header-bg: rgb(217, 239, 248),
-    header-text: #333,
-    panel-bg: rgb(217, 239, 248),
+    header-bg: var(--primary-header-bg-color),
+    header-hover-bg: var(--primary-hover-header-bg-color),
+    header-text: var(--primary-header-text-color),
+    panel-bg: var(--primary-panel-bg-color),
+    nested: (
+      header-bg: var(--primary-nested-header-bg-color),
+      header-hover-bg: var(--primary-nested-hover-header-bg-color),
+      header-text: var(--primary-nested-header-text-color),
+      header-icon: var(--primary-nested-header-icon-color),
+      panel-bg: var(--primary-nested-panel-bg-color),
+    ),
   ),
   secondary: (
-    header-bg: gray,
-    header-text: #333,
-    panel-bg: gray,
+    header-bg: var(--secondary-header-bg-color),
+    header-hover-bg: var(--secondary-hover-header-bg-color),
+    header-text: var(--secondary-header-text-color),
+    panel-bg: var(--secondary-panel-bg-color),
+    nested: (
+      header-bg: var(--secondary-nested-header-bg-color),
+      header-hover-bg: var(--secondary-nested-hover-header-bg-color),
+      header-text: var(--secondary-nested-header-text-color),
+      header-icon: var(--secondary-nested-header-icon-color),
+      panel-bg: var(--secondary-nested-panel-bg-color),
+    ),
   ),
   tertiary: (
-    header-bg: purple,
-    header-text: #333,
-    panel-bg: purple,
+    header-bg: var(--tertiary-header-bg-color),
+    header-hover-bg: var(--tertiary-hover-header-bg-color),
+    header-text: var(--tertiary-header-text-color),
+    panel-bg: var(--tertiary-panel-bg-color),
+    nested: (
+      header-bg: var(--tertiary-nested-header-bg-color),
+      header-hover-bg: var(--tertiary-nested-hover-header-bg-color),
+      header-text: var(--tertiary-nested-header-text-color),
+      header-icon: var(--tertiary-nested-header-icon-color),
+      panel-bg: var(--tertiary-nested-panel-bg-color),
+    ),
   ),
 );
 
 .accordion {
-  width: 100%;
+  // width: 100%;
   display: flex;
   flex-direction: column;
 
-  @include global-mod('accordion__nested') {
-    @each $color-name, $props in $accordion-colors {
-      @include global-mod('color--#{$color-name}') {
-        :global {
-          .accordion__trigger {
-            background-color: lightgray;
-            min-height: rem(48px);
-            padding: rem(12px) rem(18px);
-
-            .accordion__title {
-              font: var(--project-typo-AccordionText3-700);
-            }
-
-            .icon {
-              width: rem(20px);
-              height: rem(20px);
-            }
-          }
-
-          .accordion__content {
-            border-bottom-left-radius: rem(8px);
-            border-bottom-right-radius: rem(8px);
-            font: var(--project-typo-AccordionText3-500);
-          }
-        }
-      }
-    }
-  }
-
   @each $size-name, $props in $accordion-sizes {
-    @include global-mod('size--#{$size-name}') {
-      border-radius: map.get($props, radius);
+    $nested-map: map.get($props, nested);
+    $trigger-map: map.get($props, trigger);
+    $panel-map: map.get($props, panel);
+    $content-map: map.get($props, content);
 
-      @include global-mod('is-first') {
+    @include global-mod('size--#{$size-name}') {
+      @include global-mod('accordion__first') {
+        filter: drop-shadow(0 0.375rem 0.75rem var(--drop-shadow-color-accordion));
+        width: map.get($props, width);
+
         &:global {
           & > .accordion__panel {
             & > .accordion__content-inner {
-              & > .accordion__content:has(~ .accordion__nested-group) {
-                margin: 0 rem(20px);
-                border-radius: rem(8px);
-                font: var(--project-typo-AccordionText2-500);
+              & > .accordion__nested-group {
+                margin: map.get($props, first-margin);
               }
             }
           }
@@ -117,67 +158,113 @@ $accordion-colors: (
       }
 
       :global {
-        .accordion__title {
-          font: map.get($props, header-font);
-          padding: map.get($props, header-padding);
-        }
-
         .accordion__trigger {
-          padding: rem(12px) rem(24px);
-          min-height: rem(58px);
+          padding: map.get($trigger-map, padding);
+          min-height: map.get($trigger-map, min-height);
 
           &[aria-expanded='false'] {
-            border-radius: rem(8px);
+            border-radius: map.get($props, radius);
           }
 
           &[aria-expanded='true'] {
-            border-top-left-radius: rem(8px);
-            border-top-right-radius: rem(8px);
+            border-top-left-radius: map.get($props, radius);
+            border-top-right-radius: map.get($props, radius);
+          }
+
+          .icon {
+            width: map.get($trigger-map, icon-size);
+            height: map.get($trigger-map, icon-size);
           }
         }
 
-        .accordion__panel {
-          padding: map.get($props, panel-padding);
-          border-bottom-left-radius: rem(8px);
-          border-bottom-right-radius: rem(8px);
+        .accordion__title {
+          font: map.get($trigger-map, font);
         }
 
-        .accordion__content-inner {
+        .accordion__panel {
+          padding: map.get($panel-map, padding);
+          border-bottom-left-radius: map.get($props, radius);
+          border-bottom-right-radius: map.get($props, radius);
         }
 
         .accordion__content {
-          min-height: map.get($props, panel-min-height);
-          font: var(--project-typo-AccordionText2-500);
-          padding: map.get($props, content-padding);
-          border-bottom-left-radius: rem(8px);
-          border-bottom-right-radius: rem(8px);
+          font: map.get($content-map, font);
         }
 
+        // 중첩된 스타일
         .accordion__nested-group {
-          display: flex;
-          flex-direction: column;
-          gap: rem(10px);
-          margin-top: rem(10px);
-          padding: 0 rem(20px) rem(20px);
+          margin: map.get($nested-map, group-margin);
+          gap: map.get($nested-map, group-gap);
+
+          .accordion__nested {
+            .accordion__trigger {
+              min-height: map.get($nested-map, trigger-min-height);
+              padding: map.get($nested-map, trigger-padding);
+            }
+
+            .accordion__title {
+              font: map.get($nested-map, trigger-font);
+            }
+
+            .icon {
+              width: map.get($nested-map, icon-size);
+              height: map.get($nested-map, icon-size);
+            }
+
+            .accordion__panel {
+              padding: map.get($nested-map, panel-padding);
+            }
+
+            .accordion__content {
+              font: map.get($nested-map, content-font);
+            }
+          }
         }
       }
     }
   }
 
   @each $color-name, $props in $accordion-colors {
+    $nested-map: map.get($props, nested);
+
     @include global-mod('color--#{$color-name}') {
       :global {
         .accordion__trigger {
           background-color: map.get($props, header-bg);
           color: map.get($props, header-text);
+          transition: all 0.2s ease;
+
+          &:hover {
+            background-color: map.get($props, header-hover-bg);
+          }
+        }
+
+        .icon {
+          color: map.get($props, header-text);
         }
 
         .accordion__panel {
-          background-color: rgb(217, 239, 248);
+          background-color: map.get($props, panel-bg);
         }
 
-        .accordion__content {
-          background-color: rgb(246, 246, 246);
+        // 중첩된 스타일
+        .accordion__nested {
+          .accordion__trigger {
+            background-color: map.get($nested-map, header-bg);
+            color: map.get($nested-map, header-text);
+
+            &:hover {
+              background-color: map.get($nested-map, header-hover-bg);
+            }
+          }
+
+          .icon {
+            color: map.get($nested-map, header-icon);
+          }
+
+          .accordion__panel {
+            background-color: map.get($nested-map, panel-bg);
+          }
         }
       }
     }
@@ -205,9 +292,6 @@ $accordion-colors: (
       word-break: keep-all;
     }
 
-    .accordion__panel {
-    }
-
     .accordion__content-inner {
       display: flex;
       flex-direction: column;
@@ -219,6 +303,8 @@ $accordion-colors: (
     }
 
     .accordion__nested-group {
+      display: flex;
+      flex-direction: column;
     }
   }
 }

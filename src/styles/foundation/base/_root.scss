@@ -23,6 +23,9 @@
   --bg-color-guide: #ecf4ef;
   --stroke-color-guide: #15803d;
 
+  // accordion
+  --drop-shadow-color-accordion: rgba(0, 0, 0, 0.1);
+
   // data table
   --outer-stroke-color-data-table: #ddd;
   --table-stroke-color-data-table: #f0f0f0;
@@ -807,6 +810,9 @@
   --bg-color-guide: rgba(45, 252, 82, 0.05);
   --stroke-color-guide: #2dfc52;
 
+  // accordion
+  --drop-shadow-color-accordion: rgba(0, 0, 0, 0.4);
+
   // data table
   --outer-stroke-color-data-table: #333639;
   --table-stroke-color-data-table: #25282a;
@@ -1575,6 +1581,17 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  // accordion
+  --primary-header-bg-color: #0052cc;
+  --primary-hover-header-bg-color: #0041a3;
+  --primary-header-text-color: #ffffff;
+  --primary-panel-bg-color: #f8f9fa;
+  --primary-nested-header-bg-color: #dee2e6;
+  --primary-nested-hover-header-bg-color: #ced4da;
+  --primary-nested-header-text-color: #212529;
+  --primary-nested-header-icon-color: #212529;
+  --primary-nested-panel-bg-color: #ffffff;
+
   // pagination
   --primary-current-page-text-color: #0052cc;
 
@@ -1791,6 +1808,18 @@
   --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-link: #0052cc;
 
+  // accordion
+  --secondary-header-bg-color: #475569;
+  --secondary-hover-header-bg-color: #334155;
+  --secondary-header-text-color: #ffffff;
+  --secondary-panel-bg-color: #f8f9fa;
+
+  --secondary-nested-header-bg-color: #dee2e6;
+  --secondary-nested-hover-header-bg-color: #ced4da;
+  --secondary-nested-header-text-color: #212529;
+  --secondary-nested-header-icon-color: #212529;
+  --secondary-nested-panel-bg-color: #ffffff;
+
   // pagination
   --secondary-current-page-text-color: #475569;
 
@@ -2003,6 +2032,18 @@
 
   --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-link: #475569;
+
+  // tertiary
+  --tertiary-header-bg-color: #7c3aed;
+  --tertiary-hover-header-bg-color: #6d28d9;
+  --tertiary-header-text-color: #ffffff;
+  --tertiary-panel-bg-color: #f8f9fa;
+
+  --tertiary-nested-header-bg-color: #dee2e6;
+  --tertiary-nested-hover-header-bg-color: #ced4da;
+  --tertiary-nested-header-text-color: #212529;
+  --tertiary-nested-header-icon-color: #212529;
+  --tertiary-nested-panel-bg-color: #ffffff;
 
   // pagination
   --tertiary-current-page-text-color: #7c3aed;
@@ -2260,6 +2301,17 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    // accordion
+    --primary-header-bg-color: #1a73e8;
+    --primary-hover-header-bg-color: #1558b5;
+    --primary-header-text-color: #ffffff;
+    --primary-panel-bg-color: #2c2c2c;
+    --primary-nested-header-bg-color: #3d3d3d;
+    --primary-nested-hover-header-bg-color: #4d4d4d;
+    --primary-nested-header-text-color: #f1f3f5;
+    --primary-nested-header-icon-color: #dee2e6;
+    --primary-nested-panel-bg-color: #212121;
+
     // pagination
     --primary-current-page-text-color: #66b2ff;
 
@@ -2476,6 +2528,18 @@
     --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
     --primary-active-text-color-btn-link: #60a5fa;
 
+    // accordion - secondary
+    --secondary-header-bg-color: #64748b;
+    --secondary-hover-header-bg-color: #475569;
+    --secondary-header-text-color: #ffffff;
+    --secondary-panel-bg-color: #2c2c2c;
+
+    --secondary-nested-header-bg-color: #3d3d3d;
+    --secondary-nested-hover-header-bg-color: #4d4d4d;
+    --secondary-nested-header-text-color: #f1f3f5;
+    --secondary-nested-header-icon-color: #dee2e6;
+    --secondary-nested-panel-bg-color: #212121;
+
     // pagination
     --secondary-current-page-text-color: #38bdf8;
 
@@ -2691,6 +2755,18 @@
 
     --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
+
+    // accordion
+    --tertiary-header-bg-color: #8357e5;
+    --tertiary-hover-header-bg-color: #7048c6;
+    --tertiary-header-text-color: #ffffff;
+    --tertiary-panel-bg-color: #2c2c2c;
+
+    --tertiary-nested-header-bg-color: #3d3d3d;
+    --tertiary-nested-hover-header-bg-color: #4d4d4d;
+    --tertiary-nested-header-text-color: #f1f3f5;
+    --tertiary-nested-header-icon-color: #dee2e6;
+    --tertiary-nested-panel-bg-color: #212121;
 
     // pagination
     --tertiary-current-page-text-color: #a78bfa;

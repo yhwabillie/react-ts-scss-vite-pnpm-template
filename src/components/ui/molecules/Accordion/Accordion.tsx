@@ -46,7 +46,7 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
         ref={ref}
         className={clsx(
           `${Styles['accordion']} size--${size} color--${color}`,
-          isNested ? 'accordion__nested' : 'is-first',
+          isNested ? 'accordion__nested' : 'accordion__first',
         )}
       >
         <HeadingTag className='accordion__header'>
