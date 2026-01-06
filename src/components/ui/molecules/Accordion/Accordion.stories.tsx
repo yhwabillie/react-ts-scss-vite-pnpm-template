@@ -265,19 +265,32 @@ export const States: Story = {
   render: args => (
     <GuideWrapper>
       <GuideGroup direction='column'>
-        <GuideCell caption='Hover' style={{ width: '100%' }}>
-          <Accordion {...args} title='의사 호버 상태 (자동)' />
+        {/* Hover 상태 확인 */}
+        <GuideCell caption='Hover State' style={{ width: '100%' }}>
+          <div className='pseudo-hover-wrapper'>
+            <Accordion {...args} title='마우스 호버 상태 (Hover)' />
+          </div>
+        </GuideCell>
+
+        {/* Active / Focus 상태 확인 */}
+        <GuideCell caption='Active / Focus State' style={{ width: '100%' }}>
+          <div className='pseudo-active-wrapper'>
+            <Accordion {...args} title='클릭 또는 포커스 상태 (Active)' />
+          </div>
         </GuideCell>
       </GuideGroup>
     </GuideWrapper>
   ),
   parameters: {
     pseudo: {
-      hover: true,
+      hover: '.pseudo-hover-wrapper button',
+      active: '.pseudo-active-wrapper button',
+      focusVisible: '.pseudo-active-wrapper button', // 키보드 접근성 확인용
     },
   },
   args: {
     ...Base.args,
+    defaultOpen: false, // 상태 확인을 위해 닫힌 상태를 기본으로 설정
   },
 };
 

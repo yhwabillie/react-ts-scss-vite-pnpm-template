@@ -1581,6 +1581,25 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  // tabs
+  --primary-bg-color-tabs-solid: #ffffff;
+  --primary-stroke-color-tabs-solid: #ddd;
+  --primary-active-stroke-color-tabs-solid: #0052cc;
+  --primary-active-bg-color-tabs-solid: #0052cc;
+  --primary-active-text-color-tabs-solid: #ffffff;
+  --primary-hover-bg-color-tabs-solid: rgba(0, 82, 204, 0.1);
+
+  --primary-stroke-color-tabs-outline: #0052cc;
+  --primary-active-text-color-tabs-outline: #0052cc;
+  --primary-bg-color-tabs-outline: #ffffff;
+  --primary-after-stroke-color-tabs-outline: #ffffff;
+  --primary-hover-bg-color-tabs-outline: rgba(0, 82, 204, 0.1);
+
+  --primary-stroke-bg-color-tabs-underline: #ddd;
+  --primary-active-stroke-color-tabs-underline: #0052cc;
+  --primary-active-text-color-tabs-underline: #0052cc;
+  --primary-hover-bg-color-tabs-underline: rgba(0, 82, 204, 0.1);
+
   // accordion
   --primary-header-bg-color: #0052cc;
   --primary-hover-header-bg-color: #0041a3;
@@ -1808,6 +1827,25 @@
   --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-link: #0052cc;
 
+  // tabs
+  --secondary-bg-color-tabs-solid: #ffffff;
+  --secondary-stroke-color-tabs-solid: #ddd;
+  --secondary-active-stroke-color-tabs-solid: #475569;
+  --secondary-active-bg-color-tabs-solid: #475569;
+  --secondary-active-text-color-tabs-solid: #ffffff;
+  --secondary-hover-bg-color-tabs-solid: rgba(203, 213, 225, 0.3);
+
+  --secondary-stroke-color-tabs-outline: #475569;
+  --secondary-active-text-color-tabs-outline: #475569;
+  --secondary-bg-color-tabs-outline: #ffffff;
+  --secondary-after-stroke-color-tabs-outline: #ffffff;
+  --secondary-hover-bg-color-tabs-outline: rgba(203, 213, 225, 0.3);
+
+  --secondary-stroke-bg-color-tabs-underline: #ddd;
+  --secondary-active-stroke-color-tabs-underline: #475569;
+  --secondary-active-text-color-tabs-underline: #475569;
+  --secondary-hover-bg-color-tabs-underline: rgba(203, 213, 225, 0.3);
+
   // accordion
   --secondary-header-bg-color: #475569;
   --secondary-hover-header-bg-color: #334155;
@@ -2033,7 +2071,26 @@
   --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-link: #475569;
 
-  // tertiary
+  // tabs
+  --tertiary-bg-color-tabs-solid: #ffffff;
+  --tertiary-stroke-color-tabs-solid: #ddd;
+  --tertiary-active-stroke-color-tabs-solid: #7c3aed;
+  --tertiary-active-bg-color-tabs-solid: #7c3aed;
+  --tertiary-active-text-color-tabs-solid: #ffffff;
+  --tertiary-hover-bg-color-tabs-solid: rgba(124, 58, 237, 0.08);
+
+  --tertiary-stroke-color-tabs-outline: #94a3b8;
+  --tertiary-active-text-color-tabs-outline: #7c3aed;
+  --tertiary-bg-color-tabs-outline: #ffffff;
+  --tertiary-after-stroke-color-tabs-outline: #ffffff;
+  --tertiary-hover-bg-color-tabs-outline: rgba(124, 58, 237, 0.08);
+
+  --tertiary-stroke-bg-color-tabs-underline: #ddd;
+  --tertiary-active-stroke-color-tabs-underline: #7c3aed;
+  --tertiary-active-text-color-tabs-underline: #7c3aed;
+  --tertiary-hover-bg-color-tabs-underline: rgba(124, 58, 237, 0.08);
+
+  // accordion
   --tertiary-header-bg-color: #7c3aed;
   --tertiary-hover-header-bg-color: #6d28d9;
   --tertiary-header-text-color: #ffffff;
@@ -2301,6 +2358,25 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    // tabs
+    --primary-bg-color-tabs-solid: #1a1a1a;
+    --primary-stroke-color-tabs-solid: #444444;
+    --primary-active-stroke-color-tabs-solid: #0060df;
+    --primary-active-bg-color-tabs-solid: #0060df;
+    --primary-active-text-color-tabs-solid: #ffffff;
+    --primary-hover-bg-color-tabs-solid: rgba(77, 148, 255, 0.15);
+
+    --primary-stroke-color-tabs-outline: #4d94ff;
+    --primary-active-text-color-tabs-outline: #4d94ff;
+    --primary-bg-color-tabs-outline: #121212;
+    --primary-after-stroke-color-tabs-outline: #121212;
+    --primary-hover-bg-color-tabs-outline: rgba(77, 148, 255, 0.15);
+
+    --primary-stroke-bg-color-tabs-underline: #333333;
+    --primary-active-stroke-color-tabs-underline: #4d94ff;
+    --primary-active-text-color-tabs-underline: #4d94ff;
+    --primary-hover-bg-color-tabs-underline: rgba(77, 148, 255, 0.15);
+
     // accordion
     --primary-header-bg-color: #1a73e8;
     --primary-hover-header-bg-color: #1558b5;
@@ -2527,6 +2603,25 @@
 
     --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
     --primary-active-text-color-btn-link: #60a5fa;
+
+    // tabs
+    --secondary-bg-color-tabs-solid: #2d3748;
+    --secondary-stroke-color-tabs-solid: #4a5568;
+    --secondary-active-stroke-color-tabs-solid: #5a6a7e;
+    --secondary-active-bg-color-tabs-solid: #5a6a7e;
+    --secondary-active-text-color-tabs-solid: #ffffff;
+    --secondary-hover-bg-color-tabs-solid: rgba(148, 163, 184, 0.2);
+
+    --secondary-stroke-color-tabs-outline: #94a3b8;
+    --secondary-active-text-color-tabs-outline: #94a3b8;
+    --secondary-bg-color-tabs-outline: #121212;
+    --secondary-after-stroke-color-tabs-outline: #121212;
+    --secondary-hover-bg-color-tabs-outline: rgba(148, 163, 184, 0.15);
+
+    --secondary-stroke-bg-color-tabs-underline: #334155;
+    --secondary-active-stroke-color-tabs-underline: #94a3b8;
+    --secondary-active-text-color-tabs-underline: #94a3b8;
+    --secondary-hover-bg-color-tabs-underline: rgba(148, 163, 184, 0.1);
 
     // accordion - secondary
     --secondary-header-bg-color: #64748b;
@@ -2755,6 +2850,25 @@
 
     --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
+
+    // tabs
+    --tertiary-bg-color-tabs-solid: #1e1b4b;
+    --tertiary-stroke-color-tabs-solid: #4c1d95;
+    --tertiary-active-stroke-color-tabs-solid: #7c3aed;
+    --tertiary-active-bg-color-tabs-solid: #7c3aed;
+    --tertiary-active-text-color-tabs-solid: #ffffff;
+    --tertiary-hover-bg-color-tabs-solid: rgba(167, 139, 250, 0.15);
+
+    --tertiary-stroke-color-tabs-outline: #a78bfa;
+    --tertiary-active-text-color-tabs-outline: #a78bfa;
+    --tertiary-bg-color-tabs-outline: #121212;
+    --tertiary-after-stroke-color-tabs-outline: #121212;
+    --tertiary-hover-bg-color-tabs-outline: rgba(167, 139, 250, 0.15);
+
+    --tertiary-stroke-bg-color-tabs-underline: #312e81;
+    --tertiary-active-stroke-color-tabs-underline: #a78bfa;
+    --tertiary-active-text-color-tabs-underline: #a78bfa;
+    --tertiary-hover-bg-color-tabs-underline: rgba(167, 139, 250, 0.12);
 
     // accordion
     --tertiary-header-bg-color: #8357e5;
