@@ -744,15 +744,15 @@ function App() {
       <section>
         <Breadcrumbs items={breadcrumbData} separator='/' />
       </section>
-      <section style={{ width: '500px', margin: 'auto' }}>
+
+      {/* <section style={{ width: '500px', margin: 'auto' }}>
         <Tabs items={tabData} defaultIndex={0} />
       </section>
       <section>
         {accordionData.map(item => (
           <Accordion key={item.title} {...item} />
         ))}
-      </section>
-
+      </section> */}
       {/* <section>
         <Badge variant='outline' color='success'>
           성공

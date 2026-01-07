@@ -40,6 +40,9 @@ import LockIcon from '@/assets/icons/icon-lock.svg?react';
 import ChevronsLeftIcon from '@/assets/icons/icon-chevrons-left.svg?react';
 import ChevronsRightIcon from '@/assets/icons/icon-chevrons-right.svg?react';
 import EllipsisIcon from '@/assets/icons/icon-ellipsis.svg?react';
+import DownloadIcon from '@/assets/icons/icon-download.svg?react';
+import SendIcon from '@/assets/icons/icon-send.svg?react';
+import ShareIcon from '@/assets/icons/icon-share.svg?react';
 
 const iconMap = {
   search: SearchIcon,
@@ -81,6 +84,9 @@ const iconMap = {
   'chevrons-left': ChevronsLeftIcon,
   'chevrons-right': ChevronsRightIcon,
   ellipsis: EllipsisIcon,
+  download: DownloadIcon,
+  send: SendIcon,
+  share: ShareIcon,
   // 다른 아이콘들도 여기에 추가
 };
 

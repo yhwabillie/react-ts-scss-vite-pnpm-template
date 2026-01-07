@@ -3,66 +3,294 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
+$chip-sizes: (
+  sm: (
+    height: rem(28px),
+    padding: 0 rem(12px),
+    font: var(--project-typo-ChipText3-500),
+    with-icon-padding: 0 rem(6px) 0 rem(14px),
+    radius: rem(5px),
+    gap: rem(6px),
+    icon-size: rem(12px),
+    delete-btn-size: rem(18px),
+  ),
+  md: (
+    height: rem(32px),
+    padding: 0 rem(14px),
+    font: var(--project-typo-ChipText2-500),
+    with-icon-padding: 0 rem(8px) 0 rem(16px),
+    radius: rem(5px),
+    gap: rem(8px),
+    icon-size: rem(14px),
+    delete-btn-size: rem(20px),
+  ),
+);
+
+$chip-colors: (
+  primary: (
+    solid: (
+      bg: var(--primary-bg-color-chip-solid),
+      label: var(--primary-text-color-chip-solid),
+      icon: var(--primary-icon-color-chip-solid),
+      hover-bg: var(--primary-hover-bg-color-chip-solid),
+      delete-btn-bg: var(--primary-delete-btn-bg-color-chip-solid),
+      delete-btn-hover-bg: var(--primary-hover-delete-btn-bg-color-chip-solid),
+      delete-btn-icon: var(--primary-delete-btn-icon-color-chip-solid),
+      disabled: (
+        bg: var(--disabled-bg-color-chip),
+        label: var(--disabled-text-color-chip),
+      ),
+    ),
+    outline: (
+      bg: var(--primary-bg-color-chip-outline),
+      label: var(--primary-text-color-chip-outline),
+      icon: var(--primary-icon-color-chip-outline),
+      border: var(--primary-stroke-color-chip-outline),
+      hover-bg: var(--primary-hover-bg-color-chip-outline),
+      delete-btn-bg: var(--primary-delete-btn-bg-color-chip-outline),
+      delete-btn-hover-bg: var(--primary-hover-delete-btn-bg-color-chip-outline),
+      delete-btn-icon: var(--primary-delete-btn-icon-color-chip-outline),
+      disabled: (
+        bg: var(--disabled-bg-color-chip),
+        label: var(--disabled-text-color-chip),
+        border: var(--disabled-stroke-color-chip),
+      ),
+    ),
+  ),
+  secondary: (
+    solid: (
+      bg: var(--secondary-bg-color-chip-solid),
+      label: var(--secondary-text-color-chip-solid),
+      icon: var(--secondary-icon-color-chip-solid),
+      hover-bg: var(--secondary-hover-bg-color-chip-solid),
+      delete-btn-bg: var(--secondary-delete-btn-bg-color-chip-solid),
+      delete-btn-hover-bg: var(--secondary-hover-delete-btn-bg-color-chip-solid),
+      delete-btn-icon: var(--secondary-delete-btn-icon-color-chip-solid),
+      disabled: (
+        bg: var(--disabled-bg-color-chip),
+        label: var(--disabled-text-color-chip),
+      ),
+    ),
+    outline: (
+      bg: var(--secondary-bg-color-chip-outline),
+      label: var(--secondary-text-color-chip-outline),
+      icon: var(--secondary-icon-color-chip-outline),
+      border: var(--secondary-stroke-color-chip-outline),
+      hover-bg: var(--secondary-hover-bg-color-chip-outline),
+      delete-btn-bg: var(--secondary-delete-btn-bg-color-chip-outline),
+      delete-btn-hover-bg: var(--secondary-hover-delete-btn-bg-color-chip-outline),
+      delete-btn-icon: var(--secondary-delete-btn-icon-color-chip-outline),
+      disabled: (
+        bg: var(--disabled-bg-color-chip),
+        label: var(--disabled-text-color-chip),
+        border: var(--disabled-stroke-color-chip),
+      ),
+    ),
+  ),
+  tertiary: (
+    solid: (
+      bg: var(--tertiary-bg-color-chip-solid),
+      label: var(--tertiary-text-color-chip-solid),
+      icon: var(--tertiary-icon-color-chip-solid),
+      hover-bg: var(--tertiary-hover-bg-color-chip-solid),
+      delete-btn-bg: var(--tertiary-delete-btn-bg-color-chip-solid),
+      delete-btn-hover-bg: var(--tertiary-hover-delete-btn-bg-color-chip-solid),
+      delete-btn-icon: var(--tertiary-delete-btn-icon-color-chip-solid),
+      disabled: (
+        bg: var(--disabled-bg-color-chip),
+        label: var(--disabled-text-color-chip),
+      ),
+    ),
+    outline: (
+      bg: var(--tertiary-bg-color-chip-outline),
+      label: var(--tertiary-text-color-chip-outline),
+      icon: var(--tertiary-icon-color-chip-outline),
+      border: var(--tertiary-stroke-color-chip-outline),
+      hover-bg: var(--tertiary-hover-bg-color-chip-outline),
+      delete-btn-bg: var(--tertiary-delete-btn-bg-color-chip-outline),
+      delete-btn-hover-bg: var(--tertiary-hover-delete-btn-bg-color-chip-outline),
+      delete-btn-icon: var(--tertiary-delete-btn-icon-color-chip-outline),
+      disabled: (
+        bg: var(--disabled-bg-color-chip),
+        label: var(--disabled-text-color-chip),
+        border: var(--disabled-stroke-color-chip),
+      ),
+    ),
+  ),
+);
+
 .chip {
+  width: max-content;
   display: inline-flex;
+  justify-content: center;
   align-items: center;
-  height: 32px;
-  padding: 0 12px;
-  border-radius: 16px;
-  background-color: #f1f3f5;
-  color: #495057;
-  font-size: 14px;
-  cursor: default;
-  user-select: none;
-  transition: all 0.2s;
-  border: 1px solid transparent;
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
+  transition: all 0.2s ease;
 
-  // 삭제될 때 클래스를 부여하거나 라이브러리를 쓰면 더 정교해집니다.
-  &:active {
-    transform: scale(0.95);
-  }
+  @each $size-name, $size-map in $chip-sizes {
+    @include global-mod('size--#{$size-name}') {
+      height: map.get($size-map, height);
+      padding: map.get($size-map, padding);
+      gap: map.get($size-map, gap);
 
-  &.clickable {
-    cursor: pointer;
-    &:hover,
-    &:focus {
-      background-color: #e9ecef;
+      @include global-mod('shape--square') {
+        border-radius: 0px;
+      }
+      @include global-mod('shape--rounded') {
+        border-radius: map.get($size-map, radius);
+      }
+      @include global-mod('shape--pill') {
+        border-radius: var(--project-border-radius-max);
+      }
+
+      @include global-mod('is-input') {
+        padding: map.get($size-map, with-icon-padding);
+      }
+
+      :global {
+        .chip__label {
+          width: max-content;
+          flex: 1 1 auto;
+          font: map.get($size-map, font);
+        }
+
+        .icon {
+          flex: 0 0 auto;
+          width: map.get($size-map, icon-size);
+          height: map.get($size-map, icon-size);
+        }
+
+        .chip__delete-btn {
+          border-radius: var(--project-border-radius-max);
+          width: map.get($size-map, delete-btn-size);
+          height: map.get($size-map, delete-btn-size);
+        }
+      }
     }
   }
 
-  &.selected {
-    background-color: #e7f5ff;
-    color: #228be6;
-    border-color: #228be6;
-    font-weight: 600;
+  @each $color-name, $color-map in $chip-colors {
+    // color
+    @include global-mod('color--#{$color-name}') {
+      @each $variant-name, $variant-map in $color-map {
+        // variant
+        @include global-mod('variant--#{$variant-name}') {
+          @if $variant-name == 'solid' {
+            background-color: map.get($variant-map, bg);
+
+            @at-root button#{&},
+              a#{&} {
+              &:hover {
+                background-color: map.get($variant-map, hover-bg);
+              }
+
+              &:active {
+                transform: scale(0.95);
+              }
+            }
+
+            @at-root button#{&} {
+              $disabled-map: map.get($variant-map, disabled);
+
+              &:disabled {
+                background-color: map.get($disabled-map, bg);
+                cursor: not-allowed;
+
+                :global(.chip__label) {
+                  color: map.get($disabled-map, label);
+                }
+
+                :global(.icon) {
+                  color: map.get($disabled-map, label);
+                }
+              }
+            }
+
+            :global {
+              .chip__label {
+                color: map.get($variant-map, label);
+              }
+
+              .icon {
+                color: map.get($variant-map, icon);
+              }
+
+              .chip__delete-btn {
+                background: map.get($variant-map, delete-btn-bg);
+
+                &:hover {
+                  background: map.get($variant-map, delete-btn-hover-bg);
+                }
+                .icon {
+                  color: map.get($variant-map, delete-btn-icon);
+                }
+              }
+            }
+          } @else if $variant-name == 'outline' {
+            border: rem(1px) solid map.get($variant-map, border);
+            background-color: map.get($variant-map, bg);
+
+            @at-root button#{&},
+              a#{&} {
+              &:hover {
+                background-color: map.get($variant-map, hover-bg);
+              }
+
+              &:active {
+                transform: scale(0.95);
+              }
+            }
+
+            @at-root button#{&} {
+              $disabled-map: map.get($variant-map, disabled);
+
+              &:disabled {
+                background-color: map.get($disabled-map, bg);
+                border-color: map.get($disabled-map, border);
+                cursor: not-allowed;
+
+                :global(.chip__label) {
+                  color: map.get($disabled-map, label);
+                }
+
+                :global(.icon) {
+                  color: map.get($disabled-map, label);
+                }
+              }
+            }
+
+            :global {
+              .chip__label {
+                color: map.get($variant-map, label);
+              }
+
+              .icon {
+                color: map.get($variant-map, icon);
+              }
+
+              .chip__delete-btn {
+                background: map.get($variant-map, delete-btn-bg);
+
+                &:hover {
+                  background: map.get($variant-map, delete-btn-hover-bg);
+                }
+
+                .icon {
+                  color: map.get($variant-map, delete-btn-icon);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
-  .icon {
-    margin-right: 6px;
-    display: flex;
-  }
-
-  .delete-button {
-    margin-left: 6px;
-    padding: 0;
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: #adb5bd;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.05);
-      color: #fa5252;
+  :global {
+    .chip__delete-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s ease;
     }
   }
 }

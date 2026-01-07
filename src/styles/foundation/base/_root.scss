@@ -12,7 +12,7 @@
   --color-text-primary: #191f28; // 텍스트 컬러 (접근성 확보)
 
   // focus ring
-  --focus-ring-color: #2466eb;
+  --focus-ring-color: #ffa94d;
 
   // scroll
   --scrollbar-thumb-bg-color: rgba(55, 55, 55, 0.4);
@@ -727,6 +727,10 @@
   --readonly-placeholder-color-textarea: #757575;
 
   // disabled
+  --disabled-bg-color-chip: #e0e0e0;
+  --disabled-text-color-chip: #9e9e9e;
+  --disabled-stroke-color-chip: #9e9e9e;
+
   --disabled-dropzone-bg-color-file-picker: #eeeeee;
   --disabled-dropzone-stroke-color-file-picker: #9e9e9e;
   --disabled-dropzone-hint-text-color-file-picker: #9e9e9e;
@@ -1519,6 +1523,10 @@
   --readonly-placeholder-color-textarea: #64748b;
 
   // disabled
+  --disabled-bg-color-chip: #2c2c2c;
+  --disabled-text-color-chip: #757575;
+  --disabled-stroke-color-chip: #424242;
+
   --disabled-dropzone-bg-color-file-picker: #1a1a1a;
   --disabled-dropzone-stroke-color-file-picker: #333639;
   --disabled-dropzone-hint-text-color-file-picker: #757575;
@@ -1581,6 +1589,24 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  // chips
+  --primary-bg-color-chip-solid: #0052cc;
+  --primary-text-color-chip-solid: #ffffff;
+  --primary-icon-color-chip-solid: #ffffff;
+  --primary-hover-bg-color-chip-solid: #0041a3;
+  --primary-delete-btn-bg-color-chip-solid: #f2f2f2;
+  --primary-hover-delete-btn-bg-color-chip-solid: #dbdbdb;
+  --primary-delete-btn-icon-color-chip-solid: #333333;
+
+  --primary-bg-color-chip-outline: transparent;
+  --primary-text-color-chip-outline: #0052cc;
+  --primary-icon-color-chip-outline: #0052cc;
+  --primary-stroke-color-chip-outline: #0052cc;
+  --primary-hover-bg-color-chip-outline: rgba(0, 82, 204, 0.1);
+  --primary-delete-btn-bg-color-chip-outline: #333333;
+  --primary-hover-delete-btn-bg-color-chip-outline: #525252;
+  --primary-delete-btn-icon-color-chip-outline: #f2f2f2;
+
   // tabs
   --primary-bg-color-tabs-solid: #ffffff;
   --primary-stroke-color-tabs-solid: #ddd;
@@ -1827,6 +1853,24 @@
   --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-link: #0052cc;
 
+  // chips
+  --secondary-bg-color-chip-solid: #475569;
+  --secondary-text-color-chip-solid: #ffffff;
+  --secondary-icon-color-chip-solid: #ffffff;
+  --secondary-hover-bg-color-chip-solid: #334155;
+  --secondary-delete-btn-bg-color-chip-solid: #f2f2f2;
+  --secondary-hover-delete-btn-bg-color-chip-solid: #dbdbdb;
+  --secondary-delete-btn-icon-color-chip-solid: #333333;
+
+  --secondary-bg-color-chip-outline: transparent;
+  --secondary-text-color-chip-outline: #475569;
+  --secondary-icon-color-chip-outline: #475569;
+  --secondary-stroke-color-chip-outline: #475569;
+  --secondary-hover-bg-color-chip-outline: rgba(203, 213, 225, 0.3);
+  --secondary-delete-btn-bg-color-chip-outline: #333333;
+  --secondary-hover-delete-btn-bg-color-chip-outline: #525252;
+  --secondary-delete-btn-icon-color-chip-outline: #f2f2f2;
+
   // tabs
   --secondary-bg-color-tabs-solid: #ffffff;
   --secondary-stroke-color-tabs-solid: #ddd;
@@ -2070,6 +2114,24 @@
 
   --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-link: #475569;
+
+  // chips
+  --tertiary-bg-color-chip-solid: #7c3aed;
+  --tertiary-text-color-chip-solid: #ffffff;
+  --tertiary-icon-color-chip-solid: #ffffff;
+  --tertiary-hover-bg-color-chip-solid: #6d28d9;
+  --tertiary-delete-btn-bg-color-chip-solid: #f2f2f2;
+  --tertiary-hover-delete-btn-bg-color-chip-solid: #dbdbdb;
+  --tertiary-delete-btn-icon-color-chip-solid: #333333;
+
+  --tertiary-bg-color-chip-outline: transparent;
+  --tertiary-text-color-chip-outline: #7c3aed;
+  --tertiary-icon-color-chip-outline: #7c3aed;
+  --tertiary-stroke-color-chip-outline: #7c3aed;
+  --tertiary-hover-bg-color-chip-outline: rgba(124, 58, 237, 0.08);
+  --tertiary-delete-btn-bg-color-chip-outline: #333333;
+  --tertiary-hover-delete-btn-bg-color-chip-outline: #454545;
+  --tertiary-delete-btn-icon-color-chip-outline: #f2f2f2;
 
   // tabs
   --tertiary-bg-color-tabs-solid: #ffffff;
@@ -2358,6 +2420,24 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    // chips
+    --primary-bg-color-chip-solid: #4d94ff;
+    --primary-text-color-chip-solid: #000000;
+    --primary-icon-color-chip-solid: #000000;
+    --primary-hover-bg-color-chip-solid: #70a9ff;
+    --primary-delete-btn-bg-color-chip-solid: rgba(0, 0, 0, 0.2);
+    --primary-hover-delete-btn-bg-color-chip-solid: rgba(0, 0, 0, 0.4);
+    --primary-delete-btn-icon-color-chip-solid: #000000;
+
+    --primary-bg-color-chip-outline: transparent;
+    --primary-text-color-chip-outline: #66a3ff;
+    --primary-icon-color-chip-outline: #66a3ff;
+    --primary-stroke-color-chip-outline: #66a3ff;
+    --primary-hover-bg-color-chip-outline: rgba(102, 163, 255, 0.15);
+    --primary-delete-btn-bg-color-chip-outline: #f2f2f2;
+    --primary-hover-delete-btn-bg-color-chip-outline: #dbdbdb;
+    --primary-delete-btn-icon-color-chip-outline: #121212;
+
     // tabs
     --primary-bg-color-tabs-solid: #1a1a1a;
     --primary-stroke-color-tabs-solid: #444444;
@@ -2603,6 +2683,24 @@
 
     --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
     --primary-active-text-color-btn-link: #60a5fa;
+
+    // chips
+    --secondary-bg-color-chip-solid: #94a3b8;
+    --secondary-text-color-chip-solid: #0f172a;
+    --secondary-icon-color-chip-solid: #0f172a;
+    --secondary-hover-bg-color-chip-solid: #cbd5e1;
+    --secondary-delete-btn-bg-color-chip-solid: rgba(0, 0, 0, 0.2);
+    --secondary-hover-delete-btn-bg-color-chip-solid: rgba(0, 0, 0, 0.4);
+    --secondary-delete-btn-icon-color-chip-solid: #0f172a;
+
+    --secondary-bg-color-chip-outline: transparent;
+    --secondary-text-color-chip-outline: #94a3b8;
+    --secondary-icon-color-chip-outline: #94a3b8;
+    --secondary-stroke-color-chip-outline: #94a3b8;
+    --secondary-hover-bg-color-chip-outline: rgba(148, 163, 184, 0.15);
+    --secondary-delete-btn-bg-color-chip-outline: #f1f5f9;
+    --secondary-hover-delete-btn-bg-color-chip-outline: #e2e8f0;
+    --secondary-delete-btn-icon-color-chip-outline: #0f172a;
 
     // tabs
     --secondary-bg-color-tabs-solid: #2d3748;
@@ -2850,6 +2948,24 @@
 
     --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
+
+    // chips
+    --tertiary-bg-color-chip-solid: #a78bfa;
+    --tertiary-text-color-chip-solid: #1e1b4b;
+    --tertiary-icon-color-chip-solid: #1e1b4b;
+    --tertiary-hover-bg-color-chip-solid: #c4b5fd;
+    --tertiary-delete-btn-bg-color-chip-solid: rgba(30, 27, 75, 0.2);
+    --tertiary-hover-delete-btn-bg-color-chip-solid: rgba(30, 27, 75, 0.4);
+    --tertiary-delete-btn-icon-color-chip-solid: #1e1b4b;
+
+    --tertiary-bg-color-chip-outline: transparent;
+    --tertiary-text-color-chip-outline: #a78bfa;
+    --tertiary-icon-color-chip-outline: #a78bfa;
+    --tertiary-stroke-color-chip-outline: #a78bfa;
+    --tertiary-hover-bg-color-chip-outline: rgba(167, 139, 250, 0.15);
+    --tertiary-delete-btn-bg-color-chip-outline: #f3f4f6;
+    --tertiary-hover-delete-btn-bg-color-chip-outline: #e5e7eb;
+    --tertiary-delete-btn-icon-color-chip-outline: #1e1b4b;
 
     // tabs
     --tertiary-bg-color-tabs-solid: #1e1b4b;
