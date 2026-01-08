@@ -1,39 +1,79 @@
 import Styles from './Tag.module.scss';
+import Icon from '../../atoms/Icon/Icon'; // Icon 컴포넌트 가정
+import { forwardRef } from 'react';
 
 interface TagProps {
-  children: React.ReactNode;
-  /** 링크 주소가 있으면 <a> 태그로, 없으면 <span> 태그로 렌더링 */
   href?: string;
-  /** 색상 스타일 (디자인 시스템에 따라 정의) */
-  color?: 'default' | 'primary' | 'secondary' | 'outline';
-  /** 아이콘 추가 (예: 해시태그 아이콘 등) */
-  icon?: React.ReactNode;
-  /** 추가적인 클래스명 */
+  variant?: 'solid' | 'outline';
+  shape?: 'square' | 'rounded' | 'pill';
+  color?: 'primary' | 'secondary' | 'tertiary';
+  size?: 'sm' | 'md';
+  startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
   className?: string;
+  label: string;
+  target?: '_blank';
+  onDelete?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Tag = ({ children, href, color = 'default', icon, className = '' }: TagProps) => {
-  const tagProps = {
-    className: `${Styles.tag} ${Styles[color]} ${className}`.trim(),
-  };
+const Tag = forwardRef<HTMLAnchorElement & HTMLDivElement & HTMLButtonElement, TagProps>(
+  (
+    {
+      href,
+      variant = 'solid',
+      shape = 'rounded',
+      color = 'primary',
+      size = 'md',
+      startIcon,
+      endIcon,
+      className = '',
+      label,
+      onDelete,
+      target = '_blank',
+    },
+    ref,
+  ) => {
+    // 공통 클래스 및 데이터 속성
+    const tagClassName =
+      `${Styles['tag']} variant--${variant} shape--${shape} color--${color} size--${size} ${onDelete ? Styles['tag--deletable'] : ''} ${className}`.trim();
 
-  // 1. 링크가 있는 경우: <a> 태그로 렌더링 (웹 표준)
-  if (href) {
+    // 1. 네비게이션용 (Link)
+    if (href) {
+      return (
+        <a ref={ref} href={href} className={tagClassName} target={target}>
+          {startIcon}
+          <span className='tag__label'>{label}</span>
+          {endIcon}
+        </a>
+      );
+    }
+
+    // 2. 삭제 가능한 태그 (Action/Deletable)
+    if (onDelete) {
+      return (
+        <button
+          ref={ref}
+          type='button'
+          className={tagClassName}
+          aria-label={`삭제 ${label} 태그`}
+          onClick={onDelete}
+        >
+          {startIcon}
+          <span className='tag__label'>{label}</span>
+          {endIcon}
+        </button>
+      );
+    }
+
+    // 3. 정적 표시용 (Static)
     return (
-      <a href={href} {...tagProps}>
-        {icon && <span className={Styles.icon}>{icon}</span>}
-        {children}
-      </a>
+      <div ref={ref} className={tagClassName}>
+        {startIcon}
+        <span className='tag__label'>{label}</span>
+        {endIcon}
+      </div>
     );
-  }
-
-  // 2. 링크가 없는 경우: <span> 태그로 렌더링
-  return (
-    <span {...tagProps}>
-      {icon && <span className={Styles.icon}>{icon}</span>}
-      {children}
-    </span>
-  );
-};
+  },
+);
 
 export default Tag;

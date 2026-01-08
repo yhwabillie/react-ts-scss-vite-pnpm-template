@@ -2662,5 +2662,89 @@ $g_typography: (
       line-height: 1.5,
       font-family: ko,
     ),
+  ),
+
+  TagText1: (
+    ko: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 14px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 14px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    en: (
+      font-size: 14px,
+      tablet-size: 14px,
+      mobile-size: 14px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+  ),
+
+  TagText2: (
+    ko: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    ja: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
+    en: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+        500,
+        600,
+        700,
+      ),
+      line-height: 1.5,
+      font-family: ko,
+    ),
   )
 );

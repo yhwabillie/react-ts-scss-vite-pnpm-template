@@ -43,6 +43,9 @@ import EllipsisIcon from '@/assets/icons/icon-ellipsis.svg?react';
 import DownloadIcon from '@/assets/icons/icon-download.svg?react';
 import SendIcon from '@/assets/icons/icon-send.svg?react';
 import ShareIcon from '@/assets/icons/icon-share.svg?react';
+import HashIcon from '@/assets/icons/icon-hash.svg?react';
+import OuterLinkIcon from '@/assets/icons/icon-square-arrow-out-up-right.svg?react';
+import RotateIcon from '@/assets/icons/icon-rotate-ccw.svg?react';
 
 const iconMap = {
   search: SearchIcon,
@@ -87,6 +90,9 @@ const iconMap = {
   download: DownloadIcon,
   send: SendIcon,
   share: ShareIcon,
+  hash: HashIcon,
+  link: OuterLinkIcon,
+  rotate: RotateIcon,
   // 다른 아이콘들도 여기에 추가
 };
 

@@ -3,43 +3,174 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
+$tag-sizes: (
+  sm: (
+    height: rem(28px),
+    padding: 0 rem(12px),
+    font: var(--project-typo-TagText2-500),
+    with-icon-padding: 0 rem(6px) 0 rem(14px),
+    radius: rem(5px),
+    gap: rem(6px),
+    icon-size: rem(12px),
+    delete-btn-size: rem(18px),
+  ),
+  md: (
+    height: rem(32px),
+    padding: 0 rem(14px),
+    font: var(--project-typo-TagText1-500),
+    with-icon-padding: 0 rem(8px) 0 rem(16px),
+    radius: rem(5px),
+    gap: rem(8px),
+    icon-size: rem(14px),
+    delete-btn-size: rem(20px),
+  ),
+);
+
+$tag-colors: (
+  primary: (
+    solid: (
+      bg: var(--primary-bg-color-tag-solid),
+      label: var(--primary-text-color-tag-solid),
+      icon: var(--primary-icon-color-tag-solid),
+      hover-bg: var(--primary-hover-bg-color-tag-solid),
+    ),
+    outline: (
+      bg: var(--primary-bg-color-tag-outline),
+      label: var(--primary-text-color-tag-outline),
+      icon: var(--primary-icon-color-tag-outline),
+      border: var(--primary-stroke-color-tag-outline),
+      hover-bg: var(--primary-hover-bg-color-tag-outline),
+    ),
+  ),
+  secondary: (
+    solid: (
+      bg: var(--secondary-bg-color-tag-solid),
+      label: var(--secondary-text-color-tag-solid),
+      icon: var(--secondary-icon-color-tag-solid),
+      hover-bg: var(--secondary-hover-bg-color-tag-solid),
+    ),
+    outline: (
+      bg: var(--secondary-bg-color-tag-outline),
+      label: var(--secondary-text-color-tag-outline),
+      icon: var(--secondary-icon-color-tag-outline),
+      border: var(--secondary-stroke-color-tag-outline),
+      hover-bg: var(--secondary-hover-bg-color-tag-outline),
+    ),
+  ),
+  tertiary: (
+    solid: (
+      bg: var(--tertiary-bg-color-tag-solid),
+      label: var(--tertiary-text-color-tag-solid),
+      icon: var(--tertiary-icon-color-tag-solid),
+      hover-bg: var(--tertiary-hover-bg-color-tag-solid),
+    ),
+    outline: (
+      bg: var(--tertiary-bg-color-tag-outline),
+      label: var(--tertiary-text-color-tag-outline),
+      icon: var(--tertiary-icon-color-tag-outline),
+      border: var(--tertiary-stroke-color-tag-outline),
+      hover-bg: var(--tertiary-hover-bg-color-tag-outline),
+    ),
+  ),
+);
+
 .tag {
   display: inline-flex;
   align-items: center;
-  padding: 2px 10px;
-  font-size: 13px;
-  line-height: 1.4;
-  border-radius: 2px; // 칩보다 각진 형태가 많음
-  text-decoration: none;
-  white-space: nowrap;
-  transition: all 0.2s;
+  justify-content: center;
+  transition: all 0.2s ease;
 
-  .icon {
-    display: inline-flex;
-    margin-right: 4px;
-    font-size: 0.9em;
+  @each $size-name, $size-map in $tag-sizes {
+    @include global-mod('size--#{$size-name}') {
+      height: map.get($size-map, height);
+      padding: map.get($size-map, padding);
+      gap: map.get($size-map, gap);
+
+      @include global-mod('shape--square') {
+        border-radius: 0px;
+      }
+      @include global-mod('shape--rounded') {
+        border-radius: map.get($size-map, radius);
+      }
+      @include global-mod('shape--pill') {
+        border-radius: var(--project-border-radius-max);
+      }
+
+      :global {
+        .tag__label {
+          font: map.get($size-map, font);
+        }
+
+        .icon {
+          width: map.get($size-map, icon-size);
+          height: map.get($size-map, icon-size);
+        }
+
+        .tag__delete-btn {
+          border-radius: var(--project-border-radius-max);
+          width: map.get($size-map, delete-btn-size);
+          height: map.get($size-map, delete-btn-size);
+        }
+      }
+    }
   }
 
-  // 테마별 스타일
-  &.default {
-    background-color: #f8f9fa;
-    color: #495057;
+  @each $color-name, $color-map in $tag-colors {
+    // color
+    @include global-mod('color--#{$color-name}') {
+      @each $variant-name, $variant-map in $color-map {
+        // variant
+        @include global-mod('variant--#{$variant-name}') {
+          @if $variant-name == 'solid' {
+            background-color: map.get($variant-map, bg);
+            color: map.get($variant-map, label);
+
+            @at-root button#{&},
+              a#{&} {
+              &:hover {
+                background-color: map.get($variant-map, hover-bg);
+              }
+
+              &:active {
+                transform: scale(0.95);
+              }
+            }
+          } @else if $variant-name == 'outline' {
+            background-color: map.get($variant-map, bg);
+            border: rem(1px) solid map.get($variant-map, border);
+            color: map.get($variant-map, label);
+
+            @at-root button#{&},
+              a#{&} {
+              &:hover {
+                background-color: map.get($variant-map, hover-bg);
+              }
+
+              &:active {
+                transform: scale(0.95);
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
-  &.primary {
-    background-color: #e7f5ff;
-    color: #1c7ed6;
-  }
+  :global {
+    .tag__label {
+      width: max-content;
+      flex: 1 1 auto;
+    }
 
-  &.outline {
-    background-color: transparent;
-    border: 1px solid #dee2e6;
-    color: #495057;
-  }
+    .icon {
+      flex: 0 0 auto;
+    }
 
-  // 링크일 경우 호버 효과 추가
-  &[href]:hover {
-    filter: brightness(0.95);
-    text-decoration: underline;
+    .tag__delete-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
   }
 }
