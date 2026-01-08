@@ -23,6 +23,13 @@
   --bg-color-guide: #ecf4ef;
   --stroke-color-guide: #15803d;
 
+  // tooltip
+  --bg-color-tooltip: rgba(25, 25, 25, 0.8);
+  --text-color-tooltip: #ffffff;
+  --tail-bg-color-tooltip: rgba(25, 25, 25, 0.8);
+  --close-btn-bg-color-tooltip: #000000;
+  --close-btn-hover-bg-color-tooltip: #3b82f6;
+
   // accordion
   --drop-shadow-color-accordion: rgba(0, 0, 0, 0.1);
 
@@ -813,6 +820,13 @@
   // guide
   --bg-color-guide: rgba(45, 252, 82, 0.05);
   --stroke-color-guide: #2dfc52;
+
+  // tooltip
+  --bg-color-tooltip: #3f3f40;
+  --text-color-tooltip: #ffffff;
+  --tail-bg-color-tooltip: #3f3f40;
+  --close-btn-bg-color-tooltip: #a1a1aa;
+  --close-btn-hover-bg-color-tooltip: #52525b;
 
   // accordion
   --drop-shadow-color-accordion: rgba(0, 0, 0, 0.4);
