@@ -20,8 +20,8 @@ import type { SelectboxA11yProps } from '@/types/a11y/a11y-roles.types';
 import CalendarOptionList from './CalendarOptionList';
 
 interface StyleProps {
-  variant: Variant;
-  color: Color;
+  variant: 'solid' | 'outline';
+  color: 'primary' | 'secondary' | 'tertiary';
   size: Size;
 }
 
@@ -469,16 +469,36 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
       };
     }, [isOpen, updatePosition]);
 
+    // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하지 않는 것
+    const filteredClassName = useMemo(() => {
+      if (!className) return '';
+
+      return className
+        .split(' ')
+        .filter(name => !name.startsWith('pseudo-'))
+        .join(' ');
+    }, [className]);
+
+    // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하는 것
+    const pseudoClassName = useMemo(() => {
+      if (!className) return '';
+
+      return className
+        .split(' ')
+        .filter(name => name.startsWith('pseudo-')) // ✅ 'pseudo-'로 시작하는 것만 남김
+        .join(' ');
+    }, [className]);
+
     // -----------------------------
     // ▶️ 렌더링
     // -----------------------------
     return (
       <div
-        ref={ref}
+        ref={containerRef}
         id={id}
         className={clsx(
           `${styles['calendar-selectbox']} variant--${variant} color--${color} size--${size}`,
-          className,
+          filteredClassName,
         )}
       >
         {/* native select (보조기기 동기화용) */}
@@ -490,6 +510,7 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
           disabled={disabled}
           value={selectedValue}
           onChange={handleChange}
+          aria-hidden={true}
         >
           {options.map(opt => (
             <option key={opt.id} value={opt.value} disabled={opt.disabled}>
@@ -501,30 +522,26 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
         {/* 커스텀 셀렉트 트리거 */}
         <div
           ref={customSelectRef}
-          className='custom-select'
+          className={clsx('custom-select', pseudoClassName)}
           tabIndex={disabled ? -1 : 0}
           aria-disabled={disabled}
           aria-activedescendant={activeDescendantId}
           role={role}
-          aria-controls={listboxId}
+          aria-controls={isOpen ? listboxId : undefined}
           aria-expanded={isOpen}
           aria-haspopup='listbox'
           aria-labelledby={ariaLabelledBy}
           aria-label={ariaLabel}
           onClick={e => {
             if (disabled) return;
+            e.stopPropagation(); // document로의 전파만 막습니다.
 
-            // 이미 열려있으면 닫기
-            if (isOpen) {
-              close();
-              return;
-            }
-
-            open('click');
+            if (isOpen) close();
+            else open('click');
           }}
           onKeyDown={handleKeyDown}
         >
-          <span className='custom-select-text'>
+          <span id={ariaLabelledBy} className='custom-select-text'>
             {selectedValue === '' ? placeholder : selectedValue}
           </span>
           <IconButton
@@ -553,7 +570,6 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
               id={listboxId}
               variant={variant}
               color={color}
-              size={size} // 🚨 Option List의 가장 바깥 요소에 KeyDown 핸들러 등록
               onKeyDown={handleOptionListEscape}
             >
               {options.map((opt, idx) => (
@@ -562,7 +578,7 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
                     optionRefs.current[idx] = el;
                   }}
                   key={opt.id}
-                  variant={variant}
+                  variant='ghost'
                   color={color}
                   size={size}
                   index={idx}

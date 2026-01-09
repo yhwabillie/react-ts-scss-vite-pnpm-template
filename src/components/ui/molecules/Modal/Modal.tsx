@@ -1,16 +1,17 @@
 import React, { forwardRef, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import type { StyleProps } from '@/types/design/design-tokens.types';
+import styles from '@/components/ui/molecules/Modal/Modal.module.scss';
+import type { ModalVariant } from '@/types/modal.types';
 
 interface ModalProps {
   isOpen: boolean;
-  modalType: string;
+  modalVariant: ModalVariant;
   zIndex: number;
   children: (refs: { firstFocusableRef: React.RefObject<HTMLElement | null> }) => React.ReactNode;
   onClose: () => void;
 }
 
-const Modal = ({ isOpen, modalType, zIndex, children, onClose }: ModalProps) => {
+const Modal = ({ isOpen, zIndex, children, onClose }: ModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const firstFocusableRef = useRef<HTMLElement>(null);
 
@@ -71,11 +72,20 @@ const Modal = ({ isOpen, modalType, zIndex, children, onClose }: ModalProps) => 
   if (!isOpen) return null;
 
   return createPortal(
-    <div className='modal' style={{ zIndex }}>
-      {/* Overlay */}
-      <div className='modal-overlay' aria-hidden={true} onClick={onClose} />
-      {/* Content */}
-      <div ref={modalRef} className='modal-content' role='dialog' aria-modal='true'>
+    <div
+      ref={modalRef}
+      className={styles['modal']}
+      role='dialog'
+      aria-modal='true'
+      // ✅ 1. 배경 클릭 시에만 onClose 실행
+      onClick={onClose}
+      style={{ zIndex }}
+    >
+      <div
+        // ✅ 2. 콘텐츠 영역 클릭 시 이벤트가 부모(배경)로 퍼지지 않게 차단
+        onClick={e => e.stopPropagation()}
+        style={{ display: 'contents' }} // 레이아웃에 영향을 주지 않으면서 버블링만 차단
+      >
         {children({ firstFocusableRef })}
       </div>
     </div>,

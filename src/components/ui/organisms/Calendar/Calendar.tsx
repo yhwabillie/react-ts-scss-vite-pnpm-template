@@ -2,7 +2,7 @@ import type { InputA11yProps } from '@/types/a11y/a11y-roles.types';
 import type { Color, Size, Variant } from '@/types/design/design-tokens.types';
 import styles from '@/components/ui/organisms/Calendar/Calendar.module.scss';
 import clsx from 'clsx';
-import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { forwardRef, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import CalendarSelectbox from './CalendarSelectbox';
 import { useCalendarMatrix, type CalendarCell } from './Calendar.mock';
 import Icon from '../../atoms/Icon/Icon';
@@ -12,11 +12,11 @@ import Button from '../../molecules/Button/Button';
 import ButtonGroup from '../../molecules/ButtonGroup/ButtonGroup';
 import type { OptionBase } from '../../molecules/OptionItem/OptionItem';
 import type { Holiday } from '@/App';
+import CalendarSkeleton from '../../atoms/Skeleton/CalendarSkeleton';
 
 interface StyleProps {
   variant: Variant;
-  color: Color;
-  size: Size;
+  color: 'primary' | 'secondary' | 'tertiary';
 }
 
 type NativeDivProps = Omit<
@@ -26,7 +26,6 @@ type NativeDivProps = Omit<
 
 export interface CalendarProps extends StyleProps, NativeDivProps {
   calendarRef?: React.RefObject<HTMLDivElement | null>;
-  id?: string;
   selectedYear?: number;
   selectedMonth?: number;
   selectedDate?: Date | null;
@@ -43,6 +42,7 @@ export interface CalendarProps extends StyleProps, NativeDivProps {
   onConfirm?: () => void;
   onCancel?: () => void;
   onClose?: () => void;
+  isLoading?: boolean;
 }
 
 const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
@@ -51,11 +51,9 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       calendarRef,
       variant,
       color,
-      size,
-      id,
       selectedYear,
       selectedMonth,
-      selectedDate, // 최초 값
+      selectedDate,
       initialSelectedDate = null,
       calendarProps = {},
       holidays = [],
@@ -66,6 +64,8 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       onConfirm,
       onCancel,
       onClose,
+      isLoading,
+      ...rest
     },
     ref,
   ) => {
@@ -398,10 +398,22 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       }
     }, [derivedYear, derivedMonth]);
 
+    const uniqueId = useId();
+    const bodyLabel = `${color || ''} ${derivedYear}년 ${derivedMonth}월 날짜 선택`.trim();
+
+    // -----------------------------
+    // 🎨 Skeleton 전용 행/열 생성 (6행 7열)
+    // -----------------------------
+    const skeletonRows = Array.from({ length: 6 });
+    const skeletonCols = Array.from({ length: 7 });
+
     return (
       <div
         ref={calendarRef}
-        className={clsx(`${styles['calendar']} variant--${variant} color--${color} size--${size}`)}
+        className={clsx(
+          `${styles['calendar']} variant--${variant} color--${color} ${isLoading && 'is-loading'}`,
+        )}
+        aria-busy={isLoading}
         onMouseDown={e => {
           e.stopPropagation();
         }}
@@ -412,32 +424,46 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
           className='sr-only' // 시각적으로 숨기는 클래스 (프로젝트 CSS에 정의되어 있어야 함)
           aria-live='polite' // 변경 사항을 공손하게 공지
         >
-          {/* 초기 텍스트는 비워두거나, 스크린 리더에게 최초 정보 제공을 위해 채울 수 있습니다. */}
+          {isLoading ? '공휴일 정보를 불러오는 중입니다.' : ''}
         </div>
-        <div className='calendar-wrap' tabIndex={0} aria-label='달력'>
+        <div
+          className='calendar-wrap'
+          role='region'
+          aria-label={`${rest['aria-label']} 달력`}
+          tabIndex={0}
+        >
           <div className='calendar-head'>
             {/* 이전 달 */}
             <IconButton
               variant='solid'
-              color='primary'
+              color={color}
               size='xs'
               shape='pill'
               className='prev-month-btn'
               aria-label='이전 달'
-              icon={<Icon name='chevron-left' />}
+              icon={
+                <Icon
+                  className='icon'
+                  name='chevron-left'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth={3}
+                />
+              }
               onClick={handlePrevMonth}
+              disabled={isLoading}
             />
             {/* 연도, 월 선택 */}
             <div className='calendar-switch-wrap'>
               <CalendarSelectbox
                 aria-label='연도 선택'
                 variant='outline'
-                color='primary'
+                color={color}
                 size='xs'
                 role='combobox'
-                aria-labelledby='year-switch-label'
-                id='year-switch-component'
-                selectId='year-switch-select'
+                aria-labelledby={`year-switch-label-${uniqueId}`}
+                id={`year-switch-component-${uniqueId}`}
+                selectId={`year-switch-select-${uniqueId}`}
                 options={yearOptions ?? []}
                 defaultOptionId={currentYearOptionId}
                 onValueChange={(_, option) => {
@@ -446,114 +472,153 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                   onYearChange?.(year);
                 }}
                 onOpenChange={updateYearSelectboxOpenState}
+                disabled={isLoading}
               />
               <CalendarSelectbox
                 aria-label='월 선택'
                 variant='outline'
-                color='primary'
+                color={color}
                 size='xs'
                 role='combobox'
-                aria-labelledby='month-switch-label'
-                id='month-switch-component'
-                selectId='month-switch-select'
+                aria-labelledby={`month-switch-label-${uniqueId}`}
+                id={`month-switch-component-${uniqueId}`}
+                selectId={`month-switch-select-${uniqueId}`}
                 options={monthOptions ?? []}
                 defaultOptionId={currentMonthOptionId}
                 onValueChange={(_, option) => {
                   if (!option) return;
                   onMonthChange?.(Number(option.value.replace('월', '')));
                 }}
-                // 🚨 수정: 월 Selectbox의 열림 상태를 추적
                 onOpenChange={updateMonthSelectboxOpenState}
+                disabled={isLoading}
               />
             </div>
             {/* 다음 달 */}
             <IconButton
               variant='solid'
-              color='primary'
+              color={color}
               size='xs'
               shape='pill'
               className='prev-month-btn'
               aria-label='다음 달'
-              icon={<Icon name='chevron-right' />}
+              icon={
+                <Icon
+                  className='icon'
+                  name='chevron-right'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth={3}
+                />
+              }
               onClick={handleNextMonth}
+              disabled={isLoading}
             />
           </div>
-          <div className='calendar-body' role='grid' aria-labelledby='calendar-title'>
+          <div className='calendar-body' role='region' aria-label={bodyLabel}>
             <div className='calendar-table-wrap'>
-              <table className='calendar-table'>
+              <table className='calendar-table' role='grid'>
                 <thead>
-                  <tr>
-                    <th scope='col'>일</th>
-                    <th scope='col'>월</th>
-                    <th scope='col'>화</th>
-                    <th scope='col'>수</th>
-                    <th scope='col'>목</th>
-                    <th scope='col'>금</th>
-                    <th scope='col'>토</th>
+                  <tr role='row'>
+                    <th scope='col' role='columnheader'>
+                      일
+                    </th>
+                    <th scope='col' role='columnheader'>
+                      월
+                    </th>
+                    <th scope='col' role='columnheader'>
+                      화
+                    </th>
+                    <th scope='col' role='columnheader'>
+                      수
+                    </th>
+                    <th scope='col' role='columnheader'>
+                      목
+                    </th>
+                    <th scope='col' role='columnheader'>
+                      금
+                    </th>
+                    <th scope='col' role='columnheader'>
+                      토
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {matrix.map((week, rowIdx) => {
-                    // ✅ 각 row마다 ref 배열 초기화
-                    if (!dateButtonRefs.current[rowIdx]) {
-                      dateButtonRefs.current[rowIdx] = [];
-                    }
+                  {isLoading ? (
+                    // -----------------------------
+                    // 🦴 Skeleton UI 렌더링
+                    // -----------------------------
+                    <CalendarSkeleton />
+                  ) : (
+                    // -----------------------------
+                    // 📅 실제 데이터 렌더링 (기존 로직)
+                    // -----------------------------
+                    matrix.map((week, rowIdx) => {
+                      // ✅ 각 row마다 ref 배열 초기화
+                      if (!dateButtonRefs.current[rowIdx]) {
+                        dateButtonRefs.current[rowIdx] = [];
+                      }
 
-                    return (
-                      <tr key={rowIdx}>
-                        {week.map((cell, colIdx) => (
-                          <td
-                            key={cell.date.toISOString()}
-                            className={clsx({
-                              old: cell.disabled,
-                              today: cell.isToday,
-                              selected: cell.isSelected,
-                              holiday: cell.isHoliday,
-                            })}
-                            role='gridcell'
-                          >
-                            <button
-                              ref={el => {
-                                dateButtonRefs.current[rowIdx][colIdx] = el;
-                              }}
-                              type='button'
-                              className='btn-set-date'
-                              disabled={cell.disabled}
-                              tabIndex={
-                                // ✅ roving tabindex: focusedCell과 일치하는 셀만 tabIndex={0}
-                                focusedCell?.row === rowIdx && focusedCell?.col === colIdx ? 0 : -1
-                              }
-                              aria-selected={cell.isSelected}
-                              // 🚨 수정된 aria-label
-                              aria-label={`${derivedYear}년 ${derivedMonth}월 ${cell.day}일 ${WEEKDAY_NAMES[cell.date.getDay()]}요일${cell.isHoliday ? ` ${cell.holidayName}` : ''}${cell.isToday ? ' 오늘' : ''}${cell.isSelected ? ' 선택됨' : ''}`}
-                              onClick={() => handleDateClick(cell)}
-                              onKeyDown={e => handleDateKeyDown(e, rowIdx, colIdx)}
-                              onMouseEnter={() =>
-                                cell.isHoliday && setActiveHolidayKey(cell.date.toISOString())
-                              }
-                              onMouseLeave={() => setActiveHolidayKey(null)}
-                              onFocus={() => {
-                                setFocusedCell({ row: rowIdx, col: colIdx });
-                                cell.isHoliday && setActiveHolidayKey(cell.date.toISOString());
-                              }}
-                              onBlur={() => setActiveHolidayKey(null)}
+                      return (
+                        <tr key={rowIdx} role='row'>
+                          {week.map((cell, colIdx) => (
+                            <td
+                              key={cell.date.toISOString()}
+                              role='presentation'
+                              className={clsx({
+                                old: cell.disabled,
+                                today: cell.isToday,
+                                selected: cell.isSelected,
+                                holiday: cell.isHoliday,
+                              })}
                             >
-                              <span>{cell.day}</span>
-                              {cell.isHoliday && (
-                                <span
-                                  className={clsx('mark', {
-                                    'is-active': activeHolidayKey === cell.date.toISOString(),
-                                  })}
-                                  data-label={cell.holidayName}
-                                  aria-hidden={true}
-                                ></span>
-                              )}
-                            </button>
-                          </td>
-                        ))}
-                      </tr>
-                    );
-                  })}
+                              <button
+                                ref={el => {
+                                  dateButtonRefs.current[rowIdx][colIdx] = el;
+                                }}
+                                type='button'
+                                role='gridcell'
+                                className={clsx('btn-set-date')}
+                                disabled={cell.disabled}
+                                tabIndex={
+                                  // ✅ roving tabindex: focusedCell과 일치하는 셀만 tabIndex={0}
+                                  focusedCell?.row === rowIdx && focusedCell?.col === colIdx
+                                    ? 0
+                                    : -1
+                                }
+                                aria-selected={cell.isSelected}
+                                // 🚨 수정된 aria-label
+                                aria-label={`${derivedYear}년 ${derivedMonth}월 ${cell.day}일 ${WEEKDAY_NAMES[cell.date.getDay()]}요일${cell.isHoliday ? ` ${cell.holidayName}` : ''}${cell.isToday ? ' 오늘' : ''}${cell.isSelected ? ' 선택됨' : ''}`}
+                                onClick={() => handleDateClick(cell)}
+                                onKeyDown={e => handleDateKeyDown(e, rowIdx, colIdx)}
+                                onMouseEnter={() =>
+                                  cell.isHoliday && setActiveHolidayKey(cell.date.toISOString())
+                                }
+                                onMouseLeave={() => setActiveHolidayKey(null)}
+                                onFocus={() => {
+                                  setFocusedCell({ row: rowIdx, col: colIdx });
+                                  cell.isHoliday && setActiveHolidayKey(cell.date.toISOString());
+                                }}
+                                onBlur={() => setActiveHolidayKey(null)}
+                              >
+                                <span>{cell.day}</span>
+                                {cell.isHoliday && (
+                                  <span
+                                    className={clsx(
+                                      'mark',
+                                      activeHolidayKey === cell.date.toISOString() && 'is-active',
+                                      rest.className && 'is-active',
+                                    )}
+                                    data-label={cell.holidayName}
+                                    aria-hidden={true}
+                                  ></span>
+                                )}
+                              </button>
+                            </td>
+                          ))}
+                        </tr>
+                      );
+                    })
+                  )}
                 </tbody>
               </table>
             </div>
@@ -563,11 +628,12 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
               <ButtonGroup size='xs' align='left'>
                 <Button
                   variant='outline'
-                  color='tertiary'
+                  color={color}
                   size='xs'
                   shape='rounded'
                   className='today-btn'
                   onClick={handleTodayClick}
+                  disabled={isLoading}
                 >
                   오늘
                 </Button>
@@ -582,6 +648,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                   onClick={() => {
                     onCancel?.();
                   }}
+                  disabled={isLoading}
                 >
                   닫기
                 </Button>
@@ -595,6 +662,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                     onConfirm?.();
                     onClose?.(); // 🚨 달력 닫기 요청 추가 (Datepicker가 이 요청을 받고 포커스를 Input으로 복귀시켜야 함)
                   }}
+                  disabled={isLoading}
                 >
                   확인
                 </Button>

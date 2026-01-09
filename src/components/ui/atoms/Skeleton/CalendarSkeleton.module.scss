@@ -1,0 +1,33 @@
+/* Skeleton.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+/* 공통 애니메이션 정의 */
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-cell {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    var(--cell-skeleton-gradient-bg-color-start-calendar) 25%,
+    var(--cell-skeleton-gradient-bg-color-center-calendar) 50%,
+    var(--cell-skeleton-gradient-bg-color-end-calendar) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+  border-radius: var(--project-border-radius-max);
+  width: calc(100% - rem(6px));
+  margin: 0 auto rem(6px);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,7 +1,9 @@
+export type LanguageCode = 'ko' | 'en' | 'ja' | 'zh';
+
 export type LanguageSelectItem = {
   id: string;
   value: string;
-  lang: 'ko' | 'en' | 'ja' | 'zh';
+  lang: LanguageCode;
   selected: boolean;
   href?: string;
   target?: '_self' | '_blank';

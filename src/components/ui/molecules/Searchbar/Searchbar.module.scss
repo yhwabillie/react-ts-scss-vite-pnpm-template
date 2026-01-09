@@ -9,17 +9,18 @@ $searchbar-colors: (
       bg: #dceaff,
       color: #0a2540,
       placeholder: #8a9bb0,
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-searchbar),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #3366cc,
-      color: #1a3a66,
-      placeholder: #9aaac0,
-    ),
-    soft: (
-      bg: #eef5ff,
-      color: #143459,
-      placeholder: #a2afc2,
+      bg: var(--primary-bg-color-searchbar-outline),
+      border: var(--primary-stroke-color-searchbar-outline),
+      color: var(--primary-text-color-searchbar-outline),
+      placeholder: var(--primary-placeholder-color-searchbar-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-searchbar),
+      ),
     ),
   ),
   secondary: (
@@ -27,17 +28,18 @@ $searchbar-colors: (
       bg: #d8edff,
       color: #173a57,
       placeholder: #95a7b8,
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-searchbar),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #69b2ff,
-      color: #1f4b73,
-      placeholder: #9db2c4,
-    ),
-    soft: (
-      bg: #eef7ff,
-      color: #1d4268,
-      placeholder: #a8b8c7,
+      bg: var(--secondary-bg-color-searchbar-outline),
+      border: var(--secondary-stroke-color-searchbar-outline),
+      color: var(--secondary-text-color-searchbar-outline),
+      placeholder: var(--secondary-placeholder-color-searchbar-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-searchbar),
+      ),
     ),
   ),
   tertiary: (
@@ -45,53 +47,18 @@ $searchbar-colors: (
       bg: #e8e8e8,
       color: #1e1e1e,
       placeholder: #9a9a9a,
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-searchbar),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #4d4d4d,
-      color: #252525,
-      placeholder: #a4a4a4,
-    ),
-    soft: (
-      bg: #f5f5f5,
-      color: #232323,
-      placeholder: #ababab,
-    ),
-  ),
-  brand: (
-    solid: (
-      bg: #ffe9e6,
-      placeholder: #c7a8a5,
-      color: #7a2e25,
-    ),
-    outline: (
-      bg: #ffffff,
-      border: #ff6f61,
-      placeholder: #b7857f,
-      color: #8f3a30,
-    ),
-    soft: (
-      bg: #fff3f1,
-      placeholder: #d0bebc,
-      color: #8a3a2f,
-    ),
-  ),
-  brand-sub: (
-    solid: (
-      bg: #f3e9fb,
-      placeholder: #c8b7de,
-      color: #4b2b70,
-    ),
-    outline: (
-      bg: #ffffff,
-      border: #6a1b9a,
-      placeholder: #b7a2ce,
-      color: #532c7e,
-    ),
-    soft: (
-      bg: #f8f1ff,
-      placeholder: #d8caed,
-      color: #563482,
+      bg: var(--tertiary-bg-color-searchbar-outline),
+      border: var(--tertiary-stroke-color-searchbar-outline),
+      color: var(--tertiary-text-color-searchbar-outline),
+      placeholder: var(--tertiary-placeholder-color-searchbar-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-searchbar),
+      ),
     ),
   ),
   success: (
@@ -99,17 +66,18 @@ $searchbar-colors: (
       bg: #e2f5e9,
       placeholder: #a9c7b0,
       color: #2e5938,
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-searchbar),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #28a745,
-      placeholder: #94b5a1,
-      color: #245c34,
-    ),
-    soft: (
-      bg: #f0faf3,
-      placeholder: #c8dbce,
-      color: #2f6840,
+      bg: var(--success-bg-color-searchbar-outline),
+      border: var(--success-stroke-color-searchbar-outline),
+      color: var(--success-text-color-searchbar-outline),
+      placeholder: var(--success-placeholder-color-searchbar-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--success-hover-shadow-searchbar),
+      ),
     ),
   ),
   warning: (
@@ -117,17 +85,18 @@ $searchbar-colors: (
       bg: #fff4d1,
       placeholder: #c7b98b,
       color: #5c4a00,
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-searchbar),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #f5c84a,
-      placeholder: #cab77c,
-      color: #7a6000,
-    ),
-    soft: (
-      bg: #fff9e8,
-      placeholder: #d6c796,
-      color: #6b5800,
+      bg: var(--warning-bg-color-searchbar-outline),
+      border: var(--warning-stroke-color-searchbar-outline),
+      color: var(--warning-text-color-searchbar-outline),
+      placeholder: var(--warning-placeholder-color-searchbar-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-searchbar),
+      ),
     ),
   ),
   danger: (
@@ -135,17 +104,18 @@ $searchbar-colors: (
       bg: #ffe8e8,
       placeholder: #d3b1b1,
       color: #6f1a1a,
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-searchbar),
+      ),
     ),
     outline: (
-      bg: #ffffff,
-      border: #d84a4a,
-      placeholder: #c79b9b,
-      color: #8a1f1f,
-    ),
-    soft: (
-      bg: #fff2f2,
-      placeholder: #d8bebe,
-      color: #7a2222,
+      bg: var(--danger-bg-color-searchbar-outline),
+      border: var(--danger-stroke-color-searchbar-outline),
+      color: var(--danger-text-color-searchbar-outline),
+      placeholder: var(--danger-placeholder-color-searchbar-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-searchbar),
+      ),
     ),
   ),
 );
@@ -154,7 +124,7 @@ $searchbar-sizes: (
   xs: (
     width: rem(220px),
     height: rem(32px),
-    padding: 0 rem(8px) 0 rem(8px),
+    padding: 0 0 0 rem(14px),
     font-token: var(--project-typo-input3-500),
     radius: rem(var(--project-border-radius-4)),
     icon-size: rem(14px),
@@ -162,7 +132,7 @@ $searchbar-sizes: (
   sm: (
     width: rem(240px),
     height: rem(36px),
-    padding: 0 rem(10px) 0 rem(10px),
+    padding: 0 0 0 rem(20px),
     font-token: var(--project-typo-input2-500),
     radius: rem(var(--project-border-radius-6)),
     icon-size: rem(18px),
@@ -170,7 +140,7 @@ $searchbar-sizes: (
   md: (
     width: rem(260px),
     height: rem(40px),
-    padding: 0 rem(12px) 0 rem(12px),
+    padding: 0 0 0 rem(20px),
     font-token: var(--project-typo-input2-500),
     radius: rem(var(--project-border-radius-6)),
     icon-size: rem(20px),
@@ -178,7 +148,7 @@ $searchbar-sizes: (
   lg: (
     width: rem(280px),
     height: rem(44px),
-    padding: 0 rem(14px) 0 rem(14px),
+    padding: 0 0 0 rem(20px),
     font-token: var(--project-typo-input1-500),
     radius: rem(var(--project-border-radius-8)),
     icon-size: rem(22px),
@@ -186,7 +156,7 @@ $searchbar-sizes: (
   xl: (
     width: rem(300px),
     height: rem(48px),
-    padding: 0 0 0 rem(16px),
+    padding: 0 0 0 rem(20px),
     font-token: var(--project-typo-input1-500),
     radius: rem(var(--project-border-radius-8)),
     icon-size: rem(24px),
@@ -198,26 +168,16 @@ $searchbar-sizes: (
   &:global(.variant--#{$variant}) {
     @each $color-name, $props in $searchbar-colors {
       $variant-props: map.get($props, $variant);
+      $hover-props: map.get($variant-props, hover);
+      $shadow-value: map.get($hover-props, shadow);
 
       @if $variant-props != null {
         &:global(.color--#{$color-name}) {
-          // variant
+          :global(.custom-input:not(:has(input:disabled, input:read-only))):hover {
+            box-shadow: $shadow-value;
+          }
 
-          @if $variant == 'solid' or $variant == 'soft' {
-            &:global(.variant--#{$variant}) {
-              :global(.custom-input) {
-                background-color: map.get($variant-props, bg);
-
-                :global(input) {
-                  color: map.get($variant-props, color);
-                }
-
-                :global(.icon) {
-                  color: map.get($variant-props, color);
-                }
-              }
-            }
-          } @else if $variant == 'outline' {
+          @if $variant == 'outline' {
             &:global(.variant--outline) {
               input:disabled {
                 &:disabled ~ :global(.custom-input) {
@@ -259,15 +219,32 @@ $searchbar-sizes: (
 
   // variant
   @include searchbar-variant(solid);
-  @include searchbar-variant(soft);
   @include searchbar-variant(outline);
 
-  // size
+  // size, shape
   @each $size-name, $props in $searchbar-sizes {
     $adorned-start-map: map.get($props, adorned-start);
     $adorned-end-map: map.get($props, adorned-end);
 
     &:global(.size--#{$size-name}) {
+      &:global(.shape--square) {
+        :global(.custom-input) {
+          border-radius: 0;
+        }
+      }
+
+      &:global(.shape--rounded) {
+        :global(.custom-input) {
+          border-radius: map.get($props, radius);
+        }
+      }
+
+      &:global(.shape--pill) {
+        :global(.custom-input) {
+          border-radius: var(--project-border-radius-max);
+        }
+      }
+
       :global(.custom-input) {
         width: map.get($props, width);
         height: map.get($props, height);
@@ -276,6 +253,15 @@ $searchbar-sizes: (
         display: inline-flex;
         align-items: center;
         cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:has(button.variant--solid) {
+          gap: rem(10px);
+
+          :global(.variant-solid) {
+            margin-right: rem(-1px);
+          }
+        }
 
         :global(input) {
           font: map.get($props, font-token);
@@ -288,15 +274,10 @@ $searchbar-sizes: (
         :global(button) {
           cursor: pointer;
 
-          &:global(:nth-child(2)) {
-            margin: 0 0 0 rem(8px);
-          }
-
           &:global(.delete-btn) {
             width: rem(26px);
             height: rem(26px);
             border-radius: var(--project-border-radius-max);
-            background-color: #eeee;
 
             :global(svg) {
               width: rem(16px);

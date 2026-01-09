@@ -20,7 +20,7 @@ import OptionItem, { type OptionBase } from '@/components/ui/molecules/OptionIte
 import type { SelectboxA11yProps } from '@/types/a11y/a11y-roles.types';
 
 interface StyleProps {
-  variant: Variant;
+  variant: 'solid' | 'outline';
   color: Color;
   size: Size;
 }
@@ -35,6 +35,7 @@ export interface SelectboxProps extends StyleProps, SelectboxA11yProps, NativeDi
   selectId?: string;
   required?: boolean;
   disabled?: boolean;
+  readOnly?: boolean;
   placeholder?: string;
   options: OptionBase[];
   defaultOptionId?: string; // controlled
@@ -53,6 +54,7 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
       selectId,
       required,
       disabled,
+      readOnly,
       className,
       placeholder,
       options,
@@ -158,6 +160,12 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
     // - 사용자가 옵션 선택 시 handleSelect 호출 (id, value 전달)
     // -----------------------------
     const handleChange: React.ChangeEventHandler<HTMLSelectElement> = e => {
+      // readOnly 상태라면 변경 로직을 타지 않게 방어
+      if (readOnly) {
+        e.preventDefault();
+        return;
+      }
+
       handleSelect(e.target.id, e.target.value);
     };
 
@@ -199,6 +207,8 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
 
     const handleKeyDown = useCallback(
       <T extends HTMLElement>(e: React.KeyboardEvent<T>) => {
+        if (!isInteractive) return; // readonly 혹은 disabeld 경우 키보드로도 열리지 않음
+
         const now = Date.now();
 
         // 50ms 이내 동일 키 중복 방지
@@ -344,15 +354,21 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
     const handleOutsideClick = useCallback((event: MouseEvent) => {
       const target = event.target as Node | null;
 
-      const isInsideContainer =
-        containerRef.current && target && containerRef.current.contains(target);
+      // 1. 트리거 컨테이너 내부 클릭인지 확인
+      const isInsideContainer = containerRef.current?.contains(target);
+      // 2. 실제 커스텀 셀렉트 영역 클릭인지 확인 (가장 확실한 트리거 영역)
+      const isInsideCustomSelect = customSelectRef.current?.contains(target);
+      // 3. 옵션 목록(Portal) 내부 클릭인지 확인
+      const isInsidePortal = portalRef.current?.contains(target);
 
-      const isInsidePortal = portalRef.current && target && portalRef.current.contains(target);
-
-      if (!isInsideContainer && !isInsidePortal) {
-        setIsOpen(false);
-        setFocusedIndex(null);
+      // 💡 트리거 내부나 포털 내부라면 'Outside'가 아니므로 아무것도 하지 않음
+      if (isInsideContainer || isInsideCustomSelect || isInsidePortal) {
+        return;
       }
+
+      // 💡 그 외 지역(진짜 외부)을 클릭했을 때만 닫기
+      setIsOpen(false);
+      setFocusedIndex(null);
     }, []);
 
     // -----------------------------------------------------
@@ -429,6 +445,29 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
       };
     }, [isOpen, updatePosition]);
 
+    // 인터랙션 차단 로직 (readonly 또는 disabled일 때)
+    const isInteractive = !disabled && !readOnly;
+
+    // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하지 않는 것
+    const filteredClassName = useMemo(() => {
+      if (!className) return '';
+
+      return className
+        .split(' ')
+        .filter(name => !name.startsWith('pseudo-'))
+        .join(' ');
+    }, [className]);
+
+    // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하는 것
+    const pseudoClassName = useMemo(() => {
+      if (!className) return '';
+
+      return className
+        .split(' ')
+        .filter(name => name.startsWith('pseudo-')) // ✅ 'pseudo-'로 시작하는 것만 남김
+        .join(' ');
+    }, [className]);
+
     // -----------------------------
     // ▶️ 렌더링
     // -----------------------------
@@ -438,7 +477,8 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
         id={id}
         className={clsx(
           `${styles['selectbox']} variant--${variant} color--${color} size--${size}`,
-          className,
+          // pseudo- 가 제외된 순수 외부 클래스들
+          filteredClassName,
         )}
       >
         {/* native select (보조기기 동기화용) */}
@@ -450,6 +490,7 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
           disabled={disabled}
           value={selectedValue}
           onChange={handleChange}
+          aria-hidden={true}
         >
           {options.map(opt => (
             <option key={opt.id} value={opt.value} disabled={opt.disabled}>
@@ -461,29 +502,33 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
         {/* 커스텀 셀렉트 트리거 */}
         <div
           ref={customSelectRef}
-          className='custom-select'
+          className={clsx('custom-select', pseudoClassName)}
           tabIndex={disabled ? -1 : 0}
           aria-disabled={disabled}
+          aria-readonly={readOnly}
           aria-activedescendant={activeDescendantId}
           role={role}
-          aria-controls={listboxId}
+          aria-controls={isOpen ? listboxId : undefined}
           aria-expanded={isOpen}
           aria-haspopup='listbox'
           aria-labelledby={ariaLabelledBy}
           onClick={e => {
-            if (disabled) return;
+            if (!isInteractive) return; // disabled 혹은 readonly면 클릭 시 열리지 않음
 
-            // 이미 열려있으면 닫기
-            if (isOpen) {
-              close();
-              return;
-            }
+            // 1. 이벤트가 document의 mousedown/click으로 전파되는 것을 방지
+            e.stopPropagation();
 
-            open('click');
+            // 2. 상태 반전 (Toggle)
+            setIsOpen(prev => {
+              const next = !prev;
+              if (next) openReasonRef.current = 'click';
+              else openReasonRef.current = null;
+              return next;
+            });
           }}
           onKeyDown={handleKeyDown}
         >
-          <span className='custom-select-text'>
+          <span id={ariaLabelledBy} className='custom-select-text'>
             {selectedValue === '' ? placeholder : selectedValue}
           </span>
           <IconButton
@@ -515,7 +560,7 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
                     optionRefs.current[idx] = el;
                   }}
                   key={opt.id}
-                  variant={variant}
+                  variant={variant === 'outline' ? 'ghost' : 'solid'}
                   color={color}
                   size={size}
                   index={idx}

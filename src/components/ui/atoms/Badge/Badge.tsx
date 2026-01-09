@@ -1,40 +1,56 @@
 import Styles from '@/components/ui/atoms/Badge/Badge.module.scss';
+import clsx from 'clsx';
+import { Children, type ReactNode } from 'react';
 
 interface BadgeProps {
-  children: React.ReactNode;
-  /** 'status': 텍스트 기반 상태 표시, 'count': 숫자 기반 알림 표시 */
-  variant?: 'status' | 'count';
-  /** 색상 테마: 프로젝트의 디자인 시스템에 따라 확장 가능 */
-  color?: 'primary' | 'success' | 'danger' | 'warning' | 'gray';
-  /** 접근성을 위한 추가 설명 (특히 숫자만 있는 count형에서 중요) */
+  label?: string;
+  variant?: 'solid' | 'outline' | 'dot';
+  shape?: 'square' | 'rounded' | 'pill' | 'circle';
+  color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
+  size?: 'sm' | 'md' | 'lg';
   ariaLabel?: string;
-  /** 아이콘이나 텍스트 옆에 겹쳐서 표시할지 여부 (count형에 주로 사용) */
-  overlap?: boolean;
+  position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+  overlapShape?: 'square' | 'rounded' | 'pill'; // children의 모양 정보
+  children?: ReactNode;
 }
 
 const Badge = ({
-  children,
-  variant = 'status',
+  variant = 'solid',
+  shape = 'rounded',
   color = 'primary',
+  size = 'md',
   ariaLabel,
-  overlap = false,
+  label,
+  position = 'top-right',
+  overlapShape = 'rounded',
+  children,
 }: BadgeProps) => {
-  const badgeClassName = `
-    ${Styles.badge} 
-    ${Styles[variant]} 
-    ${Styles[color]} 
-    ${overlap ? Styles.overlap : ''}
-  `.trim();
+  // children이 실제로 유효한 요소인지 체크
+  const hasChildren = Children.count(children) > 0;
+
+  const BadgeElement = (
+    <div
+      className={clsx(
+        `${Styles['badge']} variant--${variant} size--${size} color--${color} ${variant !== 'dot' ? `shape--${shape}` : ''}`,
+        overlapShape && `overlap-shape--${overlapShape}`,
+        position && `position--${position}`,
+      )}
+      aria-label={ariaLabel}
+    >
+      <span className={clsx('badge__label', variant === 'dot' && 'sr-only')}>{label}</span>
+    </div>
+  );
+
+  // 조건부 렌더링
+  if (!hasChildren) {
+    return BadgeElement;
+  }
 
   return (
-    <span
-      className={badgeClassName}
-      // 보조공학기기에 정보의 성격을 전달
-      aria-label={ariaLabel}
-      // 배지 자체가 텍스트 정보를 포함하고 ariaLabel이 없다면 스크린 리더가 children을 읽음
-    >
+    <div className={Styles['badge-wrapper']}>
       {children}
-    </span>
+      {BadgeElement}
+    </div>
   );
 };
 

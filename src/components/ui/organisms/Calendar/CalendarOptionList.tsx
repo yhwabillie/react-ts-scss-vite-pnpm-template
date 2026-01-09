@@ -4,9 +4,8 @@ import styles from '@/components/ui/organisms/Calendar/CalendarOptionList.module
 import type { OptionBase } from '../../molecules/OptionItem/OptionItem';
 
 export interface BaseProps extends Pick<OptionBase, 'id'> {
-  variant: 'solid' | 'outline' | 'ghost';
+  variant: 'solid' | 'outline';
   color: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   selectedId?: string;
   className?: string;
   children: React.ReactNode;
@@ -17,19 +16,18 @@ export type OptionListProps = BaseProps &
   Omit<React.HTMLAttributes<HTMLUListElement>, keyof BaseProps>;
 
 const CalendarOptionList = forwardRef<HTMLUListElement, OptionListProps>(
-  ({ id, variant, color, size, className, children }, ref) => {
+  ({ id, variant, color, className, children, ...rest }, ref) => {
     return (
       <div
         className={clsx(
           styles['option-list'],
           `variant--${variant}`,
           `color--${color}`,
-          `size--${size}`,
           `option-list`,
           className,
         )}
       >
-        <ul ref={ref} id={id} role='listbox'>
+        <ul ref={ref} id={id} role='listbox' {...{ 'aria-label': rest['aria-label'] }}>
           {children}
         </ul>
       </div>

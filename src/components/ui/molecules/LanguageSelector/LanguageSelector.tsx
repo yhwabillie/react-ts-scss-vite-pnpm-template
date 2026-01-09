@@ -7,6 +7,7 @@ import Button from '../Button/Button';
 import Icon from '../../atoms/Icon/Icon';
 import OptionListPortal, { type PortalPosition } from '../OptionListPortal/OptionListPortal';
 import { mergeRefs } from '@/utils/option/mergeRefs';
+import IconFrame from '../IconFrame/IconFrame';
 
 interface StyleProps {
   variant: Variant;
@@ -20,7 +21,7 @@ interface LanguageSelectorProps extends StyleProps, NativeDivProps {
   id?: string;
   buttonProps?: {
     shape?: Shape;
-    labelText?: string;
+    // labelText?: string;
   };
   value?: LanguageSelectItem['lang'];
   options?: LanguageSelectItem[];
@@ -30,7 +31,12 @@ interface LanguageSelectorProps extends StyleProps, NativeDivProps {
 const LanguageSelector = forwardRef<HTMLDivElement, LanguageSelectorProps>(
   ({ variant, color, size, className, buttonProps = {}, value, options, onValueChange }, ref) => {
     // buttonProps 구조분해
-    const { shape = 'rounded', labelText } = buttonProps;
+    const { shape = 'rounded' } = buttonProps;
+
+    // 현재 선택된 옵션 객체 찾기
+    const selectedOption = options?.find(opt => opt.lang === value);
+    // 선택된 값이 없으면 기본 가이드 문구 혹은 첫 번째 옵션 표시 (예: 'Language')
+    const buttonLabel = selectedOption ? selectedOption.value : 'Language';
 
     // -----------------------------
     // 📌 상태 선언
@@ -101,18 +107,18 @@ const LanguageSelector = forwardRef<HTMLDivElement, LanguageSelectorProps>(
 
     // -----------------------------------------------------
     // 🖱️ [Interaction] 외부 클릭 감지
-    // - Combobox 외부 영역 클릭 시 리스트 닫기
-    // - input 영역(containerRef)과 포털(portalRef) 모두 체크
-    // - 포털 구조에서도 정상 동작하도록 ref 기반 검사
     // -----------------------------------------------------
     const handleOutsideClick = useCallback((event: MouseEvent) => {
       const target = event.target as Node | null;
+      if (!target) return;
 
-      const isInsideContainer =
-        containerRef.current && target && containerRef.current.contains(target);
+      // 1. 컨테이너(버튼 포함) 내부 클릭인지 확인
+      const isInsideContainer = containerRef.current?.contains(target);
 
-      const isInsidePortal = portalRef.current && target && portalRef.current.contains(target);
+      // 2. 포털(옵션 리스트) 내부 클릭인지 확인
+      const isInsidePortal = portalRef.current?.contains(target);
 
+      // 둘 다 아니라면 닫기
       if (!isInsideContainer && !isInsidePortal) {
         setIsOpen(false);
       }
@@ -120,13 +126,14 @@ const LanguageSelector = forwardRef<HTMLDivElement, LanguageSelectorProps>(
 
     // -----------------------------------------------------
     // ✨ [Effect] 외부 클릭 이벤트 등록
-    // - isOpen 상태일 때만 이벤트 리스너 등록
-    // - mousedown 이벤트로 외부 클릭 감지
     // -----------------------------------------------------
     useEffect(() => {
       if (!isOpen) return;
 
+      // 캡처링 단계에서 감지하거나 mousedown을 사용하여
+      // 다른 요소의 stopPropagation 영향을 최소화합니다.
       document.addEventListener('mousedown', handleOutsideClick);
+
       return () => {
         document.removeEventListener('mousedown', handleOutsideClick);
       };
@@ -208,10 +215,24 @@ const LanguageSelector = forwardRef<HTMLDivElement, LanguageSelectorProps>(
           color={color}
           size={size}
           shape={shape}
+          aria-label={`언어 선택 (현재: ${buttonLabel})`}
           aria-haspopup='menu'
           aria-expanded={isOpen}
-          startIcon={<Icon name='globe' />}
-          endIcon={<Icon name={isOpen ? 'arrow-up' : 'arrow-down'} />}
+          startIcon={
+            <IconFrame size={size} color={color} shape={shape}>
+              <Icon name='globe' strokeWidth={2.5} strokeLinecap='round' strokeLinejoin='round' />
+            </IconFrame>
+          }
+          endIcon={
+            <IconFrame size={size} color={color} shape={shape}>
+              <Icon
+                name={isOpen ? 'arrow-up' : 'arrow-down'}
+                strokeWidth={2.5}
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
+            </IconFrame>
+          }
           onMouseDown={e => {
             e.stopPropagation();
           }}
@@ -236,19 +257,23 @@ const LanguageSelector = forwardRef<HTMLDivElement, LanguageSelectorProps>(
             }
           }}
         >
-          {labelText}
+          {buttonLabel}
         </Button>
 
         {isOpen && portalPos && (
           <OptionListPortal isOpen={isOpen} position={portalPos} portalRef={portalRef}>
-            <div className='drop-menu'>
-              <div className='drop-in'>
+            <div
+              className={clsx(
+                `${styles['drop-down-menu']} variant--${variant} color--${color} size--${size}`,
+              )}
+            >
+              <div className='drop-down-menu-container'>
                 <ul className='drop-list' role='menu'>
                   {options?.map((opt, idx) => {
                     const isSelected = opt.lang === value;
 
                     return (
-                      <li key={opt.id}>
+                      <li key={opt.id} className='drop-list-item'>
                         <a
                           ref={idx === 0 ? firstItemRef : undefined}
                           role='menuitemradio'
@@ -275,8 +300,25 @@ const LanguageSelector = forwardRef<HTMLDivElement, LanguageSelectorProps>(
                               buttonRef.current?.focus();
                             }
                           }}
+                          onClick={e => {
+                            // -----------------------------------------------------
+                            // 스토리북 테스트용 (상태 변경 확인)
+                            // - 아래 주석을 풀면 페이지 이동 없이 스토리북에서 UI 변경을 볼 수 있습니다.
+                            // -----------------------------------------------------
+                            e.preventDefault();
+                            handleSelect(opt.lang);
+
+                            // -----------------------------------------------------
+                            // 실제 운영 환경용 (링크 이동)
+                            // - 실제 링크 이동이 필요할 때는 위 두 줄을 주석 처리하세요.
+                            // - 혹은 SPA(Next/React Router)라면 아래처럼 호출합니다.
+                            // -----------------------------------------------------
+                            // handleSelect(opt.lang);
+                          }}
                         >
-                          {opt.value}
+                          <span className='drop-list-item-label' lang={opt.lang}>
+                            {opt.value}
+                          </span>
                         </a>
                       </li>
                     );

@@ -7,134 +7,57 @@
 $option-list-colors: (
   primary: (
     solid: (
-      bg: #dceaff,
+      bg: var(--primary-bg-color-option-list-solid),
     ),
     outline: (
-      bg: #ffffff,
-      border: #3366cc,
-    ),
-    soft: (
-      bg: #eef5ff,
+      bg: var(--primary-bg-color-option-list-outline),
+      border: var(--primary-stroke-color-option-list-outline),
     ),
   ),
   secondary: (
     solid: (
-      bg: #d8edff,
+      bg: var(--secondary-bg-color-option-list-solid),
     ),
     outline: (
-      bg: #ffffff,
-      border: #69b2ff,
-    ),
-    soft: (
-      bg: #eef7ff,
+      bg: var(--secondary-bg-color-option-list-outline),
+      border: var(--secondary-stroke-color-option-list-outline),
     ),
   ),
   tertiary: (
     solid: (
-      bg: #e8e8e8,
+      bg: var(--tertiary-bg-color-option-list-solid),
     ),
     outline: (
-      bg: #ffffff,
-      border: #4d4d4d,
-    ),
-    soft: (
-      bg: #f5f5f5,
-      color: #232323,
-    ),
-  ),
-  brand: (
-    solid: (
-      bg: #ffe9e6,
-    ),
-    outline: (
-      bg: #ffffff,
-      border: #ff6f61,
-    ),
-    soft: (
-      bg: #fff3f1,
-    ),
-  ),
-  brand-sub: (
-    solid: (
-      bg: #f3e9fb,
-    ),
-    outline: (
-      bg: #ffffff,
-      border: #6a1b9a,
-    ),
-    soft: (
-      bg: #f8f1ff,
+      bg: var(--tertiary-bg-color-option-list-outline),
+      border: var(--tertiary-stroke-color-option-list-outline),
     ),
   ),
   success: (
     solid: (
-      bg: #e2f5e9,
+      bg: var(--success-bg-color-option-list-solid),
     ),
     outline: (
-      bg: #ffffff,
-      border: #28a745,
-    ),
-    soft: (
-      bg: #f0faf3,
+      bg: var(--success-bg-color-option-list-outline),
+      border: var(--success-stroke-color-option-list-outline),
     ),
   ),
   warning: (
     solid: (
-      bg: #fff4d1,
+      bg: var(--warning-bg-color-option-list-solid),
     ),
     outline: (
-      bg: #ffffff,
-      border: #f5c84a,
-    ),
-    soft: (
-      bg: #fff9e8,
+      bg: var(--warning-bg-color-option-list-outline),
+      border: var(--warning-stroke-color-option-list-outline),
     ),
   ),
   danger: (
     solid: (
-      bg: #ffe8e8,
+      bg: var(--danger-bg-color-option-list-solid),
     ),
     outline: (
-      bg: #ffffff,
-      border: #d84a4a,
+      bg: var(--danger-bg-color-option-list-outline),
+      border: var(--danger-stroke-color-option-list-outline),
     ),
-    soft: (
-      bg: #fff2f2,
-    ),
-  ),
-);
-
-// option-list sizes
-$option-list-sizes: (
-  xs: (
-    width: rem(220px),
-    radius: rem(8px),
-    padding: rem(6px) rem(6px),
-    shadow: drop-shadow(0 rem(5px) rem(10px) rgba(0, 0, 0, 0.1)),
-  ),
-  sm: (
-    width: rem(240px),
-    radius: rem(10px),
-    padding: rem(8px) rem(8px),
-    shadow: drop-shadow(0 rem(6px) rem(12px) rgba(0, 0, 0, 0.1)),
-  ),
-  md: (
-    width: rem(260px),
-    radius: rem(12px),
-    padding: rem(10px) rem(10px),
-    shadow: drop-shadow(0 rem(7px) rem(14px) rgba(0, 0, 0, 0.1)),
-  ),
-  lg: (
-    width: rem(280px),
-    radius: rem(12px),
-    padding: rem(12px) rem(12px),
-    shadow: drop-shadow(0 rem(8px) rem(16px) rgba(0, 0, 0, 0.1)),
-  ),
-  xl: (
-    width: rem(300px),
-    radius: rem(14px),
-    padding: rem(14px) rem(14px),
-    shadow: drop-shadow(0 rem(10px) rem(20px) rgba(0, 0, 0, 0.1)),
   ),
 );
 
@@ -147,11 +70,7 @@ $option-list-sizes: (
       @if $variant-props != null {
         &:global(.color--#{$name}) {
           // variant
-          @if $variant == 'solid' or $variant == 'soft' {
-            &:global(.variant--#{$variant}) {
-              background-color: map.get($variant-props, bg);
-            }
-          } @else if $variant == 'outline' {
+          @if $variant == 'outline' {
             &:global(.variant--#{$variant}) {
               background-color: map.get($variant-props, bg);
               border: rem(1px) solid map.get($variant-props, border);
@@ -164,53 +83,20 @@ $option-list-sizes: (
 }
 
 .option-list {
+  width: rem(104px);
+  padding: rem(6px) rem(6px);
+  border-radius: rem(8px);
+  filter: drop-shadow(0 rem(5px) rem(10px) rgba(0, 0, 0, 0.1));
+
   // listbox
   :global([role='listbox']) {
     display: flex;
     flex-direction: column;
-    gap: rem(6px);
+    gap: rem(10px);
     max-height: rem(240px);
     overflow: auto;
     margin-right: rem(-6px);
     padding-right: rem(6px);
-  }
-
-  // size
-  @each $size-name, $props in $option-list-sizes {
-    &:global(.size--#{$size-name}) {
-      width: rem(100px);
-      padding: map.get($props, padding);
-      border-radius: map.get($props, radius);
-      filter: map.get($props, shadow);
-
-      :global(.empty-state) {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: map.get($props, padding);
-        border-radius: map.get($props, radius);
-        background-color: #f5f5f5;
-
-        :global(.icon) {
-          fill: none;
-          color: #555555;
-          margin-bottom: rem(6px);
-          width: rem(20px);
-          height: rem(20px);
-        }
-
-        :global(.title) {
-          font: var(--project-typo-input2-500);
-          color: #555555;
-        }
-
-        :global(.desc) {
-          font: var(--project-typo-input2-500);
-          color: #888888;
-        }
-      }
-    }
   }
 
   // variant

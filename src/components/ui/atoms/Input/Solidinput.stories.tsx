@@ -7,6 +7,7 @@ import React, { useId } from 'react';
 import { GuideCell, GuideGroup, GuideRow, GuideWrapper } from '../../guide/Guide';
 import IconButton from '../../molecules/IconButton/IconButton';
 import clsx from 'clsx';
+import IconFrame from '../../molecules/IconFrame/IconFrame';
 
 const meta = {
   title: 'UI/Molecules/Input/Solid',
@@ -156,41 +157,37 @@ export const Colors: Story = {
                     color={color}
                     id={`${uniqueId}-${color}-emtpy-adorned-start`}
                     className='adorned-start'
+                    placeholder='YYYY-MM-DD'
                     adornedStart={
-                      <IconButton
-                        variant='ghost'
-                        color={color}
-                        shape={args.shape}
-                        size={args.size}
-                        ariaLabel='검색 버튼'
-                        icon={
-                          <Icon
-                            className='icon'
-                            name='search'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            strokeWidth={2.5}
-                          />
-                        }
-                      />
+                      <IconFrame size={args.size}>
+                        <Icon
+                          className='icon'
+                          name='calendar'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2.5}
+                        />
+                      </IconFrame>
                     }
                   />
                   <Input
                     {...args}
                     color={color}
                     id={`${uniqueId}-${color}-emtpy-adorned-end`}
+                    type='password'
                     className='adorned-end'
+                    placeholder='비밀번호를 입력해 주세요'
                     adornedEnd={
                       <IconButton
                         variant='ghost'
                         color={color}
                         shape={args.shape}
                         size={args.size}
-                        ariaLabel='검색 버튼'
+                        ariaLabel='비밀번호 표시'
                         icon={
                           <Icon
                             className='icon'
-                            name='search'
+                            name='eye'
                             strokeLinecap='round'
                             strokeLinejoin='round'
                             strokeWidth={2.5}
@@ -211,44 +208,40 @@ export const Colors: Story = {
                     {...args}
                     color={color}
                     id={`${uniqueId}-${color}-filled-adorned-start`}
-                    defaultValue='내용이 입력된 상태입니다.'
+                    defaultValue='2026-01-01'
                     className='adorned-start'
+                    placeholder='YYYY-MM-DD'
                     adornedStart={
-                      <IconButton
-                        variant='ghost'
-                        color={color}
-                        shape={args.shape}
-                        size={args.size}
-                        ariaLabel='검색 버튼'
-                        icon={
-                          <Icon
-                            className='icon'
-                            name='search'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            strokeWidth={2.5}
-                          />
-                        }
-                      />
+                      <IconFrame size={args.size}>
+                        <Icon
+                          className='icon'
+                          name='calendar'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2.5}
+                        />
+                      </IconFrame>
                     }
                   />
                   <Input
                     {...args}
                     color={color}
                     id={`${uniqueId}-${color}-filled-adorned-end`}
-                    defaultValue='내용이 입력된 상태입니다.'
+                    type='password'
+                    defaultValue='aa112233'
                     className='adorned-end'
+                    placeholder='비밀번호를 입력해 주세요'
                     adornedEnd={
                       <IconButton
                         variant='ghost'
                         color={color}
                         shape={args.shape}
                         size={args.size}
-                        ariaLabel='검색 버튼'
+                        ariaLabel='비밀번호 표시'
                         icon={
                           <Icon
                             className='icon'
-                            name='search'
+                            name='eye'
                             strokeLinecap='round'
                             strokeLinejoin='round'
                             strokeWidth={2.5}
@@ -310,24 +303,19 @@ export const Sizes: Story = {
                       {...args}
                       id={`${uniqueId}-${size}-adorned-start`}
                       size={size}
+                      type='password'
+                      placeholder='YYYY-MM-DD'
                       className='adorned-start'
                       adornedStart={
-                        <IconButton
-                          variant='ghost'
-                          color='primary'
-                          shape='rounded'
-                          size={size}
-                          ariaLabel='검색 버튼'
-                          icon={
-                            <Icon
-                              className='icon'
-                              name='search'
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth={2.5}
-                            />
-                          }
-                        />
+                        <IconFrame size={size}>
+                          <Icon
+                            className='icon'
+                            name='calendar'
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            strokeWidth={2.5}
+                          />
+                        </IconFrame>
                       }
                     />
                   </GuideCell>
@@ -335,19 +323,21 @@ export const Sizes: Story = {
                     <Input
                       {...args}
                       id={`${uniqueId}-${size}-adorned-end`}
+                      type='password'
                       size={size}
                       className='adorned-end'
+                      placeholder='비밀번호를 입력해 주세요'
                       adornedEnd={
                         <IconButton
                           variant='ghost'
                           color='primary'
                           shape='rounded'
                           size={size}
-                          ariaLabel='검색 버튼'
+                          ariaLabel='비밀번호 표시'
                           icon={
                             <Icon
                               className='icon'
-                              name='search'
+                              name='eye'
                               strokeLinecap='round'
                               strokeLinejoin='round'
                               strokeWidth={2.5}
@@ -368,24 +358,18 @@ export const Sizes: Story = {
                       {...args}
                       size={size}
                       id={`${uniqueId}-${size}-adorned-start`}
+                      placeholder='YYYY-MM-DD'
                       className='adorned-start'
                       adornedStart={
-                        <IconButton
-                          variant='ghost'
-                          color='primary'
-                          shape='rounded'
-                          size={size}
-                          ariaLabel='검색 버튼'
-                          icon={
-                            <Icon
-                              className='icon'
-                              name='search'
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth={2.5}
-                            />
-                          }
-                        />
+                        <IconFrame size={size}>
+                          <Icon
+                            className='icon'
+                            name='calendar'
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            strokeWidth={2.5}
+                          />
+                        </IconFrame>
                       }
                     />
                   </GuideCell>
@@ -394,6 +378,8 @@ export const Sizes: Story = {
                       {...args}
                       size={size}
                       id={`${uniqueId}-${size}-adorned-end`}
+                      type='password'
+                      placeholder='비밀번호를 입력해 주세요'
                       className='adorned-end'
                       adornedEnd={
                         <IconButton
@@ -401,11 +387,11 @@ export const Sizes: Story = {
                           color='primary'
                           shape='rounded'
                           size={size}
-                          ariaLabel='검색 버튼'
+                          ariaLabel='비밀번호 표시'
                           icon={
                             <Icon
                               className='icon'
-                              name='search'
+                              name='eye'
                               strokeLinecap='round'
                               strokeLinejoin='round'
                               strokeWidth={2.5}
@@ -434,7 +420,6 @@ export const States: Story = {
     const states = [
       { label: 'Normal', props: {} },
       { label: 'Hover', props: { className: 'pseudo-hover' } },
-      // 타이핑 중(Focus + Value) 상태를 명확히 확인할 수 있는 지점
       { label: 'Focus (Typing)', props: { className: 'pseudo-focus-visible' } },
       { label: 'Read Only', props: { readOnly: true } },
       { label: 'Disabled', props: { disabled: true } },
@@ -455,43 +440,38 @@ export const States: Story = {
                     {...state.props}
                     id={`${uniqueId}-empty-adorned-start`}
                     className={clsx('adorned-start', state.props.className)}
+                    placeholder='YYYY-MM-DD'
                     adornedStart={
-                      <IconButton
-                        variant='ghost'
-                        color={args.color}
-                        shape={args.shape}
-                        size={args.size}
-                        ariaLabel='검색 버튼'
-                        disabled={state.props.disabled || state.props.readOnly}
-                        icon={
-                          <Icon
-                            className='icon'
-                            name='search'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            strokeWidth={2.5}
-                          />
-                        }
-                      />
+                      <IconFrame size={args.size}>
+                        <Icon
+                          className='icon'
+                          name='calendar'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2.5}
+                        />
+                      </IconFrame>
                     }
                   />
                   <Input
                     {...args}
                     {...state.props}
                     id={`${uniqueId}-empty-adorned-end`}
+                    type='password'
                     className={clsx('adorned-end', state.props.className)}
+                    placeholder='비밀번호를 입력해 주세요'
                     adornedEnd={
                       <IconButton
                         variant='ghost'
                         color={args.color}
                         shape={args.shape}
                         size={args.size}
-                        ariaLabel='검색 버튼'
+                        ariaLabel='비밀번호 표시'
                         disabled={state.props.disabled || state.props.readOnly}
                         icon={
                           <Icon
                             className='icon'
-                            name='search'
+                            name='eye'
                             strokeLinecap='round'
                             strokeLinejoin='round'
                             strokeWidth={2.5}
@@ -512,33 +492,28 @@ export const States: Story = {
                     {...args}
                     {...state.props}
                     id={`${uniqueId}-filled-adorned-start`}
-                    defaultValue='내용이 입력된 상태입니다.'
+                    placeholder='YYYY-MM-DD'
+                    defaultValue='2026-01-01'
                     className={clsx('adorned-start', state.props.className)}
                     adornedStart={
-                      <IconButton
-                        variant='ghost'
-                        color={args.color}
-                        shape={args.shape}
-                        size={args.size}
-                        ariaLabel='검색 버튼'
-                        disabled={state.props.disabled || state.props.readOnly}
-                        icon={
-                          <Icon
-                            className='icon'
-                            name='search'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            strokeWidth={2.5}
-                          />
-                        }
-                      />
+                      <IconFrame size={args.size}>
+                        <Icon
+                          className='icon'
+                          name='calendar'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2.5}
+                        />
+                      </IconFrame>
                     }
                   />
                   <Input
                     {...args}
                     {...state.props}
                     id={`${uniqueId}-filled-adorned-end`}
-                    defaultValue='내용이 입력된 상태입니다.'
+                    type='password'
+                    placeholder='비밀번호를 입력해 주세요'
+                    defaultValue='aa112233'
                     className={clsx('adorned-end', state.props.className)}
                     adornedEnd={
                       <IconButton
@@ -546,12 +521,12 @@ export const States: Story = {
                         color={args.color}
                         shape={args.shape}
                         size={args.size}
-                        ariaLabel='검색 버튼'
+                        ariaLabel='비밀번호 표시'
                         disabled={state.props.disabled || state.props.readOnly}
                         icon={
                           <Icon
                             className='icon'
-                            name='search'
+                            name='eye'
                             strokeLinecap='round'
                             strokeLinejoin='round'
                             strokeWidth={2.5}
@@ -579,15 +554,15 @@ export const Shapes: Story = {
     const baseId = useId(); // React 18 useId 활용
     const shapeOptions: Array<'square' | 'rounded' | 'pill'> = ['square', 'rounded', 'pill'];
 
-    // 1. 공통 아이콘 버튼 렌더러 (Shape 동기화)
+    // 공통 아이콘 버튼 렌더러 (Shape 동기화)
     const renderIconButton = (shape: 'square' | 'rounded' | 'pill') => (
       <IconButton
         variant='ghost'
         color='primary'
         shape={shape} // 부모의 shape를 따름
         size={args.size}
-        ariaLabel='검색 버튼'
-        icon={<Icon className='icon' name='search' strokeWidth={2.5} />}
+        ariaLabel='비밀번호 표시'
+        icon={<Icon className='icon' name='eye' strokeWidth={2.5} />}
       />
     );
 
@@ -606,7 +581,18 @@ export const Shapes: Story = {
                 shape={shape}
                 id={`${baseId}-${shape}-start`}
                 className='adorned-start'
-                adornedStart={renderIconButton(shape)}
+                placeholder='YYYY-MM-DD'
+                adornedStart={
+                  <IconFrame size={args.size}>
+                    <Icon
+                      className='icon'
+                      name='calendar'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth={2.5}
+                    />
+                  </IconFrame>
+                }
               />
 
               {/* 케이스 3: Adorned End (Filled) */}
@@ -614,7 +600,9 @@ export const Shapes: Story = {
                 {...args}
                 shape={shape}
                 id={`${baseId}-${shape}-end`}
+                type='password'
                 className='adorned-end'
+                placeholder='비밀번호를 입력해 주세요'
                 adornedEnd={renderIconButton(shape)}
               />
             </GuideCell>
@@ -641,14 +629,17 @@ export const Composition: Story = {
               {...args}
               id={`${uniqueId}-left`}
               className='adorned-start'
+              placeholder='YYYY-MM-DD'
               adornedStart={
-                <IconButton
-                  variant='ghost'
-                  color='primary'
-                  size={args.size}
-                  ariaLabel='검색 버튼'
-                  icon={<Icon className='icon' name='search' strokeWidth={2.5} />}
-                />
+                <IconFrame size={args.size}>
+                  <Icon
+                    className='icon'
+                    name='calendar'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth={2.5}
+                  />
+                </IconFrame>
               }
             />
           </GuideCell>
@@ -656,14 +647,16 @@ export const Composition: Story = {
             <Input
               {...args}
               id={`${uniqueId}-right`}
+              type='password'
               className='adorned-end'
+              placeholder='비밀번호를 입력해 주세요'
               adornedEnd={
                 <IconButton
                   variant='ghost'
                   color='primary'
                   size={args.size}
-                  ariaLabel='검색 버튼'
-                  icon={<Icon className='icon' name='search' strokeWidth={2.5} />}
+                  ariaLabel='비밀번호 표시'
+                  icon={<Icon className='icon' name='eye' strokeWidth={2.5} />}
                 />
               }
             />
@@ -705,22 +698,15 @@ export const LongText: Story = {
                       defaultValue='말줄임 말줄임 표시 말줄임 표시 말줄임 말줄임 표시 말줄임 표시 말줄임 말줄임 표시 말줄임 표시 말줄임 말줄임 표시 말줄임 표시'
                       className='adorned-start'
                       adornedStart={
-                        <IconButton
-                          variant='ghost'
-                          color={args.color}
-                          shape={args.shape}
-                          size={size}
-                          ariaLabel='검색 버튼'
-                          icon={
-                            <Icon
-                              className='icon'
-                              name='search'
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth={2.5}
-                            />
-                          }
-                        />
+                        <IconFrame size={size}>
+                          <Icon
+                            className='icon'
+                            name='map-pin'
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            strokeWidth={2.5}
+                          />
+                        </IconFrame>
                       }
                     />
                     <Input
@@ -768,22 +754,15 @@ export const LongText: Story = {
                     defaultValue='내용이 입력된 상태입니다.'
                     className='adorned-start'
                     adornedStart={
-                      <IconButton
-                        variant='ghost'
-                        color={args.color}
-                        shape={args.shape}
-                        size={size}
-                        ariaLabel='검색 버튼'
-                        icon={
-                          <Icon
-                            className='icon'
-                            name='search'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            strokeWidth={2.5}
-                          />
-                        }
-                      />
+                      <IconFrame size={size}>
+                        <Icon
+                          className='icon'
+                          name='map-pin'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2.5}
+                        />
+                      </IconFrame>
                     }
                   />
                   <Input

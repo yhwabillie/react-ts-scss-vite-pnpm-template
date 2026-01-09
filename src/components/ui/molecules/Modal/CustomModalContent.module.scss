@@ -1,0 +1,83 @@
+/* CustomModalContent.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+// modal-sizes
+$modal-sizes: (
+  sm: (
+    width: rem(400px),
+  ),
+  md: (
+    width: rem(600px),
+  ),
+  lg: (
+    width: rem(800px),
+  ),
+);
+
+.custom-modal {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  min-height: rem(250px);
+  margin: auto;
+  border-radius: var(--project-border-radius-16);
+  box-shadow: 0 rem(8px) rem(20px) var(--shadow-bg-color-custom-modal);
+  background-color: var(--bg-color-custom-modal);
+
+  &:global(.is-outer-scroll) {
+    :global(.modal-body) {
+    }
+  }
+  &:global(.is-inner-scroll) {
+    max-height: 100%;
+
+    :global(.modal-body) {
+      display: block;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  @each $size-name, $props in $modal-sizes {
+    &:global(.size--#{$size-name}) {
+      width: map.get($props, width);
+    }
+  }
+
+  :global(.modal-head) {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: rem(24px) rem(24px) rem(16px);
+
+    :global(.modal-title) {
+      display: flex;
+      align-items: center;
+      font: var(--project-typo-ModalText1-700);
+    }
+
+    :global(.modal-action) {
+      align-self: flex-start;
+      margin-left: auto;
+    }
+  }
+
+  :global(.modal-body) {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.25rem 1.25rem 0.75rem;
+    border-top: 0.0625rem solid var(--stroke-color-custom-modal);
+    background-color: var(--modal-body-bg-color-custom-modal);
+  }
+
+  :global(.modal-footer) {
+    padding: 0 1.25rem 1.25rem;
+    background-color: var(--modal-footer-bg-color-custom-modal);
+  }
+}

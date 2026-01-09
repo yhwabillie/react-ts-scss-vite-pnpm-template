@@ -3,55 +3,159 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
+$tooltip-sizes: (
+  sm: (
+    max-width: rem(260px),
+    min-height: rem(22px),
+    padding: rem(6px) rem(12px),
+    radius: var(--project-border-radius-6),
+    font: var(--project-typo-TooltipText3-500),
+    close-btn-size: rem(22px),
+    close-btn-top: rem(-6px),
+    close-btn-right: rem(-10px),
+    close-btn-icon-size: rem(14px),
+  ),
+  md: (
+    max-width: rem(320px),
+    min-height: rem(28px),
+    padding: rem(8px) rem(14px),
+    radius: var(--project-border-radius-6),
+    font: var(--project-typo-TooltipText2-500),
+    close-btn-size: rem(28px),
+    close-btn-top: rem(-8px),
+    close-btn-right: rem(-14px),
+    close-btn-icon-size: rem(16px),
+  ),
+);
+
 .tooltip {
-  position: absolute; // Portal 사용 시 필수
-  z-index: 9999;
-  padding: 8px 12px;
-  background-color: #333;
-  color: #fff;
-  border-radius: 4px;
-  font-size: 12px;
-  pointer-events: none;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-color-tooltip);
+  color: var(--text-color-tooltip);
+  position: relative;
 
-  &.simple {
-    white-space: nowrap;
-  }
-  &.rich {
-    width: 240px;
-    white-space: normal;
-    line-height: 1.5;
-  }
+  @each $size-name, $props in $tooltip-sizes {
+    @include global-mod('size--#{$size-name}') {
+      max-width: map.get($props, max-width);
+      min-height: map.get($props, min-height);
+      padding: map.get($props, padding);
+      border-radius: map.get($props, radius);
 
-  .arrow {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border: 6px solid transparent;
-  }
+      :global {
+        .tooltip__content {
+          word-break: keep-all;
+          font: map.get($props, font);
+        }
 
-  &.top .arrow {
-    bottom: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-top-color: #333;
+        .tooltip__close-btn {
+          width: map.get($props, close-btn-size);
+          height: map.get($props, close-btn-size);
+          top: map.get($props, close-btn-top);
+          right: map.get($props, close-btn-right);
+
+          :global {
+            .icon {
+              width: map.get($props, close-btn-icon-size);
+              height: map.get($props, close-btn-icon-size);
+            }
+          }
+        }
+
+        .tooltip__tail {
+          width: rem(12px);
+          height: rem(8px);
+          position: absolute;
+          z-index: 1;
+          border: none;
+
+          :global {
+            path {
+              fill: var(--tail-bg-color-tooltip);
+            }
+          }
+
+          /* --- 1. 상하 배치 (Top & Bottom) --- */
+          // 에러 방지를 위해 각 포지션 블록을 명확히 나눕니다.
+          & {
+            @include global-mod('position--top') {
+              bottom: rem(-8px);
+
+              // Top에서의 정렬별 처리
+              @include global-mod('align--start') {
+                left: rem(12px);
+                transform: none;
+              }
+              @include global-mod('align--center') {
+                left: 50%;
+                transform: translateX(-50%);
+              }
+              @include global-mod('align--end') {
+                right: rem(12px);
+                transform: none;
+              }
+            }
+
+            @include global-mod('position--bottom') {
+              top: rem(-8px);
+
+              // Bottom에서의 정렬별 처리 (회전 포함)
+              @include global-mod('align--start') {
+                left: rem(12px);
+                transform: rotate(180deg);
+              }
+              @include global-mod('align--center') {
+                left: 50%;
+                transform: translateX(-50%) rotate(180deg);
+              }
+              @include global-mod('align--end') {
+                right: rem(12px);
+                transform: rotate(180deg);
+              }
+            }
+          }
+
+          /* --- 2. 좌우 배치 (Left & Right) --- */
+          // 좌우 배치는 align 속성에 영향을 받지 않도록 독립적으로 구성합니다.
+          & {
+            @include global-mod('position--left') {
+              top: 50%;
+              right: rem(-10px);
+              left: auto; // align 클래스에 의한 값 초기화
+              transform: translateY(-50%) rotate(-90deg);
+            }
+
+            @include global-mod('position--right') {
+              top: 50%;
+              left: rem(-10px);
+              right: auto; // align 클래스에 의한 값 초기화
+              transform: translateY(-50%) rotate(90deg);
+            }
+          }
+        }
+      }
+    }
   }
-  &.bottom .arrow {
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-bottom-color: #333;
-  }
-  &.left .arrow {
-    right: -12px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-left-color: #333;
-  }
-  &.right .arrow {
-    left: -12px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-right-color: #333;
+  :global {
+    .tooltip__tail {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    .tooltip__close-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      background-color: var(--close-btn-bg-color-tooltip);
+      border-radius: var(--project-border-radius-max);
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: var(--close-btn-hover-bg-color-tooltip);
+      }
+    }
   }
 }

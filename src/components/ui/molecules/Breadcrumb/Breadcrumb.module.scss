@@ -2,50 +2,120 @@
 @use 'sass:map';
 @use '../../../../styles/mixins' as *;
 
-.breadcrumbs-nav {
-  padding: 1rem 0;
+$breadcrumb-sizes: (
+  sm: (
+    font: var(--project-typo-BreadcrumbText3-400),
+    current-font: var(--project-typo-BreadcrumbText3-700),
+    icon-size: rem(20px),
+    gap: rem(4px),
+    padding: rem(16px) 0,
+  ),
+  md: (
+    font: var(--project-typo-BreadcrumbText2-400),
+    current-font: var(--project-typo-BreadcrumbText2-700),
+    icon-size: rem(24px),
+    gap: rem(6px),
+    padding: rem(20px) 0,
+  ),
+  lg: (
+    font: var(--project-typo-BreadcrumbText1-400),
+    current-font: var(--project-typo-BreadcrumbText1-700),
+    icon-size: rem(26px),
+    gap: rem(8px),
+    padding: rem(24px) 0,
+  ),
+);
 
-  .breadcrumbs-list {
-    display: flex;
-    flex-wrap: wrap; // 모바일에서 줄바꿈 대응
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 0.875rem; // 14px
-    color: #666;
+$breadcrumb-colors: (
+  primary: (
+    current-label: var(--primary-current-text-color-breadcrumb),
+    hover-label: var(--primary-current-text-color-breadcrumb),
+  ),
+  secondary: (
+    current-label: var(--secondary-current-text-color-breadcrumb),
+    hover-label: var(--secondary-current-text-color-breadcrumb),
+  ),
+  tertiary: (
+    current-label: var(--tertiary-current-text-color-breadcrumb),
+    hover-label: var(--tertiary-current-text-color-breadcrumb),
+  ),
+);
+
+.breadcrumb {
+  @each $size-name, $size-map in $breadcrumb-sizes {
+    @include global-mod('size--#{$size-name}') {
+      padding: map.get($size-map, padding);
+
+      :global {
+        .breadcrumb__list {
+          gap: map.get($size-map, gap);
+        }
+
+        .breadcrumb__item {
+          gap: map.get($size-map, gap);
+        }
+
+        .breadcrumb__current {
+          gap: map.get($size-map, gap);
+          font: map.get($size-map, current-font);
+        }
+
+        .icon {
+          width: map.get($size-map, icon-size);
+          height: map.get($size-map, icon-size);
+        }
+
+        .breadcrumb__link {
+          gap: map.get($size-map, gap);
+          font: map.get($size-map, font);
+        }
+      }
+    }
   }
 
-  .breadcrumb-item {
-    display: flex;
-    align-items: center;
+  @each $color-name, $color-map in $breadcrumb-colors {
+    @include global-mod('color--#{$color-name}') {
+      :global {
+        .breadcrumb__current {
+          color: map.get($color-map, current-label);
+        }
 
-    .link {
-      color: #666;
-      text-decoration: none;
+        .breadcrumb__link {
+          &:hover,
+          &:focus {
+            color: map.get($color-map, hover-label);
+          }
+        }
+      }
+    }
+  }
+
+  :global {
+    .breadcrumb__list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .breadcrumb__item {
+      display: flex;
+      align-items: center;
+    }
+
+    .breadcrumb__current {
+      display: inline-flex;
+      align-items: self-start;
+    }
+
+    .breadcrumb__link {
+      display: inline-flex;
+      align-items: self-start;
       transition: color 0.2s;
 
       &:hover,
       &:focus {
-        color: #007bff;
         text-decoration: underline;
       }
-    }
-
-    .current {
-      font-weight: 700;
-      color: #333;
-    }
-
-    .separator {
-      margin: 0 8px;
-      color: #ccc;
-      user-select: none; // 구분자 텍스트 드래그 방지
-    }
-
-    .icon {
-      margin-right: 4px;
-      display: inline-flex;
-      vertical-align: middle;
     }
   }
 }

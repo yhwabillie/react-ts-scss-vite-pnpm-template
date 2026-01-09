@@ -1,69 +1,354 @@
 /* Tabs.module.scss */
 @use 'sass:map';
+@use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
-.tabs-container {
+$tabs-colors: (
+  solid: (
+    primary: (
+      bg: var(--primary-bg-color-tabs-solid),
+      border: var(--primary-stroke-color-tabs-solid),
+      active-border: var(--primary-active-stroke-color-tabs-solid),
+      active-bg: var(--primary-active-bg-color-tabs-solid),
+      active-text: var(--primary-active-text-color-tabs-solid),
+      hover-bg: var(--primary-hover-bg-color-tabs-solid),
+    ),
+    secondary: (
+      bg: var(--secondary-bg-color-tabs-solid),
+      border: var(--secondary-stroke-color-tabs-solid),
+      active-border: var(--secondary-active-stroke-color-tabs-solid),
+      active-bg: var(--secondary-active-bg-color-tabs-solid),
+      active-text: var(--secondary-active-text-color-tabs-solid),
+      hover-bg: var(--secondary-hover-bg-color-tabs-solid),
+    ),
+    tertiary: (
+      bg: var(--tertiary-bg-color-tabs-solid),
+      border: var(--tertiary-stroke-color-tabs-solid),
+      active-border: var(--tertiary-active-stroke-color-tabs-solid),
+      active-bg: var(--tertiary-active-bg-color-tabs-solid),
+      active-text: var(--tertiary-active-text-color-tabs-solid),
+      hover-bg: var(--tertiary-hover-bg-color-tabs-solid),
+    ),
+  ),
+  outline: (
+    primary: (
+      border: var(--primary-stroke-color-tabs-outline),
+      active-text: var(--primary-active-text-color-tabs-outline),
+      bg: var(--primary-bg-color-tabs-outline),
+      after-border: var(--primary-after-stroke-color-tabs-outline),
+      hover-bg: var(--primary-hover-bg-color-tabs-outline),
+    ),
+    secondary: (
+      border: var(--secondary-stroke-color-tabs-outline),
+      active-text: var(--secondary-active-text-color-tabs-outline),
+      bg: var(--secondary-bg-color-tabs-outline),
+      after-border: var(--secondary-after-stroke-color-tabs-outline),
+      hover-bg: var(--secondary-hover-bg-color-tabs-outline),
+    ),
+    tertiary: (
+      border: var(--tertiary-stroke-color-tabs-outline),
+      active-text: var(--tertiary-active-text-color-tabs-outline),
+      bg: var(--tertiary-bg-color-tabs-outline),
+      after-border: var(--tertiary-after-stroke-color-tabs-outline),
+      hover-bg: var(--tertiary-hover-bg-color-tabs-outline),
+    ),
+  ),
+  underline: (
+    primary: (
+      border: var(--primary-stroke-bg-color-tabs-underline),
+      active-border: var(--primary-active-stroke-color-tabs-underline),
+      active-text: var(--primary-active-text-color-tabs-underline),
+      hover-bg: var(--primary-hover-bg-color-tabs-underline),
+    ),
+    secondary: (
+      border: var(--secondary-stroke-bg-color-tabs-underline),
+      active-border: var(--secondary-active-stroke-color-tabs-underline),
+      active-text: var(--secondary-active-text-color-tabs-underline),
+      hover-bg: var(--secondary-hover-bg-color-tabs-underline),
+    ),
+    tertiary: (
+      border: var(--tertiary-stroke-bg-color-tabs-underline),
+      active-border: var(--tertiary-active-stroke-color-tabs-underline),
+      active-text: var(--tertiary-active-text-color-tabs-underline),
+      hover-bg: var(--tertiary-hover-bg-color-tabs-underline),
+    ),
+  ),
+);
+
+$tabs-sizes: (
+  sm: (
+    btn-width: rem(32px),
+    btn-padding: rem(8px) rem(16px) rem(8px),
+    btn-font: var(--project-typo-btn2-600),
+    panel-padding: rem(16px) 0,
+  ),
+  md: (
+    btn-width: rem(40px),
+    btn-padding: rem(12px) rem(20px) rem(12px),
+    btn-font: var(--project-typo-btn3-600),
+    panel-padding: rem(20px) 0,
+  ),
+  lg: (
+    btn-width: rem(44px),
+    btn-padding: rem(16px) rem(24px) rem(16px),
+    btn-font: var(--project-typo-btn4-700),
+    panel-padding: rem(24px) 0,
+  ),
+);
+
+$tabs-variant-sizes: (
+  solid: (),
+  outline: (),
+  underline: (),
+);
+
+.tabs {
   width: 100%;
 
-  .tab-controls-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    overflow: hidden; // 화살표가 영역 밖으로 나가지 않게
-  }
+  @each $variant-name, $variant-map in $tabs-colors {
+    // variant
+    @include global-mod('variant--#{$variant-name}') {
+      @each $color-name, $props in $variant-map {
+        // color
+        @include global-mod('color--#{$color-name}') {
+          $color-map: map.get($variant-map, $color-name);
 
-  .tab-list-viewport {
-    overflow-x: auto;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      display: none;
+          @if $variant-name == 'solid' {
+            :global {
+              .tabs__tab-item {
+                background-color: map.get($color-map, bg);
+                border-color: map.get($color-map, border);
+
+                &:hover {
+                  background-color: map.get($color-map, hover-bg);
+                }
+
+                &.active {
+                  border-color: map.get($color-map, active-border);
+                  background-color: map.get($color-map, active-bg);
+                  color: map.get($color-map, active-text);
+                }
+              }
+            }
+          } @else if $variant-name == 'outline' {
+            :global {
+              .tabs__list {
+                border-color: map.get($color-map, border);
+              }
+
+              .tabs__tab-item {
+                background-color: map.get($color-map, bg);
+
+                &:hover {
+                  background-color: map.get($color-map, hover-bg);
+                }
+
+                &:not(.active) {
+                  border-top-color: transparent;
+                  border-left-color: transparent;
+                  border-right-color: transparent;
+                }
+
+                &.active {
+                  color: map.get($color-map, active-text);
+                  border-top-color: map.get($color-map, border);
+
+                  &::after {
+                    background-color: map.get($color-map, after-border);
+                  }
+                }
+              }
+            }
+          } @else if $variant-name == 'underline' {
+            :global {
+              .tabs__scroll-area {
+                border-bottom: 1px solid map.get($color-map, border);
+              }
+
+              .tabs__tab-item {
+                &:hover {
+                  background-color: map.get($color-map, hover-bg);
+                }
+
+                &.active {
+                  color: map.get($color-map, active-text);
+                  box-shadow: inset 0 rem(-4px) 0 map.get($color-map, active-border);
+                }
+              }
+            }
+          }
+        }
+      }
     }
-    scroll-behavior: smooth;
-    width: 100%;
   }
 
-  .tab-list {
-    display: inline-flex;
-    white-space: nowrap;
-    padding: 0 40px; // 화살표 버튼 자리를 미리 확보
+  @each $size-name, $size-map in $tabs-sizes {
+    @include global-mod('size--#{$size-name}') {
+      @each $variant-name, $variant-map in $tabs-variant-sizes {
+        // variant
+        @include global-mod('variant--#{$variant-name}') {
+          @if $variant-name == 'solid' {
+            :global {
+              .tabs__tab-item {
+                border-width: rem(1px);
+                border-style: solid;
+                margin-right: rem(-1px);
+
+                .tabs__tab-item {
+                  &:focus,
+                  &:focus-visible {
+                    outline-offset: -2px;
+                  }
+                }
+
+                &:nth-child(1) {
+                  border-top-left-radius: var(--project-border-radius-8);
+                  border-bottom-left-radius: var(--project-border-radius-8);
+                }
+
+                &:last-child {
+                  border-top-right-radius: var(--project-border-radius-8);
+                  border-bottom-right-radius: var(--project-border-radius-8);
+                }
+              }
+            }
+          } @else if $variant-name == 'outline' {
+            :global {
+              .tabs__list {
+                border-bottom-width: rem(2px);
+                border-style: solid;
+              }
+
+              .tabs__tab-item {
+                border-top-left-radius: var(--project-border-radius-8);
+                border-top-right-radius: var(--project-border-radius-8);
+                border-top-width: rem(2px);
+                border-left-width: rem(2px);
+                border-right-width: rem(2px);
+                border-style: solid;
+
+                &:focus,
+                &:focus-visible {
+                  outline-offset: -2px;
+                }
+
+                &.active {
+                  position: relative;
+                  &::after {
+                    content: '';
+                    display: inline-block;
+                    width: 100%;
+                    height: rem(2px);
+                    position: absolute;
+                    bottom: rem(-2px);
+                    left: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      :global {
+        .tabs__list-area {
+          /* 그라데이션 마스크 적용 */
+          mask-image: linear-gradient(
+            to right,
+            transparent,
+            black map.get($size-map, btn-width),
+            black calc(100% - map.get($size-map, btn-width)),
+            transparent
+          );
+
+          /* Safari 브라우저 호환성 대응 */
+          -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            black map.get($size-map, btn-width),
+            black calc(100% - map.get($size-map, btn-width)),
+            transparent
+          );
+        }
+
+        .tabs__list {
+          padding: 0 map.get($size-map, btn-width);
+        }
+
+        .tabs__tab-item {
+          padding: map.get($size-map, btn-padding);
+          font: map.get($size-map, btn-font);
+        }
+
+        .tabs__panel {
+          padding: map.get($size-map, panel-padding);
+        }
+      }
+    }
   }
 
-  .scroll-button {
-    // 실제 disabled가 아니므로 [aria-disabled="true"]로 스타일 제어
-    &[aria-disabled='true'] {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none; // 클릭 방지
-      cursor: default;
+  :global {
+    .tabs__scroll-area {
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
     }
 
-    // 포커스가 갔을 때는 사용자에게 보여야 하므로 강제 노출
-    &:focus-visible {
-      outline: 2px solid #000;
-      opacity: 1 !important;
-      visibility: visible !important;
+    .tabs__scroll-btn {
+      flex: 0 0 auto;
+
+      &[aria-disabled='true'] {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        cursor: default;
+      }
+
+      // 포커스가 갔을 때는 사용자에게 보여야 하므로 강제 노출
+      &:focus-visible {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
     }
-  }
 
-  .tab-button {
-    padding: 15px 20px;
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: #666;
-    font-weight: 500;
-
-    &.active {
-      color: #000;
-      box-shadow: inset 0 -2px 0 #000; // 밑줄
+    .tabs__list-area {
+      width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
-  }
 
-  .tab-panel {
-    padding: 20px 0;
-    &:focus {
-      outline: none;
+    .tabs__list {
+      display: inline-flex;
+      white-space: nowrap;
+    }
+
+    .tabs__tab-item {
+      flex-shrink: 0;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+      scroll-snap-align: start;
+      -webkit-user-drag: none;
+      transition: all 0.2s ease;
+
+      &:focus-visible,
+      &:focus {
+        outline-offset: rem(-2px);
+      }
+    }
+
+    .tabs__panel {
+      &:focus-visible,
+      &:focus {
+        outline-offset: rem(-2px);
+      }
     }
   }
 }

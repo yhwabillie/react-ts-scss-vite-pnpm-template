@@ -1,0 +1,181 @@
+/* IconFrame.module.scss */
+@use 'sass:map';
+@use '../../../../styles/mixins' as *;
+
+// button size
+$icon-frame-sizes: (
+  xs: (
+    frame-size: (
+      pc: rem(32px),
+      tablet: rem(32px),
+      mobile: rem(32px),
+    ),
+    radius: (
+      pc: rem(4px),
+      tablet: rem(6px),
+      mobile: rem(6px),
+    ),
+    icon-size: (
+      pc: rem(16px),
+      tablet: rem(16px),
+      mobile: rem(16px),
+    ),
+  ),
+
+  sm: (
+    frame-size: (
+      pc: rem(36px),
+      tablet: rem(36px),
+      mobile: rem(36px),
+    ),
+    radius: (
+      pc: rem(5px),
+      tablet: rem(6px),
+      mobile: rem(6px),
+    ),
+    icon-size: (
+      pc: rem(18px),
+      tablet: rem(16px),
+      mobile: rem(18px),
+    ),
+  ),
+
+  md: (
+    frame-size: (
+      pc: rem(40px),
+      tablet: rem(40px),
+      mobile: rem(40px),
+    ),
+    radius: (
+      pc: rem(6px),
+      tablet: rem(6px),
+      mobile: rem(7px),
+    ),
+    icon-size: (
+      pc: rem(20px),
+      tablet: rem(18px),
+      mobile: rem(20px),
+    ),
+  ),
+
+  lg: (
+    frame-size: (
+      pc: rem(44px),
+      tablet: rem(44px),
+      mobile: rem(44px),
+    ),
+    radius: (
+      pc: rem(7px),
+      tablet: rem(7px),
+      mobile: rem(8px),
+    ),
+    icon-size: (
+      pc: rem(22px),
+      tablet: rem(20px),
+      mobile: rem(20px),
+    ),
+  ),
+
+  xl: (
+    frame-size: (
+      pc: rem(48px),
+      tablet: rem(48px),
+      mobile: rem(48px),
+    ),
+    radius: (
+      pc: rem(8px),
+      tablet: rem(8px),
+      mobile: rem(8px),
+    ),
+    icon-size: (
+      pc: rem(24px),
+      tablet: rem(22px),
+      mobile: rem(22px),
+    ),
+  ),
+);
+
+// icon frame colors
+$icon-frame-colors: (
+  primary: (
+    fill: var(--primary-fill-color-icon-frame),
+  ),
+  secondary: (
+    fill: var(--secondary-fill-color-icon-frame),
+  ),
+  tertiary: (
+    fill: var(--tertiary-fill-color-icon-frame),
+  ),
+  success: (
+    fill: var(--success-fill-color-icon-frame),
+  ),
+  warning: (
+    fill: var(--warning-fill-color-icon-frame),
+  ),
+  danger: (
+    fill: var(--danger-fill-color-icon-frame),
+  ),
+);
+
+// mixins - btn size
+@mixin icon-frame-size {
+  @each $size-name, $props in $icon-frame-sizes {
+    $frame-size: map.get($props, frame-size);
+    $icon: map.get($props, icon-size);
+
+    // 🎯 PC 기본 사이즈
+    &:global(.size--#{$size-name}) {
+      width: map.get($frame-size, pc);
+      height: map.get($frame-size, pc);
+
+      svg {
+        width: map.get($icon, pc);
+        height: map.get($icon, pc);
+      }
+    }
+
+    // 🎯 Tablet (max-width: 768px)
+    @media (max-width: 768px) {
+      &:global(.size--#{$size-name}) {
+        width: map.get($frame-size, tablet);
+        height: map.get($frame-size, tablet);
+
+        svg {
+          width: map.get($icon, tablet);
+          height: map.get($icon, tablet);
+        }
+      }
+    }
+
+    // 🎯 Mobile (max-width: 480px)
+    @media (max-width: 480px) {
+      &:global(.size--#{$size-name}) {
+        width: map.get($frame-size, mobile);
+        height: map.get($frame-size, mobile);
+
+        svg {
+          width: map.get($icon, mobile);
+          height: map.get($icon, mobile);
+        }
+      }
+    }
+  }
+}
+
+.icon-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+
+  @each $color-name, $props in $icon-frame-colors {
+    &:global(.color--#{$color-name}) {
+      svg {
+        color: map.get($props, fill);
+      }
+    }
+  }
+
+  // size
+  @include icon-frame-size;
+}

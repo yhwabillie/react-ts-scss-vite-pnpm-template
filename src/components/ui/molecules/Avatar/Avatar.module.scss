@@ -2,75 +2,138 @@
 @use 'sass:map';
 @use '../../../../styles/mixins' as *;
 
-.container {
-  position: relative;
-  display: inline-block;
+$avatar-sizes: (
+  sm: (
+    size: rem(32px),
+    icon-size: rem(18px),
+    font: var(--project-typo-AvatarText4-500),
+  ),
+  md: (
+    size: rem(48px),
+    icon-size: rem(24px),
+    font: var(--project-typo-AvatarText3-500),
+  ),
+  lg: (
+    size: rem(64px),
+    icon-size: rem(32px),
+    font: var(--project-typo-AvatarText2-500),
+  ),
+  xl: (
+    size: rem(80px),
+    icon-size: rem(40px),
+    font: var(--project-typo-AvatarText1-500),
+  ),
+);
 
-  // 사이즈 정의
-  &.sm {
-    width: 32px;
-    height: 32px;
-    font-size: 12px;
-  }
-  &.md {
-    width: 48px;
-    height: 48px;
-    font-size: 16px;
-  }
-  &.lg {
-    width: 64px;
-    height: 64px;
-    font-size: 20px;
-  }
-}
+$avatar-colors: (
+  primary: (
+    hover-border: var(--primary-hover-stroke-color-avatar),
+    active-border: var(--primary-active-stroke-color-avatar),
+  ),
+  secondary: (
+    hover-border: var(--secondary-hover-stroke-color-avatar),
+    active-border: var(--secondary-active-stroke-color-avatar),
+  ),
+  tertiary: (
+    hover-border: var(--tertiary-hover-stroke-color-avatar),
+    active-border: var(--tertiary-active-stroke-color-avatar),
+  ),
+);
 
 .avatar {
-  width: 100%;
-  height: 100%;
+  position: relative;
+  display: inline-flex;
+  border: rem(2px) solid var(--bg-color-avatar);
   overflow: hidden;
-  background-color: #f1f3f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: var(--bg-color-avatar);
+  transition: all 0.2s ease;
 
-  &.circle {
-    border-radius: 50%;
-  }
-  &.square {
-    border-radius: 8px;
+  @each $size-name, $props in $avatar-sizes {
+    @include global-mod('size--#{$size-name}') {
+      width: map.get($props, size);
+      height: map.get($props, size);
+
+      @include global-mod('shape--square') {
+        border-radius: 0;
+      }
+
+      @include global-mod('shape--rounded') {
+        border-radius: var(--project-border-radius-8);
+      }
+
+      @include global-mod('shape--pill') {
+        border-radius: var(--project-border-radius-max);
+      }
+
+      :global {
+        .avatar__fallback {
+          font: map.get($props, font);
+
+          :global(.icon) {
+            width: map.get($props, icon-size);
+            height: map.get($props, icon-size);
+          }
+        }
+      }
+    }
   }
 
-  .image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  @each $color-name, $variant-map in $avatar-colors {
+    // colors
+    @include global-mod('color--#{$color-name}') {
+      @include global-mod('variant--solid') {
+        @at-root button#{&},
+          a#{&} {
+          &:hover {
+            background-color: var(--hover-bg-color-avatar);
+            box-shadow: 0 rem(4px) rem(10px) 0 var(--hover-shadow-color-avatar);
+          }
+
+          &:focus-visible,
+          &:active {
+            transform: scale(0.95);
+            background-color: var(--hover-bg-color-avatar);
+            box-shadow: 0 rem(4px) rem(10px) 0 var(--hover-shadow-color-avatar);
+          }
+        }
+      }
+
+      @include global-mod('variant--outline') {
+        border-color: var(--stroke-color-avatar);
+
+        @at-root button#{&},
+          a#{&} {
+          &:hover {
+            background-color: var(--hover-bg-color-avatar);
+            border-color: map.get($variant-map, hover-border);
+            box-shadow: 0 rem(4px) rem(10px) 0 var(--hover-shadow-color-avatar);
+          }
+
+          &:focus-visible,
+          &:active {
+            transform: scale(0.95);
+            background-color: var(--hover-bg-color-avatar);
+            border-color: map.get($variant-map, active-border);
+            box-shadow: 0 rem(4px) rem(10px) 0 var(--hover-shadow-color-avatar);
+          }
+        }
+      }
+    }
   }
 
-  .fallback {
-    font-weight: 600;
-    color: #495057;
-  }
-}
+  :global {
+    img {
+      object-fit: cover;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
 
-.status {
-  position: absolute;
-  bottom: 2px;
-  right: 2px;
-  width: 25%;
-  height: 25%;
-  border-radius: 50%;
-  border: 2px solid #fff; // 배경과 구분
-
-  &.online {
-    background-color: #40c057;
-  }
-  &.offline {
-    background-color: #868e96;
-  }
-  &.away {
-    background-color: #fab005;
-  }
-  &.busy {
-    background-color: #fa5252;
+    .avatar__fallback {
+      display: flex;
+      justify-content: center;
+      align-self: center;
+      flex: 1;
+      color: var(--fallback-text-color-avatar);
+    }
   }
 }

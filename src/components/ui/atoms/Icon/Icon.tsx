@@ -28,6 +28,26 @@ import HouseIcon from '@/assets/icons/icon-house.svg?react';
 import BellIcon from '@/assets/icons/icon-bell.svg?react';
 import VolumeOnIcon from '@/assets/icons/icon-volume-on.svg?react';
 import VolumeOffIcon from '@/assets/icons/icon-volume-off.svg?react';
+import MapPinIcon from '@/assets/icons/icon-map-pin.svg?react';
+import ArrowUpRightIcon from '@/assets/icons/icon-arrow-up-right.svg?react';
+import TrashcanIcon from '@/assets/icons/icon-trash-can.svg?react';
+import FileIcon from '@/assets/icons/icon-file.svg?react';
+import ArrowDownUpIcon from '@/assets/icons/icon-arrow-down-up.svg?react';
+import ArrowDownWideNarrowIcon from '@/assets/icons/icon-arrow-down-wide-narrow.svg?react';
+import ArrowUpNarrowWideIcon from '@/assets/icons/icon-arrow-up-narrow-wide.svg?react';
+import MegaphoneIcon from '@/assets/icons/icon-megaphone.svg?react';
+import LockIcon from '@/assets/icons/icon-lock.svg?react';
+import ChevronsLeftIcon from '@/assets/icons/icon-chevrons-left.svg?react';
+import ChevronsRightIcon from '@/assets/icons/icon-chevrons-right.svg?react';
+import EllipsisIcon from '@/assets/icons/icon-ellipsis.svg?react';
+import DownloadIcon from '@/assets/icons/icon-download.svg?react';
+import SendIcon from '@/assets/icons/icon-send.svg?react';
+import ShareIcon from '@/assets/icons/icon-share.svg?react';
+import HashIcon from '@/assets/icons/icon-hash.svg?react';
+import OuterLinkIcon from '@/assets/icons/icon-square-arrow-out-up-right.svg?react';
+import RotateIcon from '@/assets/icons/icon-rotate-ccw.svg?react';
+import UserIcon from '@/assets/icons/icon-user.svg?react';
+import ListIcon from '@/assets/icons/icon-list.svg?react';
 
 const iconMap = {
   search: SearchIcon,
@@ -57,6 +77,26 @@ const iconMap = {
   bell: BellIcon,
   'volume-on': VolumeOnIcon,
   'volume-off': VolumeOffIcon,
+  'map-pin': MapPinIcon,
+  'arrow-up-right': ArrowUpRightIcon,
+  trashcan: TrashcanIcon,
+  file: FileIcon,
+  'arrow-down-up': ArrowDownUpIcon,
+  'arrow-down-wide-narrow': ArrowDownWideNarrowIcon,
+  'arrow-up-narrow-wide': ArrowUpNarrowWideIcon,
+  megaphone: MegaphoneIcon,
+  lock: LockIcon,
+  'chevrons-left': ChevronsLeftIcon,
+  'chevrons-right': ChevronsRightIcon,
+  ellipsis: EllipsisIcon,
+  download: DownloadIcon,
+  send: SendIcon,
+  share: ShareIcon,
+  hash: HashIcon,
+  link: OuterLinkIcon,
+  rotate: RotateIcon,
+  user: UserIcon,
+  list: ListIcon,
   // 다른 아이콘들도 여기에 추가
 };
 

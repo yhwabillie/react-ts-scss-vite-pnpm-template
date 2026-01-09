@@ -11,7 +11,7 @@ export interface OptionBase {
   selected?: any;
 }
 export interface BaseProps extends OptionBase {
-  variant: 'solid' | 'outline' | 'ghost';
+  variant: 'solid' | 'ghost';
   color: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   index?: number; // Optional로 추가
@@ -77,12 +77,16 @@ const OptionItem = forwardRef<HTMLLIElement, OptionItemProps>(
         onClick={handleClick}
         onKeyDown={onKeyDown}
       >
-        <span className='label' title={value || undefined}>
-          {value || placeholder}
-        </span>
+        <span className='label'>{value || placeholder}</span>
 
         {selected && value !== '' && (
-          <Icon name='round-check' className='icon' strokeLinecap='round' strokeLinejoin='round' />
+          <Icon
+            name='round-check'
+            className='icon'
+            strokeWidth={3}
+            strokeLinecap='round'
+            strokeLinejoin='round'
+          />
         )}
       </li>
     );

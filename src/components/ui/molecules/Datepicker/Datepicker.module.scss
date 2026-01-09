@@ -3,8 +3,384 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
+$datepicker-colors: (
+  primary: (
+    solid: (
+      bg: #dceaff,
+      color: #0a2540,
+      placeholder: #8a9bb0,
+    ),
+    outline: (
+      bg: var(--primary-bg-color-datepicker-outline),
+      border: var(--primary-stroke-color-datepicker-outline),
+      color: var(--primary-text-color-datepicker-outline),
+      placeholder: var(--primary-placeholder-color-datepicker-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-datepicker),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-datepicker),
+        border: var(--disabled-stroke-color-datepicker),
+        color: var(--disabled-text-color-datepicker),
+        placeholder: var(--disabled-placeholder-color-datepicker),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-datepicker),
+        border: var(--readonly-stroke-color-datepicker),
+        color: var(--readonly-text-color-datepicker),
+        placeholder: var(--readonly-placeholder-color-datepicker),
+      ),
+    ),
+  ),
+  secondary: (
+    solid: (
+      bg: #d8edff,
+      color: #173a57,
+      placeholder: #95a7b8,
+    ),
+    outline: (
+      bg: var(--secondary-bg-color-datepicker-outline),
+      border: var(--secondary-stroke-color-datepicker-outline),
+      color: var(--secondary-text-color-datepicker-outline),
+      placeholder: var(--secondary-placeholder-color-datepicker-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-datepicker),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-datepicker),
+        border: var(--disabled-stroke-color-datepicker),
+        color: var(--disabled-text-color-datepicker),
+        placeholder: var(--disabled-placeholder-color-datepicker),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-datepicker),
+        border: var(--readonly-stroke-color-datepicker),
+        color: var(--readonly-text-color-datepicker),
+        placeholder: var(--readonly-placeholder-color-datepicker),
+      ),
+    ),
+  ),
+  tertiary: (
+    solid: (
+      bg: #e8e8e8,
+      color: #1e1e1e,
+      placeholder: #9a9a9a,
+    ),
+    outline: (
+      bg: var(--tertiary-bg-color-datepicker-outline),
+      border: var(--tertiary-stroke-color-datepicker-outline),
+      color: var(--tertiary-text-color-datepicker-outline),
+      placeholder: var(--tertiary-placeholder-color-datepicker-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-datepicker),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-datepicker),
+        border: var(--disabled-stroke-color-datepicker),
+        color: var(--disabled-text-color-datepicker),
+        placeholder: var(--disabled-placeholder-color-datepicker),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-datepicker),
+        border: var(--readonly-stroke-color-datepicker),
+        color: var(--readonly-text-color-datepicker),
+        placeholder: var(--readonly-placeholder-color-datepicker),
+      ),
+    ),
+  ),
+  success: (
+    solid: (
+      bg: #e2f5e9,
+      placeholder: #a9c7b0,
+      color: #2e5938,
+    ),
+    outline: (
+      bg: var(--success-bg-color-datepicker-outline),
+      border: var(--success-stroke-color-datepicker-outline),
+      color: var(--success-text-color-datepicker-outline),
+      placeholder: var(--success-placeholder-color-datepicker-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--success-hover-shadow-datepicker),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-datepicker),
+        border: var(--disabled-stroke-color-datepicker),
+        color: var(--disabled-text-color-datepicker),
+        placeholder: var(--disabled-placeholder-color-datepicker),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-datepicker),
+        border: var(--readonly-stroke-color-datepicker),
+        color: var(--readonly-text-color-datepicker),
+        placeholder: var(--readonly-placeholder-color-datepicker),
+      ),
+    ),
+  ),
+  warning: (
+    solid: (
+      bg: #fff4d1,
+      placeholder: #c7b98b,
+      color: #5c4a00,
+    ),
+    outline: (
+      bg: var(--warning-bg-color-datepicker-outline),
+      border: var(--warning-stroke-color-datepicker-outline),
+      color: var(--warning-text-color-datepicker-outline),
+      placeholder: var(--warning-placeholder-color-datepicker-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-datepicker),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-datepicker),
+        border: var(--disabled-stroke-color-datepicker),
+        color: var(--disabled-text-color-datepicker),
+        placeholder: var(--disabled-placeholder-color-datepicker),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-datepicker),
+        border: var(--readonly-stroke-color-datepicker),
+        color: var(--readonly-text-color-datepicker),
+        placeholder: var(--readonly-placeholder-color-datepicker),
+      ),
+    ),
+  ),
+  danger: (
+    solid: (
+      bg: #ffe8e8,
+      placeholder: #d3b1b1,
+      color: #6f1a1a,
+    ),
+    outline: (
+      bg: var(--danger-bg-color-datepicker-outline),
+      border: var(--danger-stroke-color-datepicker-outline),
+      color: var(--danger-text-color-datepicker-outline),
+      placeholder: var(--danger-placeholder-color-datepicker-outline),
+      hover: (
+        shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-datepicker),
+      ),
+      disabled: (
+        bg: var(--disabled-bg-color-datepicker),
+        border: var(--disabled-stroke-color-datepicker),
+        color: var(--disabled-text-color-datepicker),
+        placeholder: var(--disabled-placeholder-color-datepicker),
+      ),
+      readonly: (
+        bg: var(--readonly-bg-color-datepicker),
+        border: var(--readonly-stroke-color-datepicker),
+        color: var(--readonly-text-color-datepicker),
+        placeholder: var(--readonly-placeholder-color-datepicker),
+      ),
+    ),
+  ),
+);
+
+$datepicker-sizes: (
+  xs: (
+    width: rem(220px),
+    height: rem(32px),
+    padding: 0 0 0 rem(14px),
+    font-token: var(--project-typo-input3-500),
+    radius: rem(var(--project-border-radius-4)),
+    icon-size: rem(14px),
+  ),
+  sm: (
+    width: rem(240px),
+    height: rem(36px),
+    padding: 0 0 0 rem(20px),
+    font-token: var(--project-typo-input2-500),
+    radius: rem(var(--project-border-radius-6)),
+    icon-size: rem(18px),
+  ),
+  md: (
+    width: rem(260px),
+    height: rem(40px),
+    padding: 0 0 0 rem(20px),
+    font-token: var(--project-typo-input2-500),
+    radius: rem(var(--project-border-radius-6)),
+    icon-size: rem(20px),
+  ),
+  lg: (
+    width: rem(280px),
+    height: rem(44px),
+    padding: 0 0 0 rem(20px),
+    font-token: var(--project-typo-input1-500),
+    radius: rem(var(--project-border-radius-8)),
+    icon-size: rem(22px),
+  ),
+  xl: (
+    width: rem(300px),
+    height: rem(48px),
+    padding: 0 0 0 rem(20px),
+    font-token: var(--project-typo-input1-500),
+    radius: rem(var(--project-border-radius-8)),
+    icon-size: rem(24px),
+  ),
+);
+
+// mixin - input variant [color + vairant]
+@mixin datepicker-variant($variant) {
+  &:global(.variant--#{$variant}) {
+    @each $color-name, $props in $datepicker-colors {
+      $variant-props: map.get($props, $variant);
+
+      @if $variant-props != null {
+        &:global(.color--#{$color-name}) {
+          @if $variant == 'solid' {
+            &:global(.variant--#{$variant}) {
+              :global(.custom-input) {
+                background-color: map.get($variant-props, bg);
+
+                :global(.custom-input-text) {
+                  color: map.get($variant-props, color);
+                }
+
+                :global(.icon) {
+                  color: map.get($variant-props, color);
+                  fill: none;
+                }
+              }
+            }
+          } @else if $variant == 'outline' {
+            &:global(.variant--outline) {
+              // hover
+              &:not(:has(input:disabled)):not(:has(input[readonly])) {
+                &:hover {
+                  :global(.custom-input) {
+                    $hover-props: map.get($variant-props, hover);
+
+                    @if $hover-props != null {
+                      box-shadow: map.get($hover-props, shadow);
+                    }
+                  }
+                }
+              }
+
+              // readonly
+              :global(.custom-input:has(input[readonly]:not(:disabled))) {
+                $readonly-props: map.get($variant-props, readonly);
+
+                @if $readonly-props != null {
+                  border: rem(1px) solid map.get($readonly-props, border);
+                  background-color: map.get($readonly-props, bg);
+                  color: map.get($readonly-props, color);
+
+                  input::placeholder,
+                  :global(.icon) {
+                    color: map.get($readonly-props, placeholder);
+                  }
+                }
+              }
+
+              // disabled
+              :global(.custom-input:has(input:disabled)) {
+                $disabled-props: map.get($variant-props, disabled);
+
+                @if $disabled-props != null {
+                  border: rem(1px) solid map.get($disabled-props, border);
+                  background-color: map.get($disabled-props, bg);
+                  color: map.get($disabled-props, color);
+
+                  input::placeholder,
+                  :global(.icon) {
+                    color: map.get($disabled-props, placeholder);
+                  }
+                }
+              }
+
+              :global(.custom-input) {
+                background-color: map.get($variant-props, bg);
+                border: rem(1px) solid map.get($variant-props, border);
+
+                :global(.custom-input-text) {
+                  color: map.get($variant-props, color);
+                  background-color: inherit;
+
+                  &::placeholder {
+                    color: map.get($variant-props, placeholder);
+                  }
+                }
+
+                :global(.icon) {
+                  // color: map.get($variant-props, color);
+                  fill: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .datepicker {
-  border: 1px solid red;
   display: inline-flex;
+  justify-content: center;
   align-items: center;
+  position: relative;
+  transition: all 0.2s ease;
+
+  &:is(label) {
+    outline: none !important;
+  }
+
+  // variant
+  @include datepicker-variant(solid);
+  @include datepicker-variant(outline);
+
+  // size
+  @each $size-name, $props in $datepicker-sizes {
+    &:global(.size--#{$size-name}) {
+      &:global(.shape--square) {
+        :global(.custom-input) {
+          border-radius: 0;
+        }
+      }
+
+      &:global(.shape--rounded) {
+        :global(.custom-input) {
+          border-radius: map.get($props, radius);
+        }
+      }
+
+      &:global(.shape--pill) {
+        :global(.custom-input) {
+          border-radius: var(--project-border-radius-max);
+        }
+      }
+
+      :global(.custom-input) {
+        width: map.get($props, width);
+        height: map.get($props, height);
+        padding: map.get($props, padding);
+        border-radius: map.get($props, radius);
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        :global(.custom-input-text) {
+          display: inline-flex;
+          font: map.get($props, font-token);
+          flex: 1 1 auto;
+          height: 100%;
+          border: none;
+          @include ell();
+        }
+
+        :global(button) {
+          flex: 0 0 auto;
+          border-top-left-radius: 0px !important;
+          border-bottom-left-radius: 0px !important;
+          margin-right: rem(-1px);
+        }
+
+        :global(.icon) {
+          width: map.get($props, icon-size);
+          height: map.get($props, icon-size);
+          flex: 0 0 auto;
+        }
+      }
+    }
+  }
 }

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ModalContext } from '@/components/contexts/ModalContext';
 import Modal from '@/components/ui/molecules/Modal/Modal';
-import type { ModalConfig, ModalState } from '@/types/modal.types';
+import type { ModalConfig, ModalState, ModalVariant } from '@/types/modal.types';
 import AlertModalContent from './AlertModalContent';
-import ProfileEditModal from './ProfileEditModal';
+import CustomModalContent from './CustomModalContent';
 
 interface ModalProviderProps {
   children: React.ReactNode;
@@ -34,7 +34,16 @@ const ModalProvider = ({ children }: ModalProviderProps) => {
   const activeTriggerNode = useRef<HTMLElement | null>(null);
   const prevModalStackLength = useRef<number>(0); // ✅ 이전 스택 길이 추적
 
-  const openModal = (type: string, config?: ModalConfig) => {
+  // 모달 오픈 시 배경 스크롤 방지 로직
+  useEffect(() => {
+    if (modalStack.length > 0) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+  }, [modalStack.length]);
+
+  const openModal = (type: ModalVariant, config?: ModalConfig) => {
     console.log(`[openModal] 타입: ${type}, 현재 스택 길이: ${modalStack.length}`);
 
     if (modalStack.length === 0 && !activeTriggerNode.current) {
@@ -133,26 +142,28 @@ const ModalProvider = ({ children }: ModalProviderProps) => {
   // Modal Components Registry
   // ============================================================
   const modalComponents: Record<string, React.ComponentType<any>> = {
-    profileEdit: ProfileEditModal,
+    'alert-info': AlertModalContent,
+    'alert-danger': AlertModalContent,
+    custom: CustomModalContent,
     // 새로운 모달을 여기에 추가
   };
 
   // ============================================================
   // Render
   // ============================================================
+
   return (
     <ModalContext.Provider value={{ openModal, closeModal, registerTrigger: () => {} }}>
       {children}
 
       {/* 모달 렌더링 */}
       {modalStack.map((modal, index) => {
-        const RegisteredComponent =
-          modal.type === 'alert' ? AlertModalContent : modalComponents[modal.type];
+        const RegisteredComponent = modalComponents[modal.type];
 
         if (!RegisteredComponent) return null;
 
         const finalConfig: ModalConfig = {
-          variant: 'default',
+          variant: modal.type,
           title: '알림',
           confirmText: '확인',
           ...modal.config,
@@ -162,7 +173,7 @@ const ModalProvider = ({ children }: ModalProviderProps) => {
           <Modal
             key={modal.id}
             isOpen={true}
-            modalType={modal.type}
+            modalVariant={modal.type}
             onClose={() => closeModal(modal.id)}
             zIndex={1000 + index * 10}
           >

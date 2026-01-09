@@ -17,7 +17,7 @@ export type OptionListProps = BaseProps &
   Omit<React.HTMLAttributes<HTMLUListElement>, keyof BaseProps>;
 
 const OptionList = forwardRef<HTMLUListElement, OptionListProps>(
-  ({ id, variant, color, size, className, children }, ref) => {
+  ({ id, variant, color, size, className, children, ...rest }, ref) => {
     return (
       <div
         className={clsx(
@@ -29,7 +29,7 @@ const OptionList = forwardRef<HTMLUListElement, OptionListProps>(
           className,
         )}
       >
-        <ul ref={ref} id={id} role='listbox'>
+        <ul ref={ref} id={id} role='listbox' {...{ 'aria-label': rest['aria-label'] }}>
           {children}
         </ul>
       </div>

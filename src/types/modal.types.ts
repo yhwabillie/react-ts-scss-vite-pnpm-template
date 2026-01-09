@@ -1,9 +1,9 @@
-export type ModalVariant = 'default' | 'alert' | 'confirm' | 'success' | 'error';
+export type ModalVariant = 'custom' | 'alert-info' | 'alert-danger';
 
 export interface ModalConfig {
   variant?: ModalVariant;
   title?: string;
-  subtitle?: string;
+  subTitle?: string;
   description?: string;
   content?: React.ReactNode; // BaseModal용
   confirmText?: string;
@@ -11,10 +11,12 @@ export interface ModalConfig {
   onConfirm?: () => void;
   onCancel?: () => void;
   showCloseButton?: boolean;
+  scrollType?: 'outer' | 'inner';
+  children?: React.ReactNode;
 }
 
 export interface ModalState {
   id: string; // 고유 ID (중첩 모달 대비)
-  type: 'alert' | 'base' | string;
+  type: ModalVariant;
   config?: ModalConfig;
 }

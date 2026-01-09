@@ -94,7 +94,8 @@ $validation-msg-sizes: (
 );
 
 .validation-msg {
-  width: inherit;
+  min-width: inherit;
+  width: 100%;
   display: flex;
   align-items: self-start;
   // flex-wrap: wrap;

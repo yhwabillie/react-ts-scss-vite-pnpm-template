@@ -3,62 +3,106 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
-.pagination-container {
+$pagination-sizes: (
+  sm: (
+    pagination-gap: rem(18px),
+    btn-group-gap: rem(8px),
+    page-list-gap: rem(6px),
+    btn-size: rem(36px),
+    btn-padding: 0 rem(12px),
+    mobile-font: var(--project-typo-PaginationText3-600),
+  ),
+  md: (
+    pagination-gap: rem(18px),
+    btn-group-gap: rem(8px),
+    page-list-gap: rem(6px),
+    btn-size: rem(40px),
+    btn-padding: 0 rem(15px),
+    mobile-font: var(--project-typo-PaginationText2-600),
+  ),
+  lg: (
+    pagination-gap: rem(18px),
+    btn-group-gap: rem(8px),
+    page-list-gap: rem(6px),
+    btn-size: rem(44px),
+    btn-padding: 0 rem(16px),
+    mobile-font: var(--project-typo-PaginationText1-600),
+  ),
+);
+
+$pagination-colors: (
+  primary: (
+    current-page-label: var(--primary-current-page-text-color),
+  ),
+  secondary: (
+    current-page-label: var(--secondary-current-page-text-color),
+  ),
+  tertiary: (
+    current-page-label: var(--tertiary-current-page-text-color),
+  ),
+);
+
+.pagination {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  margin: 2rem 0;
 
-  .button-group {
-    display: flex;
-    gap: 0.25rem;
-  }
+  @each $size-name, $props in $pagination-sizes {
+    @include global-mod('size--#{$size-name}') {
+      gap: map.get($props, pagination-gap);
 
-  .nav-button,
-  .page-list button {
-    min-width: 2.5rem;
-    height: 2.5rem;
-    padding: 0 0.5rem;
-    border: 1px solid #ddd;
-    background: #fff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
+      :global {
+        .pagination__btn-group {
+          gap: map.get($props, btn-group-gap);
+        }
 
-    &:disabled {
-      cursor: not-allowed;
-      opacity: 0.5;
-    }
+        .pagination__page-list {
+          gap: map.get($props, page-list-gap);
 
-    &:hover:not(:disabled) {
-      border-color: #007bff;
-      color: #007bff;
-    }
-  }
+          button {
+            min-width: map.get($props, btn-size);
+            min-height: map.get($props, btn-size);
+            padding: map.get($props, btn-padding);
+            width: max-content;
+            height: initial;
+          }
+        }
 
-  .page-list {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    gap: 0.5rem;
+        .pagination__mobile-info {
+          display: flex;
+          align-items: center;
+          width: max-content;
+          gap: rem(4px);
+        }
 
-    .active {
-      background-color: #007bff;
-      color: #fff;
-      border-color: #007bff;
-      font-weight: bold;
+        .pagination__mobile-info-current,
+        .pagination__mobile-info-total {
+          font: map.get($props, mobile-font);
+        }
+      }
     }
   }
 
-  .mobile-info {
-    font-size: 0.9rem;
-    color: #666;
-    strong {
-      color: #333;
+  @each $color-name, $props in $pagination-colors {
+    @include global-mod('color--#{$color-name}') {
+      :global {
+        .pagination__mobile-info-current {
+          color: map.get($props, current-page-label);
+        }
+      }
+    }
+  }
+
+  :global {
+    .pagination__btn-group {
+      display: flex;
+    }
+
+    .pagination__page-list {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
   }
 }

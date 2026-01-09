@@ -6,7 +6,7 @@ import type { OptionBase } from '../OptionItem/OptionItem';
 // - Combobox input에서 공통으로 사용하는 속성 분리
 // -----------------------------
 export const comboboxInputProps = {
-  placeholder: '검색 후 옵션 선택',
+  placeholder: '값을 선택하거나 입력하세요',
   autoComplete: 'off',
 } as const;
 

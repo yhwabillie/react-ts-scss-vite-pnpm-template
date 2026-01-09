@@ -146,9 +146,9 @@ const FilePickerContainer = () => {
     onError: message => {
       console.log('[FilePicker Error]', message);
 
-      openModal('alert', {
+      openModal('alert-danger', {
         title: '에러',
-        subtitle: message,
+        subTitle: message,
         confirmText: '확인',
       });
     },
@@ -273,9 +273,9 @@ function App() {
 
   // 예시: 삭제 버튼 클릭 시
   const handleSequenceFlow = () => {
-    openModal('alert', {
+    openModal('alert-info', {
       title: '삭제 확인',
-      subtitle: '삭제하면 복구할 수 없습니다, 삭제하시겠습니까?',
+      subTitle: '삭제하면 복구할 수 없습니다, 삭제하시겠습니까?',
       cancelText: '취소',
       onConfirm: (currentId?: string) => {
         // 1. 현재 모달(1번)을 ID로 정확히 닫음
@@ -283,9 +283,9 @@ function App() {
 
         // 2. 브라우저가 상태를 정리할 시간을 아주 잠깐 준 뒤 새 모달 오픈
         setTimeout(() => {
-          openModal('alert', {
+          openModal('alert-info', {
             title: '삭제 완료',
-            subtitle: '삭제가 완료 되었습니다.',
+            subTitle: '삭제가 완료 되었습니다.',
             confirmText: '확인',
           });
         }, 0);
@@ -628,7 +628,141 @@ function App() {
 
   return (
     <>
-      <section ref={tableRef} style={{ padding: '30px' }}>
+      {/*  */}
+      <section style={{ margin: '30px', width: '200px' }}>
+        <Skeleton variant='text' width='50%' />
+        <Skeleton variant='text' width='70%' />
+        <Skeleton variant='rect' height={100} />
+        {/* ✅ 스크린 리더 사용자에게는 현재 로딩 중임을 텍스트로 안내 */}
+        <span className='sr-only'>데이터를 불러오는 중입니다. 잠시만 기다려 주세요.</span>
+      </section>
+      <nav>
+        {/* 아바타를 클릭하면 프로필 카드가 나타남 */}
+        <ProfilePopover
+          userData={currentUser}
+          trigger={
+            <Avatar
+              src={currentUser.image}
+              alt={`${currentUser.name}님의 프로필`}
+              status='online'
+              size='md'
+            />
+          }
+        />
+      </nav>
+      <section>
+        {/* 1. 이미지와 상태가 있는 경우 */}
+        <Avatar src='/path/user.jpg' alt='박지성 님의 프로필 사진' status='online' size='lg' />
+
+        {/* 2. 이미지가 없어 이름 이니셜로 대체되는 경우 */}
+        <Avatar alt='김철수 님의 프로필 사진' name='김철수' size='md' />
+
+        {/* 3. 데이터 테이블 내 작은 아바타 */}
+        <Avatar src='/path/user.jpg' alt='박지성 님의 프로필 사진' size='sm' />
+      </section>
+
+      <section>
+        <Breadcrumbs items={breadcrumbData} separator='/' />
+      </section>
+
+      {/* <section>
+        <div style={{ display: 'flex', gap: '20px' }}>
+        
+          <Tooltip id='info-right' content='오른쪽 설명' preferredPosition='right'>
+            <button>오른쪽</button>
+          </Tooltip>
+
+         
+          <Tooltip id='info-left' content='왼쪽 설명' preferredPosition='left'>
+            <button>왼쪽</button>
+          </Tooltip>
+
+          <Tooltip
+            id='tooltip-top'
+            content='위쪽으로 고정된 툴팁입니다.'
+            preferredPosition='top' 
+          >
+            <button type='button'>마우스 올려보세요</button>
+          </Tooltip>
+
+        
+          <Tooltip id='info-bottom' content='아래쪽 설명' preferredPosition='bottom'>
+            <button>아래쪽</button>
+          </Tooltip>
+
+          <Tooltip
+            id='complex-info'
+            variant='rich'
+            content={
+              <div style={{ padding: '4px' }}>
+                <strong style={{ display: 'block', marginBottom: '4px' }}>
+                  비밀번호 보안 등급
+                </strong>
+            
+                <ul style={{ margin: 0, paddingLeft: '16px', fontSize: '11px' }}>
+                  <li>영문 대소문자 포함</li>
+                  <li>특수문자 (!@#$) 포함</li>
+                  <li>8자 이상 16자 이하</li>
+                </ul>
+              </div>
+            }
+          >
+          
+            <button
+              type='button'
+              style={{
+                cursor: 'help',
+                textDecoration: 'underline',
+                background: 'none',
+                border: 'none',
+                padding: 0,
+                font: 'inherit',
+                color: 'inherit',
+              }}
+             
+              aria-label='비밀번호 보안 등급 도움말 보기'
+            >
+              보안 안내
+            </button>
+          </Tooltip>
+        </div>
+      </section> */}
+      {/* <section>
+        {chipList.map(chip => (
+          <Chip
+            key={chip.id}
+            label={chip.label}
+            onDelete={() => handleDelete(chip.id)} // 핸들러 연결
+          />
+        ))}
+      </section> */}
+      {/* <section>
+        <Tag href='/search?q=React' color='primary' icon='#'>
+          React
+        </Tag>
+        <div role='list' aria-label='게시글 태그' style={{ display: 'flex', gap: '4px' }}>
+          <Tag color='outline'>유기농</Tag>
+          <Tag color='outline'>특가</Tag>
+        </div>
+      </section> */}
+      {/* <section style={{ width: '500px', margin: 'auto' }}>
+        <Tabs items={tabData} defaultIndex={0} />
+      </section>
+      <section>
+        {accordionData.map(item => (
+          <Accordion key={item.title} {...item} />
+        ))}
+      </section> */}
+      {/* <section>
+        <Badge variant='outline' color='success'>
+          성공
+        </Badge>
+        <Badge variant='outline' color='danger'>
+          실패
+        </Badge>
+      </section> */}
+      {/* 
+            <section ref={tableRef} style={{ padding: '30px' }}>
         <div className='sr-only' aria-live='polite'>
           {sortState.key &&
             `${sortState.key} 항목으로 ${sortState.order === 'asc' ? '오름차순' : '내림차순'} 정렬되었습니다.`}
@@ -654,165 +788,25 @@ function App() {
           // 모바일 기기 감지 로직이나 창 너비에 따라 true/false 전달
           isMobileUI={isMobile}
         />
-      </section>
-      <section>
-        <button type='button' onClick={handleSubmit}>
-          Toast
-        </button>
-      </section>
-      <section style={{ margin: '30px', width: '200px' }}>
-        <Skeleton variant='text' width='50%' />
-        <Skeleton variant='text' width='70%' />
-        <Skeleton variant='rect' height={100} />
-        {/* ✅ 스크린 리더 사용자에게는 현재 로딩 중임을 텍스트로 안내 */}
-        <span className='sr-only'>데이터를 불러오는 중입니다. 잠시만 기다려 주세요.</span>
-      </section>
-      <div style={{ width: '300px', padding: '20px' }}>
-        <Slider
-          label='시스템 볼륨'
-          min={0}
-          max={100}
-          step={1}
-          defaultValue={volume}
-          onChange={val => setVolume(val)}
-        />
-        <p>현재 볼륨: {volume}%</p>
-      </div>
-      <nav>
-        {/* 아바타를 클릭하면 프로필 카드가 나타남 */}
-        <ProfilePopover
-          userData={currentUser}
-          trigger={
-            <Avatar
-              src={currentUser.image}
-              alt={`${currentUser.name}님의 프로필`}
-              status='online'
-              size='md'
-            />
-          }
-        />
-      </nav>
-      <section>
-        {/* 1. 이미지와 상태가 있는 경우 */}
-        <Avatar src='/path/user.jpg' alt='박지성 님의 프로필 사진' status='online' size='lg' />
-
-        {/* 2. 이미지가 없어 이름 이니셜로 대체되는 경우 */}
-        <Avatar alt='김철수 님의 프로필 사진' name='김철수' size='md' />
-
-        {/* 3. 데이터 테이블 내 작은 아바타 */}
-        <Avatar src='/path/user.jpg' alt='박지성 님의 프로필 사진' size='sm' />
-      </section>
-      <section>
-        <div style={{ display: 'flex', gap: '20px' }}>
-          {/* 오른쪽에 고정 */}
-          <Tooltip id='info-right' content='오른쪽 설명' preferredPosition='right'>
-            <button>오른쪽</button>
-          </Tooltip>
-
-          {/* 왼쪽에 고정 */}
-          <Tooltip id='info-left' content='왼쪽 설명' preferredPosition='left'>
-            <button>왼쪽</button>
-          </Tooltip>
-
-          <Tooltip
-            id='tooltip-top'
-            content='위쪽으로 고정된 툴팁입니다.'
-            preferredPosition='top' // ✅ 이 부분을 추가하면 항상 위로 뜹니다.
-          >
-            <button type='button'>마우스 올려보세요</button>
-          </Tooltip>
-
-          {/* 아래쪽에 고정 */}
-          <Tooltip id='info-bottom' content='아래쪽 설명' preferredPosition='bottom'>
-            <button>아래쪽</button>
-          </Tooltip>
-
-          <Tooltip
-            id='complex-info'
-            variant='rich'
-            content={
-              <div style={{ padding: '4px' }}>
-                <strong style={{ display: 'block', marginBottom: '4px' }}>
-                  비밀번호 보안 등급
-                </strong>
-                {/* 1. 의미 있는 목록 구조 제공 */}
-                <ul style={{ margin: 0, paddingLeft: '16px', fontSize: '11px' }}>
-                  <li>영문 대소문자 포함</li>
-                  <li>특수문자 (!@#$) 포함</li>
-                  <li>8자 이상 16자 이하</li>
-                </ul>
-              </div>
-            }
-          >
-            {/* 2. span 대신 button 사용 (가장 권장되는 접근성 방식) */}
-            <button
-              type='button'
-              style={{
-                cursor: 'help',
-                textDecoration: 'underline',
-                background: 'none',
-                border: 'none',
-                padding: 0,
-                font: 'inherit',
-                color: 'inherit',
-              }}
-              // 스크린 리더에게 이것이 도움말 버튼임을 알림
-              aria-label='비밀번호 보안 등급 도움말 보기'
-            >
-              보안 안내
-            </button>
-          </Tooltip>
-        </div>
-      </section>
-      <section>
-        <Tag href='/search?q=React' color='primary' icon='#'>
-          React
-        </Tag>
-        <div role='list' aria-label='게시글 태그' style={{ display: 'flex', gap: '4px' }}>
-          <Tag color='outline'>유기농</Tag>
-          <Tag color='outline'>특가</Tag>
-        </div>
-      </section>
-      <section>
-        <Badge variant='status' color='success'>
-          성공
-        </Badge>
-        <Badge variant='status' color='danger'>
-          실패
-        </Badge>
-      </section>
-      <section>
-        {chipList.map(chip => (
-          <Chip
-            key={chip.id}
-            label={chip.label}
-            onDelete={() => handleDelete(chip.id)} // 핸들러 연결
-          />
-        ))}
-      </section>
-      <section>
-        <Breadcrumbs items={breadcrumbData} separator='/' />
-      </section>
-      <section style={{ marginBottom: '20px' }}>
-        <SegmentedControl
-          name='view-mode' // 라디오 그룹 이름 (고유해야 함)
-          options={viewOptions}
-          selectedValue={viewType}
-          onChange={value => setViewType(value)} // 상태 업데이트
-        />
-      </section>
-      <section style={{ width: '500px', margin: 'auto' }}>
-        <Tabs items={tabData} defaultIndex={0} />
-      </section>
-      <section>
-        {accordionData.map(item => (
-          <Accordion key={item.title} {...item} />
-        ))}
-      </section>
-      <section>
+      </section> */}
+      {/* <section>
         <FilePickerContainer />
-      </section>
-      <section style={{ margin: '40px' }}>
+      </section> */}
+      {/* <section style={{ margin: '30px' }}>
+        <LanguageSelector
+          variant='outline'
+          color='primary'
+          size='xl'
+          buttonProps={{
+            shape: 'rounded',
+            labelText: '언어 변경',
+          }}
+          value='ko'
+          options={languageSelectorOptions}
+          onValueChange={setCurrentLang}
+        />
+      </section> */}
+      {/* <section style={{ margin: '40px' }}>
         <Button
           color='danger'
           variant='solid'
@@ -848,8 +842,21 @@ function App() {
         >
           공지사항 확인
         </Button>
-      </section>
-      <section>
+      </section> */}
+      {/* <section style={{ marginBottom: '20px' }}>
+        <SegmentedControl
+          name='view-mode' // 라디오 그룹 이름 (고유해야 함)
+          options={viewOptions}
+          selectedValue={viewType}
+          onChange={value => setViewType(value)} // 상태 업데이트
+        />
+      </section> */}
+      {/* <section>
+        <button type='button' onClick={handleSubmit}>
+          Toast
+        </button>
+      </section> */}
+      {/* <section>
         <FormField
           size='xl'
           direction='column'
@@ -865,7 +872,7 @@ function App() {
             inputProps={{
               id: 'datepicker-input',
               // value: '2025-12-03',
-              readonly: true,
+              // readonly: true,
             }}
             calendar={{
               selectedYear: selectedYear,
@@ -889,22 +896,8 @@ function App() {
             }}
           />
         </FormField>
-      </section>
-      <section style={{ margin: '30px' }}>
-        <LanguageSelector
-          variant='outline'
-          color='primary'
-          size='xl'
-          buttonProps={{
-            shape: 'rounded',
-            labelText: '언어 변경',
-          }}
-          value='ko'
-          options={languageSelectorOptions}
-          onValueChange={setCurrentLang}
-        />
-      </section>
-      <section>
+      </section> */}
+      {/* <section>
         <Searchbar
           variant='outline'
           color='primary'
@@ -934,8 +927,8 @@ function App() {
             },
           }}
         />
-      </section>
-      <section>
+      </section> */}
+      {/* <section>
         <FormField
           size='xl'
           direction='column'
@@ -954,6 +947,7 @@ function App() {
             // required={true}
             // readOnly={true}
             // disabled={true}
+
             inputProps={comboboxInputProps}
             options={comboboxOptions}
             onValueChange={(value, option) => {
@@ -961,8 +955,8 @@ function App() {
             }}
           />
         </FormField>
-      </section>
-      <section>
+      </section> */}
+      {/* <section>
         <FormField
           size='xl'
           direction='column'
@@ -989,7 +983,7 @@ function App() {
             }}
           />
         </FormField>
-      </section>
+      </section> */}
 
       {/* <section style={{ margin: '30px' }}>
         <FormField

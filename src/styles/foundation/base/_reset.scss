@@ -160,12 +160,17 @@ svg {
   box-sizing: border-box;
 }
 
+/* 전역 스타일 혹은 Modal.module.scss */
+body.modal-open {
+  overflow: hidden;
+}
+
 /* 모든 요소 포커스 기본 제거 */
 :focus,
 :focus-visible,
 label:focus-within,
 textarea:focus-visible {
-  outline: 2.5px dashed #2466eb !important;
+  outline: 2.5px dashed var(--focus-ring-color) !important;
   outline-offset: 2px;
 }
 
@@ -176,18 +181,30 @@ textarea:focus-visible {
 }
 
 /* scroll */
+/* 전체 스크롤바 영역 */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-  background-color: #fff;
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
 }
+
+/* 스크롤바 막대(Thumb) */
 ::-webkit-scrollbar-thumb {
-  border-radius: 6px;
-  background-color: rgba(55, 55, 55, 0.3);
+  background-color: var(--scrollbar-thumb-bg-color);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: background-color 0.2s ease-in-out;
 }
+
+/* 스크롤바 트랙(Track) */
 ::-webkit-scrollbar-track {
-  border-radius: 6px;
-  background-color: rgba(55, 55, 55, 0.15);
+  background-color: var(--scrollbar-track-bg-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-hover-thumb-bg-color);
 }
 
 /* screen reader only */

@@ -9,12 +9,13 @@ import type { PortalPosition } from '../OptionListPortal/OptionListPortal';
 import OptionListPortal from '../OptionListPortal/OptionListPortal';
 import OptionList from '../OptionList/OptionList';
 import OptionItem, { type OptionBase } from '../OptionItem/OptionItem';
+import SearchOptionItem from './SearchOptionItem';
 
 interface StyleProps {
-  variant: Variant;
-  color: Color;
-  size: Size;
-  shape: Shape;
+  variant: 'solid' | 'outline';
+  color?: Color;
+  size?: Size;
+  shape?: Shape;
 }
 
 type NativeDivProps = Omit<
@@ -24,7 +25,10 @@ type NativeDivProps = Omit<
 
 type SearchbarActionType = 'submit' | 'clear' | 'toggle';
 
-type OptionType = Omit<OptionBase, 'disabled' | 'selected' | 'label'>;
+type OptionType = Omit<OptionBase, 'disabled' | 'selected' | 'label'> & {
+  href?: string; // 이동할 주소
+  target?: string; // _blank 등
+};
 
 interface SearchbarAction {
   type: SearchbarActionType;
@@ -44,6 +48,9 @@ export interface SearchbarProps extends StyleProps, NativeDivProps {
     disabled?: boolean;
     onChange?: (value: string) => void;
   };
+  buttonProps?: {
+    variant: 'ghost' | 'solid';
+  };
   options?: OptionType[];
   debounceMs?: number;
   actions?: {
@@ -59,15 +66,29 @@ const defaultAriaLabel: Record<SearchbarActionType, string> = {
 };
 
 // -----------------------------------------------------
-// 🎯 [Performance] OptionItem 메모이제이션
+// 🎯 [Performance] SearchOptionItem 메모이제이션
 // - 불필요한 리렌더링 방지
 // - 옵션 리스트 성능 최적화
 // -----------------------------------------------------
-const MemoizedOptionItem = React.memo(OptionItem);
+const MemoizedOptionItem = React.memo(SearchOptionItem);
 
 const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
   (
-    { variant, color, size, shape, id, inputProps = {}, actions, debounceMs = 300, options },
+    {
+      variant,
+      color = 'primary',
+      size = 'md',
+      shape = 'rounded',
+      id,
+      inputProps = {},
+      actions,
+      debounceMs = 300,
+      buttonProps = {
+        variant: 'ghost',
+      },
+      options,
+      ...rest
+    },
     ref,
   ) => {
     // inputProps 구조분해
@@ -81,6 +102,7 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
     const [portalPos, setPortalPos] = useState<PortalPosition | null>(null);
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const [internalValue, setInternalValue] = useState(value ?? '');
+    const [filterKeyword, setFilterKeyword] = useState(value ?? '');
     // const [announceMsg, setAnnounceMsg] = useState('');
     // const [announceRole, setAnnounceRole] = useState<'assertive' | 'polite'>('polite');
 
@@ -109,8 +131,9 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
     // - input 값 기준으로 options 필터링
     // - 대소문자 구분 없이 검색
     // -----------------------------------------------------
+    // 🎯 [수정] internalValue 대신 filterKeyword를 기준으로 필터링
     const filteredOptions =
-      options?.filter(opt => opt.value.toLowerCase().includes(internalValue.toLowerCase())) ?? [];
+      options?.filter(opt => opt.value.toLowerCase().includes(filterKeyword.toLowerCase())) ?? [];
 
     // -----------------------------------------------------
     // ✨ [Sync] 외부 value prop 동기화
@@ -172,28 +195,14 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
     // - Debounce를 통한 부모 onChange 호출 최적화
     // - 입력값이 있을 때만 옵션 리스트 열기
     // -----------------------------------------------------
+    // 🎯 [수정] 사용자가 직접 타이핑할 때의 핸들러
     const handleInputChange = useCallback(
       (newValue: string) => {
         setInternalValue(newValue);
+        setFilterKeyword(newValue); // 🎯 타이핑 시에만 필터 키워드 업데이트
+
         isTypingRef.current = true;
-
-        // 타이핑 상태 리셋 타이머
-        if (typingTimeoutRef.current) {
-          clearTimeout(typingTimeoutRef.current);
-        }
-        typingTimeoutRef.current = setTimeout(() => {
-          isTypingRef.current = false;
-        }, 150);
-
-        // 부모 onChange는 debounce 처리
-        if (debouncedOnChangeRef.current) {
-          clearTimeout(debouncedOnChangeRef.current);
-        }
-        debouncedOnChangeRef.current = setTimeout(() => {
-          onChange?.(newValue);
-        }, debounceMs);
-
-        // 입력값이 있을 때만 OptionList 열기
+        // ... (기존 debounce 및 isOpen 로직 동일)
         if (newValue !== '') {
           setIsOpen(true);
         } else {
@@ -230,28 +239,44 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
     // - Debounce 타이머 취소 후 즉시 onChange 호출
     // - 리스트 닫기 및 수동 포커스 복원
     // -----------------------------------------------------
-    const handleUtilityClick = useCallback(() => {
-      if (actions?.utilityAction?.type === 'clear') {
-        const newValue = '';
-        setInternalValue(newValue);
+    // 🔘 [Action] Utility 버튼 클릭 핸들러 수정
+    const handleUtilityClick = useCallback(
+      (e?: React.MouseEvent) => {
+        e?.preventDefault();
 
-        // debounce 타이머 취소 후 즉시 onChange 호출
-        if (debouncedOnChangeRef.current) {
-          clearTimeout(debouncedOnChangeRef.current);
+        if (actions?.utilityAction?.type === 'clear') {
+          const newValue = '';
+
+          // 1. 입력값과 필터 키워드 모두 초기화 (필터링 원복)
+          setInternalValue(newValue);
+          setFilterKeyword(newValue); // 🎯 이 부분이 추가되어야 리스트가 전체 옵션으로 돌아갑니다.
+
+          // 2. Debounce 타이머 취소 및 외부 onChange 호출
+          if (debouncedOnChangeRef.current) {
+            clearTimeout(debouncedOnChangeRef.current);
+          }
+          onChange?.(newValue);
+
+          // 3. 리스트 유지 여부 결정
+          // 삭제 후 리스트를 닫고 싶다면 closeList(false)를,
+          // 전체 리스트를 보여주고 싶다면 setIsOpen(true) 상태를 유지하세요.
+          // 여기서는 '원복'이 목적이므로 리스트를 닫지 않는 로직으로 제안드립니다.
+          // 만약 닫고 싶다면 기존처럼 closeList(false)를 유지하세요.
+          // setIsOpen(false); // 리스트를 닫고 싶을 때 주석 해제
+
+          // 4. 포커스 복원 시점 최적화
+          ignoreNextFocusRef.current = true;
+          window.requestAnimationFrame(() => {
+            if (nativeInputRef.current) {
+              nativeInputRef.current.focus();
+            }
+          });
         }
-        onChange?.(newValue);
 
-        closeList(false); // restoreFocus = false
-
-        // 수동으로 포커스 복원하되, ignoreNextFocusRef 설정
-        ignoreNextFocusRef.current = true;
-        requestAnimationFrame(() => {
-          nativeInputRef.current?.focus();
-        });
-      }
-
-      actions?.utilityAction?.onClick?.();
-    }, [actions, onChange, closeList]);
+        actions?.utilityAction?.onClick?.();
+      },
+      [actions, onChange, closeList],
+    );
 
     // -----------------------------------------------------
     // ⌨️ [Keyboard] Input 키보드 이벤트 핸들러
@@ -263,75 +288,103 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
     // -----------------------------------------------------
     const handleInputKeyDown = useCallback(
       (e: React.KeyboardEvent<HTMLInputElement>) => {
-        // IME 조합 중이면 이벤트 무시
-        if (e.nativeEvent.isComposing) {
-          return;
-        }
+        if (e.nativeEvent.isComposing) return;
 
-        // Escape 키는 리스트 상태와 관계없이 처리
+        // ESC: 초기화 및 닫기
         if (e.key === 'Escape') {
           e.preventDefault();
-
-          // input 값 초기화
-          const newValue = '';
-          setInternalValue(newValue);
-
-          // debounce 타이머 취소 후 즉시 onChange 호출
-          if (debouncedOnChangeRef.current) {
-            clearTimeout(debouncedOnChangeRef.current);
-          }
-          onChange?.(newValue);
-
-          // 리스트 닫기 및 포커스 유지
+          setInternalValue('');
+          setFilterKeyword('');
+          onChange?.('');
           closeList(true);
           return;
         }
 
-        if (!isOpen) {
-          if (e.key === 'ArrowDown') {
+        // ArrowDown: 리스트 진입
+        if (e.key === 'ArrowDown') {
+          if (!isOpen) {
             e.preventDefault();
             openList('keyboard');
+          } else if (filteredOptions.length > 0) {
+            e.preventDefault();
+
+            // 🎯 중요: 현재 타이핑된 값을 저장하여 나중에 복구할 수 있게 함
+            beforeNavigationValueRef.current = internalValue;
+
+            // 첫 번째 옵션값으로 input 텍스트 동기화 (필터는 유지됨)
+            const firstOption = filteredOptions[0];
+            setInternalValue(firstOption.value);
+
+            // 첫 번째 a 태그로 포커스 이동
+            requestAnimationFrame(() => {
+              optionRefs.current[0]?.querySelector('a')?.focus();
+            });
           }
-          return;
         }
+
+        // Enter: 리스트가 닫혀있을 때 제출 동작
+        if (e.key === 'Enter' && !isOpen) {
+          closeList(true);
+        }
+      },
+      [isOpen, filteredOptions, internalValue, onChange, openList, closeList],
+    );
+
+    // Searchbar 내부 상단에 추가
+    const beforeNavigationValueRef = useRef('');
+
+    const handleOptionKeyDown = useCallback(
+      (e: React.KeyboardEvent, index: number) => {
+        const lastIndex = filteredOptions.length - 1;
+
+        const moveFocusAndSync = (nextIdx: number) => {
+          const nextVal = filteredOptions[nextIdx].value;
+          setInternalValue(nextVal);
+          requestAnimationFrame(() => {
+            optionRefs.current[nextIdx]?.querySelector('a')?.focus();
+          });
+        };
 
         switch (e.key) {
           case 'ArrowDown':
             e.preventDefault();
-            setActiveIndex(prev => {
-              // null이면 0부터 시작
-              if (prev === null) return 0;
-              // 마지막 옵션에서 더 이상 내려가지 않음
-              if (prev === filteredOptions.length - 1) return prev;
-              return prev + 1;
-            });
+            if (index < lastIndex) moveFocusAndSync(index + 1);
             break;
 
           case 'ArrowUp':
             e.preventDefault();
-            setActiveIndex(prev => {
-              // null이면 0부터 시작
-              if (prev === null) return 0;
-              // 첫 번째 옵션에서 더 이상 올라가지 않음
-              if (prev === 0) return 0;
-              return prev - 1;
-            });
-            break;
-
-          case 'Enter':
-            if (activeIndex !== null) {
-              handleInputChange(filteredOptions[activeIndex].value);
-              closeList(true);
+            if (index === 0) {
+              setInternalValue(beforeNavigationValueRef.current);
+              setFilterKeyword(beforeNavigationValueRef.current);
+              nativeInputRef.current?.focus();
+            } else {
+              moveFocusAndSync(index - 1);
             }
             break;
 
-          // case 'Escape':
-          //   e.preventDefault();
-          //   closeList(true);
-          //   break;
+          case 'Escape':
+            e.preventDefault();
+            setInternalValue(beforeNavigationValueRef.current);
+            setFilterKeyword(beforeNavigationValueRef.current);
+            closeList(true);
+            break;
+
+          case 'Enter':
+            // 🎯 Enter 시점에 현재 값을 확정
+            setFilterKeyword(internalValue);
+            if (debouncedOnChangeRef.current) clearTimeout(debouncedOnChangeRef.current);
+            onChange?.(internalValue);
+
+            // 리스트를 닫습니다.
+            // <a> 태그의 기본 동작(이동)이 발생한 직후에 사라지도록
+            // requestAnimationFrame이나 약간의 delay를 줄 수 있습니다.
+            requestAnimationFrame(() => {
+              setIsOpen(false);
+            });
+            break;
         }
       },
-      [isOpen, filteredOptions, handleInputChange, closeList, openList],
+      [filteredOptions, internalValue, onChange, closeList],
     );
 
     // -----------------------------------------------------
@@ -542,18 +595,28 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
       };
     }, [internalValue, filteredOptions.length]);
 
+    // rest.className에서 'pseudo-'로 시작하는 클래스만 추출
+    const pseudoClasses = rest.className
+      ? rest.className
+          .split(' ')
+          .filter(cls => cls.startsWith('pseudo-'))
+          .join(' ')
+      : '';
+
     // -----------------------------
     // ▶️ 렌더링
     // -----------------------------
     return (
       <div
         ref={ref}
-        className={clsx(`${styles['searchbar']} variant--${variant} color--${color} size--${size}`)}
+        className={clsx(
+          `${styles['searchbar']} variant--${variant} shape--${shape} color--${color} size--${size}`,
+        )}
       >
         <label htmlFor={inputId} className='sr-only'>
           {labelText}
         </label>
-        <div ref={customInputRef} className='custom-input'>
+        <div ref={customInputRef} className={clsx('custom-input', pseudoClasses)}>
           <input
             ref={nativeInputRef}
             /* 식별/형태 */
@@ -567,7 +630,7 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
             /* 접근성 */
             aria-autocomplete='list'
             aria-haspopup='listbox'
-            aria-controls={listboxId}
+            aria-controls={isOpen ? listboxId : undefined}
             aria-expanded={isOpen}
             aria-activedescendant={activeDescendantId}
             /* 이벤트 */
@@ -578,9 +641,9 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
           {actions?.utilityAction && internalValue !== '' && (
             <IconButton
               /* 식별/형태 */
-              variant='ghost'
+              variant='solid'
               color={color}
-              // size={size}
+              size={size}
               shape={shape}
               type='button'
               className={clsx('adorned-end', 'delete-btn')}
@@ -592,6 +655,7 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
               disabled={actions.utilityAction.disabled}
               /* 이벤트 */
               onClick={handleUtilityClick}
+              onMouseDown={handleUtilityClick}
               /* 커스텀 렌더링 */
               icon={actions.utilityAction.icon}
             />
@@ -600,7 +664,7 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
           {actions?.submitAction && (
             <IconButton
               /* 식별/형태 */
-              variant='ghost'
+              variant={buttonProps?.variant}
               color={color}
               size={size}
               shape={shape}
@@ -637,13 +701,16 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
                           optionRefs.current[idx] = el;
                         }}
                         key={opt.id}
-                        variant={variant}
+                        variant={variant === 'outline' ? 'ghost' : 'solid'}
                         color={color}
                         size={size}
                         index={idx}
                         id={opt.id}
                         value={opt.value}
+                        href={opt.href}
+                        target={opt.target}
                         className={clsx({ 'is-active': idx === activeIndex })}
+                        onKeyDown={e => handleOptionKeyDown(e, idx)}
                         onSelect={(id, value) => handleOptionClick(value)}
                       />
                     ))
@@ -659,6 +726,7 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
                         className='icon'
                         strokeLinecap='round'
                         strokeLinejoin='round'
+                        strokeWidth={2.5}
                       />
                       <span className='title'>검색 결과가 없습니다.</span>
                       <span className='desc'>다른 키워드로 다시 검색해 보세요.</span>

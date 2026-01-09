@@ -21,7 +21,7 @@ import type { ComboboxA11yProps } from '@/types/a11y/a11y-roles.types';
 import type { ComboboxInputProps } from '@/types/form-control.types';
 
 interface StyleProps {
-  variant: Variant;
+  variant: 'solid' | 'outline';
   color: Color;
   size: Size;
 }
@@ -60,6 +60,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
       className,
       inputProps,
       options,
+      value,
       onValueChange,
     },
     ref,
@@ -105,6 +106,27 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     const [selectedId, setSelectedId] = useState<string | null>(initialSelectedOption?.id ?? null);
     const [inputValue, setInputValue] = useState<string>(initialSelectedOption?.value ?? '');
 
+    const selectedOption = useMemo(
+      () => options.find(opt => opt.id === selectedId) ?? null,
+      [options, selectedId],
+    );
+
+    // -----------------------------
+    // 🎯 [Controlled] value prop 동기화
+    // - 외부에서 value prop이 전달되면 제어 컴포넌트로 동작
+    // - value가 변경될 때마다 내부 상태(inputValue, selectedId) 업데이트
+    // - value에 해당하는 옵션을 찾아 selectedId도 함께 업데이트
+    // -----------------------------
+    useEffect(() => {
+      if (value === undefined) return; // uncontrolled 모드
+
+      setInputValue(value);
+
+      // value에 해당하는 옵션 찾기
+      const matchedOption = options.find(opt => opt.value === value);
+      setSelectedId(matchedOption?.id ?? null);
+    }, [value, options]);
+
     // -----------------------------
     // 🔎 [옵션 필터링] filteredOptions
     // - inputValue(사용자 입력값)를 기준으로 옵션 필터링
@@ -140,11 +162,15 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
 
       setInputValue(value);
       setIsOpen(true);
-
       openReasonRef.current = 'input';
 
       // 🔥 검색 중에는 포커스 이동 금지
       setFocusedIndex(null);
+
+      // ✅ 선택된 옵션과 input 값이 달라지면 선택 해제
+      if (selectedOption && selectedOption.value !== value) {
+        setSelectedId(null);
+      }
 
       inputProps?.onChange?.(e);
     };
@@ -325,15 +351,21 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     const handleOutsideClick = useCallback((event: MouseEvent) => {
       const target = event.target as Node | null;
 
-      const isInsideContainer =
-        containerRef.current && target && containerRef.current.contains(target);
+      // 1. 트리거 컨테이너 내부 클릭인지 확인
+      const isInsideContainer = containerRef.current?.contains(target);
+      // 2. 실제 커스텀 셀렉트 영역 클릭인지 확인 (가장 확실한 트리거 영역)
+      const isInsideCustomSelect = customInputRef.current?.contains(target);
+      // 3. 옵션 목록(Portal) 내부 클릭인지 확인
+      const isInsidePortal = portalRef.current?.contains(target);
 
-      const isInsidePortal = portalRef.current && target && portalRef.current.contains(target);
-
-      if (!isInsideContainer && !isInsidePortal) {
-        setIsOpen(false);
-        setFocusedIndex(null);
+      // 💡 트리거 내부나 포털 내부라면 'Outside'가 아니므로 아무것도 하지 않음
+      if (isInsideContainer || isInsideCustomSelect || isInsidePortal) {
+        return;
       }
+
+      // 💡 그 외 지역(진짜 외부)을 클릭했을 때만 닫기
+      setIsOpen(false);
+      setFocusedIndex(null);
     }, []);
 
     // -----------------------------------------------------
@@ -493,6 +525,35 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
       };
     }, [inputValue, filteredOptions.length]);
 
+    // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하지 않는 것
+    const filteredClassName = useMemo(() => {
+      if (!className) return '';
+
+      return className
+        .split(' ')
+        .filter(name => {
+          // 1. 'pseudo-'로 시작하지 않는 일반 클래스는 무조건 통과
+          if (!name.startsWith('pseudo-')) return true;
+
+          // 2. 'pseudo-'로 시작하더라도 'pseudo-hover'인 경우는 통과
+          return name === 'pseudo-hover';
+        })
+        .join(' ');
+    }, [className]);
+
+    // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하는 것
+    const pseudoClassName = useMemo(() => {
+      if (!className) return '';
+
+      return className
+        .split(' ')
+        .filter(name => name.startsWith('pseudo-') && name !== 'pseudo-hover') // ✅ pseudo-로 시작하지만, pseudo-hover는 아닐 때만 남김
+        .join(' ');
+    }, [className]);
+
+    // 인터랙션 차단 로직 (readonly 또는 disabled일 때)
+    const isInteractive = !disabled && !readOnly;
+
     // -----------------------------
     // ▶️ 렌더링
     // -----------------------------
@@ -501,7 +562,8 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
         ref={ref}
         className={clsx(
           `${styles['combobox']} variant--${variant} color--${color} size--${size}`,
-          className,
+          // pseudo- 가 제외된 순수 외부 클래스들
+          filteredClassName,
         )}
       >
         <div ref={customInputRef} className='custom-input'>
@@ -509,11 +571,11 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
             ref={nativeInputRef}
             id={inputId}
             type='text'
-            className='custom-input-text'
+            className={clsx('custom-input-text', pseudoClassName)}
             {...inputProps}
             role={role}
             aria-activedescendant={activeDescendantId}
-            aria-controls={listboxId}
+            aria-controls={isOpen ? listboxId : undefined}
             aria-haspopup='listbox'
             aria-labelledby={ariaLabelledBy}
             aria-autocomplete='list'
@@ -525,6 +587,9 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
           />
+          <span id={ariaLabelledBy} className='sr-only'>
+            {inputProps?.placeholder}
+          </span>
           <IconButton
             color={color}
             size={size}
@@ -543,7 +608,12 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
                 strokeLinejoin='round'
               />
             }
-            onClick={() => {
+            onClick={e => {
+              if (!isInteractive) return; // disabled 혹은 readonly면 클릭 시 열리지 않음
+
+              // 1. 이벤트가 document의 mousedown/click으로 전파되는 것을 방지
+              e.stopPropagation();
+
               setIsOpen(prev => !prev);
             }}
           />
@@ -559,7 +629,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
                     optionRefs.current[idx] = el;
                   }}
                   key={opt.id}
-                  variant={variant}
+                  variant={variant === 'outline' ? 'ghost' : 'solid'}
                   color={color}
                   size={size}
                   index={idx}
@@ -589,12 +659,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
             </OptionList>
 
             {/* 스크린리더 전용 안내 */}
-            <div
-              className='sr-only'
-              role={announceRole}
-              aria-live={announceRole}
-              aria-atomic='true'
-            >
+            <div className='sr-only' role='status' aria-live={announceRole} aria-atomic='true'>
               {announceMsg || '\u00A0'}
             </div>
           </OptionListPortal>

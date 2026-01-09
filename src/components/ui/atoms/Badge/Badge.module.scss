@@ -3,53 +3,244 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
+$badge-sizes: (
+  sm: (
+    height: rem(22px),
+    padding: 0 rem(4px),
+    font: var(--project-typo-BadgeText3-500),
+    min-width: rem(40px),
+    radius: rem(4px),
+    dot-size: rem(6px),
+  ),
+  md: (
+    height: rem(28px),
+    padding: 0 rem(6px),
+    font: var(--project-typo-BadgeText2-500),
+    min-width: rem(50px),
+    radius: rem(4px),
+    dot-size: rem(8px),
+  ),
+  lg: (
+    height: rem(32px),
+    padding: 0 rem(8px),
+    font: var(--project-typo-BadgeText1-500),
+    min-width: rem(60px),
+    radius: rem(5px),
+    dot-size: rem(10px),
+  ),
+);
+
+$badge-colors: (
+  primary: (
+    solid: (
+      bg: var(--primary-bg-color-badge-solid),
+      text: var(--primary-text-color-badge-solid),
+      border: var(--primary-stroke-color-badge-solid),
+    ),
+    outline: (
+      bg: var(--primary-bg-color-badge-outline),
+      text: var(--primary-text-color-badge-outline),
+      border: var(--primary-stroke-color-badge-outline),
+    ),
+    dot: (
+      bg: var(--primary-bg-color-badge-solid),
+    ),
+  ),
+  secondary: (
+    solid: (
+      bg: var(--secondary-bg-color-badge-solid),
+      text: var(--secondary-text-color-badge-solid),
+      border: var(--secondary-stroke-color-badge-solid),
+    ),
+    outline: (
+      bg: var(--secondary-bg-color-badge-outline),
+      text: var(--secondary-text-color-badge-outline),
+      border: var(--secondary-stroke-color-badge-outline),
+    ),
+    dot: (
+      bg: var(--secondary-bg-color-badge-solid),
+    ),
+  ),
+  tertiary: (
+    solid: (
+      bg: var(--tertiary-bg-color-badge-solid),
+      text: var(--tertiary-text-color-badge-solid),
+      border: var(--tertiary-stroke-color-badge-solid),
+    ),
+    outline: (
+      bg: var(--tertiary-bg-color-badge-outline),
+      text: var(--tertiary-text-color-badge-outline),
+      border: var(--tertiary-stroke-color-badge-outline),
+    ),
+    dot: (
+      bg: var(--tertiary-bg-color-badge-solid),
+    ),
+  ),
+  success: (
+    solid: (
+      bg: var(--success-bg-color-badge-solid),
+      text: var(--success-text-color-badge-solid),
+      border: var(--success-stroke-color-badge-solid),
+    ),
+    outline: (
+      bg: var(--success-bg-color-badge-outline),
+      text: var(--success-text-color-badge-outline),
+      border: var(--success-stroke-color-badge-outline),
+    ),
+    dot: (
+      bg: var(--success-bg-color-badge-solid),
+    ),
+  ),
+  warning: (
+    solid: (
+      bg: var(--warning-bg-color-badge-solid),
+      text: var(--warning-text-color-badge-solid),
+      border: var(--warning-stroke-color-badge-solid),
+    ),
+    outline: (
+      bg: var(--warning-bg-color-badge-outline),
+      text: var(--warning-text-color-badge-outline),
+      border: var(--warning-stroke-color-badge-outline),
+    ),
+    dot: (
+      bg: var(--warning-bg-color-badge-solid),
+    ),
+  ),
+  danger: (
+    solid: (
+      bg: var(--danger-bg-color-badge-solid),
+      text: var(--danger-text-color-badge-solid),
+      border: var(--danger-stroke-color-badge-solid),
+    ),
+    outline: (
+      bg: var(--danger-bg-color-badge-outline),
+      text: var(--danger-text-color-badge-outline),
+      border: var(--danger-stroke-color-badge-outline),
+    ),
+    dot: (
+      bg: var(--danger-bg-color-badge-solid),
+    ),
+  ),
+);
+
+.badge-wrapper {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+
+  :global {
+    // 공통: "_badge"로 시작하는 모든 배지 요소를 absolute로 띄움
+    [class^='_badge'],
+    [class*=' _badge'] {
+      position: absolute;
+      z-index: 1;
+
+      // --- 1. 기본 위치 (Square, Rounded 용) ---
+      &[class*='position--top-right'] {
+        top: 4%;
+        right: 4%;
+        transform: translate(50%, -50%);
+      }
+      &[class*='position--top-left'] {
+        top: 4%;
+        left: 4%;
+        transform: translate(-50%, -50%);
+      }
+      &[class*='position--bottom-right'] {
+        bottom: 4%;
+        right: 4%;
+        transform: translate(50%, 50%);
+      }
+      &[class*='position--bottom-left'] {
+        bottom: 4%;
+        left: 4%;
+        transform: translate(-50%, 50%);
+      }
+
+      // --- 2. 원형(Pill) 보정 위치 ---
+      // Badge 컴포넌트에서 준 `overlap-shape--pill` 클래스를 감지
+      &[class*='overlap-shape--pill'] {
+        &[class*='position--top-right'] {
+          top: 14.6%;
+          right: 8%;
+        }
+        &[class*='position--top-left'] {
+          top: 14.6%;
+          left: 8%;
+        }
+        &[class*='position--bottom-right'] {
+          bottom: 14.6%;
+          right: 8%;
+        }
+        &[class*='position--bottom-left'] {
+          bottom: 14.6%;
+          left: 8%;
+        }
+      }
+    }
+  }
+}
+
 .badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
-  font-weight: 600;
   white-space: nowrap;
 
-  // 1. 상태형: 텍스트 가독성 중심
-  &.status {
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
+  @each $size-name, $props in $badge-sizes {
+    @include global-mod('size--#{$size-name}') {
+      min-width: map.get($props, min-width);
+      height: map.get($props, height);
+      padding: map.get($props, padding);
+      font: map.get($props, font);
+      border-radius: map.get($props, radius);
+
+      @include global-mod('variant--dot') {
+        min-width: initial;
+        width: map.get($props, dot-size);
+        height: map.get($props, dot-size);
+        border-radius: var(--project-border-radius-max);
+        padding: 0;
+      }
+
+      @include global-mod('shape--square') {
+        border-radius: 0;
+      }
+
+      @include global-mod('shape--pill') {
+        border-radius: var(--project-border-radius-max);
+      }
+
+      @include global-mod('shape--circle') {
+        min-width: initial;
+        width: map.get($props, height);
+        height: map.get($props, height);
+        border-radius: var(--project-border-radius-max);
+      }
+    }
   }
 
-  // 2. 수치형: 숫자/알림 중심
-  &.count {
-    min-width: 18px;
-    height: 18px;
-    padding: 0 5px;
-    border-radius: 10px;
-    font-size: 11px;
-  }
-
-  // 겹치기 스타일 (아이콘 우측 상단 배치용)
-  &.overlap {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(50%, -50%);
-  }
-
-  // 색상 테마 (예시)
-  &.primary {
-    background-color: #e7f5ff;
-    color: #228be6;
-  }
-  &.success {
-    background-color: #ebfbee;
-    color: #40c057;
-  } // 활성
-  &.danger {
-    background-color: #fff5f5;
-    color: #fa5252;
-  } // 비활성/오류
-  &.gray {
-    background-color: #f1f3f5;
-    color: #868e96;
+  @each $color-name, $variants in $badge-colors {
+    // colors
+    @include global-mod('color--#{$color-name}') {
+      @each $variant-name, $props in $variants {
+        // variant
+        @include global-mod('variant--#{$variant-name}') {
+          @if $variant-name == 'solid' {
+            background-color: map.get($props, bg);
+            color: map.get($props, text);
+            border: rem(1px) solid map.get($props, border);
+          } @else if $variant-name == 'outline' {
+            background-color: map.get($props, bg);
+            color: map.get($props, text);
+            border: rem(1px) solid map.get($props, border);
+          } @else if $variant-name == 'dot' {
+            background-color: map.get($props, bg);
+            outline: rem(2px) solid var(--color-surface-sunken);
+          }
+        }
+      }
+    }
   }
 }

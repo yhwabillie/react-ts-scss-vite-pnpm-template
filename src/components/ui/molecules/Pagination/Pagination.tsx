@@ -1,24 +1,41 @@
 import { useMemo } from 'react';
 import Styles from '@/components/ui/molecules/Pagination/Pagination.module.scss';
+import IconButton from '../IconButton/IconButton';
+import Icon from '../../atoms/Icon/Icon';
+import Button from '../Button/Button';
+import IconFrame from '../IconFrame/IconFrame';
+import clsx from 'clsx';
 
 interface PaginationProps {
-  currentPage: number; // 현재 페이지
-  totalPages: number; // 전체 페이지 수
-  onPageChange: (page: number) => void; // 페이지 변경 핸들러
-  isMobileUI?: boolean; // 모바일 전용 간결 UI 여부
-  siblingCount?: number; // 현재 페이지 주변에 보여줄 번호 개수
+  shape?: 'square' | 'rounded' | 'pill';
+  color?: 'primary' | 'secondary' | 'tertiary';
+  size?: 'sm' | 'md' | 'lg';
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+  isMobileUI?: boolean;
+  siblingCount?: number;
+  className?: string;
 }
 
+const DOTS = '...'; // 말줄임 식별자
+
 const Pagination = ({
+  shape = 'rounded',
+  color = 'primary',
+  size = 'md',
   currentPage,
   totalPages,
   onPageChange,
   isMobileUI = false,
   siblingCount = 1,
+  className,
 }: PaginationProps) => {
-  // 페이지 번호 배열 생성 로직
+  // 1. 말줄임 로직이 포함된 페이지 배열 생성
   const pageRange = useMemo(() => {
-    const totalNumbers = siblingCount * 2 + 3; // 시작, 끝, 현재 주변
+    // 말줄임표 없이 모든 숫자를 보여줄 수 있는 최대 개수
+    const totalNumbers = siblingCount * 2 + 5;
+
     if (totalNumbers >= totalPages) {
       return Array.from({ length: totalPages }, (_, i) => i + 1);
     }
@@ -29,20 +46,33 @@ const Pagination = ({
     const shouldShowLeftDots = leftSiblingIndex > 2;
     const shouldShowRightDots = rightSiblingIndex < totalPages - 2;
 
+    // Case 1: 오른쪽만 말줄임 (초반부)
     if (!shouldShowLeftDots && shouldShowRightDots) {
-      const leftItemCount = 3 + 2 * siblingCount;
-      return Array.from({ length: leftItemCount }, (_, i) => i + 1);
+      let leftItemCount = 3 + 2 * siblingCount;
+      let leftRange = Array.from({ length: leftItemCount }, (_, i) => i + 1);
+      return [...leftRange, DOTS, totalPages];
     }
 
+    // Case 2: 왼쪽만 말줄임 (후반부)
     if (shouldShowLeftDots && !shouldShowRightDots) {
-      const rightItemCount = 3 + 2 * siblingCount;
-      return Array.from({ length: rightItemCount }, (_, i) => totalPages - rightItemCount + i + 1);
+      let rightItemCount = 3 + 2 * siblingCount;
+      let rightRange = Array.from(
+        { length: rightItemCount },
+        (_, i) => totalPages - rightItemCount + i + 1,
+      );
+      return [1, DOTS, ...rightRange];
     }
 
-    return Array.from(
-      { length: rightSiblingIndex - leftSiblingIndex + 1 },
-      (_, i) => leftSiblingIndex + i,
-    );
+    // Case 3: 양쪽 모두 말줄임 (중간부)
+    if (shouldShowLeftDots && shouldShowRightDots) {
+      let middleRange = Array.from(
+        { length: rightSiblingIndex - leftSiblingIndex + 1 },
+        (_, i) => leftSiblingIndex + i,
+      );
+      return [1, DOTS, ...middleRange, DOTS, totalPages];
+    }
+
+    return [];
   }, [totalPages, siblingCount, currentPage]);
 
   if (totalPages <= 1) return null;
@@ -50,76 +80,122 @@ const Pagination = ({
   const handlePrev = () => currentPage > 1 && onPageChange(currentPage - 1);
   const handleNext = () => currentPage < totalPages && onPageChange(currentPage + 1);
 
+  // 공통 버튼 속성 (DRY 원칙)
+  const commonProps = { shape, color, size, type: 'button' as const };
+
+  // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하지 않는 것
+  const filteredClassName = useMemo(() => {
+    if (!className) return '';
+
+    return className
+      .split(' ')
+      .filter(name => {
+        // 1. 'pseudo-'로 시작하지 않는 일반 클래스는 무조건 통과
+        if (!name.startsWith('pseudo-')) return true;
+
+        // 2. 'pseudo-'로 시작하더라도 'pseudo-hover'인 경우는 통과
+        return name === 'pseudo-hover';
+      })
+      .join(' ');
+  }, [className]);
+
+  // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하는 것
+  const pseudoClassName = useMemo(() => {
+    if (!className) return '';
+
+    return className
+      .split(' ')
+      .filter(name => name.startsWith('pseudo-')) // ✅ pseudo-로 시작
+      .join(' ');
+  }, [className]);
+
   return (
-    <nav className={Styles['pagination-container']} aria-label='페이지 네비게이션'>
+    <nav
+      className={clsx(`${Styles['pagination']} color--${color} size--${size}`, filteredClassName)}
+      aria-label='페이지 네비게이션'
+    >
       {/* 1. 처음/이전 버튼 그룹 */}
-      <div className={Styles['button-group']}>
-        <button
-          type='button'
+      <div className='pagination__btn-group'>
+        <IconButton
+          {...commonProps}
+          variant='outline'
           onClick={() => onPageChange(1)}
           disabled={currentPage === 1}
           aria-label='첫 페이지로 이동'
-          className={Styles['nav-button']}
-        >
-          &laquo;
-        </button>
-        <button
-          type='button'
+          icon={<Icon name='chevrons-left' strokeWidth={2.5} />}
+          className={pseudoClassName}
+        />
+        <IconButton
+          {...commonProps}
+          variant='outline'
           onClick={handlePrev}
           disabled={currentPage === 1}
           aria-label='이전 페이지로 이동'
-          className={Styles['nav-button']}
-        >
-          &lt;
-        </button>
+          icon={<Icon name='chevron-left' strokeWidth={2.5} />}
+          className={pseudoClassName}
+        />
       </div>
 
-      {/* 2. 페이지 번호 목록 (isMobileUI가 true면 숨김) */}
+      {/* 2. 페이지 번호 목록 */}
       {!isMobileUI && (
-        <ol className={Styles['page-list']}>
-          {pageRange.map(page => (
-            <li key={page}>
-              <button
-                type='button'
-                onClick={() => onPageChange(page)}
-                aria-current={currentPage === page ? 'page' : undefined}
-                className={currentPage === page ? Styles['active'] : ''}
-                aria-label={`${page}번 페이지로 이동`}
-              >
-                {page}
-              </button>
-            </li>
-          ))}
+        <ol className='pagination__page-list'>
+          {pageRange.map((page, index) => {
+            if (page === DOTS) {
+              return (
+                <li key={`dots-${index}`} className={Styles['pagination__dots']} aria-hidden='true'>
+                  <IconFrame size={size} color={color}>
+                    <Icon name='ellipsis' className='icon' strokeWidth={2.5} size={size} />
+                  </IconFrame>
+                </li>
+              );
+            }
+
+            return (
+              <li key={page}>
+                <Button
+                  {...commonProps}
+                  variant={currentPage === page ? 'solid' : 'ghost'}
+                  onClick={() => onPageChange(Number(page))}
+                  aria-current={currentPage === page ? 'page' : undefined}
+                  aria-label={`${page}번 페이지로 이동`}
+                  className={pseudoClassName}
+                >
+                  {page}
+                </Button>
+              </li>
+            );
+          })}
         </ol>
       )}
 
-      {/* 3. 모바일 간결 UI (현재/전체 표시) */}
+      {/* 3. 모바일 간결 UI */}
       {isMobileUI && (
-        <div className={Styles['mobile-info']} aria-live='polite'>
-          <strong>{currentPage}</strong> / {totalPages}
+        <div className='pagination__mobile-info' aria-live='polite'>
+          <strong className='pagination__mobile-info-current'>{currentPage} </strong>
+          <span className='pagination__mobile-info-total'>/ {totalPages}</span>
         </div>
       )}
 
       {/* 4. 다음/끝 버튼 그룹 */}
-      <div className={Styles['button-group']}>
-        <button
-          type='button'
+      <div className='pagination__btn-group'>
+        <IconButton
+          {...commonProps}
+          variant='outline'
           onClick={handleNext}
           disabled={currentPage === totalPages}
           aria-label='다음 페이지로 이동'
-          className={Styles['nav-button']}
-        >
-          &gt;
-        </button>
-        <button
-          type='button'
+          icon={<Icon name='chevron-right' strokeWidth={2.5} />}
+          className={pseudoClassName}
+        />
+        <IconButton
+          {...commonProps}
+          variant='outline'
           onClick={() => onPageChange(totalPages)}
           disabled={currentPage === totalPages}
           aria-label='마지막 페이지로 이동'
-          className={Styles['nav-button']}
-        >
-          &raquo;
-        </button>
+          icon={<Icon name='chevrons-right' strokeWidth={2.5} />}
+          className={pseudoClassName}
+        />
       </div>
     </nav>
   );
