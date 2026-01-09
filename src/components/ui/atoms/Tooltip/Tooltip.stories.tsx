@@ -109,12 +109,18 @@ type Story = StoryObj<typeof Tooltip>;
  * IconButton과 같은 작은 트리거 요소에 짧은 텍스트 도움말을 제공할 때 적합합니다.
  */
 export const Base: Story = {
-  render: () => {
+  render: args => {
     return (
       <GuideWrapper
         style={{ flexDirection: 'row', gap: '10px', margin: 'auto', width: 'fit-content' }}
       >
-        <Tooltip content='도움말' shape='plain' size='sm'>
+        <Tooltip
+          content='도움말'
+          variant={args.variant}
+          shape={args.shape}
+          size={args.size}
+          align={args.align}
+        >
           <IconButton
             aria-label='도움말'
             color='primary'
@@ -124,7 +130,13 @@ export const Base: Story = {
             icon={<Icon name='search' className='icon' strokeWidth={2.5} />}
           />
         </Tooltip>
-        <Tooltip content='알림' shape='plain' size='sm'>
+        <Tooltip
+          content='알림'
+          variant={args.variant}
+          shape={args.shape}
+          size={args.size}
+          align={args.align}
+        >
           <IconButton
             aria-label='알림'
             color='secondary'
@@ -134,7 +146,13 @@ export const Base: Story = {
             icon={<Icon name='bell' className='icon' strokeWidth={2.5} />}
           />
         </Tooltip>
-        <Tooltip content='더보기' shape='plain' size='sm'>
+        <Tooltip
+          content='더보기'
+          variant={args.variant}
+          shape={args.shape}
+          size={args.size}
+          align={args.align}
+        >
           <IconButton
             aria-label='더보기'
             color='tertiary'

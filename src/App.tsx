@@ -660,14 +660,19 @@ function App() {
         {/* 3. 데이터 테이블 내 작은 아바타 */}
         <Avatar src='/path/user.jpg' alt='박지성 님의 프로필 사진' size='sm' />
       </section>
+
       <section>
+        <Breadcrumbs items={breadcrumbData} separator='/' />
+      </section>
+
+      {/* <section>
         <div style={{ display: 'flex', gap: '20px' }}>
-          {/* 오른쪽에 고정 */}
+        
           <Tooltip id='info-right' content='오른쪽 설명' preferredPosition='right'>
             <button>오른쪽</button>
           </Tooltip>
 
-          {/* 왼쪽에 고정 */}
+         
           <Tooltip id='info-left' content='왼쪽 설명' preferredPosition='left'>
             <button>왼쪽</button>
           </Tooltip>
@@ -675,12 +680,12 @@ function App() {
           <Tooltip
             id='tooltip-top'
             content='위쪽으로 고정된 툴팁입니다.'
-            preferredPosition='top' // ✅ 이 부분을 추가하면 항상 위로 뜹니다.
+            preferredPosition='top' 
           >
             <button type='button'>마우스 올려보세요</button>
           </Tooltip>
 
-          {/* 아래쪽에 고정 */}
+        
           <Tooltip id='info-bottom' content='아래쪽 설명' preferredPosition='bottom'>
             <button>아래쪽</button>
           </Tooltip>
@@ -693,7 +698,7 @@ function App() {
                 <strong style={{ display: 'block', marginBottom: '4px' }}>
                   비밀번호 보안 등급
                 </strong>
-                {/* 1. 의미 있는 목록 구조 제공 */}
+            
                 <ul style={{ margin: 0, paddingLeft: '16px', fontSize: '11px' }}>
                   <li>영문 대소문자 포함</li>
                   <li>특수문자 (!@#$) 포함</li>
@@ -702,7 +707,7 @@ function App() {
               </div>
             }
           >
-            {/* 2. span 대신 button 사용 (가장 권장되는 접근성 방식) */}
+          
             <button
               type='button'
               style={{
@@ -714,25 +719,15 @@ function App() {
                 font: 'inherit',
                 color: 'inherit',
               }}
-              // 스크린 리더에게 이것이 도움말 버튼임을 알림
+             
               aria-label='비밀번호 보안 등급 도움말 보기'
             >
               보안 안내
             </button>
           </Tooltip>
         </div>
-      </section>
-      <section>
-        <Tag href='/search?q=React' color='primary' icon='#'>
-          React
-        </Tag>
-        <div role='list' aria-label='게시글 태그' style={{ display: 'flex', gap: '4px' }}>
-          <Tag color='outline'>유기농</Tag>
-          <Tag color='outline'>특가</Tag>
-        </div>
-      </section>
-
-      <section>
+      </section> */}
+      {/* <section>
         {chipList.map(chip => (
           <Chip
             key={chip.id}
@@ -740,11 +735,16 @@ function App() {
             onDelete={() => handleDelete(chip.id)} // 핸들러 연결
           />
         ))}
-      </section>
-      <section>
-        <Breadcrumbs items={breadcrumbData} separator='/' />
-      </section>
-
+      </section> */}
+      {/* <section>
+        <Tag href='/search?q=React' color='primary' icon='#'>
+          React
+        </Tag>
+        <div role='list' aria-label='게시글 태그' style={{ display: 'flex', gap: '4px' }}>
+          <Tag color='outline'>유기농</Tag>
+          <Tag color='outline'>특가</Tag>
+        </div>
+      </section> */}
       {/* <section style={{ width: '500px', margin: 'auto' }}>
         <Tabs items={tabData} defaultIndex={0} />
       </section>

@@ -23,6 +23,13 @@
   --bg-color-guide: #ecf4ef;
   --stroke-color-guide: #15803d;
 
+  // avatar
+  --bg-color-avatar: #f0f0f0;
+  --stroke-color-avatar: #9999;
+  --hover-bg-color-avatar: #e4e4e4;
+  --hover-shadow-color-avatar: rgba(0, 0, 0, 0.3);
+  --fallback-text-color-avatar: #333333;
+
   // tooltip
   --bg-color-tooltip: rgba(25, 25, 25, 0.8);
   --text-color-tooltip: #ffffff;
@@ -821,6 +828,13 @@
   --bg-color-guide: rgba(45, 252, 82, 0.05);
   --stroke-color-guide: #2dfc52;
 
+  // avatar
+  --bg-color-avatar: #1e1e1e;
+  --stroke-color-avatar: rgba(255, 255, 255, 0.12);
+  --hover-bg-color-avatar: #2c2c2c;
+  --hover-shadow-color-avatar: rgba(255, 255, 255, 0.15);
+  --fallback-text-color-avatar: #e0e0e0;
+
   // tooltip
   --bg-color-tooltip: #3f3f40;
   --text-color-tooltip: #ffffff;
@@ -1603,6 +1617,10 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  // avatar
+  --primary-hover-stroke-color-avatar: #0052cc;
+  --primary-active-stroke-color-avatar: #0052cc;
+
   // tag
   --primary-bg-color-tag-solid: #0052cc;
   --primary-text-color-tag-solid: #ffffff;
@@ -1879,6 +1897,10 @@
   --primary-active-bg-color-btn-link: rgba(0, 82, 204, 0.1);
   --primary-active-text-color-btn-link: #0052cc;
 
+  // avatar
+  --secondary-hover-stroke-color-avatar: #475569;
+  --secondary-active-stroke-color-avatar: #475569;
+
   // tag
   --secondary-bg-color-tag-solid: #475569;
   --secondary-text-color-tag-solid: #ffffff;
@@ -2152,6 +2174,10 @@
 
   --secondary-active-bg-color-btn-link: rgba(71, 85, 105, 0.1);
   --secondary-active-text-color-btn-link: #475569;
+
+  // avatar
+  --tertiary-hover-stroke-color-avatar: #7c3aed;
+  --tertiary-active-stroke-color-avatar: #7c3aed;
 
   // tag
   --tertiary-bg-color-tag-solid: #7c3aed;
@@ -2470,6 +2496,10 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    // avatar
+    --primary-hover-stroke-color: #66b2ff;
+    --primary-active-stroke-color: #66b2ff;
+
     // tag
     --primary-bg-color-tag-solid: #4d94ff;
     --primary-text-color-tag-solid: #000000;
@@ -2745,6 +2775,10 @@
 
     --primary-active-bg-color-btn-link: rgba(96, 165, 250, 0.25);
     --primary-active-text-color-btn-link: #60a5fa;
+
+    // avatar
+    --secondary-hover-stroke-color: #38bdf8;
+    --secondary-active-stroke-color: #38bdf8;
 
     // tag
     --secondary-bg-color-tag-solid: #94a3b8;
@@ -3022,6 +3056,10 @@
 
     --secondary-active-bg-color-btn-link: rgba(56, 189, 248, 0.25);
     --secondary-active-text-color-btn-link: #38bdf8;
+
+    // avatar
+    --tertiary-hover-stroke-color: #a78bfa;
+    --tertiary-active-stroke-color: #a78bfa;
 
     // tag
     --tertiary-bg-color-tag-solid: #a78bfa;

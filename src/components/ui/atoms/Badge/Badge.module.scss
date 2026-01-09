@@ -123,6 +123,64 @@ $badge-colors: (
   ),
 );
 
+.badge-wrapper {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+
+  :global {
+    // 공통: "_badge"로 시작하는 모든 배지 요소를 absolute로 띄움
+    [class^='_badge'],
+    [class*=' _badge'] {
+      position: absolute;
+      z-index: 1;
+
+      // --- 1. 기본 위치 (Square, Rounded 용) ---
+      &[class*='position--top-right'] {
+        top: 4%;
+        right: 4%;
+        transform: translate(50%, -50%);
+      }
+      &[class*='position--top-left'] {
+        top: 4%;
+        left: 4%;
+        transform: translate(-50%, -50%);
+      }
+      &[class*='position--bottom-right'] {
+        bottom: 4%;
+        right: 4%;
+        transform: translate(50%, 50%);
+      }
+      &[class*='position--bottom-left'] {
+        bottom: 4%;
+        left: 4%;
+        transform: translate(-50%, 50%);
+      }
+
+      // --- 2. 원형(Pill) 보정 위치 ---
+      // Badge 컴포넌트에서 준 `overlap-shape--pill` 클래스를 감지
+      &[class*='overlap-shape--pill'] {
+        &[class*='position--top-right'] {
+          top: 14.6%;
+          right: 8%;
+        }
+        &[class*='position--top-left'] {
+          top: 14.6%;
+          left: 8%;
+        }
+        &[class*='position--bottom-right'] {
+          bottom: 14.6%;
+          right: 8%;
+        }
+        &[class*='position--bottom-left'] {
+          bottom: 14.6%;
+          left: 8%;
+        }
+      }
+    }
+  }
+}
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -179,6 +237,7 @@ $badge-colors: (
             border: rem(1px) solid map.get($props, border);
           } @else if $variant-name == 'dot' {
             background-color: map.get($props, bg);
+            outline: rem(2px) solid var(--color-surface-sunken);
           }
         }
       }

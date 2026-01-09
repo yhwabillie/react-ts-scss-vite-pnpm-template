@@ -12,7 +12,7 @@ $tooltip-sizes: (
     font: var(--project-typo-TooltipText3-500),
     close-btn-size: rem(22px),
     close-btn-top: rem(-6px),
-    close-btn-right: rem(-8px),
+    close-btn-right: rem(-10px),
     close-btn-icon-size: rem(14px),
   ),
   md: (
@@ -23,7 +23,7 @@ $tooltip-sizes: (
     font: var(--project-typo-TooltipText2-500),
     close-btn-size: rem(28px),
     close-btn-top: rem(-8px),
-    close-btn-right: rem(-12px),
+    close-btn-right: rem(-14px),
     close-btn-icon-size: rem(16px),
   ),
 );
