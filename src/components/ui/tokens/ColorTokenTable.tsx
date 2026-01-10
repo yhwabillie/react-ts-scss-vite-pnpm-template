@@ -8,7 +8,7 @@ import PreviewBox from '../atoms/PreviewBox/PreviewBox';
 import Badge from '../atoms/Badge/Badge';
 
 // DataTable의 제네릭 제약 조건(id 필수)을 만족하기 위해 id 추가
-interface TokenItem {
+interface ColorTokenItem {
   id: string;
   lightValue: string;
   darkValue: string;
@@ -19,10 +19,10 @@ interface TokenItem {
 interface TokenTableProps {
   title: string;
   category: 'System' | 'Functional' | 'Elevation';
-  tokens: TokenItem[];
+  tokens: ColorTokenItem[];
 }
 
-const TokenTable = ({ title, category, tokens }: TokenTableProps) => {
+const ColorTokenTable = ({ title, category, tokens }: TokenTableProps) => {
   const { addToast } = useToast();
 
   const handleCopy = async (text: string, label: string) => {
@@ -35,7 +35,7 @@ const TokenTable = ({ title, category, tokens }: TokenTableProps) => {
   };
 
   // DataTable에 주입할 컬럼 정의
-  const columns: Column<TokenItem>[] = [
+  const columns: Column<ColorTokenItem>[] = [
     {
       key: 'name',
       header: 'Token Name (Copy)',
@@ -105,4 +105,4 @@ const TokenTable = ({ title, category, tokens }: TokenTableProps) => {
   );
 };
 
-export default TokenTable;
+export default ColorTokenTable;

@@ -1,0 +1,2142 @@
+{
+  "typography": {
+    "display-1": {
+      "ko": {
+        "fontSize": { "value": "64px" },
+        "tabletSize": { "value": "64px" },
+        "mobileSize": { "value": "64px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": { "value": "국문 마케팅용 최상위 대형 헤드라인" }
+      },
+      "ja": {
+        "fontSize": { "value": "64px" },
+        "tabletSize": { "value": "64px" },
+        "mobileSize": { "value": "64px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" },
+        "description": { "value": "국문 마케팅용 최상위 대형 헤드라인" }
+      },
+      "en": {
+        "fontSize": { "value": "64px" },
+        "tabletSize": { "value": "64px" },
+        "mobileSize": { "value": "64px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" },
+        "description": { "value": "국문 마케팅용 최상위 대형 헤드라인" }
+      }
+    },
+    "display-2": {
+      "ko": {
+        "fontSize": { "value": "48px" },
+        "tabletSize": { "value": "48px" },
+        "mobileSize": { "value": "48px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": { "value": "국문 섹션 메인 타이틀" }
+      },
+      "ja": {
+        "fontSize": { "value": "48px" },
+        "tabletSize": { "value": "48px" },
+        "mobileSize": { "value": "48px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" },
+        "description": { "value": "국문 섹션 메인 타이틀" }
+      },
+      "en": {
+        "fontSize": { "value": "48px" },
+        "tabletSize": { "value": "48px" },
+        "mobileSize": { "value": "48px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" },
+        "description": { "value": "국문 섹션 메인 타이틀" }
+      }
+    },
+    "display-3": {
+      "ko": {
+        "fontSize": { "value": "36px" },
+        "tabletSize": { "value": "36px" },
+        "mobileSize": { "value": "36px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": { "value": "국문 서브 타이틀 (다중 웨이트 대응)" }
+      },
+      "ja": {
+        "fontSize": { "value": "36px" },
+        "tabletSize": { "value": "36px" },
+        "mobileSize": { "value": "36px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" },
+        "description": { "value": "국문 서브 타이틀 (다중 웨이트 대응)" }
+      },
+      "en": {
+        "fontSize": { "value": "36px" },
+        "tabletSize": { "value": "36px" },
+        "mobileSize": { "value": "36px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" },
+        "description": { "value": "국문 서브 타이틀 (다중 웨이트 대응)" }
+      }
+    },
+    "heading-1": {
+      "ko": {
+        "fontSize": { "value": "32px" },
+        "tabletSize": { "value": "32px" },
+        "mobileSize": { "value": "32px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": { "value": "페이지 최상단 대제목" }
+      },
+      "ja": {
+        "fontSize": { "value": "32px" },
+        "tabletSize": { "value": "32px" },
+        "mobileSize": { "value": "32px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" },
+        "description": { "value": "페이지 최상단 대제목" }
+      },
+      "en": {
+        "fontSize": { "value": "32px" },
+        "tabletSize": { "value": "32px" },
+        "mobileSize": { "value": "32px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" },
+        "description": { "value": "페이지 최상단 대제목" }
+      }
+    },
+    "heading-2": {
+      "ko": {
+        "fontSize": { "value": "28px" },
+        "tabletSize": { "value": "28px" },
+        "mobileSize": { "value": "28px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": { "value": "섹션별 주요 제목" }
+      },
+      "ja": {
+        "fontSize": { "value": "28px" },
+        "tabletSize": { "value": "28px" },
+        "mobileSize": { "value": "28px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" },
+        "description": { "value": "섹션별 주요 제목" }
+      },
+      "en": {
+        "fontSize": { "value": "28px" },
+        "tabletSize": { "value": "28px" },
+        "mobileSize": { "value": "28px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" },
+        "description": { "value": "섹션별 주요 제목" }
+      }
+    },
+    "heading-3": {
+      "ko": {
+        "fontSize": { "value": "24px" },
+        "tabletSize": { "value": "24px" },
+        "mobileSize": { "value": "24px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": { "value": "콘텐츠 블록 제목" }
+      },
+      "ja": {
+        "fontSize": { "value": "24px" },
+        "tabletSize": { "value": "24px" },
+        "mobileSize": { "value": "24px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" },
+        "description": { "value": "콘텐츠 블록 제목" }
+      },
+      "en": {
+        "fontSize": { "value": "24px" },
+        "tabletSize": { "value": "24px" },
+        "mobileSize": { "value": "24px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" },
+        "description": { "value": "콘텐츠 블록 제목" }
+      }
+    },
+    "sub-title-1": {
+      "ko": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "20px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": { "value": "강한 강조가 필요한 본문 소제목" }
+      },
+      "ja": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "20px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" },
+        "description": { "value": "일문 본문 소제목" }
+      },
+      "en": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "20px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" },
+        "description": { "value": "일문 본문 소제목" }
+      }
+    },
+    "sub-title-2": {
+      "ko": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": { "value": "일반적인 본문 그룹 제목" }
+      },
+      "ja": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" },
+        "description": { "value": "일문 본문 그룹 제목" }
+      },
+      "en": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" },
+        "description": { "value": "영문 본문 그룹 제목" }
+      }
+    },
+    "sub-title-3": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": { "value": "작은 섹션이나 리스트 헤더" }
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" },
+        "description": { "value": "작은 섹션이나 리스트 헤더" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" },
+        "description": { "value": "작은 섹션이나 리스트 헤더" }
+      }
+    },
+    "b1": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Body 1: 표준 본문 텍스트 (권장 사이즈)"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" },
+        "description": "Body 1: 일문 표준 본문 텍스트"
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" },
+        "description": "Body 1: 영문 표준 본문 텍스트"
+      }
+    },
+    "b2": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Body 2: 부가 설명 및 리스트용 본문"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" },
+        "description": "Body 2: 일문 부가 설명용 본문"
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" },
+        "description": "Body 2: 영문 부가 설명용 본문"
+      }
+    },
+    "b3": {
+      "ko": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Body 3: 캡션, 도움말 등 최소 크기 텍스트"
+      },
+      "ja": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" },
+        "description": "Body 3: 일문 최소 크기 텍스트"
+      },
+      "en": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" },
+        "description": "Body 3: 영문 최소 크기 텍스트"
+      }
+    },
+    "btn1": {
+      "ko": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Button (XS): 가장 작은 사이즈의 버튼 텍스트"
+      },
+      "ja": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" },
+        "description": "Button (XS): 일문 소형 버튼 텍스트"
+      },
+      "en": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" },
+        "description": "Button (XS): 영문 소형 버튼 텍스트"
+      }
+    },
+    "btn2": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Button (SM): 일반적인 작은 버튼 텍스트"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "btn3": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Button (MD): 표준 버튼 텍스트 (WCAG 본문 최소 권장)"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "btn4": {
+      "ko": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Button (LG): 큰 사이즈의 강조 버튼 텍스트"
+      },
+      "ja": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "btn5": {
+      "ko": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Button (XL): 최상위 강조 버튼 및 CTA 텍스트"
+      },
+      "ja": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "legend1": {
+      "ko": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "17px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Legend 1: XL 사이즈 폼 그룹 제목 (Checkbox +2px)"
+      },
+      "ja": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "17px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "17px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "legend2": {
+      "ko": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "17px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Legend 2: LG 사이즈 폼 그룹 제목 (Checkbox +2px)"
+      },
+      "ja": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "17px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "17px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "legend3": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "15px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Legend 3: MD 사이즈 폼 그룹 제목 (Checkbox +2px)"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "15px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "15px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "legend4": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Legend 4: SM 사이즈 폼 그룹 제목 (Checkbox +2px)"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "legend5": {
+      "ko": {
+        "fontSize": { "value": "13px" },
+        "tabletSize": { "value": "13px" },
+        "mobileSize": { "value": "13px" },
+        "fontWeight": { "value": [400, 500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Legend 5: XS 사이즈 폼 그룹 제목 (Checkbox +2px)"
+      },
+      "ja": {
+        "fontSize": { "value": "13px" },
+        "tabletSize": { "value": "13px" },
+        "mobileSize": { "value": "13px" },
+        "fontWeight": { "value": [400, 500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "13px" },
+        "tabletSize": { "value": "13px" },
+        "mobileSize": { "value": "13px" },
+        "fontWeight": { "value": [400, 500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "l1": {
+      "ko": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "15px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Label 1: XL 체크박스/라디오 레이블 (가장 큼)"
+      },
+      "ja": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "15px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "15px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "l2": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Label 2: LG 체크박스/라디오 레이블"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "l3": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "13px" },
+        "mobileSize": { "value": "13px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Label 3: MD 체크박스/라디오 레이블"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "13px" },
+        "mobileSize": { "value": "13px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "13px" },
+        "mobileSize": { "value": "13px" },
+        "fontWeight": { "value": [500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "l4": {
+      "ko": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Label 4: SM 체크박스/라디오 레이블"
+      },
+      "ja": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "l5": {
+      "ko": {
+        "fontSize": { "value": "11px" },
+        "tabletSize": { "value": "11px" },
+        "mobileSize": { "value": "11px" },
+        "fontWeight": { "value": [400, 500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Label 5: XS 체크박스/라디오 레이블 (가장 작음)"
+      },
+      "ja": {
+        "fontSize": { "value": "11px" },
+        "tabletSize": { "value": "11px" },
+        "mobileSize": { "value": "11px" },
+        "fontWeight": { "value": [400, 500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "11px" },
+        "tabletSize": { "value": "11px" },
+        "mobileSize": { "value": "11px" },
+        "fontWeight": { "value": [400, 500, 600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "input1": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Input 1: 표준 입력창 및 텍스트 영역용 (권장)"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "input2": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "13px" },
+        "mobileSize": { "value": "13px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Input 2: 작은 사이즈의 입력창 및 검색바"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "13px" },
+        "mobileSize": { "value": "13px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "13px" },
+        "mobileSize": { "value": "13px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "input3": {
+      "ko": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Input 3: 최소 사이즈 입력창 및 인라인 수정용"
+      },
+      "ja": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+
+    "placeholder1": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Placeholder 1: 표준 입력창 안내 문구"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "15px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "placeholder2": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "13px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Placeholder 2: 작은 사이즈 입력창 안내 문구"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "13px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "13px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "placeholder3": {
+      "ko": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Placeholder 3: 최소 사이즈 입력창 안내 문구"
+      },
+      "ja": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "helper2": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Helper 2: LG 사이즈 입력창 하단 안내 문구"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "helper3": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Helper 3: MD 사이즈 입력창 하단 안내 문구"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "helper4": {
+      "ko": {
+        "fontSize": { "value": "13px" },
+        "tabletSize": { "value": "13px" },
+        "mobileSize": { "value": "13px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Helper 4: SM 사이즈 입력창 하단 안내 문구"
+      },
+      "ja": {
+        "fontSize": { "value": "13px" },
+        "tabletSize": { "value": "13px" },
+        "mobileSize": { "value": "13px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "13px" },
+        "tabletSize": { "value": "13px" },
+        "mobileSize": { "value": "13px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "helper5": {
+      "ko": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Helper 5: XS 사이즈 입력창 하단 안내 문구"
+      },
+      "ja": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "calendar-1": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [600] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Calendar & Table: 달력 날짜 및 테이블 데이터용 (다중 Weight 지원)"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "toast-msg-1": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Toast Message 1: 표준 알림 메시지 및 토스트 제목용"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "toast-msg-2": {
+      "ko": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Toast Message 2: 토스트 내 보조 설명 및 작은 알림용"
+      },
+      "ja": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "modal-1": {
+      "ko": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "20px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Modal Text 1: 모달 헤더 및 강조 타이틀용"
+      },
+      "ja": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "20px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "20px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "modal-2": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Modal Text 2: 모달 상세 설명 및 본문용"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "file-picker-title": {
+      "ko": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "20px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "FilePicker Title: 파일 업로드 영역의 메인 타이틀"
+      },
+      "ja": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "20px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "20px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "file-picker-desc": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "FilePicker Desc: 업로드 제한 사양 등의 설명 문구"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "file-picker-count": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "FilePicker Count: 선택된 파일 개수 표시"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "file-picker-file-info": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "FilePicker Info: 첨부된 파일의 이름, 용량 등 정보"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+
+    "data-table-1": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "DataTable 1: 여유로운 행 높이의 테이블 데이터 (Large)"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "data-table-2": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "DataTable 2: 표준 사이즈 테이블 데이터 (Medium)"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "data-table-3": {
+      "ko": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "DataTable 3: 높은 데이터 밀도의 테이블 데이터 (Small)"
+      },
+      "ja": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+
+    "badge-1": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Badge 1: 큰 사이즈의 뱃지 또는 레이블"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "badge-2": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Badge 2: 표준 사이즈 뱃지"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "badge-3": {
+      "ko": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Badge 3: 최소 사이즈 뱃지 (카운트 등)"
+      },
+      "ja": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "pagination-1": {
+      "ko": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "20px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Pagination 1: Large 사이즈 페이지네이션 숫자"
+      },
+      "ja": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "20px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "20px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "pagination-2": {
+      "ko": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Pagination 2: Medium 사이즈 페이지네이션 숫자"
+      },
+      "ja": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "pagination-3": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Pagination 3: Small 사이즈 페이지네이션 숫자 (표준)"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+
+    "accordion-title-1": {
+      "ko": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Accordion Title LG"
+      },
+      "ja": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "accordion-title-2": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Accordion Title MD"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "accordion-title-3": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Accordion Title SM"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+
+    "accordion-sub-title-1": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Accordion Content LG"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "accordion-sub-title-2": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Accordion Content MD"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "accordion-sub-title-3": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Accordion Content SM"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "accordion-sub-title-4": {
+      "ko": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Accordion Content XS / Caption"
+      },
+      "ja": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+
+    "chip-1": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Chip 1: 큰 사이즈의 칩 (Large)"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "chip-2": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Chip 2: 표준 사이즈의 칩 (Medium)"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "chip-3": {
+      "ko": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Chip 3: 작은 사이즈의 칩 (Small)"
+      },
+      "ja": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "tag-1": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Tag 1: 표준 사이즈 태그 (Medium)"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "tag-2": {
+      "ko": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Tag 2: 작은 사이즈 태그 (Small)"
+      },
+      "ja": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "tooltip-1": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Tooltip 1: 대형 툴팁 본문용 (Large)"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "tooltip-2": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Tooltip 2: 표준 툴팁 본문용 (Medium)"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "tooltip-3": {
+      "ko": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Tooltip 3: 소형 툴팁 또는 캡션용 (Small)"
+      },
+      "ja": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "avatar-1": {
+      "ko": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Avatar 1: 대형 아바타 이니셜/텍스트 (Large)"
+      },
+      "ja": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "avatar-2": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Avatar 2: 표준 아바타 이니셜/텍스트 (Medium)"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "avatar-3": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Avatar 3: 소형 아바타 이니셜/텍스트 (Small)"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "avatar-4": {
+      "ko": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Avatar 4: 최소 사이즈 아바타 (Extra Small)"
+      },
+      "ja": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "breadcrumb-1": {
+      "ko": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Breadcrumb 1: 대형 페이지 경로 표시 (Large)"
+      },
+      "ja": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "breadcrumb-2": {
+      "ko": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Breadcrumb 2: 표준 페이지 경로 표시 (Medium)"
+      },
+      "ja": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "breadcrumb-3": {
+      "ko": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": "Breadcrumb 3: 소형 페이지 경로 표시 (Small)"
+      },
+      "ja": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" }
+      },
+      "en": {
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [400, 500, 600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" }
+      }
+    },
+    "code": {
+      "ko": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "code" },
+        "description": "Code: 인라인 코드 또는 코드 블록용 고정폭 텍스트"
+      },
+      "ja": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "code" }
+      },
+      "en": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "code" }
+      }
+    }
+  }
+}

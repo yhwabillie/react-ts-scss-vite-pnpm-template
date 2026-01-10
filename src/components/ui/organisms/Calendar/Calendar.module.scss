@@ -121,7 +121,7 @@ $calendar-colors: (
             tr {
               th {
                 padding-bottom: rem(16px);
-                font: var(--project-typo-calendarTable1-600);
+                font: var(--project-typo-calendar-1-600);
               }
             }
           }
@@ -140,7 +140,7 @@ $calendar-colors: (
                   flex-direction: column;
                   margin-inline: auto;
                   border-radius: var(--project-border-radius-max);
-                  font: var(--project-typo-calendarTable1-600);
+                  font: var(--project-typo-calendar-1-600);
 
                   :global(.mark) {
                     display: inline-block;

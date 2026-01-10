@@ -146,7 +146,7 @@
     }
 
     p {
-      font: var(--project-typo-ToasMsg1-500);
+      font: var(--project-typo-toastmsg1-500);
       flex: 1 1 auto;
       margin: 0;
       color: var(--text-color-toast);
@@ -161,7 +161,7 @@
   display: inline-flex;
   align-items: center;
   width: max-content;
-  font: var(--project-typo-ToasMsg2-500);
+  font: var(--project-typo-toasmsg2-500);
   padding: rem(6px) rem(16px);
   background-color: var(--link-btn-bg-color-toast);
   border-radius: var(--project-border-radius-max);
