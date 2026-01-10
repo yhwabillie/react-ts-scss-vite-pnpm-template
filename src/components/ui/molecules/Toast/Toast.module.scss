@@ -86,7 +86,7 @@
 
   &:global(.is-success) {
     :global(.icon) {
-      fill: var(--success-icon-color-toast);
+      color: var(--success-icon-color-toast);
     }
   }
   &:global(.is-warning) {
@@ -131,6 +131,7 @@
     flex: 0 0 auto;
     width: 55% !important;
     height: 55% !important;
+    color: var(--text-color-toast) !important;
   }
 }
 

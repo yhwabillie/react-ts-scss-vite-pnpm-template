@@ -3159,5 +3159,38 @@ $g_typography: (
       line-height: 1.5,
       font-family: ko,
     ),
+  ),
+
+  Code: (
+    ko: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: code,
+    ),
+    ja: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: code,
+    ),
+    en: (
+      font-size: 12px,
+      tablet-size: 12px,
+      mobile-size: 12px,
+      font-weight: (
+        400,
+      ),
+      line-height: 1.5,
+      font-family: code,
+    ),
   )
 );

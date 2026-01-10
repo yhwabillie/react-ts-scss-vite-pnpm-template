@@ -75,6 +75,7 @@ const preview: Preview = {
     options: {
       storySort: {
         order: [
+          'Tokens',
           'UI',
           [
             'Atoms',

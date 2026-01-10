@@ -1,0 +1,20 @@
+{
+  "primary": {
+    "current-text": {
+      "color": {
+        "breadcrumb": {
+          "light": {
+            "value": "#0052cc",
+            "usage": "Breadcrumb",
+            "comment": "현재 위치한 페이지의 텍스트 색상입니다."
+          },
+          "dark": {
+            "value": "#66b2ff",
+            "usage": "Breadcrumb",
+            "comment": "현재 위치한 페이지의 텍스트 색상입니다."
+          }
+        }
+      }
+    }
+  }
+}

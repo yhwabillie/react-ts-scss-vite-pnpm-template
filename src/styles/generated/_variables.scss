@@ -1,0 +1,15 @@
+:root {
+  --color-surface-sunken: #f2f4f6;
+  --color-surface-subtle: #f9fafb;
+  --color-surface-default: #ffffff;
+  --color-surface-selected: #ececec;
+  --color-surface-raised: #ffffff;
+}
+
+.mode-dark {
+    --color-surface-sunken: #121212;
+    --color-surface-subtle: #1c1c1c;
+    --color-surface-default: #1e1e1e;
+    --color-surface-selected: #2c2c2c;
+    --color-surface-raised: #333333;
+}

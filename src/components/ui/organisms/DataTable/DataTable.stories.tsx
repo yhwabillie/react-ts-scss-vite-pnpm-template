@@ -117,9 +117,12 @@ const columns: Column<User>[] = [
     key: 'status',
     header: '상태',
     render: value => (
-      <Badge variant='outline' color={value === 'active' ? 'success' : 'danger'} size='md'>
-        {value.toUpperCase()}
-      </Badge>
+      <Badge
+        variant='outline'
+        size='sm'
+        color={value === 'active' ? 'success' : 'danger'}
+        label={value.toUpperCase()}
+      />
     ),
   },
 ];

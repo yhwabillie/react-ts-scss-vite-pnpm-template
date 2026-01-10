@@ -1,15 +1,20 @@
 @use '../../variables' as vars;
 @use '../../mixins/generate-variables' as *;
+@use '../../generated/variables'; // Style Dictionary가 생성한 파일 불러오기
+@use '../../generated/theme-tech';
 
 :root {
-  @include generate-vars-font-family(vars.$g_project-name, ('ko', 'ja', 'en'));
+  @include generate-vars-font-family(vars.$g_project-name, ('ko', 'ja', 'en', 'code'));
   @include generate-vars-font-weight(vars.$g_project-name, vars.$g_font-weight);
   @include generate-vars-border-radius(vars.$g_project-name, vars.$g_border-radius);
 
-  --color-surface-sunken: #ffffff; // Lv.0: 가장 밑바닥 (대지)
-  --color-surface-default: #ffffff; // Lv.1: 그 위의 콘텐츠 영역 (카드 등)
-  --color-surface-raised: #ffffff; // Lv.2: 강조가 필요한 오버레이나 컴포넌트 배경
-  --color-text-primary: #191f28; // 텍스트 컬러 (접근성 확보)
+  // --color-surface-sunken: #f2f4f6; // Lv.0 (Background)
+  // --color-surface-default: #ffffff; // Lv.1 (Card/Body) 흰색 배경 + 미세한 보더 (Border)
+  // --color-surface-subtle: #f9fafb;
+  // --color-surface-raised: #ffffff; // Lv.2 (Floating) 흰색 배경 + 부드러운 그림자 (Shadow)
+  // --color-surface-selected: #ececec;
+
+  --color-text-primary: #191f28;
 
   // focus ring
   --focus-ring-color: #ffa94d;
@@ -22,6 +27,12 @@
   // guide
   --bg-color-guide: #ecf4ef;
   --stroke-color-guide: #15803d;
+
+  // code
+  --bg-color-code: #f5f5f5;
+  --hover-bg-color-code: #eeeeee;
+  --text-color-code: #4a4a4a;
+  --hover-text-color-code: #1a1a1a;
 
   // skeleton
   --bg-color-skeleton: #f2f2f2;
@@ -814,9 +825,11 @@
 @include generate-vars-lang-typography;
 
 .mode-dark {
-  --color-surface-sunken: #121212; // Lv.0: 가장 밑바닥 (대지)
-  --color-surface-default: #1e1e1e; // Lv.1: 그 위의 콘텐츠 영역 (카드 등)
-  --color-surface-raised: #333333; // Lv.2: 강조가 필요한 오버레이나 컴포넌트 배경
+  // --color-surface-sunken: #121212; // Lv.0: 가장 밑바닥 (대지)
+  // --color-surface-subtle: #1c1c1c;
+  // --color-surface-default: #1e1e1e; // Lv.1: 그 위의 콘텐츠 영역 (카드 등)
+  // --color-surface-raised: #333333; // Lv.2: 강조가 필요한 오버레이나 컴포넌트 배경
+  // --color-surface-selected: #2c2c2c;
   --color-text-primary: #f9fafb; // 텍스트 컬러 (접근성 확보)
 
   // focus ring
@@ -832,6 +845,12 @@
   // guide
   --bg-color-guide: rgba(45, 252, 82, 0.05);
   --stroke-color-guide: #2dfc52;
+
+  // code
+  --bg-color-code: #1e1e1e;
+  --hover-bg-color-code: #2c2c2c;
+  --text-color-code: #a0a0a0;
+  --hover-text-color-code: #ffffff;
 
   // skeleton
   --bg-color-skeleton: #1e1e1e;
@@ -1628,7 +1647,7 @@
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
   // breadcrumb
-  --primary-current-text-color-breadcrumb: #0052cc;
+  // --primary-current-text-color-breadcrumb: #0052cc;
   --primary-hover-text-color-breadcrumb: #0052cc;
 
   // avatar
@@ -2519,7 +2538,7 @@
 
   &.mode-dark {
     // breadcrumb
-    --primary-current-text-color-breadcrumb: #66b2ff;
+    // --primary-current-text-color-breadcrumb: #66b2ff;
     --primary-hover-text-color-breadcrumb: #66b2ff;
 
     // avatar
@@ -3407,102 +3426,5 @@
 
     --tertiary-solid-track-color-spinner-closed-ring: rgba(255, 255, 255, 0.2);
     --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
-  }
-}
-
-/* SUNNY 테마 (Tangerine & Copper) */
-[data-theme='warm'] {
-  // --- Light Mode ---
-
-  // outline btn - primary (탠저린: 핵심 액션 - Danger(Red)와 확실히 다름)
-  --primary-text-color-btn-outline: #ea580c; // Orange 600
-  --primary-stroke-color-btn-outline: #ea580c;
-  --primary-hover-bg-color-btn-outline: rgba(234, 88, 12, 0.08);
-  --primary-hover-text-color-btn-outline: #ea580c;
-  --primary-active-bg-color-btn-outline: rgba(234, 88, 12, 0.16);
-  --primary-active-text-color-btn-outline: #ea580c;
-
-  // outline btn - secondary (브론즈/코퍼: 보조 액션 - Warning(Yellow)보다 훨씬 묵직함)
-  --secondary-text-color-btn-outline: #92400e; // Amber 800
-  --secondary-stroke-color-btn-outline: #92400e;
-  --secondary-hover-bg-color-btn-outline: rgba(146, 64, 14, 0.08);
-  --secondary-hover-text-color-btn-outline: #78350f;
-  --secondary-active-bg-color-btn-outline: rgba(146, 64, 14, 0.16);
-  --secondary-active-text-color-btn-outline: #78350f;
-
-  // outline btn - tertiary (토프 그레이: 무채색 기반 따뜻한 보조)
-  --tertiary-text-color-btn-outline: #57534e; // Stone 700
-  --tertiary-stroke-color-btn-outline: #57534e;
-  --tertiary-hover-bg-color-btn-outline: rgba(87, 83, 78, 0.08);
-  --tertiary-hover-text-color-btn-outline: #44403c;
-  --tertiary-active-bg-color-btn-outline: rgba(87, 83, 78, 0.16);
-  --tertiary-active-text-color-btn-outline: #44403c;
-
-  // spinner - primary
-  --primary-track-color-spinner-open-ring: transparent;
-  --primary-path-color-spinner-open-ring: #ea580c;
-  --primary-track-color-spinner-closed-ring: rgba(234, 88, 12, 0.2);
-  --primary-path-color-spinner-closed-ring: #ea580c;
-
-  // spinner - secondary
-  --secondary-track-color-spinner-open-ring: transparent;
-  --secondary-path-color-spinner-open-ring: #92400e;
-  --secondary-track-color-spinner-closed-ring: rgba(146, 64, 14, 0.2);
-  --secondary-path-color-spinner-closed-ring: #92400e;
-
-  // spinner - tertiary
-  --tertiary-track-color-spinner-open-ring: transparent;
-  --tertiary-path-color-spinner-open-ring: #57534e;
-  --tertiary-track-color-spinner-closed-ring: rgba(87, 83, 78, 0.2);
-  --tertiary-path-color-spinner-closed-ring: #57534e;
-
-  &.mode-dark {
-    // --- Dark Mode (#121212 bg) ---
-
-    // outline btn - primary (밝은 탠저린: #fb923c)
-    --primary-text-color-btn-outline: #fb923c;
-    --primary-stroke-color-btn-outline: #fb923c;
-    --primary-hover-bg-color-btn-outline: rgba(251, 146, 60, 0.12);
-    --primary-hover-text-color-btn-outline: #fdba74;
-    --primary-active-bg-color-btn-outline: rgba(251, 146, 60, 0.24);
-    --primary-active-text-color-btn-outline: #fdba74;
-
-    // outline btn - secondary (골든 오렌지: #f59e0b)
-    // Warning(Yellow)보다 붉은 기가 많아 구분됨
-    --secondary-text-color-btn-outline: #f59e0b;
-    --secondary-stroke-color-btn-outline: #f59e0b;
-    --secondary-hover-bg-color-btn-outline: rgba(245, 158, 11, 0.12);
-    --secondary-hover-text-color-btn-outline: #fbbf24;
-    --secondary-active-bg-color-btn-outline: rgba(245, 158, 11, 0.24);
-    --secondary-active-text-color-btn-outline: #fbbf24;
-
-    // outline btn - tertiary (샌드 그레이: #a8a29e)
-    // 유색 버튼들과 완전히 대비되는 무채색
-    --tertiary-text-color-btn-outline: #a8a29e;
-    --tertiary-stroke-color-btn-outline: #a8a29e;
-    --tertiary-hover-bg-color-btn-outline: rgba(168, 162, 158, 0.12);
-    --tertiary-hover-text-color-btn-outline: #d6d3d1;
-    --tertiary-active-bg-color-btn-outline: rgba(168, 162, 158, 0.24);
-    --tertiary-active-text-color-btn-outline: #d6d3d1;
-
-    // spinner - primary
-    --primary-track-color-spinner-open-ring: transparent;
-    --primary-path-color-spinner-open-ring: #fb923c;
-
-    // spinner - secondary
-    --secondary-track-color-spinner-open-ring: transparent;
-    --secondary-path-color-spinner-open-ring: #f59e0b;
-
-    // spinner - tertiary
-    --tertiary-track-color-spinner-open-ring: transparent;
-    --tertiary-path-color-spinner-open-ring: #a8a29e;
-
-    // Solid 스피너 공통 화이트 유지
-    --primary-solid-track-color-spinner-open-ring: rgba(255, 255, 255, 0.2);
-    --primary-solid-path-color-spinner-open-ring: #ffffff;
-    --secondary-solid-track-color-spinner-open-ring: rgba(255, 255, 255, 0.2);
-    --secondary-solid-path-color-spinner-open-ring: #ffffff;
-    --tertiary-solid-track-color-spinner-open-ring: rgba(255, 255, 255, 0.2);
-    --tertiary-solid-path-color-spinner-open-ring: #ffffff;
   }
 }
