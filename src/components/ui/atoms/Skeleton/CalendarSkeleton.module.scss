@@ -17,9 +17,9 @@
   display: inline-block;
   background: linear-gradient(
     90deg,
-    var(--cell-skeleton-gradient-bg-color-start-calendar) 25%,
-    var(--cell-skeleton-gradient-bg-color-center-calendar) 50%,
-    var(--cell-skeleton-gradient-bg-color-end-calendar) 75%
+    var(--project-color-calendar-cell-skeleton-gradient-start) 25%,
+    var(--project-color-calendar-cell-skeleton-gradient-center) 50%,
+    var(--project-color-calendar-cell-skeleton-gradient-end) 75%
   );
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.5s infinite;

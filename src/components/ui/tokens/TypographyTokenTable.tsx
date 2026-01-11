@@ -89,7 +89,7 @@ const TypographyTokenTable = ({ title, category, tokens }: TypographyTableProps)
                 <span
                   style={{
                     fontSize: '10px',
-                    color: 'var(--color-text-primary)',
+                    color: 'var(--project-color-text-natural)',
                     width: '24px',
                     flex: '0 0 auto',
                   }}

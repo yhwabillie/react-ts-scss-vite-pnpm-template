@@ -27,10 +27,10 @@ $validation-msg-variant: (
     ),
   ),
   guide: (
-    bg: var(--guide-bg-color-validation-msg),
-    color: var(--guide-text-color-validation-msg),
+    bg: var(--project-color-validation-guide-bg),
+    color: var(--project-color-validation-guide-text),
     icon: (
-      fill: var(--guide-icon-color-validation-msg),
+      fill: var(--project-color-validation-guide-icon),
     ),
   ),
 );

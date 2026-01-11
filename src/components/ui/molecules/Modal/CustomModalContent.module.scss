@@ -24,8 +24,8 @@ $modal-sizes: (
   min-height: rem(250px);
   margin: auto;
   border-radius: var(--project-border-radius-16);
-  box-shadow: 0 rem(8px) rem(20px) var(--shadow-bg-color-custom-modal);
-  background-color: var(--bg-color-custom-modal);
+  box-shadow: 0 rem(8px) rem(20px) var(--project-color-custom-modal-shadow-bg);
+  background-color: var(--project-color-custom-modal-bg);
 
   &:global(.is-outer-scroll) {
     :global(.modal-body) {
@@ -72,12 +72,12 @@ $modal-sizes: (
     flex-direction: column;
     justify-content: center;
     padding: 1.25rem 1.25rem 0.75rem;
-    border-top: 0.0625rem solid var(--stroke-color-custom-modal);
-    background-color: var(--modal-body-bg-color-custom-modal);
+    border-top: 0.0625rem solid var(--project-color-custom-modal-border);
+    background-color: var(--project-color-custom-modal-body-bg);
   }
 
   :global(.modal-footer) {
     padding: 0 1.25rem 1.25rem;
-    background-color: var(--modal-footer-bg-color-custom-modal);
+    background-color: var(--project-color-custom-modal-footer-bg);
   }
 }

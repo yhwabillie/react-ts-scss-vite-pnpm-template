@@ -22,8 +22,8 @@
       }
       &:hover {
         code {
-          background-color: var(--hover-bg-color-code);
-          color: var(--hover-text-color-code);
+          background-color: var(--project-color-docs-code-hover-bg);
+          color: var(--project-color-docs-code-hover-text);
         }
       }
     }

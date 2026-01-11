@@ -70,6 +70,9 @@ const getTokensByLang = (category: string, lang: string) => {
   );
 };
 
+/** * 최상위 헤드라인 및 마케팅용 대형 텍스트 스케일입니다.
+ * 주로 랜딩 페이지의 메인 타이틀에 사용됩니다.
+ */
 export const DisplayScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -92,6 +95,10 @@ export const DisplayScale: Story = {
   ),
 };
 
+/**
+ * 일반적인 페이지 제목 및 섹션 타이틀 스케일입니다.
+ * 구조적인 위계(Hierarchy)를 형성할 때 사용합니다.
+ */
 export const HeadingScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -114,6 +121,10 @@ export const HeadingScale: Story = {
   ),
 };
 
+/**
+ * 제목을 보조하는 서브 타이틀 스케일입니다.
+ * 대제목 하단의 부연 설명이나 섹션 내 소제목에 적합합니다.
+ */
 export const SubTitleScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -136,6 +147,10 @@ export const SubTitleScale: Story = {
   ),
 };
 
+/**
+ * 가장 널리 사용되는 기본 본문 텍스트 스케일입니다.
+ * 가독성을 위해 언어별 최적화된 폰트와 행간(Line-height)이 적용되어 있습니다.
+ */
 export const BodyScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -158,6 +173,10 @@ export const BodyScale: Story = {
   ),
 };
 
+/**
+ * 버튼 및 인터랙션 요소 내 텍스트 스케일입니다.
+ * 좁은 영역에서도 시인성을 확보할 수 있도록 Medium 이상의 웨이트를 권장합니다.
+ */
 export const ButtonScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -180,6 +199,9 @@ export const ButtonScale: Story = {
   ),
 };
 
+/**
+ * 범례(Legend) 또는 차트 내 텍스트를 위한 스케일입니다.
+ */
 export const LegendScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -202,6 +224,10 @@ export const LegendScale: Story = {
   ),
 };
 
+/**
+ * 폼 필드 상단의 레이블 스케일입니다.
+ * 입력 요소와 명확히 구분될 수 있는 크기와 두께를 제공합니다.
+ */
 export const LabelScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -224,6 +250,10 @@ export const LabelScale: Story = {
   ),
 };
 
+/**
+ * 입력 필드 하단의 도움말 또는 에러 메시지용 스케일입니다.
+ * 작지만 명확한 정보 전달을 목적으로 합니다.
+ */
 export const InputScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -246,6 +276,10 @@ export const InputScale: Story = {
   ),
 };
 
+/**
+ * 입력 필드 하단의 도움말 또는 에러 메시지용 스케일입니다.
+ * 작지만 명확한 정보 전달을 목적으로 합니다.
+ */
 export const HelperScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -268,6 +302,9 @@ export const HelperScale: Story = {
   ),
 };
 
+/**
+ * 달력 컴포넌트 내 날짜 및 요일 표기를 위한 전용 스케일입니다.
+ */
 export const CalendarScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -290,6 +327,9 @@ export const CalendarScale: Story = {
   ),
 };
 
+/**
+ * 토스트(Toast) 메시지 알림 내 텍스트 스케일입니다.
+ */
 export const ToastMsgScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -312,6 +352,9 @@ export const ToastMsgScale: Story = {
   ),
 };
 
+/**
+ * 모달(Modal) 팝업 내 타이틀 및 본문을 위한 스케일입니다.
+ */
 export const ModalScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -334,6 +377,9 @@ export const ModalScale: Story = {
   ),
 };
 
+/**
+ * 파일 업로드/선택 컴포넌트 전용 텍스트 스케일입니다.
+ */
 export const FilePickerScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -356,6 +402,10 @@ export const FilePickerScale: Story = {
   ),
 };
 
+/**
+ * 데이터 테이블(Grid) 내 셀 데이터를 위한 고밀도 텍스트 스케일입니다.
+ * 많은 정보를 한 화면에 보여주기 위해 최적화되었습니다.
+ */
 export const DataTableScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -378,6 +428,10 @@ export const DataTableScale: Story = {
   ),
 };
 
+/**
+ * 상태 표시 배지(Badge) 전용 스케일입니다.
+ * 배경색과의 대비 및 가독성을 고려하여 설계되었습니다.
+ */
 export const BadgeScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -400,6 +454,9 @@ export const BadgeScale: Story = {
   ),
 };
 
+/**
+ * 페이지네이션(Pagination) 번호 및 화살표 가이드용 스케일입니다.
+ */
 export const PaginationScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -422,6 +479,9 @@ export const PaginationScale: Story = {
   ),
 };
 
+/**
+ * 아코디언(Accordion) 헤더 및 컨텐츠 전용 스케일입니다.
+ */
 export const AccordionScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -444,6 +504,9 @@ export const AccordionScale: Story = {
   ),
 };
 
+/**
+ * 칩(Chip) 또는 필터 요소 내 텍스트 스케일입니다.
+ */
 export const ChipScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -466,6 +529,9 @@ export const ChipScale: Story = {
   ),
 };
 
+/**
+ * 태그(Tag) 컴포넌트용 텍스트 스케일입니다.
+ */
 export const TagScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -488,6 +554,10 @@ export const TagScale: Story = {
   ),
 };
 
+/**
+ * 툴팁(Tooltip) 내 설명 텍스트를 위한 스케일입니다.
+ * 좁은 공간에서 텍스트가 가려지는(Partially Obscured) 현상에 주의해야 합니다.
+ */
 export const TooltipScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -510,6 +580,9 @@ export const TooltipScale: Story = {
   ),
 };
 
+/**
+ * 아바타(Avatar) 컴포넌트의 이니셜 또는 이름 표기용 스케일입니다.
+ */
 export const AvatarScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -532,6 +605,9 @@ export const AvatarScale: Story = {
   ),
 };
 
+/**
+ * 페이지 경로(Breadcrumb) 표시를 위한 텍스트 스케일입니다.
+ */
 export const BreadcrumbScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
@@ -554,6 +630,9 @@ export const BreadcrumbScale: Story = {
   ),
 };
 
+/**
+ * 페이지 경로(Breadcrumb) 표시를 위한 텍스트 스케일입니다.
+ */
 export const CodeScale: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>

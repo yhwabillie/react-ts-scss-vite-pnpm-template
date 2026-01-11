@@ -23,7 +23,7 @@ $btn-colors: (
     ),
 
     outline: (
-      bg: var(--bg-color-btn-outline),
+      bg: var(--project-color-outline-btn-bg),
       label: var(--primary-text-color-btn-outline),
       hover: (
         bg: var(--primary-hover-bg-color-btn-outline),
@@ -78,7 +78,7 @@ $btn-colors: (
 
     //
     outline: (
-        bg: var(--bg-color-btn-outline),
+        bg: var(--project-color-outline-btn-bg),
         label: var(--secondary-text-color-btn-outline),
         hover: (
           bg: var(--secondary-hover-bg-color-btn-outline),
@@ -134,7 +134,7 @@ $btn-colors: (
 
     //
     outline: (
-        bg: var(--bg-color-btn-outline),
+        bg: var(--project-color-outline-btn-bg),
         label: var(--tertiary-text-color-btn-outline),
         hover: (
           bg: var(--tertiary-hover-bg-color-btn-outline),
@@ -189,7 +189,7 @@ $btn-colors: (
 
     //
     outline: (
-        bg: var(--bg-color-btn-outline),
+        bg: var(--project-color-outline-btn-bg),
         label: var(--success-text-color-btn-outline),
         hover: (
           bg: var(--success-hover-bg-color-btn-outline),
@@ -242,7 +242,7 @@ $btn-colors: (
       ),
     ),
     outline: (
-      bg: var(--bg-color-btn-outline),
+      bg: var(--project-color-outline-btn-bg),
       label: var(--warning-text-color-btn-outline),
       hover: (
         bg: var(--warning-hover-bg-color-btn-outline),
@@ -293,7 +293,7 @@ $btn-colors: (
       ),
     ),
     outline: (
-      bg: var(--bg-color-btn-outline),
+      bg: var(--project-color-outline-btn-bg),
       label: var(--danger-text-color-btn-outline),
       hover: (
         bg: var(--danger-hover-bg-color-btn-outline),

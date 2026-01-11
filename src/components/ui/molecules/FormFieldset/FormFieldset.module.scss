@@ -113,7 +113,7 @@ $legend-sizes: (
         // flex-wrap: wrap;
 
         :global(.requried) {
-          color: var(--required-asterisk-color);
+          color: var(--project-color-required-asterisk-text);
           vertical-align: super;
           line-height: 0;
           display: inline-flex;

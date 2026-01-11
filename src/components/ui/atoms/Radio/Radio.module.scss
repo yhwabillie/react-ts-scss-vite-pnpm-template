@@ -6,8 +6,8 @@
 // radio color
 $radio-colors: (
   primary: (
-    borderColor: var(--stroke-color-radio),
-    bg: var(--bg-color-unchecked-radio),
+    borderColor: var(--project-color-radio-border),
+    bg: var(--project-color-radio-unchecked-bg),
     fill: var(--primary-checked-color-radio),
     hover: (
       shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-radio),
@@ -21,8 +21,8 @@ $radio-colors: (
     ),
   ),
   secondary: (
-    borderColor: var(--stroke-color-radio),
-    bg: var(--bg-color-unchecked-radio),
+    borderColor: var(--project-color-radio-border),
+    bg: var(--project-color-radio-unchecked-bg),
     fill: var(--secondary-checked-color-radio),
     hover: (
       shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-radio),
@@ -36,8 +36,8 @@ $radio-colors: (
     ),
   ),
   tertiary: (
-    borderColor: var(--stroke-color-radio),
-    bg: var(--bg-color-unchecked-radio),
+    borderColor: var(--project-color-radio-border),
+    bg: var(--project-color-radio-unchecked-bg),
     fill: var(--tertiary-checked-color-radio),
     hover: (
       shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-radio),
@@ -51,8 +51,8 @@ $radio-colors: (
     ),
   ),
   success: (
-    borderColor: var(--stroke-color-radio),
-    bg: var(--bg-color-unchecked-radio),
+    borderColor: var(--project-color-radio-border),
+    bg: var(--project-color-radio-unchecked-bg),
     fill: var(--success-checked-color-radio),
     hover: (
       shadow: 0 0 0 rem(4px) var(--success-hover-shadow-radio),
@@ -66,8 +66,8 @@ $radio-colors: (
     ),
   ),
   warning: (
-    borderColor: var(--stroke-color-radio),
-    bg: var(--bg-color-unchecked-radio),
+    borderColor: var(--project-color-radio-border),
+    bg: var(--project-color-radio-unchecked-bg),
     fill: var(--warning-checked-color-radio),
     hover: (
       shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-radio),
@@ -81,8 +81,8 @@ $radio-colors: (
     ),
   ),
   danger: (
-    borderColor: var(--stroke-color-radio),
-    bg: var(--bg-color-unchecked-radio),
+    borderColor: var(--project-color-radio-border),
+    bg: var(--project-color-radio-unchecked-bg),
     fill: var(--danger-checked-color-radio),
     hover: (
       shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-radio),

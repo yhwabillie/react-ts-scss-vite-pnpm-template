@@ -3,25 +3,25 @@
 @use '../../../styles/mixins' as *;
 
 .anatomy-wrapper {
-  background-color: var(--bg-color-guide);
+  background-color: var(--project-color-docs-guide-bg);
   display: flex;
   flex-direction: column;
   gap: rem(4px);
   padding: rem(10px);
   border-radius: var(--project-border-radius-8);
-  border: rem(1px) dashed var(--stroke-color-guide);
+  border: rem(1px) dashed var(--project-color-docs-guide-border);
 
   :global(.title) {
     width: 100%;
     font: var(--project-typo-label-3-500);
-    // background-color: var(--color-surface-raised);
-    color: var(--color-text-primary);
+    // background-color: var(--project-color-surface-raised);
+    color: var(--project-color-text-natural);
     padding: 0 rem(10px) 0 rem(10px);
   }
 
   // '>'를 사용하여 직계 자식(1st Depth)만 선택합니다.
   & > *:not(:global(.title)) {
-    border: rem(1px) dashed var(--stroke-color-guide);
+    border: rem(1px) dashed var(--project-color-docs-guide-border);
     // padding: rem(10px);
     border-radius: var(--project-border-radius-8);
     transition: all 0.2s ease; // 부드러운 전환을 위해 추가 가능

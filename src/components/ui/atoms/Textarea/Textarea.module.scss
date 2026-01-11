@@ -357,7 +357,7 @@ $textarea-sizes: (
   transition: all 0.2s ease;
 
   &:has(textarea:focus-visible) {
-    outline: 2.5px dashed var(--focus-ring-color) !important;
+    outline: 2.5px dashed var(--project-color-interaction-focus-ring) !important;
     outline-offset: 2px;
   }
 

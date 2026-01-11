@@ -1,18 +1,70 @@
 {
-  "primary": {
-    "current-text": {
-      "color": {
-        "breadcrumb": {
-          "light": {
-            "value": "#0052cc",
-            "usage": "Breadcrumb",
-            "comment": "현재 위치한 페이지의 텍스트 색상입니다."
-          },
-          "dark": {
-            "value": "#66b2ff",
-            "usage": "Breadcrumb",
-            "comment": "현재 위치한 페이지의 텍스트 색상입니다."
-          }
+  "color": {
+    "primary": {
+      "breadcrumb": {
+        "light": {
+          "current-text": { "value": "#0052cc" },
+          "hover-text": { "value": "#0052cc" }
+        },
+        "dark": {
+          "current-text": { "value": "#66b2ff" },
+          "hover-text": { "value": "#66b2ff" }
+        }
+      },
+      "avatar": {
+        "light": {
+          "hover-border": { "value": "#0052cc" },
+          "active-border": { "value": "#0052cc" }
+        },
+        "dark": {
+          "hover-border": { "value": "#66b2ff" },
+          "active-border": { "value": "#66b2ff" }
+        }
+      }
+    },
+
+    "secondary": {
+      "breadcrumb": {
+        "light": {
+          "current-text": { "value": "#475569" },
+          "hover-text": { "value": "#475569" }
+        },
+        "dark": {
+          "current-text": { "value": "#38bdf8" },
+          "hover-text": { "value": "#38bdf8" }
+        }
+      },
+      "avatar": {
+        "light": {
+          "hover-border": { "value": "#475569" },
+          "active-border": { "value": "#475569" }
+        },
+        "dark": {
+          "hover-border": { "value": "#38bdf8" },
+          "active-border": { "value": "#38bdf8" }
+        }
+      }
+    },
+
+    "tertiary": {
+      "breadcrumb": {
+        "light": {
+          "current-text": { "value": "#7c3aed" },
+          "hover-text": { "value": "#7c3aed" }
+        },
+        "dark": {
+          "current-text": { "value": "#a78bfa" },
+          "hover-text": { "value": "#a78bfa" }
+        }
+      },
+      "avatar": {
+        "light": {
+          "hover-border": { "value": "#7c3aed" },
+          "active-border": { "value": "#7c3aed" }
+        },
+        "dark": {
+          "hover-border": { "value": "#a78bfa" },
+          "active-border": { "value": "#a78bfa" }
         }
       }
     }

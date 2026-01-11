@@ -181,3 +181,24 @@
     }
   }
 }
+
+/**
+ * 테마별 컬러 변수 생성 믹스인 (프로젝트 Prefix 포함)
+ * @param {String} $theme-name - "light" 또는 "dark"
+ * @param {Map} $g_colors - 컬러 데이터 맵
+ */
+@mixin generate-theme-vars($theme-name, $g_colors) {
+  $theme-map: map.get($g_colors, $theme-name);
+  $project-prefix: vars.$g_project-name;
+
+  @if $theme-map {
+    @each $key, $value in $theme-map {
+      /** * 결과 예시:
+       * --project-color-surface-default: #ffffff;
+       */
+      --#{$project-prefix}-#{$key}: #{$value};
+    }
+  } @else {
+    @warn "Theme '#{$theme-name}'를 찾을 수 없습니다.";
+  }
+}

@@ -61,6 +61,1046 @@
           "comment": "팝업, 모달, 컨텍스트 메뉴 등 사용자에게 가장 가깝게 떠 있는 최상위 레이어입니다."
         }
       }
+    },
+    "text": {
+      "natural": {
+        "light": {
+          "value": "#191f28",
+          "usage": "Primary Text Color",
+          "comment": "밝은 배경에서 최적의 가독성을 제공하는 기본 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f9fafb",
+          "usage": "Primary Text Color",
+          "comment": "어두운 배경에서 최적의 가독성을 제공하는 기본 텍스트 색상입니다."
+        }
+      }
+    },
+    "interaction": {
+      "focus-ring": {
+        "light": {
+          "value": "#ffa94d",
+          "usage": "Focus Indicator",
+          "comment": "키보드 내비게이션 시 포커스된 요소를 둘러싸는 링 색상입니다."
+        },
+        "dark": {
+          "value": "#ffd60a",
+          "usage": "Focus Indicator",
+          "comment": "키보드 내비게이션 시 포커스된 요소를 둘러싸는 링 색상입니다."
+        }
+      }
+    },
+    "scrollbar": {
+      "thumb-bg": {
+        "light": {
+          "value": "rgba(55, 55, 55, 0.4)",
+          "usage": "Scrollbar Thumb Color",
+          "comment": "밝은 모드에서 스크롤바 썸(Thumb)의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(255, 255, 255, 0.25)",
+          "usage": "Scrollbar Thumb Color",
+          "comment": "어두운 모드에서 스크롤바 썸(Thumb)의 배경 색상입니다."
+        }
+      },
+      "thumb-hover-bg": {
+        "light": {
+          "value": "rgba(55, 55, 55, 0.6)",
+          "usage": "Scrollbar Thumb Hover Color",
+          "comment": "밝은 모드에서 스크롤바 썸(Thumb)에 마우스 오버 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(255, 255, 255, 0.4)",
+          "usage": "Scrollbar Thumb Hover Color",
+          "comment": "어두운 모드에서 스크롤바 썸(Thumb)에 마우스 오버 시의 배경 색상입니다."
+        }
+      },
+      "track-bg": {
+        "light": {
+          "value": "rgba(0, 0, 0, 0.1)",
+          "usage": "Scrollbar Track Color",
+          "comment": "밝은 모드에서 스크롤바 트랙(Track)의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(255, 255, 255, 0.1)",
+          "usage": "Scrollbar Track Color",
+          "comment": "어두운 모드에서 스크롤바 트랙(Track)의 배경 색상입니다."
+        }
+      }
+    },
+    "docs": {
+      "guide-bg": {
+        "light": {
+          "value": "#ecf4ef",
+          "usage": "Documentation Guide Background",
+          "comment": "문서 가이드 섹션의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(45, 252, 82, 0.05)",
+          "usage": "Documentation Guide Background",
+          "comment": "문서 가이드 섹션의 배경 색상입니다."
+        }
+      },
+      "guide-border": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Documentation Guide Border",
+          "comment": "문서 가이드 섹션의 경계선 색상입니다."
+        },
+        "dark": {
+          "value": "#2dfc52",
+          "usage": "Documentation Guide Border",
+          "comment": "문서 가이드 섹션의 경계선 색상입니다."
+        }
+      },
+      "code-bg": {
+        "light": {
+          "value": "#f5f5f5",
+          "usage": "Code Block Background",
+          "comment": "코드 블록의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#1e1e1e",
+          "usage": "Code Block Background",
+          "comment": "코드 블록의 배경 색상입니다."
+        }
+      },
+      "code-hover-bg": {
+        "light": {
+          "value": "#eeeeee",
+          "usage": "Code Block Hover Background",
+          "comment": "코드 블록에 마우스 오버 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#2c2c2c",
+          "usage": "Code Block Hover Background",
+          "comment": "코드 블록에 마우스 오버 시의 배경 색상입니다."
+        }
+      },
+      "code-text": {
+        "light": {
+          "value": "#4a4a4a",
+          "usage": "Code Block Text Color",
+          "comment": "코드 블록 내 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "#a0a0a0",
+          "usage": "Code Block Text Color",
+          "comment": "코드 블록 내 텍스트의 색상입니다."
+        }
+      },
+      "code-hover-text": {
+        "light": {
+          "value": "#1a1a1a",
+          "usage": "Code Block Hover Text Color",
+          "comment": "코드 블록에 마우스 오버 시 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Code Block Hover Text Color",
+          "comment": "코드 블록에 마우스 오버 시 텍스트의 색상입니다."
+        }
+      }
+    },
+    "feedback": {
+      "skeleton-bg": {
+        "light": {
+          "value": "#f2f2f2",
+          "usage": "Skeleton Loader Background",
+          "comment": "스켈레톤 로더의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#1e1e1e",
+          "usage": "Skeleton Loader Background",
+          "comment": "스켈레톤 로더의 배경 색상입니다."
+        }
+      },
+      "skeleton-after-bg-gradient": {
+        "light": {
+          "value": "rgba(255, 255, 255, 0)",
+          "usage": "Skeleton Loader Animation Gradient",
+          "comment": "스켈레톤 로더의 애니메이션에 사용되는 그라데이션 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(255, 255, 255, 0)",
+          "usage": "Skeleton Loader Animation Gradient",
+          "comment": "스켈레톤 로더의 애니메이션에 사용되는 그라데이션 색상입니다."
+        }
+      },
+      "skeleton-after-bg-gradient-shimmer": {
+        "light": {
+          "value": "rgba(255, 255, 255, 0.4)",
+          "usage": "Skeleton Loader Animation Gradient Shim",
+          "comment": "스켈레톤 로더 애니메이션 그라데이션의 시작 및 끝 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(255, 255, 255, 0.05)",
+          "usage": "Skeleton Loader Animation Gradient Shim",
+          "comment": "스켈레톤 로더 애니메이션 그라데이션의 시작 및 끝 색상입니다."
+        }
+      }
+    },
+    "avatar": {
+      "bg": {
+        "light": {
+          "value": "#f0f0f0",
+          "usage": "Avatar Background Color",
+          "comment": "아바타의 기본 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#1e1e1e",
+          "usage": "Avatar Background Color",
+          "comment": "아바타의 기본 배경 색상입니다."
+        }
+      },
+      "hover-bg": {
+        "light": {
+          "value": "#e4e4e4",
+          "usage": "Avatar Hover Background Color",
+          "comment": "아바타에 마우스 오버 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#2c2c2c",
+          "usage": "Avatar Hover Background Color",
+          "comment": "아바타에 마우스 오버 시의 배경 색상입니다."
+        }
+      },
+      "hover-shadow": {
+        "light": {
+          "value": "rgba(0, 0, 0, 0.3)",
+          "usage": "Avatar Hover Shadow Color",
+          "comment": "아바타에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(255, 255, 255, 0.15)",
+          "usage": "Avatar Hover Shadow Color",
+          "comment": "아바타에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "border": {
+        "light": {
+          "value": "#9999",
+          "usage": "Avatar Border Color",
+          "comment": "아바타의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(255, 255, 255, 0.12)",
+          "usage": "Avatar Border Color",
+          "comment": "아바타의 테두리 색상입니다."
+        }
+      },
+      "fallback-text": {
+        "light": {
+          "value": "#333333",
+          "usage": "Avatar Fallback Text Color",
+          "comment": "아바타 이미지가 없을 때 표시되는 대체 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "#e0e0e0",
+          "usage": "Avatar Fallback Text Color",
+          "comment": "아바타 이미지가 없을 때 표시되는 대체 텍스트의 색상입니다."
+        }
+      }
+    },
+    "tooltip": {
+      "bg": {
+        "light": {
+          "value": "rgba(25, 25, 25, 0.8)",
+          "usage": "Tooltip Background Color",
+          "comment": "툴팁의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#3f3f40",
+          "usage": "Tooltip Background Color",
+          "comment": "툴팁의 배경 색상입니다."
+        }
+      },
+      "text": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Tooltip Text Color",
+          "comment": "툴팁 내 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Tooltip Text Color",
+          "comment": "툴팁 내 텍스트의 색상입니다."
+        }
+      },
+      "tail-bg": {
+        "light": {
+          "value": "rgba(25, 25, 25, 0.8)",
+          "usage": "Tooltip Tail Background Color",
+          "comment": "툴팁 꼬리 부분의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#3f3f40",
+          "usage": "Tooltip Tail Background Color",
+          "comment": "툴팁 꼬리 부분의 배경 색상입니다."
+        }
+      },
+      "close-btn-bg": {
+        "light": {
+          "value": "#000000",
+          "usage": "Tooltip Close Button Background Color",
+          "comment": "툴팁 닫기 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#a1a1aa",
+          "usage": "Tooltip Close Button Background Color",
+          "comment": "툴팁 닫기 버튼의 배경 색상입니다."
+        }
+      },
+      "close-btn-hover-bg": {
+        "light": {
+          "value": "#3b82f6",
+          "usage": "Tooltip Close Button Hover Background Color",
+          "comment": "툴팁 닫기 버튼에 마우스 오버 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#52525b",
+          "usage": "Tooltip Close Button Hover Background Color",
+          "comment": "툴팁 닫기 버튼에 마우스 오버 시의 배경 색상입니다."
+        }
+      }
+    },
+    "accordion": {
+      "drop-shadow": {
+        "light": {
+          "value": "rgba(0, 0, 0, 0.1)",
+          "usage": "Accordion Drop Shadow Color",
+          "comment": "밝은 모드에서 아코디언의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(0, 0, 0, 0.4)",
+          "usage": "Accordion Drop Shadow Color",
+          "comment": "어두운 모드에서 아코디언의 그림자 색상입니다."
+        }
+      }
+    },
+    "filepicker": {
+      "border": {
+        "light": {
+          "value": "#d6e0eb",
+          "usage": "File Picker Stroke Color",
+          "comment": "밝은 모드에서 파일 픽커의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#383b3e",
+          "usage": "File Picker Stroke Color",
+          "comment": "어두운 모드에서 파일 픽커의 테두리 색상입니다."
+        }
+      },
+      "bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "File Picker Background Color",
+          "comment": "밝은 모드에서 파일 픽커의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#1e1e1e",
+          "usage": "File Picker Background Color",
+          "comment": "어두운 모드에서 파일 픽커의 배경 색상입니다."
+        }
+      },
+      "dropzone-bg": {
+        "light": {
+          "value": "#e6e8ea",
+          "usage": "File Picker Dropzone Background Color",
+          "comment": "밝은 모드에서 파일 픽커 드롭존의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#25282a",
+          "usage": "File Picker Dropzone Background Color",
+          "comment": "어두운 모드에서 파일 픽커 드롭존의 배경 색상입니다."
+        }
+      },
+      "dropzone-dragging-bg": {
+        "light": {
+          "value": "#d2d3d5",
+          "usage": "File Picker Dropzone Dragging Background Color",
+          "comment": "밝은 모드에서 파일 픽커 드롭존에 파일을 드래그할 때의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#2f3336",
+          "usage": "File Picker Dropzone Dragging Background Color",
+          "comment": "어두운 모드에서 파일 픽커 드롭존에 파일을 드래그할 때의 배경 색상입니다."
+        }
+      },
+      "file-item-border": {
+        "light": {
+          "value": "#d6e0eb",
+          "usage": "File Picker File Item Stroke Color",
+          "comment": "밝은 모드에서 파일 픽커 내 파일 아이템의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#2a2d30",
+          "usage": "File Picker File Item Stroke Color",
+          "comment": "어두운 모드에서 파일 픽커 내 파일 아이템의 테두리 색상입니다."
+        }
+      }
+    },
+    "custom-modal": {
+      "bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Custom Modal Background Color",
+          "comment": "밝은 모드에서 커스텀 모달의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#1e1e1e",
+          "usage": "Custom Modal Background Color",
+          "comment": "어두운 모드에서 커스텀 모달의 배경 색상입니다."
+        }
+      },
+      "shadow-bg": {
+        "light": {
+          "value": "rgba(0, 0, 0, 0.05)",
+          "usage": "Custom Modal Shadow Background Color",
+          "comment": "밝은 모드에서 커스텀 모달의 그림자 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(0, 0, 0, 0.4)",
+          "usage": "Custom Modal Shadow Background Color",
+          "comment": "어두운 모드에서 커스텀 모달의 그림자 배경 색상입니다."
+        }
+      },
+      "border": {
+        "light": {
+          "value": "#e4e4e4",
+          "usage": "Custom Modal Stroke Color",
+          "comment": "밝은 모드에서 커스텀 모달의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#e4e4e4",
+          "usage": "Custom Modal Stroke Color",
+          "comment": "어두운 모드에서 커스텀 모달의 테두리 색상입니다."
+        }
+      },
+      "body-bg": {
+        "light": {
+          "value": "#f5f5f5",
+          "usage": "Custom Modal Body Background Color",
+          "comment": "밝은 모드에서 커스텀 모달 본문의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#252525",
+          "usage": "Custom Modal Body Background Color",
+          "comment": "어두운 모드에서 커스텀 모달 본문의 배경 색상입니다."
+        }
+      },
+      "footer-bg": {
+        "light": {
+          "value": "#f5f5f5",
+          "usage": "Custom Modal Footer Background Color",
+          "comment": "밝은 모드에서 커스텀 모달 푸터의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#252525",
+          "usage": "Custom Modal Footer Background Color",
+          "comment": "어두운 모드에서 커스텀 모달 푸터의 배경 색상입니다."
+        }
+      }
+    },
+    "alert-modal": {
+      "bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Alert Modal Background Color",
+          "comment": "밝은 모드에서 경고 모달의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#1e1e1e",
+          "usage": "Alert Modal Background Color",
+          "comment": "어두운 모드에서 경고 모달의 배경 색상입니다."
+        }
+      },
+      "shadow-bg": {
+        "light": {
+          "value": "rgba(0, 0, 0, 0.05)",
+          "usage": "Alert Modal Shadow Background Color",
+          "comment": "밝은 모드에서 경고 모달의 그림자 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(0, 0, 0, 0.4)",
+          "usage": "Alert Modal Shadow Background Color",
+          "comment": "어두운 모드에서 경고 모달의 그림자 배경 색상입니다."
+        }
+      },
+      "desc-text": {
+        "light": {
+          "value": "#6f6f6f",
+          "usage": "Alert Modal Description Text Color",
+          "comment": "밝은 모드에서 경고 모달 설명 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "#b0b0b0",
+          "usage": "Alert Modal Description Text Color",
+          "comment": "어두운 모드에서 경고 모달 설명 텍스트의 색상입니다."
+        }
+      },
+      "title-text": {
+        "light": {
+          "value": "#ececec",
+          "usage": "Alert Modal Title Text Color",
+          "comment": "밝은 모드에서 경고 모달 제목 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "#ececec",
+          "usage": "Alert Modal Title Text Color",
+          "comment": "어두운 모드에서 경고 모달 제목 텍스트의 색상입니다."
+        }
+      }
+    },
+    "toast": {
+      "bg": {
+        "light": {
+          "value": "rgba(25, 25, 25, 0.8)",
+          "usage": "Toast Background Color",
+          "comment": "밝은 모드에서 토스트 알림의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(25, 25, 25, 0.8)",
+          "usage": "Toast Background Color",
+          "comment": "어두운 모드에서 토스트 알림의 배경 색상입니다."
+        }
+      },
+      "text": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Toast Text Color",
+          "comment": "밝은 모드에서 토스트 알림 내 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(255, 255, 255, 0.95)",
+          "usage": "Toast Text Color",
+          "comment": "어두운 모드에서 토스트 알림 내 텍스트의 색상입니다."
+        }
+      },
+      "border": {
+        "light": {
+          "value": "rgba(255, 255, 255, 0.1)",
+          "usage": "Toast Border Color",
+          "comment": "밝은 모드에서 토스트 알림의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(255, 255, 255, 0.1)",
+          "usage": "Toast Border Color",
+          "comment": "어두운 모드에서 토스트 알림의 테두리 색상입니다."
+        }
+      },
+      "shadow-bg": {
+        "light": {
+          "value": "rgba(0, 0, 0, 0.6)",
+          "usage": "Toast Shadow Background Color",
+          "comment": "밝은 모드에서 토스트 알림의 그림자 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(0, 0, 0, 0.3)",
+          "usage": "Toast Shadow Background Color",
+          "comment": "어두운 모드에서 토스트 알림의 그림자 배경 색상입니다."
+        }
+      },
+      "info-icon-color": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Toast Info Icon Color",
+          "comment": "밝은 모드에서 정보성 토스트 아이콘의 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Toast Info Icon Color",
+          "comment": "어두운 모드에서 정보성 토스트 아이콘의 색상입니다."
+        }
+      },
+      "success-icon-color": {
+        "light": {
+          "value": "#22c55e",
+          "usage": "Toast Success Icon Color",
+          "comment": "밝은 모드에서 성공 토스트 아이콘의 색상입니다."
+        },
+        "dark": {
+          "value": "#2ecc71",
+          "usage": "Toast Success Icon Color",
+          "comment": "어두운 모드에서 성공 토스트 아이콘의 색상 입니다."
+        }
+      },
+      "warning-icon-color": {
+        "light": {
+          "value": "#f59e0b",
+          "usage": "Toast Warning Icon Color",
+          "comment": "밝은 모드에서 경고 토스트 아이콘의 색 상입니다."
+        },
+        "dark": {
+          "value": "#ffad13",
+          "usage": "Toast Warning Icon Color",
+          "comment": "어두운 모드에서 경고 토스트 아이콘의 색상입니다."
+        }
+      },
+      "error-icon-color": {
+        "light": {
+          "value": "#ef4444",
+          "usage": "Toast Error Icon Color",
+          "comment": "밝은 모드에서 오류 토스트 아이콘의 색상입니다."
+        },
+        "dark": {
+          "value": "#ff5c5c",
+          "usage": "Toast Error Icon Color",
+          "comment": "어두운 모드에서 오류 토스트 아이콘의 색상입니다."
+        }
+      },
+      "close-btn-bg": {
+        "light": {
+          "value": "#000000",
+          "usage": "Toast Close Button Background Color",
+          "comment": "밝은 모드에서 토스트 알림 닫기 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#333333",
+          "usage": "Toast Close Button Background Color",
+          "comment": "어두운 모드에서 토스트 알림 닫기 버튼의 배경 색상입니다."
+        }
+      },
+      "close-btn-bg-hover": {
+        "light": {
+          "value": "#3b82f6",
+          "usage": "Toast Close Button Background Color",
+          "comment": "밝은 모드에서 토스트 알림 닫기 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#1e1e1e",
+          "usage": "Toast Close Button Background Color",
+          "comment": "어두운 모드에서 토스트 알림 닫기 버튼의 배경 색상입니다."
+        }
+      },
+      "link-btn-bg": {
+        "light": {
+          "value": "#333333",
+          "usage": "Toast Link Button Background Color",
+          "comment": "밝은 모드에서 토스트 알림 링크 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#333333",
+          "usage": "Toast Link Button Background Color",
+          "comment": "어두운 모드에서 토스트 알림 링크 버튼의 배경 색상입니다."
+        }
+      },
+      "link-btn-hover-bg": {
+        "light": {
+          "value": "#3b82f6",
+          "usage": "Toast Link Button Hover Background Color",
+          "comment": "밝은 모드에서 토스트 알림 링크 버튼에 마우스 오버 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#3b82f6",
+          "usage": "Toast Link Button Hover Background Color",
+          "comment": "어두운 모드에서 토스트 알림 링크 버튼에 마우스 오버 시의 배경 색상입니다."
+        }
+      }
+    },
+    "calendar": {
+      "shadow-bg": {
+        "light": {
+          "value": "rgba(0, 0, 0, 0.1)",
+          "usage": "Calendar Drop Shadow Color",
+          "comment": "밝은 모드에서 캘린더의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(255, 255, 255, 0.1)",
+          "usage": "Calendar Drop Shadow Color",
+          "comment": "어두운 모드에서 캘린더의 그림자 색상입니다."
+        }
+      },
+      "bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Calendar Background Color",
+          "comment": "밝은 모드에서 캘린더의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#1e1e1e",
+          "usage": "Calendar Background Color",
+          "comment": "어두운 모드에서 캘린더의 배경 색상입니다."
+        }
+      },
+      "date-text": {
+        "light": {
+          "value": "#333333",
+          "usage": "Calendar Date Text Color",
+          "comment": "밝은 모드에서 캘린더 날짜 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Calendar Date Text Color",
+          "comment": "어두운 모드에서 캘린더 날짜 텍스트의 색상입니다."
+        }
+      },
+      "old-date-text": {
+        "light": {
+          "value": "#767676",
+          "usage": "Calendar Old Date Text Color",
+          "comment": "밝은 모드에서 이전 달 날짜 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "#767676",
+          "usage": "Calendar Old Date Text Color",
+          "comment": "어두운 모드에서 이전 달 날짜 텍스트의 색상입니다."
+        }
+      },
+      "today-date-bg": {
+        "light": {
+          "value": "#ececed",
+          "usage": "Calendar Today Date Color",
+          "comment": "밝은 모드에서 오늘 날짜의 강조 색상입니다."
+        },
+        "dark": {
+          "value": "#575757",
+          "usage": "Calendar Today Date Color",
+          "comment": "어두운 모드에서 오늘 날짜의 강조 색상입니다."
+        }
+      },
+      "today-date-text": {
+        "light": {
+          "value": "#333333",
+          "usage": "Calendar Today Date Text Color",
+          "comment": "밝은 모드에서 오늘 날짜 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Calendar Today Date Text Color",
+          "comment": "어두운 모드에서 오늘 날짜 텍스트의 색상입니다."
+        }
+      },
+      "holiday-tooltip-bg": {
+        "light": {
+          "value": "#333333",
+          "usage": "Calendar Holiday Tooltip Background Color",
+          "comment": "밝은 모드에서 공휴일 툴팁의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#444444",
+          "usage": "Calendar Holiday Tooltip Background Color",
+          "comment": "어두운 모드에서 공휴일 툴팁의 배경 색상입니다."
+        }
+      },
+      "holiday-tooltip-text": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Calendar Holiday Tooltip Text Color",
+          "comment": "밝은 모드에서 공휴일 툴팁 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Calendar Holiday Tooltip Text Color",
+          "comment": "어두운 모드에서 공휴일 툴팁 텍스트의 색상입니다."
+        }
+      },
+      "holiday-dot": {
+        "light": {
+          "value": "#d32f2f",
+          "usage": "Calendar Holiday Dot Color",
+          "comment": "밝은 모드에서 공휴일을 표시하는 점의 색상입니다."
+        },
+        "dark": {
+          "value": "#ff8a80",
+          "usage": "Calendar Holiday Dot Color",
+          "comment": "어두운 모드에서 공휴일을 표시하는 점의 색상입니다."
+        }
+      },
+      "cell-skeleton-gradient-start": {
+        "light": {
+          "value": "#e2e2e2",
+          "usage": "Calendar Cell Skeleton Gradient Start Color",
+          "comment": "밝은 모드에서 캘린더 셀 스켈레톤 그라데이션의 시작 색상입니다."
+        },
+        "dark": {
+          "value": "#2d2d2d",
+          "usage": "Calendar Cell Skeleton Gradient Start Color",
+          "comment": "어두운 모드에서 캘린더 셀 스켈레톤 그라데이션의 시작 색상입니다."
+        }
+      },
+      "cell-skeleton-gradient-center": {
+        "light": {
+          "value": "#f2f2f2",
+          "usage": "Calendar Cell Skeleton Gradient Center Color",
+          "comment": "밝은 모드에서 캘린더 셀 스켈레톤 그라데이션의 중간 색상입니다."
+        },
+        "dark": {
+          "value": "#3d3d3d",
+          "usage": "Calendar Cell Skeleton Gradient Center Color",
+          "comment": "어두운 모드에서 캘린더 셀 스켈레톤 그라데이션의 중간 색상입니다."
+        }
+      },
+      "cell-skeleton-gradient-end": {
+        "light": {
+          "value": "#e2e2e2",
+          "usage": "Calendar Cell Skeleton Gradient End Color",
+          "comment": "밝은 모드에서 캘린더 셀 스켈레톤 그라데이션의 끝 색상입니다."
+        },
+        "dark": {
+          "value": "#2d2d2d",
+          "usage": "Calendar Cell Skeleton Gradient End Color",
+          "comment": "어두운 모드에서 캘린더 셀 스켈레톤 그라데이션의 끝 색상입니다."
+        }
+      }
+    },
+    "searchbar": {
+      "link-icon-bg": {
+        "light": {
+          "value": "#f2f2f2",
+          "usage": "Searchbar Background Color",
+          "comment": "밝은 모드에서 검색바의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#94a3b8",
+          "usage": "Searchbar Background Color",
+          "comment": "어두운 모드에서 검색바의 배경 색상입니다."
+        }
+      },
+      "link-icon": {
+        "light": {
+          "value": "#404040",
+          "usage": "Searchbar Border Color",
+          "comment": "밝은 모드에서 검색바의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#1e293b",
+          "usage": "Searchbar Border Color",
+          "comment": "어두운 모드에서 검색바의 테두리 색상입니다."
+        }
+      }
+    },
+    "option-list": {
+      "shadow-bg": {
+        "light": {
+          "value": "rgba(0, 0, 0, 0.1)",
+          "usage": "Option List Drop Shadow Color",
+          "comment": "밝은 모드에서 옵션 리스트의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(255, 255, 255, 0.1)",
+          "usage": "Option List Drop Shadow Color",
+          "comment": "어두운 모드에서 옵션 리스트의 그림자 색상입니다."
+        }
+      },
+      "empty-bg": {
+        "light": {
+          "value": "#f8fafc",
+          "usage": "Option List Empty State Background Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#1e293b",
+          "usage": "Option List Empty State Background Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 배경 색상입니다."
+        }
+      },
+      "empty-icon": {
+        "light": {
+          "value": "#1e293b",
+          "usage": "Option List Empty State Icon Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 아이콘 색상입니다."
+        },
+        "dark": {
+          "value": "#94a3b8",
+          "usage": "Option List Empty State Icon Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 아이콘 색상입니다."
+        }
+      },
+      "empty-title": {
+        "light": {
+          "value": "#1e293b",
+          "usage": "Option List Empty State Title Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 제목 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#94a3b8",
+          "usage": "Option List Empty State Title Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 제목 텍스트 색상입니다."
+        }
+      },
+      "empty-desc": {
+        "light": {
+          "value": "#64748b",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#94a3b8",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      }
+    },
+    "validation-guide": {
+      "bg": {
+        "light": {
+          "value": "#f0f9ff",
+          "usage": "Validation Message Background Color",
+          "comment": "밝은 모드에서 검증 메시지의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#0c4a6e",
+          "usage": "Validation Message Background Color",
+          "comment": "어두운 모드에서 검증 메시지의 배경 색상입니다."
+        }
+      },
+      "text": {
+        "light": {
+          "value": "#075985",
+          "usage": "Validation Message Text Color",
+          "comment": "밝은 모드에서 검증 메시지의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#e0f2fe",
+          "usage": "Validation Message Text Color",
+          "comment": "어두운 모드에서 검증 메시지의 텍스트 색상입니다."
+        }
+      },
+      "icon": {
+        "light": {
+          "value": "#075985",
+          "usage": "Validation Message Icon Color",
+          "comment": "밝은 모드에서 검증 메시지의 아이콘 색상입니다."
+        },
+        "dark": {
+          "value": "#38bdf8",
+          "usage": "Validation Message Icon Color",
+          "comment": "어두운 모드에서 검증 메시지의 아이콘 색상입니다."
+        }
+      }
+    },
+    "slider": {
+      "track-bg": {
+        "light": {
+          "value": "#e0e0e0",
+          "usage": "Slider Track Background Color",
+          "comment": "밝은 모드에서 슬라이더 트랙의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#333333",
+          "usage": "Slider Track Background Color",
+          "comment": "어두운 모드에서 슬라이더 트랙의 배경 색상입니다."
+        }
+      },
+      "bg": {
+        "light": {
+          "value": "#333333",
+          "usage": "Slider Background Color",
+          "comment": "밝은 모드에서 슬라이더의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#e0e0e0",
+          "usage": "Slider Background Color",
+          "comment": "어두운 모드에서 슬라이더의 배경 색상입니다."
+        }
+      },
+      "text": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Slider Text Color",
+          "comment": "밝은 모드에서 슬라이더 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "#444444",
+          "usage": "Slider Text Color",
+          "comment": "어두운 모드에서 슬라이더 텍스트의 색상입니다."
+        }
+      }
+    },
+    "label": {
+      "text": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Label Text Color",
+          "comment": "밝은 모드에서 라벨 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "#1d1d1d",
+          "usage": "Label Text Color",
+          "comment": "어두운 모드에서 라벨 텍스트의 색상입니다."
+        }
+      }
+    },
+    "required-asterisk": {
+      "text": {
+        "light": {
+          "value": "#d32f2f",
+          "usage": "Required Asterisk Color",
+          "comment": "밝은 모드에서 필수 입력란 표시 별표의 색상입니다."
+        },
+        "dark": {
+          "value": "#ff8a80",
+          "usage": "Required Asterisk Color",
+          "comment": "어두운 모드에서 필수 입력란 표시 별표의 색상입니다."
+        }
+      }
+    },
+    "radio": {
+      "unchecked-bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Radio Button Background Color",
+          "comment": "밝은 모드에서 라디오 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#121212",
+          "usage": "Radio Button Background Color",
+          "comment": "어두운 모드에서 라디오 버튼의 배경 색상입니다."
+        }
+      },
+      "border": {
+        "light": {
+          "value": "#717171",
+          "usage": "Radio Button Border Color",
+          "comment": "밝은 모드에서 라디오 버튼의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Radio Button Border Color",
+          "comment": "어두운 모드에서 라디오 버튼의 테두리 색상입니다."
+        }
+      }
+    },
+    "checkbox": {
+      "unchecked-bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Radio Button Background Color",
+          "comment": "밝은 모드에서 라디오 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#121212",
+          "usage": "Radio Button Background Color",
+          "comment": "어두운 모드에서 라디오 버튼의 배경 색상입니다."
+        }
+      },
+      "border": {
+        "light": {
+          "value": "#717171",
+          "usage": "Radio Button Border Color",
+          "comment": "밝은 모드에서 라디오 버튼의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Radio Button Border Color",
+          "comment": "어두운 모드에서 라디오 버튼의 테두리 색상입니다."
+        }
+      }
+    },
+    "outline-btn": {
+      "bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#121212",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      }
     }
   }
 }

@@ -237,7 +237,7 @@ $badge-colors: (
             border: rem(1px) solid map.get($props, border);
           } @else if $variant-name == 'dot' {
             background-color: map.get($props, bg);
-            outline: rem(2px) solid var(--color-surface-sunken);
+            outline: rem(2px) solid var(--project-color-surface-sunken);
           }
         }
       }

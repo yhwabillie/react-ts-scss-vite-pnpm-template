@@ -28,16 +28,16 @@ $breadcrumb-sizes: (
 
 $breadcrumb-colors: (
   primary: (
-    current-label: var(--primary-current-text-color-breadcrumb),
-    hover-label: var(--primary-current-text-color-breadcrumb),
+    current-label: var(--project-color-primary-breadcrumb-current-text),
+    hover-label: var(--project-color-primary-breadcrumb-hover-text),
   ),
   secondary: (
-    current-label: var(--secondary-current-text-color-breadcrumb),
-    hover-label: var(--secondary-current-text-color-breadcrumb),
+    current-label: var(--project-color-secondary-breadcrumb-current-text),
+    hover-label: var(--project-color-secondary-breadcrumb-hover-text),
   ),
   tertiary: (
-    current-label: var(--tertiary-current-text-color-breadcrumb),
-    hover-label: var(--tertiary-current-text-color-breadcrumb),
+    current-label: var(--project-color-tertiary-breadcrumb-current-text),
+    hover-label: var(--project-color-tertiary-breadcrumb-hover-text),
   ),
 );
 

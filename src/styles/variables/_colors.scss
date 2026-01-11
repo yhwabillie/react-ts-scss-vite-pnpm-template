@@ -1,0 +1,11 @@
+@use 'sass:map';
+@use '../generated/color-map' as base;
+@use '../generated/theme-tech-map' as tech;
+
+// 1. 공통 시스템 컬러 맵
+$g_colors: base.$g_colors;
+
+// 2. 테마 전용 컬러 맵 (필요 시 여러 테마를 맵으로 관리 가능)
+$g_theme_maps: (
+  'tech': tech.$g_theme_colors, // "creative": creative.$g_theme_colors, // 테마 추가 시
+);

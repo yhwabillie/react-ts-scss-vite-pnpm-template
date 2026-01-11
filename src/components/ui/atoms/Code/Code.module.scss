@@ -4,8 +4,8 @@
 @use '../../../../styles/mixins' as *;
 
 .code {
-  background-color: var(--bg-color-code);
-  color: var(--text-color-code);
+  background-color: var(--project-color-docs-code-bg);
+  color: var(--project-color-docs-code-text);
   padding: rem(4px) rem(8px);
   border-radius: var(--project-border-radius-4);
   font: var(--project-typo-code-400);

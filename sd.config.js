@@ -1,35 +1,111 @@
-/** 1. CSS 변수용 포맷 (기존 유지) */
-const themedVariablesFormat = ({ dictionary, platform }) => {
+/** 1. Color 전용 SCSS Map 포맷 (Light/Dark 테마 지원) */
+const scssColorMapFormat = ({ dictionary }) => {
   const { allTokens } = dictionary;
-  const theme = platform.theme || 'root';
 
-  const lightVars = allTokens
-    .filter(t => t.path.includes('light'))
-    .map(t => `  --${t.path.filter(p => p !== 'light').join('-')}: ${t.value};`)
-    .join('\n');
+  const lightTokens = allTokens.filter(t => t.path.includes('light'));
+  const darkTokens = allTokens.filter(t => t.path.includes('dark'));
 
-  const darkVars = allTokens
-    .filter(t => t.path.includes('dark'))
-    .map(t => `    --${t.path.filter(p => p !== 'dark').join('-')}: ${t.value};`)
-    .join('\n');
+  const generateMapContent = (tokens, filterOut) => {
+    return tokens
+      .map(t => {
+        // --color- 접두사를 제외한 나머지 경로를 키로 사용
+        const key = t.path.filter(p => p !== filterOut).join('-');
+        return `    "${key}": ${t.value},`;
+      })
+      .join('\n');
+  };
 
-  if (theme === 'root') {
-    return `:root {\n${lightVars}\n}\n\n.mode-dark {\n${darkVars}\n}`;
-  }
-  return `[data-theme='${theme}'] {\n${lightVars}\n\n  &.mode-dark {\n${darkVars}\n  }\n}`;
+  let output = '$g_colors: (\n';
+  output += '  "light": (\n';
+  output += generateMapContent(lightTokens, 'light');
+  output += '\n  ),\n';
+  output += '  "dark": (\n';
+  output += generateMapContent(darkTokens, 'dark');
+  output += '\n  )\n';
+  output += ');';
+
+  return output;
 };
 
-/** 2. Color 전용 TS 데이터 포맷 (기존 유지) */
-const typescriptMetaObjectFormat = ({ dictionary }) => {
+/** 5. 테마 전용 SCSS Map 포맷 수정 */
+const scssThemeColorMapFormat = ({ dictionary }) => {
+  const { allTokens } = dictionary;
+  const lightTokens = allTokens.filter(t => t.path.includes('light'));
+  const darkTokens = allTokens.filter(t => t.path.includes('dark'));
+
+  const generateMapContent = tokens => {
+    return tokens
+      .map(t => {
+        // ✅ 'color'는 필터링에서 제외하여 Key에 포함되도록 수정!
+        const keyParts = t.path.filter(
+          p => p !== 'light' && p !== 'dark' && p !== 'value',
+          // p !== 'color' 를 지웠습니다.
+        );
+        const key = keyParts.join('-');
+        return `    "${key}": ${t.value},`;
+      })
+      .join('\n');
+  };
+
+  let output = '$g_theme_colors: (\n';
+  output += '  "light": (\n' + generateMapContent(lightTokens) + '\n  ),\n';
+  output += '  "dark": (\n' + generateMapContent(darkTokens) + '\n  )\n';
+  output += ');';
+
+  return output;
+};
+
+/** 6. 테마 전용 TS 데이터 포맷 (Storybook용) */
+const typescriptThemeMetaObjectFormat = ({ dictionary }) => {
   const tokens = dictionary.allTokens.reduce((acc, token) => {
+    // 1. 'light' 테마를 기준으로 데이터를 생성 (dark와 병합하기 위함)
     if (token.path.includes('light')) {
-      const key = token.path.filter(p => p !== 'light').join('-');
+      // 2. 경로 정제: 'light', 'dark', 'value' 등 불필요한 키워드 제거
+      // 'color'는 접두사로 쓸 것이므로 경로에서 제거하여 중복 방지
+      const keyParts = token.path.filter(
+        p => p !== 'light' && p !== 'dark' && p !== 'color' && p !== 'value',
+      );
+
+      // 3. ID 생성: --color- 접두사를 붙여 공통 토큰과 형식을 맞춤
+      const key = keyParts.join('-');
+      const id = `--color-${key}`;
+
+      // 4. 동일한 경로의 dark 버전 값을 찾아 매칭
       const darkToken = dictionary.allTokens.find(
         t => t.path.join('-') === token.path.join('-').replace('light', 'dark'),
       );
 
       acc.push({
-        id: `--${key}`,
+        id: id, // ✅ 결과 예시: --color-primary-breadcrumb-current-text
+        lightValue: token.value,
+        darkValue: darkToken ? darkToken.value : token.value,
+        usage: token.usage || key,
+        description: token.comment || '',
+      });
+    }
+    return acc;
+  }, []);
+
+  return `export const TokenData = ${JSON.stringify(tokens, null, 2)};`;
+};
+
+/** 2. Color 전용 TS 데이터 포맷 (Storybook Meta용) */
+const typescriptMetaObjectFormat = ({ dictionary }) => {
+  const tokens = dictionary.allTokens.reduce((acc, token) => {
+    if (token.path.includes('light')) {
+      // 1. 경로에서 'light'를 제외하고 'color' 중복도 제거
+      const keyParts = token.path.filter(p => p !== 'light');
+
+      // 2. 만약 첫 번째 경로가 이미 'color'라면 중복해서 붙이지 않음
+      const prefix = keyParts[0] === 'color' ? '--' : '--color-';
+      const key = keyParts.join('-');
+
+      const darkToken = dictionary.allTokens.find(
+        t => t.path.join('-') === token.path.join('-').replace('light', 'dark'),
+      );
+
+      acc.push({
+        id: `${prefix}${key}`, // ✅ 중복 방지 로직 적용
         lightValue: token.value,
         darkValue: darkToken ? darkToken.value : token.value,
         usage: token.usage || '',
@@ -39,7 +115,7 @@ const typescriptMetaObjectFormat = ({ dictionary }) => {
     return acc;
   }, []);
 
-  return `export const TokenData = ${JSON.stringify(tokens, null, 2)};`;
+  return `export const ColorTokensData = ${JSON.stringify(tokens, null, 2)};`;
 };
 
 /** 3. Typography SCSS Map 포맷 (대소문자 일관성 확보) */
@@ -104,65 +180,41 @@ export default {
   source: ['tokens/**/*.json'],
   hooks: {
     formats: {
-      'css/themed-variables': themedVariablesFormat,
-      'typescript/meta-object': typescriptMetaObjectFormat,
+      'scss/color-map': scssColorMapFormat,
+      'typescript/color-meta': typescriptMetaObjectFormat,
       'scss/typography-map': scssTypographyMapFormat,
       'typescript/typography-meta': typescriptTypographyMetaObjectFormat,
+      'scss/theme-color-map': scssThemeColorMapFormat,
+      'typescript/theme-meta': typescriptThemeMetaObjectFormat,
     },
   },
   platforms: {
-    /** 1. 공통 컬러 시스템 */
-    scss: {
-      theme: 'root',
+    /** 🎨 1. 컬러 시스템 (SCSS Map & TS Meta) */
+    colorSystem: {
       transformGroup: 'scss',
       buildPath: 'src/styles/generated/',
       files: [
         {
-          destination: '_variables.scss',
-          format: 'css/themed-variables',
+          destination: '_color-map.scss',
+          format: 'scss/color-map',
           filter: t => t.filePath.includes('colors.json'),
         },
       ],
     },
-    ts: {
+    colorMeta: {
       transformGroup: 'js',
       buildPath: 'src/constants/generated/',
       files: [
         {
-          destination: 'tokens.ts',
-          format: 'typescript/meta-object',
+          destination: 'color-tokens.ts',
+          format: 'typescript/color-meta',
           filter: t => t.filePath.includes('colors.json'),
         },
       ],
     },
 
-    /** 2. TECH 테마 컬러 */
-    scssTech: {
-      theme: 'tech',
-      transformGroup: 'scss',
-      buildPath: 'src/styles/generated/',
-      files: [
-        {
-          destination: '_theme-tech.scss',
-          format: 'css/themed-variables',
-          filter: t => t.filePath.includes('tech.json'),
-        },
-      ],
-    },
-    tsTech: {
-      transformGroup: 'js',
-      buildPath: 'src/constants/generated/',
-      files: [
-        {
-          destination: 'tech-tokens.ts',
-          format: 'typescript/meta-object',
-          filter: t => t.filePath.includes('tech.json'),
-        },
-      ],
-    },
-
-    /** 3. 타이포그래피 시스템 */
-    scssTypography: {
+    /** 🖋️ 2. 타이포그래피 시스템 (SCSS Map & TS Meta) */
+    typographySystem: {
       transformGroup: 'scss',
       buildPath: 'src/styles/generated/',
       files: [
@@ -173,7 +225,7 @@ export default {
         },
       ],
     },
-    tsTypography: {
+    typographyMeta: {
       transformGroup: 'js',
       buildPath: 'src/constants/generated/',
       files: [
@@ -181,6 +233,30 @@ export default {
           destination: 'typography-tokens.ts',
           format: 'typescript/typography-meta',
           filter: t => t.filePath.includes('typography.json'),
+        },
+      ],
+    },
+
+    /** 🎨 3. 테마 시스템 (Tech 전용 추가) */
+    themeTech: {
+      transformGroup: 'scss',
+      buildPath: 'src/styles/generated/',
+      files: [
+        {
+          destination: '_theme-tech-map.scss',
+          format: 'scss/theme-color-map',
+          filter: t => t.filePath.includes('tech.json'),
+        },
+      ],
+    },
+    themeTechMeta: {
+      transformGroup: 'js',
+      buildPath: 'src/constants/generated/',
+      files: [
+        {
+          destination: 'tech-tokens.ts',
+          format: 'typescript/theme-meta',
+          filter: t => t.filePath.includes('tech.json'),
         },
       ],
     },

@@ -28,7 +28,7 @@
     display: inline-block;
     font-weight: var(--project-font-weight-700);
     font-size: rem(14px);
-    color: var(--color-text-primary);
+    color: var(--project-color-text-natural);
     text-transform: capitalize;
   }
 }
@@ -48,7 +48,7 @@
 
   :global(.caption) {
     font-size: rem(12px);
-    color: var(--color-text-primary);
+    color: var(--project-color-text-natural);
     text-transform: uppercase;
     font-weight: var(--project-font-weight-700);
   }

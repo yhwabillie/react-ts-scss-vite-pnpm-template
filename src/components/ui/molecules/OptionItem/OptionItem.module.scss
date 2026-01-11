@@ -525,7 +525,7 @@ $option-item-sizes: (
   &:focus,
   &:focus-visible,
   &:global(.is-active) {
-    outline: 2.5px dashed var(--focus-ring-color);
+    outline: 2.5px dashed var(--project-color-interaction-focus-ring);
     outline-offset: -2px;
   }
 
@@ -574,13 +574,13 @@ $option-item-sizes: (
             align-items: center;
             width: map.get($props, icon-size);
             height: map.get($props, icon-size);
-            background-color: var(--link-icon-bg-color-searchbar);
+            background-color: var(--project-color-searchbar-link-icon-bg);
             border-radius: var(--project-border-radius-max);
             flex: 0 0 auto;
 
             :global(.icon) {
               flex: initial;
-              color: var(--link-icon-color-searchbar);
+              color: var(--project-color-searchbar-link-icon);
             }
           }
         }

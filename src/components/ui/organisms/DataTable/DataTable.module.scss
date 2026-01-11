@@ -111,7 +111,7 @@ $data-table-colors: (
   width: 100%;
 
   &:focus-visible {
-    outline: 1px solid var(--focus-ring-color);
+    outline: 1px solid var(--project-color-interaction-focus-ring);
     outline-offset: -2px;
   }
 

@@ -1,12 +1,14 @@
+@use 'sass:meta' as meta;
+@use 'sass:map';
 @use '../../variables' as vars;
 @use '../../mixins/generate-variables' as *;
-@use '../../generated/variables'; // Style Dictionary가 생성한 파일 불러오기
-@use '../../generated/theme-tech';
 
 :root {
   @include generate-vars-font-family(vars.$g_project-name, ('ko', 'ja', 'en', 'code'));
   @include generate-vars-font-weight(vars.$g_project-name, vars.$g_font-weight);
   @include generate-vars-border-radius(vars.$g_project-name, vars.$g_border-radius);
+
+  @include generate-theme-vars('light', vars.$g_colors);
 
   // --color-surface-sunken: #f2f4f6; // Lv.0 (Background)
   // --color-surface-default: #ffffff; // Lv.1 (Card/Body) 흰색 배경 + 미세한 보더 (Border)
@@ -14,142 +16,143 @@
   // --color-surface-raised: #ffffff; // Lv.2 (Floating) 흰색 배경 + 부드러운 그림자 (Shadow)
   // --color-surface-selected: #ececec;
 
-  --color-text-primary: #191f28;
+  // --color-text: #191f28;
 
   // focus ring
-  --focus-ring-color: #ffa94d;
+  // --color-focus-ring: #ffa94d;
 
   // scroll
-  --scrollbar-thumb-bg-color: rgba(55, 55, 55, 0.4);
-  --scrollbar-hover-thumb-bg-color: rgba(55, 55, 55, 0.6);
-  --scrollbar-track-bg-color: rgba(55, 55, 55, 0.05);
+  // --scrollbar-thumb-bg-color: rgba(55, 55, 55, 0.4);
+  // --scrollbar-hover-thumb-bg-color: rgba(55, 55, 55, 0.6);
+  // --scrollbar-track-bg-color: rgba(55, 55, 55, 0.05);
 
-  // guide
-  --bg-color-guide: #ecf4ef;
-  --stroke-color-guide: #15803d;
+  // // guide
+  // --bg-color-guide: #ecf4ef;
+  // --stroke-color-guide: #15803d;
 
-  // code
-  --bg-color-code: #f5f5f5;
-  --hover-bg-color-code: #eeeeee;
-  --text-color-code: #4a4a4a;
-  --hover-text-color-code: #1a1a1a;
+  // // code
+  // --bg-color-code: #f5f5f5;
+  // --hover-bg-color-code: #eeeeee;
+  // --text-color-code: #4a4a4a;
+  // --hover-text-color-code: #1a1a1a;
 
   // skeleton
-  --bg-color-skeleton: #f2f2f2;
-  --after-bg-gradient-color-skeleton: rgba(255, 255, 255, 0);
-  --after-bg-gradient-shimmer-color-skeleton: rgba(255, 255, 255, 0.4);
+  // --bg-color-skeleton: #f2f2f2;
+  // --after-bg-gradient-color-skeleton: rgba(255, 255, 255, 0);
+  // --after-bg-gradient-shimmer-color-skeleton: rgba(255, 255, 255, 0.4);
 
   // avatar
-  --bg-color-avatar: #f0f0f0;
-  --stroke-color-avatar: #9999;
-  --hover-bg-color-avatar: #e4e4e4;
-  --hover-shadow-color-avatar: rgba(0, 0, 0, 0.3);
-  --fallback-text-color-avatar: #333333;
+  // --bg-color-avatar: #f0f0f0;
+  // --stroke-color-avatar: #9999;
+  // --hover-bg-color-avatar: #e4e4e4;
+  // --hover-shadow-color-avatar: rgba(0, 0, 0, 0.3);
+  // --fallback-text-color-avatar: #333333;
 
   // tooltip
-  --bg-color-tooltip: rgba(25, 25, 25, 0.8);
-  --text-color-tooltip: #ffffff;
-  --tail-bg-color-tooltip: rgba(25, 25, 25, 0.8);
-  --close-btn-bg-color-tooltip: #000000;
-  --close-btn-hover-bg-color-tooltip: #3b82f6;
+  // --bg-color-tooltip: rgba(25, 25, 25, 0.8);
+  // --text-color-tooltip: #ffffff;
+  // --tail-bg-color-tooltip: rgba(25, 25, 25, 0.8);
+  // --close-btn-bg-color-tooltip: #000000;
+  // --close-btn-hover-bg-color-tooltip: #3b82f6;
 
   // accordion
-  --drop-shadow-color-accordion: rgba(0, 0, 0, 0.1);
+  // --drop-shadow-color-accordion: rgba(0, 0, 0, 0.1);
 
   // data table
-  --outer-stroke-color-data-table: #ddd;
-  --table-stroke-color-data-table: #f0f0f0;
-  --thead-th-bg-color-data-table: #9999;
-  --tbody-th-bg-color-data-table: #ffffff;
-  --tbody-bg-color-data-table: #e6e5e599;
+  // --outer-stroke-color-data-table: #ddd;
+  // --table-stroke-color-data-table: #f0f0f0;
+  // --thead-th-bg-color-data-table: #9999;
+  // --tbody-th-bg-color-data-table: #ffffff;
+  // --tbody-bg-color-data-table: #e6e5e599;
 
   // file picker
-  --stroke-color-file-picker: #d6e0eb;
-  --bg-color-file-picker: #ffffff;
-  --dropzone-bg-color-file-picker: #e6e8ea;
-  --dropzone-dragging-bg-color-file-picker: #d2d3d5;
-  --file-item-stroke-color-file-picker: #d6e0eb;
+  // --stroke-color-file-picker: #d6e0eb;
+  // --bg-color-file-picker: #ffffff;
+  // --dropzone-bg-color-file-picker: #e6e8ea;
+  // --dropzone-dragging-bg-color-file-picker: #d2d3d5;
+  // --file-item-stroke-color-file-picker: #d6e0eb;
 
   // custom modal
-  --shadow-bg-color-custom-modal: rgba(0, 0, 0, 0.05);
-  --bg-color-custom-modal: #ffffff;
-  --stroke-color-custom-modal: #e4e4e4;
-  --modal-body-bg-color-custom-modal: #f5f5f5;
-  --modal-footer-bg-color-custom-modal: #f5f5f5;
+  // --shadow-bg-color-custom-modal: rgba(0, 0, 0, 0.05);
+  // --bg-color-custom-modal: #ffffff;
+  // --stroke-color-custom-modal: #e4e4e4;
+  // --modal-body-bg-color-custom-modal: #f5f5f5;
+  // --modal-footer-bg-color-custom-modal: #f5f5f5;
 
   // alert modal
-  --shadow-bg-color-alert-modal: rgba(0, 0, 0, 0.05);
-  --bg-color-alert-modal: #ffffff;
-  --desc-text-color-alert-modal: #6f6f6f;
+  // --bg-color-alert-modal: #ffffff;
+  // --shadow-bg-color-alert-modal: rgba(0, 0, 0, 0.05);
+  // --desc-text-color-alert-modal: #6f6f6f;
+  // --title-text-color-alert-modal: #ececec;
 
   // toast
-  --text-color-toast: rgba(255, 255, 255, 0.95);
-  --stroke-color-toast: rgba(255, 255, 255, 0.1);
-  --shadow-color-toast: rgba(0, 0, 0, 0.3);
-  --bg-color-toast: rgba(25, 25, 25, 0.8);
-  --info-icon-color-toast: #ffffff;
-  --success-icon-color-toast: #2ecc71;
-  --warning-icon-color-toast: #ffad13;
-  --error-icon-color-toast: #ff5c5c;
-  --close-btn-bg-color-toast: #000000;
-  --hover-close-btn-color-toast: #3b82f6;
-  --link-btn-bg-color-toast: #191919;
-  --hover-link-btn-bg-color-toast: #3b82f6;
+  // --text-color-toast: rgba(255, 255, 255, 0.95);
+  // --stroke-color-toast: rgba(255, 255, 255, 0.1);
+  // --shadow-color-toast: rgba(0, 0, 0, 0.3);
+  // --bg-color-toast: rgba(25, 25, 25, 0.8);
+  // --info-icon-color-toast: #ffffff;
+  // --success-icon-color-toast: #2ecc71;
+  // --warning-icon-color-toast: #ffad13;
+  // --error-icon-color-toast: #ff5c5c;
+  // --close-btn-bg-color-toast: #000000;
+  // --hover-close-btn-color-toast: #3b82f6;
+  // --link-btn-bg-color-toast: #191919;
+  // --hover-link-btn-bg-color-toast: #3b82f6;
 
   // calendar
-  --shadow-bg-color-calendar: rgba(0, 0, 0, 0.1);
-  --bg-color-calendar: #ffffff;
-  --date-text-color-calendar: #333333;
-  --old-date-text-color-calendar: #767676;
-  --today-date-bg-color-calendar: #ececed;
-  --holiday-tooltip-bg-color-calendar: #333333;
-  --holiday-tooltip-text-color-calendar: #ffffff;
-  --holiday-dot-dot-color-calendar: #d32f2f;
-  --cell-skeleton-gradient-bg-color-start-calendar: #e2e2e2;
-  --cell-skeleton-gradient-bg-color-center-calendar: #f2f2f2;
-  --cell-skeleton-gradient-bg-color-end-calendar: #e2e2e2;
+  // --shadow-bg-color-calendar: rgba(0, 0, 0, 0.1);
+  // --bg-color-calendar: #ffffff;
+  // --date-text-color-calendar: #333333;
+  // --old-date-text-color-calendar: #767676;
+  // --today-date-bg-color-calendar: #ececed;
+  // --holiday-tooltip-bg-color-calendar: #333333;
+  // --holiday-tooltip-text-color-calendar: #ffffff;
+  // --holiday-dot-dot-color-calendar: #d32f2f;
+  // --cell-skeleton-gradient-bg-color-start-calendar: #e2e2e2;
+  // --cell-skeleton-gradient-bg-color-center-calendar: #f2f2f2;
+  // --cell-skeleton-gradient-bg-color-end-calendar: #e2e2e2;
 
   // searchbar
-  --link-icon-bg-color-searchbar: #f2f2f2;
-  --link-icon-color-searchbar: #404040;
+  // --link-icon-bg-color-searchbar: #f2f2f2;
+  // --link-icon-color-searchbar: #404040;
 
   // optionList
-  --shadow-bg-color-option-list: rgba(0, 0, 0, 0.1);
-  --empty-state-bg-color-option-list: #f8fafc;
-  --empty-state-icon-color-option-list: #1e293b;
-  --empty-state-title-color-option-list: #1e293b;
-  --empty-state-desc-color-option-list: #64748b;
+  // --shadow-bg-color-option-list: rgba(0, 0, 0, 0.1);
+  // --empty-state-bg-color-option-list: #f8fafc;
+  // --empty-state-icon-color-option-list: #1e293b;
+  // --empty-state-title-color-option-list: #1e293b;
+  // --empty-state-desc-color-option-list: #64748b;
 
   // validation msg - guide
-  --guide-bg-color-validation-msg: #f0f9ff;
-  --guide-text-color-validation-msg: #075985;
-  --guide-icon-color-validation-msg: #075985;
+  // --guide-bg-color-validation-msg: #f0f9ff;
+  // --guide-text-color-validation-msg: #075985;
+  // --guide-icon-color-validation-msg: #075985;
 
   // slider
-  --track-bg-color-slider: #e0e0e0;
-  --tooltip-bg-color-slider: #333333;
-  --tooltip-text-color-slider: #ffffff;
+  // --track-bg-color-slider: #e0e0e0;
+  // --tooltip-bg-color-slider: #333333;
+  // --tooltip-text-color-slider: #ffffff;
 
   // label
-  --text-color-label: #1d1d1d;
+  // --text-color-label: #1d1d1d;
 
   // required
-  --required-asterisk-color: #d32f2f;
+  // --required-asterisk-color: #d32f2f;
 
   // radio
-  --bg-color-unchecked-radio: #ffffff;
-  --stroke-color-radio: #717171;
+  // --bg-color-unchecked-radio: #ffffff;
+  // --stroke-color-radio: #717171;
 
   // checkbox
-  --bg-color-unchecked-checkbox: #ffffff;
-  --stroke-color-checkbox: #717171;
+  // --bg-color-unchecked-checkbox: #ffffff;
+  // --stroke-color-checkbox: #717171;
 
   // outline btn
-  --bg-color-btn-outline: #ffffff;
+  // --bg-color-btn-outline: #ffffff;
 
   // switch
-  --switch-track-off-bg-color: #e5e7eb;
-  --switch-handle-off-bg-color: #ffffff;
+  // --switch-track-off-bg-color: #e5e7eb;
+  // --switch-handle-off-bg-color: #ffffff;
 
   // icon frame
   --success-fill-color-icon-frame: #15803d;
@@ -825,149 +828,149 @@
 @include generate-vars-lang-typography;
 
 .mode-dark {
+  @include generate-theme-vars('dark', vars.$g_colors);
   // --color-surface-sunken: #121212; // Lv.0: 가장 밑바닥 (대지)
   // --color-surface-subtle: #1c1c1c;
   // --color-surface-default: #1e1e1e; // Lv.1: 그 위의 콘텐츠 영역 (카드 등)
   // --color-surface-raised: #333333; // Lv.2: 강조가 필요한 오버레이나 컴포넌트 배경
   // --color-surface-selected: #2c2c2c;
-  --color-text-primary: #f9fafb; // 텍스트 컬러 (접근성 확보)
+  // --color-text: #f9fafb; // 텍스트 컬러 (접근성 확보)
 
   // focus ring
-  --focus-ring-color: #ffd60a;
+  // --color-focus-ring: #ffd60a;
 
   /* 배경이 어두우므로 썸(Thumb)은 더 밝은 흰색 계열로 설정 */
-  --scrollbar-thumb-bg-color: rgba(255, 255, 255, 0.25);
-  --scrollbar-hover-thumb-bg-color: rgba(255, 255, 255, 0.45);
-
-  /* 트랙은 배경보다 미세하게 밝거나 아예 투명하게 유지 */
-  --scrollbar-track-bg-color: rgba(255, 255, 255, 0.05);
+  // --scrollbar-thumb-bg-color: rgba(255, 255, 255, 0.25);
+  // --scrollbar-hover-thumb-bg-color: rgba(255, 255, 255, 0.45);
+  // --scrollbar-track-bg-color: rgba(255, 255, 255, 0.05);
 
   // guide
-  --bg-color-guide: rgba(45, 252, 82, 0.05);
-  --stroke-color-guide: #2dfc52;
+  // --bg-color-guide: rgba(45, 252, 82, 0.05);
+  // --stroke-color-guide: #2dfc52;
 
-  // code
-  --bg-color-code: #1e1e1e;
-  --hover-bg-color-code: #2c2c2c;
-  --text-color-code: #a0a0a0;
-  --hover-text-color-code: #ffffff;
+  // // code
+  // --bg-color-code: #1e1e1e;
+  // --hover-bg-color-code: #2c2c2c;
+  // --text-color-code: #a0a0a0;
+  // --hover-text-color-code: #ffffff;
 
   // skeleton
-  --bg-color-skeleton: #1e1e1e;
-  --after-bg-gradient-color-skeleton: rgba(255, 255, 255, 0);
-  --after-bg-gradient-shimmer-color-skeleton: rgba(255, 255, 255, 0.05);
+  // --bg-color-skeleton: #1e1e1e;
+  // --after-bg-gradient-color-skeleton: rgba(255, 255, 255, 0);
+  // --after-bg-gradient-shimmer-color-skeleton: rgba(255, 255, 255, 0.05);
 
   // avatar
-  --bg-color-avatar: #1e1e1e;
-  --stroke-color-avatar: rgba(255, 255, 255, 0.12);
-  --hover-bg-color-avatar: #2c2c2c;
-  --hover-shadow-color-avatar: rgba(255, 255, 255, 0.15);
-  --fallback-text-color-avatar: #e0e0e0;
+  // --bg-color-avatar: #1e1e1e;
+  // --stroke-color-avatar: rgba(255, 255, 255, 0.12);
+  // --hover-bg-color-avatar: #2c2c2c;
+  // --hover-shadow-color-avatar: rgba(255, 255, 255, 0.15);
+  // --fallback-text-color-avatar: #e0e0e0;
 
   // tooltip
-  --bg-color-tooltip: #3f3f40;
-  --text-color-tooltip: #ffffff;
-  --tail-bg-color-tooltip: #3f3f40;
-  --close-btn-bg-color-tooltip: #a1a1aa;
-  --close-btn-hover-bg-color-tooltip: #52525b;
+  // --bg-color-tooltip: #3f3f40;
+  // --text-color-tooltip: #ffffff;
+  // --tail-bg-color-tooltip: #3f3f40;
+  // --close-btn-bg-color-tooltip: #a1a1aa;
+  // --close-btn-hover-bg-color-tooltip: #52525b;
 
   // accordion
-  --drop-shadow-color-accordion: rgba(0, 0, 0, 0.4);
+  // --drop-shadow-color-accordion: rgba(0, 0, 0, 0.4);
 
   // data table
-  --outer-stroke-color-data-table: #333639;
-  --table-stroke-color-data-table: #25282a;
-  --thead-th-bg-color-data-table: #1e1e1e;
-  --tbody-th-bg-color-data-table: #121212;
+  // --outer-stroke-color-data-table: #333639;
+  // --table-stroke-color-data-table: #25282a;
+  // --thead-th-bg-color-data-table: #1e1e1e;
+  // --tbody-th-bg-color-data-table: #121212;
+  // --tbody-bg-color-data-table: #1e1e1e;
 
   // file picker
-  --stroke-color-file-picker: #383b3e;
-  --bg-color-file-picker: #1e1e1e;
-  --dropzone-bg-color-file-picker: #25282a;
-  --dropzone-dragging-bg-color-file-picker: #2f3336;
-  --file-item-stroke-color-file-picker: #2a2d30;
+  // --stroke-color-file-picker: #383b3e;
+  // --bg-color-file-picker: #1e1e1e;
+  // --dropzone-bg-color-file-picker: #25282a;
+  // --dropzone-dragging-bg-color-file-picker: #2f3336;
+  // --file-item-stroke-color-file-picker: #2a2d30;
 
   // custom modal
-  --bg-color-custom-modal: #1e1e1e;
-  --modal-body-bg-color-custom-modal: #252525;
-  --modal-footer-bg-color-custom-modal: #252525;
-  --stroke-color-custom-modal: #333333;
-  --shadow-bg-color-custom-modal: rgba(0, 0, 0, 0.4);
+  // --bg-color-custom-modal: #1e1e1e;
+  // --modal-body-bg-color-custom-modal: #252525;
+  // --modal-footer-bg-color-custom-modal: #252525;
+  // --stroke-color-custom-modal: #333333;
+  // --shadow-bg-color-custom-modal: rgba(0, 0, 0, 0.4);
 
   // alert modal
-  --bg-color-alert-modal: #1e1e1e;
-  --shadow-bg-color-alert-modal: rgba(0, 0, 0, 0.5);
-  --desc-text-color-alert-modal: #b0b0b0;
-  --title-text-color-alert-modal: #ececec;
+  // --bg-color-alert-modal: #1e1e1e;
+  // --shadow-bg-color-alert-modal: rgba(0, 0, 0, 0.5);
+  // --desc-text-color-alert-modal: #b0b0b0;
+  // --title-text-color-alert-modal: #ececec;
 
   // toast
-  --bg-color-toast: rgba(25, 25, 25, 0.8);
-  --text-color-toast: rgba(255, 255, 255, 0.95);
-  --stroke-color-toast: rgba(255, 255, 255, 0.1);
-  --shadow-color-toast: rgba(0, 0, 0, 0.3);
-  --info-icon-color-toast: #ffffff;
-  --success-icon-color-toast: #2ecc71;
-  --warning-icon-color-toast: #ffad13;
-  --error-icon-color-toast: #ff5c5c;
-  --close-btn-bg-color-toast: #333333;
-  --link-btn-bg-color-toast: #333333;
-  --hover-link-btn-bg-color-toast: #3b82f6;
+  // --bg-color-toast: rgba(25, 25, 25, 0.8);
+  // --text-color-toast: rgba(255, 255, 255, 0.95);
+  // --stroke-color-toast: rgba(255, 255, 255, 0.1);
+  // --shadow-color-toast: rgba(0, 0, 0, 0.3);
+  // --info-icon-color-toast: #ffffff;
+  // --success-icon-color-toast: #2ecc71;
+  // --warning-icon-color-toast: #ffad13;
+  // --error-icon-color-toast: #ff5c5c;
+  // --close-btn-bg-color-toast: #333333;
+  // --link-btn-bg-color-toast: #333333;
+  // --hover-link-btn-bg-color-toast: #3b82f6;
 
   // calendar
-  --shadow-bg-color-calendar: rgba(255, 255, 255, 0.1);
-  --bg-color-calendar: #1e1e1e;
-  --date-text-color-calendar: #ffffff;
-  --old-date-text-color-calendar: #767676;
-  --today-date-bg-color-calendar: #575757;
-  --today-date-text-color-calendar: #ffffff;
-  --holiday-tooltip-bg-color-calendar: #444444;
-  --holiday-tooltip-text-color-calendar: #ffffff;
-  --holiday-dot-dot-color-calendar: #ff8a80;
-  --cell-skeleton-gradient-bg-color-start-calendar: #2d2d2d;
-  --cell-skeleton-gradient-bg-color-center-calendar: #3d3d3d;
-  --cell-skeleton-gradient-bg-color-end-calendar: #2d2d2d;
+  // --shadow-bg-color-calendar: rgba(255, 255, 255, 0.1);
+  // --bg-color-calendar: #1e1e1e;
+  // --date-text-color-calendar: #ffffff;
+  // --old-date-text-color-calendar: #767676;
+  // --today-date-bg-color-calendar: #575757;
+  // --today-date-text-color-calendar: #ffffff;
+  // --holiday-tooltip-bg-color-calendar: #444444;
+  // --holiday-tooltip-text-color-calendar: #ffffff;
+  // --holiday-dot-dot-color-calendar: #ff8a80;
+  // --cell-skeleton-gradient-bg-color-start-calendar: #2d2d2d;
+  // --cell-skeleton-gradient-bg-color-center-calendar: #3d3d3d;
+  // --cell-skeleton-gradient-bg-color-end-calendar: #2d2d2d;
 
   // searchbar
-  --link-icon-bg-color-searchbar: #94a3b8;
-  --link-icon-color-searchbar: #1e293b;
+  // --link-icon-bg-color-searchbar: #94a3b8;
+  // --link-icon-color-searchbar: #1e293b;
 
   // optionList
-  --shadow-bg-color-option-list: rgba(255, 255, 255, 0.1);
-  --empty-state-bg-color-option-list: #1e293b;
-  --empty-state-icon-color-option-list: #94a3b8;
-  --empty-state-title-color-option-list: #94a3b8;
-  --empty-state-desc-color-option-list: #94a3b8;
+  // --shadow-bg-color-option-list: rgba(255, 255, 255, 0.1);
+  // --empty-state-bg-color-option-list: #1e293b;
+  // --empty-state-icon-color-option-list: #94a3b8;
+  // --empty-state-title-color-option-list: #94a3b8;
+  // --empty-state-desc-color-option-list: #94a3b8;
 
   // validation msg
-  --guide-bg-color-validation-msg: #0c4a6e;
-  --guide-text-color-validation-msg: #e0f2fe;
-  --guide-icon-color-validation-msg: #38bdf8;
+  // --guide-bg-color-validation-msg: #0c4a6e;
+  // --guide-text-color-validation-msg: #e0f2fe;
+  // --guide-icon-color-validation-msg: #38bdf8;
 
   // slider
-  --track-bg-color-slider: #333333;
-  --tooltip-bg-color-slider: #e0e0e0;
-  --tooltip-text-color-slider: #444444;
+  // --track-bg-color-slider: #333333;
+  // --tooltip-bg-color-slider: #e0e0e0;
+  // --tooltip-text-color-slider: #444444;
 
   // label
-  --text-color-label: #ffffff;
+  // --text-color-label: #ffffff;
 
   // required
-  --required-asterisk-color: #ff8a80;
+  // --required-asterisk-color: #ff8a80;
 
   // radio
-  --bg-color-unchecked-radio: #121212;
-  --stroke-color-radio: #ffffff;
+  // --bg-color-unchecked-radio: #121212;
+  // --stroke-color-radio: #ffffff;
 
   // checkbox
-  --bg-color-unchecked-checkbox: #121212;
-  --stroke-color-checkbox: #ffffff;
+  // --bg-color-unchecked-checkbox: #121212;
+  // --stroke-color-checkbox: #ffffff;
 
   // outline btn
-  --bg-color-btn-outline: #121212;
+  // --bg-color-btn-outline: #121212;
 
   // switch
-  --switch-track-off-bg-color: #374151;
-  --switch-handle-off-bg-color: #9ca3af;
+  // --switch-track-off-bg-color: #374151;
+  // --switch-handle-off-bg-color: #9ca3af;
 
   // badge
   --success-bg-color-badge-solid: #15803d;
@@ -1646,13 +1649,14 @@
 
 /* TECH 테마 (신뢰/정석) */
 [data-theme='tech'] {
+  @include generate-theme-vars('light', map.get(vars.$g_theme_maps, 'tech'));
   // breadcrumb
   // --primary-current-text-color-breadcrumb: #0052cc;
-  --primary-hover-text-color-breadcrumb: #0052cc;
+  // --primary-hover-text-color-breadcrumb: #0052cc;
 
   // avatar
-  --primary-hover-stroke-color-avatar: #0052cc;
-  --primary-active-stroke-color-avatar: #0052cc;
+  // --primary-hover-stroke-color-avatar: #0052cc;
+  // --primary-active-stroke-color-avatar: #0052cc;
 
   // tag
   --primary-bg-color-tag-solid: #0052cc;
@@ -1931,12 +1935,12 @@
   --primary-active-text-color-btn-link: #0052cc;
 
   // breadcrumb
-  --secondary-current-text-color-breadcrumb: #475569;
-  --secondary-hover-text-color-breadcrumb: #475569;
+  // --secondary-current-text-color-breadcrumb: #475569;
+  // --secondary-hover-text-color-breadcrumb: #475569;
 
   // avatar
-  --secondary-hover-stroke-color-avatar: #475569;
-  --secondary-active-stroke-color-avatar: #475569;
+  // --secondary-hover-stroke-color-avatar: #475569;
+  // --secondary-active-stroke-color-avatar: #475569;
 
   // tag
   --secondary-bg-color-tag-solid: #475569;
@@ -2213,12 +2217,12 @@
   --secondary-active-text-color-btn-link: #475569;
 
   // breadcrumb
-  --tertiary-current-text-color-breadcrumb: #7c3aed;
-  --tertiary-hover-text-color-breadcrumb: #7c3aed;
+  // --tertiary-current-text-color-breadcrumb: #7c3aed;
+  // --tertiary-hover-text-color-breadcrumb: #7c3aed;
 
   // avatar
-  --tertiary-hover-stroke-color-avatar: #7c3aed;
-  --tertiary-active-stroke-color-avatar: #7c3aed;
+  // --tertiary-hover-stroke-color-avatar: #7c3aed;
+  // --tertiary-active-stroke-color-avatar: #7c3aed;
 
   // tag
   --tertiary-bg-color-tag-solid: #7c3aed;
@@ -2537,13 +2541,14 @@
   --tertiary-solid-path-color-spinner-closed-ring: #ffffff;
 
   &.mode-dark {
+    @include generate-theme-vars('dark', map.get(vars.$g_theme_maps, 'tech'));
     // breadcrumb
     // --primary-current-text-color-breadcrumb: #66b2ff;
-    --primary-hover-text-color-breadcrumb: #66b2ff;
+    // --primary-hover-text-color-breadcrumb: #66b2ff;
 
     // avatar
-    --primary-hover-stroke-color: #66b2ff;
-    --primary-active-stroke-color: #66b2ff;
+    // --primary-hover-stroke-color: #66b2ff;
+    // --primary-active-stroke-color: #66b2ff;
 
     // tag
     --primary-bg-color-tag-solid: #4d94ff;
@@ -2822,12 +2827,12 @@
     --primary-active-text-color-btn-link: #60a5fa;
 
     // breadcrumb
-    --secondary-current-text-color-breadcrumb: #38bdf8;
-    --secondary-hover-text-color-breadcrumb: #38bdf8;
+    // --secondary-current-text-color-breadcrumb: #38bdf8;
+    // --secondary-hover-text-color-breadcrumb: #38bdf8;
 
     // avatar
-    --secondary-hover-stroke-color: #38bdf8;
-    --secondary-active-stroke-color: #38bdf8;
+    // --secondary-hover-stroke-color: #38bdf8;
+    // --secondary-active-stroke-color: #38bdf8;
 
     // tag
     --secondary-bg-color-tag-solid: #94a3b8;
@@ -3107,12 +3112,12 @@
     --secondary-active-text-color-btn-link: #38bdf8;
 
     // breadcrumb
-    --tertiary-current-text-color-breadcrumb: #a78bfa;
-    --tertiary-hover-text-color-breadcrumb: #a78bfa;
+    // --tertiary-current-text-color-breadcrumb: #a78bfa;
+    // --tertiary-hover-text-color-breadcrumb: #a78bfa;
 
     // avatar
-    --tertiary-hover-stroke-color: #a78bfa;
-    --tertiary-active-stroke-color: #a78bfa;
+    // --tertiary-hover-stroke-color: #a78bfa;
+    // --tertiary-active-stroke-color: #a78bfa;
 
     // tag
     --tertiary-bg-color-tag-solid: #a78bfa;

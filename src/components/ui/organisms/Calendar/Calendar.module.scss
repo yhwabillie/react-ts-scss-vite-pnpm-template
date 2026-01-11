@@ -39,9 +39,9 @@ $calendar-colors: (
       :global(.calendar-wrap) {
         $outline-map: map.get($props, outline);
 
-        background-color: var(--bg-color-calendar);
+        background-color: var(--project-color-calendar-bg);
         border: rem(1px) solid map.get($outline-map, border);
-        filter: drop-shadow(0 0.375rem 0.75rem var(--shadow-bg-color-calendar));
+        filter: drop-shadow(0 0.375rem 0.75rem var(--project-color-calendar-shadow-bg));
         color: var(--date-text-color-calendar);
 
         :global(.calendar-body) {
@@ -60,15 +60,15 @@ $calendar-colors: (
                   td {
                     &:global(.old) {
                       :global(.btn-set-date) {
-                        color: var(--old-date-text-color-calendar);
+                        color: var(--project-color-calendar-old-date-text);
                         font-weight: var(--project-font-weight-400);
                       }
                     }
 
                     &:global(.today) {
                       :global(.btn-set-date) {
-                        background-color: var(--today-date-bg-color-calendar);
-                        color: var(--today-date-text-color-calendar);
+                        background-color: var(--project-color-calendar-today-date-bg);
+                        color: var(--project-color-calendar-today-date-text);
                       }
                     }
 
@@ -147,7 +147,7 @@ $calendar-colors: (
                     width: rem(6px);
                     height: rem(6px);
                     border-radius: var(--project-border-radius-max);
-                    background-color: var(--holiday-dot-dot-color-calendar);
+                    background-color: var(--project-color-calendar-holiday-dot);
                     position: relative;
 
                     &:global(.is-active) {
@@ -166,8 +166,8 @@ $calendar-colors: (
                       transform: translate(-50%, -50%) scale(0.6);
                       transform-origin: center center;
 
-                      background-color: var(--holiday-tooltip-bg-color-calendar);
-                      color: var(--holiday-tooltip-text-color-calendar);
+                      background-color: var(--project-color-calendar-holiday-tooltip-bg);
+                      color: var(--project-color-calendar-holiday-tooltip-text);
                       padding: rem(3px) rem(6px);
                       border-radius: var(--project-border-radius-4);
                       width: max-content;

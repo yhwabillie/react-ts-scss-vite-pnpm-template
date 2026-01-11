@@ -67,7 +67,7 @@ $option-list-sizes: (
     width: rem(220px),
     radius: rem(8px),
     padding: rem(6px) rem(6px),
-    shadow: drop-shadow(0 rem(5px) rem(10px) var(--shadow-bg-color-option-list)),
+    shadow: drop-shadow(0 rem(5px) rem(10px) var(--project-color-option-list-shadow-bg)),
     emtpy: (
       icon-size: rem(14px),
       font: var(--project-typo-input-3-500),
@@ -77,7 +77,7 @@ $option-list-sizes: (
     width: rem(240px),
     radius: rem(10px),
     padding: rem(8px) rem(8px),
-    shadow: drop-shadow(0 rem(6px) rem(12px) var(--shadow-bg-color-option-list)),
+    shadow: drop-shadow(0 rem(6px) rem(12px) var(--project-color-option-list-shadow-bg)),
     emtpy: (
       icon-size: rem(16px),
       font: var(--project-typo-input-3-500),
@@ -87,7 +87,7 @@ $option-list-sizes: (
     width: rem(260px),
     radius: rem(12px),
     padding: rem(10px) rem(10px),
-    shadow: drop-shadow(0 rem(7px) rem(14px) var(--shadow-bg-color-option-list)),
+    shadow: drop-shadow(0 rem(7px) rem(14px) var(--project-color-option-list-shadow-bg)),
     emtpy: (
       icon-size: rem(18px),
       font: var(--project-typo-input-2-500),
@@ -97,7 +97,7 @@ $option-list-sizes: (
     width: rem(280px),
     radius: rem(12px),
     padding: rem(12px) rem(12px),
-    shadow: drop-shadow(0 rem(8px) rem(16px) var(--shadow-bg-color-option-list)),
+    shadow: drop-shadow(0 rem(8px) rem(16px) var(--project-color-option-list-shadow-bg)),
     emtpy: (
       icon-size: rem(20px),
       font: var(--project-typo-input-2-500),
@@ -107,7 +107,7 @@ $option-list-sizes: (
     width: rem(300px),
     radius: rem(14px),
     padding: rem(14px) rem(14px),
-    shadow: drop-shadow(0 rem(10px) rem(20px) var(--shadow-bg-color-option-list)),
+    shadow: drop-shadow(0 rem(10px) rem(20px) var(--project-color-option-list-shadow-bg)),
     emtpy: (
       icon-size: rem(24px),
       font: var(--project-typo-input-1-500),
@@ -171,11 +171,11 @@ $option-list-sizes: (
         align-items: center;
         padding: map.get($props, padding);
         border-radius: map.get($props, radius);
-        background-color: var(--empty-state-bg-color-option-list);
+        background-color: var(--project-color-option-list-empty-bg);
 
         :global(.icon) {
           fill: none;
-          color: var(--empty-state-icon-color-option-list);
+          color: var(--project-color-option-list-empty-icon);
           margin-bottom: rem(6px);
           width: map.get($empty-map, icon-size);
           height: map.get($empty-map, icon-size);
@@ -183,12 +183,12 @@ $option-list-sizes: (
 
         :global(.title) {
           font: map.get($empty-map, font);
-          color: var(--empty-state-title-color-option-list);
+          color: var(--project-color-option-list-empty-title);
         }
 
         :global(.desc) {
           font: map.get($empty-map, font);
-          color: var(--empty-state-desc-color-option-list);
+          color: var(--project-color-option-list-empty-desc);
         }
       }
     }

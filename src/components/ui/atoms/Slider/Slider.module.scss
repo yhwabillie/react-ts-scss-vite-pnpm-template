@@ -80,13 +80,13 @@ $slider-sizes: (
       cursor: not-allowed;
     }
     :global(.track) {
-      background-color: var(--disabled-track-bg-color-slider);
+      background-color: var(--project-color-slider-track-bg);
       :global(.fill) {
         background-color: var(--disabled-fill-bg-color-slider) !important;
       }
     }
     :global(.thumb) {
-      background-color: var(--disabled-thumb-bg-color-slider);
+      background-color: var(--project-color-slider-bg);
       border-color: var(--disabled-thumb-stroke-color-slider) !important;
       cursor: not-allowed;
       :global(.tooltip) {
@@ -131,7 +131,7 @@ $slider-sizes: (
         position: absolute;
         width: 100%;
         height: rem(map.get($props, track-height));
-        background-color: var(--track-bg-color-slider);
+        background-color: var(--project-color-slider-track-bg);
         border-radius: var(--project-border-radius-max);
         overflow: hidden;
 
@@ -160,8 +160,8 @@ $slider-sizes: (
           visibility: hidden;
           transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
           padding: rem(4px) rem(8px);
-          background-color: var(--tooltip-bg-color-slider);
-          color: var(--tooltip-text-color-slider);
+          background-color: var(--project-color-slider-bg);
+          color: var(--project-color-slider-text);
           border-radius: rem(4px);
           font-size: rem(12px);
           white-space: nowrap;

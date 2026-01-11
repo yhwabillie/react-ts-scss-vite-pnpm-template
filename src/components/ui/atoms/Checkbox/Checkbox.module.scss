@@ -6,8 +6,8 @@
 // checkbox color
 $checkbox-colors: (
   primary: (
-    borderColor: var(--stroke-color-checkbox),
-    bg: var(--bg-color-unchecked-checkbox),
+    borderColor: var(--project-color-checkbox-border),
+    bg: var(--project-color-checkbox-unchecked-bg),
     fill: var(--primary-checked-color-checkbox),
     hover: (
       shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-checkbox),
@@ -21,8 +21,8 @@ $checkbox-colors: (
     ),
   ),
   secondary: (
-    borderColor: var(--stroke-color-checkbox),
-    bg: var(--bg-color-unchecked-checkbox),
+    borderColor: var(--project-color-checkbox-border),
+    bg: var(--project-color-checkbox-unchecked-bg),
     fill: var(--secondary-checked-color-checkbox),
     hover: (
       shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-checkbox),
@@ -36,8 +36,8 @@ $checkbox-colors: (
     ),
   ),
   tertiary: (
-    borderColor: var(--stroke-color-checkbox),
-    bg: var(--bg-color-unchecked-checkbox),
+    borderColor: var(--project-color-checkbox-border),
+    bg: var(--project-color-checkbox-unchecked-bg),
     fill: var(--tertiary-checked-color-checkbox),
     hover: (
       shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-checkbox),
@@ -51,8 +51,8 @@ $checkbox-colors: (
     ),
   ),
   success: (
-    borderColor: var(--stroke-color-checkbox),
-    bg: var(--bg-color-unchecked-checkbox),
+    borderColor: var(--project-color-checkbox-border),
+    bg: var(--project-color-checkbox-unchecked-bg),
     fill: var(--success-checked-color-checkbox),
     hover: (
       shadow: 0 0 0 rem(4px) var(--success-hover-shadow-checkbox),
@@ -66,8 +66,8 @@ $checkbox-colors: (
     ),
   ),
   warning: (
-    borderColor: var(--stroke-color-checkbox),
-    bg: var(--bg-color-unchecked-checkbox),
+    borderColor: var(--project-color-checkbox-border),
+    bg: var(--project-color-checkbox-unchecked-bg),
     fill: var(--warning-checked-color-checkbox),
     hover: (
       shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-checkbox),
@@ -81,8 +81,8 @@ $checkbox-colors: (
     ),
   ),
   danger: (
-    borderColor: var(--stroke-color-checkbox),
-    bg: var(--bg-color-unchecked-checkbox),
+    borderColor: var(--project-color-checkbox-border),
+    bg: var(--project-color-checkbox-unchecked-bg),
     fill: var(--danger-checked-color-checkbox),
     hover: (
       shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-checkbox),

@@ -18,8 +18,8 @@ $file-picker-colors: (
 
 .file-picker {
   padding: rem(30px);
-  border: rem(1px) solid var(--stroke-color-file-picker);
-  background-color: var(--bg-color-file-picker);
+  border: rem(1px) solid var(--project-color-filepicker-border);
+  background-color: var(--project-color-filepicker-bg);
   border-radius: var(--project-border-radius-12);
   display: flex;
   flex-direction: column;
@@ -57,7 +57,7 @@ $file-picker-colors: (
     width: 100%;
     padding: rem(60px) rem(40px);
     border-radius: var(--project-border-radius-12);
-    background-color: var(--dropzone-bg-color-file-picker);
+    background-color: var(--project-color-filepicker-dropzone-bg);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,8 +73,8 @@ $file-picker-colors: (
     }
 
     &:global(.is-dragging) {
-      background-color: var(--dropzone-dragging-bg-color-file-picker);
-      border: rem(1px) dashed var(--focus-ring-color);
+      background-color: var(--project-color-filepicker-dropzone-dragging-bg);
+      border: rem(1px) dashed var(--project-color-interaction-focus-ring);
     }
 
     &:global(.is-disabled) {
@@ -120,7 +120,7 @@ $file-picker-colors: (
         align-items: center;
         flex-direction: column;
         padding: rem(8px) rem(8px) rem(8px) rem(8px);
-        border: rem(1px) solid var(--file-item-stroke-color-file-picker);
+        border: rem(1px) solid var(--project-color-filepicker-file-item-border);
         min-height: rem(56px);
         gap: rem(4px);
         border-radius: var(--project-border-radius-8);
