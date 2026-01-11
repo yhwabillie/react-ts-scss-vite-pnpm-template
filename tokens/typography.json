@@ -498,7 +498,7 @@
         "fontSize": { "value": "20px" },
         "tabletSize": { "value": "20px" },
         "mobileSize": { "value": "20px" },
-        "fontWeight": { "value": [500, 600] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 XL 사이즈 폼 그룹 제목" }
@@ -507,7 +507,7 @@
         "fontSize": { "value": "20px" },
         "tabletSize": { "value": "20px" },
         "mobileSize": { "value": "20px" },
-        "fontWeight": { "value": [500, 600] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 XL 사이즈 폼 그룹 제목" }
@@ -516,7 +516,7 @@
         "fontSize": { "value": "20px" },
         "tabletSize": { "value": "20px" },
         "mobileSize": { "value": "20px" },
-        "fontWeight": { "value": [500, 600] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 XL 사이즈 폼 그룹 제목" }
@@ -527,7 +527,7 @@
         "fontSize": { "value": "18px" },
         "tabletSize": { "value": "18px" },
         "mobileSize": { "value": "18px" },
-        "fontWeight": { "value": [500, 600] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 LG 사이즈 폼 그룹 제목" }
@@ -536,7 +536,7 @@
         "fontSize": { "value": "18px" },
         "tabletSize": { "value": "18px" },
         "mobileSize": { "value": "18px" },
-        "fontWeight": { "value": [500, 600] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 LG 사이즈 폼 그룹 제목" }
@@ -545,7 +545,7 @@
         "fontSize": { "value": "18px" },
         "tabletSize": { "value": "18px" },
         "mobileSize": { "value": "18px" },
-        "fontWeight": { "value": [500, 600] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 LG 사이즈 폼 그룹 제목" }
@@ -556,7 +556,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [500, 600] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 MD 사이즈 폼 그룹 제목" }
@@ -565,7 +565,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [500, 600] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 MD 사이즈 폼 그룹 제목" }
@@ -574,7 +574,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [500, 600] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 MD 사이즈 폼 그룹 제목" }
@@ -585,7 +585,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [500, 600] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 SM 사이즈 폼 그룹 제목" }
@@ -594,7 +594,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [500, 600] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 SM 사이즈 폼 그룹 제목" }
@@ -603,7 +603,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [500, 600] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 SM 사이즈 폼 그룹 제목" }
@@ -614,7 +614,7 @@
         "fontSize": { "value": "13px" },
         "tabletSize": { "value": "13px" },
         "mobileSize": { "value": "13px" },
-        "fontWeight": { "value": [500, 600] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 XS 사이즈 폼 그룹 제목" }
@@ -623,7 +623,7 @@
         "fontSize": { "value": "13px" },
         "tabletSize": { "value": "13px" },
         "mobileSize": { "value": "13px" },
-        "fontWeight": { "value": [500, 600] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 XS 사이즈 폼 그룹 제목" }
@@ -632,7 +632,7 @@
         "fontSize": { "value": "13px" },
         "tabletSize": { "value": "13px" },
         "mobileSize": { "value": "13px" },
-        "fontWeight": { "value": [500, 600] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 XS 사이즈 폼 그룹 제목" }
@@ -1079,7 +1079,7 @@
         "fontSize": { "value": "20px" },
         "tabletSize": { "value": "20px" },
         "mobileSize": { "value": "20px" },
-        "fontWeight": { "value": [400, 600, 700] },
+        "fontWeight": { "value": [600, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 모달 헤더 및 강조 타이틀용" }
@@ -1088,7 +1088,7 @@
         "fontSize": { "value": "20px" },
         "tabletSize": { "value": "20px" },
         "mobileSize": { "value": "20px" },
-        "fontWeight": { "value": [400, 600, 700] },
+        "fontWeight": { "value": [600, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 모달 헤더 및 강조 타이틀용" }
@@ -1097,7 +1097,7 @@
         "fontSize": { "value": "20px" },
         "tabletSize": { "value": "20px" },
         "mobileSize": { "value": "20px" },
-        "fontWeight": { "value": [400, 600, 700] },
+        "fontWeight": { "value": [600, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 모달 헤더 및 강조 타이틀용" }
@@ -1108,7 +1108,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 600, 700] },
+        "fontWeight": { "value": [400] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 모달 상세 설명 및 본문용" }
@@ -1117,7 +1117,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 600, 700] },
+        "fontWeight": { "value": [400] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 모달 상세 설명 및 본문용" }
@@ -1126,7 +1126,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 600, 700] },
+        "fontWeight": { "value": [400] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 모달 상세 설명 및 본문용" }
@@ -1137,7 +1137,7 @@
         "fontSize": { "value": "20px" },
         "tabletSize": { "value": "20px" },
         "mobileSize": { "value": "20px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 파일 업로드 영역의 메인 타이틀" }
@@ -1146,7 +1146,7 @@
         "fontSize": { "value": "20px" },
         "tabletSize": { "value": "20px" },
         "mobileSize": { "value": "20px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 파일 업로드 영역의 메인 타이틀" }
@@ -1155,7 +1155,7 @@
         "fontSize": { "value": "20px" },
         "tabletSize": { "value": "20px" },
         "mobileSize": { "value": "20px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 파일 업로드 영역의 메인 타이틀" }
@@ -1166,7 +1166,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [400] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 업로드 제한 사양 등의 설명 문구" }
@@ -1175,7 +1175,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [400] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 업로드 제한 사양 등의 설명 문구" }
@@ -1184,7 +1184,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [400] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 업로드 제한 사양 등의 설명 문구" }
@@ -1195,7 +1195,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 선택된 파일 개수 표시" }
@@ -1204,7 +1204,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 선택된 파일 개수 표시" }
@@ -1213,7 +1213,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [600] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 선택된 파일 개수 표시" }
@@ -1224,7 +1224,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [400] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 첨부된 파일의 이름, 용량 등 정보" }
@@ -1233,7 +1233,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [400] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 첨부된 파일의 이름, 용량 등 정보" }
@@ -1242,7 +1242,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [400] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 첨부된 파일의 이름, 용량 등 정보" }
@@ -1253,7 +1253,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 여유로운 행 높이의 테이블 데이터 (Large)" }
@@ -1262,7 +1262,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 여유로운 행 높이의 테이블 데이터 (Large)" }
@@ -1271,7 +1271,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 여유로운 행 높이의 테이블 데이터 (Large)" }
@@ -1282,7 +1282,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 표준 사이즈 테이블 데이터 (Medium)" }
@@ -1291,7 +1291,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 표준 사이즈 테이블 데이터 (Medium)" }
@@ -1300,7 +1300,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 표준 사이즈 테이블 데이터 (Medium)" }
@@ -1311,7 +1311,7 @@
         "fontSize": { "value": "12px" },
         "tabletSize": { "value": "12px" },
         "mobileSize": { "value": "12px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 높은 데이터 밀도의 테이블 데이터 (Small)" }
@@ -1320,7 +1320,7 @@
         "fontSize": { "value": "12px" },
         "tabletSize": { "value": "12px" },
         "mobileSize": { "value": "12px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 높은 데이터 밀도의 테이블 데이터 (Small)" }
@@ -1329,7 +1329,7 @@
         "fontSize": { "value": "12px" },
         "tabletSize": { "value": "12px" },
         "mobileSize": { "value": "12px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 높은 데이터 밀도의 테이블 데이터 (Small)" }
@@ -1514,7 +1514,7 @@
         "fontSize": { "value": "18px" },
         "tabletSize": { "value": "18px" },
         "mobileSize": { "value": "18px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 Accordion Title LG" }
@@ -1523,7 +1523,7 @@
         "fontSize": { "value": "18px" },
         "tabletSize": { "value": "18px" },
         "mobileSize": { "value": "18px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 Accordion Title LG" }
@@ -1532,7 +1532,7 @@
         "fontSize": { "value": "18px" },
         "tabletSize": { "value": "18px" },
         "mobileSize": { "value": "18px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 Accordion Title LG" }
@@ -1543,7 +1543,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 Accordion Title MD" }
@@ -1552,7 +1552,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 Accordion Title MD" }
@@ -1561,7 +1561,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 Accordion Title MD" }
@@ -1572,7 +1572,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 Accordion Title SM" }
@@ -1581,7 +1581,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 Accordion Title SM" }
@@ -1590,7 +1590,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 Accordion Title SM" }
@@ -1601,7 +1601,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 Accordion Content LG" }
@@ -1610,7 +1610,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 Accordion Content LG" }
@@ -1619,7 +1619,7 @@
         "fontSize": { "value": "16px" },
         "tabletSize": { "value": "16px" },
         "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 Accordion Content LG" }
@@ -1630,7 +1630,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 Accordion Content MD" }
@@ -1639,7 +1639,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 Accordion Content MD" }
@@ -1648,7 +1648,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 Accordion Content MD" }
@@ -1659,7 +1659,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 Accordion Content SM" }
@@ -1668,7 +1668,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 Accordion Content SM" }
@@ -1677,7 +1677,7 @@
         "fontSize": { "value": "14px" },
         "tabletSize": { "value": "14px" },
         "mobileSize": { "value": "14px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 Accordion Content SM" }
@@ -1688,7 +1688,7 @@
         "fontSize": { "value": "12px" },
         "tabletSize": { "value": "12px" },
         "mobileSize": { "value": "12px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 Accordion Content XS" }
@@ -1697,7 +1697,7 @@
         "fontSize": { "value": "12px" },
         "tabletSize": { "value": "12px" },
         "mobileSize": { "value": "12px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 Accordion Content XS" }
@@ -1706,7 +1706,7 @@
         "fontSize": { "value": "12px" },
         "tabletSize": { "value": "12px" },
         "mobileSize": { "value": "12px" },
-        "fontWeight": { "value": [400, 500, 600, 700] },
+        "fontWeight": { "value": [500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 Accordion Content XS" }
@@ -2126,7 +2126,9 @@
         "fontWeight": { "value": [400] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "code" },
-        "description": "Code: 인라인 코드 또는 코드 블록용 고정폭 텍스트"
+        "description": {
+          "value": "인라인 코드 또는 코드 블록용 고정폭 텍스트"
+        }
       },
       "ja": {
         "fontSize": { "value": "12px" },
@@ -2134,7 +2136,10 @@
         "mobileSize": { "value": "12px" },
         "fontWeight": { "value": [400] },
         "lineHeight": { "value": 1.5 },
-        "fontFamily": { "value": "code" }
+        "fontFamily": { "value": "code" },
+        "description": {
+          "value": "인라인 코드 또는 코드 블록용 고정폭 텍스트"
+        }
       },
       "en": {
         "fontSize": { "value": "12px" },
@@ -2142,7 +2147,10 @@
         "mobileSize": { "value": "12px" },
         "fontWeight": { "value": [400] },
         "lineHeight": { "value": 1.5 },
-        "fontFamily": { "value": "code" }
+        "fontFamily": { "value": "code" },
+        "description": {
+          "value": "인라인 코드 또는 코드 블록용 고정폭 텍스트"
+        }
       }
     }
   }

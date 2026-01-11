@@ -568,7 +568,6 @@ export const TypographyTokensData = [
     "usage": "LEGEND-1 / KO",
     "fontSize": "20px",
     "weights": [
-      500,
       600
     ],
     "lineHeight": 1.5,
@@ -580,7 +579,6 @@ export const TypographyTokensData = [
     "usage": "LEGEND-1 / JA",
     "fontSize": "20px",
     "weights": [
-      500,
       600
     ],
     "lineHeight": 1.5,
@@ -592,7 +590,6 @@ export const TypographyTokensData = [
     "usage": "LEGEND-1 / EN",
     "fontSize": "20px",
     "weights": [
-      500,
       600
     ],
     "lineHeight": 1.5,
@@ -604,7 +601,6 @@ export const TypographyTokensData = [
     "usage": "LEGEND-2 / KO",
     "fontSize": "18px",
     "weights": [
-      500,
       600
     ],
     "lineHeight": 1.5,
@@ -616,7 +612,6 @@ export const TypographyTokensData = [
     "usage": "LEGEND-2 / JA",
     "fontSize": "18px",
     "weights": [
-      500,
       600
     ],
     "lineHeight": 1.5,
@@ -628,7 +623,6 @@ export const TypographyTokensData = [
     "usage": "LEGEND-2 / EN",
     "fontSize": "18px",
     "weights": [
-      500,
       600
     ],
     "lineHeight": 1.5,
@@ -640,7 +634,6 @@ export const TypographyTokensData = [
     "usage": "LEGEND-3 / KO",
     "fontSize": "16px",
     "weights": [
-      500,
       600
     ],
     "lineHeight": 1.5,
@@ -652,7 +645,6 @@ export const TypographyTokensData = [
     "usage": "LEGEND-3 / JA",
     "fontSize": "16px",
     "weights": [
-      500,
       600
     ],
     "lineHeight": 1.5,
@@ -664,7 +656,6 @@ export const TypographyTokensData = [
     "usage": "LEGEND-3 / EN",
     "fontSize": "16px",
     "weights": [
-      500,
       600
     ],
     "lineHeight": 1.5,
@@ -676,7 +667,6 @@ export const TypographyTokensData = [
     "usage": "LEGEND-4 / KO",
     "fontSize": "14px",
     "weights": [
-      500,
       600
     ],
     "lineHeight": 1.5,
@@ -688,7 +678,6 @@ export const TypographyTokensData = [
     "usage": "LEGEND-4 / JA",
     "fontSize": "14px",
     "weights": [
-      500,
       600
     ],
     "lineHeight": 1.5,
@@ -700,7 +689,6 @@ export const TypographyTokensData = [
     "usage": "LEGEND-4 / EN",
     "fontSize": "14px",
     "weights": [
-      500,
       600
     ],
     "lineHeight": 1.5,
@@ -712,7 +700,6 @@ export const TypographyTokensData = [
     "usage": "LEGEND-5 / KO",
     "fontSize": "13px",
     "weights": [
-      500,
       600
     ],
     "lineHeight": 1.5,
@@ -724,7 +711,6 @@ export const TypographyTokensData = [
     "usage": "LEGEND-5 / JA",
     "fontSize": "13px",
     "weights": [
-      500,
       600
     ],
     "lineHeight": 1.5,
@@ -736,7 +722,6 @@ export const TypographyTokensData = [
     "usage": "LEGEND-5 / EN",
     "fontSize": "13px",
     "weights": [
-      500,
       600
     ],
     "lineHeight": 1.5,
@@ -1243,7 +1228,6 @@ export const TypographyTokensData = [
     "usage": "MODAL-1 / KO",
     "fontSize": "20px",
     "weights": [
-      400,
       600,
       700
     ],
@@ -1256,7 +1240,6 @@ export const TypographyTokensData = [
     "usage": "MODAL-1 / JA",
     "fontSize": "20px",
     "weights": [
-      400,
       600,
       700
     ],
@@ -1269,7 +1252,6 @@ export const TypographyTokensData = [
     "usage": "MODAL-1 / EN",
     "fontSize": "20px",
     "weights": [
-      400,
       600,
       700
     ],
@@ -1282,9 +1264,7 @@ export const TypographyTokensData = [
     "usage": "MODAL-2 / KO",
     "fontSize": "16px",
     "weights": [
-      400,
-      600,
-      700
+      400
     ],
     "lineHeight": 1.5,
     "fontFamily": "ko",
@@ -1295,9 +1275,7 @@ export const TypographyTokensData = [
     "usage": "MODAL-2 / JA",
     "fontSize": "16px",
     "weights": [
-      400,
-      600,
-      700
+      400
     ],
     "lineHeight": 1.5,
     "fontFamily": "ja",
@@ -1308,9 +1286,7 @@ export const TypographyTokensData = [
     "usage": "MODAL-2 / EN",
     "fontSize": "16px",
     "weights": [
-      400,
-      600,
-      700
+      400
     ],
     "lineHeight": 1.5,
     "fontFamily": "en",
@@ -1321,9 +1297,6 @@ export const TypographyTokensData = [
     "usage": "FILE-PICKER-TITLE / KO",
     "fontSize": "20px",
     "weights": [
-      400,
-      500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1335,9 +1308,6 @@ export const TypographyTokensData = [
     "usage": "FILE-PICKER-TITLE / JA",
     "fontSize": "20px",
     "weights": [
-      400,
-      500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1349,9 +1319,6 @@ export const TypographyTokensData = [
     "usage": "FILE-PICKER-TITLE / EN",
     "fontSize": "20px",
     "weights": [
-      400,
-      500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1363,10 +1330,7 @@ export const TypographyTokensData = [
     "usage": "FILE-PICKER-DESC / KO",
     "fontSize": "16px",
     "weights": [
-      400,
-      500,
-      600,
-      700
+      400
     ],
     "lineHeight": 1.5,
     "fontFamily": "ko",
@@ -1377,10 +1341,7 @@ export const TypographyTokensData = [
     "usage": "FILE-PICKER-DESC / JA",
     "fontSize": "16px",
     "weights": [
-      400,
-      500,
-      600,
-      700
+      400
     ],
     "lineHeight": 1.5,
     "fontFamily": "ja",
@@ -1391,10 +1352,7 @@ export const TypographyTokensData = [
     "usage": "FILE-PICKER-DESC / EN",
     "fontSize": "16px",
     "weights": [
-      400,
-      500,
-      600,
-      700
+      400
     ],
     "lineHeight": 1.5,
     "fontFamily": "en",
@@ -1405,10 +1363,7 @@ export const TypographyTokensData = [
     "usage": "FILE-PICKER-COUNT / KO",
     "fontSize": "16px",
     "weights": [
-      400,
-      500,
-      600,
-      700
+      600
     ],
     "lineHeight": 1.5,
     "fontFamily": "ko",
@@ -1419,10 +1374,7 @@ export const TypographyTokensData = [
     "usage": "FILE-PICKER-COUNT / JA",
     "fontSize": "16px",
     "weights": [
-      400,
-      500,
-      600,
-      700
+      600
     ],
     "lineHeight": 1.5,
     "fontFamily": "ja",
@@ -1433,10 +1385,7 @@ export const TypographyTokensData = [
     "usage": "FILE-PICKER-COUNT / EN",
     "fontSize": "16px",
     "weights": [
-      400,
-      500,
-      600,
-      700
+      600
     ],
     "lineHeight": 1.5,
     "fontFamily": "en",
@@ -1447,10 +1396,7 @@ export const TypographyTokensData = [
     "usage": "FILE-PICKER-FILE-INFO / KO",
     "fontSize": "14px",
     "weights": [
-      400,
-      500,
-      600,
-      700
+      400
     ],
     "lineHeight": 1.5,
     "fontFamily": "ko",
@@ -1461,10 +1407,7 @@ export const TypographyTokensData = [
     "usage": "FILE-PICKER-FILE-INFO / JA",
     "fontSize": "14px",
     "weights": [
-      400,
-      500,
-      600,
-      700
+      400
     ],
     "lineHeight": 1.5,
     "fontFamily": "ja",
@@ -1475,10 +1418,7 @@ export const TypographyTokensData = [
     "usage": "FILE-PICKER-FILE-INFO / EN",
     "fontSize": "14px",
     "weights": [
-      400,
-      500,
-      600,
-      700
+      400
     ],
     "lineHeight": 1.5,
     "fontFamily": "en",
@@ -1489,9 +1429,7 @@ export const TypographyTokensData = [
     "usage": "DATA-TABLE-1 / KO",
     "fontSize": "16px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1503,9 +1441,7 @@ export const TypographyTokensData = [
     "usage": "DATA-TABLE-1 / JA",
     "fontSize": "16px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1517,9 +1453,7 @@ export const TypographyTokensData = [
     "usage": "DATA-TABLE-1 / EN",
     "fontSize": "16px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1531,9 +1465,7 @@ export const TypographyTokensData = [
     "usage": "DATA-TABLE-2 / KO",
     "fontSize": "14px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1545,9 +1477,7 @@ export const TypographyTokensData = [
     "usage": "DATA-TABLE-2 / JA",
     "fontSize": "14px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1559,9 +1489,7 @@ export const TypographyTokensData = [
     "usage": "DATA-TABLE-2 / EN",
     "fontSize": "14px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1573,9 +1501,7 @@ export const TypographyTokensData = [
     "usage": "DATA-TABLE-3 / KO",
     "fontSize": "12px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1587,9 +1513,7 @@ export const TypographyTokensData = [
     "usage": "DATA-TABLE-3 / JA",
     "fontSize": "12px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1601,9 +1525,7 @@ export const TypographyTokensData = [
     "usage": "DATA-TABLE-3 / EN",
     "fontSize": "12px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1813,9 +1735,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-TITLE-1 / KO",
     "fontSize": "18px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1827,9 +1747,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-TITLE-1 / JA",
     "fontSize": "18px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1841,9 +1759,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-TITLE-1 / EN",
     "fontSize": "18px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1855,9 +1771,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-TITLE-2 / KO",
     "fontSize": "16px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1869,9 +1783,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-TITLE-2 / JA",
     "fontSize": "16px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1883,9 +1795,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-TITLE-2 / EN",
     "fontSize": "16px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1897,9 +1807,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-TITLE-3 / KO",
     "fontSize": "14px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1911,9 +1819,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-TITLE-3 / JA",
     "fontSize": "14px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1925,9 +1831,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-TITLE-3 / EN",
     "fontSize": "14px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1939,9 +1843,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-SUB-TITLE-1 / KO",
     "fontSize": "16px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1953,9 +1855,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-SUB-TITLE-1 / JA",
     "fontSize": "16px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1967,9 +1867,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-SUB-TITLE-1 / EN",
     "fontSize": "16px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1981,9 +1879,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-SUB-TITLE-2 / KO",
     "fontSize": "14px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -1995,9 +1891,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-SUB-TITLE-2 / JA",
     "fontSize": "14px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -2009,9 +1903,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-SUB-TITLE-2 / EN",
     "fontSize": "14px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -2023,9 +1915,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-SUB-TITLE-3 / KO",
     "fontSize": "14px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -2037,9 +1927,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-SUB-TITLE-3 / JA",
     "fontSize": "14px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -2051,9 +1939,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-SUB-TITLE-3 / EN",
     "fontSize": "14px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -2065,9 +1951,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-SUB-TITLE-4 / KO",
     "fontSize": "12px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -2079,9 +1963,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-SUB-TITLE-4 / JA",
     "fontSize": "12px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -2093,9 +1975,7 @@ export const TypographyTokensData = [
     "usage": "ACCORDION-SUB-TITLE-4 / EN",
     "fontSize": "12px",
     "weights": [
-      400,
       500,
-      600,
       700
     ],
     "lineHeight": 1.5,
@@ -2582,7 +2462,7 @@ export const TypographyTokensData = [
     ],
     "lineHeight": 1.5,
     "fontFamily": "code",
-    "description": "KO 가이드"
+    "description": "인라인 코드 또는 코드 블록용 고정폭 텍스트"
   },
   {
     "id": "typo-code-ja",
@@ -2593,7 +2473,7 @@ export const TypographyTokensData = [
     ],
     "lineHeight": 1.5,
     "fontFamily": "code",
-    "description": "JA 가이드"
+    "description": "인라인 코드 또는 코드 블록용 고정폭 텍스트"
   },
   {
     "id": "typo-code-en",
@@ -2604,6 +2484,6 @@ export const TypographyTokensData = [
     ],
     "lineHeight": 1.5,
     "fontFamily": "code",
-    "description": "EN 가이드"
+    "description": "인라인 코드 또는 코드 블록용 고정폭 텍스트"
   }
 ];

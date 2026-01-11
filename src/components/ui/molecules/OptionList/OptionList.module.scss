@@ -70,7 +70,7 @@ $option-list-sizes: (
     shadow: drop-shadow(0 rem(5px) rem(10px) var(--shadow-bg-color-option-list)),
     emtpy: (
       icon-size: rem(14px),
-      font: var(--project-typo-input3-500),
+      font: var(--project-typo-input-3-500),
     ),
   ),
   sm: (
@@ -80,7 +80,7 @@ $option-list-sizes: (
     shadow: drop-shadow(0 rem(6px) rem(12px) var(--shadow-bg-color-option-list)),
     emtpy: (
       icon-size: rem(16px),
-      font: var(--project-typo-input3-500),
+      font: var(--project-typo-input-3-500),
     ),
   ),
   md: (
@@ -90,7 +90,7 @@ $option-list-sizes: (
     shadow: drop-shadow(0 rem(7px) rem(14px) var(--shadow-bg-color-option-list)),
     emtpy: (
       icon-size: rem(18px),
-      font: var(--project-typo-input2-500),
+      font: var(--project-typo-input-2-500),
     ),
   ),
   lg: (
@@ -100,7 +100,7 @@ $option-list-sizes: (
     shadow: drop-shadow(0 rem(8px) rem(16px) var(--shadow-bg-color-option-list)),
     emtpy: (
       icon-size: rem(20px),
-      font: var(--project-typo-input2-500),
+      font: var(--project-typo-input-2-500),
     ),
   ),
   xl: (
@@ -110,7 +110,7 @@ $option-list-sizes: (
     shadow: drop-shadow(0 rem(10px) rem(20px) var(--shadow-bg-color-option-list)),
     emtpy: (
       icon-size: rem(24px),
-      font: var(--project-typo-input1-500),
+      font: var(--project-typo-input-1-500),
     ),
   ),
 );

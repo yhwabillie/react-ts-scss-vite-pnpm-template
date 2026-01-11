@@ -16,7 +16,7 @@ export interface TypographyTokenItem {
 
 interface TypographyTableProps {
   title: string;
-  category: 'System' | 'Functional';
+  category: 'Pretendard GOV' | 'NanumSquare Neo' | 'Noto Sans JP' | 'Fira Code';
   tokens: TypographyTokenItem[];
 }
 
@@ -38,6 +38,10 @@ const TypographyTokenTable = ({ title, category, tokens }: TypographyTableProps)
     en: {
       text: 'The quick brown fox jumps over the lazy dog.',
       fontFamilyVar: 'var(--project-font-family-en)',
+    },
+    code: {
+      text: 'const helloWorld = () => console.log("Hello, World!");',
+      fontFamilyVar: 'var(--project-font-family-code)',
     },
   };
 
@@ -134,8 +138,9 @@ const TypographyTokenTable = ({ title, category, tokens }: TypographyTableProps)
             </div>
 
             <div className='token-table__spec-details'>
-              <span>{row.fontSize}</span>/<span>{row.weights.join(', ')}</span>/
-              <span>{row.lineHeight}</span>
+              <span>{row.fontSize}</span> /
+              <span className='token-table__weights'>{row.weights.join(', ')}</span>/
+              <span> {row.lineHeight}</span>
             </div>
           </div>
         );
@@ -158,7 +163,7 @@ const TypographyTokenTable = ({ title, category, tokens }: TypographyTableProps)
     <div className={Styles['token-table']}>
       <div className='token-table__title'>
         <h3>{title}</h3>
-        <Badge variant='solid' size='sm' color='primary' label={category} />
+        <Badge variant='solid' size='sm' color='secondary' label={category} />
       </div>
       <DataTable
         caption={title}
