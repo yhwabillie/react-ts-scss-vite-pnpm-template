@@ -357,7 +357,7 @@ $textarea-sizes: (
   transition: all 0.2s ease;
 
   &:has(textarea:focus-visible) {
-    outline: 2.5px dashed #2466eb !important;
+    outline: 2.5px dashed var(--focus-ring-color) !important;
     outline-offset: 2px;
   }
 
@@ -368,7 +368,7 @@ $textarea-sizes: (
     height: 100%;
     outline: none !important;
     word-break: break-all;
-    font: var(--project-typo-input1-500);
+    font: var(--project-typo-input-1-500);
     background-color: inherit;
   }
 
@@ -380,7 +380,7 @@ $textarea-sizes: (
 
 .textarea-counter {
   align-self: end;
-  font: var(--project-typo-l3-500);
+  font: var(--project-typo-label-3-500);
 
   &:global(.is-max) {
     color: var(--danger-max-text-color-textarea);

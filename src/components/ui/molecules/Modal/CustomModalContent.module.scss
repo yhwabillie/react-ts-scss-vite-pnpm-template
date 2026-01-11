@@ -57,7 +57,7 @@ $modal-sizes: (
     :global(.modal-title) {
       display: flex;
       align-items: center;
-      font: var(--project-typo-ModalText1-700);
+      font: var(--project-typo-modal-1-700);
     }
 
     :global(.modal-action) {

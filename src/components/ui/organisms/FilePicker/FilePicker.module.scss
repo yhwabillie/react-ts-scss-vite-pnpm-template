@@ -45,11 +45,11 @@ $file-picker-colors: (
     width: 100%;
 
     :global(.head-title) {
-      font: var(--project-typo-FilePickerTitle-700);
+      font: var(--project-typo-file-picker-title-700);
       margin-bottom: rem(16px);
     }
     :global(.head-desc) {
-      font: var(--project-typo-FilePickerDesc-400);
+      font: var(--project-typo-file-picker-desc-400);
     }
   }
 
@@ -69,7 +69,7 @@ $file-picker-colors: (
 
     :global(.hint-msg) {
       word-break: keep-all;
-      font: var(--project-typo-FilePickerDesc-400);
+      font: var(--project-typo-file-picker-desc-400);
     }
 
     &:global(.is-dragging) {
@@ -105,7 +105,7 @@ $file-picker-colors: (
         display: flex;
         align-items: center;
         gap: rem(4px);
-        font: var(--project-typo-FilePickerCountText-600);
+        font: var(--project-typo-file-picker-count-600);
       }
     }
 
@@ -135,7 +135,7 @@ $file-picker-colors: (
             flex: 1 1 auto;
             display: flex;
             align-items: center;
-            font: var(--project-typo-FilePickerFileInfoText1-400);
+            font: var(--project-typo-file-picker-file-info-400);
 
             :global(.file-name) {
               display: flex;

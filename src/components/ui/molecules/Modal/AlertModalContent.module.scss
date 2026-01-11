@@ -23,13 +23,13 @@
   }
 
   :global(.modal-title) {
-    font: var(--project-typo-ModalText1-600);
+    font: var(--project-typo-modal-1-600);
   }
 
   :global(.modal-desc) {
     margin: rem(8px) 0 rem(28px);
     word-break: keep-all;
-    font: var(--project-typo-ModalText2-400);
+    font: var(--project-typo-modal-2-400);
     color: var(--desc-text-color-alert-modal);
   }
 
@@ -58,13 +58,13 @@
   }
 
   :global(.modal-title) {
-    font: var(--project-typo-ModalText1-600);
+    font: var(--project-typo-modal-1-600);
   }
 
   :global(.modal-desc) {
     margin: rem(8px) 0 rem(28px);
     word-break: keep-all;
-    font: var(--project-typo-ModalText2-400);
+    font: var(--project-typo-modal-2-400);
     color: var(--desc-text-color-alert-modal);
   }
 

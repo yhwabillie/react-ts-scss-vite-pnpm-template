@@ -37,7 +37,7 @@ $validation-msg-variant: (
 
 $validation-msg-sizes: (
   xs: (
-    font-token: var(--project-typo-helper5-500),
+    font-token: var(--project-typo-helper-5-500),
     gap: rem(6px),
     icon: (
       sizes: rem(14px),
@@ -48,7 +48,7 @@ $validation-msg-sizes: (
     margin: rem(20px) 0 0,
   ),
   sm: (
-    font-token: var(--project-typo-helper4-500),
+    font-token: var(--project-typo-helper-4-500),
     gap: rem(8px),
     icon: (
       sizes: rem(16px),
@@ -59,7 +59,7 @@ $validation-msg-sizes: (
     margin: rem(20px) 0 0,
   ),
   md: (
-    font-token: var(--project-typo-helper3-500),
+    font-token: var(--project-typo-helper-3-500),
     gap: rem(10px),
     icon: (
       sizes: rem(18px),
@@ -70,7 +70,7 @@ $validation-msg-sizes: (
     margin: rem(20px) 0 0,
   ),
   lg: (
-    font-token: var(--project-typo-helper2-500),
+    font-token: var(--project-typo-helper-2-500),
     gap: rem(12px),
     icon: (
       sizes: rem(20px),
@@ -81,7 +81,7 @@ $validation-msg-sizes: (
     margin: rem(20px) 0 0,
   ),
   xl: (
-    font-token: var(--project-typo-helper1-500),
+    font-token: var(--project-typo-helper-1-500),
     gap: rem(14px),
     icon: (
       sizes: rem(24px),

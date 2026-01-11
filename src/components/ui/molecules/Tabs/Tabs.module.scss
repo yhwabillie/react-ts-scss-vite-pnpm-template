@@ -79,19 +79,19 @@ $tabs-sizes: (
   sm: (
     btn-width: rem(32px),
     btn-padding: rem(8px) rem(16px) rem(8px),
-    btn-font: var(--project-typo-btn2-600),
+    btn-font: var(--project-typo-btn-2-600),
     panel-padding: rem(16px) 0,
   ),
   md: (
     btn-width: rem(40px),
     btn-padding: rem(12px) rem(20px) rem(12px),
-    btn-font: var(--project-typo-btn3-600),
+    btn-font: var(--project-typo-btn-3-600),
     panel-padding: rem(20px) 0,
   ),
   lg: (
     btn-width: rem(44px),
     btn-padding: rem(16px) rem(24px) rem(16px),
-    btn-font: var(--project-typo-btn4-700),
+    btn-font: var(--project-typo-btn-4-700),
     panel-padding: rem(24px) 0,
   ),
 );

@@ -6,22 +6,22 @@ $avatar-sizes: (
   sm: (
     size: rem(32px),
     icon-size: rem(18px),
-    font: var(--project-typo-AvatarText4-500),
+    font: var(--project-typo-avatar-4-500),
   ),
   md: (
     size: rem(48px),
     icon-size: rem(24px),
-    font: var(--project-typo-AvatarText3-500),
+    font: var(--project-typo-avatar-3-500),
   ),
   lg: (
     size: rem(64px),
     icon-size: rem(32px),
-    font: var(--project-typo-AvatarText2-500),
+    font: var(--project-typo-avatar-2-500),
   ),
   xl: (
     size: rem(80px),
     icon-size: rem(40px),
-    font: var(--project-typo-AvatarText1-500),
+    font: var(--project-typo-avatar-1-500),
   ),
 );
 

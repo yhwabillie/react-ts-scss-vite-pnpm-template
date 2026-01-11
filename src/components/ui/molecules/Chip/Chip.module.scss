@@ -7,7 +7,7 @@ $chip-sizes: (
   sm: (
     height: rem(28px),
     padding: 0 rem(12px),
-    font: var(--project-typo-ChipText3-500),
+    font: var(--project-typo-chip-3-500),
     with-icon-padding: 0 rem(6px) 0 rem(14px),
     radius: rem(5px),
     gap: rem(6px),
@@ -17,7 +17,7 @@ $chip-sizes: (
   md: (
     height: rem(32px),
     padding: 0 rem(14px),
-    font: var(--project-typo-ChipText2-500),
+    font: var(--project-typo-chip-2-500),
     with-icon-padding: 0 rem(8px) 0 rem(16px),
     radius: rem(5px),
     gap: rem(8px),

@@ -7,7 +7,7 @@ $badge-sizes: (
   sm: (
     height: rem(22px),
     padding: 0 rem(4px),
-    font: var(--project-typo-BadgeText3-500),
+    font: var(--project-typo-badge-3-500),
     min-width: rem(40px),
     radius: rem(4px),
     dot-size: rem(6px),
@@ -15,7 +15,7 @@ $badge-sizes: (
   md: (
     height: rem(28px),
     padding: 0 rem(6px),
-    font: var(--project-typo-BadgeText2-500),
+    font: var(--project-typo-badge-2-500),
     min-width: rem(50px),
     radius: rem(4px),
     dot-size: rem(8px),
@@ -23,7 +23,7 @@ $badge-sizes: (
   lg: (
     height: rem(32px),
     padding: 0 rem(8px),
-    font: var(--project-typo-BadgeText1-500),
+    font: var(--project-typo-badge-1-500),
     min-width: rem(60px),
     radius: rem(5px),
     dot-size: rem(10px),

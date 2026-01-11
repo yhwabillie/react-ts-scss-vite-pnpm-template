@@ -10,7 +10,7 @@ $pagination-sizes: (
     page-list-gap: rem(6px),
     btn-size: rem(36px),
     btn-padding: 0 rem(12px),
-    mobile-font: var(--project-typo-PaginationText3-600),
+    mobile-font: var(--project-typo-pagination-3-600),
   ),
   md: (
     pagination-gap: rem(18px),
@@ -18,7 +18,7 @@ $pagination-sizes: (
     page-list-gap: rem(6px),
     btn-size: rem(40px),
     btn-padding: 0 rem(15px),
-    mobile-font: var(--project-typo-PaginationText2-600),
+    mobile-font: var(--project-typo-pagination-2-600),
   ),
   lg: (
     pagination-gap: rem(18px),
@@ -26,7 +26,7 @@ $pagination-sizes: (
     page-list-gap: rem(6px),
     btn-size: rem(44px),
     btn-padding: 0 rem(16px),
-    mobile-font: var(--project-typo-PaginationText1-600),
+    mobile-font: var(--project-typo-pagination-1-600),
   ),
 );
 
