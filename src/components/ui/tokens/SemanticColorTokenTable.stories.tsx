@@ -5,9 +5,9 @@ import { ColorTokensData } from '../../../constants/generated/color-tokens';
 import ColorTokenTable from './ColorTokenTable';
 
 const meta: Meta<typeof ColorTokenTable> = {
-  title: 'Tokens/Common/Colors/Semantic',
-  component: ColorTokenTable,
+  title: 'Tokens/Colors/Semantic',
   tags: ['autodocs'],
+  component: ColorTokenTable,
   decorators: [
     Story => (
       <ToastProvider position='bottom-right'>

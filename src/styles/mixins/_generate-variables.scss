@@ -183,6 +183,23 @@
 }
 
 /**
+ * Primitive 컬러 변수 생성 믹스인
+ * @param {Map} $primitive-map - Primitive 컬러 데이터 맵
+ */
+@mixin generate-primitive-vars($primitive-map) {
+  $project-prefix: vars.$g_project-name;
+
+  @each $category, $tokens in $primitive-map {
+    @each $name, $value in $tokens {
+      /** * 결과 예시:
+       * --project-color-primitive-gray-0: #000000;
+       */
+      --#{$project-prefix}-color-primitive-#{$category}-#{$name}: #{$value};
+    }
+  }
+}
+
+/**
  * 테마별 컬러 변수 생성 믹스인 (프로젝트 Prefix 포함)
  * @param {String} $theme-name - "light" 또는 "dark"
  * @param {Map} $g_colors - 컬러 데이터 맵

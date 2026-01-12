@@ -8,6 +8,12 @@
   gap: rem(12px);
   align-items: center;
   justify-content: center;
+
+  &.single {
+    .previewBoxLight {
+      width: 100%; // 단일 모드일 때 전체 차지
+    }
+  }
 }
 
 .previewBox {

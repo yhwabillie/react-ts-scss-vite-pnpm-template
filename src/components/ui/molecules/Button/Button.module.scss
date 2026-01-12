@@ -97,7 +97,8 @@ $btn-colors: (
 
     //
     outline: (
-        bg: var(--project-color-outline-btn-bg) label: var(--secondary-text-color-btn-outline),
+        bg: var(--project-color-outline-btn-bg),
+        label: var(--secondary-text-color-btn-outline),
         hover: (
           bg: var(--secondary-hover-bg-color-btn-outline),
           label: var(--secondary-hover-text-color-btn-outline),

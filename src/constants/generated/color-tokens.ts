@@ -1,624 +1,624 @@
 export const ColorTokensData = [
   {
     "id": "--color-surface-sunken",
-    "lightValue": "#f2f4f6",
-    "darkValue": "#121212",
+    "lightValue": "var(--project-color-primitive-gray-211)",
+    "darkValue": "var(--project-color-primitive-gray-19)",
     "usage": "App Background (Lv.0)",
     "description": "전체 페이지의 베이스 대지입니다. 레이어 간의 최하단 기준점을 형성합니다."
   },
   {
     "id": "--color-surface-subtle",
-    "lightValue": "#f9fafb",
-    "darkValue": "#1c1c1c",
+    "lightValue": "var(--project-color-primitive-gray-221)",
+    "darkValue": "var(--project-color-primitive-gray-33)",
     "usage": "Inset Area (Lv.0.5)",
     "description": "카드 내부의 헤더나 입력창 배경처럼 '안으로 파인' 영역을 구분할 때 사용합니다."
   },
   {
     "id": "--color-surface-default",
-    "lightValue": "#ffffff",
-    "darkValue": "#1e1e1e",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-37)",
     "usage": "Standard Surface (Lv.1)",
     "description": "가장 보편적인 카드, 화이트보드, 리스트 등 메인 콘텐츠의 배경입니다."
   },
   {
     "id": "--color-surface-selected",
-    "lightValue": "#ececec",
-    "darkValue": "#2c2c2c",
+    "lightValue": "var(--project-color-primitive-gray-198)",
+    "darkValue": "var(--project-color-primitive-gray-53)",
     "usage": "Navigation & Item Selection",
     "description": "목록 내 항목 선택(List Item)이나 내비게이션 메뉴(Side Navigation)의 활성 상태를 나타내는 배경입니다. 모노톤 특성상 '선택됨'을 명확히 전달하기 위해 브랜드 컬러 인디케이터 바(Indicator Bar)나 텍스트 굵기(Bold) 변화를 동반한 사용을 강력히 권장합니다."
   },
   {
     "id": "--color-surface-raised",
-    "lightValue": "#ffffff",
-    "darkValue": "#333333",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-65)",
     "usage": "Floating / Overlay (Lv.2)",
     "description": "팝업, 모달, 컨텍스트 메뉴 등 사용자에게 가장 가깝게 떠 있는 최상위 레이어입니다."
   },
   {
     "id": "--color-text-natural",
-    "lightValue": "#191f28",
-    "darkValue": "#f9fafb",
+    "lightValue": "var(--project-color-primitive-gray-28)",
+    "darkValue": "var(--project-color-primitive-gray-221)",
     "usage": "Primary Text Color",
     "description": "밝은 배경에서 최적의 가독성을 제공하는 기본 텍스트 색상입니다."
   },
   {
     "id": "--color-interaction-focus-ring",
-    "lightValue": "#ffa94d",
-    "darkValue": "#ffd60a",
+    "lightValue": "var(--project-color-primitive-red-236)",
+    "darkValue": "var(--project-color-primitive-red-239)",
     "usage": "Focus Indicator",
     "description": "키보드 내비게이션 시 포커스된 요소를 둘러싸는 링 색상입니다."
   },
   {
     "id": "--color-scrollbar-thumb-bg",
-    "lightValue": "rgba(55, 55, 55, 0.4)",
-    "darkValue": "rgba(255, 255, 255, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-315)",
+    "darkValue": "var(--project-color-primitive-alpha-308)",
     "usage": "Scrollbar Thumb Color",
     "description": "밝은 모드에서 스크롤바 썸(Thumb)의 배경 색상입니다."
   },
   {
     "id": "--color-scrollbar-thumb-hover-bg",
-    "lightValue": "rgba(55, 55, 55, 0.6)",
-    "darkValue": "rgba(255, 255, 255, 0.4)",
+    "lightValue": "var(--project-color-primitive-alpha-316)",
+    "darkValue": "var(--project-color-primitive-alpha-309)",
     "usage": "Scrollbar Thumb Hover Color",
     "description": "밝은 모드에서 스크롤바 썸(Thumb)에 마우스 오버 시의 배경 색상입니다."
   },
   {
     "id": "--color-scrollbar-track-bg",
-    "lightValue": "rgba(0, 0, 0, 0.1)",
-    "darkValue": "rgba(255, 255, 255, 0.1)",
+    "lightValue": "var(--project-color-primitive-alpha-248)",
+    "darkValue": "var(--project-color-primitive-alpha-304)",
     "usage": "Scrollbar Track Color",
     "description": "밝은 모드에서 스크롤바 트랙(Track)의 배경 색상입니다."
   },
   {
     "id": "--color-docs-guide-bg",
-    "lightValue": "#ecf4ef",
-    "darkValue": "rgba(45, 252, 82, 0.05)",
+    "lightValue": "var(--project-color-primitive-gray-200)",
+    "darkValue": "var(--project-color-primitive-alpha-314)",
     "usage": "Documentation Guide Background",
     "description": "문서 가이드 섹션의 배경 색상입니다."
   },
   {
     "id": "--color-docs-guide-border",
-    "lightValue": "#15803d",
-    "darkValue": "#2dfc52",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-58)",
     "usage": "Documentation Guide Border",
     "description": "문서 가이드 섹션의 경계선 색상입니다."
   },
   {
     "id": "--color-docs-code-bg",
-    "lightValue": "#f5f5f5",
-    "darkValue": "#1e1e1e",
+    "lightValue": "var(--project-color-primitive-gray-216)",
+    "darkValue": "var(--project-color-primitive-gray-37)",
     "usage": "Code Block Background",
     "description": "코드 블록의 배경 색상입니다."
   },
   {
     "id": "--color-docs-code-hover-bg",
-    "lightValue": "#eeeeee",
-    "darkValue": "#2c2c2c",
+    "lightValue": "var(--project-color-primitive-gray-202)",
+    "darkValue": "var(--project-color-primitive-gray-53)",
     "usage": "Code Block Hover Background",
     "description": "코드 블록에 마우스 오버 시의 배경 색상입니다."
   },
   {
     "id": "--color-docs-code-text",
-    "lightValue": "#4a4a4a",
-    "darkValue": "#a0a0a0",
+    "lightValue": "var(--project-color-primitive-gray-91)",
+    "darkValue": "var(--project-color-primitive-gray-146)",
     "usage": "Code Block Text Color",
     "description": "코드 블록 내 텍스트의 색상입니다."
   },
   {
     "id": "--color-docs-code-hover-text",
-    "lightValue": "#1a1a1a",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-29)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Code Block Hover Text Color",
     "description": "코드 블록에 마우스 오버 시 텍스트의 색상입니다."
   },
   {
     "id": "--color-feedback-skeleton-bg",
-    "lightValue": "#f2f2f2",
-    "darkValue": "#1e1e1e",
+    "lightValue": "var(--project-color-primitive-gray-210)",
+    "darkValue": "var(--project-color-primitive-gray-37)",
     "usage": "Skeleton Loader Background",
     "description": "스켈레톤 로더의 배경 색상입니다."
   },
   {
     "id": "--color-feedback-skeleton-after-bg-gradient",
-    "lightValue": "rgba(255, 255, 255, 0)",
-    "darkValue": "rgba(255, 255, 255, 0)",
+    "lightValue": "var(--project-color-primitive-alpha-302)",
+    "darkValue": "var(--project-color-primitive-alpha-302)",
     "usage": "Skeleton Loader Animation Gradient",
     "description": "스켈레톤 로더의 애니메이션에 사용되는 그라데이션 색상입니다."
   },
   {
     "id": "--color-feedback-skeleton-after-bg-gradient-shimmer",
-    "lightValue": "rgba(255, 255, 255, 0.4)",
-    "darkValue": "rgba(255, 255, 255, 0.05)",
+    "lightValue": "var(--project-color-primitive-alpha-309)",
+    "darkValue": "var(--project-color-primitive-alpha-303)",
     "usage": "Skeleton Loader Animation Gradient Shim",
     "description": "스켈레톤 로더 애니메이션 그라데이션의 시작 및 끝 색상입니다."
   },
   {
     "id": "--color-feedback-required-asterisk-text",
-    "lightValue": "#d32f2f",
-    "darkValue": "#ff8a80",
+    "lightValue": "var(--project-color-primitive-red-172)",
+    "darkValue": "var(--project-color-primitive-red-234)",
     "usage": "Required Asterisk Color",
     "description": "밝은 모드에서 필수 입력란 표시 별표의 색상입니다."
   },
   {
     "id": "--color-label-text",
-    "lightValue": "#ffffff",
-    "darkValue": "#1d1d1d",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-34)",
     "usage": "Label Text Color",
     "description": "밝은 모드에서 라벨 텍스트의 색상입니다."
   },
   {
     "id": "--color-avatar-bg",
-    "lightValue": "#f0f0f0",
-    "darkValue": "#1e1e1e",
+    "lightValue": "var(--project-color-primitive-gray-204)",
+    "darkValue": "var(--project-color-primitive-gray-37)",
     "usage": "Avatar Background Color",
     "description": "아바타의 기본 배경 색상입니다."
   },
   {
     "id": "--color-avatar-hover-bg",
-    "lightValue": "#e4e4e4",
-    "darkValue": "#2c2c2c",
+    "lightValue": "var(--project-color-primitive-gray-191)",
+    "darkValue": "var(--project-color-primitive-gray-53)",
     "usage": "Avatar Hover Background Color",
     "description": "아바타에 마우스 오버 시의 배경 색상입니다."
   },
   {
     "id": "--color-avatar-hover-shadow",
-    "lightValue": "rgba(0, 0, 0, 0.3)",
-    "darkValue": "rgba(255, 255, 255, 0.15)",
+    "lightValue": "var(--project-color-primitive-alpha-250)",
+    "darkValue": "var(--project-color-primitive-alpha-306)",
     "usage": "Avatar Hover Shadow Color",
     "description": "아바타에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-avatar-border",
-    "lightValue": "#9999",
-    "darkValue": "rgba(255, 255, 255, 0.12)",
+    "lightValue": "var(--project-color-primitive-etc-141)",
+    "darkValue": "var(--project-color-primitive-alpha-305)",
     "usage": "Avatar Border Color",
     "description": "아바타의 테두리 색상입니다."
   },
   {
     "id": "--color-avatar-fallback-text",
-    "lightValue": "#333333",
-    "darkValue": "#e0e0e0",
+    "lightValue": "var(--project-color-primitive-gray-65)",
+    "darkValue": "var(--project-color-primitive-gray-185)",
     "usage": "Avatar Fallback Text Color",
     "description": "아바타 이미지가 없을 때 표시되는 대체 텍스트의 색상입니다."
   },
   {
     "id": "--color-tooltip-bg",
-    "lightValue": "rgba(25, 25, 25, 0.8)",
-    "darkValue": "#3f3f40",
+    "lightValue": "var(--project-color-primitive-alpha-297)",
+    "darkValue": "var(--project-color-primitive-gray-80)",
     "usage": "Tooltip Background Color",
     "description": "툴팁의 배경 색상입니다."
   },
   {
     "id": "--color-tooltip-text",
-    "lightValue": "#ffffff",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Tooltip Text Color",
     "description": "툴팁 내 텍스트의 색상입니다."
   },
   {
     "id": "--color-tooltip-tail-bg",
-    "lightValue": "rgba(25, 25, 25, 0.8)",
-    "darkValue": "#3f3f40",
+    "lightValue": "var(--project-color-primitive-alpha-297)",
+    "darkValue": "var(--project-color-primitive-gray-80)",
     "usage": "Tooltip Tail Background Color",
     "description": "툴팁 꼬리 부분의 배경 색상입니다."
   },
   {
     "id": "--color-tooltip-close-btn-bg",
-    "lightValue": "#000000",
-    "darkValue": "#a1a1aa",
+    "lightValue": "var(--project-color-primitive-gray-0)",
+    "darkValue": "var(--project-color-primitive-gray-148)",
     "usage": "Tooltip Close Button Background Color",
     "description": "툴팁 닫기 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-tooltip-close-btn-hover-bg",
-    "lightValue": "#3b82f6",
-    "darkValue": "#52525b",
+    "lightValue": "var(--project-color-primitive-blue-76)",
+    "darkValue": "var(--project-color-primitive-gray-100)",
     "usage": "Tooltip Close Button Hover Background Color",
     "description": "툴팁 닫기 버튼에 마우스 오버 시의 배경 색상입니다."
   },
   {
     "id": "--color-accordion-drop-shadow",
-    "lightValue": "rgba(0, 0, 0, 0.1)",
-    "darkValue": "rgba(0, 0, 0, 0.4)",
+    "lightValue": "var(--project-color-primitive-alpha-248)",
+    "darkValue": "var(--project-color-primitive-alpha-251)",
     "usage": "Accordion Drop Shadow Color",
     "description": "밝은 모드에서 아코디언의 그림자 색상입니다."
   },
   {
     "id": "--color-filepicker-border",
-    "lightValue": "#d6e0eb",
-    "darkValue": "#383b3e",
+    "lightValue": "var(--project-color-primitive-blue-173)",
+    "darkValue": "var(--project-color-primitive-gray-72)",
     "usage": "File Picker Stroke Color",
     "description": "밝은 모드에서 파일 픽커의 테두리 색상입니다."
   },
   {
     "id": "--color-filepicker-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#1e1e1e",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-37)",
     "usage": "File Picker Background Color",
     "description": "밝은 모드에서 파일 픽커의 배경 색상입니다."
   },
   {
     "id": "--color-filepicker-dropzone-bg",
-    "lightValue": "#e6e8ea",
-    "darkValue": "#25282a",
+    "lightValue": "var(--project-color-primitive-gray-193)",
+    "darkValue": "var(--project-color-primitive-gray-49)",
     "usage": "File Picker Dropzone Background Color",
     "description": "밝은 모드에서 파일 픽커 드롭존의 배경 색상입니다."
   },
   {
     "id": "--color-filepicker-dropzone-dragging-bg",
-    "lightValue": "#d2d3d5",
-    "darkValue": "#2f3336",
+    "lightValue": "var(--project-color-primitive-gray-171)",
+    "darkValue": "var(--project-color-primitive-gray-62)",
     "usage": "File Picker Dropzone Dragging Background Color",
     "description": "밝은 모드에서 파일 픽커 드롭존에 파일을 드래그할 때의 배경 색상입니다."
   },
   {
     "id": "--color-filepicker-file-item-border",
-    "lightValue": "#d6e0eb",
-    "darkValue": "#2a2d30",
+    "lightValue": "var(--project-color-primitive-blue-173)",
+    "darkValue": "var(--project-color-primitive-gray-52)",
     "usage": "File Picker File Item Stroke Color",
     "description": "밝은 모드에서 파일 픽커 내 파일 아이템의 테두리 색상입니다."
   },
   {
     "id": "--color-filepicker-disabled-dropzone-bg",
-    "lightValue": "#eeeeee",
-    "darkValue": "#1a1a1a",
+    "lightValue": "var(--project-color-primitive-gray-202)",
+    "darkValue": "var(--project-color-primitive-gray-29)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-filepicker-disabled-dropzone-border",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#333639",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-gray-66)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-filepicker-disabled-dropzone-hint-text",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#757575",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-gray-123)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-custom-modal-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#1e1e1e",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-37)",
     "usage": "Custom Modal Background Color",
     "description": "밝은 모드에서 커스텀 모달의 배경 색상입니다."
   },
   {
     "id": "--color-custom-modal-shadow-bg",
-    "lightValue": "rgba(0, 0, 0, 0.05)",
-    "darkValue": "rgba(0, 0, 0, 0.4)",
+    "lightValue": "var(--project-color-primitive-alpha-247)",
+    "darkValue": "var(--project-color-primitive-alpha-251)",
     "usage": "Custom Modal Shadow Background Color",
     "description": "밝은 모드에서 커스텀 모달의 그림자 배경 색상입니다."
   },
   {
     "id": "--color-custom-modal-border",
-    "lightValue": "#e4e4e4",
-    "darkValue": "#e4e4e4",
+    "lightValue": "var(--project-color-primitive-gray-191)",
+    "darkValue": "var(--project-color-primitive-gray-191)",
     "usage": "Custom Modal Stroke Color",
     "description": "밝은 모드에서 커스텀 모달의 테두리 색상입니다."
   },
   {
     "id": "--color-custom-modal-body-bg",
-    "lightValue": "#f5f5f5",
-    "darkValue": "#252525",
+    "lightValue": "var(--project-color-primitive-gray-216)",
+    "darkValue": "var(--project-color-primitive-gray-48)",
     "usage": "Custom Modal Body Background Color",
     "description": "밝은 모드에서 커스텀 모달 본문의 배경 색상입니다."
   },
   {
     "id": "--color-custom-modal-footer-bg",
-    "lightValue": "#f5f5f5",
-    "darkValue": "#252525",
+    "lightValue": "var(--project-color-primitive-gray-216)",
+    "darkValue": "var(--project-color-primitive-gray-48)",
     "usage": "Custom Modal Footer Background Color",
     "description": "밝은 모드에서 커스텀 모달 푸터의 배경 색상입니다."
   },
   {
     "id": "--color-alert-modal-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#1e1e1e",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-37)",
     "usage": "Alert Modal Background Color",
     "description": "밝은 모드에서 경고 모달의 배경 색상입니다."
   },
   {
     "id": "--color-alert-modal-shadow-bg",
-    "lightValue": "rgba(0, 0, 0, 0.05)",
-    "darkValue": "rgba(0, 0, 0, 0.4)",
+    "lightValue": "var(--project-color-primitive-alpha-247)",
+    "darkValue": "var(--project-color-primitive-alpha-251)",
     "usage": "Alert Modal Shadow Background Color",
     "description": "밝은 모드에서 경고 모달의 그림자 배경 색상입니다."
   },
   {
     "id": "--color-alert-modal-desc-text",
-    "lightValue": "#6f6f6f",
-    "darkValue": "#b0b0b0",
+    "lightValue": "var(--project-color-primitive-gray-119)",
+    "darkValue": "var(--project-color-primitive-gray-155)",
     "usage": "Alert Modal Description Text Color",
     "description": "밝은 모드에서 경고 모달 설명 텍스트의 색상입니다."
   },
   {
     "id": "--color-alert-modal-title-text",
-    "lightValue": "#ececec",
-    "darkValue": "#ececec",
+    "lightValue": "var(--project-color-primitive-gray-198)",
+    "darkValue": "var(--project-color-primitive-gray-198)",
     "usage": "Alert Modal Title Text Color",
     "description": "밝은 모드에서 경고 모달 제목 텍스트의 색상입니다."
   },
   {
     "id": "--color-toast-bg",
-    "lightValue": "rgba(25, 25, 25, 0.8)",
-    "darkValue": "rgba(25, 25, 25, 0.8)",
+    "lightValue": "var(--project-color-primitive-alpha-297)",
+    "darkValue": "var(--project-color-primitive-alpha-297)",
     "usage": "Toast Background Color",
     "description": "밝은 모드에서 토스트 알림의 배경 색상입니다."
   },
   {
     "id": "--color-toast-text",
-    "lightValue": "#ffffff",
-    "darkValue": "rgba(255, 255, 255, 0.95)",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-alpha-310)",
     "usage": "Toast Text Color",
     "description": "밝은 모드에서 토스트 알림 내 텍스트의 색상입니다."
   },
   {
     "id": "--color-toast-border",
-    "lightValue": "rgba(255, 255, 255, 0.1)",
-    "darkValue": "rgba(255, 255, 255, 0.1)",
+    "lightValue": "var(--project-color-primitive-alpha-304)",
+    "darkValue": "var(--project-color-primitive-alpha-304)",
     "usage": "Toast Border Color",
     "description": "밝은 모드에서 토스트 알림의 테두리 색상입니다."
   },
   {
     "id": "--color-toast-shadow-bg",
-    "lightValue": "rgba(0, 0, 0, 0.6)",
-    "darkValue": "rgba(0, 0, 0, 0.3)",
+    "lightValue": "var(--project-color-primitive-alpha-252)",
+    "darkValue": "var(--project-color-primitive-alpha-250)",
     "usage": "Toast Shadow Background Color",
     "description": "밝은 모드에서 토스트 알림의 그림자 배경 색상입니다."
   },
   {
     "id": "--color-toast-info-icon-color",
-    "lightValue": "#ffffff",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Toast Info Icon Color",
     "description": "밝은 모드에서 정보성 토스트 아이콘의 색상입니다."
   },
   {
     "id": "--color-toast-success-icon-color",
-    "lightValue": "#22c55e",
-    "darkValue": "#2ecc71",
+    "lightValue": "var(--project-color-primitive-green-45)",
+    "darkValue": "var(--project-color-primitive-green-61)",
     "usage": "Toast Success Icon Color",
     "description": "밝은 모드에서 성공 토스트 아이콘의 색상입니다."
   },
   {
     "id": "--color-toast-warning-icon-color",
-    "lightValue": "#f59e0b",
-    "darkValue": "#ffad13",
+    "lightValue": "var(--project-color-primitive-red-213)",
+    "darkValue": "var(--project-color-primitive-red-237)",
     "usage": "Toast Warning Icon Color",
     "description": "밝은 모드에서 경고 토스트 아이콘의 색 상입니다."
   },
   {
     "id": "--color-toast-error-icon-color",
-    "lightValue": "#ef4444",
-    "darkValue": "#ff5c5c",
+    "lightValue": "var(--project-color-primitive-red-203)",
+    "darkValue": "var(--project-color-primitive-red-231)",
     "usage": "Toast Error Icon Color",
     "description": "밝은 모드에서 오류 토스트 아이콘의 색상입니다."
   },
   {
     "id": "--color-toast-close-btn-bg",
-    "lightValue": "#000000",
-    "darkValue": "#333333",
+    "lightValue": "var(--project-color-primitive-gray-0)",
+    "darkValue": "var(--project-color-primitive-gray-65)",
     "usage": "Toast Close Button Background Color",
     "description": "밝은 모드에서 토스트 알림 닫기 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-toast-close-btn-bg-hover",
-    "lightValue": "#3b82f6",
-    "darkValue": "#1e1e1e",
+    "lightValue": "var(--project-color-primitive-blue-76)",
+    "darkValue": "var(--project-color-primitive-gray-37)",
     "usage": "Toast Close Button Background Color",
     "description": "밝은 모드에서 토스트 알림 닫기 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-toast-link-btn-bg",
-    "lightValue": "#333333",
-    "darkValue": "#333333",
+    "lightValue": "var(--project-color-primitive-gray-65)",
+    "darkValue": "var(--project-color-primitive-gray-65)",
     "usage": "Toast Link Button Background Color",
     "description": "밝은 모드에서 토스트 알림 링크 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-toast-link-btn-hover-bg",
-    "lightValue": "#3b82f6",
-    "darkValue": "#3b82f6",
+    "lightValue": "var(--project-color-primitive-blue-76)",
+    "darkValue": "var(--project-color-primitive-blue-76)",
     "usage": "Toast Link Button Hover Background Color",
     "description": "밝은 모드에서 토스트 알림 링크 버튼에 마우스 오버 시의 배경 색상입니다."
   },
   {
     "id": "--color-calendar-shadow-bg",
-    "lightValue": "rgba(0, 0, 0, 0.1)",
-    "darkValue": "rgba(255, 255, 255, 0.1)",
+    "lightValue": "var(--project-color-primitive-alpha-248)",
+    "darkValue": "var(--project-color-primitive-alpha-304)",
     "usage": "Calendar Drop Shadow Color",
     "description": "밝은 모드에서 캘린더의 그림자 색상입니다."
   },
   {
     "id": "--color-calendar-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#1e1e1e",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-37)",
     "usage": "Calendar Background Color",
     "description": "밝은 모드에서 캘린더의 배경 색상입니다."
   },
   {
     "id": "--color-calendar-date-text",
-    "lightValue": "#333333",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-65)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Calendar Date Text Color",
     "description": "밝은 모드에서 캘린더 날짜 텍스트의 색상입니다."
   },
   {
     "id": "--color-calendar-old-date-text",
-    "lightValue": "#767676",
-    "darkValue": "#767676",
+    "lightValue": "var(--project-color-primitive-gray-125)",
+    "darkValue": "var(--project-color-primitive-gray-125)",
     "usage": "Calendar Old Date Text Color",
     "description": "밝은 모드에서 이전 달 날짜 텍스트의 색상입니다."
   },
   {
     "id": "--color-calendar-today-date-bg",
-    "lightValue": "#ececed",
-    "darkValue": "#575757",
+    "lightValue": "var(--project-color-primitive-gray-199)",
+    "darkValue": "var(--project-color-primitive-gray-101)",
     "usage": "Calendar Today Date Color",
     "description": "밝은 모드에서 오늘 날짜의 강조 색상입니다."
   },
   {
     "id": "--color-calendar-today-date-text",
-    "lightValue": "#333333",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-65)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Calendar Today Date Text Color",
     "description": "밝은 모드에서 오늘 날짜 텍스트의 색상입니다."
   },
   {
     "id": "--color-calendar-holiday-tooltip-bg",
-    "lightValue": "#333333",
-    "darkValue": "#444444",
+    "lightValue": "var(--project-color-primitive-gray-65)",
+    "darkValue": "var(--project-color-primitive-gray-83)",
     "usage": "Calendar Holiday Tooltip Background Color",
     "description": "밝은 모드에서 공휴일 툴팁의 배경 색상입니다."
   },
   {
     "id": "--color-calendar-holiday-tooltip-text",
-    "lightValue": "#ffffff",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Calendar Holiday Tooltip Text Color",
     "description": "밝은 모드에서 공휴일 툴팁 텍스트의 색상입니다."
   },
   {
     "id": "--color-calendar-holiday-dot",
-    "lightValue": "#d32f2f",
-    "darkValue": "#ff8a80",
+    "lightValue": "var(--project-color-primitive-red-172)",
+    "darkValue": "var(--project-color-primitive-red-234)",
     "usage": "Calendar Holiday Dot Color",
     "description": "밝은 모드에서 공휴일을 표시하는 점의 색상입니다."
   },
   {
     "id": "--color-calendar-cell-skeleton-gradient-start",
-    "lightValue": "#e2e2e2",
-    "darkValue": "#2d2d2d",
+    "lightValue": "var(--project-color-primitive-gray-189)",
+    "darkValue": "var(--project-color-primitive-gray-56)",
     "usage": "Calendar Cell Skeleton Gradient Start Color",
     "description": "밝은 모드에서 캘린더 셀 스켈레톤 그라데이션의 시작 색상입니다."
   },
   {
     "id": "--color-calendar-cell-skeleton-gradient-center",
-    "lightValue": "#f2f2f2",
-    "darkValue": "#3d3d3d",
+    "lightValue": "var(--project-color-primitive-gray-210)",
+    "darkValue": "var(--project-color-primitive-gray-78)",
     "usage": "Calendar Cell Skeleton Gradient Center Color",
     "description": "밝은 모드에서 캘린더 셀 스켈레톤 그라데이션의 중간 색상입니다."
   },
   {
     "id": "--color-calendar-cell-skeleton-gradient-end",
-    "lightValue": "#e2e2e2",
-    "darkValue": "#2d2d2d",
+    "lightValue": "var(--project-color-primitive-gray-189)",
+    "darkValue": "var(--project-color-primitive-gray-56)",
     "usage": "Calendar Cell Skeleton Gradient End Color",
     "description": "밝은 모드에서 캘린더 셀 스켈레톤 그라데이션의 끝 색상입니다."
   },
   {
     "id": "--color-searchbar-link-icon-bg",
-    "lightValue": "#f2f2f2",
-    "darkValue": "#94a3b8",
+    "lightValue": "var(--project-color-primitive-gray-210)",
+    "darkValue": "var(--project-color-primitive-blue-139)",
     "usage": "Searchbar Background Color",
     "description": "밝은 모드에서 검색바의 배경 색상입니다."
   },
   {
     "id": "--color-searchbar-link-icon",
-    "lightValue": "#404040",
-    "darkValue": "#1e293b",
+    "lightValue": "var(--project-color-primitive-gray-81)",
+    "darkValue": "var(--project-color-primitive-blue-38)",
     "usage": "Searchbar Border Color",
     "description": "밝은 모드에서 검색바의 테두리 색상입니다."
   },
   {
     "id": "--color-icon-frame-success-fill",
-    "lightValue": "#15803d",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Icon Frame Icon Color",
     "description": "밝은 모드에서 아이콘 프레임 내부의 아이콘 색상입니다."
   },
   {
     "id": "--color-icon-frame-warning-fill",
-    "lightValue": "#b45309",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Icon Frame Icon Color",
     "description": "밝은 모드에서 아이콘 프레임 내부의 아이콘 색상입니다."
   },
   {
     "id": "--color-icon-frame-danger-fill",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Icon Frame Icon Color",
     "description": "밝은 모드에서 아이콘 프레임 내부의 아이콘 색상입니다."
   },
   {
     "id": "--color-option-list-shadow-bg",
-    "lightValue": "rgba(0, 0, 0, 0.1)",
-    "darkValue": "rgba(255, 255, 255, 0.1)",
+    "lightValue": "var(--project-color-primitive-alpha-248)",
+    "darkValue": "var(--project-color-primitive-alpha-304)",
     "usage": "Option List Drop Shadow Color",
     "description": "밝은 모드에서 옵션 리스트의 그림자 색상입니다."
   },
   {
     "id": "--color-option-list-empty-bg",
-    "lightValue": "#f8fafc",
-    "darkValue": "#1e293b",
+    "lightValue": "var(--project-color-primitive-gray-219)",
+    "darkValue": "var(--project-color-primitive-blue-38)",
     "usage": "Option List Empty State Background Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 배경 색상입니다."
   },
   {
     "id": "--color-option-list-empty-icon",
-    "lightValue": "#1e293b",
-    "darkValue": "#94a3b8",
+    "lightValue": "var(--project-color-primitive-blue-38)",
+    "darkValue": "var(--project-color-primitive-blue-139)",
     "usage": "Option List Empty State Icon Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 아이콘 색상입니다."
   },
   {
     "id": "--color-option-list-empty-title",
-    "lightValue": "#1e293b",
-    "darkValue": "#94a3b8",
+    "lightValue": "var(--project-color-primitive-blue-38)",
+    "darkValue": "var(--project-color-primitive-blue-139)",
     "usage": "Option List Empty State Title Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 제목 텍스트 색상입니다."
   },
   {
     "id": "--color-option-list-empty-desc",
-    "lightValue": "#64748b",
-    "darkValue": "#94a3b8",
+    "lightValue": "var(--project-color-primitive-blue-109)",
+    "darkValue": "var(--project-color-primitive-blue-139)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-list-outline-success-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#0f172a",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-blue-18)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-list-outline-success-border",
-    "lightValue": "#28a745",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-51)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-list-outline-warning-bg",
-    "lightValue": "#0f172a",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-blue-18)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-list-outline-warning-border",
-    "lightValue": "#fbbf24",
-    "darkValue": "#f5c84a",
+    "lightValue": "var(--project-color-primitive-red-223)",
+    "darkValue": "var(--project-color-primitive-red-214)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-list-outline-danger-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#0f172a",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-blue-18)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-list-outline-danger-border",
-    "lightValue": "#d84a4a",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-175)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
@@ -631,78 +631,78 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-option-item-ghost-success-text",
-    "lightValue": "#2e5938",
-    "darkValue": "#a7d4b4",
+    "lightValue": "var(--project-color-primitive-green-60)",
+    "darkValue": "var(--project-color-primitive-green-152)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-success-bg-hover",
-    "lightValue": "#d7f2df",
-    "darkValue": "#1a2d24",
+    "lightValue": "var(--project-color-primitive-green-174)",
+    "darkValue": "var(--project-color-primitive-gray-30)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-success-text-hover",
-    "lightValue": "#1e3b25",
-    "darkValue": "#c9ebd0",
+    "lightValue": "var(--project-color-primitive-green-40)",
+    "darkValue": "var(--project-color-primitive-green-166)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-success-bg-selected",
-    "lightValue": "#b9e2c0",
-    "darkValue": "#2e5938",
+    "lightValue": "var(--project-color-primitive-green-161)",
+    "darkValue": "var(--project-color-primitive-green-60)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-success-text-selected",
-    "lightValue": "#142a1a",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-green-21)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-success-bg-selected-hover",
-    "lightValue": "#aad9b0",
-    "darkValue": "#3a6e46",
+    "lightValue": "var(--project-color-primitive-green-153)",
+    "darkValue": "var(--project-color-primitive-green-75)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-success-text-selected-hover",
-    "lightValue": "#0d1c11",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-17)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-success-bg-active",
-    "lightValue": "#9bce9f",
-    "darkValue": "#244031",
+    "lightValue": "var(--project-color-primitive-green-144)",
+    "darkValue": "var(--project-color-primitive-green-46)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-success-text-active",
-    "lightValue": "#000000",
-    "darkValue": "#d7f2df",
+    "lightValue": "var(--project-color-primitive-gray-0)",
+    "darkValue": "var(--project-color-primitive-green-174)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-success-bg-selected-active",
-    "lightValue": "#1e3b25",
-    "darkValue": "#1e3b25",
+    "lightValue": "var(--project-color-primitive-green-40)",
+    "darkValue": "var(--project-color-primitive-green-40)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-success-text-selected-active",
-    "lightValue": "#ffffff",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
@@ -715,78 +715,78 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-option-item-ghost-warning-text",
-    "lightValue": "#5c4a00",
-    "darkValue": "#fde68a",
+    "lightValue": "var(--project-color-primitive-red-105)",
+    "darkValue": "var(--project-color-primitive-red-226)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-warning-bg-hover",
-    "lightValue": "#fff4d1",
-    "darkValue": "#2d2410",
+    "lightValue": "var(--project-color-primitive-red-243)",
+    "darkValue": "var(--project-color-primitive-red-55)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-warning-text-hover",
-    "lightValue": "#453700",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-red-86)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-warning-bg-selected",
-    "lightValue": "#ffeb9f",
-    "darkValue": "#b45309",
+    "lightValue": "var(--project-color-primitive-red-242)",
+    "darkValue": "var(--project-color-primitive-red-157)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-warning-text-selected",
-    "lightValue": "#332900",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-red-64)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-warning-bg-selected-hover",
-    "lightValue": "#ffe486",
-    "darkValue": "#92400e",
+    "lightValue": "var(--project-color-primitive-red-241)",
+    "darkValue": "var(--project-color-primitive-red-137)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-warning-text-selected-hover",
-    "lightValue": "#1f1900",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-red-41)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-warning-bg-active",
-    "lightValue": "#ffeb9f",
-    "darkValue": "#3d300c",
+    "lightValue": "var(--project-color-primitive-red-242)",
+    "darkValue": "var(--project-color-primitive-red-77)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-warning-text-active",
-    "lightValue": "#332900",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-red-64)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-warning-bg-selected-active",
-    "lightValue": "#ffdd6d",
-    "darkValue": "#78350f",
+    "lightValue": "var(--project-color-primitive-red-240)",
+    "darkValue": "var(--project-color-primitive-red-126)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-warning-text-selected-active",
-    "lightValue": "#000000",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-0)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
@@ -799,239 +799,239 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-option-item-ghost-danger-text",
-    "lightValue": "#6f1a1a",
-    "darkValue": "#fecaca",
+    "lightValue": "var(--project-color-primitive-red-117)",
+    "darkValue": "var(--project-color-primitive-red-227)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-danger-bg-hover",
-    "lightValue": "#ffb5b5",
-    "darkValue": "#2d1a1a",
+    "lightValue": "var(--project-color-primitive-red-238)",
+    "darkValue": "var(--project-color-primitive-gray-54)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-danger-text-hover",
-    "lightValue": "#5a1515",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-red-102)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-danger-bg-selected",
-    "lightValue": "#ff8f8f",
-    "darkValue": "#991b1b",
+    "lightValue": "var(--project-color-primitive-red-235)",
+    "darkValue": "var(--project-color-primitive-red-140)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-danger-text-selected",
-    "lightValue": "#4a1010",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-red-90)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-danger-bg-selected-hover",
-    "lightValue": "#ff7d7d",
-    "darkValue": "#7f1d1d",
+    "lightValue": "var(--project-color-primitive-red-233)",
+    "darkValue": "var(--project-color-primitive-red-130)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-danger-text-selected-hover",
-    "lightValue": "#3a0c0c",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-red-74)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-danger-bg-active",
-    "lightValue": "#ff8f8f",
-    "darkValue": "#3f1d1d",
+    "lightValue": "var(--project-color-primitive-red-235)",
+    "darkValue": "var(--project-color-primitive-red-79)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-danger-text-active",
-    "lightValue": "#4a1010",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-red-90)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-danger-bg-selected-active",
-    "lightValue": "#ff6b6b",
-    "darkValue": "#6c1616",
+    "lightValue": "var(--project-color-primitive-red-232)",
+    "darkValue": "var(--project-color-primitive-red-113)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-ghost-danger-text-selected-active",
-    "lightValue": "#000000",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-0)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-disabled-bg",
-    "lightValue": "#eeeeee",
-    "darkValue": "#0f172a",
+    "lightValue": "var(--project-color-primitive-gray-202)",
+    "darkValue": "var(--project-color-primitive-blue-18)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-option-item-disabled-text",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#475569",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-88)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-validation-msg-guide-bg",
-    "lightValue": "#f0f9ff",
-    "darkValue": "#0c4a6e",
+    "lightValue": "var(--project-color-primitive-gray-206)",
+    "darkValue": "var(--project-color-primitive-blue-16)",
     "usage": "Validation Message Background Color",
     "description": "밝은 모드에서 검증 메시지의 배경 색상입니다."
   },
   {
     "id": "--color-validation-msg-guide-text",
-    "lightValue": "#075985",
-    "darkValue": "#e0f2fe",
+    "lightValue": "var(--project-color-primitive-blue-15)",
+    "darkValue": "var(--project-color-primitive-blue-187)",
     "usage": "Validation Message Text Color",
     "description": "밝은 모드에서 검증 메시지의 텍스트 색상입니다."
   },
   {
     "id": "--color-validation-msg-guide-icon-fill",
-    "lightValue": "#075985",
-    "darkValue": "#38bdf8",
+    "lightValue": "var(--project-color-primitive-blue-15)",
+    "darkValue": "var(--project-color-primitive-blue-73)",
     "usage": "Validation Message Icon Color",
     "description": "밝은 모드에서 검증 메시지의 아이콘 색상입니다."
   },
   {
     "id": "--color-validation-msg-success-bg",
-    "lightValue": "#f0fdf4",
-    "darkValue": "#064e3b",
+    "lightValue": "var(--project-color-primitive-gray-207)",
+    "darkValue": "var(--project-color-primitive-green-13)",
     "usage": "Validation Message Success Background Color",
     "description": "밝은 모드에서 검증 메시지 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-validation-msg-success-text",
-    "lightValue": "#166534",
-    "darkValue": "#6ee7b7",
+    "lightValue": "var(--project-color-primitive-green-25)",
+    "darkValue": "var(--project-color-primitive-green-116)",
     "usage": "Validation Message Success Text Color",
     "description": "밝은 모드에서 검증 메시지 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-validation-msg-success-icon-fill",
-    "lightValue": "#15803d",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Validation Message Success Icon Color",
     "description": "밝은 모드에서 검증 메시지 성공 상태의 아이콘 색상입니다."
   },
   {
     "id": "--color-validation-msg-warning-bg",
-    "lightValue": "#fffbeb",
-    "darkValue": "#451a03",
+    "lightValue": "var(--project-color-primitive-red-245)",
+    "darkValue": "var(--project-color-primitive-red-85)",
     "usage": "Validation Message Success Background Color",
     "description": "밝은 모드에서 검증 메시지 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-validation-msg-warning-text",
-    "lightValue": "#78350f",
-    "darkValue": "#fffbeb",
+    "lightValue": "var(--project-color-primitive-red-126)",
+    "darkValue": "var(--project-color-primitive-red-245)",
     "usage": "Validation Message Success Text Color",
     "description": "밝은 모드에서 검증 메시지 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-validation-msg-warning-icon-fill",
-    "lightValue": "#92400e",
-    "darkValue": "#fcd34d",
+    "lightValue": "var(--project-color-primitive-red-137)",
+    "darkValue": "var(--project-color-primitive-red-225)",
     "usage": "Validation Message Success Icon Color",
     "description": "밝은 모드에서 검증 메시지 성공 상태의 아이콘 색상입니다."
   },
   {
     "id": "--color-validation-msg-danger-bg",
-    "lightValue": "#fef2f2",
-    "darkValue": "#450a0a",
+    "lightValue": "var(--project-color-primitive-gray-228)",
+    "darkValue": "var(--project-color-primitive-red-84)",
     "usage": "Validation Message Success Background Color",
     "description": "밝은 모드에서 검증 메시지 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-validation-msg-danger-text",
-    "lightValue": "#7f1d1d",
-    "darkValue": "#fef2f2",
+    "lightValue": "var(--project-color-primitive-red-130)",
+    "darkValue": "var(--project-color-primitive-gray-228)",
     "usage": "Validation Message Success Text Color",
     "description": "밝은 모드에서 검증 메시지 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-validation-msg-danger-icon-fill",
-    "lightValue": "#dc2626",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-180)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Validation Message Success Icon Color",
     "description": "밝은 모드에서 검증 메시지 성공 상태의 아이콘 색상입니다."
   },
   {
     "id": "--color-slider-track-bg",
-    "lightValue": "#e0e0e0",
-    "darkValue": "#333333",
+    "lightValue": "var(--project-color-primitive-gray-185)",
+    "darkValue": "var(--project-color-primitive-gray-65)",
     "usage": "Slider Track Background Color",
     "description": "밝은 모드에서 슬라이더 트랙의 배경 색상입니다."
   },
   {
     "id": "--color-slider-bg",
-    "lightValue": "#333333",
-    "darkValue": "#e0e0e0",
+    "lightValue": "var(--project-color-primitive-gray-65)",
+    "darkValue": "var(--project-color-primitive-gray-185)",
     "usage": "Slider Background Color",
     "description": "밝은 모드에서 슬라이더의 배경 색상입니다."
   },
   {
     "id": "--color-slider-text",
-    "lightValue": "#ffffff",
-    "darkValue": "#444444",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-83)",
     "usage": "Slider Text Color",
     "description": "밝은 모드에서 슬라이더 텍스트의 색상입니다."
   },
   {
     "id": "--color-slider-disabled-track-bg",
-    "lightValue": "#e9ecef",
-    "darkValue": "#e9ecef",
+    "lightValue": "var(--project-color-primitive-gray-196)",
+    "darkValue": "var(--project-color-primitive-gray-196)",
     "usage": "Slider Text Color",
     "description": "밝은 모드에서 슬라이더 텍스트의 색상입니다."
   },
   {
     "id": "--color-slider-disabled-fill",
-    "lightValue": "#adb5bd",
-    "darkValue": "#343a40",
+    "lightValue": "var(--project-color-primitive-gray-154)",
+    "darkValue": "var(--project-color-primitive-gray-69)",
     "usage": "Slider Text Color",
     "description": "밝은 모드에서 슬라이더 텍스트의 색상입니다."
   },
   {
     "id": "--color-slider-disabled-thumb-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#6c757d",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-114)",
     "usage": "Slider Text Color",
     "description": "밝은 모드에서 슬라이더 텍스트의 색상입니다."
   },
   {
     "id": "--color-slider-disabled-thumb-border",
-    "lightValue": "#adb5bd",
-    "darkValue": "#495057",
+    "lightValue": "var(--project-color-primitive-gray-154)",
+    "darkValue": "var(--project-color-primitive-gray-89)",
     "usage": "Slider Text Color",
     "description": "밝은 모드에서 슬라이더 텍스트의 색상입니다."
   },
   {
     "id": "--color-badge-solid-success-bg",
-    "lightValue": "#15803d",
-    "darkValue": "#15803d",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-24)",
     "usage": "Outline Button Background Color",
     "description": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-badge-solid-success-text",
-    "lightValue": "#ffffff",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Outline Button Background Color",
     "description": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
   },
@@ -1044,36 +1044,36 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-badge-outline-success-bg",
-    "lightValue": "#f0fdf4",
-    "darkValue": "rgba(74, 222, 128, 0.12)",
+    "lightValue": "var(--project-color-primitive-gray-207)",
+    "darkValue": "var(--project-color-primitive-alpha-328)",
     "usage": "Outline Button Background Color",
     "description": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-badge-outline-success-text",
-    "lightValue": "#15803d",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Outline Button Background Color",
     "description": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-badge-outline-success-border",
-    "lightValue": "#15803d",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Outline Button Background Color",
     "description": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-badge-solid-warning-bg",
-    "lightValue": "#a16207",
-    "darkValue": "#9a3412",
+    "lightValue": "var(--project-color-primitive-red-147)",
+    "darkValue": "var(--project-color-primitive-red-142)",
     "usage": "Outline Button Background Color",
     "description": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-badge-solid-warning-text",
-    "lightValue": "#ffffff",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Outline Button Background Color",
     "description": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
   },
@@ -1086,36 +1086,36 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-badge-outline-warning-bg",
-    "lightValue": "#fefce8",
-    "darkValue": "rgba(251, 191, 36, 0.12)",
+    "lightValue": "var(--project-color-primitive-red-230)",
+    "darkValue": "var(--project-color-primitive-alpha-298)",
     "usage": "Outline Button Background Color",
     "description": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-badge-outline-warning-text",
-    "lightValue": "#a16207",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-147)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Outline Button Background Color",
     "description": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-badge-outline-warning-border",
-    "lightValue": "#a16207",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-147)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Outline Button Background Color",
     "description": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-badge-solid-danger-bg",
-    "lightValue": "#dc2626",
-    "darkValue": "#dc2626",
+    "lightValue": "var(--project-color-primitive-red-180)",
+    "darkValue": "var(--project-color-primitive-red-180)",
     "usage": "Outline Button Background Color",
     "description": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-badge-solid-danger-text",
-    "lightValue": "#ffffff",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Outline Button Background Color",
     "description": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
   },
@@ -1128,274 +1128,274 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-badge-outline-danger-bg",
-    "lightValue": "#fef2f2",
-    "darkValue": "rgba(248, 113, 113, 0.12)",
+    "lightValue": "var(--project-color-primitive-gray-228)",
+    "darkValue": "var(--project-color-primitive-alpha-293)",
     "usage": "Outline Button Background Color",
     "description": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-badge-outline-danger-text",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Outline Button Background Color",
     "description": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-badge-outline-danger-border",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Outline Button Background Color",
     "description": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-datepicker-success-shadow-hover",
-    "lightValue": "rgba(21, 128, 101, 0.25)",
-    "darkValue": "#34d399",
+    "lightValue": "var(--project-color-primitive-alpha-288)",
+    "darkValue": "var(--project-color-primitive-green-70)",
     "usage": "Datepicker Success Hover Shadow Color",
     "description": "밝은 모드에서 데이트피커 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-datepicker-outline-success-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#064e3b",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-green-13)",
     "usage": "Datepicker Success Background Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-datepicker-outline-success-border",
-    "lightValue": "#16a34a",
-    "darkValue": "#059669",
+    "lightValue": "var(--project-color-primitive-green-26)",
+    "darkValue": "var(--project-color-primitive-green-12)",
     "usage": "Datepicker Success Border Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-datepicker-outline-success-text",
-    "lightValue": "#14532d",
-    "darkValue": "#f0fdf4",
+    "lightValue": "var(--project-color-primitive-green-22)",
+    "darkValue": "var(--project-color-primitive-gray-207)",
     "usage": "Datepicker Success Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-datepicker-outline-success-placeholder",
-    "lightValue": "#166534",
-    "darkValue": "#6ee7b7",
+    "lightValue": "var(--project-color-primitive-green-25)",
+    "darkValue": "var(--project-color-primitive-green-116)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-datepicker-warning-shadow-hover",
-    "lightValue": "rgba(180, 83, 9, 0.25)",
-    "darkValue": "#facc15",
+    "lightValue": "var(--project-color-primitive-alpha-281)",
+    "darkValue": "var(--project-color-primitive-red-222)",
     "usage": "Datepicker Success Hover Shadow Color",
     "description": "밝은 모드에서 데이트피커 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-datepicker-outline-warning-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#451a03",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-red-85)",
     "usage": "Datepicker Success Background Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-datepicker-outline-warning-border",
-    "lightValue": "#d97706",
-    "darkValue": "#f59e0b",
+    "lightValue": "var(--project-color-primitive-red-177)",
+    "darkValue": "var(--project-color-primitive-red-213)",
     "usage": "Datepicker Success Border Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-datepicker-outline-warning-text",
-    "lightValue": "#78350f",
-    "darkValue": "#fef3c7",
+    "lightValue": "var(--project-color-primitive-red-126)",
+    "darkValue": "var(--project-color-primitive-red-229)",
     "usage": "Datepicker Success Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-datepicker-outline-warning-placeholder",
-    "lightValue": "#92400e",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-137)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-datepicker-danger-shadow-hover",
-    "lightValue": "rgba(185, 28, 28, 0.25)",
-    "darkValue": "#ef4444",
+    "lightValue": "var(--project-color-primitive-alpha-286)",
+    "darkValue": "var(--project-color-primitive-red-203)",
     "usage": "Datepicker Success Hover Shadow Color",
     "description": "밝은 모드에서 데이트피커 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-datepicker-outline-danger-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#450a0a",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-red-84)",
     "usage": "Datepicker Success Background Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-datepicker-outline-danger-border",
-    "lightValue": "#dc2626",
-    "darkValue": "#ef4444",
+    "lightValue": "var(--project-color-primitive-red-180)",
+    "darkValue": "var(--project-color-primitive-red-203)",
     "usage": "Datepicker Success Border Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-datepicker-outline-danger-text",
-    "lightValue": "#7f1d1d",
-    "darkValue": "#fef2f2",
+    "lightValue": "var(--project-color-primitive-red-130)",
+    "darkValue": "var(--project-color-primitive-gray-228)",
     "usage": "Datepicker Success Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-datepicker-outline-danger-placeholder",
-    "lightValue": "#991b1b",
-    "darkValue": "#fca5a5",
+    "lightValue": "var(--project-color-primitive-red-140)",
+    "darkValue": "var(--project-color-primitive-red-224)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-datepicker-readonly-bg",
-    "lightValue": "#f9f9f9",
-    "darkValue": "#1e293b",
+    "lightValue": "var(--project-color-primitive-gray-220)",
+    "darkValue": "var(--project-color-primitive-blue-38)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-datepicker-readonly-border",
-    "lightValue": "#e0e0e0",
-    "darkValue": "#334155",
+    "lightValue": "var(--project-color-primitive-gray-185)",
+    "darkValue": "var(--project-color-primitive-blue-67)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-datepicker-readonly-text",
-    "lightValue": "#212121",
-    "darkValue": "#cbd5e1",
+    "lightValue": "var(--project-color-primitive-gray-43)",
+    "darkValue": "var(--project-color-primitive-blue-167)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-datepicker-readonly-placeholder",
-    "lightValue": "#212121",
-    "darkValue": "#64748b",
+    "lightValue": "var(--project-color-primitive-gray-43)",
+    "darkValue": "var(--project-color-primitive-blue-109)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-datepicker-dissabled-bg",
-    "lightValue": "#eeeeee",
-    "darkValue": "#0f172a",
+    "lightValue": "var(--project-color-primitive-gray-202)",
+    "darkValue": "var(--project-color-primitive-blue-18)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-datepicker-dissabled-border",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#475569",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-88)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-datepicker-dissabled-text",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#475569",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-88)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-datepicker-dissabled-placeholder",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#334155",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-67)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-outline-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#121212",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-19)",
     "usage": "Outline Button Background Color",
     "description": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-btn-outline-success-text",
-    "lightValue": "#15803d",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Outline Button Success Text Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-outline-success-border",
-    "lightValue": "#15803d",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Outline Button Success Border Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-btn-outline-success-bg-hover",
-    "lightValue": "rgba(21, 128, 61, 0.08)",
-    "darkValue": "rgba(74, 222, 128, 0.12)",
+    "lightValue": "var(--project-color-primitive-alpha-290)",
+    "darkValue": "var(--project-color-primitive-alpha-328)",
     "usage": "Outline Button Success Hover Background Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-outline-success-text-hover",
-    "lightValue": "#15803d",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Outline Button Success Hover Text Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-outline-success-bg-active",
-    "lightValue": "rgba(21, 128, 61, 0.16)",
-    "darkValue": "rgba(74, 222, 128, 0.24)",
+    "lightValue": "var(--project-color-primitive-alpha-292)",
+    "darkValue": "var(--project-color-primitive-alpha-330)",
     "usage": "Outline Button Success Active Background Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-outline-success-text-active",
-    "lightValue": "#15803d",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Outline Button Success Active Text Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-solid-success-bg",
-    "lightValue": "#15803d",
-    "darkValue": "#15803d",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-24)",
     "usage": "Solid Button Success Background Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-btn-solid-success-text",
-    "lightValue": "#ffffff",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Solid Button Success Text Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-solid-success-bg-hover",
-    "lightValue": "#166534",
-    "darkValue": "#16a34a",
+    "lightValue": "var(--project-color-primitive-green-25)",
+    "darkValue": "var(--project-color-primitive-green-26)",
     "usage": "Solid Button Success Hover Background Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-solid-success-text-hover",
-    "lightValue": "#ffffff",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Solid Button Success Hover Text Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-solid-success-bg-active",
-    "lightValue": "#14532d",
-    "darkValue": "#14532d",
+    "lightValue": "var(--project-color-primitive-green-22)",
+    "darkValue": "var(--project-color-primitive-green-22)",
     "usage": "Solid Button Success Active Background Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태에 활성화 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-solid-success-text-active",
-    "lightValue": "#ffffff",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Solid Button Success Active Text Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
@@ -1408,36 +1408,36 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-btn-ghost-success-text",
-    "lightValue": "#15803d",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Ghost Button Success Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-ghost-success-bg-hover",
-    "lightValue": "rgba(21, 128, 61, 0.05)",
-    "darkValue": "rgba(74, 222, 128, 0.15)",
+    "lightValue": "var(--project-color-primitive-alpha-289)",
+    "darkValue": "var(--project-color-primitive-alpha-329)",
     "usage": "Ghost Button Success Hover Background Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-ghost-success-text-hover",
-    "lightValue": "#15803d",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Ghost Button Success Hover Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-ghost-success-bg-active",
-    "lightValue": "rgba(21, 128, 61, 0.1)",
-    "darkValue": "rgba(74, 222, 128, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-291)",
+    "darkValue": "var(--project-color-primitive-alpha-331)",
     "usage": "Ghost Button Success Active Background Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-ghost-success-text-active",
-    "lightValue": "#15803d",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
@@ -1450,120 +1450,120 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-btn-link-success-text",
-    "lightValue": "#15803d",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-link-success-bg-hover",
-    "lightValue": "rgba(21, 128, 61, 0.05)",
-    "darkValue": "rgba(74, 222, 128, 0.15)",
+    "lightValue": "var(--project-color-primitive-alpha-289)",
+    "darkValue": "var(--project-color-primitive-alpha-329)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-link-success-text-hover",
-    "lightValue": "#15803d",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-link-success-bg-active",
-    "lightValue": "rgba(21, 128, 61, 0.1)",
-    "darkValue": "rgba(74, 222, 128, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-291)",
+    "darkValue": "var(--project-color-primitive-alpha-331)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-link-success-text-active",
-    "lightValue": "#15803d",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-outline-warning-text",
-    "lightValue": "#b45309",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Outline Button Success Text Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-outline-warning-border",
-    "lightValue": "#b45309",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Outline Button Success Border Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-btn-outline-warning-bg-hover",
-    "lightValue": "#b45309",
-    "darkValue": "rgba(251, 191, 36, 0.12)",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-alpha-298)",
     "usage": "Outline Button Success Hover Background Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-outline-warning-text-hover",
-    "lightValue": "rgba(180, 83, 9, 0.08)",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-alpha-279)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Outline Button Success Hover Text Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-outline-warning-bg-active",
-    "lightValue": "#b45309",
-    "darkValue": "rgba(251, 191, 36, 0.24)",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-alpha-300)",
     "usage": "Outline Button Success Active Background Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-outline-warning-text-active",
-    "lightValue": "#fbbf24",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-223)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Outline Button Success Active Text Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-solid-warning-bg",
-    "lightValue": "#b45309",
-    "darkValue": "#9a3412",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-142)",
     "usage": "Solid Button Success Background Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-btn-solid-warning-text",
-    "lightValue": "#ffffff",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Solid Button Success Text Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-solid-warning-bg-hover",
-    "lightValue": "#92400e",
-    "darkValue": "#b45309",
+    "lightValue": "var(--project-color-primitive-red-137)",
+    "darkValue": "var(--project-color-primitive-red-157)",
     "usage": "Solid Button Success Hover Background Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-solid-warning-text-hover",
-    "lightValue": "#ffffff",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Solid Button Success Hover Text Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-solid-warning-bg-active",
-    "lightValue": "#78350f",
-    "darkValue": "#7c2d12",
+    "lightValue": "var(--project-color-primitive-red-126)",
+    "darkValue": "var(--project-color-primitive-red-127)",
     "usage": "Solid Button Success Active Background Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태에 활성화 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-solid-warning-text-active",
-    "lightValue": "#ffffff",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Solid Button Success Active Text Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
@@ -1576,36 +1576,36 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-btn-ghost-warning-text",
-    "lightValue": "#b45309",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Ghost Button Success Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-ghost-warning-bg-hover",
-    "lightValue": "rgba(180, 83, 9, 0.05)",
-    "darkValue": "rgba(251, 191, 36, 0.15)",
+    "lightValue": "var(--project-color-primitive-alpha-278)",
+    "darkValue": "var(--project-color-primitive-alpha-299)",
     "usage": "Ghost Button Success Hover Background Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-ghost-warning-text-hover",
-    "lightValue": "#b45309",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Ghost Button Success Hover Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-ghost-warning-bg-active",
-    "lightValue": "rgba(180, 83, 9, 0.1)",
-    "darkValue": "rgba(251, 191, 36, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-280)",
+    "darkValue": "var(--project-color-primitive-alpha-301)",
     "usage": "Ghost Button Success Active Background Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-ghost-warning-text-active",
-    "lightValue": "#b45309",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
@@ -1618,120 +1618,120 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-btn-link-warning-text",
-    "lightValue": "#b45309",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-link-warning-bg-hover",
-    "lightValue": "rgba(180, 83, 9, 0.05)",
-    "darkValue": "rgba(251, 191, 36, 0.15)",
+    "lightValue": "var(--project-color-primitive-alpha-278)",
+    "darkValue": "var(--project-color-primitive-alpha-299)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-link-warning-text-hover",
-    "lightValue": "#b45309",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-link-warning-bg-active",
-    "lightValue": "rgba(180, 83, 9, 0.1)",
-    "darkValue": "rgba(251, 191, 36, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-280)",
+    "darkValue": "var(--project-color-primitive-alpha-301)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-link-warning-text-active",
-    "lightValue": "#b45309",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-outline-danger-text",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Outline Button Success Text Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-outline-danger-border",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Outline Button Success Border Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-btn-outline-danger-bg-hover",
-    "lightValue": "rgba(185, 28, 28, 0.08)",
-    "darkValue": "rgba(248, 113, 113, 0.12)",
+    "lightValue": "var(--project-color-primitive-alpha-283)",
+    "darkValue": "var(--project-color-primitive-alpha-293)",
     "usage": "Outline Button Success Hover Background Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-outline-danger-text-hover",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Outline Button Success Hover Text Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-outline-danger-bg-active",
-    "lightValue": "rgba(185, 28, 28, 0.16)",
-    "darkValue": "rgba(248, 113, 113, 0.24)",
+    "lightValue": "var(--project-color-primitive-alpha-285)",
+    "darkValue": "var(--project-color-primitive-alpha-295)",
     "usage": "Outline Button Success Active Background Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-outline-danger-text-active",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Outline Button Success Active Text Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-solid-danger-bg",
-    "lightValue": "#b91c1c",
-    "darkValue": "#dc2626",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-180)",
     "usage": "Solid Button Success Background Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-btn-solid-danger-text",
-    "lightValue": "#ffffff",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Solid Button Success Text Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-solid-danger-bg-hover",
-    "lightValue": "#991b1b",
-    "darkValue": "#ef4444",
+    "lightValue": "var(--project-color-primitive-red-140)",
+    "darkValue": "var(--project-color-primitive-red-203)",
     "usage": "Solid Button Success Hover Background Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-solid-danger-text-hover",
-    "lightValue": "#ffffff",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Solid Button Success Hover Text Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-solid-danger-bg-active",
-    "lightValue": "#7f1d1d",
-    "darkValue": "#991b1b",
+    "lightValue": "var(--project-color-primitive-red-130)",
+    "darkValue": "var(--project-color-primitive-red-140)",
     "usage": "Solid Button Success Active Background Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태에 활성화 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-solid-danger-text-active",
-    "lightValue": "#ffffff",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Solid Button Success Active Text Color",
     "description": "밝은 모드에서 솔리드 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
@@ -1744,36 +1744,36 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-btn-ghost-danger-text",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Ghost Button Success Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-ghost-danger-bg-hover",
-    "lightValue": "rgba(185, 28, 28, 0.05)",
-    "darkValue": "rgba(248, 113, 113, 0.15)",
+    "lightValue": "var(--project-color-primitive-alpha-282)",
+    "darkValue": "var(--project-color-primitive-alpha-294)",
     "usage": "Ghost Button Success Hover Background Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-ghost-danger-text-hover",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Ghost Button Success Hover Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-ghost-danger-bg-active",
-    "lightValue": "rgba(185, 28, 28, 0.1)",
-    "darkValue": "rgba(248, 113, 113, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-284)",
+    "darkValue": "var(--project-color-primitive-alpha-296)",
     "usage": "Ghost Button Success Active Background Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-ghost-danger-text-active",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
@@ -1786,57 +1786,57 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-btn-link-danger-text",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-link-danger-bg-hover",
-    "lightValue": "rgba(185, 28, 28, 0.05)",
-    "darkValue": "rgba(248, 113, 113, 0.15)",
+    "lightValue": "var(--project-color-primitive-alpha-282)",
+    "darkValue": "var(--project-color-primitive-alpha-294)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-link-danger-text-hover",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-link-danger-bg-active",
-    "lightValue": "rgba(185, 28, 28, 0.1)",
-    "darkValue": "rgba(248, 113, 113, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-284)",
+    "darkValue": "var(--project-color-primitive-alpha-296)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-link-danger-text-active",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Ghost Button Success Active Text Color",
     "description": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-disabled-bg",
-    "lightValue": "#e0e0e0",
-    "darkValue": "#1e1e1e",
+    "lightValue": "var(--project-color-primitive-gray-185)",
+    "darkValue": "var(--project-color-primitive-gray-37)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-disabled-border",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#374151",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-71)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-btn-disabled-text",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#4b5563",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-94)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
@@ -1849,8 +1849,8 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-btn-disabled-ghost-link-text",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#4b5563",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-94)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
@@ -1863,1016 +1863,1016 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-radio-unchecked-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#121212",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-19)",
     "usage": "Radio Button Background Color",
     "description": "밝은 모드에서 라디오 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-radio-border",
-    "lightValue": "#717171",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-122)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Radio Button Border Color",
     "description": "밝은 모드에서 라디오 버튼의 테두리 색상입니다."
   },
   {
     "id": "--color-radio-success-checked",
-    "lightValue": "#15803d",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Radio Button Success Checked Color",
     "description": "밝은 모드에서 라디오 버튼 성공 상태의 선택된 색상입니다."
   },
   {
     "id": "--color-radio-success-shadow-hover",
-    "lightValue": "rgba(21, 128, 101, 0.25)",
-    "darkValue": "rgba(74, 222, 128, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-288)",
+    "darkValue": "var(--project-color-primitive-alpha-331)",
     "usage": "Radio Button Success Hover Shadow Color",
     "description": "밝은 모드에서 라디오 버튼 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-radio-success-shadow-active",
-    "lightValue": "rgba(21, 128, 101, 0.25)",
-    "darkValue": "rgba(74, 222, 128, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-288)",
+    "darkValue": "var(--project-color-primitive-alpha-331)",
     "usage": "Radio Button Success Active Shadow Color",
     "description": "밝은 모드에서 라디오 버튼 성공 상태에 활성화 시의 그림자 색상입니다."
   },
   {
     "id": "--color-radio-warning-checked",
-    "lightValue": "#b45309",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Radio Button warning Checked Color",
     "description": "밝은 모드에서 라디오 버튼 성공 상태의 선택된 색상입니다."
   },
   {
     "id": "--color-radio-warning-shadow-hover",
-    "lightValue": "rgba(180, 83, 9, 0.25)",
-    "darkValue": "rgba(251, 191, 36, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-281)",
+    "darkValue": "var(--project-color-primitive-alpha-301)",
     "usage": "Radio Button warning Hover Shadow Color",
     "description": "밝은 모드에서 라디오 버튼 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-radio-warning-shadow-active",
-    "lightValue": "rgba(180, 83, 9, 0.25)",
-    "darkValue": "rgba(251, 191, 36, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-281)",
+    "darkValue": "var(--project-color-primitive-alpha-301)",
     "usage": "Radio Button warning Active Shadow Color",
     "description": "밝은 모드에서 라디오 버튼 성공 상태에 활성화 시의 그림자 색상입니다."
   },
   {
     "id": "--color-radio-danger-checked",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Radio Button danger Checked Color",
     "description": "밝은 모드에서 라디오 버튼 성공 상태의 선택된 색상입니다."
   },
   {
     "id": "--color-radio-danger-shadow-hover",
-    "lightValue": "rgba(185, 28, 28, 0.25)",
-    "darkValue": "rgba(248, 113, 113, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-286)",
+    "darkValue": "var(--project-color-primitive-alpha-296)",
     "usage": "Radio Button danger Hover Shadow Color",
     "description": "밝은 모드에서 라디오 버튼 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-radio-danger-shadow-active",
-    "lightValue": "rgba(185, 28, 28, 0.25)",
-    "darkValue": "rgba(248, 113, 113, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-286)",
+    "darkValue": "var(--project-color-primitive-alpha-296)",
     "usage": "Radio Button danger Active Shadow Color",
     "description": "밝은 모드에서 라디오 버튼 성공 상태에 활성화 시의 그림자 색상입니다."
   },
   {
     "id": "--color-radio-disabled-bg",
-    "lightValue": "#e0e0e0",
-    "darkValue": "#1e1e1e",
+    "lightValue": "var(--project-color-primitive-gray-185)",
+    "darkValue": "var(--project-color-primitive-gray-37)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-radio-disabled-border",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#374151",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-71)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-checkbox-unchecked-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#121212",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-19)",
     "usage": "Radio Button Background Color",
     "description": "밝은 모드에서 라디오 버튼의 배경 색상입니다."
   },
   {
     "id": "--color-checkbox-border",
-    "lightValue": "#717171",
-    "darkValue": "#ffffff",
+    "lightValue": "var(--project-color-primitive-gray-122)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Radio Button Border Color",
     "description": "밝은 모드에서 라디오 버튼의 테두리 색상입니다."
   },
   {
     "id": "--color-checkbox-success-checked",
-    "lightValue": "#15803d",
-    "darkValue": "#4ade80",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
     "usage": "Checkbox Success Checked Background Color",
     "description": "밝은 모드에서 체크박스 성공 상태의 선택된 배경 색상입니다."
   },
   {
     "id": "--color-checkbox-success-shadow-hover",
-    "lightValue": "rgba(21, 128, 101, 0.25)",
-    "darkValue": "rgba(74, 222, 128, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-288)",
+    "darkValue": "var(--project-color-primitive-alpha-331)",
     "usage": "Checkbox Success Hover Shadow Color",
     "description": "밝은 모드에서 체크박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-checkbox-success-shadow-active",
-    "lightValue": "rgba(21, 128, 101, 0.25)",
-    "darkValue": "rgba(74, 222, 128, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-288)",
+    "darkValue": "var(--project-color-primitive-alpha-331)",
     "usage": "Checkbox Success Active Shadow Color",
     "description": "밝은 모드에서 체크박스 성공 상태에 활성화 시의 그림자 색상입니다."
   },
   {
     "id": "--color-checkbox-warning-checked",
-    "lightValue": "#b45309",
-    "darkValue": "#b45309",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-157)",
     "usage": "Checkbox warning Checked Background Color",
     "description": "밝은 모드에서 체크박스 성공 상태의 선택된 배경 색상입니다."
   },
   {
     "id": "--color-checkbox-warning-shadow-hover",
-    "lightValue": "rgba(180, 83, 9, 0.25)",
-    "darkValue": "rgba(180, 83, 9, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-281)",
+    "darkValue": "var(--project-color-primitive-alpha-281)",
     "usage": "Checkbox warning Hover Shadow Color",
     "description": "밝은 모드에서 체크박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-checkbox-warning-shadow-active",
-    "lightValue": "rgba(180, 83, 9, 0.25)",
-    "darkValue": "rgba(180, 83, 9, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-281)",
+    "darkValue": "var(--project-color-primitive-alpha-281)",
     "usage": "Checkbox warning Active Shadow Color",
     "description": "밝은 모드에서 체크박스 성공 상태에 활성화 시의 그림자 색상입니다."
   },
   {
     "id": "--color-checkbox-danger-checked",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Checkbox danger Checked Background Color",
     "description": "밝은 모드에서 체크박스 성공 상태의 선택된 배경 색상입니다."
   },
   {
     "id": "--color-checkbox-danger-shadow-hover",
-    "lightValue": "rgba(185, 28, 28, 0.25)",
-    "darkValue": "rgba(248, 113, 113, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-286)",
+    "darkValue": "var(--project-color-primitive-alpha-296)",
     "usage": "Checkbox danger Hover Shadow Color",
     "description": "밝은 모드에서 체크박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-checkbox-danger-shadow-active",
-    "lightValue": "rgba(185, 28, 28, 0.25)",
-    "darkValue": "rgba(248, 113, 113, 0.25)",
+    "lightValue": "var(--project-color-primitive-alpha-286)",
+    "darkValue": "var(--project-color-primitive-alpha-296)",
     "usage": "Checkbox danger Active Shadow Color",
     "description": "밝은 모드에서 체크박스 성공 상태에 활성화 시의 그림자 색상입니다."
   },
   {
     "id": "--color-checkbox-disabled-bg",
-    "lightValue": "#e0e0e0",
-    "darkValue": "#1e1e1e",
+    "lightValue": "var(--project-color-primitive-gray-185)",
+    "darkValue": "var(--project-color-primitive-gray-37)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-checkbox-disabled-border",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#374151",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-71)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-combobox-success-shadow-hover",
-    "lightValue": "rgba(21, 128, 101, 0.25)",
-    "darkValue": "#34d399",
+    "lightValue": "var(--project-color-primitive-alpha-288)",
+    "darkValue": "var(--project-color-primitive-green-70)",
     "usage": "Combobox Success Hover Shadow Color",
     "description": "밝은 모드에서 콤보박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-combobox-outline-success-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#064e3b",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-green-13)",
     "usage": "Combobox Success Background Color",
     "description": "밝은 모드에서 콤보박스 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-combobox-outline-success-border",
-    "lightValue": "#16a34a",
-    "darkValue": "#059669",
+    "lightValue": "var(--project-color-primitive-green-26)",
+    "darkValue": "var(--project-color-primitive-green-12)",
     "usage": "Combobox Success Border Color",
     "description": "밝은 모드에서 콤보박스 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-combobox-outline-success-text",
-    "lightValue": "#14532d",
-    "darkValue": "#f0fdf4",
+    "lightValue": "var(--project-color-primitive-green-22)",
+    "darkValue": "var(--project-color-primitive-gray-207)",
     "usage": "Combobox Success Text Color",
     "description": "밝은 모드에서 콤보박스 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-combobox-outline-success-placeholder",
-    "lightValue": "#166534",
-    "darkValue": "#6ee7b7",
+    "lightValue": "var(--project-color-primitive-green-25)",
+    "darkValue": "var(--project-color-primitive-green-116)",
     "usage": "Combobox Success Placeholder Text Color",
     "description": "밝은 모드에서 콤보박스 성공 상태의  플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-combobox-warning-shadow-hover",
-    "lightValue": "rgba(180, 83, 9, 0.25)",
-    "darkValue": "#facc15",
+    "lightValue": "var(--project-color-primitive-alpha-281)",
+    "darkValue": "var(--project-color-primitive-red-222)",
     "usage": "Combobox warning Hover Shadow Color",
     "description": "밝은 모드에서 콤보박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-combobox-outline-warning-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#451a03",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-red-85)",
     "usage": "Combobox warning Background Color",
     "description": "밝은 모드에서 콤보박스 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-combobox-outline-warning-border",
-    "lightValue": "#d97706",
-    "darkValue": "#f59e0b",
+    "lightValue": "var(--project-color-primitive-red-177)",
+    "darkValue": "var(--project-color-primitive-red-213)",
     "usage": "Combobox warning Border Color",
     "description": "밝은 모드에서 콤보박스 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-combobox-outline-warning-text",
-    "lightValue": "#78350f",
-    "darkValue": "#fef3c7",
+    "lightValue": "var(--project-color-primitive-red-126)",
+    "darkValue": "var(--project-color-primitive-red-229)",
     "usage": "Combobox warning Text Color",
     "description": "밝은 모드에서 콤보박스 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-combobox-outline-warning-placeholder",
-    "lightValue": "#92400e",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-137)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Combobox warning Placeholder Text Color",
     "description": "밝은 모드에서 콤보박스 성공 상태의  플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-combobox-danger-shadow-hover",
-    "lightValue": "rgba(185, 28, 28, 0.25)",
-    "darkValue": "#ef4444",
+    "lightValue": "var(--project-color-primitive-alpha-286)",
+    "darkValue": "var(--project-color-primitive-red-203)",
     "usage": "Combobox danger Hover Shadow Color",
     "description": "밝은 모드에서 콤보박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-combobox-outline-danger-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#450a0a",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-red-84)",
     "usage": "Combobox danger Background Color",
     "description": "밝은 모드에서 콤보박스 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-combobox-outline-danger-border",
-    "lightValue": "#dc2626",
-    "darkValue": "#ef4444",
+    "lightValue": "var(--project-color-primitive-red-180)",
+    "darkValue": "var(--project-color-primitive-red-203)",
     "usage": "Combobox danger Border Color",
     "description": "밝은 모드에서 콤보박스 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-combobox-outline-danger-text",
-    "lightValue": "#7f1d1d",
-    "darkValue": "#fef2f2",
+    "lightValue": "var(--project-color-primitive-red-130)",
+    "darkValue": "var(--project-color-primitive-gray-228)",
     "usage": "Combobox danger Text Color",
     "description": "밝은 모드에서 콤보박스 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-combobox-outline-danger-placeholder",
-    "lightValue": "#991b1b",
-    "darkValue": "#fca5a5",
+    "lightValue": "var(--project-color-primitive-red-140)",
+    "darkValue": "var(--project-color-primitive-red-224)",
     "usage": "Combobox danger Placeholder Text Color",
     "description": "밝은 모드에서 콤보박스 성공 상태의  플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-combobox-readonly-bg",
-    "lightValue": "#f9f9f9",
-    "darkValue": "#1e293b",
+    "lightValue": "var(--project-color-primitive-gray-220)",
+    "darkValue": "var(--project-color-primitive-blue-38)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-combobox-readonly-border",
-    "lightValue": "#e0e0e0",
-    "darkValue": "#334155",
+    "lightValue": "var(--project-color-primitive-gray-185)",
+    "darkValue": "var(--project-color-primitive-blue-67)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-combobox-readonly-text",
-    "lightValue": "#212121",
-    "darkValue": "#cbd5e1",
+    "lightValue": "var(--project-color-primitive-gray-43)",
+    "darkValue": "var(--project-color-primitive-blue-167)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-combobox-readonly-placeholder",
-    "lightValue": "#212121",
-    "darkValue": "#64748b",
+    "lightValue": "var(--project-color-primitive-gray-43)",
+    "darkValue": "var(--project-color-primitive-blue-109)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-combobox-disabled-bg",
-    "lightValue": "#eeeeee",
-    "darkValue": "#0f172a",
+    "lightValue": "var(--project-color-primitive-gray-202)",
+    "darkValue": "var(--project-color-primitive-blue-18)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-combobox-disabled-border",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#475569",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-88)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-combobox-disabled-text",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#475569",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-88)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-combobox-disabled-placeholder",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#334155",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-67)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-selectbox-success-shadow-hover",
-    "lightValue": "rgba(21, 128, 101, 0.25)",
-    "darkValue": "#34d399",
+    "lightValue": "var(--project-color-primitive-alpha-288)",
+    "darkValue": "var(--project-color-primitive-green-70)",
     "usage": "Selectbox Success Hover Shadow Color",
     "description": "밝은 모드에서 셀렉트박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-selectbox-outline-success-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#064e3b",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-green-13)",
     "usage": "Selectbox Success Background Color",
     "description": "밝은 모드에서 셀렉트박스 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-selectbox-outline-success-border",
-    "lightValue": "#16a34a",
-    "darkValue": "#059669",
+    "lightValue": "var(--project-color-primitive-green-26)",
+    "darkValue": "var(--project-color-primitive-green-12)",
     "usage": "Selectbox Success Border Color",
     "description": "밝은 모드에서 셀렉트박스 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-selectbox-outline-success-text",
-    "lightValue": "#14532d",
-    "darkValue": "#f0fdf4",
+    "lightValue": "var(--project-color-primitive-green-22)",
+    "darkValue": "var(--project-color-primitive-gray-207)",
     "usage": "Selectbox Success Text Color",
     "description": "밝은 모드에서 셀렉트박스 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-selectbox-outline-success-placeholder",
-    "lightValue": "#166534",
-    "darkValue": "#6ee7b7",
+    "lightValue": "var(--project-color-primitive-green-25)",
+    "darkValue": "var(--project-color-primitive-green-116)",
     "usage": "Selectbox Success Placeholder Text Color",
     "description": "밝은 모드에서 셀렉트박스 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-selectbox-warning-shadow-hover",
-    "lightValue": "rgba(180, 83, 9, 0.25)",
-    "darkValue": "#facc15",
+    "lightValue": "var(--project-color-primitive-alpha-281)",
+    "darkValue": "var(--project-color-primitive-red-222)",
     "usage": "Selectbox warning Hover Shadow Color",
     "description": "밝은 모드에서 셀렉트박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-selectbox-outline-warning-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#451a03",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-red-85)",
     "usage": "Selectbox warning Background Color",
     "description": "밝은 모드에서 셀렉트박스 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-selectbox-outline-warning-border",
-    "lightValue": "#d97706",
-    "darkValue": "#f59e0b",
+    "lightValue": "var(--project-color-primitive-red-177)",
+    "darkValue": "var(--project-color-primitive-red-213)",
     "usage": "Selectbox warning Border Color",
     "description": "밝은 모드에서 셀렉트박스 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-selectbox-outline-warning-text",
-    "lightValue": "#78350f",
-    "darkValue": "#fef3c7",
+    "lightValue": "var(--project-color-primitive-red-126)",
+    "darkValue": "var(--project-color-primitive-red-229)",
     "usage": "Selectbox warning Text Color",
     "description": "밝은 모드에서 셀렉트박스 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-selectbox-outline-warning-placeholder",
-    "lightValue": "#92400e",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-137)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Selectbox warning Placeholder Text Color",
     "description": "밝은 모드에서 셀렉트박스 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-selectbox-danger-shadow-hover",
-    "lightValue": "rgba(185, 28, 28, 0.25)",
-    "darkValue": "#ef4444",
+    "lightValue": "var(--project-color-primitive-alpha-286)",
+    "darkValue": "var(--project-color-primitive-red-203)",
     "usage": "Selectbox danger Hover Shadow Color",
     "description": "밝은 모드에서 셀렉트박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-selectbox-outline-danger-bg",
-    "lightValue": "#ffffff",
-    "darkValue": "#450a0a",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-red-84)",
     "usage": "Selectbox danger Background Color",
     "description": "밝은 모드에서 셀렉트박스 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-selectbox-outline-danger-border",
-    "lightValue": "#dc2626",
-    "darkValue": "#ef4444",
+    "lightValue": "var(--project-color-primitive-red-180)",
+    "darkValue": "var(--project-color-primitive-red-203)",
     "usage": "Selectbox danger Border Color",
     "description": "밝은 모드에서 셀렉트박스 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-selectbox-outline-danger-text",
-    "lightValue": "#7f1d1d",
-    "darkValue": "#fef2f2",
+    "lightValue": "var(--project-color-primitive-red-130)",
+    "darkValue": "var(--project-color-primitive-gray-228)",
     "usage": "Selectbox danger Text Color",
     "description": "밝은 모드에서 셀렉트박스 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-selectbox-outline-danger-placeholder",
-    "lightValue": "#991b1b",
-    "darkValue": "#fca5a5",
+    "lightValue": "var(--project-color-primitive-red-140)",
+    "darkValue": "var(--project-color-primitive-red-224)",
     "usage": "Selectbox danger Placeholder Text Color",
     "description": "밝은 모드에서 셀렉트박스 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-selectbox-readonly-bg",
-    "lightValue": "#f9f9f9",
-    "darkValue": "#1e293b",
+    "lightValue": "var(--project-color-primitive-gray-220)",
+    "darkValue": "var(--project-color-primitive-blue-38)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-selectbox-readonly-border",
-    "lightValue": "#e0e0e0",
-    "darkValue": "#334155",
+    "lightValue": "var(--project-color-primitive-gray-185)",
+    "darkValue": "var(--project-color-primitive-blue-67)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-selectbox-readonly-text",
-    "lightValue": "#212121",
-    "darkValue": "#cbd5e1",
+    "lightValue": "var(--project-color-primitive-gray-43)",
+    "darkValue": "var(--project-color-primitive-blue-167)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-selectbox-disabled-bg",
-    "lightValue": "#eeeeee",
-    "darkValue": "#0f172a",
+    "lightValue": "var(--project-color-primitive-gray-202)",
+    "darkValue": "var(--project-color-primitive-blue-18)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-selectbox-disabled-border",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#475569",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-88)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-selectbox-disabled-text",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#475569",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-88)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-input-outline-success-bg",
-    "lightValue": "#f0fdf4",
-    "darkValue": "#064e3b",
+    "lightValue": "var(--project-color-primitive-gray-207)",
+    "darkValue": "var(--project-color-primitive-green-13)",
     "usage": "Input Success Background Color",
     "description": "밝은 모드에서 인풋 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-input-outline-success-border",
-    "lightValue": "#14532d",
-    "darkValue": "#065f46",
+    "lightValue": "var(--project-color-primitive-green-22)",
+    "darkValue": "var(--project-color-primitive-green-14)",
     "usage": "Input Success Border Color",
     "description": "밝은 모드에서 인풋 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-input-outline-success-text",
-    "lightValue": "#14532d",
-    "darkValue": "#065f46",
+    "lightValue": "var(--project-color-primitive-green-22)",
+    "darkValue": "var(--project-color-primitive-green-14)",
     "usage": "Input Success Text Color",
     "description": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-input-outline-success-icon-fill",
-    "lightValue": "#15803d",
-    "darkValue": "#15803d",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-24)",
     "usage": "Input Success Text Color",
     "description": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-input-outline-success-placeholder",
-    "lightValue": "#15803d",
-    "darkValue": "#6ee7b7",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-116)",
     "usage": "Input Success Placeholder Text Color",
     "description": "밝은 모드에서 인풋 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-input-solid-success-bg",
-    "lightValue": "#f0fdf4",
-    "darkValue": "#064e3b",
+    "lightValue": "var(--project-color-primitive-gray-207)",
+    "darkValue": "var(--project-color-primitive-green-13)",
     "usage": "Input Solid Success Background Color",
     "description": "밝은 모드에서 인풋 솔리드 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-input-solid-success-text",
-    "lightValue": "#14532d",
-    "darkValue": "#f0fdf4",
+    "lightValue": "var(--project-color-primitive-green-22)",
+    "darkValue": "var(--project-color-primitive-gray-207)",
     "usage": "Input Solid Success Text Color",
     "description": "밝은 모드에서 인풋 솔리드 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-input-solid-success-icon-fill",
-    "lightValue": "#15803d",
-    "darkValue": "#15803d",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-24)",
     "usage": "Input Success Text Color",
     "description": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-input-solid-success-placeholder",
-    "lightValue": "#15803d",
-    "darkValue": "#6ee7b7",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-116)",
     "usage": "Input Solid Success Placeholder Text Color",
     "description": "밝은 모드에서 인풋 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-input-success-hover-shadow",
-    "lightValue": "rgba(21, 128, 101, 0.25)",
-    "darkValue": "#34d399",
+    "lightValue": "var(--project-color-primitive-alpha-288)",
+    "darkValue": "var(--project-color-primitive-green-70)",
     "usage": "Input Success Hover Shadow Color",
     "description": "밝은 모드에서 인풋 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-input-outline-warning-bg",
-    "lightValue": "#fff7ed",
-    "darkValue": "#451a03",
+    "lightValue": "var(--project-color-primitive-gray-244)",
+    "darkValue": "var(--project-color-primitive-red-85)",
     "usage": "Input warning Background Color",
     "description": "밝은 모드에서 인풋 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-input-outline-warning-border",
-    "lightValue": "#78350f",
-    "darkValue": "#78350f",
+    "lightValue": "var(--project-color-primitive-red-126)",
+    "darkValue": "var(--project-color-primitive-red-126)",
     "usage": "Input warning Border Color",
     "description": "밝은 모드에서 인풋 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-input-outline-warning-text",
-    "lightValue": "#78350f",
-    "darkValue": "#fffbeb",
+    "lightValue": "var(--project-color-primitive-red-126)",
+    "darkValue": "var(--project-color-primitive-red-245)",
     "usage": "Input warning Text Color",
     "description": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-input-outline-warning-icon-fill",
-    "lightValue": "#b45309",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Input warning Text Color",
     "description": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-input-outline-warning-placeholder",
-    "lightValue": "#b45309",
-    "darkValue": "#fcd34d",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-225)",
     "usage": "Input warning Placeholder Text Color",
     "description": "밝은 모드에서 인풋 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-input-solid-warning-bg",
-    "lightValue": "#fff7ed",
-    "darkValue": "#451a03",
+    "lightValue": "var(--project-color-primitive-gray-244)",
+    "darkValue": "var(--project-color-primitive-red-85)",
     "usage": "Input Solid warning Background Color",
     "description": "밝은 모드에서 인풋 솔리드 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-input-solid-warning-text",
-    "lightValue": "#78350f",
-    "darkValue": "#fffbeb",
+    "lightValue": "var(--project-color-primitive-red-126)",
+    "darkValue": "var(--project-color-primitive-red-245)",
     "usage": "Input Solid warning Text Color",
     "description": "밝은 모드에서 인풋 솔리드 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-input-solid-warning-icon-fill",
-    "lightValue": "#b45309",
-    "darkValue": "#fbbf24",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Input warning Text Color",
     "description": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-input-solid-warning-placeholder",
-    "lightValue": "#b45309",
-    "darkValue": "#fcd34d",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-225)",
     "usage": "Input Solid warning Placeholder Text Color",
     "description": "밝은 모드에서 인풋 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-input-warning-hover-shadow",
-    "lightValue": "rgba(180, 83, 9, 0.25)",
-    "darkValue": "#facc15",
+    "lightValue": "var(--project-color-primitive-alpha-281)",
+    "darkValue": "var(--project-color-primitive-red-222)",
     "usage": "Input warning Hover Shadow Color",
     "description": "밝은 모드에서 인풋 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-input-outline-danger-bg",
-    "lightValue": "#fef2f2",
-    "darkValue": "#450a0a",
+    "lightValue": "var(--project-color-primitive-gray-228)",
+    "darkValue": "var(--project-color-primitive-red-84)",
     "usage": "Input danger Background Color",
     "description": "밝은 모드에서 인풋 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-input-outline-danger-border",
-    "lightValue": "#7f1d1d",
-    "darkValue": "#7f1d1d",
+    "lightValue": "var(--project-color-primitive-red-130)",
+    "darkValue": "var(--project-color-primitive-red-130)",
     "usage": "Input danger Border Color",
     "description": "밝은 모드에서 인풋 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-input-outline-danger-text",
-    "lightValue": "#7f1d1d",
+    "lightValue": "var(--project-color-primitive-red-130)",
     "darkValue": "#7f1d1fef2f2d",
     "usage": "Input danger Text Color",
     "description": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-input-outline-danger-icon-fill",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Input danger Text Color",
     "description": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-input-outline-danger-placeholder",
-    "lightValue": "#b91c1c",
-    "darkValue": "#fca5a5",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-224)",
     "usage": "Input danger Placeholder Text Color",
     "description": "밝은 모드에서 인풋 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-input-solid-danger-bg",
-    "lightValue": "#fef2f2",
-    "darkValue": "#450a0a",
+    "lightValue": "var(--project-color-primitive-gray-228)",
+    "darkValue": "var(--project-color-primitive-red-84)",
     "usage": "Input Solid danger Background Color",
     "description": "밝은 모드에서 인풋 솔리드 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-input-solid-danger-text",
-    "lightValue": "#7f1d1d",
-    "darkValue": "#fef2f2",
+    "lightValue": "var(--project-color-primitive-red-130)",
+    "darkValue": "var(--project-color-primitive-gray-228)",
     "usage": "Input Solid danger Text Color",
     "description": "밝은 모드에서 인풋 솔리드 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-input-solid-danger-icon-fill",
-    "lightValue": "#b91c1c",
-    "darkValue": "#f87171",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
     "usage": "Input danger Text Color",
     "description": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-input-solid-danger-placeholder",
-    "lightValue": "#b91c1c",
-    "darkValue": "#fca5a5",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-224)",
     "usage": "Input Solid danger Placeholder Text Color",
     "description": "밝은 모드에서 인풋 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-input-danger-hover-shadow",
-    "lightValue": "rgba(185, 28, 28, 0.25)",
-    "darkValue": "#ef4444",
+    "lightValue": "var(--project-color-primitive-alpha-286)",
+    "darkValue": "var(--project-color-primitive-red-203)",
     "usage": "Input danger Hover Shadow Color",
     "description": "밝은 모드에서 인풋 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-input-readonly-bg",
-    "lightValue": "#f9f9f9",
-    "darkValue": "#1e293b",
+    "lightValue": "var(--project-color-primitive-gray-220)",
+    "darkValue": "var(--project-color-primitive-blue-38)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-input-readonly-border",
-    "lightValue": "#e0e0e0",
-    "darkValue": "#334155",
+    "lightValue": "var(--project-color-primitive-gray-185)",
+    "darkValue": "var(--project-color-primitive-blue-67)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-input-readonly-text",
-    "lightValue": "#212121",
-    "darkValue": "#cbd5e1",
+    "lightValue": "var(--project-color-primitive-gray-43)",
+    "darkValue": "var(--project-color-primitive-blue-167)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-input-readonly-placeholder",
-    "lightValue": "#757575",
-    "darkValue": "#64748b",
+    "lightValue": "var(--project-color-primitive-gray-123)",
+    "darkValue": "var(--project-color-primitive-blue-109)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-input-disabled-bg",
-    "lightValue": "#eeeeee",
-    "darkValue": "#0f172a",
+    "lightValue": "var(--project-color-primitive-gray-202)",
+    "darkValue": "var(--project-color-primitive-blue-18)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-input-disabled-border",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#1e293b",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-38)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-input-disabled-text",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#475569",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-88)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-input-disabled-placeholder",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#334155",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-67)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-outline-success-bg",
-    "lightValue": "#f0fdf4",
-    "darkValue": "#064e3b",
+    "lightValue": "var(--project-color-primitive-gray-207)",
+    "darkValue": "var(--project-color-primitive-green-13)",
     "usage": "Textarea Success Background Color",
     "description": "밝은 모드에서 텍스트에어리어 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-textarea-outline-success-border",
-    "lightValue": "#14532d",
-    "darkValue": "#065f46",
+    "lightValue": "var(--project-color-primitive-green-22)",
+    "darkValue": "var(--project-color-primitive-green-14)",
     "usage": "Textarea Success Border Color",
     "description": "밝은 모드에서 텍스트에어리어 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-textarea-outline-success-text",
-    "lightValue": "#14532d",
-    "darkValue": "#f0fdf4",
+    "lightValue": "var(--project-color-primitive-green-22)",
+    "darkValue": "var(--project-color-primitive-gray-207)",
     "usage": "Textarea Success Text Color",
     "description": "밝은 모드에서 텍스트에어리어 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-outline-success-placeholder",
-    "lightValue": "#15803d",
-    "darkValue": "#6ee7b7",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-116)",
     "usage": "Textarea Success Placeholder Text Color",
     "description": "밝은 모드에서 텍스트에어리어 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-solid-success-bg",
-    "lightValue": "#f0fdf4",
-    "darkValue": "#064e3b",
+    "lightValue": "var(--project-color-primitive-gray-207)",
+    "darkValue": "var(--project-color-primitive-green-13)",
     "usage": "Textarea Solid Success Background Color",
     "description": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-textarea-solid-success-text",
-    "lightValue": "#14532d",
-    "darkValue": "#f0fdf4",
+    "lightValue": "var(--project-color-primitive-green-22)",
+    "darkValue": "var(--project-color-primitive-gray-207)",
     "usage": "Textarea Solid Success Text Color",
     "description": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-solid-success-placeholder",
-    "lightValue": "#15803d",
-    "darkValue": "#6ee7b7",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-116)",
     "usage": "Textarea Solid Success Placeholder Text Color",
     "description": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-success-hover-shadow",
-    "lightValue": "rgba(21, 128, 101, 0.25)",
-    "darkValue": "#34d399",
+    "lightValue": "var(--project-color-primitive-alpha-288)",
+    "darkValue": "var(--project-color-primitive-green-70)",
     "usage": "Textarea Success Hover Shadow Color",
     "description": "밝은 모드에서 텍스트에어리어 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-textarea-outline-warning-bg",
-    "lightValue": "#fff7ed",
-    "darkValue": "#451a03",
+    "lightValue": "var(--project-color-primitive-gray-244)",
+    "darkValue": "var(--project-color-primitive-red-85)",
     "usage": "Textarea warning Background Color",
     "description": "밝은 모드에서 텍스트에어리어 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-textarea-outline-warning-border",
-    "lightValue": "#78350f",
-    "darkValue": "#78350f",
+    "lightValue": "var(--project-color-primitive-red-126)",
+    "darkValue": "var(--project-color-primitive-red-126)",
     "usage": "Textarea warning Border Color",
     "description": "밝은 모드에서 텍스트에어리어 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-textarea-outline-warning-text",
-    "lightValue": "#78350f",
-    "darkValue": "#fffbeb",
+    "lightValue": "var(--project-color-primitive-red-126)",
+    "darkValue": "var(--project-color-primitive-red-245)",
     "usage": "Textarea warning Text Color",
     "description": "밝은 모드에서 텍스트에어리어 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-outline-warning-placeholder",
-    "lightValue": "#b45309",
-    "darkValue": "#fcd34d",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-225)",
     "usage": "Textarea warning Placeholder Text Color",
     "description": "밝은 모드에서 텍스트에어리어 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-solid-warning-bg",
-    "lightValue": "#fff7ed",
-    "darkValue": "#451a03",
+    "lightValue": "var(--project-color-primitive-gray-244)",
+    "darkValue": "var(--project-color-primitive-red-85)",
     "usage": "Textarea Solid warning Background Color",
     "description": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-textarea-solid-warning-text",
-    "lightValue": "#78350f",
-    "darkValue": "#fffbeb",
+    "lightValue": "var(--project-color-primitive-red-126)",
+    "darkValue": "var(--project-color-primitive-red-245)",
     "usage": "Textarea Solid warning Text Color",
     "description": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-solid-warning-placeholder",
-    "lightValue": "#b45309",
-    "darkValue": "#fcd34d",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-225)",
     "usage": "Textarea Solid warning Placeholder Text Color",
     "description": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-warning-hover-shadow",
-    "lightValue": "rgba(180, 83, 9, 0.25)",
-    "darkValue": "#facc15",
+    "lightValue": "var(--project-color-primitive-alpha-281)",
+    "darkValue": "var(--project-color-primitive-red-222)",
     "usage": "Textarea warning Hover Shadow Color",
     "description": "밝은 모드에서 텍스트에어리어 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-textarea-outline-danger-bg",
-    "lightValue": "#fef2f2",
-    "darkValue": "#450a0a",
+    "lightValue": "var(--project-color-primitive-gray-228)",
+    "darkValue": "var(--project-color-primitive-red-84)",
     "usage": "Textarea danger Background Color",
     "description": "밝은 모드에서 텍스트에어리어 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-textarea-outline-danger-border",
-    "lightValue": "#7f1d1d",
-    "darkValue": "#7f1d1d",
+    "lightValue": "var(--project-color-primitive-red-130)",
+    "darkValue": "var(--project-color-primitive-red-130)",
     "usage": "Textarea danger Border Color",
     "description": "밝은 모드에서 텍스트에어리어 성공 상태의 테두리 색상입니다."
   },
   {
     "id": "--color-textarea-outline-danger-text",
-    "lightValue": "#7f1d1d",
-    "darkValue": "#fef2f2",
+    "lightValue": "var(--project-color-primitive-red-130)",
+    "darkValue": "var(--project-color-primitive-gray-228)",
     "usage": "Textarea danger Text Color",
     "description": "밝은 모드에서 텍스트에어리어 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-outline-danger-placeholder",
-    "lightValue": "#b91c1c",
-    "darkValue": "#fca5a5",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-224)",
     "usage": "Textarea danger Placeholder Text Color",
     "description": "밝은 모드에서 텍스트에어리어 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-solid-danger-bg",
-    "lightValue": "#fef2f2",
-    "darkValue": "#450a0a",
+    "lightValue": "var(--project-color-primitive-gray-228)",
+    "darkValue": "var(--project-color-primitive-red-84)",
     "usage": "Textarea Solid danger Background Color",
     "description": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 배경 색상입니다."
   },
   {
     "id": "--color-textarea-solid-danger-text",
-    "lightValue": "#7f1d1d",
-    "darkValue": "#fef2f2",
+    "lightValue": "var(--project-color-primitive-red-130)",
+    "darkValue": "var(--project-color-primitive-gray-228)",
     "usage": "Textarea Solid danger Text Color",
     "description": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-solid-danger-placeholder",
-    "lightValue": "#b91c1c",
-    "darkValue": "#fca5a5",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-224)",
     "usage": "Textarea Solid danger Placeholder Text Color",
     "description": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-danger-max-text",
-    "lightValue": "#7f1d1d",
-    "darkValue": "#fef2f2",
+    "lightValue": "var(--project-color-primitive-red-130)",
+    "darkValue": "var(--project-color-primitive-gray-228)",
     "usage": "Textarea danger Hover Shadow Color",
     "description": "밝은 모드에서 텍스트에어리어 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-textarea-danger-hover-shadow",
-    "lightValue": "rgba(185, 28, 28, 0.25)",
-    "darkValue": "#ef4444",
+    "lightValue": "var(--project-color-primitive-alpha-286)",
+    "darkValue": "var(--project-color-primitive-red-203)",
     "usage": "Textarea danger Hover Shadow Color",
     "description": "밝은 모드에서 텍스트에어리어 성공 상태에 마우스 오버 시의 그림자 색상입니다."
   },
   {
     "id": "--color-textarea-readonly-bg",
-    "lightValue": "#f9f9f9",
-    "darkValue": "#1e293b",
+    "lightValue": "var(--project-color-primitive-gray-220)",
+    "darkValue": "var(--project-color-primitive-blue-38)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-readonly-border",
-    "lightValue": "#e0e0e0",
-    "darkValue": "#334155",
+    "lightValue": "var(--project-color-primitive-gray-185)",
+    "darkValue": "var(--project-color-primitive-blue-67)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-readonly-text",
-    "lightValue": "#212121",
-    "darkValue": "#cbd5e1",
+    "lightValue": "var(--project-color-primitive-gray-43)",
+    "darkValue": "var(--project-color-primitive-blue-167)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-readonly-placeholder",
-    "lightValue": "#757575",
-    "darkValue": "#64748b",
+    "lightValue": "var(--project-color-primitive-gray-123)",
+    "darkValue": "var(--project-color-primitive-blue-109)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-disabled-bg",
-    "lightValue": "#eeeeee",
-    "darkValue": "#0f172a",
+    "lightValue": "var(--project-color-primitive-gray-202)",
+    "darkValue": "var(--project-color-primitive-blue-18)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-disabled-border",
-    "lightValue": "#dddddd",
-    "darkValue": "#1e293b",
+    "lightValue": "var(--project-color-primitive-gray-183)",
+    "darkValue": "var(--project-color-primitive-blue-38)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-disabled-text",
-    "lightValue": "#9e9e9e",
-    "darkValue": "#475569",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-blue-88)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-textarea-disabled-placeholder",
-    "lightValue": "#bdbdbd",
-    "darkValue": "#334155",
+    "lightValue": "var(--project-color-primitive-gray-162)",
+    "darkValue": "var(--project-color-primitive-blue-67)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-switch-disabled-track-on-bg",
-    "lightValue": "#cdd1d5",
-    "darkValue": "#374151",
+    "lightValue": "var(--project-color-primitive-gray-168)",
+    "darkValue": "var(--project-color-primitive-blue-71)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-switch-disabled-handle-on-bg",
-    "lightValue": "#8a949e",
-    "darkValue": "#6b7280",
+    "lightValue": "var(--project-color-primitive-blue-134)",
+    "darkValue": "var(--project-color-primitive-blue-112)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-switch-disabled-handle-on-border",
-    "lightValue": "#cdd1d5",
-    "darkValue": "#374151",
+    "lightValue": "var(--project-color-primitive-gray-168)",
+    "darkValue": "var(--project-color-primitive-blue-71)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   },
   {
     "id": "--color-switch-disabled-icon-on-fill",
-    "lightValue": "#cdd1d5",
-    "darkValue": "#1f2937",
+    "lightValue": "var(--project-color-primitive-gray-168)",
+    "darkValue": "var(--project-color-primitive-blue-42)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
   }

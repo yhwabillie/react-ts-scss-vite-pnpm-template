@@ -1,6 +1,9 @@
 @use 'sass:map';
 @use '../generated/color-map' as base;
 @use '../generated/theme-tech-map' as tech;
+@use '../generated/primitive-map' as primitive;
+
+$g_primitive_colors: primitive.$g_primitive_colors;
 
 // 1. 공통 시스템 컬러 맵
 $g_colors: base.$g_colors;

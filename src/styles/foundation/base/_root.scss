@@ -8,6 +8,9 @@
   @include generate-vars-font-weight(vars.$g_project-name, vars.$g_font-weight);
   @include generate-vars-border-radius(vars.$g_project-name, vars.$g_border-radius);
 
+  // 1. 원색(Primitive) 변수 생성 - 고정값
+  @include generate-primitive-vars(vars.$g_primitive_colors);
+
   @include generate-theme-vars('light', vars.$g_colors);
 
   // --color-surface-sunken: #f2f4f6; // Lv.0 (Background)

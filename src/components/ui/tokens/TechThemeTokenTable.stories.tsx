@@ -4,7 +4,7 @@ import { TokenData as TechTokens } from '../../../constants/generated/tech-token
 import ColorTokenTable from './ColorTokenTable';
 
 const meta: Meta<typeof ColorTokenTable> = {
-  title: 'Tokens/Themes/Tech',
+  title: 'Tokens/Colors/Theme/Tech',
   component: ColorTokenTable,
   tags: ['autodocs'],
   decorators: [

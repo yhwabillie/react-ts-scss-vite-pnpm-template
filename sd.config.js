@@ -1,3 +1,39 @@
+/** Primitive 전용 SCSS Map 포맷 */
+const scssPrimitiveMapFormat = ({ dictionary }) => {
+  const { tokens } = dictionary;
+  let output = '$g_primitive_colors: (\n';
+
+  Object.entries(tokens.primitive).forEach(([category, colorTokens]) => {
+    output += `  "${category}": (\n`;
+    Object.entries(colorTokens).forEach(([name, token]) => {
+      // color-0 등에서 숫지만 추출하거나 이름을 정제
+      const cleanName = name.replace('color-', '');
+      output += `    "${cleanName}": ${token.value},\n`;
+    });
+    output += `  ),\n`;
+  });
+
+  output += ');';
+  return output;
+};
+
+/** Primitive 전용 TS 데이터 포맷 수정 */
+const typescriptPrimitiveMetaFormat = ({ dictionary }) => {
+  const { tokens } = dictionary;
+
+  const result = Object.entries(tokens.primitive).map(([category, colorTokens]) => ({
+    category: category.toUpperCase(),
+    colors: Object.entries(colorTokens).map(([key, token]) => ({
+      id: `primitive-${category}-${key}`,
+      name: key, // ✅ name 필드 추가 (color-0, color-1 등)
+      value: token.value,
+      variable: `--color-primitive-${category}-${key.replace('color-', '')}`,
+    })),
+  }));
+
+  return `export const PrimitiveTokensData = ${JSON.stringify(result, null, 2)};`;
+};
+
 /** 1. Color 전용 SCSS Map 포맷 (Light/Dark 테마 지원) */
 const scssColorMapFormat = ({ dictionary }) => {
   const { allTokens } = dictionary;
@@ -180,6 +216,8 @@ export default {
   source: ['tokens/**/*.json'],
   hooks: {
     formats: {
+      'typescript/primitive-meta': typescriptPrimitiveMetaFormat,
+      'scss/primitive-map': scssPrimitiveMapFormat,
       'scss/color-map': scssColorMapFormat,
       'typescript/color-meta': typescriptMetaObjectFormat,
       'scss/typography-map': scssTypographyMapFormat,
@@ -257,6 +295,28 @@ export default {
           destination: 'tech-tokens.ts',
           format: 'typescript/theme-meta',
           filter: t => t.filePath.includes('tech.json'),
+        },
+      ],
+    },
+    primitiveMeta: {
+      transformGroup: 'js',
+      buildPath: 'src/constants/generated/',
+      files: [
+        {
+          destination: 'primitive-tokens.ts',
+          format: 'typescript/primitive-meta',
+          filter: t => t.filePath.includes('primitive-color.json'),
+        },
+      ],
+    },
+    primitiveSystem: {
+      transformGroup: 'scss',
+      buildPath: 'src/styles/generated/',
+      files: [
+        {
+          destination: '_primitive-map.scss',
+          format: 'scss/primitive-map',
+          filter: t => t.filePath.includes('primitive-color.json'),
         },
       ],
     },

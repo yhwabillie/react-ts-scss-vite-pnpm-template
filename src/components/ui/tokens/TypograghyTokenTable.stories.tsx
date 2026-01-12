@@ -4,7 +4,7 @@ import TypographyTokenTable from './TypographyTokenTable';
 import { TypographyTokensData } from '@/constants/generated/typography-tokens';
 
 const meta: Meta<typeof TypographyTokenTable> = {
-  title: 'Tokens/Common/Typography',
+  title: 'Tokens/Typography',
   component: TypographyTokenTable,
   tags: ['autodocs'],
   argTypes: {
