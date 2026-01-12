@@ -3,7 +3,7 @@ import styles from '@/components/ui/atoms/Spinner/Spinner.module.scss';
 
 type BaseProps = {
   variant: 'open-ring' | 'closed-ring';
-  color: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
+  color: 'primary' | 'secondary' | 'tertiary';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 };
 

@@ -68,7 +68,7 @@ const meta = {
     color: {
       control: 'select',
       description: '디자인 시스템에 정의된 테마 색상을 적용합니다.',
-      options: ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'],
+      options: ['primary', 'secondary', 'tertiary'],
       table: { category: 'Styles' },
     },
     size: {
@@ -161,7 +161,7 @@ export const Colors: Story = {
     name: 'switch-color-group',
   },
   render: args => {
-    const colors = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'] as const;
+    const colors = ['primary', 'secondary', 'tertiary'] as const;
 
     return (
       <SpecimenWrapper>

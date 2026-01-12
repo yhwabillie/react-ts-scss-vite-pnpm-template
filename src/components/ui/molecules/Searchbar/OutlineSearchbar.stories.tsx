@@ -31,7 +31,7 @@ const meta = {
     color: {
       description: '디자인 시스템에 정의된 브랜드 컬러 테마를 적용합니다.',
       control: 'select',
-      options: ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'],
+      options: ['primary', 'secondary', 'tertiary'],
       table: {
         category: 'Style',
         type: { summary: 'Color' },
@@ -195,9 +195,11 @@ export const Base: Story = {
  */
 export const Colors: Story = {
   render: (args, context) => {
-    const colorOptions: Array<
-      'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger'
-    > = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'];
+    const colorOptions: Array<'primary' | 'secondary' | 'tertiary'> = [
+      'primary',
+      'secondary',
+      'tertiary',
+    ];
 
     const { updateArgs } = context;
 

@@ -13,7 +13,7 @@ import SearchOptionItem from './SearchOptionItem';
 
 interface StyleProps {
   variant: 'solid' | 'outline';
-  color?: Color;
+  color?: 'primary' | 'secondary' | 'tertiary';
   size?: Size;
   shape?: Shape;
 }

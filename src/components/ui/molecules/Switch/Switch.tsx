@@ -10,7 +10,7 @@ type BaseProps = {
   defaultChecked?: boolean; // 비제어 Props
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void; // 전달받은 핸들러
   disabled?: boolean;
-  color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
+  color?: 'primary' | 'secondary' | 'tertiary';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
   labelPlacement?: 'start' | 'end';

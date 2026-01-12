@@ -41,42 +41,6 @@ $switch-colors: (
       shadow: 0 0 0 rem(6px) var(--tertiary-active-shadow-switch),
     ),
   ),
-  success: (
-    track-on-bg: var(--success-track-on-bg-color-switch),
-    handle-on-bg: var(--success-handle-on-bg-color-switch),
-    handle-on-border: var(--success-handle-on-border-color-switch),
-    icon-on-color: var(--success-icon-on-color-switch),
-    hover: (
-      shadow: 0 0 0 rem(4px) var(--success-hover-shadow-switch),
-    ),
-    active: (
-      shadow: 0 0 0 rem(6px) var(--success-active-shadow-switch),
-    ),
-  ),
-  warning: (
-    track-on-bg: var(--warning-track-on-bg-color-switch),
-    handle-on-bg: var(--warning-handle-on-bg-color-switch),
-    handle-on-border: var(--warning-handle-on-border-color-switch),
-    icon-on-color: var(--warning-icon-on-color-switch),
-    hover: (
-      shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-switch),
-    ),
-    active: (
-      shadow: 0 0 0 rem(6px) var(--warning-active-shadow-switch),
-    ),
-  ),
-  danger: (
-    track-on-bg: var(--danger-track-on-bg-color-switch),
-    handle-on-bg: var(--danger-handle-on-bg-color-switch),
-    handle-on-border: var(--danger-handle-on-border-color-switch),
-    icon-on-color: var(--danger-icon-on-color-switch),
-    hover: (
-      shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-switch),
-    ),
-    active: (
-      shadow: 0 0 0 rem(6px) var(--danger-active-shadow-switch),
-    ),
-  ),
 );
 
 // switch size map

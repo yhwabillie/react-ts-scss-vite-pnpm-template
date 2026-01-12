@@ -51,9 +51,11 @@ const groupedTokens = ColorTokensData.reduce(
     else if (cleanId.startsWith('custom-modal')) suffix = 'custom-modal';
     else if (cleanId.startsWith('alert-modal')) suffix = 'alert-modal';
     else if (cleanId.startsWith('option-list')) suffix = 'option-list';
-    else if (cleanId.startsWith('validation-guide')) suffix = 'validation-guide';
+    else if (cleanId.startsWith('option-item')) suffix = 'option-item';
     else if (cleanId.startsWith('required-asterisk')) suffix = 'required-asterisk';
     else if (cleanId.startsWith('outline-btn')) suffix = 'outline-btn';
+    else if (cleanId.startsWith('icon-frame')) suffix = 'icon-frame';
+    else if (cleanId.startsWith('validation-msg')) suffix = 'validation-msg';
     // ✅ 2. 그 외 단일 단어 기반 매핑
     else {
       const firstWord = cleanId.split('-')[0];
@@ -76,7 +78,6 @@ export const Surface: Story = {
   },
 };
 
-// Text 그룹
 export const Text: Story = {
   args: {
     title: 'Text Tokens',
@@ -85,7 +86,6 @@ export const Text: Story = {
   },
 };
 
-// Interaction 그룹
 export const Interaction: Story = {
   args: {
     title: 'Interaction Tokens',
@@ -94,7 +94,6 @@ export const Interaction: Story = {
   },
 };
 
-// Scrollbar 그룹
 export const Scrollbar: Story = {
   args: {
     title: 'Scrollbar Tokens',
@@ -119,102 +118,7 @@ export const Feedback: Story = {
   },
 };
 
-export const Avatar: Story = {
-  args: {
-    title: 'Avatar Tokens',
-    category: 'Component',
-    tokens: [...(groupedTokens['avatar'] || [])],
-  },
-};
-
-export const Tooltip: Story = {
-  args: {
-    title: 'Tooltip Tokens',
-    category: 'Component',
-    tokens: [...(groupedTokens['tooltip'] || [])],
-  },
-};
-
-export const Accordion: Story = {
-  args: {
-    title: 'Accordion Tokens',
-    category: 'Component',
-    tokens: [...(groupedTokens['accordion'] || [])],
-  },
-};
-
-export const FilePicker: Story = {
-  args: {
-    title: 'FilePicker Tokens',
-    category: 'Component',
-    tokens: [...(groupedTokens['filepicker'] || [])],
-  },
-};
-
-export const CustomModal: Story = {
-  args: {
-    title: 'CustomModal Tokens',
-    category: 'Component',
-    tokens: [...(groupedTokens['custom-modal'] || [])],
-  },
-};
-
-export const AlertModal: Story = {
-  args: {
-    title: 'AlertModal Tokens',
-    category: 'Component',
-    tokens: [...(groupedTokens['alert-modal'] || [])],
-  },
-};
-
-export const Toast: Story = {
-  args: {
-    title: 'Toast Tokens',
-    category: 'Component',
-    tokens: [...(groupedTokens['toast'] || [])],
-  },
-};
-
-export const Calendar: Story = {
-  args: {
-    title: 'Calendar Tokens',
-    category: 'Component',
-    tokens: [...(groupedTokens['calendar'] || [])],
-  },
-};
-
-export const Searchbar: Story = {
-  args: {
-    title: 'Searchbar Tokens',
-    category: 'Component',
-    tokens: [...(groupedTokens['searchbar'] || [])],
-  },
-};
-
-export const OptionList: Story = {
-  args: {
-    title: 'OptionList Tokens',
-    category: 'Component',
-    tokens: [...(groupedTokens['option-list'] || [])],
-  },
-};
-
-export const ValidationMsg: Story = {
-  args: {
-    title: 'ValidationMsg Tokens',
-    category: 'Component',
-    tokens: [...(groupedTokens['validation-guide'] || [])],
-  },
-};
-
-export const Slider: Story = {
-  args: {
-    title: 'Slider Tokens',
-    category: 'Component',
-    tokens: [...(groupedTokens['slider'] || [])],
-  },
-};
-
+// Avatar
 export const Label: Story = {
   args: {
     title: 'Label Tokens',
@@ -222,15 +126,125 @@ export const Label: Story = {
     tokens: [...(groupedTokens['label'] || [])],
   },
 };
-
-export const Required: Story = {
+export const Avatar: Story = {
   args: {
-    title: 'Required Tokens',
+    title: 'Avatar Tokens',
     category: 'Component',
-    tokens: [...(groupedTokens['required-asterisk'] || [])],
+    tokens: [...(groupedTokens['avatar'] || [])],
   },
 };
-
+export const Tooltip: Story = {
+  args: {
+    title: 'Tooltip Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['tooltip'] || [])],
+  },
+};
+export const Accordion: Story = {
+  args: {
+    title: 'Accordion Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['accordion'] || [])],
+  },
+};
+export const FilePicker: Story = {
+  args: {
+    title: 'FilePicker Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['filepicker'] || [])],
+  },
+};
+export const CustomModal: Story = {
+  args: {
+    title: 'CustomModal Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['custom-modal'] || [])],
+  },
+};
+export const AlertModal: Story = {
+  args: {
+    title: 'AlertModal Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['alert-modal'] || [])],
+  },
+};
+export const Toast: Story = {
+  args: {
+    title: 'Toast Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['toast'] || [])],
+  },
+};
+export const Calendar: Story = {
+  args: {
+    title: 'Calendar Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['calendar'] || [])],
+  },
+};
+export const Searchbar: Story = {
+  args: {
+    title: 'Searchbar Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['searchbar'] || [])],
+  },
+};
+export const IconFrame: Story = {
+  args: {
+    title: 'IconFrame Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['icon-frame'] || [])],
+  },
+};
+export const OptionList: Story = {
+  args: {
+    title: 'OptionList Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['option-list'] || [])],
+  },
+};
+export const OptionItem: Story = {
+  args: {
+    title: 'OptionItem Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['option-item'] || [])],
+  },
+};
+export const ValidationMsg: Story = {
+  args: {
+    title: 'ValidationMsg Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['validation-msg'] || [])],
+  },
+};
+export const Slider: Story = {
+  args: {
+    title: 'Slider Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['slider'] || [])],
+  },
+};
+export const Badge: Story = {
+  args: {
+    title: 'Badge Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['badge'] || [])],
+  },
+};
+export const Datepicker: Story = {
+  args: {
+    title: 'BadDatepickerge Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['datepicker'] || [])],
+  },
+};
+export const Btn: Story = {
+  args: {
+    title: 'Btn Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['btn'] || [])],
+  },
+};
 export const Radio: Story = {
   args: {
     title: 'Radio Tokens',
@@ -238,7 +252,6 @@ export const Radio: Story = {
     tokens: [...(groupedTokens['radio'] || [])],
   },
 };
-
 export const Checkbox: Story = {
   args: {
     title: 'Checkbox Tokens',
@@ -246,20 +259,38 @@ export const Checkbox: Story = {
     tokens: [...(groupedTokens['checkbox'] || [])],
   },
 };
-
-export const OutlineBtn: Story = {
+export const Combobox: Story = {
   args: {
-    title: 'OutlineBtn Tokens',
+    title: 'Combobox Tokens',
     category: 'Component',
-    tokens: [...(groupedTokens['outline-btn'] || [])],
+    tokens: [...(groupedTokens['combobox'] || [])],
   },
 };
-
-// Interaction 그룹 (복수 접미사 합치기 예시)
-// export const Interaction: Story = {
-//   args: {
-//     title: 'Interaction & Utility',
-//     category: 'System',
-//     tokens: [...(groupedTokens['focus-ring'] || []), ...(groupedTokens['scrollbar'] || [])],
-//   },
-// };
+export const Selectbox: Story = {
+  args: {
+    title: 'Selectbox Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['selectbox'] || [])],
+  },
+};
+export const Input: Story = {
+  args: {
+    title: 'Input Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['input'] || [])],
+  },
+};
+export const Textarea: Story = {
+  args: {
+    title: 'Textarea Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['textarea'] || [])],
+  },
+};
+export const Switch: Story = {
+  args: {
+    title: 'Switch Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['switch'] || [])],
+  },
+};

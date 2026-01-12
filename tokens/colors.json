@@ -238,6 +238,34 @@
           "usage": "Skeleton Loader Animation Gradient Shim",
           "comment": "스켈레톤 로더 애니메이션 그라데이션의 시작 및 끝 색상입니다."
         }
+      },
+      "required-asterisk": {
+        "text": {
+          "light": {
+            "value": "#d32f2f",
+            "usage": "Required Asterisk Color",
+            "comment": "밝은 모드에서 필수 입력란 표시 별표의 색상입니다."
+          },
+          "dark": {
+            "value": "#ff8a80",
+            "usage": "Required Asterisk Color",
+            "comment": "어두운 모드에서 필수 입력란 표시 별표의 색상입니다."
+          }
+        }
+      }
+    },
+    "label": {
+      "text": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Label Text Color",
+          "comment": "밝은 모드에서 라벨 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "#1d1d1d",
+          "usage": "Label Text Color",
+          "comment": "어두운 모드에서 라벨 텍스트의 색상입니다."
+        }
       }
     },
     "avatar": {
@@ -437,6 +465,42 @@
           "value": "#2a2d30",
           "usage": "File Picker File Item Stroke Color",
           "comment": "어두운 모드에서 파일 픽커 내 파일 아이템의 테두리 색상입니다."
+        }
+      },
+      "disabled-dropzone-bg": {
+        "light": {
+          "value": "#eeeeee",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#1a1a1a",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-dropzone-border": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#333639",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-dropzone-hint-text": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#757575",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
         }
       }
     },
@@ -870,6 +934,44 @@
         }
       }
     },
+    "icon-frame": {
+      "success-fill": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Icon Frame Icon Color",
+          "comment": "밝은 모드에서 아이콘 프레임 내부의 아이콘 색상입니다."
+        },
+        "dark": {
+          "value": "#4ade80",
+          "usage": "Icon Frame Icon Color",
+          "comment": "어두운 모드에서 아이콘 프레임 내부의 아이콘 색상입니다."
+        }
+      },
+      "warning-fill": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Icon Frame Icon Color",
+          "comment": "밝은 모드에서 아이콘 프레임 내부의 아이콘 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Icon Frame Icon Color",
+          "comment": "어두운 모드에서 아이콘 프레임 내부의 아이콘 색상입니다."
+        }
+      },
+      "danger-fill": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Icon Frame Icon Color",
+          "comment": "밝은 모드에서 아이콘 프레임 내부의 아이콘 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Icon Frame Icon Color",
+          "comment": "어두운 모드에서 아이콘 프레임 내부의 아이콘 색상입니다."
+        }
+      }
+    },
     "option-list": {
       "shadow-bg": {
         "light": {
@@ -930,10 +1032,542 @@
           "usage": "Option List Empty State Description Text Color",
           "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
         }
+      },
+      "outline-success-bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#0f172a",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "outline-success-border": {
+        "light": {
+          "value": "#28a745",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#4ade80",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "outline-warning-bg": {
+        "light": {
+          "value": "#0f172a",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "outline-warning-border": {
+        "light": {
+          "value": "#fbbf24",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f5c84a",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "outline-danger-bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#0f172a",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "outline-danger-border": {
+        "light": {
+          "value": "#d84a4a",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
       }
     },
-    "validation-guide": {
-      "bg": {
+    "option-item": {
+      "ghost-success-bg": {
+        "light": {
+          "value": "transparent",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "transparent",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-success-text": {
+        "light": {
+          "value": "#2e5938",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#a7d4b4",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-success-bg-hover": {
+        "light": {
+          "value": "#d7f2df",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#1a2d24",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-success-text-hover": {
+        "light": {
+          "value": "#1e3b25",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#c9ebd0",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-success-bg-selected": {
+        "light": {
+          "value": "#b9e2c0",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#2e5938",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-success-text-selected": {
+        "light": {
+          "value": "#142a1a",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-success-bg-selected-hover": {
+        "light": {
+          "value": "#aad9b0",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#3a6e46",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-success-text-selected-hover": {
+        "light": {
+          "value": "#0d1c11",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-success-bg-active": {
+        "light": {
+          "value": "#9bce9f",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#244031",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-success-text-active": {
+        "light": {
+          "value": "#000000",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#d7f2df",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-success-bg-selected-active": {
+        "light": {
+          "value": "#1e3b25",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#1e3b25",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-success-text-selected-active": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+
+      "ghost-warning-bg": {
+        "light": {
+          "value": "transparent",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "transparent",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-warning-text": {
+        "light": {
+          "value": "#5c4a00",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fde68a",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-warning-bg-hover": {
+        "light": {
+          "value": "#fff4d1",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#2d2410",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-warning-text-hover": {
+        "light": {
+          "value": "#453700",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-warning-bg-selected": {
+        "light": {
+          "value": "#ffeb9f",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#b45309",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-warning-text-selected": {
+        "light": {
+          "value": "#332900",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-warning-bg-selected-hover": {
+        "light": {
+          "value": "#ffe486",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#92400e",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-warning-text-selected-hover": {
+        "light": {
+          "value": "#1f1900",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-warning-bg-active": {
+        "light": {
+          "value": "#ffeb9f",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#3d300c",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-warning-text-active": {
+        "light": {
+          "value": "#332900",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-warning-bg-selected-active": {
+        "light": {
+          "value": "#ffdd6d",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#78350f",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-warning-text-selected-active": {
+        "light": {
+          "value": "#000000",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+
+      "ghost-danger-bg": {
+        "light": {
+          "value": "transparent",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "transparent",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-danger-text": {
+        "light": {
+          "value": "#6f1a1a",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fecaca",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-danger-bg-hover": {
+        "light": {
+          "value": "#ffb5b5",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#2d1a1a",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-danger-text-hover": {
+        "light": {
+          "value": "#5a1515",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-danger-bg-selected": {
+        "light": {
+          "value": "#ff8f8f",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#991b1b",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-danger-text-selected": {
+        "light": {
+          "value": "#4a1010",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-danger-bg-selected-hover": {
+        "light": {
+          "value": "#ff7d7d",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#7f1d1d",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-danger-text-selected-hover": {
+        "light": {
+          "value": "#3a0c0c",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-danger-bg-active": {
+        "light": {
+          "value": "#ff8f8f",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#3f1d1d",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-danger-text-active": {
+        "light": {
+          "value": "#4a1010",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-danger-bg-selected-active": {
+        "light": {
+          "value": "#ff6b6b",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#6c1616",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "ghost-danger-text-selected-active": {
+        "light": {
+          "value": "#000000",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Option List Empty State Description Text Color",
+          "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
+        }
+      },
+      "disabled-bg": {
+        "light": {
+          "value": "#eeeeee",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#0f172a",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-text": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#475569",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      }
+    },
+    "validation-msg": {
+      "guide-bg": {
         "light": {
           "value": "#f0f9ff",
           "usage": "Validation Message Background Color",
@@ -945,7 +1579,7 @@
           "comment": "어두운 모드에서 검증 메시지의 배경 색상입니다."
         }
       },
-      "text": {
+      "guide-text": {
         "light": {
           "value": "#075985",
           "usage": "Validation Message Text Color",
@@ -957,7 +1591,7 @@
           "comment": "어두운 모드에서 검증 메시지의 텍스트 색상입니다."
         }
       },
-      "icon": {
+      "guide-icon-fill": {
         "light": {
           "value": "#075985",
           "usage": "Validation Message Icon Color",
@@ -967,6 +1601,114 @@
           "value": "#38bdf8",
           "usage": "Validation Message Icon Color",
           "comment": "어두운 모드에서 검증 메시지의 아이콘 색상입니다."
+        }
+      },
+      "success-bg": {
+        "light": {
+          "value": "#f0fdf4",
+          "usage": "Validation Message Success Background Color",
+          "comment": "밝은 모드에서 검증 메시지 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#064e3b",
+          "usage": "Validation Message Success Background Color",
+          "comment": "어두운 모드에서 검증 메시지 성공 상태의 배경 색상입니다."
+        }
+      },
+      "success-text": {
+        "light": {
+          "value": "#166534",
+          "usage": "Validation Message Success Text Color",
+          "comment": "밝은 모드에서 검증 메시지 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#6ee7b7",
+          "usage": "Validation Message Success Text Color",
+          "comment": "어두운 모드에서 검증 메시지 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "success-icon-fill": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Validation Message Success Icon Color",
+          "comment": "밝은 모드에서 검증 메시지 성공 상태의 아이콘 색상입니다."
+        },
+        "dark": {
+          "value": "#4ade80",
+          "usage": "Validation Message Success Icon Color",
+          "comment": "어두운 모드에서 검증 메시지 성공 상태의 아이콘 색상입니다."
+        }
+      },
+      "warning-bg": {
+        "light": {
+          "value": "#fffbeb",
+          "usage": "Validation Message Success Background Color",
+          "comment": "밝은 모드에서 검증 메시지 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#451a03",
+          "usage": "Validation Message Success Background Color",
+          "comment": "어두운 모드에서 검증 메시지 성공 상태의 배경 색상입니다."
+        }
+      },
+      "warning-text": {
+        "light": {
+          "value": "#78350f",
+          "usage": "Validation Message Success Text Color",
+          "comment": "밝은 모드에서 검증 메시지 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fffbeb",
+          "usage": "Validation Message Success Text Color",
+          "comment": "어두운 모드에서 검증 메시지 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "warning-icon-fill": {
+        "light": {
+          "value": "#92400e",
+          "usage": "Validation Message Success Icon Color",
+          "comment": "밝은 모드에서 검증 메시지 성공 상태의 아이콘 색상입니다."
+        },
+        "dark": {
+          "value": "#fcd34d",
+          "usage": "Validation Message Success Icon Color",
+          "comment": "어두운 모드에서 검증 메시지 성공 상태의 아이콘 색상입니다."
+        }
+      },
+      "danger-bg": {
+        "light": {
+          "value": "#fef2f2",
+          "usage": "Validation Message Success Background Color",
+          "comment": "밝은 모드에서 검증 메시지 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#450a0a",
+          "usage": "Validation Message Success Background Color",
+          "comment": "어두운 모드에서 검증 메시지 성공 상태의 배경 색상입니다."
+        }
+      },
+      "danger-text": {
+        "light": {
+          "value": "#7f1d1d",
+          "usage": "Validation Message Success Text Color",
+          "comment": "밝은 모드에서 검증 메시지 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fef2f2",
+          "usage": "Validation Message Success Text Color",
+          "comment": "어두운 모드에서 검증 메시지 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "danger-icon-fill": {
+        "light": {
+          "value": "#dc2626",
+          "usage": "Validation Message Success Icon Color",
+          "comment": "밝은 모드에서 검증 메시지 성공 상태의 아이콘 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Validation Message Success Icon Color",
+          "comment": "어두운 모드에서 검증 메시지 성공 상태의 아이콘 색상입니다."
         }
       }
     },
@@ -1006,33 +1748,1504 @@
           "usage": "Slider Text Color",
           "comment": "어두운 모드에서 슬라이더 텍스트의 색상입니다."
         }
-      }
-    },
-    "label": {
-      "text": {
+      },
+      "disabled-track-bg": {
         "light": {
-          "value": "#ffffff",
-          "usage": "Label Text Color",
-          "comment": "밝은 모드에서 라벨 텍스트의 색상입니다."
+          "value": "#e9ecef",
+          "usage": "Slider Text Color",
+          "comment": "밝은 모드에서 슬라이더 텍스트의 색상입니다."
         },
         "dark": {
-          "value": "#1d1d1d",
-          "usage": "Label Text Color",
-          "comment": "어두운 모드에서 라벨 텍스트의 색상입니다."
+          "value": "#e9ecef",
+          "usage": "Slider Text Color",
+          "comment": "어두운 모드에서 슬라이더 텍스트의 색상입니다."
+        }
+      },
+      "disabled-fill": {
+        "light": {
+          "value": "#adb5bd",
+          "usage": "Slider Text Color",
+          "comment": "밝은 모드에서 슬라이더 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "#343a40",
+          "usage": "Slider Text Color",
+          "comment": "어두운 모드에서 슬라이더 텍스트의 색상입니다."
+        }
+      },
+      "disabled-thumb-bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Slider Text Color",
+          "comment": "밝은 모드에서 슬라이더 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "#6c757d",
+          "usage": "Slider Text Color",
+          "comment": "어두운 모드에서 슬라이더 텍스트의 색상입니다."
+        }
+      },
+      "disabled-thumb-border": {
+        "light": {
+          "value": "#adb5bd",
+          "usage": "Slider Text Color",
+          "comment": "밝은 모드에서 슬라이더 텍스트의 색상입니다."
+        },
+        "dark": {
+          "value": "#495057",
+          "usage": "Slider Text Color",
+          "comment": "어두운 모드에서 슬라이더 텍스트의 색상입니다."
         }
       }
     },
-    "required-asterisk": {
-      "text": {
+    "badge": {
+      "solid-success-bg": {
         "light": {
-          "value": "#d32f2f",
-          "usage": "Required Asterisk Color",
-          "comment": "밝은 모드에서 필수 입력란 표시 별표의 색상입니다."
+          "value": "#15803d",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
         },
         "dark": {
-          "value": "#ff8a80",
-          "usage": "Required Asterisk Color",
-          "comment": "어두운 모드에서 필수 입력란 표시 별표의 색상입니다."
+          "value": "#15803d",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+      "solid-success-text": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+      "solid-success-border": {
+        "light": {
+          "value": "transparent",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "transparent",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+      "outline-success-bg": {
+        "light": {
+          "value": "#f0fdf4",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(74, 222, 128, 0.12)",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+      "outline-success-text": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#4ade80",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+      "outline-success-border": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#4ade80",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+
+      "solid-warning-bg": {
+        "light": {
+          "value": "#a16207",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#9a3412",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+      "solid-warning-text": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+      "solid-warning-border": {
+        "light": {
+          "value": "transparent",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "transparent",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+      "outline-warning-bg": {
+        "light": {
+          "value": "#fefce8",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(251, 191, 36, 0.12)",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+      "outline-warning-text": {
+        "light": {
+          "value": "#a16207",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+      "outline-warning-border": {
+        "light": {
+          "value": "#a16207",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+
+      "solid-danger-bg": {
+        "light": {
+          "value": "#dc2626",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#dc2626",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+      "solid-danger-text": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+      "solid-danger-border": {
+        "light": {
+          "value": "transparent",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "transparent",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+      "outline-danger-bg": {
+        "light": {
+          "value": "#fef2f2",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(248, 113, 113, 0.12)",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+      "outline-danger-text": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+      "outline-danger-border": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      }
+    },
+    "datepicker": {
+      "success-shadow-hover": {
+        "light": {
+          "value": "rgba(21, 128, 101, 0.25)",
+          "usage": "Datepicker Success Hover Shadow Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "#34d399",
+          "usage": "Datepicker Success Hover Shadow Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "outline-success-bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Datepicker Success Background Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#064e3b",
+          "usage": "Datepicker Success Background Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 배경 색상입니다."
+        }
+      },
+      "outline-success-border": {
+        "light": {
+          "value": "#16a34a",
+          "usage": "Datepicker Success Border Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#059669",
+          "usage": "Datepicker Success Border Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-success-text": {
+        "light": {
+          "value": "#14532d",
+          "usage": "Datepicker Success Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f0fdf4",
+          "usage": "Datepicker Success Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-success-placeholder": {
+        "light": {
+          "value": "#166534",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#6ee7b7",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "warning-shadow-hover": {
+        "light": {
+          "value": "rgba(180, 83, 9, 0.25)",
+          "usage": "Datepicker Success Hover Shadow Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "#facc15",
+          "usage": "Datepicker Success Hover Shadow Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "outline-warning-bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Datepicker Success Background Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#451a03",
+          "usage": "Datepicker Success Background Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 배경 색상입니다."
+        }
+      },
+      "outline-warning-border": {
+        "light": {
+          "value": "#d97706",
+          "usage": "Datepicker Success Border Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#f59e0b",
+          "usage": "Datepicker Success Border Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-warning-text": {
+        "light": {
+          "value": "#78350f",
+          "usage": "Datepicker Success Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fef3c7",
+          "usage": "Datepicker Success Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-warning-placeholder": {
+        "light": {
+          "value": "#92400e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "danger-shadow-hover": {
+        "light": {
+          "value": "rgba(185, 28, 28, 0.25)",
+          "usage": "Datepicker Success Hover Shadow Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "#ef4444",
+          "usage": "Datepicker Success Hover Shadow Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "outline-danger-bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Datepicker Success Background Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#450a0a",
+          "usage": "Datepicker Success Background Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 배경 색상입니다."
+        }
+      },
+      "outline-danger-border": {
+        "light": {
+          "value": "#dc2626",
+          "usage": "Datepicker Success Border Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#ef4444",
+          "usage": "Datepicker Success Border Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-danger-text": {
+        "light": {
+          "value": "#7f1d1d",
+          "usage": "Datepicker Success Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fef2f2",
+          "usage": "Datepicker Success Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-danger-placeholder": {
+        "light": {
+          "value": "#991b1b",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fca5a5",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-bg": {
+        "light": {
+          "value": "#f9f9f9",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#1e293b",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-border": {
+        "light": {
+          "value": "#e0e0e0",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#334155",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-text": {
+        "light": {
+          "value": "#212121",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#cbd5e1",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-placeholder": {
+        "light": {
+          "value": "#212121",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#64748b",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "dissabled-bg": {
+        "light": {
+          "value": "#eeeeee",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#0f172a",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "dissabled-border": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#475569",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "dissabled-text": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#475569",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "dissabled-placeholder": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#334155",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      }
+    },
+    "btn": {
+      "outline-bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Outline Button Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#121212",
+          "usage": "Outline Button Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+        }
+      },
+      "outline-success-text": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Outline Button Success Text Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#4ade80",
+          "usage": "Outline Button Success Text Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-success-border": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Outline Button Success Border Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#4ade80",
+          "usage": "Outline Button Success Border Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-success-bg-hover": {
+        "light": {
+          "value": "rgba(21, 128, 61, 0.08)",
+          "usage": "Outline Button Success Hover Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(74, 222, 128, 0.12)",
+          "usage": "Outline Button Success Hover Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        }
+      },
+      "outline-success-text-hover": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Outline Button Success Hover Text Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#4ade80",
+          "usage": "Outline Button Success Hover Text Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        }
+      },
+      "outline-success-bg-active": {
+        "light": {
+          "value": "rgba(21, 128, 61, 0.16)",
+          "usage": "Outline Button Success Active Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(74, 222, 128, 0.24)",
+          "usage": "Outline Button Success Active Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        }
+      },
+      "outline-success-text-active": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Outline Button Success Active Text Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#4ade80",
+          "usage": "Outline Button Success Active Text Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "solid-success-bg": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Solid Button Success Background Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#15803d",
+          "usage": "Solid Button Success Background Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태의 배경 색상입니다."
+        }
+      },
+      "solid-success-text": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Text Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Text Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "solid-success-bg-hover": {
+        "light": {
+          "value": "#166534",
+          "usage": "Solid Button Success Hover Background Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#16a34a",
+          "usage": "Solid Button Success Hover Background Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        }
+      },
+      "solid-success-text-hover": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Hover Text Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Hover Text Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        }
+      },
+      "solid-success-bg-active": {
+        "light": {
+          "value": "#14532d",
+          "usage": "Solid Button Success Active Background Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#14532d",
+          "usage": "Solid Button Success Active Background Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        }
+      },
+      "solid-success-text-active": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Active Text Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Active Text Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "ghost-success-bg": {
+        "light": {
+          "value": "transparent",
+          "usage": "Ghost Button Success Background Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "transparent",
+          "usage": "Ghost Button Success Background Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태의 배경 색상입니다."
+        }
+      },
+      "ghost-success-text": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Ghost Button Success Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#4ade80",
+          "usage": "Ghost Button Success Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "ghost-success-bg-hover": {
+        "light": {
+          "value": "rgba(21, 128, 61, 0.05)",
+          "usage": "Ghost Button Success Hover Background Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(74, 222, 128, 0.15)",
+          "usage": "Ghost Button Success Hover Background Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        }
+      },
+      "ghost-success-text-hover": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Ghost Button Success Hover Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#4ade80",
+          "usage": "Ghost Button Success Hover Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        }
+      },
+      "ghost-success-bg-active": {
+        "light": {
+          "value": "rgba(21, 128, 61, 0.1)",
+          "usage": "Ghost Button Success Active Background Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(74, 222, 128, 0.25)",
+          "usage": "Ghost Button Success Active Background Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        }
+      },
+      "ghost-success-text-active": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#4ade80",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-success-bg": {
+        "light": {
+          "value": "transparent",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "transparent",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-success-text": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#4ade80",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-success-bg-hover": {
+        "light": {
+          "value": "rgba(21, 128, 61, 0.05)",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(74, 222, 128, 0.15)",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-success-text-hover": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#4ade80",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-success-bg-active": {
+        "light": {
+          "value": "rgba(21, 128, 61, 0.1)",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(74, 222, 128, 0.25)",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-success-text-active": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#4ade80",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+
+      "outline-warning-text": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Outline Button Success Text Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Outline Button Success Text Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-warning-border": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Outline Button Success Border Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Outline Button Success Border Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-warning-bg-hover": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Outline Button Success Hover Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(251, 191, 36, 0.12)",
+          "usage": "Outline Button Success Hover Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        }
+      },
+      "outline-warning-text-hover": {
+        "light": {
+          "value": "rgba(180, 83, 9, 0.08)",
+          "usage": "Outline Button Success Hover Text Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Outline Button Success Hover Text Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        }
+      },
+      "outline-warning-bg-active": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Outline Button Success Active Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(251, 191, 36, 0.24)",
+          "usage": "Outline Button Success Active Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        }
+      },
+      "outline-warning-text-active": {
+        "light": {
+          "value": "#fbbf24",
+          "usage": "Outline Button Success Active Text Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Outline Button Success Active Text Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "solid-warning-bg": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Solid Button Success Background Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#9a3412",
+          "usage": "Solid Button Success Background Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태의 배경 색상입니다."
+        }
+      },
+      "solid-warning-text": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Text Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Text Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "solid-warning-bg-hover": {
+        "light": {
+          "value": "#92400e",
+          "usage": "Solid Button Success Hover Background Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#b45309",
+          "usage": "Solid Button Success Hover Background Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        }
+      },
+      "solid-warning-text-hover": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Hover Text Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Hover Text Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        }
+      },
+      "solid-warning-bg-active": {
+        "light": {
+          "value": "#78350f",
+          "usage": "Solid Button Success Active Background Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#7c2d12",
+          "usage": "Solid Button Success Active Background Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        }
+      },
+      "solid-warning-text-active": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Active Text Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Active Text Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "ghost-warning-bg": {
+        "light": {
+          "value": "transparent",
+          "usage": "Ghost Button Success Background Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "transparent",
+          "usage": "Ghost Button Success Background Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태의 배경 색상입니다."
+        }
+      },
+      "ghost-warning-text": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Ghost Button Success Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Ghost Button Success Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "ghost-warning-bg-hover": {
+        "light": {
+          "value": "rgba(180, 83, 9, 0.05)",
+          "usage": "Ghost Button Success Hover Background Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(251, 191, 36, 0.15)",
+          "usage": "Ghost Button Success Hover Background Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        }
+      },
+      "ghost-warning-text-hover": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Ghost Button Success Hover Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Ghost Button Success Hover Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        }
+      },
+      "ghost-warning-bg-active": {
+        "light": {
+          "value": "rgba(180, 83, 9, 0.1)",
+          "usage": "Ghost Button Success Active Background Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(251, 191, 36, 0.25)",
+          "usage": "Ghost Button Success Active Background Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        }
+      },
+      "ghost-warning-text-active": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-warning-bg": {
+        "light": {
+          "value": "transparent",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "transparent",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-warning-text": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-warning-bg-hover": {
+        "light": {
+          "value": "rgba(180, 83, 9, 0.05)",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(251, 191, 36, 0.15)",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-warning-text-hover": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-warning-bg-active": {
+        "light": {
+          "value": "rgba(180, 83, 9, 0.1)",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(251, 191, 36, 0.25)",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-warning-text-active": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+
+      "outline-danger-text": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Outline Button Success Text Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Outline Button Success Text Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-danger-border": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Outline Button Success Border Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Outline Button Success Border Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-danger-bg-hover": {
+        "light": {
+          "value": "rgba(185, 28, 28, 0.08)",
+          "usage": "Outline Button Success Hover Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(248, 113, 113, 0.12)",
+          "usage": "Outline Button Success Hover Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        }
+      },
+      "outline-danger-text-hover": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Outline Button Success Hover Text Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Outline Button Success Hover Text Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        }
+      },
+      "outline-danger-bg-active": {
+        "light": {
+          "value": "rgba(185, 28, 28, 0.16)",
+          "usage": "Outline Button Success Active Background Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(248, 113, 113, 0.24)",
+          "usage": "Outline Button Success Active Background Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        }
+      },
+      "outline-danger-text-active": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Outline Button Success Active Text Color",
+          "comment": "밝은 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Outline Button Success Active Text Color",
+          "comment": "어두운 모드에서 아웃라인 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "solid-danger-bg": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Solid Button Success Background Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#dc2626",
+          "usage": "Solid Button Success Background Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태의 배경 색상입니다."
+        }
+      },
+      "solid-danger-text": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Text Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Text Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "solid-danger-bg-hover": {
+        "light": {
+          "value": "#991b1b",
+          "usage": "Solid Button Success Hover Background Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#ef4444",
+          "usage": "Solid Button Success Hover Background Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        }
+      },
+      "solid-danger-text-hover": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Hover Text Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Hover Text Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        }
+      },
+      "solid-danger-bg-active": {
+        "light": {
+          "value": "#7f1d1d",
+          "usage": "Solid Button Success Active Background Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#991b1b",
+          "usage": "Solid Button Success Active Background Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        }
+      },
+      "solid-danger-text-active": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Active Text Color",
+          "comment": "밝은 모드에서 솔리드 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#ffffff",
+          "usage": "Solid Button Success Active Text Color",
+          "comment": "어두운 모드에서 솔리드 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "ghost-danger-bg": {
+        "light": {
+          "value": "transparent",
+          "usage": "Ghost Button Success Background Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "transparent",
+          "usage": "Ghost Button Success Background Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태의 배경 색상입니다."
+        }
+      },
+      "ghost-danger-text": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Ghost Button Success Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Ghost Button Success Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "ghost-danger-bg-hover": {
+        "light": {
+          "value": "rgba(185, 28, 28, 0.05)",
+          "usage": "Ghost Button Success Hover Background Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(248, 113, 113, 0.15)",
+          "usage": "Ghost Button Success Hover Background Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
+        }
+      },
+      "ghost-danger-text-hover": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Ghost Button Success Hover Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Ghost Button Success Hover Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
+        }
+      },
+      "ghost-danger-bg-active": {
+        "light": {
+          "value": "rgba(185, 28, 28, 0.1)",
+          "usage": "Ghost Button Success Active Background Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(248, 113, 113, 0.25)",
+          "usage": "Ghost Button Success Active Background Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 배경 색상입니다."
+        }
+      },
+      "ghost-danger-text-active": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-danger-bg": {
+        "light": {
+          "value": "transparent",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "transparent",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-danger-text": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-danger-bg-hover": {
+        "light": {
+          "value": "rgba(185, 28, 28, 0.05)",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(248, 113, 113, 0.15)",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-danger-text-hover": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-danger-bg-active": {
+        "light": {
+          "value": "rgba(185, 28, 28, 0.1)",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(248, 113, 113, 0.25)",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "link-danger-text-active": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "밝은 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Ghost Button Success Active Text Color",
+          "comment": "어두운 모드에서 고스트 버튼 성공 상태에 활성화 시의 텍스트 색상입니다."
+        }
+      },
+      "disabled-bg": {
+        "light": {
+          "value": "#e0e0e0",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#1e1e1e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-border": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#374151",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-text": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#4b5563",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+
+      "disabled-ghost-link-bg": {
+        "light": {
+          "value": "transparent",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "transparent",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-ghost-link-text": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#4b5563",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-ghost-bg": {
+        "light": {
+          "value": "transparent",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "transparent",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
         }
       }
     },
@@ -1060,6 +3273,141 @@
           "usage": "Radio Button Border Color",
           "comment": "어두운 모드에서 라디오 버튼의 테두리 색상입니다."
         }
+      },
+      "success-checked": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Radio Button Success Checked Color",
+          "comment": "밝은 모드에서 라디오 버튼 성공 상태의 선택된 색상입니다."
+        },
+        "dark": {
+          "value": "#4ade80",
+          "usage": "Radio Button Success Checked Color",
+          "comment": "어두운 모드에서 라디오 버튼 성공 상태의 선택된 색상입니다."
+        }
+      },
+      "success-shadow-hover": {
+        "light": {
+          "value": "rgba(21, 128, 101, 0.25)",
+          "usage": "Radio Button Success Hover Shadow Color",
+          "comment": "밝은 모드에서 라디오 버튼 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(74, 222, 128, 0.25)",
+          "usage": "Radio Button Success Hover Shadow Color",
+          "comment": "어두운 모드에서 라디오 버튼 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "success-shadow-active": {
+        "light": {
+          "value": "rgba(21, 128, 101, 0.25)",
+          "usage": "Radio Button Success Active Shadow Color",
+          "comment": "밝은 모드에서 라디오 버튼 성공 상태에 활성화 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(74, 222, 128, 0.25)",
+          "usage": "Radio Button Success Active Shadow Color",
+          "comment": "어두운 모드에서 라디오 버튼 성공 상태에 활성화 시의 그림자 색상입니다."
+        }
+      },
+
+      "warning-checked": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Radio Button warning Checked Color",
+          "comment": "밝은 모드에서 라디오 버튼 성공 상태의 선택된 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Radio Button warning Checked Color",
+          "comment": "어두운 모드에서 라디오 버튼 성공 상태의 선택된 색상입니다."
+        }
+      },
+      "warning-shadow-hover": {
+        "light": {
+          "value": "rgba(180, 83, 9, 0.25)",
+          "usage": "Radio Button warning Hover Shadow Color",
+          "comment": "밝은 모드에서 라디오 버튼 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(251, 191, 36, 0.25)",
+          "usage": "Radio Button warning Hover Shadow Color",
+          "comment": "어두운 모드에서 라디오 버튼 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "warning-shadow-active": {
+        "light": {
+          "value": "rgba(180, 83, 9, 0.25)",
+          "usage": "Radio Button warning Active Shadow Color",
+          "comment": "밝은 모드에서 라디오 버튼 성공 상태에 활성화 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(251, 191, 36, 0.25)",
+          "usage": "Radio Button warning Active Shadow Color",
+          "comment": "어두운 모드에서 라디오 버튼 성공 상태에 활성화 시의 그림자 색상입니다."
+        }
+      },
+
+      "danger-checked": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Radio Button danger Checked Color",
+          "comment": "밝은 모드에서 라디오 버튼 성공 상태의 선택된 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Radio Button danger Checked Color",
+          "comment": "어두운 모드에서 라디오 버튼 성공 상태의 선택된 색상입니다."
+        }
+      },
+      "danger-shadow-hover": {
+        "light": {
+          "value": "rgba(185, 28, 28, 0.25)",
+          "usage": "Radio Button danger Hover Shadow Color",
+          "comment": "밝은 모드에서 라디오 버튼 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(248, 113, 113, 0.25)",
+          "usage": "Radio Button danger Hover Shadow Color",
+          "comment": "어두운 모드에서 라디오 버튼 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "danger-shadow-active": {
+        "light": {
+          "value": "rgba(185, 28, 28, 0.25)",
+          "usage": "Radio Button danger Active Shadow Color",
+          "comment": "밝은 모드에서 라디오 버튼 성공 상태에 활성화 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(248, 113, 113, 0.25)",
+          "usage": "Radio Button danger Active Shadow Color",
+          "comment": "어두운 모드에서 라디오 버튼 성공 상태에 활성화 시의 그림자 색상입니다."
+        }
+      },
+
+      "disabled-bg": {
+        "light": {
+          "value": "#e0e0e0",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#1e1e1e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-border": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#374151",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
       }
     },
     "checkbox": {
@@ -1086,19 +3434,1583 @@
           "usage": "Radio Button Border Color",
           "comment": "어두운 모드에서 라디오 버튼의 테두리 색상입니다."
         }
-      }
-    },
-    "outline-btn": {
-      "bg": {
+      },
+      "success-checked": {
         "light": {
-          "value": "#ffffff",
-          "usage": "Outline Button Background Color",
-          "comment": "밝은 모드에서 아웃라인 버튼의 배경 색상입니다."
+          "value": "#15803d",
+          "usage": "Checkbox Success Checked Background Color",
+          "comment": "밝은 모드에서 체크박스 성공 상태의 선택된 배경 색상입니다."
         },
         "dark": {
-          "value": "#121212",
-          "usage": "Outline Button Background Color",
-          "comment": "어두운 모드에서 아웃라인 버튼의 배경 색상입니다."
+          "value": "#4ade80",
+          "usage": "Checkbox Success Checked Background Color",
+          "comment": "어두운 모드에서 체크박스 성공 상태의 선택된 배경 색상입니다."
+        }
+      },
+      "success-shadow-hover": {
+        "light": {
+          "value": "rgba(21, 128, 101, 0.25)",
+          "usage": "Checkbox Success Hover Shadow Color",
+          "comment": "밝은 모드에서 체크박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(74, 222, 128, 0.25)",
+          "usage": "Checkbox Success Hover Shadow Color",
+          "comment": "어두운 모드에서 체크박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "success-shadow-active": {
+        "light": {
+          "value": "rgba(21, 128, 101, 0.25)",
+          "usage": "Checkbox Success Active Shadow Color",
+          "comment": "밝은 모드에서 체크박스 성공 상태에 활성화 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(74, 222, 128, 0.25)",
+          "usage": "Checkbox Success Active Shadow Color",
+          "comment": "어두운 모드에서 체크박스 성공 상태에 활성화 시의 그림자 색상입니다."
+        }
+      },
+      "warning-checked": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Checkbox warning Checked Background Color",
+          "comment": "밝은 모드에서 체크박스 성공 상태의 선택된 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#b45309",
+          "usage": "Checkbox warning Checked Background Color",
+          "comment": "어두운 모드에서 체크박스 성공 상태의 선택된 배경 색상입니다."
+        }
+      },
+      "warning-shadow-hover": {
+        "light": {
+          "value": "rgba(180, 83, 9, 0.25)",
+          "usage": "Checkbox warning Hover Shadow Color",
+          "comment": "밝은 모드에서 체크박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(180, 83, 9, 0.25)",
+          "usage": "Checkbox warning Hover Shadow Color",
+          "comment": "어두운 모드에서 체크박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "warning-shadow-active": {
+        "light": {
+          "value": "rgba(180, 83, 9, 0.25)",
+          "usage": "Checkbox warning Active Shadow Color",
+          "comment": "밝은 모드에서 체크박스 성공 상태에 활성화 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(180, 83, 9, 0.25)",
+          "usage": "Checkbox warning Active Shadow Color",
+          "comment": "어두운 모드에서 체크박스 성공 상태에 활성화 시의 그림자 색상입니다."
+        }
+      },
+      "danger-checked": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Checkbox danger Checked Background Color",
+          "comment": "밝은 모드에서 체크박스 성공 상태의 선택된 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Checkbox danger Checked Background Color",
+          "comment": "어두운 모드에서 체크박스 성공 상태의 선택된 배경 색상입니다."
+        }
+      },
+      "danger-shadow-hover": {
+        "light": {
+          "value": "rgba(185, 28, 28, 0.25)",
+          "usage": "Checkbox danger Hover Shadow Color",
+          "comment": "밝은 모드에서 체크박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(248, 113, 113, 0.25)",
+          "usage": "Checkbox danger Hover Shadow Color",
+          "comment": "어두운 모드에서 체크박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "danger-shadow-active": {
+        "light": {
+          "value": "rgba(185, 28, 28, 0.25)",
+          "usage": "Checkbox danger Active Shadow Color",
+          "comment": "밝은 모드에서 체크박스 성공 상태에 활성화 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "rgba(248, 113, 113, 0.25)",
+          "usage": "Checkbox danger Active Shadow Color",
+          "comment": "어두운 모드에서 체크박스 성공 상태에 활성화 시의 그림자 색상입니다."
+        }
+      },
+      "disabled-bg": {
+        "light": {
+          "value": "#e0e0e0",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#1e1e1e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-border": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#374151",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      }
+    },
+    "combobox": {
+      "success-shadow-hover": {
+        "light": {
+          "value": "rgba(21, 128, 101, 0.25)",
+          "usage": "Combobox Success Hover Shadow Color",
+          "comment": "밝은 모드에서 콤보박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "#34d399",
+          "usage": "Combobox Success Hover Shadow Color",
+          "comment": "어두운 모드에서 콤보박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "outline-success-bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Combobox Success Background Color",
+          "comment": "밝은 모드에서 콤보박스 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#064e3b",
+          "usage": "Combobox Success Background Color",
+          "comment": "어두운 모드에서 콤보박스 성공 상태의 배경 색상입니다."
+        }
+      },
+      "outline-success-border": {
+        "light": {
+          "value": "#16a34a",
+          "usage": "Combobox Success Border Color",
+          "comment": "밝은 모드에서 콤보박스 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#059669",
+          "usage": "Combobox Success Border Color",
+          "comment": "어두운 모드에서 콤보박스 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-success-text": {
+        "light": {
+          "value": "#14532d",
+          "usage": "Combobox Success Text Color",
+          "comment": "밝은 모드에서 콤보박스 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f0fdf4",
+          "usage": "Combobox Success Text Color",
+          "comment": "어두운 모드에서 콤보박스 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-success-placeholder": {
+        "light": {
+          "value": "#166534",
+          "usage": "Combobox Success Placeholder Text Color",
+          "comment": "밝은 모드에서 콤보박스 성공 상태의  플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#6ee7b7",
+          "usage": "Combobox Success Placeholder Text Color",
+          "comment": "어두운 모드에서 콤보박스 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+
+      "warning-shadow-hover": {
+        "light": {
+          "value": "rgba(180, 83, 9, 0.25)",
+          "usage": "Combobox warning Hover Shadow Color",
+          "comment": "밝은 모드에서 콤보박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "#facc15",
+          "usage": "Combobox warning Hover Shadow Color",
+          "comment": "어두운 모드에서 콤보박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "outline-warning-bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Combobox warning Background Color",
+          "comment": "밝은 모드에서 콤보박스 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#451a03",
+          "usage": "Combobox warning Background Color",
+          "comment": "어두운 모드에서 콤보박스 성공 상태의 배경 색상입니다."
+        }
+      },
+      "outline-warning-border": {
+        "light": {
+          "value": "#d97706",
+          "usage": "Combobox warning Border Color",
+          "comment": "밝은 모드에서 콤보박스 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#f59e0b",
+          "usage": "Combobox warning Border Color",
+          "comment": "어두운 모드에서 콤보박스 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-warning-text": {
+        "light": {
+          "value": "#78350f",
+          "usage": "Combobox warning Text Color",
+          "comment": "밝은 모드에서 콤보박스 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fef3c7",
+          "usage": "Combobox warning Text Color",
+          "comment": "어두운 모드에서 콤보박스 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-warning-placeholder": {
+        "light": {
+          "value": "#92400e",
+          "usage": "Combobox warning Placeholder Text Color",
+          "comment": "밝은 모드에서 콤보박스 성공 상태의  플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Combobox warning Placeholder Text Color",
+          "comment": "어두운 모드에서 콤보박스 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+
+      "danger-shadow-hover": {
+        "light": {
+          "value": "rgba(185, 28, 28, 0.25)",
+          "usage": "Combobox danger Hover Shadow Color",
+          "comment": "밝은 모드에서 콤보박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "#ef4444",
+          "usage": "Combobox danger Hover Shadow Color",
+          "comment": "어두운 모드에서 콤보박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "outline-danger-bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Combobox danger Background Color",
+          "comment": "밝은 모드에서 콤보박스 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#450a0a",
+          "usage": "Combobox danger Background Color",
+          "comment": "어두운 모드에서 콤보박스 성공 상태의 배경 색상입니다."
+        }
+      },
+      "outline-danger-border": {
+        "light": {
+          "value": "#dc2626",
+          "usage": "Combobox danger Border Color",
+          "comment": "밝은 모드에서 콤보박스 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#ef4444",
+          "usage": "Combobox danger Border Color",
+          "comment": "어두운 모드에서 콤보박스 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-danger-text": {
+        "light": {
+          "value": "#7f1d1d",
+          "usage": "Combobox danger Text Color",
+          "comment": "밝은 모드에서 콤보박스 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fef2f2",
+          "usage": "Combobox danger Text Color",
+          "comment": "어두운 모드에서 콤보박스 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-danger-placeholder": {
+        "light": {
+          "value": "#991b1b",
+          "usage": "Combobox danger Placeholder Text Color",
+          "comment": "밝은 모드에서 콤보박스 성공 상태의  플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fca5a5",
+          "usage": "Combobox danger Placeholder Text Color",
+          "comment": "어두운 모드에서 콤보박스 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-bg": {
+        "light": {
+          "value": "#f9f9f9",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#1e293b",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-border": {
+        "light": {
+          "value": "#e0e0e0",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#334155",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-text": {
+        "light": {
+          "value": "#212121",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#cbd5e1",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-placeholder": {
+        "light": {
+          "value": "#212121",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#64748b",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-bg": {
+        "light": {
+          "value": "#eeeeee",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#0f172a",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-border": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#475569",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-text": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#475569",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-placeholder": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#334155",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      }
+    },
+    "selectbox": {
+      "success-shadow-hover": {
+        "light": {
+          "value": "rgba(21, 128, 101, 0.25)",
+          "usage": "Selectbox Success Hover Shadow Color",
+          "comment": "밝은 모드에서 셀렉트박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "#34d399",
+          "usage": "Selectbox Success Hover Shadow Color",
+          "comment": "어두운 모드에서 셀렉트박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "outline-success-bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Selectbox Success Background Color",
+          "comment": "밝은 모드에서 셀렉트박스 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#064e3b",
+          "usage": "Selectbox Success Background Color",
+          "comment": "어두운 모드에서 셀렉트박스 성공 상태의 배경 색상입니다."
+        }
+      },
+      "outline-success-border": {
+        "light": {
+          "value": "#16a34a",
+          "usage": "Selectbox Success Border Color",
+          "comment": "밝은 모드에서 셀렉트박스 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#059669",
+          "usage": "Selectbox Success Border Color",
+          "comment": "어두운 모드에서 셀렉트박스 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-success-text": {
+        "light": {
+          "value": "#14532d",
+          "usage": "Selectbox Success Text Color",
+          "comment": "밝은 모드에서 셀렉트박스 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f0fdf4",
+          "usage": "Selectbox Success Text Color",
+          "comment": "어두운 모드에서 셀렉트박스 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-success-placeholder": {
+        "light": {
+          "value": "#166534",
+          "usage": "Selectbox Success Placeholder Text Color",
+          "comment": "밝은 모드에서 셀렉트박스 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#6ee7b7",
+          "usage": "Selectbox Success Placeholder Text Color",
+          "comment": "어두운 모드에서 셀렉트박스 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+
+      "warning-shadow-hover": {
+        "light": {
+          "value": "rgba(180, 83, 9, 0.25)",
+          "usage": "Selectbox warning Hover Shadow Color",
+          "comment": "밝은 모드에서 셀렉트박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "#facc15",
+          "usage": "Selectbox warning Hover Shadow Color",
+          "comment": "어두운 모드에서 셀렉트박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "outline-warning-bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Selectbox warning Background Color",
+          "comment": "밝은 모드에서 셀렉트박스 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#451a03",
+          "usage": "Selectbox warning Background Color",
+          "comment": "어두운 모드에서 셀렉트박스 성공 상태의 배경 색상입니다."
+        }
+      },
+      "outline-warning-border": {
+        "light": {
+          "value": "#d97706",
+          "usage": "Selectbox warning Border Color",
+          "comment": "밝은 모드에서 셀렉트박스 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#f59e0b",
+          "usage": "Selectbox warning Border Color",
+          "comment": "어두운 모드에서 셀렉트박스 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-warning-text": {
+        "light": {
+          "value": "#78350f",
+          "usage": "Selectbox warning Text Color",
+          "comment": "밝은 모드에서 셀렉트박스 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fef3c7",
+          "usage": "Selectbox warning Text Color",
+          "comment": "어두운 모드에서 셀렉트박스 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-warning-placeholder": {
+        "light": {
+          "value": "#92400e",
+          "usage": "Selectbox warning Placeholder Text Color",
+          "comment": "밝은 모드에서 셀렉트박스 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Selectbox warning Placeholder Text Color",
+          "comment": "어두운 모드에서 셀렉트박스 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+
+      "danger-shadow-hover": {
+        "light": {
+          "value": "rgba(185, 28, 28, 0.25)",
+          "usage": "Selectbox danger Hover Shadow Color",
+          "comment": "밝은 모드에서 셀렉트박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "#ef4444",
+          "usage": "Selectbox danger Hover Shadow Color",
+          "comment": "어두운 모드에서 셀렉트박스 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "outline-danger-bg": {
+        "light": {
+          "value": "#ffffff",
+          "usage": "Selectbox danger Background Color",
+          "comment": "밝은 모드에서 셀렉트박스 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#450a0a",
+          "usage": "Selectbox danger Background Color",
+          "comment": "어두운 모드에서 셀렉트박스 성공 상태의 배경 색상입니다."
+        }
+      },
+      "outline-danger-border": {
+        "light": {
+          "value": "#dc2626",
+          "usage": "Selectbox danger Border Color",
+          "comment": "밝은 모드에서 셀렉트박스 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#ef4444",
+          "usage": "Selectbox danger Border Color",
+          "comment": "어두운 모드에서 셀렉트박스 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-danger-text": {
+        "light": {
+          "value": "#7f1d1d",
+          "usage": "Selectbox danger Text Color",
+          "comment": "밝은 모드에서 셀렉트박스 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fef2f2",
+          "usage": "Selectbox danger Text Color",
+          "comment": "어두운 모드에서 셀렉트박스 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-danger-placeholder": {
+        "light": {
+          "value": "#991b1b",
+          "usage": "Selectbox danger Placeholder Text Color",
+          "comment": "밝은 모드에서 셀렉트박스 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fca5a5",
+          "usage": "Selectbox danger Placeholder Text Color",
+          "comment": "어두운 모드에서 셀렉트박스 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-bg": {
+        "light": {
+          "value": "#f9f9f9",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#1e293b",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-border": {
+        "light": {
+          "value": "#e0e0e0",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#334155",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-text": {
+        "light": {
+          "value": "#212121",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#cbd5e1",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-bg": {
+        "light": {
+          "value": "#eeeeee",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#0f172a",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-border": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#475569",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-text": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#475569",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      }
+    },
+    "input": {
+      "outline-success-bg": {
+        "light": {
+          "value": "#f0fdf4",
+          "usage": "Input Success Background Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#064e3b",
+          "usage": "Input Success Background Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 배경 색상입니다."
+        }
+      },
+      "outline-success-border": {
+        "light": {
+          "value": "#14532d",
+          "usage": "Input Success Border Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#065f46",
+          "usage": "Input Success Border Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-success-text": {
+        "light": {
+          "value": "#14532d",
+          "usage": "Input Success Text Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#065f46",
+          "usage": "Input Success Text Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-success-icon-fill": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Input Success Text Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#15803d",
+          "usage": "Input Success Text Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-success-placeholder": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Input Success Placeholder Text Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#6ee7b7",
+          "usage": "Input Success Placeholder Text Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "solid-success-bg": {
+        "light": {
+          "value": "#f0fdf4",
+          "usage": "Input Solid Success Background Color",
+          "comment": "밝은 모드에서 인풋 솔리드 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#064e3b",
+          "usage": "Input Solid Success Background Color",
+          "comment": "어두운 모드에서 인풋 솔리드 성공 상태의 배경 색상입니다."
+        }
+      },
+      "solid-success-text": {
+        "light": {
+          "value": "#14532d",
+          "usage": "Input Solid Success Text Color",
+          "comment": "밝은 모드에서 인풋 솔리드 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f0fdf4",
+          "usage": "Input Solid Success Text Color",
+          "comment": "어두운 모드에서 인풋 솔리드 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "solid-success-icon-fill": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Input Success Text Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#15803d",
+          "usage": "Input Success Text Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "solid-success-placeholder": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Input Solid Success Placeholder Text Color",
+          "comment": "밝은 모드에서 인풋 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#6ee7b7",
+          "usage": "Input Solid Success Placeholder Text Color",
+          "comment": "어두운 모드에서 인풋 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "success-hover-shadow": {
+        "light": {
+          "value": "rgba(21, 128, 101, 0.25)",
+          "usage": "Input Success Hover Shadow Color",
+          "comment": "밝은 모드에서 인풋 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "#34d399",
+          "usage": "Input Success Hover Shadow Color",
+          "comment": "어두운 모드에서 인풋 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+
+      "outline-warning-bg": {
+        "light": {
+          "value": "#fff7ed",
+          "usage": "Input warning Background Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#451a03",
+          "usage": "Input warning Background Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 배경 색상입니다."
+        }
+      },
+      "outline-warning-border": {
+        "light": {
+          "value": "#78350f",
+          "usage": "Input warning Border Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#78350f",
+          "usage": "Input warning Border Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-warning-text": {
+        "light": {
+          "value": "#78350f",
+          "usage": "Input warning Text Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fffbeb",
+          "usage": "Input warning Text Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-warning-icon-fill": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Input warning Text Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Input warning Text Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-warning-placeholder": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Input warning Placeholder Text Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fcd34d",
+          "usage": "Input warning Placeholder Text Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "solid-warning-bg": {
+        "light": {
+          "value": "#fff7ed",
+          "usage": "Input Solid warning Background Color",
+          "comment": "밝은 모드에서 인풋 솔리드 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#451a03",
+          "usage": "Input Solid warning Background Color",
+          "comment": "어두운 모드에서 인풋 솔리드 성공 상태의 배경 색상입니다."
+        }
+      },
+      "solid-warning-text": {
+        "light": {
+          "value": "#78350f",
+          "usage": "Input Solid warning Text Color",
+          "comment": "밝은 모드에서 인풋 솔리드 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fffbeb",
+          "usage": "Input Solid warning Text Color",
+          "comment": "어두운 모드에서 인풋 솔리드 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "solid-warning-icon-fill": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Input warning Text Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fbbf24",
+          "usage": "Input warning Text Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "solid-warning-placeholder": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Input Solid warning Placeholder Text Color",
+          "comment": "밝은 모드에서 인풋 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fcd34d",
+          "usage": "Input Solid warning Placeholder Text Color",
+          "comment": "어두운 모드에서 인풋 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "warning-hover-shadow": {
+        "light": {
+          "value": "rgba(180, 83, 9, 0.25)",
+          "usage": "Input warning Hover Shadow Color",
+          "comment": "밝은 모드에서 인풋 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "#facc15",
+          "usage": "Input warning Hover Shadow Color",
+          "comment": "어두운 모드에서 인풋 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+
+      "outline-danger-bg": {
+        "light": {
+          "value": "#fef2f2",
+          "usage": "Input danger Background Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#450a0a",
+          "usage": "Input danger Background Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 배경 색상입니다."
+        }
+      },
+      "outline-danger-border": {
+        "light": {
+          "value": "#7f1d1d",
+          "usage": "Input danger Border Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#7f1d1d",
+          "usage": "Input danger Border Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-danger-text": {
+        "light": {
+          "value": "#7f1d1d",
+          "usage": "Input danger Text Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#7f1d1fef2f2d",
+          "usage": "Input danger Text Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-danger-icon-fill": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Input danger Text Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Input danger Text Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-danger-placeholder": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Input danger Placeholder Text Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fca5a5",
+          "usage": "Input danger Placeholder Text Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "solid-danger-bg": {
+        "light": {
+          "value": "#fef2f2",
+          "usage": "Input Solid danger Background Color",
+          "comment": "밝은 모드에서 인풋 솔리드 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#450a0a",
+          "usage": "Input Solid danger Background Color",
+          "comment": "어두운 모드에서 인풋 솔리드 성공 상태의 배경 색상입니다."
+        }
+      },
+      "solid-danger-text": {
+        "light": {
+          "value": "#7f1d1d",
+          "usage": "Input Solid danger Text Color",
+          "comment": "밝은 모드에서 인풋 솔리드 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fef2f2",
+          "usage": "Input Solid danger Text Color",
+          "comment": "어두운 모드에서 인풋 솔리드 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "solid-danger-icon-fill": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Input danger Text Color",
+          "comment": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f87171",
+          "usage": "Input danger Text Color",
+          "comment": "어두운 모드에서 인풋 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "solid-danger-placeholder": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Input Solid danger Placeholder Text Color",
+          "comment": "밝은 모드에서 인풋 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fca5a5",
+          "usage": "Input Solid danger Placeholder Text Color",
+          "comment": "어두운 모드에서 인풋 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "danger-hover-shadow": {
+        "light": {
+          "value": "rgba(185, 28, 28, 0.25)",
+          "usage": "Input danger Hover Shadow Color",
+          "comment": "밝은 모드에서 인풋 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "#ef4444",
+          "usage": "Input danger Hover Shadow Color",
+          "comment": "어두운 모드에서 인풋 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+
+      "readonly-bg": {
+        "light": {
+          "value": "#f9f9f9",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#1e293b",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-border": {
+        "light": {
+          "value": "#e0e0e0",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#334155",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-text": {
+        "light": {
+          "value": "#212121",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#cbd5e1",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-placeholder": {
+        "light": {
+          "value": "#757575",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#64748b",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-bg": {
+        "light": {
+          "value": "#eeeeee",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#0f172a",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-border": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#1e293b",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-text": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#475569",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-placeholder": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#334155",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      }
+    },
+    "textarea": {
+      "outline-success-bg": {
+        "light": {
+          "value": "#f0fdf4",
+          "usage": "Textarea Success Background Color",
+          "comment": "밝은 모드에서 텍스트에어리어 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#064e3b",
+          "usage": "Textarea Success Background Color",
+          "comment": "어두운 모드에서 텍스트에어리어 성공 상태의 배경 색상입니다."
+        }
+      },
+      "outline-success-border": {
+        "light": {
+          "value": "#14532d",
+          "usage": "Textarea Success Border Color",
+          "comment": "밝은 모드에서 텍스트에어리어 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#065f46",
+          "usage": "Textarea Success Border Color",
+          "comment": "어두운 모드에서 텍스트에어리어 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-success-text": {
+        "light": {
+          "value": "#14532d",
+          "usage": "Textarea Success Text Color",
+          "comment": "밝은 모드에서 텍스트에어리어 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f0fdf4",
+          "usage": "Textarea Success Text Color",
+          "comment": "어두운 모드에서 텍스트에어리어 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-success-placeholder": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Textarea Success Placeholder Text Color",
+          "comment": "밝은 모드에서 텍스트에어리어 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#6ee7b7",
+          "usage": "Textarea Success Placeholder Text Color",
+          "comment": "어두운 모드에서 텍스트에어리어 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "solid-success-bg": {
+        "light": {
+          "value": "#f0fdf4",
+          "usage": "Textarea Solid Success Background Color",
+          "comment": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#064e3b",
+          "usage": "Textarea Solid Success Background Color",
+          "comment": "어두운 모드에서 텍스트에어리어 솔리드 성공 상태의 배경 색상입니다."
+        }
+      },
+      "solid-success-text": {
+        "light": {
+          "value": "#14532d",
+          "usage": "Textarea Solid Success Text Color",
+          "comment": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#f0fdf4",
+          "usage": "Textarea Solid Success Text Color",
+          "comment": "어두운 모드에서 텍스트에어리어 솔리드 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "solid-success-placeholder": {
+        "light": {
+          "value": "#15803d",
+          "usage": "Textarea Solid Success Placeholder Text Color",
+          "comment": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#6ee7b7",
+          "usage": "Textarea Solid Success Placeholder Text Color",
+          "comment": "어두운 모드에서 텍스트에어리어 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "success-hover-shadow": {
+        "light": {
+          "value": "rgba(21, 128, 101, 0.25)",
+          "usage": "Textarea Success Hover Shadow Color",
+          "comment": "밝은 모드에서 텍스트에어리어 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "#34d399",
+          "usage": "Textarea Success Hover Shadow Color",
+          "comment": "어두운 모드에서 텍스트에어리어 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "outline-warning-bg": {
+        "light": {
+          "value": "#fff7ed",
+          "usage": "Textarea warning Background Color",
+          "comment": "밝은 모드에서 텍스트에어리어 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#451a03",
+          "usage": "Textarea warning Background Color",
+          "comment": "어두운 모드에서 텍스트에어리어 성공 상태의 배경 색상입니다."
+        }
+      },
+      "outline-warning-border": {
+        "light": {
+          "value": "#78350f",
+          "usage": "Textarea warning Border Color",
+          "comment": "밝은 모드에서 텍스트에어리어 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#78350f",
+          "usage": "Textarea warning Border Color",
+          "comment": "어두운 모드에서 텍스트에어리어 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-warning-text": {
+        "light": {
+          "value": "#78350f",
+          "usage": "Textarea warning Text Color",
+          "comment": "밝은 모드에서 텍스트에어리어 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fffbeb",
+          "usage": "Textarea warning Text Color",
+          "comment": "어두운 모드에서 텍스트에어리어 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-warning-placeholder": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Textarea warning Placeholder Text Color",
+          "comment": "밝은 모드에서 텍스트에어리어 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fcd34d",
+          "usage": "Textarea warning Placeholder Text Color",
+          "comment": "어두운 모드에서 텍스트에어리어 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "solid-warning-bg": {
+        "light": {
+          "value": "#fff7ed",
+          "usage": "Textarea Solid warning Background Color",
+          "comment": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#451a03",
+          "usage": "Textarea Solid warning Background Color",
+          "comment": "어두운 모드에서 텍스트에어리어 솔리드 성공 상태의 배경 색상입니다."
+        }
+      },
+      "solid-warning-text": {
+        "light": {
+          "value": "#78350f",
+          "usage": "Textarea Solid warning Text Color",
+          "comment": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fffbeb",
+          "usage": "Textarea Solid warning Text Color",
+          "comment": "어두운 모드에서 텍스트에어리어 솔리드 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "solid-warning-placeholder": {
+        "light": {
+          "value": "#b45309",
+          "usage": "Textarea Solid warning Placeholder Text Color",
+          "comment": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fcd34d",
+          "usage": "Textarea Solid warning Placeholder Text Color",
+          "comment": "어두운 모드에서 텍스트에어리어 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "warning-hover-shadow": {
+        "light": {
+          "value": "rgba(180, 83, 9, 0.25)",
+          "usage": "Textarea warning Hover Shadow Color",
+          "comment": "밝은 모드에서 텍스트에어리어 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "#facc15",
+          "usage": "Textarea warning Hover Shadow Color",
+          "comment": "어두운 모드에서 텍스트에어리어 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "outline-danger-bg": {
+        "light": {
+          "value": "#fef2f2",
+          "usage": "Textarea danger Background Color",
+          "comment": "밝은 모드에서 텍스트에어리어 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#450a0a",
+          "usage": "Textarea danger Background Color",
+          "comment": "어두운 모드에서 텍스트에어리어 성공 상태의 배경 색상입니다."
+        }
+      },
+      "outline-danger-border": {
+        "light": {
+          "value": "#7f1d1d",
+          "usage": "Textarea danger Border Color",
+          "comment": "밝은 모드에서 텍스트에어리어 성공 상태의 테두리 색상입니다."
+        },
+        "dark": {
+          "value": "#7f1d1d",
+          "usage": "Textarea danger Border Color",
+          "comment": "어두운 모드에서 텍스트에어리어 성공 상태의 테두리 색상입니다."
+        }
+      },
+      "outline-danger-text": {
+        "light": {
+          "value": "#7f1d1d",
+          "usage": "Textarea danger Text Color",
+          "comment": "밝은 모드에서 텍스트에어리어 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fef2f2",
+          "usage": "Textarea danger Text Color",
+          "comment": "어두운 모드에서 텍스트에어리어 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "outline-danger-placeholder": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Textarea danger Placeholder Text Color",
+          "comment": "밝은 모드에서 텍스트에어리어 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fca5a5",
+          "usage": "Textarea danger Placeholder Text Color",
+          "comment": "어두운 모드에서 텍스트에어리어 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "solid-danger-bg": {
+        "light": {
+          "value": "#fef2f2",
+          "usage": "Textarea Solid danger Background Color",
+          "comment": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 배경 색상입니다."
+        },
+        "dark": {
+          "value": "#450a0a",
+          "usage": "Textarea Solid danger Background Color",
+          "comment": "어두운 모드에서 텍스트에어리어 솔리드 성공 상태의 배경 색상입니다."
+        }
+      },
+      "solid-danger-text": {
+        "light": {
+          "value": "#7f1d1d",
+          "usage": "Textarea Solid danger Text Color",
+          "comment": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fef2f2",
+          "usage": "Textarea Solid danger Text Color",
+          "comment": "어두운 모드에서 텍스트에어리어 솔리드 성공 상태의 텍스트 색상입니다."
+        }
+      },
+      "solid-danger-placeholder": {
+        "light": {
+          "value": "#b91c1c",
+          "usage": "Textarea Solid danger Placeholder Text Color",
+          "comment": "밝은 모드에서 텍스트에어리어 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#fca5a5",
+          "usage": "Textarea Solid danger Placeholder Text Color",
+          "comment": "어두운 모드에서 텍스트에어리어 솔리드 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "danger-max-text": {
+        "light": {
+          "value": "#7f1d1d",
+          "usage": "Textarea danger Hover Shadow Color",
+          "comment": "밝은 모드에서 텍스트에어리어 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "#fef2f2",
+          "usage": "Textarea danger Hover Shadow Color",
+          "comment": "어두운 모드에서 텍스트에어리어 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+      "danger-hover-shadow": {
+        "light": {
+          "value": "rgba(185, 28, 28, 0.25)",
+          "usage": "Textarea danger Hover Shadow Color",
+          "comment": "밝은 모드에서 텍스트에어리어 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        },
+        "dark": {
+          "value": "#ef4444",
+          "usage": "Textarea danger Hover Shadow Color",
+          "comment": "어두운 모드에서 텍스트에어리어 성공 상태에 마우스 오버 시의 그림자 색상입니다."
+        }
+      },
+
+      "readonly-bg": {
+        "light": {
+          "value": "#f9f9f9",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#1e293b",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-border": {
+        "light": {
+          "value": "#e0e0e0",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#334155",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-text": {
+        "light": {
+          "value": "#212121",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#cbd5e1",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "readonly-placeholder": {
+        "light": {
+          "value": "#757575",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#64748b",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-bg": {
+        "light": {
+          "value": "#eeeeee",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#0f172a",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-border": {
+        "light": {
+          "value": "#dddddd",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#1e293b",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-text": {
+        "light": {
+          "value": "#9e9e9e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#475569",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-placeholder": {
+        "light": {
+          "value": "#bdbdbd",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#334155",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      }
+    },
+    "switch": {
+      "disabled-track-on-bg": {
+        "light": {
+          "value": "#cdd1d5",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#374151",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-handle-on-bg": {
+        "light": {
+          "value": "#8a949e",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#6b7280",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-handle-on-border": {
+        "light": {
+          "value": "#cdd1d5",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#374151",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      },
+      "disabled-icon-on-fill": {
+        "light": {
+          "value": "#cdd1d5",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        },
+        "dark": {
+          "value": "#1f2937",
+          "usage": "Datepicker Success Placeholder Text Color",
+          "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
         }
       }
     }
