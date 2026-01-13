@@ -5,20 +5,21 @@ import { SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specime
 import { calendarMonthOptions, calendarYearOptions } from './Calendar.mock';
 import { useId } from 'react';
 
-const mockOptions = [
-  { id: '2023', value: '2023년', selected: false, disabled: false },
-  { id: '2024', value: '2024년', selected: true, disabled: false },
-  { id: '2025', value: '2025년', selected: false, disabled: false },
-  { id: '2026', value: '2026년', selected: false, disabled: false },
-  { id: '2027', value: '2027년', selected: false, disabled: true },
-];
-
 const meta = {
   title: 'UI/Organisms/Calendar/CalendarSelectbox',
   component: CalendarSelectbox,
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          '**CalendarSelectbox**는 달력 시스템 내에서 연도와 월을 선택하기 위해 최적화된 드롭다운 컴포넌트입니다. <br /><br />' +
+          '• **Custom Trigger**: 일반적인 선택창보다 좁은 달력 헤더 공간에 맞춰 콤팩트한 사이즈와 스타일을 지원합니다. <br />' +
+          '• **Accessibility Focus**: `role="combobox"` 및 `aria-haspopup` 속성을 통해 보조 공학 기기에 드롭다운 구조임을 명확히 알립니다. <br />' +
+          '• **State Sync**: 내부 옵션 리스트와 상태를 동기화하여 키보드 내비게이션 및 선택값 변경을 안전하게 처리합니다.',
+      },
+    },
   },
 
   argTypes: {
@@ -42,6 +43,10 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+/**
+ * 연도와 월 선택을 위한 셀렉트박스의 기본 렌더링을 확인합니다.
+ * - **Checklist**: 연도(4자리)와 월(텍스트/숫자) 각각의 콘텐츠 길이에 따라 셀렉트박스의 너비가 적절히 유지되는지 확인합니다.
+ */
 export const Base: Story = {
   render: args => {
     const uniqueId = useId();
@@ -76,14 +81,9 @@ export const Base: Story = {
 };
 
 /**
- * CalendarSelectbox의 주요 브랜드 컬러(`primary`, `secondary`, `tertiary`)별
- * 시각적 렌더링과 테마 적용 상태를 확인하기 위한 스토리입니다.
- * * 🛠️ 주요 로직:
- * 1. `colorOptions` 배열을 순회하며 각 테마별 셀렉트박스를 생성합니다.
- * 2. `useId`를 사용하여 접근성(A11y)을 위한 고유 식별자를 각 인스턴스에 부여합니다.
- * - `selectId`: 네이티브 select 요소와 동기화
- * - `aria-labelledby`: 보조기기가 읽어줄 레이블과의 연결
- * 3. `defaultOptionId`를 'month-3'으로 설정하여 초기 제어(Controlled) 상태를 테스트합니다.
+ * 주요 브랜드 컬러(Primary, Secondary, Tertiary) 테마가 트리거와 옵션 리스트에 일관되게 적용되는지 확인합니다.
+ * - **A11y**: `useId`를 활용해 `selectId`와 레이블을 연결하여 스크린 리더 환경에서의 접근성을 보장합니다.
+ * - **Controlled**: `defaultOptionId` 설정을 통한 초기값 주입 및 제어 상태를 테스트합니다.
  */
 export const Colors: Story = {
   render: args => {
@@ -119,11 +119,9 @@ export const Colors: Story = {
 };
 
 /**
- * 목적: CalendarSelectbox 컴포넌트의 다양한 상태(Normal, Hover, Focus, Disabled)에 따른 시각적 스타일을 검증합니다.
- * 특징:
- * 1. pseudo-class(hover, focus-visible)를 시뮬레이션하는 클래스를 사용하여, 별도의 인터랙션 없이도 디자인 시스템의 상태별 UI를 한 화면에서 비교할 수 있습니다.
- * 2. Disabled 상태에서 사용자 입력이 차단되는지, 그리고 시각적으로 비활성화 처리가 명확한지 확인합니다.
- * 3. 각 상태별로 독립적인 ID를 부여하여 웹 접근성(aria-labelledby)이 올바르게 매핑되도록 구성되었습니다.
+ * 컴포넌트의 다양한 상호작용 상태(Normal, Hover, Focus, Disabled)를 검증합니다.
+ * - **Visual Feedback**: `pseudo-class` 시뮬레이션을 통해 포커스 링과 호버 효과가 디자인 가이드를 준수하는지 점검합니다.
+ * - **Disabled**: 비활성화 시 사용자 클릭 차단 및 시각적 감쇠 처리가 명확한지 확인합니다.
  */
 export const States: Story = {
   render: args => {

@@ -6,6 +6,17 @@ const meta: Meta<typeof Accordion> = {
   title: 'UI/Molecules/Accordion',
   component: Accordion,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '**Accordion**은 수직으로 쌓인 헤더 리스트를 통해 콘텐츠 영역을 접고 펼치며 정보를 효율적으로 구성합니다. <br /><br />' +
+          '• 재귀적 구조를 지원하여 1뎁스부터 n뎁스까지 깊이 있는 정보 구조를 시각적 위계와 함께 표현할 수 있습니다. <br />' +
+          '• level 속성을 통해 `h1~h6` 태그를 적절히 배분하여 검색 엔진 최적화(SEO)와 스크린 리더 사용자의 탐색 편의성을 높였습니다. <br />' +
+          '• 브라우저 기본 툴팁이 주변 요소를 가리는 문제를 방지하기 위해 `title` 속성 사용을 지양하고, 충분한 레이아웃 공간과 줄바꿈 로직을 사용합니다.',
+      },
+    },
+  },
   argTypes: {
     // --- Style 카테고리 ---
     color: {
@@ -96,9 +107,8 @@ export default meta;
 type Story = StoryObj<typeof Accordion>;
 
 /**
- * [Base]
- * 아코디언의 가장 기본적인 단일 형태를 확인합니다.
- * - 체크포인트: 배경색 대비, 기본 열림 상태(defaultOpen)의 레이아웃.
+ * 아코디언의 가장 기본적인 단일 형태입니다.
+ * - **Checklist**: 배경색과 경계선의 대비, 초기 열림 상태(`defaultOpen`)에서의 레이아웃 안정성을 확인합니다.
  */
 export const Base: Story = {
   render: args => (
@@ -120,9 +130,9 @@ export const Base: Story = {
 };
 
 /**
- * [Sizes]
- * sm(360px), md(768px), lg(1024px) 등 대중적인 너비에 따른 변화를 확인합니다.
- * - 체크포인트: 사이즈별 내부 Padding, Font-size 비례감 및 최소 터치 영역(sm: 44px) 준수 여부.
+ * 다양한 화면 너비(sm: 360px, md: 768px, lg: 1024px) 환경에서의 대응력을 검증합니다.
+ * - **Ergonomics**: 작은 사이즈(`sm`)에서도 최소 터치 영역(44px)을 준수하여 조작 편의성을 확보하는지 확인합니다.
+ * - **Scaling**: 크기 변화에 따라 텍스트와 아이콘의 비율이 조화롭게 유지되는지 검수합니다.
  */
 export const Sizes: Story = {
   render: args => (
@@ -149,10 +159,9 @@ export const Sizes: Story = {
 };
 
 /**
- * [Colors]
- * Primary(Blue), Secondary(Slate), Tertiary(Violet) 테마별 스타일을 확인합니다.
- * - 체크포인트: 텍스트와 배경의 명도 대비(WCAG AA 4.5:1 이상).
- * - 특히 Tertiary 다크모드 배경(#8357e5)의 대비 수치를 중점적으로 점검하세요.
+ * 브랜드 테마별(Primary, Secondary, Tertiary) 시각적 스타일을 확인합니다.
+ * - **Contrast Check**: 모든 테마 색상에서 텍스트와의 명도 대비(WCAG AA 4.5:1 이상)가 유지되는지 점검합니다.
+ * - 특히 고채도의 Tertiary 배경에서 가독성을 중점적으로 확인하세요.
  */
 export const Colors: Story = {
   render: args => (
@@ -179,9 +188,9 @@ export const Colors: Story = {
 };
 
 /**
- * [Multiple]
- * 여러 아코디언이 수직으로 나열된 리스트 형태를 점검합니다.
- * - 체크포인트: 아코디언 간 간격(gap: 10px) 및 포커스(Focus Ring)가 인접 요소에 가려지지 않는지 확인.
+ * 여러 개의 아코디언이 나열된 리스트 형태를 점검합니다.
+ * - **Spacing**: 아코디언 간의 간격(`gap: 10px`)이 개별 요소를 구분하기에 충분한지 확인합니다.
+ * - **Focus Order**: 키보드 탭 이동 시 포커스 링이 인접한 다른 아코디언 요소에 의해 잘리거나 가려지지 않는지 체크합니다.
  */
 export const Multiple: Story = {
   render: args => (
@@ -205,9 +214,9 @@ export const Multiple: Story = {
 };
 
 /**
- * [Nested]
- * 1뎁스부터 3뎁스까지의 계층 구조와 시각적 위계를 확인합니다.
- * - 체크포인트: 단계별 배경색 변화(#0052cc -> #dee2e6) 및 들여쓰기(Padding)가 레이아웃을 해치지 않는지 점검.
+ * 다계층(1뎁스~3뎁스) 구조에서의 시각적 위계를 확인합니다.
+ * - **Visual Hierarchy**: 깊이가 깊어짐에 따라 발생하는 배경색 변화와 들여쓰기(Padding)가 정보의 종속 관계를 명확히 나타내는지 검증합니다.
+ * - **Auto Heading**: 중첩 시 헤딩 레벨(`h3` -> `h4` -> `h5`)이 시맨틱하게 자동 증가하는지 확인합니다.
  */
 export const Nested: Story = {
   render: args => (
@@ -257,9 +266,8 @@ export const Nested: Story = {
 };
 
 /**
- * [States]
- * Hover, Active 등 사용자의 인터랙션에 따른 가상 상태를 확인합니다.
- * - 체크포인트: 다크모드에서의 'Tone-up' 호버 효과가 클릭 가능함을 충분히 인지시키는지 확인.
+ * 사용자 인터랙션(Hover, Active, Focus)에 따른 시각적 피드백을 검증합니다.
+ * - **Feedback**: 마우스 오버 시의 톤업(Tone-up) 효과나 키보드 포커스 시의 Outline이 명확하게 노출되는지 확인합니다.
  */
 export const States: Story = {
   render: args => (
@@ -295,10 +303,9 @@ export const States: Story = {
 };
 
 /**
- * [LongText]
- * 제목이나 콘텐츠가 길어져 줄바꿈이 발생할 때의 대응력을 확인합니다.
- * - 체크포인트: 아이콘 겹침 방지 및 'Partially Obscured(부분적 가림)' 에러 방지.
- * - 주의: 텍스트가 잘린다고 'title' 속성을 사용해 툴팁을 띄우지 마세요. (브라우저 기본 툴팁이 주변 요소를 가릴 수 있음)
+ * 제목이나 본문이 매우 길어질 때의 대응력을 확인하는 스트레스 테스트입니다.
+ * - **A11y Warning**: 저장하신 지침에 따라, 텍스트 가림 현상을 방지하기 위해 `title` 속성(Native Tooltip)을 사용하는 대신 자연스러운 줄바꿈과 유연한 높이 조절을 권장합니다.
+ * - **Icon Safety**: 텍스트가 여러 줄이 되어도 우측의 열림/닫힘 아이콘과 겹치지 않는지 점검합니다.
  */
 export const LongText: Story = {
   render: args => (

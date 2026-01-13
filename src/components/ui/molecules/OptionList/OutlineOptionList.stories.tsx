@@ -15,6 +15,17 @@ const meta = {
   title: 'UI/Molecules/OptionList/Outline',
   component: OptionList,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '**OptionList (Outline)**는 여러 개의 `OptionItem`을 논리적/시각적으로 그룹화하는 리스트 컨테이너입니다. <br /><br />' +
+          '• 내부적으로 `<ul>` 태그와 `role="listbox"`를 사용하여 표준 리스트박스 구조를 형성합니다. <br />' +
+          '• 테두리가 강조된 컨테이너 스타일로, 드롭다운 메뉴나 선택 목록의 경계를 명확하게 구분해 줍니다. <br />' +
+          '• 자식 요소인 OptionItem들이 통일된 `color`, `size`를 상속받을 수 있도록 맥락을 제공합니다.',
+      },
+    },
+  },
 
   argTypes: {
     // 1. 스타일 핵심 속성 (Appearance)
@@ -81,6 +92,10 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+/**
+ * 컴포넌트의 가장 기본적인 구성입니다.
+ * Outline 컨테이너 내부에서 Ghost 타입의 아이템들이 조화롭게 배치되는지 확인합니다.
+ */
 export const Base: Story = {
   render: args => {
     const uniqueValue = '옵션';
@@ -107,10 +122,9 @@ export const Base: Story = {
 };
 
 /**
- * 디자인 시스템에서 정의한 6가지 표준 컬러 테마(primary, secondary, tertiary, success, warning, danger)를 확인합니다.
- * - **Visual Verification**: 각 컬러 테마에 따른 배경색, 텍스트색, 호버 상태의 변화를 한눈에 비교할 수 있습니다.
- * - **A11y Context**: 다양한 배경색 위에서 텍스트의 가독성이 유지되는지 검증합니다.
- * (참고: 특정 환경에서 max-height로 인해 발생하는 'partially obscured' 에러는 meta 레벨에서 예외 처리되었습니다.)
+ * 디자인 시스템의 6가지 시멘틱 컬러 테마가 적용된 리스트를 비교합니다.
+ * - **Visual Consistency**: 리스트 전체의 테두리 컬러와 내부 아이템의 선택 상태(Selected) 컬러가 일관되게 적용되는지 검수합니다.
+ * - **A11y Check**: 배경색과 보더 라인의 명도 대비가 각 컬러 테마에서도 충분히 확보되는지 확인합니다.
  */
 export const Colors: Story = {
   render: args => {
@@ -146,10 +160,9 @@ export const Colors: Story = {
 };
 
 /**
- * 컴포넌트의 5가지 크기 규격(xl, lg, md, sm, xs)을 확인합니다.
- * - **Layout Check**: 각 크기별로 내부 패딩과 글자 크기가 가이드라인에 맞게 렌더링되는지 확인합니다.
- * - **Interaction Area**: 크기가 작아지더라도(xs, sm) 사용자가 클릭하거나 터치하기에 적절한 영역을 확보하고 있는지 검토합니다.
- * - **A11y Note**: 텍스트가 작아질 경우 대비율(Contrast Ratio)이 더 엄격하게 적용되므로, 시각적 확인이 중요합니다.
+ * XL부터 XS까지 5단계 크기 변이에 따른 리스트의 너비와 내부 아이템의 높이 변화를 확인합니다.
+ * - **Size Management**: 부모인 OptionList의 사이즈 설정에 따라 자식 아이템들의 텍스트 크기와 패딩이 동기화되는지 검증합니다.
+ * - **Touch Target**: 특히 작은 사이즈(SM, XS)에서 리스트 항목 간의 클릭 영역이 충분히 분리되어 오클릭을 방지하는지 확인합니다.
  */
 export const Sizes: Story = {
   render: args => {

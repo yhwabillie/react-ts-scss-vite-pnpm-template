@@ -319,6 +319,16 @@ const LanguageSelector = forwardRef<HTMLDivElement, LanguageSelectorProps>(
                           <span className='drop-list-item-label' lang={opt.lang}>
                             {opt.value}
                           </span>
+
+                          {isSelected && (
+                            <Icon
+                              name='round-check'
+                              className='icon'
+                              strokeWidth={3}
+                              strokeLinecap='round'
+                              strokeLinejoin='round'
+                            />
+                          )}
                         </a>
                       </li>
                     );

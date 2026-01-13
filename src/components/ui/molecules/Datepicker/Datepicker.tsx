@@ -381,7 +381,7 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
             ref={triggerButtonRef}
             className='trigger-calendar'
             aria-expanded={isOpen}
-            disabled={inputProps.disabled}
+            disabled={inputProps.disabled || inputProps.readOnly}
             type='button'
             aria-label={isOpen ? '달력 닫기' : '달력 열기'}
             onClick={() => {

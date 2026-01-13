@@ -26,7 +26,6 @@ $spinner-colors: (
       path: var(--project-color-primary-spinner-solid-closed-ring-path-bg),
     ),
   ),
-
   // Secondary
   secondary: (
       open-ring: (
@@ -48,7 +47,6 @@ $spinner-colors: (
       path: var(--project-color-secondary-spinner-solid-closed-ring-path-bg),
     ),
   ),
-
   // Tertiary
   tertiary: (
       open-ring: (
@@ -68,6 +66,69 @@ $spinner-colors: (
     closed-ring: (
       track: var(--project-color-tertiary-spinner-solid-closed-ring-track-bg),
       path: var(--project-color-tertiary-spinner-solid-closed-ring-path-bg),
+    ),
+  ),
+  // Success
+  success: (
+      open-ring: (
+        track: var(--project-color-spinner-open-ring-success-track-bg),
+        path: var(--project-color-spinner-open-ring-success-path-bg),
+      ),
+      closed-ring: (
+        track: var(--project-color-spinner-closed-ring-success-track-bg),
+        path: var(--project-color-spinner-closed-ring-success-path-bg),
+      ),
+    ),
+  success-solid: (
+    open-ring: (
+      track: var(--project-color-spinner-solid-open-ring-success-track-bg),
+      path: var(--project-color-spinner-solid-open-ring-success-path-bg),
+    ),
+    closed-ring: (
+      track: var(--project-color-spinner-solid-closed-ring-success-track-bg),
+      path: var(--project-color-spinner-solid-closed-ring-success-path-bg),
+    ),
+  ),
+  // Warning
+  warning: (
+      open-ring: (
+        track: var(--project-color-spinner-open-ring-warning-track-bg),
+        path: var(--project-color-spinner-open-ring-warning-path-bg),
+      ),
+      closed-ring: (
+        track: var(--project-color-spinner-closed-ring-warning-track-bg),
+        path: var(--project-color-spinner-closed-ring-warning-path-bg),
+      ),
+    ),
+  warning-solid: (
+    open-ring: (
+      track: var(--project-color-spinner-solid-open-ring-warning-track-bg),
+      path: var(--project-color-spinner-solid-open-ring-warning-path-bg),
+    ),
+    closed-ring: (
+      track: var(--project-color-spinner-solid-closed-ring-warning-track-bg),
+      path: var(--project-color-spinner-solid-closed-ring-warning-path-bg),
+    ),
+  ),
+  // Danger
+  danger: (
+      open-ring: (
+        track: var(--project-color-spinner-open-ring-danger-track-bg),
+        path: var(--project-color-spinner-open-ring-danger-path-bg),
+      ),
+      closed-ring: (
+        track: var(--project-color-spinner-closed-ring-danger-track-bg),
+        path: var(--project-color-spinner-closed-ring-danger-path-bg),
+      ),
+    ),
+  danger-solid: (
+    open-ring: (
+      track: var(--project-color-spinner-solid-open-ring-danger-track-bg),
+      path: var(--project-color-spinner-solid-open-ring-danger-path-bg),
+    ),
+    closed-ring: (
+      track: var(--project-color-spinner-solid-closed-ring-danger-track-bg),
+      path: var(--project-color-spinner-solid-closed-ring-danger-path-bg),
     ),
   )
 );

@@ -3,8 +3,7 @@ import Combobox from './Combobox';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { comboboxOptions, comboboxInputProps } from './Combobox.mock';
 import { SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
-import { useEffect, useId, useState } from 'react';
-import { GuideWrapper } from '../../guide/Guide';
+import { useId, useState } from 'react';
 import Button from '../Button/Button';
 import { within, userEvent, expect, waitFor } from 'storybook/test';
 import type { OptionBase } from '../OptionItem/OptionItem';
@@ -25,6 +24,15 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          '**Combobox**는 사용자의 입력값에 따라 옵션 목록을 실시간으로 필터링하여 제안하는 자동완성(AutoComplete) 기능을 제공합니다. <br /><br />' +
+          '• 방대한 리스트 내에서 텍스트 입력을 통해 원하는 항목을 빠르게 찾을 수 있도록 돕습니다. <br />' +
+          '• `role="combobox"`, `aria-autocomplete` 등 표준 속성을 준수하여 키보드 화살표 키와 엔터 키만으로 탐색이 가능합니다.  <br />' +
+          '• 드롭다운 목록이 레이어 최상단에 렌더링되어 부모 요소의 `overflow` 설정과 관계없이 항상 온전하게 노출됩니다.',
+      },
+    },
   },
 
   argTypes: {
@@ -140,6 +148,10 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+/**
+ * 가장 기본적인 형태의 콤보박스입니다.
+ * `updateArgs`를 통해 입력된 값과 스토리북 컨트롤 패널의 상태를 실시간으로 동기화합니다.
+ */
 export const Base: Story = {
   render: (args, { updateArgs }) => {
     const uniqueId = useId();
@@ -157,11 +169,9 @@ export const Base: Story = {
 };
 
 /**
- * 브랜드 컬러 및 상태(Success, Error 등)를 나타내는 각 테마별 스타일을 검토합니다.
- * 1. 테마 일관성: 선택 시 강조색(Primary), 성공(Success), 경고(Warning) 등 각 의미에 맞는 컬러가 테두리와 텍스트에 올바르게 적용되는지 확인합니다.
- * 2. 대비 및 가독성: 배경색과 텍스트 컬러 간의 명도 대비가 충분하여 정보 전달에 문제가 없는지 검토합니다.
- * 3. 피드백 컬러: 드롭다운 아이템의 호버/선택 상태 컬러가 각 테마와 조화를 이루는지 확인합니다.
- * * ※ 개발 가이드: 상황별 의미(예: 오류 발생 시 'danger')에 맞는 적절한 컬러 속성을 사용하여 사용자 경험의 직관성을 높이세요.
+ * 디자인 시스템의 6가지 표준 컬러 테마를 적용하여 시각적 피드백을 검증합니다.
+ * - **Focus Feedback**: 인풋 포커스 시의 강조색과 드롭다운 내 아이템의 하이라이트 컬러가 테마에 맞춰 변경되는지 확인합니다.
+ * - **Contrast**: 다양한 테마 색상 환경에서도 텍스트의 가독성이 표준 대비율을 만족하는지 검수합니다.
  */
 export const Colors: Story = {
   render: args => {
@@ -188,11 +198,9 @@ export const Colors: Story = {
 };
 
 /**
- * 시스템에서 정의된 5가지 사이즈(XS ~ XL)를 비교 검토합니다.
- * 1. 수직 정렬(Vertical Alignment): 높이 변화에 따라 내부 텍스트와 화살표 아이콘의 중앙 정렬이 유지되는지 확인합니다.
- * 2. 폰트 스케일링: 사이즈에 맞춰 글꼴 크기(`font-size`)와 여백(`padding`)이 적절히 조절되어 가독성을 해치지 않는지 검토합니다.
- * 3. 반응형 및 그리드 대응: 각 사이즈가 프로젝트의 그리드 시스템(예: 8px 단위 등)과 조화를 이루는지 확인합니다.
- * * ※ 개발 가이드: 컴포넌트가 배치될 영역의 너비와 높이 제약에 따라 적절한 사이즈를 선택하세요.
+ * XS부터 XL까지 5단계 규격을 통해 레이아웃 대응력을 확인합니다.
+ * - **Visual Harmony**: 인풋 높이에 따라 내부 텍스트 스케일과 드롭다운 아이템의 높이가 비례하여 조절되는지 검증합니다.
+ * - **Touch Area**: 모바일 등 터치 환경을 고려하여 작은 사이즈에서도 충분한 클릭 영역이 확보되는지 체크합니다.
  */
 export const Sizes: Story = {
   render: args => {
@@ -217,11 +225,9 @@ export const Sizes: Story = {
 };
 
 /**
- * Combobox의 생명주기에서 발생할 수 있는 주요 시각적 상태들을 한눈에 검증합니다.
- * 1. 가상 클래스(Pseudo-classes): `pseudo-hover`, `pseudo-focus` 등을 통해 실제 이벤트 없이도 스타일 CSS를 강제 적용하여 디자인 QA를 용이하게 합니다.
- * 2. 인터랙션 제한: `Read Only`와 `Disabled` 상태에서 클릭 및 드롭다운 오픈이 정상적으로 차단되는지 확인합니다.
- * 3. 접근성(A11y): 각 상태 변화에 따라 스크린 리더가 인지할 수 있는 ARIA 속성이 적절히 변경되는지 검토합니다.
- * * ※ 개발 가이드: 특정 상태의 스타일 수정이 필요할 때 이 스토리를 참고하여 사이드 이펙트를 확인하세요.
+ * 콤보박스가 가질 수 있는 다양한 상호작용 상태를 검증합니다.
+ * - **Read Only / Disabled**: 사용자의 입력이나 드롭다운 오픈이 의도치 않게 발생하지 않도록 차단되는지 확인합니다.
+ * - **Interaction Feedback**: Hover와 Focus 시 시각적 변화를 통해 현재 컴포넌트가 활성 상태임을 명확히 전달하는지 검수합니다.
  */
 export const States: Story = {
   render: args => {
@@ -252,8 +258,8 @@ export const States: Story = {
 };
 
 /**
- * 부모 요소에 `overflow: hidden` 또는 `clip` 속성이 있어도
- * 드롭다운 리스트가 잘리지 않고 정상적으로 노출되는지 확인하는 스토리입니다.
+ * 부모 컨테이너가 공간적으로 제한된(`overflow: hidden`) 상황에서도
+ * 드롭다운 리스트가 포털(Portal)을 통해 안전하게 최상위에 렌더링되는지 확인합니다.
  */
 export const PortalTest: Story = {
   render: args => (
@@ -264,11 +270,10 @@ export const PortalTest: Story = {
 };
 
 /**
- * React의 상태(State)에 의해 값이 제어되는 Controlled Component 방식을 검증합니다.
- * 1. 상태 동기화: 외부에서 주입된 `value` 상태가 변경될 때 컴포넌트의 선택된 아이템이 즉각적으로 업데이트되는지 확인합니다.
- * 2. 이벤트 콜백: `onValueChange` 핸들러를 통해 선택된 값과 옵션 객체가 부모 상태로 정확히 전달되는지 검토하며, 타입 안정성을 확인합니다.
- * 3. 단방향 데이터 흐름: 사용자가 입력을 시도하더라도 상태값이 고정되어 있다면 UI가 변경되지 않아야 하며, 상태 변경을 통해서만 업데이트되는지 확인합니다.
- * * ※ 개발 가이드: 폼 라이브러리(React Hook Form 등)와 연동하거나, 선택된 값에 따라 다른 UI를 제어해야 하는 복잡한 로직에서 이 패턴을 사용하세요.
+ * 외부 상태(`useState`)에 의한 값 제어와 복잡한 사용자 시나리오를 자동 검증합니다.
+ * - **Controlled Logic**: 상위 컴포넌트의 상태 변경이 콤보박스의 인풋 값과 드롭다운 선택 상태에 즉각 반영되는지 확인합니다.
+ * - **Empty State**: 검색 결과가 없을 때 사용자에게 표시되는 '결과 없음' 안내 문구의 노출 여부를 검증합니다.
+ * - **Keyboard A11y**: 화살표 키(`ArrowDown`)를 통한 리스트 진입과 엔터 키(`Enter`)를 이용한 항목 선택 과정을 `play` 함수를 통해 테스트합니다.
  */
 export const Controlled: Story = {
   render: args => {

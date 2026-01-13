@@ -78,7 +78,7 @@ const Switch = forwardRef<HTMLLabelElement, SwitchProps>(
                 className='icon'
                 strokeLinecap='round'
                 strokeLinejoin='round'
-                strokeWidth={2.5}
+                strokeWidth={3}
               />
             </span>
           </span>

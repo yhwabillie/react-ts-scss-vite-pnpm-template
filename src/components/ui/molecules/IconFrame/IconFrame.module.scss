@@ -98,22 +98,22 @@ $icon-frame-sizes: (
 // icon frame colors
 $icon-frame-colors: (
   primary: (
-    fill: var(--primary-fill-color-icon-frame),
+    fill: var(--project-color-primary-icon-frame-icon-fill),
   ),
   secondary: (
-    fill: var(--secondary-fill-color-icon-frame),
+    fill: var(--project-color-secondary-icon-frame-icon-fill),
   ),
   tertiary: (
-    fill: var(--tertiary-fill-color-icon-frame),
+    fill: var(--project-color-tertiary-icon-frame-icon-fill),
   ),
   success: (
-    fill: var(--success-fill-color-icon-frame),
+    fill: var(--project-color-icon-frame-success-fill),
   ),
   warning: (
-    fill: var(--warning-fill-color-icon-frame),
+    fill: var(--project-color-icon-frame-warning-fill),
   ),
   danger: (
-    fill: var(--danger-fill-color-icon-frame),
+    fill: var(--project-color-icon-frame-danger-fill),
   ),
 );
 

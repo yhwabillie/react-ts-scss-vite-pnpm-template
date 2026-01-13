@@ -95,11 +95,9 @@ export const OpenRing: Story = {
  */
 export const Colors: Story = {
   render: args => {
-    const colorOptions: Array<'primary' | 'secondary' | 'tertiary'> = [
-      'primary',
-      'secondary',
-      'tertiary',
-    ];
+    const colorOptions: Array<
+      'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger'
+    > = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'];
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>

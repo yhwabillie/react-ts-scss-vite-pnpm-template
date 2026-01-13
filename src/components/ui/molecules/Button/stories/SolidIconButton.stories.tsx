@@ -31,56 +31,115 @@ const meta: Meta<typeof IconButton> = {
     layout: 'centered',
     docs: {
       description: {
-        component: `
-### 💡 컴포넌트 개요
-**Solid IconButton**은 배경색이 채워진 형태로, 인터페이스 내에서 가장 높은 시각적 위계(High Emphasis)를 가집니다.
-
-### 📝 디자인 가이드 (Designer's Note)
-- **사용 처**: 주요 실행 버튼(검색, 저장, 전송 등)에 사용합니다.
-- **제한 사항**: 인지적 과부하를 방지하기 위해 한 화면(View)에 2개 이상의 Solid 버튼 배치를 지양합니다.
-- **컬러 전략**: 의미론적 컬러(Success, Danger 등)는 반드시 해당 상태를 대변할 때만 사용합니다.
-
-### ♿ 접근성 가이드 (A11y)
-- **명칭 제공**: 텍스트가 없는 버튼이므로 \`ariaLabel\`은 **필수**입니다.
-- **터치 영역**: XS, SM 사이즈 사용 시 주변 여백을 포함하여 최소 44px 이상의 터치 타겟을 확보해야 합니다.
-        `,
+        component:
+          '**Solid IconButton**은 배경색이 채워진 고대비 버튼으로, 화면 내에서 가장 중요한 단일 액션을 수행할 때 사용합니다. <br /><br />' +
+          '• 주요 실행 버튼(검색, 저장 등)에 적합한 높은 시각적 위계 <br />' +
+          '• 텍스트가 없는 특성을 고려하여 `ariaLabel` 설정을 강제하며, 충분한 터치 타겟 확보 <br />',
       },
     },
   },
   argTypes: {
+    // --- Appearance ---
     variant: {
+      name: 'Variant',
       control: 'select',
-      options: ['solid', 'outline', 'ghost', 'link'],
-      description: '버튼의 시각적 테마',
-      table: { category: 'Appearance', defaultValue: { summary: 'solid' } },
+      options: ['solid', 'outline', 'ghost'],
+      description: '버튼의 시각적 테마를 설정합니다.',
+      table: {
+        category: 'Appearance',
+        type: { summary: "'solid' | 'outline' | 'ghost'" },
+        defaultValue: { summary: 'solid' },
+      },
     },
     color: {
+      name: 'Color',
       control: 'select',
-      options: [...COLOR_OPTIONS],
-      description: '의미론적 색상 시스템 적용',
-      table: { category: 'Appearance', defaultValue: { summary: 'primary' } },
+      options: COLOR_OPTIONS,
+      description: '의미론적 색상 시스템을 적용합니다.',
+      table: {
+        category: 'Appearance',
+        defaultValue: { summary: 'primary' },
+      },
     },
+
+    // --- Layout ---
     size: {
+      name: 'Size',
       control: 'inline-radio',
-      options: [...SIZE_OPTIONS],
-      description: '높이 및 내부 패딩 규격',
-      table: { category: 'Layout', defaultValue: { summary: 'md' } },
+      options: SIZE_OPTIONS,
+      description: '높이 및 내부 패딩 규격을 설정합니다.',
+      table: {
+        category: 'Layout',
+        defaultValue: { summary: 'md' },
+      },
     },
     shape: {
+      name: 'Shape',
       control: 'inline-radio',
-      options: [...SHAPE_OPTIONS],
-      description: '모서리 곡률 타입',
-      table: { category: 'Layout', defaultValue: { summary: 'rounded' } },
+      options: SHAPE_OPTIONS,
+      description: '모서리 곡률 타입을 결정합니다.',
+      table: {
+        category: 'Layout',
+        defaultValue: { summary: 'rounded' },
+      },
     },
+    className: {
+      name: 'Custom Class',
+      control: 'text',
+      description: '외부 스타일 주입을 위한 클래스명입니다.',
+      table: { category: 'Layout' },
+    },
+
+    // --- Behavior & Actions ---
     as: {
+      name: 'Component Tag',
       control: 'select',
       options: ['button', 'a', 'div', 'span'],
-      description: '렌더링될 HTML 태그',
-      table: { category: 'Behavior', defaultValue: { summary: 'button' } },
+      description: '실제 렌더링될 HTML 태그를 지정합니다.',
+      table: {
+        category: 'Behavior',
+        defaultValue: { summary: 'button' },
+      },
     },
-    ariaLabel: {
+    href: {
+      name: 'Link URL',
       control: 'text',
-      description: '스크린 리더용 설명 (필수)',
+      description: '`as="a"`일 경우 이동할 경로입니다.',
+      table: { category: 'Behavior' },
+    },
+    target: {
+      name: 'Target',
+      control: 'select',
+      options: ['_self', '_blank', '_parent', '_top'],
+      description: '링크 이동 시 브라우저 컨텍스트를 지정합니다.',
+      table: { category: 'Behavior' },
+    },
+    onClick: {
+      name: 'On Click',
+      action: 'clicked',
+      description: '버튼 클릭 시 실행되는 핸들러입니다.',
+      table: { category: 'Behavior' },
+    },
+
+    // --- Data & Refs ---
+    icon: {
+      name: 'Icon',
+      control: false,
+      description: '렌더링될 아이콘 요소입니다.',
+      table: { category: 'Data' },
+    },
+    ref: {
+      name: 'Ref',
+      control: false,
+      description: '버튼 하위 요소에 접근하기 위한 참조 객체입니다.',
+      table: { category: 'Data' },
+    },
+
+    // --- Accessibility ---
+    ariaLabel: {
+      name: 'Aria Label',
+      control: 'text',
+      description: '스크린 리더 사용자를 위한 대체 텍스트입니다. (필수)',
       table: { category: 'Accessibility' },
     },
   },
@@ -107,9 +166,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * [01. Base]
- * 가장 기본이 되는 단일 컴포넌트 명세입니다.
- * 인터랙션 패널을 통해 클릭 이벤트와 렌더링 상태를 자동 검증합니다.
+ * 컴포넌트의 기본 명세입니다.
+ * 인터랙션 패널을 통해 프로퍼티 변화에 따른 실시간 렌더링 상태를 확인합니다.
  */
 export const Base: Story = {
   parameters: {
@@ -123,10 +181,8 @@ export const Base: Story = {
 };
 
 /**
- * [02. Colors]
- * 브랜드 아이덴티티 및 상태 전달을 위한 컬러 시스템입니다.
- * - **Primary/Secondary**: 일반적인 액션 위계
- * - **Semantic**: 성공, 경고, 위험 등의 상태 피드백
+ * 브랜드 식별 및 상태 전달(성공, 위험 등)을 위한 컬러 시스템입니다.
+ * 각 컬러는 디자인 시스템의 시멘틱 위계를 따르며 명도 대비 가이드를 준수합니다.
  */
 export const Colors: Story = {
   render: args => {
@@ -148,9 +204,8 @@ export const Colors: Story = {
 };
 
 /**
- * [03. States]
- * 사용자 인터랙션에 따른 5가지 핵심 상태 피드백을 확인합니다.
- * `:hover`, `:focus`, `:active` 등 의사 클래스가 시스템 전반에서 일관되게 작동하는지 검수합니다.
+ * 사용자 상호작용에 따른 시각적 피드백(Hover, Focus, Active, Disabled)을 검수합니다.
+ * 모든 의사 클래스 상태에서 일관된 스타일이 유지되는지 확인합니다.
  */
 export const States: Story = {
   render: args => {
@@ -180,9 +235,8 @@ export const States: Story = {
 };
 
 /**
- * [04. Sizes]
- * 다양한 레이아웃 밀도에 대응하는 5가지 사이즈 규격입니다.
- * 작은 사이즈(XS, SM)에서는 가독성을 위해 아이콘의 선 두께(strokeWidth)가 2.0으로 자동 조정됩니다.
+ * 레이아웃 밀도에 대응하는 5단계 크기 시스템입니다.
+ * XS, SM 사이즈의 경우 아이콘 가독성을 위해 선 두께(Stroke)가 2.0으로 자동 보정됩니다.
  */
 export const Sizes: Story = {
   render: args => {
@@ -202,9 +256,9 @@ export const Sizes: Story = {
 };
 
 /**
- * [05. Shapes]
- * 모서리 곡률 변화를 통한 디자인 톤앤매너 조정입니다.
- * 원형(Pill)은 주로 독립적인 액션에, 사각형(Square)은 툴바나 그리드 내부에 권장됩니다.
+ * UI 컨텍스트에 따른 모서리 곡률 옵션입니다.
+ * - Square/Rounded: 정교한 제어 도구 및 툴바 UI
+ * - Pill: 강조가 필요한 독립적 액션 UI
  */
 export const Shapes: Story = {
   render: args => {
@@ -235,9 +289,8 @@ export const Shapes: Story = {
 };
 
 /**
- * [06. Polymorphic Link]
- * 디자인은 버튼이지만 실제 태그는 `<a>`로 작동하여 SEO와 내비게이션 성능을 챙깁니다.
- * 외부 링크 연결 시 보안 속성(`rel='noopener`)이 적용되어 있는지 확인하십시오.
+ * 디자인은 유지하되 HTML 태그를 `<a>`로 변경하여 내비게이션 역할을 수행합니다.
+ * 접근성(aria-label)과 보안 속성(rel)이 포함된 시나리오를 테스트합니다.
  */
 export const PolymorphicLink: Story = {
   args: {

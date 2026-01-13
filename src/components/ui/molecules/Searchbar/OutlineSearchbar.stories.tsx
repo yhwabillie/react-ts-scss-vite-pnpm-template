@@ -14,6 +14,15 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          '**Searchbar**는 텍스트 입력과 동시에 실시간으로 추천 검색어를 제안하는 지능형 검색 컨트롤입니다. <br /><br />' +
+          '• 검색어 전송(Submit)과 즉시 삭제(Clear) 버튼을 내장하여 검색 과정의 편의성을 높였습니다. <br />' +
+          '• 잦은 상태 업데이트로 인한 성능 저하를 방지하기 위해 디바운싱(Debounce) 로직이 적용되어 있습니다. <br />' +
+          '• `pill`, `rounded`, `square` 등 다양한 외형을 지원하여 서비스의 디자인 톤앤매너에 유연하게 대응합니다.',
+      },
+    },
   },
 
   argTypes: {
@@ -157,6 +166,10 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+/**
+ * 컴포넌트의 가장 기본적인 렌더링 형태입니다.
+ * `updateArgs`를 통해 스토리북 내에서 실시간으로 입력 상태가 동기화되도록 설계되었습니다.
+ */
 export const Base: Story = {
   render: (args, context) => {
     const { updateArgs } = context;
@@ -187,11 +200,9 @@ export const Base: Story = {
 };
 
 /**
- * * `Searchbar` 컴포넌트의 테마 색상 시스템을 정의합니다.
- * 프로젝트의 디자인 토큰에 정의된 6가지 핵심 색상(`primary`, `secondary`, `tertiary`, `success`, `warning`, `danger`)을 지원하며,
- * 각 색상은 `variant`(solid, outline)와 결합되어 다양한 시각적 위계를 형성합니다.
- * * **접근성**: 모든 색상 조합은 배경색 대비 최소 명도 대비를 유지하도록 설계되었습니다.
- * - **상태 변화**: 각 컬러 테마는 Hover, Active, Focus 상태에 대한 고유한 피드백 색상을 포함합니다.
+ * 브랜드 아이덴티티를 나타내는 3가지 핵심 컬러 테마를 대조합니다.
+ * - **Visual Hierarchy**: 각 테마 색상이 보더, 포커스 링, 버튼 아이콘에 어떻게 투영되는지 확인합니다.
+ * - **Accessibility**: 배경 대비 아이콘과 텍스트의 명도 대비가 표준 가이드라인을 준수하는지 검증합니다.
  */
 export const Colors: Story = {
   render: (args, context) => {
@@ -240,10 +251,9 @@ export const Colors: Story = {
 };
 
 /**
- * * `Searchbar` 컴포넌트의 5가지 표준 크기(`xs`, `sm`, `md`, `lg`, `xl`)를 정의합니다.
- * **특징**:
- * - 각 크기에 따라 `input`의 높이, 패딩, 폰트 사이즈 및 내부 아이콘 버튼의 크기가 유동적으로 조절됩니다.
- * - `updateArgs`를 공유하여 하나의 입력창에 값을 입력하면 모든 크기의 컴포넌트 상태가 동시에 업데이트되므로 시각적 비교가 용이합니다.
+ * XS부터 XL까지 5단계 표준 크기를 확인합니다.
+ * - **Alignment**: 높이 변화에 따라 검색 아이콘, 삭제 버튼, 입력 텍스트가 완벽한 수직 중앙 정렬을 유지하는지 체크합니다.
+ * - **Proportional Scaling**: 사이즈별로 폰트 크기와 내부 패딩이 조화롭게 스케일링되는지 검수합니다.
  */
 export const Sizes: Story = {
   render: (args, context) => {
@@ -288,14 +298,8 @@ export const Sizes: Story = {
 };
 
 /**
- * * `Searchbar` 컴포넌트의 인터랙션 상태별 시각적 피드백을 한눈에 확인합니다.
- * * **필터링 로직 적용**:
- * - 전달된 `className` 중 `pseudo-` 접두사로 시작하는 클래스만 선별적으로 추출하여 적용합니다.
- * - 이를 통해 실제 마우스 오버나 포커스 없이도 `Hover`, `Focus` 등의 디자인 가이드를 고정된 상태로 검증할 수 있습니다.
- * * **상태 정의**:
- * - **Normal**: 아무런 인터랙션이 없는 기본 상태입니다.
- * - **Hover**: 마우스 커서가 컴포넌트 영역 위에 위치했을 때의 상태입니다. (`pseudo-hover`)
- * - **Focus (Typing)**: 입력창에 포커스가 진입하여 텍스트를 입력 중인 상태입니다. (`pseudo-focus-visible`)
+ * 인터랙션 과정에서 발생하는 시각적 피드백을 고정된 상태로 검증합니다.
+ * - **Pseudo-classes**: 호버(Hover) 시의 미세한 색상 변화와 포커스(Focus) 시의 강조 가이드를 디자인 QA 관점에서 확인합니다.
  */
 export const States: Story = {
   render: (args, context) => {
@@ -344,12 +348,9 @@ export const States: Story = {
 };
 
 /**
- * * `Searchbar` 컴포넌트의 3가지 테두리 형태(`square`, `rounded`, `pill`)를 정의합니다.
- * * **특징**:
- * - **SQUARE**: 직각 형태의 테두리로, 보수적이거나 격식 있는 UI 아키텍처에 적합합니다.
- * - **ROUNDED**: 표준적인 둥근 모서리(Border-radius)를 가지며, 가장 범용적으로 사용됩니다.
- * - **PILL**: 완전히 둥근 형태(Capsule shape)로, 모던하고 부드러운 인상을 주며 모바일 친화적인 UX에 권장됩니다.
- * * **데이터 동기화**: `updateArgs`를 통해 모든 형상의 입력값을 동기화하므로, 형상에 따른 텍스트 가독성과 버튼 배치를 쉽게 비교할 수 있습니다.
+ * 서비스의 성격에 맞는 3가지 테두리 형상을 제안합니다.
+ * - **Square/Rounded**: 일반적인 웹 대시보드나 전문적인 툴에 권장됩니다.
+ * - **Pill**: 모바일 앱 스타일이나 검색 중심의 모던한 서비스 인터페이스에 적합합니다.
  */
 export const Shapes: Story = {
   render: (args, context) => {
@@ -392,11 +393,9 @@ export const Shapes: Story = {
 };
 
 /**
- * * `Searchbar` 내부 액션 버튼(Submit, Utility)의 시각적 스타일(`ghost`, `solid`)을 정의합니다.
- * * **특징**:
- * - **GHOST**: 배경색 없이 아이콘만 강조되어, 입력창과의 시각적 간섭을 최소화하고 미니멀한 디자인을 유지할 때 사용합니다.
- * - **SOLID**: 버튼에 배경색을 채워 시각적 위계(Visual Hierarchy)를 높이며, 검색 동작을 명확한 호출(Call-to-Action)로 강조하고 싶을 때 적합합니다.
- * * **인터랙션**: `updateArgs`를 통해 모든 인스턴스의 값이 실시간으로 동기화되므로, 버튼 스타일 변화에 따른 전체적인 밸런스를 한눈에 파악할 수 있습니다.
+ * 검색바 내부 버튼의 시각적 위계를 결정하는 두 가지 스타일을 비교합니다.
+ * - **Ghost**: 입력창과의 일체감을 강조하며 심플한 룩을 제공합니다.
+ * - **Solid**: 검색 버튼을 명확한 호출(CTA) 요소로 강조하고 싶을 때 사용합니다.
  */
 export const Variants: Story = {
   render: (args, context) => {
@@ -443,10 +442,8 @@ export const Variants: Story = {
 };
 
 /**
- * * 부모 요소가 `overflow: hidden`인 열악한 레이아웃 환경에서도 옵션 리스트가 정상적으로 노출되는지 테스트합니다.
- * **검증 포인트**:
- * - `OptionListPortal`을 사용하여 DOM 구조상 `body` 하단에 렌더링되므로 부모의 `overflow` 설정에 영향을 받지 않습니다.
- * - 리사이즈 및 스크롤 발생 시 `getBoundingClientRect`를 통해 위치가 실시간으로 재계산되는지 확인합니다.
+ * 부모 요소가 레이아웃을 제한(`overflow: hidden`)하는 상황에서도
+ * 추천 검색어 리스트가 뷰포트 최상단에 안전하게 표시되는지 검증합니다.
  */
 export const PortalTest: Story = {
   render: (args, context) => {
@@ -482,13 +479,9 @@ export const PortalTest: Story = {
 };
 
 /**
- * * 실제 사용자의 인터랙션 흐름을 시뮬레이션하여 컴포넌트의 비즈니스 로직과 접근성을 자동 검증합니다.
- * **테스트 시나리오**:
- * 1. **검색 필터링**: 키워드 입력 시 관련 옵션만 필터링되어 나타나는지 확인합니다.
- * 2. **삭제(Clear) 동작**: 유틸리티 버튼 클릭 시 입력값 초기화 및 포커스가 입력창으로 안전하게 복구되는지 검증합니다.
- * 3. **Empty State**: 일치하는 결과가 없을 때 안내 문구가 노출되는지 확인합니다.
- * 4. **키보드 접근성 (ESC)**: `Escape` 키 입력 시 리스트가 즉시 닫히는지 확인합니다.
- * 5. **네비게이션 & 선택**: 화살표 키(`ArrowDown`)로 옵션에 진입하고, `Enter` 입력 시 해당 옵션의 링크(href) 정보를 정확히 파악하는지 검증합니다.
+ * 실제 사용자의 검색 시나리오를 자동화 테스트로 검증합니다.
+ * - **Search Flow**: 키워드 입력 → 리스트 노출 → 키보드 탐색 → 링크 이동으로 이어지는 전체 흐름을 확인합니다.
+ * - **UX Detail**: 검색어 삭제 시 포커스가 인풋으로 자동 복구되는지, ESC 키로 리스트가 즉시 닫히는지 등 세밀한 사용성을 체크합니다.
  */
 export const InteractiveTest: Story = {
   ...Base,

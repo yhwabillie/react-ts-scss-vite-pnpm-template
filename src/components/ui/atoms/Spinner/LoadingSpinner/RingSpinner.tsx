@@ -12,7 +12,13 @@ export type RingSpinnerBaseProps = {
     | 'secondary-soft'
     | 'tertiary'
     | 'tertiary-solid'
-    | 'tertiary-soft';
+    | 'tertiary-soft'
+    | 'success'
+    | 'success-solid'
+    | 'warning'
+    | 'warning-solid'
+    | 'danger'
+    | 'danger-solid';
 
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 };

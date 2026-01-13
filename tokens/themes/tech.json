@@ -292,39 +292,10 @@
       "accordion": {
         "light": {
           "header-bg": {
-            "value": "var(--project-color-primitive-blue-32)"
-          },
-          "header-bg-hover": {
-            "value": "var(--project-color-primitive-blue-23)"
-          },
-          "header-text": {
-            "value": "var(--project-color-primitive-gray-246)"
-          },
-          "panel-bg": {
-            "value": "var(--project-color-primitive-gray-53)"
-          },
-          "nested-header-bg": {
-            "value": "var(--project-color-primitive-gray-78)"
-          },
-          "nested-header-bg-hover": {
-            "value": "var(--project-color-primitive-gray-96)"
-          },
-          "nested-header-text": {
-            "value": "var(--project-color-primitive-gray-208)"
-          },
-          "nested-header-icon-fill": {
-            "value": "var(--project-color-primitive-gray-184)"
-          },
-          "nested-header-panel-bg": {
-            "value": "var(--project-color-primitive-gray-43)"
-          }
-        },
-        "dark": {
-          "header-bg": {
             "value": "var(--project-color-primitive-blue-8)"
           },
           "header-bg-hover": {
-            "value": "var(--project-color-primitive-blue-6)"
+            "value": "var(--project-color-primitive-blue-23)"
           },
           "header-text": {
             "value": "var(--project-color-primitive-gray-246)"
@@ -346,6 +317,35 @@
           },
           "nested-header-panel-bg": {
             "value": "var(--project-color-primitive-gray-246)"
+          }
+        },
+        "dark": {
+          "header-bg": {
+            "value": "var(--project-color-primitive-blue-32)"
+          },
+          "header-bg-hover": {
+            "value": "var(--project-color-primitive-blue-6)"
+          },
+          "header-text": {
+            "value": "var(--project-color-primitive-gray-246)"
+          },
+          "panel-bg": {
+            "value": "var(--project-color-primitive-gray-53)"
+          },
+          "nested-header-bg": {
+            "value": "var(--project-color-primitive-gray-78)"
+          },
+          "nested-header-bg-hover": {
+            "value": "var(--project-color-primitive-gray-96)"
+          },
+          "nested-header-text": {
+            "value": "var(--project-color-primitive-gray-208)"
+          },
+          "nested-header-icon-fill": {
+            "value": "var(--project-color-primitive-gray-184)"
+          },
+          "nested-header-panel-bg": {
+            "value": "var(--project-color-primitive-gray-43)"
           }
         }
       },
@@ -735,6 +735,12 @@
           "ghost-text-hover": {
             "value": "var(--project-color-primitive-blue-39)"
           },
+          "ghost-bg-active": {
+            "value": "var(--project-color-primitive-blue-156)"
+          },
+          "ghost-text-active": {
+            "value": "var(--project-color-primitive-blue-27)"
+          },
           "ghost-bg-selected": {
             "value": "var(--project-color-primitive-blue-156)"
           },
@@ -766,6 +772,12 @@
           },
           "ghost-text-hover": {
             "value": "var(--project-color-primitive-gray-246)"
+          },
+          "ghost-bg-active": {
+            "value": "var(--project-color-primitive-alpha-313)"
+          },
+          "ghost-text-active": {
+            "value": "var(--project-color-primitive-blue-163)"
           },
           "ghost-bg-selected": {
             "value": "var(--project-color-primitive-alpha-313)"
@@ -1608,12 +1620,12 @@
       "pagination": {
         "light": {
           "current-page-bg": {
-            "value": "var(--project-color-primitive-blue-88)"
+            "value": "var(--project-color-primitive-blue-106)"
           }
         },
         "dark": {
           "current-page-bg": {
-            "value": "var(--project-color-primitive-blue-73)"
+            "value": "var(--project-color-primitive-blue-129)"
           }
         }
       },
@@ -1990,6 +2002,12 @@
           },
           "ghost-text-hover": {
             "value": "var(--project-color-primitive-blue-38)"
+          },
+          "ghost-bg-active": {
+            "value": "var(--project-color-primitive-blue-167)"
+          },
+          "ghost-text-active": {
+            "value": "var(--project-color-primitive-blue-18)"
           },
           "ghost-bg-selected": {
             "value": "var(--project-color-primitive-blue-167)"
@@ -3253,11 +3271,17 @@
           "ghost-text-hover": {
             "value": "var(--project-color-primitive-blue-115)"
           },
+          "ghost-bg-active": {
+            "value": "var(--project-color-primitive-blue-158)"
+          },
+          "ghost-text-active": {
+            "value": "var(--project-color-primitive-blue-95)"
+          },
           "ghost-bg-selected": {
-            "value": "var(--project-color-primitive-blue-182)"
+            "value": "var(--project-color-primitive-blue-158)"
           },
           "ghost-text-selected": {
-            "value": "var(--project-color-primitive-blue-170)"
+            "value": "var(--project-color-primitive-blue-95)"
           },
           "ghost-bg-selected-hover": {
             "value": "var(--project-color-primitive-blue-164)"
@@ -3283,6 +3307,12 @@
             "value": "var(--project-color-primitive-blue-36)"
           },
           "ghost-text-hover": {
+            "value": "var(--project-color-primitive-gray-246)"
+          },
+          "ghost-bg-active": {
+            "value": "var(--project-color-primitive-blue-128)"
+          },
+          "ghost-text-active": {
             "value": "var(--project-color-primitive-gray-246)"
           },
           "ghost-bg-selected": {

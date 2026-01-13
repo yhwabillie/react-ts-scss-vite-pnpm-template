@@ -6,29 +6,26 @@
 $calendar-colors: (
   primary: (
     outline: (
-      color: var(--primary-text-color-input-outline),
-      border: var(--primary-panel-stroke-color-calendar),
-      day-text: var(--primary-day-text-color-calendar),
-      selected-bg: var(--primary-selected-date-bg-color-calendar),
-      selected-text: var(--primary-selected-date-text-color-calendar),
+      border: var(--project-color-primary-calendar-panel-border),
+      day-text: var(--project-color-primary-calendar-day-text),
+      selected-bg: var(--project-color-primary-calendar-date-bg-selected),
+      selected-text: var(--project-color-primary-calendar-date-text-selected),
     ),
   ),
   secondary: (
     outline: (
-      color: var(--secondary-text-color-input-outline),
-      border: var(--secondary-panel-stroke-color-calendar),
-      day-text: var(--secondary-day-text-color-calendar),
-      selected-bg: var(--secondary-selected-date-bg-color-calendar),
-      selected-text: var(--secondary-selected-date-text-color-calendar),
+      border: var(--project-color-secondary-calendar-panel-border),
+      day-text: var(--project-color-secondary-calendar-day-text),
+      selected-bg: var(--project-color-secondary-calendar-date-bg-selected),
+      selected-text: var(--project-color-secondary-calendar-date-text-selected),
     ),
   ),
   tertiary: (
     outline: (
-      color: var(--tertiary-text-color-input-outline),
-      border: var(--tertiary-panel-stroke-color-calendar),
-      day-text: var(--tertiary-day-text-color-calendar),
-      selected-bg: var(--tertiary-selected-date-bg-color-calendar),
-      selected-text: var(--tertiary-selected-date-text-color-calendar),
+      border: var(--project-color-tertiary-calendar-panel-border),
+      day-text: var(--project-color-tertiary-calendar-day-text),
+      selected-bg: var(--project-color-tertiary-calendar-date-bg-selected),
+      selected-text: var(--project-color-tertiary-calendar-date-text-selected),
     ),
   ),
 );

@@ -31,56 +31,116 @@ const meta: Meta<typeof IconButton> = {
     layout: 'centered',
     docs: {
       description: {
-        component: `
-### 💡 컴포넌트 개요
-**Outline IconButton**은 배경색 없이 보더(Border)로 영역을 구분하는 스타일입니다. Solid 타입보다 시각적 강조도가 낮아 보조적인 동작에 주로 사용됩니다.
-
-### 📝 디자인 가이드 (Designer's Note)
-- **사용 처**: '취소', '이전', '상세보기' 등 보조적 액션(Secondary Action)에 사용합니다.
-- **시각적 조화**: Solid 버튼 옆에 나열하여 액션의 우선순위를 구분할 때 효과적입니다.
-- **가독성 주의**: 복잡한 배경 이미지 위에서는 보더가 묻힐 수 있으므로, 대비가 명확한 배경 위에서 사용을 권장합니다.
-
-### ♿ 접근성 가이드 (A11y)
-- **보더 대비**: 보더 컬러와 배경색의 대비(Contrast Ratio)가 최소 3:1 이상이어야 요소의 형태를 인지할 수 있습니다.
-- **상태 변화**: Hover/Focus 시 보더의 두께나 색상 변화가 뚜렷하여 사용자에게 피드백을 주어야 합니다.
-        `,
+        component:
+          '**Outline IconButton**은 보더(Border)로 영역을 구분하는 스타일로, Solid 타입보다 시각적 위계가 낮은 보조적 액션에 사용합니다. <br /><br />' +
+          '• 취소, 이전, 상세 정보 등 주 기능 외 보조 기능을 수행할 때 적합 <br />' +
+          '• Solid 버튼과 함께 배치하여 사용자에게 동작의 우선순위를 명확히 전달 <br />' +
+          '• 배경색과의 대비를 고려하여 설계되었으며, 인터랙션 시 배경이 채워지는 피드백 제공',
       },
     },
   },
   argTypes: {
+    // --- Appearance ---
     variant: {
+      name: 'Variant',
       control: 'select',
-      options: ['solid', 'outline', 'ghost', 'link'],
-      description: '버튼의 시각적 테마',
-      table: { category: 'Appearance', defaultValue: { summary: 'outline' } },
+      options: ['solid', 'outline', 'ghost'],
+      description: '버튼의 시각적 테마를 설정합니다.',
+      table: {
+        category: 'Appearance',
+        type: { summary: "'solid' | 'outline' | 'ghost'" },
+        defaultValue: { summary: 'solid' },
+      },
     },
     color: {
+      name: 'Color',
       control: 'select',
-      options: [...COLOR_OPTIONS],
-      description: '의미론적 색상 시스템 적용',
-      table: { category: 'Appearance', defaultValue: { summary: 'primary' } },
+      options: COLOR_OPTIONS,
+      description: '의미론적 색상 시스템을 적용합니다.',
+      table: {
+        category: 'Appearance',
+        defaultValue: { summary: 'primary' },
+      },
     },
+
+    // --- Layout ---
     size: {
+      name: 'Size',
       control: 'inline-radio',
-      options: [...SIZE_OPTIONS],
-      description: '높이 및 내부 패딩 규격',
-      table: { category: 'Layout', defaultValue: { summary: 'md' } },
+      options: SIZE_OPTIONS,
+      description: '높이 및 내부 패딩 규격을 설정합니다.',
+      table: {
+        category: 'Layout',
+        defaultValue: { summary: 'md' },
+      },
     },
     shape: {
+      name: 'Shape',
       control: 'inline-radio',
-      options: [...SHAPE_OPTIONS],
-      description: '모서리 곡률 타입',
-      table: { category: 'Layout', defaultValue: { summary: 'rounded' } },
+      options: SHAPE_OPTIONS,
+      description: '모서리 곡률 타입을 결정합니다.',
+      table: {
+        category: 'Layout',
+        defaultValue: { summary: 'rounded' },
+      },
     },
+    className: {
+      name: 'Custom Class',
+      control: 'text',
+      description: '외부 스타일 주입을 위한 클래스명입니다.',
+      table: { category: 'Layout' },
+    },
+
+    // --- Behavior & Actions ---
     as: {
+      name: 'Component Tag',
       control: 'select',
       options: ['button', 'a', 'div', 'span'],
-      description: '렌더링될 HTML 태그',
-      table: { category: 'Behavior', defaultValue: { summary: 'button' } },
+      description: '실제 렌더링될 HTML 태그를 지정합니다.',
+      table: {
+        category: 'Behavior',
+        defaultValue: { summary: 'button' },
+      },
     },
-    ariaLabel: {
+    href: {
+      name: 'Link URL',
       control: 'text',
-      description: '스크린 리더용 설명 (필수)',
+      description: '`as="a"`일 경우 이동할 경로입니다.',
+      table: { category: 'Behavior' },
+    },
+    target: {
+      name: 'Target',
+      control: 'select',
+      options: ['_self', '_blank', '_parent', '_top'],
+      description: '링크 이동 시 브라우저 컨텍스트를 지정합니다.',
+      table: { category: 'Behavior' },
+    },
+    onClick: {
+      name: 'On Click',
+      action: 'clicked',
+      description: '버튼 클릭 시 실행되는 핸들러입니다.',
+      table: { category: 'Behavior' },
+    },
+
+    // --- Data & Refs ---
+    icon: {
+      name: 'Icon',
+      control: false,
+      description: '렌더링될 아이콘 요소입니다.',
+      table: { category: 'Data' },
+    },
+    ref: {
+      name: 'Ref',
+      control: false,
+      description: '버튼 하위 요소에 접근하기 위한 참조 객체입니다.',
+      table: { category: 'Data' },
+    },
+
+    // --- Accessibility ---
+    ariaLabel: {
+      name: 'Aria Label',
+      control: 'text',
+      description: '스크린 리더 사용자를 위한 대체 텍스트입니다. (필수)',
       table: { category: 'Accessibility' },
     },
   },
@@ -107,8 +167,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * [01. Base]
- * 가장 기본이 되는 단일 컴포넌트 명세입니다.
+ * 컴포넌트의 기본 명세입니다.
+ * 인터랙션 패널을 통해 아웃라인 스타일의 선명도와 아이콘 조화를 확인합니다.
  */
 export const Base: Story = {
   parameters: {
@@ -120,9 +180,8 @@ export const Base: Story = {
 };
 
 /**
- * [02. Colors]
- * Outline 스타일에서의 컬러 시스템 적용 예시입니다.
- * 배경색이 아닌 보더와 아이콘/텍스트 컬러에 시멘틱 컬러가 적용됩니다.
+ * 선(Line)과 아이콘/텍스트에 시멘틱 컬러가 적용된 예시입니다.
+ * 배경색이 없는 상태에서도 각 컬러가 가진 의미(성공, 위험 등)를 명확히 전달합니다.
  */
 export const Colors: Story = {
   render: args => {
@@ -144,8 +203,8 @@ export const Colors: Story = {
 };
 
 /**
- * [03. States]
- * Outline 버튼은 인터랙션 시 배경색이 옅게 채워지거나 보더가 강조되는 등의 피드백을 제공합니다.
+ * 호버 및 포커스 시 보더 강조나 배경색 유입 등의 피드백을 확인합니다.
+ * 비활성화(Disabled) 상태에서 보더와 아이콘의 저채도 표현을 검수합니다.
  */
 export const States: Story = {
   render: args => {
@@ -175,8 +234,8 @@ export const States: Story = {
 };
 
 /**
- * [04. Sizes]
- * 각 사이즈별 보더 두께와 아이콘 크기의 조화를 확인합니다.
+ * 각 크기 규격에 따른 보더 두께와 패딩의 밸런스를 확인합니다.
+ * 작은 사이즈에서도 보더와 아이콘이 뭉쳐 보이지 않도록 최적화되어 있습니다.
  */
 export const Sizes: Story = {
   render: args => {
@@ -196,8 +255,8 @@ export const Sizes: Story = {
 };
 
 /**
- * [05. Shapes]
- * Outline 스타일에서는 보더의 곡률이 시각적으로 더 뚜렷하게 느껴집니다.
+ * 보더 라인을 통해 곡률(Shape)의 차이가 가장 극명하게 드러나는 스타일입니다.
+ * 디자인 톤앤매너에 따라 사각형부터 원형까지의 외형을 테스트합니다.
  */
 export const Shapes: Story = {
   render: args => {
@@ -228,8 +287,8 @@ export const Shapes: Story = {
 };
 
 /**
- * [06. Polymorphic Link]
- * '자세히 보기'와 같은 내비게이션 링크를 Outline 스타일의 버튼으로 구성할 때 사용합니다.
+ * 버튼의 외형을 유지한 채 <a> 태그로 렌더링하여 내비게이션 성능을 확보합니다.
+ * '자세히 보기'나 '외부 링크' 등 보조적인 경로 이동에 권장됩니다.
  */
 export const PolymorphicLink: Story = {
   args: {

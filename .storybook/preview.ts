@@ -161,7 +161,7 @@ const preview: Preview = {
             // 인라인 스타일로 해당 영역의 배경과 글자색만 강제 (Docs 배경은 유지됨)
             el.style.setProperty(
               'background-color',
-              'var(--project-color-surface-default)',
+              'var(--project-color-surface-sunken)',
               'important',
             );
             el.style.setProperty('color', 'var(--project-color-text-natural)', 'important');

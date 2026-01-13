@@ -1,11 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import LanguageSelector from './LanguageSelector';
-import { GuideCell, GuideGroup, GuideRow, GuideWrapper } from '../../guide/Guide';
-import {
-  languageSelectorOptions,
-  type LanguageCode,
-  type LanguageSelectItem,
-} from './LanguageSelector.mock';
+import { GuideCell } from '../../guide/Guide';
+import { languageSelectorOptions, type LanguageCode } from './LanguageSelector.mock';
 import { useState } from 'react';
 import { SpecimenCell, SpecimenGroup, SpecimenWrapper } from '../../guide/Specimen';
 
@@ -13,6 +9,17 @@ const meta: Meta<typeof LanguageSelector> = {
   title: 'UI/Molecules/LanguageSelector',
   component: LanguageSelector,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '**LanguageSelector**는 서비스의 언어 설정을 직관적으로 변경할 수 있는 드롭다운 형태의 컴포넌트입니다. <br /><br />' +
+          '• **Visual Identity**: 현재 선택된 언어의 국기 아이콘 또는 언어 명칭을 버튼 내부에 표시하여 가독성을 높였습니다. <br />' +
+          '• **State Sync**: 외부 상태(`value`)와 결합하여 페이지 전체의 다국어 컨텍스트를 실시간으로 제어할 수 있습니다. <br />' +
+          '• **Dropdown UX**: 버튼의 너비와 드롭다운 리스트의 너비를 동기화하고, 포털(Portal) 기술을 사용하여 레이아웃 간섭 없이 상위에 노출됩니다.',
+      },
+    },
+  },
 
   argTypes: {
     variant: {
@@ -80,6 +87,10 @@ const meta: Meta<typeof LanguageSelector> = {
 export default meta;
 type Story = StoryObj<typeof LanguageSelector>;
 
+/**
+ * 가장 기본적인 형태의 언어 선택기입니다.
+ * - **Interaction**: 버튼 클릭 시 나타나는 언어 리스트와, 선택 시 `onValueChange`를 통한 상태 업데이트 흐름을 확인합니다.
+ */
 export const Base: Story = {
   render: args => {
     const [currentLang, setCurrentLang] = useState(args.value);
@@ -98,10 +109,9 @@ export const Base: Story = {
 };
 
 /**
- * 💡 테스트 포인트:
- * - **컬러 시스템 검증**: Primary, Secondary, Tertiary 각 컬러별로 버튼의 배경, 텍스트, 아이콘 프레임(`IconFrame`)이 디자인 가이드에 맞게 적용되는지 확인합니다.
- * - **명도 대비(Contrast)**: 특히 다크모드(#121212)와 라이트 모드 환경에서 각 컬러별 텍스트 명도 대비가 최소 4.5:1(AA 등급)을 만족하여 언어 식별에 문제가 없는지 확인합니다.
- * - **선택 상태(Selected)**: 드롭다운 리스트 내에서 `is-selected` 상태의 배경색이 각 브랜드 컬러(`color`) 테마와 조화롭게 어우러지면서도 시각적으로 명확히 구분되는지 확인합니다.
+ * 브랜드 컬러 시스템(Primary, Secondary, Tertiary)별 테마를 검증합니다.
+ * - **Contrast Check**: 다크모드 환경에서도 각 테마의 텍스트와 아이콘 프레임이 웹 접근성 가이드(AA등급 이상)를 만족하는지 확인합니다.
+ * - **Selected State**: 드롭다운 내부에서 선택된 아이템의 강조 색상이 버튼의 메인 테마 색상과 조화를 이루는지 점검합니다.
  */
 export const Colors: Story = {
   render: args => {
@@ -138,10 +148,9 @@ export const Colors: Story = {
 };
 
 /**
- * 💡 테스트 포인트:
- * - XL부터 XS까지 각 사이즈별로 버튼의 패딩, 폰트 크기, 아이콘 프레임이 가이드에 맞게 조절되는지 확인합니다.
- * - **상태 제어(Controlled)**: 특정 사이즈에서 언어를 변경하면 모든 사이즈의 `LanguageSelector`가 동일한 언어로 동기화되는지 확인합니다. (데이터 흐름 검증)
- * - **포털 너비 동기화**: 사이즈별로 버튼의 너비가 다를 때, 드롭다운 리스트의 너비가 해당 버튼 너비에 맞춰 유동적으로 변하는지 확인합니다.
+ * XL부터 XS까지 다양한 크기 환경에서의 레이아웃을 검증합니다.
+ * - **Proportional Scaling**: 사이즈 변화에 따라 버튼의 내부 패딩, 폰트 크기, 국기 아이콘의 비율이 적절히 조절되는지 확인합니다.
+ * - **Width Sync**: 버튼의 크기가 변하더라도 드롭다운 팝오버가 버튼의 하단 너비에 정확히 맞춰 렌더링되는지 체크합니다.
  */
 export const Sizes: Story = {
   render: args => {

@@ -306,3 +306,17 @@ export const Switch: Story = {
     tokens: [...(groupedTokens['switch'] || [])],
   },
 };
+export const Spinner: Story = {
+  args: {
+    title: 'Spinner Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['spinner'] || [])],
+  },
+};
+export const Chip: Story = {
+  args: {
+    title: 'Chip Tokens',
+    category: 'Component',
+    tokens: [...(groupedTokens['chip'] || [])],
+  },
+};

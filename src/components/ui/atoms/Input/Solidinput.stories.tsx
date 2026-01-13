@@ -4,7 +4,7 @@ import Icon from '../Icon/Icon'; // 아이콘 컴포넌트 가정
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { SpecimenCell, SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
 import React, { useId } from 'react';
-import { GuideCell, GuideGroup, GuideRow, GuideWrapper } from '../../guide/Guide';
+import { GuideCell, GuideGroup, GuideRow } from '../../guide/Guide';
 import IconButton from '../../molecules/IconButton/IconButton';
 import clsx from 'clsx';
 import IconFrame from '../../molecules/IconFrame/IconFrame';
@@ -15,6 +15,15 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          '**Solid Input**은 배경색이 채워진 형태의 입력 필드로, 폼(Form) 요소에서 가장 직관적인 시각적 영역을 제공합니다. <br /><br />' +
+          '• 시작(Start)과 끝(End) 슬롯을 통해 아이콘, 단위, 액션 버튼 등을 자유롭게 배치 <br />' +
+          '• 사이즈 및 곡률(Shape) 옵션이 내부 아이콘 및 버튼과 유기적으로 연동 <br />' +
+          '• 긴 텍스트 입력 시 아이콘 영역을 침범하지 않도록 설계된 말줄임 로직 내장',
+      },
+    },
   },
   argTypes: {
     // 1. Base Configuration (기본 식별 및 데이터 관련)
@@ -107,6 +116,7 @@ type Story = StoryObj<typeof meta>;
 
 /**
  * 컴포넌트의 가장 기본이 되는 형태입니다.
+ * 별도의 옵션 없이 텍스트 입력을 위한 최소한의 명세를 정의합니다.
  */
 export const Base: Story = {
   parameters: {
@@ -120,21 +130,13 @@ export const Base: Story = {
   render: args => {
     const uniqueId = useId();
 
-    return (
-      <AnatomyWrapper title='부모 요소 : 800px'>
-        <SpecimenRow>
-          <SpecimenCell style={{ width: '800px' }}>
-            <Input {...args} id={uniqueId} />
-          </SpecimenCell>
-        </SpecimenRow>
-      </AnatomyWrapper>
-    );
+    return <Input {...args} id={uniqueId} />;
   },
 };
 
 /**
- * 디자인 시스템의 시멘틱 컬러(Primary, Danger 등)가 적용된 상태를 비교합니다.
- * 빈 값(Empty)과 입력 완료(Filled) 상태에서 아이콘 버튼과의 색상 조화를 검수합니다.
+ * 디자인 시스템의 시멘틱 컬러를 적용하여 상태별 의미를 전달합니다.
+ * 값이 비어있는 상태(Empty)와 입력된 상태(Filled)에서 아이콘 및 버튼과의 조화를 확인합니다.
  */
 export const Colors: Story = {
   render: args => {
@@ -261,8 +263,8 @@ export const Colors: Story = {
 };
 
 /**
- * SCSS Map에 정의된 5가지 높이(32px ~ 48px) 규격을 확인합니다.
- * Adornment(아이콘)가 포함되어도 고정된 높이가 유지되는지, 텍스트 정렬이 올바른지 검증합니다.
+ * 5단계 표준 높이 규격(32px ~ 48px)과 너비 대응 로직을 확인합니다.
+ * 고정 너비와 유동 너비(XL - 100%) 환경에서 내부 요소들이 올바르게 정렬되는지 검증합니다.
  */
 export const Sizes: Story = {
   render: args => {
@@ -412,8 +414,8 @@ export const Sizes: Story = {
 };
 
 /**
- * Input의 생애주기 상태(Normal, Hover, Focus, Disabled 등)를 대조합니다.
- * 특히 'Focus (Typing)' 상태에서 커서와 배경색 변화 등 타이핑 중 인터랙션을 중점적으로 확인합니다.
+ * 입력창의 생애주기에 따른 시각적 피드백을 확인합니다.
+ * 특히 'Focus' 상태에서의 테두리 강조와 'Read Only', 'Disabled' 상태의 접근성을 중점적으로 대조합니다.
  */
 export const States: Story = {
   render: args => {
@@ -546,8 +548,8 @@ export const States: Story = {
 };
 
 /**
- * 모서리 곡률(Square, Rounded, Pill) 설정에 따른 디자인 변화를 확인합니다.
- * Input의 Shape에 맞춰 내부 IconButton의 Shape도 함께 연동되어 일관성을 유지합니다.
+ * 모서리 곡률 설정에 따른 디자인 변화를 확인합니다.
+ * Input의 곡률에 맞춰 내부 IconButton의 형태도 자동으로 동기화되어 일관성을 유지합니다.
  */
 export const Shapes: Story = {
   render: args => {
@@ -614,8 +616,8 @@ export const Shapes: Story = {
 };
 
 /**
- * 내부 슬롯(adornedStart, adornedEnd)에 IconButton이 배치된 결합 형태입니다.
- * 요소 간의 간격(Gap)과 클릭 영역이 충분히 확보되었는지 레이아웃을 검수합니다.
+ * 내부 슬롯(adornedStart, adornedEnd)에 아이콘 프레임이나 버튼이 결합된 형태입니다.
+ * 요소 간의 여백(Gap)과 실제 사용자가 상호작용하기에 충분한 영역이 확보되었는지 검수합니다.
  */
 export const Composition: Story = {
   render: args => {
@@ -668,8 +670,8 @@ export const Composition: Story = {
 };
 
 /**
- * 입력창 너비보다 긴 텍스트가 입력되었을 때의 '말줄임(Ellipsis)' 처리 로직을 확인합니다.
- * 좌우 아이콘이 있는 상태에서도 텍스트가 영역을 침범하지 않고 안전하게 생략되는지 확인합니다.
+ * 입력창 너비보다 긴 텍스트가 입력되었을 때의 처리 로직입니다.
+ * 좌우 슬롯에 요소가 배치된 상황에서도 텍스트가 겹치지 않고 안전하게 생략(Ellipsis)되는지 확인합니다.
  */
 export const LongText: Story = {
   render: args => {

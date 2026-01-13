@@ -6,38 +6,38 @@
 // $validation-msg variant
 $validation-msg-variant: (
   success: (
-    bg: var(--success-bg-color-validation-msg),
-    color: var(--success-text-color-validation-msg),
+    bg: var(--project-color-validation-msg-success-bg),
+    color: var(--project-color-validation-msg-success-text),
     icon: (
-      fill: var(--success-icon-color-validation-msg),
+      fill: none,
     ),
   ),
   warning: (
-    bg: var(--warning-bg-color-validation-msg),
-    color: var(--warning-text-color-validation-msg),
+    bg: var(--project-color-validation-msg-warning-bg),
+    color: var(--project-color-validation-msg-warning-text),
     icon: (
-      fill: var(--warning-icon-color-validation-msg),
+      fill: var(--project-color-validation-msg-warning-icon-fill),
     ),
   ),
   danger: (
-    bg: var(--danger-bg-color-validation-msg),
-    color: var(--danger-text-color-validation-msg),
+    bg: var(--project-color-validation-msg-danger-bg),
+    color: var(--project-color-validation-msg-danger-text),
     icon: (
-      fill: var(--danger-icon-color-validation-msg),
+      fill: var(--project-color-validation-msg-danger-icon-fill),
     ),
   ),
   guide: (
-    bg: var(--project-color-validation-guide-bg),
-    color: var(--project-color-validation-guide-text),
+    bg: var(--project-color-validation-msg-guide-bg),
+    color: var(--project-color-validation-msg-guide-text),
     icon: (
-      fill: var(--project-color-validation-guide-icon),
+      fill: var(--project-color-validation-msg-guide-icon-fill),
     ),
   ),
 );
 
 $validation-msg-sizes: (
   xs: (
-    font-token: var(--project-typo-helper-5-500),
+    font-token: var(--project-typo-helper-4-500),
     gap: rem(6px),
     icon: (
       sizes: rem(14px),
@@ -98,7 +98,6 @@ $validation-msg-sizes: (
   width: 100%;
   display: flex;
   align-items: self-start;
-  // flex-wrap: wrap;
 
   // size 적용
   @each $size-name, $props in $validation-msg-sizes {

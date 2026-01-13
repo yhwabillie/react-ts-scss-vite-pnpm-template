@@ -6,13 +6,13 @@
 // file-picker colors
 $file-picker-colors: (
   primary: (
-    accent-text: var(--primary-accent-text-color-file-picker),
+    accent-text: var(--project-color-primary-filepicker-accent-text),
   ),
   secondary: (
-    accent-text: var(--secondary-accent-text-color-file-picker),
+    accent-text: var(--project-color-secondary-filepicker-accent-text),
   ),
   tertiary: (
-    accent-text: var(--tertiary-accent-text-color-file-picker),
+    accent-text: var(--project-color-tertiary-filepicker-accent-text),
   ),
 );
 
@@ -80,11 +80,11 @@ $file-picker-colors: (
     &:global(.is-disabled) {
       pointer-events: auto;
       opacity: 0.6;
-      background-color: var(--disabled-dropzone-bg-color-file-picker);
-      border: rem(1px) solid var(--disabled-dropzone-stroke-color-file-picker);
+      background-color: var(--project-color-filepicker-disabled-dropzone-bg);
+      border: rem(1px) solid var(--project-color-filepicker-disabled-dropzone-border);
 
       :global(.hint-msg) {
-        color: var(--disabled-dropzone-hint-text-color-file-picker);
+        color: var(--project-color-filepicker-disabled-dropzone-hint-text);
       }
     }
   }

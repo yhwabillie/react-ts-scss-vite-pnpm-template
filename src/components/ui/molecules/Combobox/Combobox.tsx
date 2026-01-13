@@ -598,7 +598,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
             className='adorned-end'
             type='button'
             aria-label={isOpen ? '옵션 닫기' : '옵션 열기'}
-            disabled={disabled}
+            disabled={disabled || readOnly}
             icon={
               <Icon
                 name={isOpen ? 'arrow-up' : 'arrow-down'}
@@ -629,7 +629,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
                     optionRefs.current[idx] = el;
                   }}
                   key={opt.id}
-                  variant={variant === 'outline' ? 'ghost' : 'solid'}
+                  variant='ghost'
                   color={color}
                   size={size}
                   index={idx}

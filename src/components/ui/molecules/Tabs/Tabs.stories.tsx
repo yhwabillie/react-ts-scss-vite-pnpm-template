@@ -8,6 +8,15 @@ const meta: Meta<typeof Tabs> = {
   component: Tabs,
   parameters: {
     layout: 'padded',
+    docs: {
+      description: {
+        component:
+          '**Tabs**는 동일한 맥락 내에서 연관된 콘텐츠를 그룹화하고, 사용자가 원하는 섹션으로 빠르게 전환할 수 있게 돕는 컴포넌트입니다. <br /><br />' +
+          '• **Semantic Hierarchy**: 탭 버튼 영역과 콘텐츠 패널 영역을 명확히 분리하여 구조적 일관성을 제공합니다. <br />' +
+          '• **Visual Flexibility**: `underline`, `solid`, `outline` 등 프로젝트 무드에 맞는 3가지 테마를 지원합니다. <br />' +
+          '• **Advanced Scrolling**: 탭 항목이 컨테이너 폭을 초과할 경우, 자동으로 가로 스크롤과 그라데이션 마스크를 적용하여 탐색 편의성을 유지합니다.',
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -60,6 +69,14 @@ const meta: Meta<typeof Tabs> = {
         defaultValue: { summary: '0' },
       },
     },
+    className: {
+      control: 'text',
+      description:
+        '컴포넌트 최상단 요소에 추가될 커스텀 클래스명입니다. 외부 레이아웃 조절 시 사용합니다.',
+      table: {
+        category: 'Appearance',
+      },
+    },
   },
   args: {
     variant: 'underline',
@@ -78,9 +95,9 @@ export default meta;
 type Story = StoryObj<typeof Tabs>;
 
 /**
- * [Base]
  * Tabs 컴포넌트의 가장 기본적인 형태입니다.
- * - 체크포인트: 기본적인 탭 전환 기능과 활성화 상태의 스타일을 확인합니다.
+ * - **Checkpoint**: 기본적인 탭 전환 기능과 활성화 상태의 스타일을 확인합니다.
+ * - **Extensibility**: `className`을 통해 외부에서 전달된 스타일이 최상단 컨테이너에 올바르게 주입되는지 점검합니다.
  */
 export const Base: Story = {
   render: args => (
@@ -95,11 +112,10 @@ export const Base: Story = {
 };
 
 /**
- * [Variant]
  * 탭의 시각적 테마를 'Underline', 'Solid(Index)', 'Outline'으로 구분하여 확인합니다.
- * - Underline: 가장 범용적인 스타일.
- * - Solid: 포스트잇처럼 하단 보더를 뚫어 본문 패널과 연결되는 인덱스 스타일.
- * - Outline: 테두리가 강조된 독립적인 버튼 형태.
+ * - **Underline**: 가장 범용적인 스타일로, 하단 보더를 통해 상태를 표시합니다.
+ * - **Solid**: 인덱스(색인) 스타일로, 활성화된 탭이 본문 패널과 시각적으로 연결됩니다.
+ * - **Outline**: 독립된 버튼 형태로 테두리가 강조된 스타일입니다.
  */
 export const Variant: Story = {
   render: args => (
@@ -130,10 +146,9 @@ export const Variant: Story = {
 };
 
 /**
- * [Sizes]
- * sm, md, lg 각 사이즈별 패딩과 폰트 크기 조절을 점검합니다.
- * - 체크포인트: sm 사이즈에서도 모바일 최소 터치 영역(44px)이 확보되는지 확인.
- * - 접근성: 사이즈가 작아져도 텍스트 명도 대비가 깨지지 않는지 확인하세요.
+ * 각 사이즈별(SM, MD, LG) 타이포그래피와 패딩 밸런스를 점검합니다.
+ * - **검증**: SM 사이즈에서 모바일 최소 터치 영역(44px) 확보 여부.
+ * - **접근성**: 사이즈 축소 시에도 텍스트 가독성 및 명도 대비 유지 확인.
  */
 export const Sizes: Story = {
   render: args => (
@@ -170,10 +185,9 @@ export const Sizes: Story = {
 };
 
 /**
- * [Colors]
- * 디자인 시스템의 Key 컬러인 Primary, Secondary, Tertiary 테마를 확인합니다.
- * - 체크포인트: 활성화(Active) 상태에서 텍스트와 배경의 명도 대비(4.5:1) 준수 여부.
- * - Tertiary: 다크모드 등 특정 환경에서 가독성이 떨어지지 않는지 중점적으로 확인합니다.
+ * 테마 컬러(Primary, Secondary, Tertiary) 적용 시 시각적 일관성을 확인합니다.
+ * - **명도 대비**: 활성(Active) 상태에서 배경과 텍스트 대비비(4.5:1) 준수 여부.
+ * - **환경 대응**: 다크모드 또는 특정 배경에서 Tertiary 컬러의 시인성 중점 확인.
  */
 export const Colors: Story = {
   render: args => (
@@ -210,15 +224,8 @@ export const Colors: Story = {
 };
 
 /**
- * [States]
- * 컴포넌트의 가상 클래스 상태(Hover, Focus)를 강제로 활성화하여 시각적 피드백을 검수합니다.
- * - Hover: .pseudo-hover 클래스를 통해 마우스를 올렸을 때의 변화를 확인합니다.
- * 비활성 탭이 사용자에게 클릭 가능하다는 시각적 힌트를 충분히 주는지 점검하세요.
- * - Focus: .pseudo-focus-visible 클래스를 통해 키보드 접근 시의 포커스 링(Outline)을 확인합니다.
- * 모든 variant에서 포커스 링이 탭의 경계선이나 배경색과 겹쳐 보이지 않는지 확인하는 것이 핵심입니다.
- * - ⚠️ Partially Obscured 주의 (사용자 가이드):
- * 상태 검수를 위해 가상 상태를 고정할 때, 'title' 속성을 통한 브라우저 툴팁이 함께 노출되지 않도록 하세요.
- * 고정된 상태에서 툴팁이 계속 떠 있으면 인접한 다른 variant의 디자인 확인을 방해(Partially Obscured)합니다.
+ * 인터랙션 상태(Hover, Focus)의 시각적 피드백을 검수합니다.
+ * - **Focus Ring**: 모든 테마에서 포커스 라인이 인접 요소와 겹치지 않는지 확인.
  */
 export const States: Story = {
   render: args => (
@@ -246,11 +253,9 @@ export const States: Story = {
 };
 
 /**
- * [ScrollableVariants]
- * 다량의 탭(15개 이상)이 있을 때의 가로 스크롤 및 그라데이션 마스크 효과를 확인합니다.
- * - 기능: 드래그/스크롤 시 양 끝의 Linear Gradient Mask가 자연스럽게 동작하는지 점검.
- * - ⚠️ Partially Obscured 주의: 탭 제목이 잘린다고 해서 'title' 속성을 사용하지 마세요.
- * 툴팁이 인접 탭을 가려 사용자 탐색을 방해할 수 있습니다.
+ * [06. Scrollable Variants]
+ * 다량의 탭 노출 시 가로 탐색 및 시각적 힌트를 확인합니다.
+ * - **UX**: 스크롤 시 양 끝의 그라데이션 마스크가 자연스럽게 동작하는지 점검.
  */
 export const ScrollableVariants: Story = {
   render: args => (
@@ -284,10 +289,9 @@ export const ScrollableVariants: Story = {
 };
 
 /**
- * [InitialSelection]
- * 초기 렌더링 시 특정 인덱스가 활성화된 상태와 그에 따른 자동 스크롤 동작을 확인합니다.
- * - 기능: defaultIndex 설정에 따라 scrollToTab 로직이 해당 탭을 중앙으로 호출하는지 점검.
- * - 인터랙션: onMouseDown을 통한 즉각적인 상태 변경 피드백을 확인하기 좋은 테스트 케이스입니다.
+ * `defaultIndex` 설정에 따른 초기 활성 상태와 자동 스크롤을 확인합니다.
+ * - **기능**: 활성 탭이 화면 밖에 있을 경우 중앙으로 자동 이동(Scroll-to-tab)하는지 점검.
+ * - **반응성**: 클릭 시 상태 변경과 콘텐츠 전환의 즉각적인 피드백 확인.
  */
 export const InitialSelection: Story = {
   render: args => (

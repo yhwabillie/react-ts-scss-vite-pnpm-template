@@ -32,30 +32,40 @@ $drop-down-menu-sizes: (
     radius: rem(4px),
     padding: rem(4px) rem(8px),
     font-token: var(--project-typo-input-3-500),
+    icon-size: rem(12px),
+    gap: rem(10px),
   ),
   sm: (
     height: rem(32px),
     radius: rem(6px),
     padding: rem(6px) rem(10px),
     font-token: var(--project-typo-input-2-500),
+    icon-size: rem(14px),
+    gap: rem(10px),
   ),
   md: (
     height: rem(36px),
     radius: rem(8px),
     padding: rem(8px) rem(12px),
     font-token: var(--project-typo-input-2-500),
+    icon-size: rem(14px),
+    gap: rem(10px),
   ),
   lg: (
     height: rem(40px),
     radius: rem(8px),
     padding: rem(10px) rem(14px),
     font-token: var(--project-typo-input-1-500),
+    icon-size: rem(16px),
+    gap: rem(10px),
   ),
   xl: (
     height: rem(44px),
     radius: rem(10px),
     padding: rem(12px) rem(16px),
     font-token: var(--project-typo-input-1-500),
+    icon-size: rem(20px),
+    gap: rem(20px),
   ),
 );
 
@@ -71,12 +81,16 @@ $drop-down-menu-colors: (
       ),
     ),
     outline: (
-      bg: var(--primary-bg-color-option-list-outline),
-      label: var(--primary-text-color-btn-outline),
-      border: var(--primary-stroke-color-option-list-outline),
+      bg: var(--project-color-primary-option-list-outline-bg),
+      label: var(--project-color-primary-option-item-ghost-text),
+      border: var(--project-color-primary-option-list-outline-border),
+      selected: (
+        bg: var(--project-color-primary-option-item-ghost-bg-selected),
+        label: var(--project-color-primary-option-item-ghost-text-selected),
+      ),
       hover: (
-        bg: var(--primary-hover-bg-color-btn-outline),
-        label: var(--primary-hover-text-color-btn-outline),
+        bg: var(--project-color-primary-option-item-ghost-bg-hover),
+        label: var(--project-color-primary-option-item-ghost-text-hover),
       ),
     ),
   ),
@@ -90,12 +104,16 @@ $drop-down-menu-colors: (
       ),
     ),
     outline: (
-      bg: var(--secondary-bg-color-option-list-outline),
-      label: var(--secondary-text-color-btn-outline),
-      border: var(--secondary-stroke-color-option-list-outline),
+      bg: var(--project-color-secondary-option-list-outline-bg),
+      label: var(--project-color-secondary-option-item-ghost-text),
+      border: var(--project-color-secondary-option-list-outline-border),
+      selected: (
+        bg: var(--project-color-secondary-option-item-ghost-bg-selected),
+        label: var(--project-color-secondary-option-item-ghost-text-selected),
+      ),
       hover: (
-        bg: var(--secondary-hover-bg-color-btn-outline),
-        label: var(--secondary-hover-text-color-btn-outline),
+        bg: var(--project-color-secondary-option-item-ghost-bg-hover),
+        label: var(--project-color-secondary-option-item-ghost-text-hover),
       ),
     ),
   ),
@@ -109,12 +127,16 @@ $drop-down-menu-colors: (
       ),
     ),
     outline: (
-      bg: var(--tertiary-bg-color-option-list-outline),
-      label: var(--tertiary-text-color-btn-outline),
-      border: var(--tertiary-stroke-color-option-list-outline),
+      bg: var(--project-color-tertiary-option-list-outline-bg),
+      label: var(--project-color-tertiary-option-item-ghost-text),
+      border: var(--project-color-tertiary-option-list-outline-border),
+      selected: (
+        bg: var(--project-color-tertiary-option-item-ghost-bg-selected),
+        label: var(--project-color-tertiary-option-item-ghost-text-selected),
+      ),
       hover: (
-        bg: var(--tertiary-hover-bg-color-btn-outline),
-        label: var(--tertiary-hover-text-color-btn-outline),
+        bg: var(--project-color-tertiary-option-item-ghost-bg-hover),
+        label: var(--project-color-tertiary-option-item-ghost-text-hover),
       ),
     ),
   ),
@@ -124,8 +146,11 @@ $drop-down-menu-colors: (
   width: fit-content;
   display: inline-flex;
   align-items: center;
+  min-width: rem(130px);
 
   :global(button) {
+    width: 100%;
+
     @each $size-name, $props in $language-selector-sizes {
       &:global(.size--#{$size-name}) {
         gap: map.get($props, gap);
@@ -157,6 +182,22 @@ $drop-down-menu-colors: (
                 :global(.drop-list) {
                   :global(.drop-list-item) {
                     :global(a) {
+                      &[aria-checked='true'] {
+                        $selected-map: map.get($variant-props, selected);
+                        background-color: map.get($selected-map, bg);
+                        color: map.get($selected-map, label);
+                        display: flex;
+                        align-items: center;
+
+                        :global {
+                          .drop-list-item-label {
+                          }
+
+                          .icon {
+                          }
+                        }
+                      }
+
                       &:hover {
                         background-color: map.get($hover-map, bg);
 
@@ -202,6 +243,17 @@ $drop-down-menu-colors: (
               align-items: center;
               border-radius: map.get($props, radius);
               transition: all 0.2s ease;
+
+              &[aria-checked='true'] {
+                gap: map.get($props, gap);
+
+                :global {
+                  .icon {
+                    width: map.get($props, icon-size);
+                    height: map.get($props, icon-size);
+                  }
+                }
+              }
 
               :global(.drop-list-item-label) {
                 font: map.get($props, font-token);

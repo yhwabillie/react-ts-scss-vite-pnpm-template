@@ -596,8 +596,8 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-option-list-outline-warning-bg",
-    "lightValue": "var(--project-color-primitive-blue-18)",
-    "darkValue": "var(--project-color-primitive-gray-246)",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-blue-18)",
     "usage": "Option List Empty State Description Text Color",
     "description": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
   },
@@ -1499,14 +1499,14 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-btn-outline-warning-bg-hover",
-    "lightValue": "var(--project-color-primitive-red-157)",
+    "lightValue": "var(--project-color-primitive-alpha-279)",
     "darkValue": "var(--project-color-primitive-alpha-298)",
     "usage": "Outline Button Success Hover Background Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
   },
   {
     "id": "--color-btn-outline-warning-text-hover",
-    "lightValue": "var(--project-color-primitive-alpha-279)",
+    "lightValue": "var(--project-color-primitive-red-157)",
     "darkValue": "var(--project-color-primitive-red-223)",
     "usage": "Outline Button Success Hover Text Color",
     "description": "밝은 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
@@ -2368,7 +2368,7 @@ export const ColorTokensData = [
   {
     "id": "--color-input-outline-success-text",
     "lightValue": "var(--project-color-primitive-green-22)",
-    "darkValue": "var(--project-color-primitive-green-14)",
+    "darkValue": "var(--project-color-primitive-gray-207)",
     "usage": "Input Success Text Color",
     "description": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
   },
@@ -2875,5 +2875,194 @@ export const ColorTokensData = [
     "darkValue": "var(--project-color-primitive-blue-42)",
     "usage": "Datepicker Success Placeholder Text Color",
     "description": "밝은 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+  },
+  {
+    "id": "--color-spinner-open-ring-success-track-bg",
+    "lightValue": "transparent",
+    "darkValue": "transparent",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-open-ring-success-path-bg",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-closed-ring-success-track-bg",
+    "lightValue": "var(--project-color-primitive-green-166)",
+    "darkValue": "var(--project-color-primitive-alpha-288)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-closed-ring-success-path-bg",
+    "lightValue": "var(--project-color-primitive-green-24)",
+    "darkValue": "var(--project-color-primitive-green-93)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-solid-open-ring-success-track-bg",
+    "lightValue": "transparent",
+    "darkValue": "transparent",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-solid-open-ring-success-path-bg",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-solid-closed-ring-success-track-bg",
+    "lightValue": "var(--project-color-primitive-alpha-307)",
+    "darkValue": "var(--project-color-primitive-alpha-307)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-solid-closed-ring-success-path-bg",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-open-ring-warning-track-bg",
+    "lightValue": "transparent",
+    "darkValue": "transparent",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-open-ring-warning-path-bg",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-green-93)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-closed-ring-warning-track-bg",
+    "lightValue": "var(--project-color-primitive-alpha-279)",
+    "darkValue": "var(--project-color-primitive-alpha-299)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-closed-ring-warning-path-bg",
+    "lightValue": "var(--project-color-primitive-red-157)",
+    "darkValue": "var(--project-color-primitive-red-223)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-solid-open-ring-warning-track-bg",
+    "lightValue": "transparent",
+    "darkValue": "transparent",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-solid-open-ring-warning-path-bg",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-solid-closed-ring-warning-track-bg",
+    "lightValue": "var(--project-color-primitive-alpha-307)",
+    "darkValue": "var(--project-color-primitive-alpha-307)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-solid-closed-ring-warning-path-bg",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-open-ring-danger-track-bg",
+    "lightValue": "transparent",
+    "darkValue": "transparent",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-open-ring-danger-path-bg",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-closed-ring-danger-track-bg",
+    "lightValue": "var(--project-color-primitive-alpha-285)",
+    "darkValue": "var(--project-color-primitive-alpha-296)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-closed-ring-danger-path-bg",
+    "lightValue": "var(--project-color-primitive-red-159)",
+    "darkValue": "var(--project-color-primitive-red-217)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-solid-open-ring-danger-track-bg",
+    "lightValue": "transparent",
+    "darkValue": "transparent",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-solid-open-ring-danger-path-bg",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-solid-closed-ring-danger-track-bg",
+    "lightValue": "var(--project-color-primitive-alpha-307)",
+    "darkValue": "var(--project-color-primitive-alpha-307)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-spinner-solid-closed-ring-danger-path-bg",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-chip-disabled-bg",
+    "lightValue": "var(--project-color-primitive-gray-185)",
+    "darkValue": "var(--project-color-primitive-gray-53)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-chip-disabled-text",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-gray-123)",
+    "usage": "",
+    "description": ""
+  },
+  {
+    "id": "--color-chip-disabled-border",
+    "lightValue": "var(--project-color-primitive-gray-145)",
+    "darkValue": "var(--project-color-primitive-gray-123)",
+    "usage": "",
+    "description": ""
   }
 ];

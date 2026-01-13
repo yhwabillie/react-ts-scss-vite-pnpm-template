@@ -32,13 +32,13 @@ $pagination-sizes: (
 
 $pagination-colors: (
   primary: (
-    current-page-label: var(--primary-current-page-text-color),
+    current-page-label: var(--project-color-primary-pagination-current-page-bg),
   ),
   secondary: (
-    current-page-label: var(--secondary-current-page-text-color),
+    current-page-label: var(--project-color-secondary-pagination-current-page-bg),
   ),
   tertiary: (
-    current-page-label: var(--tertiary-current-page-text-color),
+    current-page-label: var(--project-color-tertiary-pagination-current-page-bg),
   ),
 );
 

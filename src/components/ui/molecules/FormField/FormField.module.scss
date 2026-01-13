@@ -102,15 +102,9 @@ $formfield-sizes: (
 
       :global(.label) {
         font: $font-token;
-        // flex: 0 0 auto;
-        // width: fit-content;
-        // display: inline-flex;
-        // align-items: center;
-        // gap: rem(4px);
-        // flex-wrap: wrap;
 
         :global(.requried) {
-          color: var(--project-color-required-asterisk-text);
+          color: var(--project-color-feedback-required-asterisk-text);
           vertical-align: super;
           line-height: 0;
           display: inline-flex;

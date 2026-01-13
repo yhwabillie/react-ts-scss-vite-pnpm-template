@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import Selectbox from './Selectbox';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { selectboxOptions } from './Selectbox.mock';
-import { SpecimenCell, SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
+import { SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
 import { useId, useState } from 'react';
 import Button from '../Button/Button';
 import { GuideWrapper } from '../../guide/Guide';
@@ -14,6 +14,15 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          '**Selectbox (Outline)**는 사용자에게 미리 정의된 목록에서 하나를 선택할 수 있게 하는 드롭다운 컨트롤입니다. <br /><br />' +
+          '• 클릭 시 하단(혹은 상단)으로 `OptionList`가 전개되며, 포털(Portal) 기술을 사용하여 레이아웃 간섭 없이 렌더링됩니다. <br />' +
+          '• `defaultOptionId`를 통한 초기값 설정뿐만 아니라 외부 상태와의 바인딩을 지원합니다. <br />' +
+          '• `role="combobox"` 및 `aria-haspopup` 등 웹 표준 속성을 준수하여 스크린 리더와 키보드 인터랙션을 지원합니다.',
+      },
+    },
   },
 
   argTypes: {
@@ -107,6 +116,10 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+/**
+ * 가장 기본적인 형태의 셀렉트박스입니다.
+ * `updateArgs`를 연동하여 스토리북 컨트롤 패널에서도 선택 상태가 실시간으로 동기화되도록 구성되었습니다.
+ */
 export const Base: Story = {
   render: (args, { updateArgs }) => {
     const uniqueId = useId();
@@ -123,11 +136,9 @@ export const Base: Story = {
 };
 
 /**
- * 브랜드 컬러 및 상태(Success, Error 등)를 나타내는 각 테마별 스타일을 검토합니다.
- * 1. 테마 일관성: 선택 시 강조색(Primary), 성공(Success), 경고(Warning) 등 각 의미에 맞는 컬러가 테두리와 텍스트에 올바르게 적용되는지 확인합니다.
- * 2. 대비 및 가독성: 배경색과 텍스트 컬러 간의 명도 대비가 충분하여 정보 전달에 문제가 없는지 검토합니다.
- * 3. 피드백 컬러: 드롭다운 아이템의 호버/선택 상태 컬러가 각 테마와 조화를 이루는지 확인합니다.
- * * ※ 개발 가이드: 상황별 의미(예: 오류 발생 시 'danger')에 맞는 적절한 컬러 속성을 사용하여 사용자 경험의 직관성을 높이세요.
+ * 브랜드 컬러 및 시스템 상태(성공, 에러 등)를 나타내는 각 테마별 스타일을 검토합니다.
+ * - **Visual Consistency**: 트리거 버튼의 테두리와 내부 아이템의 강조색이 테마에 맞게 일관성을 유지하는지 확인합니다.
+ * - **Contextual Use**: 에러 발생 시 `danger`, 긍정적 확신이 필요할 때 `success` 등 상황에 맞는 컬러 사용을 권장합니다.
  */
 export const Colors: Story = {
   render: args => {
@@ -155,10 +166,8 @@ export const Colors: Story = {
 
 /**
  * 시스템에서 정의된 5가지 사이즈(XS ~ XL)를 비교 검토합니다.
- * 1. 수직 정렬(Vertical Alignment): 높이 변화에 따라 내부 텍스트와 화살표 아이콘의 중앙 정렬이 유지되는지 확인합니다.
- * 2. 폰트 스케일링: 사이즈에 맞춰 글꼴 크기(`font-size`)와 여백(`padding`)이 적절히 조절되어 가독성을 해치지 않는지 검토합니다.
- * 3. 반응형 및 그리드 대응: 각 사이즈가 프로젝트의 그리드 시스템(예: 8px 단위 등)과 조화를 이루는지 확인합니다.
- * * ※ 개발 가이드: 컴포넌트가 배치될 영역의 너비와 높이 제약에 따라 적절한 사이즈를 선택하세요.
+ * - **Vertical Alignment**: 높이가 변하더라도 내부 텍스트와 화살표 아이콘의 수직 중앙 정렬이 유지되는지 확인합니다.
+ * - **Grid System**: 각 사이즈가 8px 단위의 그리드 시스템 내에서 다른 폼 요소(Input, Button)들과 조화롭게 배치되는지 검증합니다.
  */
 export const Sizes: Story = {
   render: args => {
@@ -183,11 +192,9 @@ export const Sizes: Story = {
 };
 
 /**
- * Selectbox의 생명주기에서 발생할 수 있는 주요 시각적 상태들을 한눈에 검증합니다.
- * 1. 가상 클래스(Pseudo-classes): `pseudo-hover`, `pseudo-focus` 등을 통해 실제 이벤트 없이도 스타일 CSS를 강제 적용하여 디자인 QA를 용이하게 합니다.
- * 2. 인터랙션 제한: `Read Only`와 `Disabled` 상태에서 클릭 및 드롭다운 오픈이 정상적으로 차단되는지 확인합니다.
- * 3. 접근성(A11y): 각 상태 변화에 따라 스크린 리더가 인지할 수 있는 ARIA 속성이 적절히 변경되는지 검토합니다.
- * * ※ 개발 가이드: 특정 상태의 스타일 수정이 필요할 때 이 스토리를 참고하여 사이드 이펙트를 확인하세요.
+ * 셀렉트박스의 생명주기에서 발생할 수 있는 주요 시각적 상태들을 검증합니다.
+ * - **Pseudo-classes**: Hover, Focus 등 실제 조작 없이도 스타일 가이드를 확인할 수 있습니다.
+ * - **Interaction Restriction**: `Read Only`와 `Disabled` 상태에서 드롭다운이 열리지 않도록 차단되는지 체크합니다.
  */
 export const States: Story = {
   render: args => {
@@ -223,8 +230,8 @@ export const States: Story = {
 };
 
 /**
- * 부모 요소에 `overflow: hidden` 또는 `clip` 속성이 있어도
- * 드롭다운 리스트가 잘리지 않고 정상적으로 노출되는지 확인하는 스토리입니다.
+ * 부모 요소에 `overflow: hidden`이나 `clip` 속성이 있는 극한의 환경에서도
+ * 드롭다운 리스트가 잘리지 않고 정상적으로 노출(Portal 렌더링)되는지 확인합니다.
  */
 export const PortalTest: Story = {
   render: args => (
@@ -235,13 +242,9 @@ export const PortalTest: Story = {
 };
 
 /**
- * [제어 컴포넌트 & 초기화 패턴]
- * 외부 상태(useState)를 통해 Selectbox의 값을 강제로 변경하거나 초기화(Reset)하는 예제입니다.
- * * 핵심 구현 팁:
- * 1. Selectbox 내부 로직을 수정하지 않고도 외부에서 Reset을 구현하려면 `key` prop을 활용하세요.
- * 2. `key={value}`를 설정하면, value가 빈 값('')으로 바뀔 때 React가 컴포넌트를 재마운트(Re-mount)합니다.
- * 3. 이 과정에서 내부 상태가 `defaultOptionId`로 전달된 새 값(빈 값)으로 자동 초기화됩니다.
- * * ※ 개발 시 주의: 폼 초기화 기능이 필요한 화면에서 이 패턴을 그대로 복사해서 사용하세요.
+ * 외부 상태(`useState`)를 통해 셀렉트박스의 값을 강제로 제어하거나 초기화하는 실무 패턴입니다.
+ * - **Reset Strategy**: `key` 속성에 상태값을 바인딩하여, 초기화 시 컴포넌트를 재마운트(Re-mount)시키는 방식으로 내부 상태를 쉽고 안전하게 리셋합니다.
+ * - **Interaction Testing**: `play` 함수를 통해 옵션 선택부터 리셋 버튼 동작까지의 사용자 시나리오를 자동 검증합니다.
  */
 export const Controlled: Story = {
   render: args => {

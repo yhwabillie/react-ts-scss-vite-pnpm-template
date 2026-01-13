@@ -6,39 +6,39 @@
 // switch colors
 $switch-colors: (
   primary: (
-    track-on-bg: var(--primary-track-on-bg-color-switch),
-    handle-on-bg: var(--primary-handle-on-bg-color-switch),
-    handle-on-border: var(--primary-handle-on-border-color-switch),
-    icon-on-color: var(--primary-icon-on-color-switch),
+    track-on-bg: var(--project-color-primary-switch-track-on-bg),
+    handle-on-bg: var(--project-color-primary-switch-handle-on-bg),
+    handle-on-border: var(--project-color-primary-switch-handle-on-border),
+    icon-on-color: var(--project-color-primary-switch-icon-on-fill),
     hover: (
-      shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-switch),
+      shadow: 0 0 0 rem(4px) var(--project-color-primary-switch-shadow-hover),
     ),
     active: (
-      shadow: 0 0 0 rem(6px) var(--primary-active-shadow-switch),
+      shadow: 0 0 0 rem(6px) var(--project-color-primary-switch-shadow-active),
     ),
   ),
   secondary: (
-    track-on-bg: var(--secondary-track-on-bg-color-switch),
-    handle-on-bg: var(--secondary-handle-on-bg-color-switch),
-    handle-on-border: var(--secondary-handle-on-border-color-switch),
-    icon-on-color: var(--secondary-icon-on-color-switch),
+    track-on-bg: var(--project-color-secondary-switch-track-on-bg),
+    handle-on-bg: var(--project-color-secondary-switch-handle-on-bg),
+    handle-on-border: var(--project-color-secondary-switch-handle-on-border),
+    icon-on-color: var(--project-color-secondary-switch-icon-on-fill),
     hover: (
-      shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-switch),
+      shadow: 0 0 0 rem(4px) var(--project-color-secondary-switch-shadow-hover),
     ),
     active: (
-      shadow: 0 0 0 rem(6px) var(--secondary-active-shadow-switch),
+      shadow: 0 0 0 rem(6px) var(--project-color-secondary-switch-shadow-active),
     ),
   ),
   tertiary: (
-    track-on-bg: var(--tertiary-track-on-bg-color-switch),
-    handle-on-bg: var(--tertiary-handle-on-bg-color-switch),
-    handle-on-border: var(--tertiary-handle-on-border-color-switch),
-    icon-on-color: var(--tertiary-icon-on-color-switch),
+    track-on-bg: var(--project-color-tertiary-switch-track-on-bg),
+    handle-on-bg: var(--project-color-tertiary-switch-handle-on-bg),
+    handle-on-border: var(--project-color-tertiary-switch-handle-on-border),
+    icon-on-color: var(--project-color-tertiary-switch-icon-on-fill),
     hover: (
-      shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-switch),
+      shadow: 0 0 0 rem(4px) var(--project-color-tertiary-switch-shadow-hover),
     ),
     active: (
-      shadow: 0 0 0 rem(6px) var(--tertiary-active-shadow-switch),
+      shadow: 0 0 0 rem(6px) var(--project-color-tertiary-switch-shadow-active),
     ),
   ),
 );
@@ -124,12 +124,12 @@ $switch-sizes: (
         cursor: not-allowed;
 
         :global(.track) {
-          background-color: var(--disabled-track-on-bg-color-switch);
+          background-color: var(--project-color-switch-disabled-track-on-bg);
 
           :global(.handle) {
-            border-color: var(--disabled-handle-on-border-color-switch);
-            color: var(--disabled-icon-on-color-switch);
-            background-color: var(--disabled-handle-on-bg-color-switch);
+            border-color: var(--project-color-switch-disabled-handle-on-border);
+            color: var(--project-color-switch-disabled-icon-on-fill);
+            background-color: var(--project-color-switch-disabled-handle-on-bg);
           }
         }
       }

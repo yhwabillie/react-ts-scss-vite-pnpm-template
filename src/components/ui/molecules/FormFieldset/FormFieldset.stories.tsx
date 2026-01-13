@@ -5,10 +5,8 @@ import FormField from '../FormField/FormField';
 import Radio from '../../atoms/Radio/Radio';
 import Checkbox from '../../atoms/Checkbox/Checkbox';
 import Label from '../../atoms/Label/Label';
-import ValidationMsg from '../../atoms/ValidationMsg/ValidationMsg';
-import Icon from '../../atoms/Icon/Icon';
 import { useId } from 'react';
-import { SpecimenCell, SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
+import { SpecimenCell, SpecimenGroup, SpecimenWrapper } from '../../guide/Specimen';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
 
 const meta = {
@@ -17,6 +15,15 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          '**FormFieldset**은 여러 개의 연관된 폼 컨트롤(Radio, Checkbox 등)을 하나의 논리적 그룹으로 묶어주는 컨테이너입니다. <br /><br />' +
+          '• HTML `<fieldset>`과 `<legend>` 태그를 사용하여 스크린 리더 등 보조 기술에 그룹의 목적을 명확히 전달 <br />' +
+          '• 그룹 전체에 대한 제목(Legend)과 필수 여부를 일관된 디자인 시스템 규격으로 표시 <br />' +
+          '• 부모의 사이즈 설정이 내부의 모든 컨트롤(Radio/Checkbox)에 일괄 적용되어 시각적 통일성 유지',
+      },
+    },
   },
   argTypes: {
     // 1. Contents & Slot (구조 및 정보 정보)
@@ -121,11 +128,9 @@ const CHECKBOX_TERMS_OPTIONS = [
 ];
 
 /**
- * FormFieldset 내부에서 Radio와 Checkbox 그룹이 방향성(direction)에 따라
- * 레이블(Legend)과 어떻게 배치되는지 검증합니다.
- * - **Column Layout**: 레이블(Legend)이 상단에 위치하며, 그룹 요소들이 아래로 나열됩니다. 가장 안정적인 가독성을 제공합니다.
- * - **Row Layout**: 레이블과 그룹 요소가 수평으로 배치됩니다. 좁은 세로 공간을 효율적으로 활용해야 하는 대시보드나 필터바에 적합합니다.
- * - **A11y**: fieldset-legend 구조를 통해 스크린 리더 사용자에게 그룹의 맥락을 명확히 전달합니다.
+ * FormFieldset 내부에서 컨트롤 그룹이 방향성(direction)에 따라 어떻게 배치되는지 검증합니다.
+ * - **Column**: 레이블(Legend)이 상단에 위치하며, 하단으로 컨트롤들이 나열되어 복잡한 폼에서 안정적인 가독성을 제공합니다.
+ * - **Row**: 레이블과 컨트롤들이 수평으로 배치되어 좁은 세로 공간을 효율적으로 활용해야 하는 필터바 등에 적합합니다.
  */
 export const Base: Story = {
   render: args => {
@@ -206,11 +211,8 @@ export const Base: Story = {
 };
 
 /**
- * [02. Status / Required Indicators]
- * 필수 입력 항목(`required: true`)에 대한 시각적 표식과 레이아웃 대응을 검증합니다.
- * - **Visual Cue**: 레이블 우측에 에스터리스크(*)가 누락 없이 표시되는지 확인합니다.
- * - **Consistency**: 단일 입력(Input)과 그룹 입력(Radio Group) 모두에서 필수 표식이 동일한 위계로 노출되는지 체크합니다.
- * - **Layout Adaptability**: `row` 레이아웃에서 레이블이 필수 표식과 함께 출력될 때 인풋과의 간격이 적절한지 검수합니다.
+ * 그룹 전체가 필수 선택 항목일 때(`required: true`)의 시각적 표식을 확인합니다.
+ * Legend 우측에 에스터리스크(*)가 표시되며, Row/Column 레이아웃에 관계없이 일관된 간격을 유지하는지 체크합니다.
  */
 export const Required: Story = {
   args: {
@@ -296,10 +298,8 @@ export const Required: Story = {
 };
 
 /**
- * XL부터 XS까지 5단계 사이즈에 따른 입력 요소와 그룹 레이아웃의 시각적 변화를 검증합니다.
- * - **Scaling Consistency**: 사이즈가 작아짐에 따라 폰트, 패딩, 간격(Gap)이 비례하여 축소되는지 확인합니다.
- * - **Layout Adaptability**: `row` 레이아웃에서 작은 사이즈(SM, XS) 적용 시 레이블과 컨트롤의 정렬이 유지되는지 체크합니다.
- * - **Hit Area**: XS 사이즈에서도 `label-input` 연결을 통해 최소한의 클릭 영역이 확보되는지 검수합니다.
+ * 5단계 표준 사이즈(XL ~ XS)에 따른 폰트 크기, 간격(Gap), 그리고 내부 컨트롤들의 스케일 변화를 확인합니다.
+ * 특히 작은 사이즈(SM, XS)에서 레이블과 체크 박스가 겹치지 않고 충분한 클릭 영역을 유지하는지 검증합니다.
  */
 export const Sizes: Story = {
   render: args => (

@@ -8,6 +8,17 @@ const meta: Meta<typeof Breadcrumb> = {
   title: 'UI/Molecules/Breadcrumbs',
   component: Breadcrumb,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '**Breadcrumb**는 사이트 내 계층 구조에서 사용자의 현재 위치를 시각화하고, 상위 페이지로의 빠른 이동을 지원하는 내비게이션 컴포넌트입니다. <br /><br />' +
+          '• **Hierarchy Visualization**: 현재 위치와 상위 경로를 구분자(Separator)로 연결하여 직관적인 구조 정보를 제공합니다. <br />' +
+          '• **A11y Navigation**: `nav` 요소와 `aria-label`을 사용하여 스크린 리더 사용자에게 내비게이션 영역임을 명확히 알립니다. <br />' +
+          '• **Customizable Separator**: 텍스트 형태의 슬래시(/)뿐만 아니라 프로젝트 아이콘 세트를 구분자로 유연하게 사용할 수 있습니다.',
+      },
+    },
+  },
   argTypes: {
     // --- Appearance 카테고리 ---
     color: {
@@ -55,9 +66,9 @@ export default meta;
 type Story = StoryObj<typeof Breadcrumb>;
 
 /**
- * [Base] 가장 기본적인 브레드크럼 형태입니다.
- * - 첫 번째 아이템에 아이콘을 배치하여 홈(Home)의 시인성을 높였습니다.
- * - 마지막 아이템은 링크가 없는 현재 페이지 상태를 나타냅니다.
+ * 브레드크럼의 가장 표준적인 구성입니다.
+ * - **UX Tip**: 첫 번째 아이템에 홈 아이콘을 배치하여 사용자가 언제든 최상위 루트로 돌아갈 수 있음을 시각적으로 강조합니다.
+ * - **Current Page**: 마지막 아이템은 링크를 제외하여 현재 머무르고 있는 페이지임을 나타냅니다.
  */
 export const Base: Story = {
   args: {
@@ -84,9 +95,9 @@ export const Base: Story = {
 };
 
 /**
- * [WithIcon] 모든 경로 아이템에 아이콘이 포함된 형태입니다.
- * - 시각적으로 풍부한 내비게이션을 제공할 때 사용합니다.
- * - 다크모드(#121212)에서는 아이콘의 명도 대비를 3:1 이상 유지하도록 설계되었습니다.
+ * 모든 경로 단계에 아이콘을 동반한 형태입니다.
+ * - **Contextual Clues**: 각 단계의 성격에 맞는 아이콘을 부여하여 텍스트를 읽기 전 직관적인 정보 식별을 돕습니다.
+ * - **Design Integrity**: 다크모드 등 다양한 배경에서도 아이콘과 텍스트의 명도 대비를 3:1 이상 유지하도록 설계되었습니다.
  */
 export const WithIcon: Story = {
   args: {
@@ -114,8 +125,8 @@ export const WithIcon: Story = {
 };
 
 /**
- * [WithoutIcon] 아이콘 없이 텍스트로만 구성된 브레드크럼입니다.
- * - UI가 복잡한 페이지에서 내비게이션의 시각적 비중을 낮추고 싶을 때 적합합니다.
+ * 텍스트와 구분자로만 이루어진 미니멀한 구성입니다.
+ * - **Minimalism**: 정보 밀도가 높은 복잡한 대시보드 환경에서 내비게이션의 시각적 피로도를 낮추고 싶을 때 사용합니다.
  */
 export const WithoutIcon: Story = {
   args: {
@@ -141,9 +152,9 @@ export const WithoutIcon: Story = {
 };
 
 /**
- * [Colors] 디자인 시스템의 컬러 테마별 적용 예시입니다.
- * - Primary, Secondary, Tertiary 각 테마에 따른 텍스트 및 구분자 색상 변화를 확인합니다.
- * - 호버(Hover) 시의 인터랙션 컬러 변화를 함께 검토할 수 있습니다.
+ * 디자인 시스템에 정의된 의미론적(Semantic) 테마를 적용합니다.
+ * - **Consistency**: Primary, Secondary, Tertiary 컬러 톤을 사용하여 다른 내비게이션 요소들과의 일관성을 맞춥니다.
+ * - **Interaction**: 링크가 포함된 아이템의 호버(Hover) 상태 시각 피드백을 검증합니다.
  */
 export const Colors: Story = {
   args: {
@@ -178,9 +189,8 @@ export const Colors: Story = {
 };
 
 /**
- * [Sizes] 브레드크럼의 크기별(SM, MD, LG) 예시입니다.
- * - 레이아웃의 비중이나 타이포그래피 계층에 맞춰 적절한 크기를 선택합니다.
- * - 크기에 따라 내부 간격(Gap)과 아이콘 크기가 자동으로 조정됩니다.
+ * UI의 비중과 타이포그래피 계층에 따른 3단계 크기 옵션을 제공합니다.
+ * - **Scale Logic**: 크기에 따라 글자 크기, 아이콘 크기, 그리고 아이템 간의 간격(Gap)이 비례적으로 조정됩니다.
  */
 export const sizes: Story = {
   args: {
@@ -215,10 +225,9 @@ export const sizes: Story = {
 };
 
 /**
- * [LongPath] 경로가 매우 길어지는 상황을 테스트하는 스토리입니다.
- * - 가로 폭이 제한된 환경에서의 말줄임(Ellipsis) 처리나 레이아웃 깨짐 여부를 검토합니다.
- * - 중요: 제목이 길어지더라도 `title` 속성으로 툴팁을 띄우는 대신,
- * 필요 시 Popover 등을 활용하여 'partially obscured' 접근성 이슈를 방지하세요.
+ * 경로가 길어지거나 특정 단계의 텍스트가 매우 길 때의 레이아웃 안정성을 테스트합니다.
+ * - **A11y Warning**: 저장된 정보에 따라, 긴 제목이 주변 요소를 가리는 'partially obscured' 이슈를 방지하기 위해 Native `title` 속성 사용을 금합니다.
+ * - **UX Guide**: 공간이 부족할 경우 말줄임(Ellipsis)을 적용하거나 중간 경로를 생략하는 방식의 고려가 필요합니다.
  */
 export const LongPath: Story = {
   args: {

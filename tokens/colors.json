@@ -1059,12 +1059,13 @@
       },
       "outline-warning-bg": {
         "light": {
-          "value": "var(--project-color-primitive-blue-18)",
+          "value": "var(--project-color-primitive-gray-246)",
+
           "usage": "Option List Empty State Description Text Color",
           "comment": "밝은 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
         },
         "dark": {
-          "value": "var(--project-color-primitive-gray-246)",
+          "value": "var(--project-color-primitive-blue-18)",
           "usage": "Option List Empty State Description Text Color",
           "comment": "어두운 모드에서 옵션 리스트의 빈 상태 설명 텍스트 색상입니다."
         }
@@ -2619,7 +2620,7 @@
       },
       "outline-warning-bg-hover": {
         "light": {
-          "value": "var(--project-color-primitive-red-157)",
+          "value": "var(--project-color-primitive-alpha-279)",
           "usage": "Outline Button Success Hover Background Color",
           "comment": "밝은 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 배경 색상입니다."
         },
@@ -2631,7 +2632,7 @@
       },
       "outline-warning-text-hover": {
         "light": {
-          "value": "var(--project-color-primitive-alpha-279)",
+          "value": "var(--project-color-primitive-red-157)",
           "usage": "Outline Button Success Hover Text Color",
           "comment": "밝은 모드에서 아웃라인 버튼 성공 상태에 마우스 오버 시의 텍스트 색상입니다."
         },
@@ -4122,7 +4123,7 @@
           "comment": "밝은 모드에서 인풋 성공 상태의 텍스트 색상입니다."
         },
         "dark": {
-          "value": "var(--project-color-primitive-green-14)",
+          "value": "var(--project-color-primitive-gray-207)",
           "usage": "Input Success Text Color",
           "comment": "어두운 모드에서 인풋 성공 상태의 텍스트 색상입니다."
         }
@@ -4993,6 +4994,228 @@
           "value": "var(--project-color-primitive-blue-42)",
           "usage": "Datepicker Success Placeholder Text Color",
           "comment": "어두운 모드에서 데이트피커 성공 상태의 플레이스홀더 텍스트 색상입니다."
+        }
+      }
+    },
+    "spinner": {
+      "open-ring-success-track-bg": {
+        "light": {
+          "value": "transparent"
+        },
+        "dark": {
+          "value": "transparent"
+        }
+      },
+      "open-ring-success-path-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-green-24)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-green-93)"
+        }
+      },
+      "closed-ring-success-track-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-green-166)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-alpha-288)"
+        }
+      },
+      "closed-ring-success-path-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-green-24)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-green-93)"
+        }
+      },
+      "solid-open-ring-success-track-bg": {
+        "light": {
+          "value": "transparent"
+        },
+        "dark": {
+          "value": "transparent"
+        }
+      },
+      "solid-open-ring-success-path-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-gray-246)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-gray-246)"
+        }
+      },
+      "solid-closed-ring-success-track-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-alpha-307)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-alpha-307)"
+        }
+      },
+      "solid-closed-ring-success-path-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-gray-246)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-gray-246)"
+        }
+      },
+
+      "open-ring-warning-track-bg": {
+        "light": {
+          "value": "transparent"
+        },
+        "dark": {
+          "value": "transparent"
+        }
+      },
+      "open-ring-warning-path-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-red-157)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-green-93)"
+        }
+      },
+      "closed-ring-warning-track-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-alpha-279)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-alpha-299)"
+        }
+      },
+      "closed-ring-warning-path-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-red-157)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-red-223)"
+        }
+      },
+      "solid-open-ring-warning-track-bg": {
+        "light": {
+          "value": "transparent"
+        },
+        "dark": {
+          "value": "transparent"
+        }
+      },
+      "solid-open-ring-warning-path-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-gray-246)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-gray-246)"
+        }
+      },
+      "solid-closed-ring-warning-track-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-alpha-307)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-alpha-307)"
+        }
+      },
+      "solid-closed-ring-warning-path-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-gray-246)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-gray-246)"
+        }
+      },
+
+      "open-ring-danger-track-bg": {
+        "light": {
+          "value": "transparent"
+        },
+        "dark": {
+          "value": "transparent"
+        }
+      },
+      "open-ring-danger-path-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-red-159)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-red-217)"
+        }
+      },
+      "closed-ring-danger-track-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-alpha-285)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-alpha-296)"
+        }
+      },
+      "closed-ring-danger-path-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-red-159)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-red-217)"
+        }
+      },
+      "solid-open-ring-danger-track-bg": {
+        "light": {
+          "value": "transparent"
+        },
+        "dark": {
+          "value": "transparent"
+        }
+      },
+      "solid-open-ring-danger-path-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-gray-246)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-gray-246)"
+        }
+      },
+      "solid-closed-ring-danger-track-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-alpha-307)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-alpha-307)"
+        }
+      },
+      "solid-closed-ring-danger-path-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-gray-246)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-gray-246)"
+        }
+      }
+    },
+    "chip": {
+      "disabled-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-gray-185)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-gray-53)"
+        }
+      },
+      "disabled-text": {
+        "light": {
+          "value": "var(--project-color-primitive-gray-145)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-gray-123)"
+        }
+      },
+      "disabled-border": {
+        "light": {
+          "value": "var(--project-color-primitive-gray-145)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-gray-123)"
         }
       }
     }

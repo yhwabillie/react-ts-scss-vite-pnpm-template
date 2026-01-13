@@ -302,8 +302,8 @@ export const TokenData = [
   },
   {
     "id": "--color-primary-accordion-header-bg",
-    "lightValue": "var(--project-color-primitive-blue-32)",
-    "darkValue": "var(--project-color-primitive-blue-8)",
+    "lightValue": "var(--project-color-primitive-blue-8)",
+    "darkValue": "var(--project-color-primitive-blue-32)",
     "usage": "primary-accordion-header-bg",
     "description": ""
   },
@@ -323,43 +323,43 @@ export const TokenData = [
   },
   {
     "id": "--color-primary-accordion-panel-bg",
-    "lightValue": "var(--project-color-primitive-gray-53)",
-    "darkValue": "var(--project-color-primitive-gray-218)",
+    "lightValue": "var(--project-color-primitive-gray-218)",
+    "darkValue": "var(--project-color-primitive-gray-53)",
     "usage": "primary-accordion-panel-bg",
     "description": ""
   },
   {
     "id": "--color-primary-accordion-nested-header-bg",
-    "lightValue": "var(--project-color-primitive-gray-78)",
-    "darkValue": "var(--project-color-primitive-gray-184)",
+    "lightValue": "var(--project-color-primitive-gray-184)",
+    "darkValue": "var(--project-color-primitive-gray-78)",
     "usage": "primary-accordion-nested-header-bg",
     "description": ""
   },
   {
     "id": "--color-primary-accordion-nested-header-bg-hover",
-    "lightValue": "var(--project-color-primitive-gray-96)",
-    "darkValue": "var(--project-color-primitive-gray-169)",
+    "lightValue": "var(--project-color-primitive-gray-169)",
+    "darkValue": "var(--project-color-primitive-gray-96)",
     "usage": "primary-accordion-nested-header-bg-hover",
     "description": ""
   },
   {
     "id": "--color-primary-accordion-nested-header-text",
-    "lightValue": "var(--project-color-primitive-gray-208)",
-    "darkValue": "var(--project-color-primitive-gray-44)",
+    "lightValue": "var(--project-color-primitive-gray-44)",
+    "darkValue": "var(--project-color-primitive-gray-208)",
     "usage": "primary-accordion-nested-header-text",
     "description": ""
   },
   {
     "id": "--color-primary-accordion-nested-header-icon-fill",
-    "lightValue": "var(--project-color-primitive-gray-184)",
-    "darkValue": "var(--project-color-primitive-gray-44)",
+    "lightValue": "var(--project-color-primitive-gray-44)",
+    "darkValue": "var(--project-color-primitive-gray-184)",
     "usage": "primary-accordion-nested-header-icon-fill",
     "description": ""
   },
   {
     "id": "--color-primary-accordion-nested-header-panel-bg",
-    "lightValue": "var(--project-color-primitive-gray-43)",
-    "darkValue": "var(--project-color-primitive-gray-246)",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-gray-43)",
     "usage": "primary-accordion-nested-header-panel-bg",
     "description": ""
   },
@@ -746,6 +746,20 @@ export const TokenData = [
     "lightValue": "var(--project-color-primitive-blue-39)",
     "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "primary-option-item-ghost-text-hover",
+    "description": ""
+  },
+  {
+    "id": "--color-primary-option-item-ghost-bg-active",
+    "lightValue": "var(--project-color-primitive-blue-156)",
+    "darkValue": "var(--project-color-primitive-alpha-313)",
+    "usage": "primary-option-item-ghost-bg-active",
+    "description": ""
+  },
+  {
+    "id": "--color-primary-option-item-ghost-text-active",
+    "lightValue": "var(--project-color-primitive-blue-27)",
+    "darkValue": "var(--project-color-primitive-blue-163)",
+    "usage": "primary-option-item-ghost-text-active",
     "description": ""
   },
   {
@@ -1639,8 +1653,8 @@ export const TokenData = [
   },
   {
     "id": "--color-secondary-pagination-current-page-bg",
-    "lightValue": "var(--project-color-primitive-blue-88)",
-    "darkValue": "var(--project-color-primitive-blue-73)",
+    "lightValue": "var(--project-color-primitive-blue-106)",
+    "darkValue": "var(--project-color-primitive-blue-129)",
     "usage": "secondary-pagination-current-page-bg",
     "description": ""
   },
@@ -2020,6 +2034,20 @@ export const TokenData = [
     "lightValue": "var(--project-color-primitive-blue-38)",
     "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "secondary-option-item-ghost-text-hover",
+    "description": ""
+  },
+  {
+    "id": "--color-secondary-option-item-ghost-bg-active",
+    "lightValue": "var(--project-color-primitive-blue-167)",
+    "darkValue": "var(--project-color-primitive-blue-67)",
+    "usage": "secondary-option-item-ghost-bg-active",
+    "description": ""
+  },
+  {
+    "id": "--color-secondary-option-item-ghost-text-active",
+    "lightValue": "var(--project-color-primitive-blue-18)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
+    "usage": "secondary-option-item-ghost-text-active",
     "description": ""
   },
   {
@@ -3297,15 +3325,29 @@ export const TokenData = [
     "description": ""
   },
   {
+    "id": "--color-tertiary-option-item-ghost-bg-active",
+    "lightValue": "var(--project-color-primitive-blue-158)",
+    "darkValue": "var(--project-color-primitive-blue-128)",
+    "usage": "tertiary-option-item-ghost-bg-active",
+    "description": ""
+  },
+  {
+    "id": "--color-tertiary-option-item-ghost-text-active",
+    "lightValue": "var(--project-color-primitive-blue-95)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
+    "usage": "tertiary-option-item-ghost-text-active",
+    "description": ""
+  },
+  {
     "id": "--color-tertiary-option-item-ghost-bg-selected",
-    "lightValue": "var(--project-color-primitive-blue-182)",
+    "lightValue": "var(--project-color-primitive-blue-158)",
     "darkValue": "var(--project-color-primitive-blue-128)",
     "usage": "tertiary-option-item-ghost-bg-selected",
     "description": ""
   },
   {
     "id": "--color-tertiary-option-item-ghost-text-selected",
-    "lightValue": "var(--project-color-primitive-blue-170)",
+    "lightValue": "var(--project-color-primitive-blue-95)",
     "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "tertiary-option-item-ghost-text-selected",
     "description": ""

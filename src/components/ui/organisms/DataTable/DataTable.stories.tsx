@@ -34,6 +34,17 @@ const meta: Meta<typeof DataTable> = {
   title: 'UI/Organisms/DataTable',
   component: DataTable,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '**DataTable**은 대량의 정형 데이터를 체계적으로 나열하고 조작하기 위한 핵심 Organism입니다. <br /><br />' +
+          '• **Semantic Structure**: `caption`과 `summary`를 통해 표의 목적을 명확히 전달하며, 표준 HTML table 태그를 준수합니다. <br />' +
+          '• **Interaction Logic**: 컬럼 정렬(Sort), 행 선택(Selection), 공지사항 고정(Notices) 등 비즈니스 로직을 수용합니다. <br />' +
+          '• **Custom Rendering**: `render` 함수를 통해 각 셀 내부에 배지, 아이콘, 링크 등 다양한 컴포넌트를 주입할 수 있습니다.',
+      },
+    },
+  },
   argTypes: {
     // [Style] 카테고리
     variant: {
@@ -241,8 +252,8 @@ const columns: Column<MockUser>[] = [
 ];
 
 /**
- * 기본 사용 예시
- * 가장 기본적인 데이터 테이블의 형태로, 사용자 목록을 출력합니다.
+ * 데이터 테이블의 가장 표준적인 형태입니다.
+ * - **Checklist**: 열(Column)의 너비 설정과 데이터 매핑이 정확한지 확인합니다.
  */
 export const Base: Story = {
   args: {
@@ -254,8 +265,9 @@ export const Base: Story = {
 };
 
 /**
- * 외형 스타일 변주
- * Solid(헤더 배경색 강조)와 Outline(테두리 중심) 두 가지 변형을 비교합니다.
+ * 외형 스타일(Solid, Outline)과 브랜드 테마 컬러를 점검합니다.
+ * - **Solid**: 헤더에 배경색을 부여하여 시각적 구분을 강조합니다.
+ * - **Outline**: 테두리 위주의 깔끔한 스타일로 데이터 집중도를 높입니다.
  */
 export const Variants: Story = {
   render: args => {
@@ -332,8 +344,8 @@ export const Colors: Story = {
 };
 
 /**
- * 크기 변주
- * 행 높이와 내부 여백을 조절하여 데이터 밀도를 최적화합니다.
+ * 데이터 밀도에 따른 3단계(SM, MD, LG) 크기 변형입니다.
+ * - **Checkpoint**: SM 사이즈 사용 시 텍스트가 겹치지 않는지, 모바일 환경에서도 최소 터치 영역이 확보되는지 점검합니다.
  */
 export const Sizes: Story = {
   render: args => (
