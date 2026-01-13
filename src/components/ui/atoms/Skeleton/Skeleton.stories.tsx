@@ -1,11 +1,23 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Skeleton from './Skeleton';
-import { GuideGroup, GuideWrapper } from '../../guide/Guide';
+import { GuideWrapper } from '../../guide/Guide';
 
 const meta: Meta<typeof Skeleton> = {
   title: 'UI/Atoms/Skeleton',
   component: Skeleton,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '**Skeleton** 컴포넌트는 실제 데이터가 로딩되기 전, 콘텐츠의 레이아웃을 미리 보여주는 플레이스홀더(Placeholder)입니다. <br />' +
+          '로딩 중 발생하는 레이아웃 흔들림(CLS)을 방지하고, 사용자에게 진행 상태를 시각적으로 전달하여 체감 대기 시간을 줄여줍니다. <br /><br />' +
+          '• 텍스트, 원형, 사각형 등 실제 UI 구조에 맞는 형태 지원 <br />' +
+          '• 부드러운 애니메이션을 통해 로딩 중임을 직관적으로 인지 <br />' +
+          '• 다크모드 테마 컬러에 최적화된 배경 대비 적용',
+      },
+    },
+  },
   argTypes: {
     // --- Appearance: 외형 및 형태 ---
     variant: {
@@ -64,9 +76,9 @@ export default meta;
 type Story = StoryObj<typeof Skeleton>;
 
 /**
- * [Text] 가장 일반적인 텍스트 형태의 스켈레톤입니다.
- * - 글꼴 크기나 줄 높이에 맞춰 자연스러운 로딩 상태를 연출합니다.
- * - 다크모드(#121212)에서는 배경과의 명도 대비를 낮춘 은은한 쉬머(Shimmer) 효과가 적용됩니다.
+ * 텍스트 형태 (Text)
+ * 문장이나 단락의 로딩 상태를 표현할 때 사용합니다.
+ * 폰트 크기와 줄 높이에 맞춰 자연스럽게 배치되며, 다크 모드에서는 눈의 피로도를 고려한 저대비 쉬머 효과가 적용됩니다.
  */
 export const Text: Story = {
   args: {
@@ -84,9 +96,9 @@ export const Text: Story = {
 };
 
 /**
- * [Circle] 프로필 이미지나 아이콘 로딩에 최적화된 원형 스켈레톤입니다.
- * - `variant="circle"` 설정 시 `borderRadius`는 강제로 50%로 고정됩니다.
- * - 우리가 앞서 작업했던 Avatar 컴포넌트의 로딩 상태로 주로 활용됩니다.
+ * 원형 형태 (Circle)
+ * 아바타, 아이콘, 원형 버튼 등 원형 요소의 로딩 상태를 표현합니다.
+ * 크기에 관계없이 곡률이 50%로 고정되어 완벽한 원형을 유지합니다.
  */
 export const Circle: Story = {
   args: {
@@ -104,8 +116,9 @@ export const Circle: Story = {
 };
 
 /**
- * [Rectangle] 이미지 카드, 배너, 버튼 등 사각형 콘텐츠를 위한 스켈레톤입니다.
- * - `radius` 속성을 통해 실제 콘텐츠의 곡률과 일치시켜 로딩 시 이질감을 최소화합니다.
+ * 사각형 형태 (Rectangle)
+ * 카드 이미지, 썸네일, 배너 등 면적을 가진 콘텐츠 영역에 사용합니다.
+ * `radius` 속성을 조절하여 실제 렌더링될 컴포넌트의 곡률과 일치시키는 것이 권장됩니다.
  */
 export const Rectangle: Story = {
   args: {
@@ -123,15 +136,8 @@ export const Rectangle: Story = {
 };
 
 /**
- * [Usage] 실제 UI 레이아웃을 모방한 스켈레톤의 복합 사용 예시입니다.
- * - Profile: Avatar + 상세 설명 텍스트 구조 재현
- * - Card: 이미지 영역 + 제목 및 본문 텍스트 구조 재현
- * - Navigation: 브레드크럼(Breadcrumb) 스타일의 경로 로딩 재현
- * * [웹 표준 및 접근성 가이드]
- * 1. CLS(Cumulative Layout Shift) 방지: 실제 렌더링될 요소와 동일한 크기를 지정하여 레이아웃 흔들림을 방지하세요.
- * 2. 2025-12-31 약속 준수: 스켈레톤은 정보가 없는 상태이므로 `title` 속성 사용을 금지합니다.
- * 3. Accessibility: 컨테이너 레벨에서 `aria-busy="true"`를 설정하여 스크린 리더 사용자에게 로딩 중임을 알리세요.
- * 4. Dark Mode: 배경(#121212) 위에서 쉬머 투명도를 0.05로 낮춰 시각적 피로도를 최소화했습니다.
+ * 복합 레이아웃 예시 (Usage)
+ * 프로필, 카드 뉴스, 브레드크럼 등 실제 UI 패턴을 모방한 구성 예시입니다.
  */
 export const Usage: Story = {
   render: () => (

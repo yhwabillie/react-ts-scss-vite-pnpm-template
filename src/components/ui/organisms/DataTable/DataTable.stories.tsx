@@ -1,13 +1,15 @@
+import { useMemo, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useId, useState } from 'react';
-import DataTable, { type Column, type SortOrder } from './DataTable';
-import { GuideCell, GuideGroup, GuideWrapper } from '../../guide/Guide';
-import Icon from '../../atoms/Icon/Icon';
-import IconFrame from '../../molecules/IconFrame/IconFrame';
-import Badge from '../../atoms/Badge/Badge';
+import DataTable, {
+  type Column,
+  type SortOrder,
+} from '@/components/ui/organisms/DataTable/DataTable';
+import { GuideCell, GuideGroup, GuideWrapper } from '@/components/ui/guide/Guide';
+import Badge from '@/components/ui/atoms/Badge/Badge';
+import Icon from '@/components/ui/atoms/Icon/Icon';
 
 // 테스트용 데이터 타입 정의
-interface User {
+interface MockUser {
   id: number;
   name: string;
   email: string;
@@ -15,100 +17,211 @@ interface User {
   status: 'active' | 'inactive';
 }
 
+interface MockDataTableItem {
+  [key: string]: string | number | boolean | undefined;
+  id: string | number;
+  title: string;
+  author: string;
+  date: string;
+  views: number;
+  href: string;
+  commentCount: number;
+  hasFile: boolean;
+  isSecret?: boolean;
+}
+
 const meta: Meta<typeof DataTable> = {
   title: 'UI/Organisms/DataTable',
   component: DataTable,
   tags: ['autodocs'],
   argTypes: {
-    // 🎨 [Style] 카테고리: 시각적 외형 결정
+    // [Style] 카테고리
     variant: {
+      description: '표의 전형적인 외형 스타일을 결정합니다.',
       control: { type: 'inline-radio' },
       options: ['solid', 'outline'],
       table: {
         category: 'Style',
+        type: { summary: 'solid | outline' },
         defaultValue: { summary: 'solid' },
       },
     },
     color: {
+      description: '테마 색상을 적용합니다. (브랜드 아이덴티티 반영)',
       control: { type: 'select' },
       options: ['primary', 'secondary', 'tertiary'],
       table: {
         category: 'Style',
+        type: { summary: 'primary | secondary | tertiary' },
         defaultValue: { summary: 'primary' },
       },
     },
     size: {
+      description: '테이블 내부 요소의 크기와 여백을 설정합니다.',
       control: { type: 'radio' },
       options: ['sm', 'md', 'lg'],
       table: {
         category: 'Style',
+        type: { summary: 'sm | md | lg' },
         defaultValue: { summary: 'md' },
       },
     },
-
-    // 📊 [Data] 카테고리: 표의 내용과 구조
+    // [Data] 카테고리
     caption: {
+      description: '표의 제목입니다. 스크린 리더에서 표를 식별하는 데 사용됩니다.',
       control: { type: 'text' },
-      table: { category: 'Data' },
+      table: {
+        category: 'Data',
+        type: { summary: 'string' },
+      },
     },
     summary: {
+      description: '표의 구조나 목적에 대한 요약 설명입니다. (접근성 향상)',
       control: { type: 'text' },
-      table: { category: 'Data' },
+      table: {
+        category: 'Data',
+        type: { summary: 'string' },
+      },
     },
     columns: {
+      description: '열(Column)의 정의입니다. 각 열의 헤더명과 렌더링 방식 등을 설정합니다.',
       control: { type: 'object' },
-      table: { category: 'Data' },
+      table: {
+        category: 'Data',
+        type: { summary: 'Column<T>[]' },
+      },
     },
     data: {
+      description: '표에 출력될 실제 데이터 배열입니다.',
       control: { type: 'object' },
-      table: { category: 'Data' },
+      table: {
+        category: 'Data',
+        type: { summary: 'T[]' },
+      },
     },
-
-    // ⚙️ [Selection & State] 카테고리: 상태값 제어
+    notices: {
+      description: '표 최상단에 고정되는 공지사항 성격의 데이터입니다.',
+      control: { type: 'object' },
+      table: {
+        category: 'Data',
+        type: { summary: 'T[]' },
+      },
+    },
+    // [Selection & State] 카테고리
     showCheckbox: {
+      description: '다중 선택을 위한 체크박스 열을 표시할지 여부입니다.',
       control: { type: 'boolean' },
       table: {
         category: 'Selection & State',
-        // defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
       },
     },
     selectedRows: {
+      description: '현재 선택된 행의 ID들을 담고 있는 Set 객체입니다.',
       control: { type: 'object' },
-      table: { category: 'Selection & State' },
+      table: {
+        category: 'Selection & State',
+        type: { summary: 'Set<string | number>' },
+      },
     },
     sortState: {
+      description: '현재 정렬 상태(정렬 키, 정렬 방향) 정보를 담고 있습니다.',
       control: { type: 'object' },
-      table: { category: 'Selection & State' },
+      table: {
+        category: 'Selection & State',
+        type: { summary: 'SortState' },
+      },
     },
-
-    // ⚡ [Events] 카테고리: 인터랙션 핸들러
+    // [Events] 카테고리
     onSort: {
-      action: 'sorted',
-      table: { category: 'Events' },
+      description: '컬럼 헤더를 클릭하여 정렬을 수행할 때 실행되는 함수입니다.',
+      action: 'onSort',
+      table: {
+        category: 'Events',
+        type: { summary: '(key: keyof T, order: SortOrder) => void' },
+      },
     },
     onSelectRow: {
-      action: 'rowSelected',
-      table: { category: 'Events' },
+      description: '개별 행의 체크박스를 클릭했을 때 실행되는 함수입니다.',
+      action: 'onSelectRow',
+      table: {
+        category: 'Events',
+        type: { summary: '(id: string | number) => void' },
+      },
     },
     onSelectAll: {
-      action: 'allSelected',
-      table: { category: 'Events' },
+      description: '전체 선택 체크박스를 클릭했을 때 실행되는 함수입니다.',
+      action: 'onSelectAll',
+      table: {
+        category: 'Events',
+        type: { summary: '(isAll: boolean) => void' },
+      },
     },
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof DataTable<User>>;
+type Story = StoryObj<typeof DataTable<MockUser>>;
 
-// 모의 데이터
-const mockData: User[] = [
+// 목업 데이터 정의
+const MOCK_USER: MockUser[] = [
   { id: 1, name: 'Gemini', email: 'gemini@example.com', role: 'Admin', status: 'active' },
   { id: 2, name: 'John Doe', email: 'john@example.com', role: 'User', status: 'inactive' },
   { id: 3, name: 'Jane Smith', email: 'jane@example.com', role: 'Editor', status: 'active' },
 ];
 
+const MOCK_NOTICES: MockDataTableItem[] = [
+  {
+    id: 'notice-1',
+    title: '[공지] 서비스 정기 점검 안내 및 이용 제한 관련 긴급 공지사항입니다 (1/10)',
+    author: '관리자',
+    date: '2026-01-01',
+    views: 1542,
+    href: '/notice/1',
+    commentCount: 15,
+    hasFile: true,
+  },
+  {
+    id: 'notice-2',
+    title: '[안내] 2026년 상반기 디자인 시스템 업데이트 로드맵 공유',
+    author: '운영자',
+    date: '2026-01-02',
+    views: 840,
+    href: '/notice/2',
+    commentCount: 8,
+    hasFile: false,
+  },
+];
+
+const MOCK_BOARD: MockDataTableItem[] = [
+  {
+    id: 10,
+    title:
+      '제목이 매우 길어서 한 줄을 넘어가고 다음 칸을 가릴 정도로 길게 작성된 게시글의 제목입니다. 말줄임표 처리가 필요합니다.',
+    author: '김철수',
+    date: '2026-01-04',
+    views: 45,
+    href: '/board/10',
+    commentCount: 155,
+    isSecret: true,
+    hasFile: false,
+  },
+  {
+    id: 9,
+    title: '디자인 시스템 가이드',
+    author: '이영희',
+    date: '2026-01-02',
+    views: 210,
+    href: '/board/9',
+    commentCount: 5,
+    isSecret: false,
+    hasFile: true,
+  },
+];
+
 // 컬럼 정의
-const columns: Column<User>[] = [
+const columns: Column<MockUser>[] = [
   { key: 'id', header: 'ID', width: '80px' },
   { key: 'name', header: '이름' },
   { key: 'email', header: '이메일' },
@@ -127,19 +240,22 @@ const columns: Column<User>[] = [
   },
 ];
 
+/**
+ * 기본 사용 예시
+ * 가장 기본적인 데이터 테이블의 형태로, 사용자 목록을 출력합니다.
+ */
 export const Base: Story = {
   args: {
     caption: '사용자 목록',
     summary: '시스템에 등록된 전체 사용자 정보를 나타내는 표입니다.',
     columns,
-    data: mockData,
+    data: MOCK_USER,
   },
 };
 
 /**
- * 🎨 Variants: 테이블의 외형적 스타일(Solid/Outline)을 비교합니다.
- * Solid: 배경색이 채워진 헤더 스타일
- * Outline: 테두리 중심의 정갈한 스타일
+ * 외형 스타일 변주
+ * Solid(헤더 배경색 강조)와 Outline(테두리 중심) 두 가지 변형을 비교합니다.
  */
 export const Variants: Story = {
   render: args => {
@@ -165,15 +281,15 @@ export const Variants: Story = {
   },
   args: {
     columns,
-    data: mockData,
+    data: MOCK_USER,
     color: 'primary',
     size: 'md',
   },
 };
 
 /**
- * 🌈 Colors: 시스템 키 컬러(Primary, Secondary, Tertiary)에 따른 테마 변화를 확인합니다.
- * 각 컬러 틴트는 웹 접근성(WCAG 2.1) 가독성 대비비를 준수하도록 설계되었습니다.
+ * 테마 색상 적용
+ * 시스템 키 컬러(Primary, Secondary, Tertiary)에 따른 색상 변화를 확인합니다.
  */
 export const Colors: Story = {
   render: args => (
@@ -210,14 +326,14 @@ export const Colors: Story = {
   ),
   args: {
     columns,
-    data: mockData,
-    size: 'md', // 일관된 비교를 위해 중간 사이즈 고정
+    data: MOCK_USER,
+    size: 'md',
   },
 };
 
 /**
- * 📏 Sizes: 다양한 행 높이(sm, md, lg)를 확인합니다.
- * 데이터의 밀도에 따라 적절한 사이즈를 선택하여 시각적 피로도를 조절할 수 있습니다.
+ * 크기 변주
+ * 행 높이와 내부 여백을 조절하여 데이터 밀도를 최적화합니다.
  */
 export const Sizes: Story = {
   render: args => (
@@ -237,138 +353,117 @@ export const Sizes: Story = {
   ),
   args: {
     columns,
-    data: mockData,
+    data: MOCK_USER,
     variant: 'solid',
     color: 'primary',
   },
 };
 
 /**
- * 📌 WithNotices: 공지사항 고정 행, 비밀글, 파일 아이콘, 긴 제목 처리 등
- * 실제 게시판에서 발생할 수 있는 복합적인 케이스를 다룹니다.
- * * [접근성 포인트]
- * 1. visually-hidden: 댓글 개수나 아이콘의 의미를 스크린 리더에게 텍스트로 전달합니다.
- * 2. 가려짐 방지: 긴 제목은 CSS 말줄임표(...)를 통해 인접 셀을 가리지 않도록 처리합니다.
- * 3. title 속성 지양: 호버 시 툴팁이 하단 행을 가리는 이슈를 방지하기 위해 사용하지 않습니다.
+ * 게시판 복합 구성
+ * 공지사항 고정, 비밀글, 첨부파일 등 복잡한 비즈니스 로직이 포함된 케이스입니다.
+ * [접근성 유의사항]
+ * - title 속성 지양: 호버 시 나타나는 툴팁은 하단 행을 가리거나 스크린 리더 중복 읽기 문제를 야기할 수 있습니다.
+ * - 시각적으로 숨겨진 텍스트(sr-only)를 통해 아이콘의 의미를 전달합니다.
  */
-export const WithNotices: Story = {
+export const WithNotices: StoryObj<typeof DataTable<MockDataTableItem>> = {
   render: args => {
-    const [sort, setSort] = useState<{ key: string; order: SortOrder }>({
+    // 1. SortState 타입(key: string)과의 호환을 위해 타입을 string으로 지정
+    const [sort, setSort] = useState<{
+      key: string;
+      order: SortOrder;
+    }>({
       key: 'id',
       order: 'desc',
     });
 
-    const notices: any[] = [
-      {
-        id: 'notice-1',
-        title: '[공지] 서비스 정기 점검 안내 및 이용 제한 관련 긴급 공지사항입니다 (1/10)',
-        author: '관리자',
-        date: '2026-01-01',
-        views: 1542,
-        href: '/notice/1',
-        commentCount: 15,
-        hasFile: true,
-      },
-      {
-        id: 'notice-2',
-        title: '[안내] 2026년 상반기 디자인 시스템 업데이트 로드맵 공유',
-        author: '운영자',
-        date: '2026-01-02',
-        views: 840,
-        href: '/notice/2',
-        commentCount: 8,
-        hasFile: false, // 파일 없음 케이스
-      },
-    ];
+    // 2. 정렬 로직 (useMemo로 성능 최적화)
+    const sortedData = useMemo(() => {
+      if (sort.order === 'none') return MOCK_BOARD;
 
-    const boardData: any[] = [
-      {
-        id: 10,
-        title:
-          '제목이 매우 길어서 한 줄을 넘어가고 다음 칸을 가릴 정도로 길게 작성된 게시글의 제목입니다. 말줄임표 처리가 필요합니다.',
-        author: '김철수',
-        date: '2026-01-04',
-        views: 45,
-        href: '/board/10',
-        commentCount: 155,
-        isSecret: true,
-        hasFile: false,
-      },
-      {
-        id: 9,
-        title: '디자인 시스템 가이드',
-        author: '이영희',
-        date: '2026-01-02',
-        views: 210,
-        href: '/board/9',
-        commentCount: 5,
-        isSecret: false,
-        hasFile: true,
-      },
-    ];
+      return [...MOCK_BOARD].sort((a, b) => {
+        // 인덱스 접근을 위해 keyof DataTableItem으로 타입 단언
+        const currentKey = sort.key as keyof MockDataTableItem;
+        const aValue = a[currentKey];
+        const bValue = b[currentKey];
 
-    const sortedData = [...boardData].sort((a, b) => {
-      if (sort.order === 'none') return 0;
-      const aValue = a[sort.key];
-      const bValue = b[sort.key];
-      if (aValue < bValue) return sort.order === 'asc' ? -1 : 1;
-      if (aValue > bValue) return sort.order === 'asc' ? 1 : -1;
-      return 0;
-    });
+        if (aValue === undefined || bValue === undefined) return 0;
+        if (aValue < bValue) return sort.order === 'asc' ? -1 : 1;
+        if (aValue > bValue) return sort.order === 'asc' ? 1 : -1;
+        return 0;
+      });
+    }, [sort]);
+
+    // 3. DataTable의 onSort 인터페이스 대응 핸들러
+    const handleSort = (key: string | number | symbol, order: SortOrder) => {
+      setSort({ key: String(key), order });
+    };
 
     return (
-      <DataTable
-        {...args}
-        notices={notices}
-        data={sortedData}
-        sortState={sort}
-        onSort={(key, order) => setSort({ key: String(key), order })}
-      />
+      <GuideWrapper style={{ gap: '30px', display: 'flex', flexDirection: 'column' }}>
+        <DataTable
+          {...args}
+          variant='solid'
+          notices={MOCK_NOTICES}
+          data={sortedData}
+          sortState={sort}
+          onSort={handleSort}
+        />
+        <DataTable
+          {...args}
+          variant='outline'
+          notices={MOCK_NOTICES}
+          data={sortedData}
+          sortState={sort}
+          onSort={handleSort}
+        />
+      </GuideWrapper>
     );
   },
   args: {
-    caption: '다양한 게시글 상태 예시',
+    caption: '공지사항 및 게시글 목록 예시',
     columns: [
       { key: 'id', header: '번호', width: '80px', sortable: true },
       {
         key: 'title',
         header: '제목',
         minWidth: '400px',
-        render: (value, row: any) => {
-          if (!row.href) return value;
+        render: (value, row) => {
+          const item = row as MockDataTableItem;
+          if (!item.href) return value;
           return (
             <a
-              href={row.href}
+              href={item.href}
               className='data-table__link'
               onClick={e => {
-                if (!row.href.startsWith('http')) {
+                if (!item.href.startsWith('http')) {
                   e.preventDefault();
-                  console.log('SPA 라우팅');
+                  console.log('SPA Routing Log');
                 }
               }}
             >
-              {/* 1. 제목 텍스트 (길어질 경우 말줄임 처리 대상) */}
+              {/* 제목 텍스트 - CSS에서 ellipsis 처리 권장 */}
               <span className='data-table__link-title'>{value}</span>
 
-              {/* 2. 비밀글 아이콘 (조건부) */}
-              {row.isSecret && (
+              {/* 비밀글 아이콘 */}
+              {item.isSecret && (
                 <span className='data-table__status-icon'>
                   <Icon
                     name='lock'
+                    className='icon'
                     size='md'
                     strokeWidth={2.5}
-                    className='icon'
                     aria-hidden='true'
                   />
                   <span className='sr-only'>비공개 글</span>
                 </span>
               )}
 
-              {/* 3. 댓글 개수 (조건부) */}
-              {row.commentCount > 0 && (
+              {/* 댓글 개수 */}
+              {item.commentCount > 0 && (
                 <span className='data-table__comment-count'>
-                  <span aria-hidden='true'>[{row.commentCount}]</span>
-                  <span className='sr-only'>댓글 {row.commentCount}개</span>
+                  <span aria-hidden='true'>[{item.commentCount}]</span>
+                  <span className='sr-only'>댓글 {item.commentCount}개</span>
                 </span>
               )}
             </a>
@@ -379,18 +474,20 @@ export const WithNotices: Story = {
         key: 'hasFile',
         header: '파일',
         width: '60px',
-        render: (value, row: any) =>
-          row.hasFile ? (
+        render: (_, row) => {
+          const item = row as MockDataTableItem;
+          return item.hasFile ? (
             <div className='data-table__status-icon'>
               <Icon
                 name='file'
-                size='md'
                 className='icon'
+                size='md'
                 strokeWidth={2.5}
                 aria-label='첨부파일 있음'
               />
             </div>
-          ) : null,
+          ) : null;
+        },
       },
       { key: 'author', header: '작성자', width: '120px' },
       { key: 'date', header: '날짜', width: '150px', sortable: true },
@@ -400,8 +497,8 @@ export const WithNotices: Story = {
 };
 
 /**
- * ✅ WithCheckboxes: 다중 선택 기능을 확인합니다.
- * Set 객체를 사용하여 선택된 행의 ID를 고유하게 관리합니다.
+ * 행 선택 기능
+ * 체크박스를 통한 다중 행 선택 기능을 구현합니다.
  */
 export const WithCheckboxes: Story = {
   render: args => {
@@ -415,7 +512,7 @@ export const WithCheckboxes: Story = {
     };
 
     const handleSelectAll = (isAll: boolean) => {
-      if (isAll) setSelectedRows(new Set(mockData.map(d => d.id)));
+      if (isAll) setSelectedRows(new Set(MOCK_USER.map(d => d.id)));
       else setSelectedRows(new Set());
     };
 
@@ -431,14 +528,14 @@ export const WithCheckboxes: Story = {
   args: {
     caption: '체크박스 선택 가능 표',
     columns,
-    data: mockData,
+    data: MOCK_USER,
     showCheckbox: true,
   },
 };
 
 /**
- * 🔼 Sortable: 헤더 클릭을 통한 데이터 정렬 인터페이스를 확인합니다.
- * 'asc' (오름차순), 'desc' (내림차순), 'none' (기본값) 상태를 순환합니다.
+ * 데이터 정렬
+ * 특정 열의 헤더를 클릭하여 데이터를 오름차순/내림차순으로 정렬합니다.
  */
 export const Sortable: Story = {
   render: args => {
@@ -449,11 +546,11 @@ export const Sortable: Story = {
     });
 
     // 2. 정렬 로직 구현 (실제 데이터 정렬)
-    const sortedData = [...mockData].sort((a, b) => {
+    const sortedData = [...MOCK_USER].sort((a, b) => {
       if (sort.order === 'none') return 0;
 
-      const aValue = a[sort.key as keyof User];
-      const bValue = b[sort.key as keyof User];
+      const aValue = a[sort.key as keyof MockUser];
+      const bValue = b[sort.key as keyof MockUser];
 
       if (aValue < bValue) return sort.order === 'asc' ? -1 : 1;
       if (aValue > bValue) return sort.order === 'asc' ? 1 : -1;
@@ -485,8 +582,8 @@ export const Sortable: Story = {
 };
 
 /**
- * 📭 Empty: 데이터가 없을 때의 UI를 확인합니다.
- * 사용자에게 데이터가 없음을 명확히 알리고 테이블 구조를 유지합니다.
+ * 데이터 없음 상태
+ * 출력할 데이터가 존재하지 않을 때의 UI를 확인합니다.
  */
 export const Empty: Story = {
   args: {

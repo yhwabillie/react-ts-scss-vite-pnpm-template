@@ -1,10 +1,10 @@
-import { useToast } from '../molecules/Toast/ToastProvider';
+import { useToast } from '@/components/ui/molecules/Toast/ToastProvider';
 import Styles from '@/components/ui/tokens/TokenTable.module.scss';
-import type { Column } from '../organisms/DataTable/DataTable';
-import DataTable from '../organisms/DataTable/DataTable';
-import Code from '../atoms/Code/Code';
-import PreviewBox from '../atoms/PreviewBox/PreviewBox';
-import Badge from '../atoms/Badge/Badge';
+import type { Column } from '@/components/ui/organisms/DataTable/DataTable';
+import DataTable from '@/components/ui/organisms/DataTable/DataTable';
+import Code from '@/components/ui/atoms/Code/Code';
+import PreviewBox from '@/components/ui/atoms/PreviewBox/PreviewBox';
+import Badge from '@/components/ui/atoms/Badge/Badge';
 
 const PROJECT_NAME = 'project';
 
@@ -55,7 +55,7 @@ const PrimitiveColorTokenTable = ({ title, category, tokens }: PrimitiveTablePro
       header: 'Variable (Copy)',
       render: value => (
         <button
-          className={Styles['token-table__copy-btn']}
+          className='token-table__copy-btn'
           onClick={() => handleCopy(`var(${value})`, '변수명')}
           aria-label={`${value} 변수 복사`}
         >
@@ -76,10 +76,7 @@ const PrimitiveColorTokenTable = ({ title, category, tokens }: PrimitiveTablePro
       key: 'value',
       header: 'Hex/RGBA (Copy)',
       render: value => (
-        <button
-          className={Styles['token-table__copy-btn']}
-          onClick={() => handleCopy(value, '색상값')}
-        >
+        <button className='token-table__copy-btn' onClick={() => handleCopy(value, '색상값')}>
           <Code>{value}</Code>
         </button>
       ),
@@ -89,7 +86,7 @@ const PrimitiveColorTokenTable = ({ title, category, tokens }: PrimitiveTablePro
       header: 'Metadata',
       width: '30%',
       render: (_, row) => (
-        <div className={Styles.description}>
+        <div className='token-table__description'>
           <strong>{row.usage}</strong>
           <p>{row.description}</p>
           {/* RGBA 값일 경우 접근성 주의 뱃지 노출 */}
@@ -103,11 +100,8 @@ const PrimitiveColorTokenTable = ({ title, category, tokens }: PrimitiveTablePro
 
   return (
     <div className={Styles['token-table']}>
-      <div
-        className={Styles['token-table__header']}
-        style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}
-      >
-        <h3 style={{ margin: 0 }}>{title}</h3>
+      <div className='token-table__title'>
+        <h3>{title}</h3>
         <Badge variant='solid' size='sm' color='secondary' label={category} />
       </div>
       <DataTable

@@ -48,6 +48,7 @@ $data-table-colors: (
   primary: (
     solid: (
       border: var(--project-color-primary-data-table-solid-outer-border),
+      notice-tr-border: var(--project-color-primary-data-table-solid-notice-tr-border),
       tbody-border: var(--project-color-primary-data-table-solid-tbody-border),
       th-bg: var(--project-color-primary-data-table-solid-thead-bg),
       th-text: var(--project-color-primary-data-table-solid-thead-text),
@@ -68,6 +69,7 @@ $data-table-colors: (
   secondary: (
     solid: (
       border: var(--project-color-secondary-data-table-solid-outer-border),
+      notice-tr-border: var(--project-color-primary-data-table-solid-notice-tr-border),
       tbody-border: var(--project-color-secondary-data-table-solid-tbody-border),
       th-bg: var(--project-color-secondary-data-table-solid-thead-bg),
       th-text: var(--project-color-secondary-data-table-solid-thead-text),
@@ -88,6 +90,7 @@ $data-table-colors: (
   tertiary: (
     solid: (
       border: var(--project-color-tertiary-data-table-solid-outer-border),
+      notice-tr-border: var(--project-color-primary-data-table-solid-notice-tr-border),
       tbody-border: var(--project-color-tertiary-data-table-solid-tbody-border),
       th-bg: var(--project-color-tertiary-data-table-solid-thead-bg),
       th-text: var(--project-color-tertiary-data-table-solid-thead-text),
@@ -115,21 +118,7 @@ $data-table-colors: (
     outline-offset: -2px;
   }
 
-  th,
-  td {
-    vertical-align: middle;
-    text-align: center;
-  }
-
-  thead th {
-    word-break: break-word;
-    line-height: initial;
-  }
-
-  tbody tr {
-    transition: all 0.2s ease-out;
-  }
-
+  // size 별 스타일
   @each $size-name, $props in $data-table-sizes {
     @include global-mod('size--#{$size-name}') {
       @include global-mod('variant--solid') {
@@ -167,17 +156,6 @@ $data-table-colors: (
             }
           }
         }
-
-        :global(.data-table__root) {
-          // border-collapse: separate;
-          border-collapse: collapse;
-        }
-      }
-
-      @include global-mod('variant--outline') {
-        :global(.data-table__root) {
-          border-collapse: collapse;
-        }
       }
 
       thead {
@@ -192,7 +170,6 @@ $data-table-colors: (
             min-height: map.get($props, min-height);
             padding: map.get($props, td-padding);
             font: map.get($props, font);
-            word-break: break-word;
           }
         }
       }
@@ -203,10 +180,6 @@ $data-table-colors: (
         }
 
         .data-table__status-icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
           .icon {
             width: map.get($props, notice-icon-size);
             height: map.get($props, notice-icon-size);
@@ -220,6 +193,10 @@ $data-table-colors: (
         }
 
         .data-table__notice-cell {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
           :global(.icon) {
             width: map.get($props, notice-icon-size);
             height: map.get($props, notice-icon-size);
@@ -233,6 +210,7 @@ $data-table-colors: (
     }
   }
 
+  // color, variant 별 스타일
   @each $color-name, $variants in $data-table-colors {
     // colors
     @include global-mod('color--#{$color-name}') {
@@ -263,6 +241,7 @@ $data-table-colors: (
             :global {
               .data-table__notice-row {
                 background-color: map.get($props, notice-tr-bg);
+                border-color: map.get($props, notice-tr-border);
               }
             }
           } @else if $variant-name == 'outline' {
@@ -299,6 +278,25 @@ $data-table-colors: (
   }
 
   :global {
+    th,
+    td {
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    thead th {
+      word-break: break-word;
+      line-height: initial;
+    }
+
+    tbody tr {
+      transition: all 0.2s ease-out;
+
+      td {
+        word-break: break-word;
+      }
+    }
+
     .data-table__root {
       width: 100%;
     }
@@ -339,6 +337,7 @@ $data-table-colors: (
     .data-table__link-title {
       @include ell();
     }
+
     .data-table__comment-count {
       flex: 0 0 auto;
       margin-left: rem(10px);
@@ -350,6 +349,7 @@ $data-table-colors: (
       align-items: center;
       word-break: break-all;
     }
+
     .data-table__empty-state {
       display: flex;
       justify-content: center;

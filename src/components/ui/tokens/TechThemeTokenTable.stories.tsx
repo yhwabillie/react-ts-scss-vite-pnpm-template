@@ -1,19 +1,26 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ToastProvider } from '../molecules/Toast/ToastProvider';
-import { TokenData as TechTokens } from '../../../constants/generated/tech-tokens';
-import ColorTokenTable from './ColorTokenTable';
+import { ToastProvider } from '@/components/ui/molecules/Toast/ToastProvider';
+import { TokenData as TechTokens } from '@/constants/generated/tech-tokens';
+import ColorTokenTable from '@/components/ui/tokens/ColorTokenTable';
 
 const meta: Meta<typeof ColorTokenTable> = {
   title: 'Tokens/Colors/Theme/Tech',
   component: ColorTokenTable,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '**Tech Theme 토큰**은 신뢰감 있는 푸른 계열(Blue-based)의 색상을 중심으로 설계된 테마 시스템입니다. <br />' +
+          '공통 시맨틱 구조 위에 테크 테마만의 청색조 컬러셋을 매핑하여, 각 컴포넌트에서 일관된 톤앤매너를 유지합니다. <br /><br />' +
+          '`data-theme="tech"` 속성을 통해 활성화되는 전용 컬러셋 <br />',
+      },
+    },
+  },
   decorators: [
     Story => (
       <ToastProvider position='bottom-right'>
-        {/* 테마 확인을 위해 data-theme 주입 */}
-        <div data-theme='tech' style={{ padding: '1rem' }}>
-          <Story />
-        </div>
+        <Story />
       </ToastProvider>
     ),
   ],

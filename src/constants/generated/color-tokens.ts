@@ -141,8 +141,8 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-label-text",
-    "lightValue": "var(--project-color-primitive-gray-246)",
-    "darkValue": "var(--project-color-primitive-gray-34)",
+    "lightValue": "var(--project-color-primitive-gray-34)",
+    "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "Label Text Color",
     "description": "밝은 모드에서 라벨 텍스트의 색상입니다."
   },

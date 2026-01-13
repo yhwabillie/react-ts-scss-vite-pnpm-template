@@ -1,10 +1,10 @@
-import { useToast } from '../molecules/Toast/ToastProvider';
+import { useToast } from '@/components/ui/molecules/Toast/ToastProvider';
 import Styles from '@/components/ui/tokens/TokenTable.module.scss';
-import type { Column } from '../organisms/DataTable/DataTable';
-import DataTable from '../organisms/DataTable/DataTable';
-import Code from '../atoms/Code/Code';
-import PreviewBox from '../atoms/PreviewBox/PreviewBox';
-import Badge from '../atoms/Badge/Badge';
+import type { Column } from '@/components/ui/organisms/DataTable/DataTable';
+import DataTable from '@/components/ui/organisms/DataTable/DataTable';
+import Code from '@/components/ui/atoms/Code/Code';
+import PreviewBox from '@/components/ui/atoms/PreviewBox/PreviewBox';
+import Badge from '@/components/ui/atoms/Badge/Badge';
 
 // 1. 프로젝트 이름 상수 (필요 시 상위에서 props로 받아도 좋습니다)
 const PROJECT_NAME = 'project';
@@ -61,7 +61,7 @@ const ColorTokenTable = ({ title, category, tokens }: TokenTableProps) => {
       header: 'Token Name (Copy)',
       render: (_, row) => (
         <button
-          className={Styles['token-table__copy-btn']}
+          className='token-table__copy-btn'
           onClick={() => handleCopy(`var(${row.id})`, '변수명')}
           aria-label={`${row.id} 변수 복사`}
         >
@@ -80,10 +80,7 @@ const ColorTokenTable = ({ title, category, tokens }: TokenTableProps) => {
       key: 'lightValue',
       header: 'Light (Copy)',
       render: value => (
-        <button
-          className={Styles['token-table__copy-btn']}
-          onClick={() => handleCopy(value, '라이트 모드')}
-        >
+        <button className='token-table__copy-btn' onClick={() => handleCopy(value, '라이트 모드')}>
           <Code>{value}</Code>
         </button>
       ),
@@ -92,10 +89,7 @@ const ColorTokenTable = ({ title, category, tokens }: TokenTableProps) => {
       key: 'darkValue',
       header: 'Dark (Copy)',
       render: value => (
-        <button
-          className={Styles['token-table__copy-btn']}
-          onClick={() => handleCopy(value, '다크 모드')}
-        >
+        <button className='token-table__copy-btn' onClick={() => handleCopy(value, '다크 모드')}>
           <Code>{value}</Code>
         </button>
       ),
@@ -105,7 +99,7 @@ const ColorTokenTable = ({ title, category, tokens }: TokenTableProps) => {
       header: 'Usage & Description',
       width: '30%',
       render: (_, row) => (
-        <div className={Styles.description}>
+        <div className='token-table__description'>
           <strong>{row.usage}</strong>
           <p>{row.description}</p>
         </div>

@@ -1,6 +1,6 @@
-import Styles from '@/components/ui/atoms/Badge/Badge.module.scss';
-import clsx from 'clsx';
 import { Children, type ReactNode } from 'react';
+import clsx from 'clsx';
+import Styles from '@/components/ui/atoms/Badge/Badge.module.scss';
 
 interface BadgeProps {
   label?: string;
@@ -10,7 +10,7 @@ interface BadgeProps {
   size?: 'sm' | 'md' | 'lg';
   ariaLabel?: string;
   position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
-  overlapShape?: 'square' | 'rounded' | 'pill'; // children의 모양 정보
+  overlapShape?: 'square' | 'rounded' | 'pill';
   children?: ReactNode;
 }
 
@@ -41,7 +41,6 @@ const Badge = ({
     </div>
   );
 
-  // 조건부 렌더링
   if (!hasChildren) {
     return BadgeElement;
   }

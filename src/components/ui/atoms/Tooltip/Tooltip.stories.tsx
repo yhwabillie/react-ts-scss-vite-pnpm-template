@@ -10,6 +10,18 @@ const meta: Meta<typeof Tooltip> = {
   title: 'UI/Atoms/Tooltip',
   component: Tooltip,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '**Tooltip**은 요소에 대한 추가 설명이나 도움말을 일시적으로 표시하는 컴포넌트입니다. <br />' +
+          '트리거 요소의 위치와 뷰포트 경계를 계산하여 최적의 가독성을 확보하는 포지셔닝 로직이 내장되어 있습니다. <br /><br />' +
+          '• **Positioning**: 화면 끝단에서 공간이 부족할 경우 반대 방향으로 자동 전환(Flip) <br />' +
+          '• **Accessibility**: `aria-describedby` 연결을 통한 스크린 리더 지원 및 키보드 포커스 대응 <br />' +
+          '• **Standard vs Rich**: 단순 텍스트 정보부터 인터랙티브한 상세 설명까지 대응하는 두 가지 유형 제공',
+      },
+    },
+  },
   argTypes: {
     // --- [Data & Content] ---
     id: {
@@ -104,9 +116,8 @@ export default meta;
 type Story = StoryObj<typeof Tooltip>;
 
 /**
- * [Base]
  * 툴팁의 가장 기본적인 사용 사례입니다.
- * IconButton과 같은 작은 트리거 요소에 짧은 텍스트 도움말을 제공할 때 적합합니다.
+ * 주로 IconButton과 결합하여 해당 아이콘이 수행하는 기능을 짧은 텍스트로 보완합니다.
  */
 export const Base: Story = {
   render: args => {
@@ -176,10 +187,9 @@ export const Base: Story = {
 };
 
 /**
- * [Shape]
- * 툴팁의 외형(꼬리 유무)을 결정합니다.
- * - balloon: 말풍선 꼬리가 있어 트리거 요소를 명확히 지시합니다.
- * - plain: 꼬리가 없는 단순 사각형 형태로, 시각적 노이즈를 줄일 때 사용합니다.
+ * 트리거 요소를 지시하는 꼬리(Arrow)의 유무를 결정합니다.
+ * - balloon: 꼬리가 있어 툴팁의 대상을 명확히 시각적으로 연결합니다.
+ * - plain: 꼬리가 없는 사각형 형태로, 시각적 요소가 많은 화면에서 간결함을 유지합니다.
  */
 export const Shape: Story = {
   render: () => {
@@ -226,10 +236,9 @@ export const Shape: Story = {
 };
 
 /**
- * [Variants]
- * 툴팁의 구성 방식에 따른 차이를 보여줍니다.
- * - standard: 단순 텍스트 정보 전달용 (Hover/Focus 시 발생)
- * - rich: 상세 설명 및 닫기 버튼 등 인터랙션이 포함된 경우 (Click 시 발생)
+ * 용도에 따른 구성 방식의 차이를 정의합니다.
+ * - standard: 마우스 호버나 키보드 포커스 시 나타나는 정적인 도움말입니다.
+ * - rich: 상세한 설명이 담기며, 상황에 따라 클릭으로 활성화되거나 내부 인터랙션이 포함될 수 있습니다.
  */
 export const Variants: Story = {
   render: () => {
@@ -265,8 +274,9 @@ export const Variants: Story = {
 };
 
 /**
- * [Sizes]
- * 콘텐츠의 양과 중요도에 따라 sm(260px), md(320px) 사이즈를 선택할 수 있습니다.
+ * 콘텐츠의 양과 레이아웃 비중에 따른 크기 시스템입니다.
+ * - sm: 최대 너비 260px로 제한되어 간결한 문장에 적합합니다.
+ * - md: 최대 너비 320px로 제한되어 긴 설명이나 Rich 타입에 권장됩니다.
  */
 export const Sizes: Story = {
   render: () => {
@@ -346,9 +356,8 @@ export const Sizes: Story = {
 };
 
 /**
- * [Positions]
- * preferredPosition 속성을 통해 툴팁이 나타날 상하좌우 우선순위를 테스트합니다.
- * 공간이 부족할 경우 Flip 로직에 의해 반대 방향으로 자동 전환됩니다.
+ * preferredPosition 속성을 통해 표시될 방향의 우선순위를 설정합니다.
+ * 실제 배치 시에는 뷰포트 여유 공간을 계산하여 요소가 화면 밖으로 나가지 않도록 보호합니다.
  */
 export const Positions: Story = {
   args: {
@@ -447,9 +456,8 @@ export const Positions: Story = {
 };
 
 /**
- * [Alignment]
- * 상하(Top/Bottom) 배치 시 툴팁 본체의 수평 정렬을 테스트합니다.
- * 본체가 정렬(start/center/end)에 따라 움직여도 꼬리는 항상 트리거 중앙을 유지하는지 검증합니다.
+ * 상단 또는 하단 배치 시 본체의 수평 정렬 기준을 정의합니다.
+ * 본체가 좌/우측으로 정렬(`start`, `end`)되더라도 말풍선 꼬리는 항상 트리거 요소의 중앙을 유지합니다.
  */
 export const Alignment: Story = {
   args: {
@@ -537,10 +545,9 @@ export const Alignment: Story = {
 };
 
 /**
- * [Viewport Edge Cases]
- * 브라우저 뷰포트 끝단에서의 방어 로직을 검증합니다.
- * 1. Flip: 상하좌우 끝에서 공간이 없으면 반대편으로 전환되는지 확인
- * 2. Constraint: 화면 밖으로 나가지 않도록 뷰포트 내부에 가두는지 확인
+ * 뷰포트 경계면에서의 방어 로직(Collision handling)을 검증합니다.
+ * - Flip: 상하좌우 끝단에서 공간이 부족할 경우 즉시 반대 방향으로 전환됩니다.
+ * - Constraint: 화면 밖으로 요소가 잘리지 않도록 뷰포트 내부에 가두는 처리가 적용됩니다.
  */
 export const ViewportEdgeCases: Story = {
   parameters: {

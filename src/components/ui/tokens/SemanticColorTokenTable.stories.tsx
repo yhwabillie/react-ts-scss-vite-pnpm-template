@@ -7,6 +7,18 @@ import ColorTokenTable from './ColorTokenTable';
 const meta: Meta<typeof ColorTokenTable> = {
   title: 'Tokens/Colors/Semantic',
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '**시맨틱 토큰**은 디자인의 "의미"를 담은 컬러 명세입니다. <br />' +
+          '원색(Primitive) 토큰을 목적에 맞게 재정의하여 테마 확장성과 유지보수 효율을 극대화합니다. <br /><br />' +
+          '• **System**: 배경, 텍스트 등 인터페이스 공통 요소 <br />' +
+          '• **Functional**: 상태 알림, 정보 구분 등 기능적 요소 <br />' +
+          '• **Component**: 개별 UI 컴포넌트 전용 상세 제어',
+      },
+    },
+  },
   component: ColorTokenTable,
   decorators: [
     Story => (

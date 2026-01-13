@@ -408,6 +408,9 @@
           "solid-outer-border": {
             "value": "transparent"
           },
+          "solid-notice-tr-border": {
+            "value": "var(--project-color-primitive-gray-246)"
+          },
           "solid-tbody-border": {
             "value": "var(--project-color-primitive-gray-190)"
           },
@@ -449,6 +452,9 @@
           }
         },
         "dark": {
+          "solid-notice-tr-border": {
+            "value": "var(--project-color-primitive-alpha-322)"
+          },
           "solid-outer-border": {
             "value": "transparent"
           },
@@ -1623,13 +1629,13 @@
             "value": "transparent"
           },
           "outline-bg": {
-            "value": "var(--project-color-primitive-alpha-317)"
+            "value": "var(--project-color-primitive-gray-209)"
           },
           "outline-text": {
-            "value": "var(--project-color-primitive-blue-73)"
+            "value": "var(--project-color-primitive-blue-88)"
           },
           "outline-border": {
-            "value": "var(--project-color-primitive-blue-73)"
+            "value": "var(--project-color-primitive-blue-88)"
           }
         },
         "dark": {
@@ -1643,18 +1649,21 @@
             "value": "transparent"
           },
           "outline-bg": {
-            "value": "var(--project-color-primitive-gray-209)"
+            "value": "var(--project-color-primitive-alpha-317)"
           },
           "outline-text": {
-            "value": "var(--project-color-primitive-blue-88)"
+            "value": "var(--project-color-primitive-blue-73)"
           },
           "outline-border": {
-            "value": "var(--project-color-primitive-blue-88)"
+            "value": "var(--project-color-primitive-blue-73)"
           }
         }
       },
       "data-table": {
         "light": {
+          "solid-notice-tr-border": {
+            "value": "var(--project-color-primitive-gray-246)"
+          },
           "solid-outer-border": {
             "value": "transparent"
           },
@@ -1699,6 +1708,9 @@
           }
         },
         "dark": {
+          "solid-notice-tr-border": {
+            "value": "var(--project-color-primitive-alpha-322)"
+          },
           "solid-outer-border": {
             "value": "transparent"
           },
@@ -2546,13 +2558,13 @@
       "tag": {
         "light": {
           "solid-bg": {
-            "value": "var(--project-color-primitive-blue-151)"
+            "value": "var(--project-color-primitive-blue-115)"
           },
           "solid-bg-hover": {
             "value": "var(--project-color-primitive-blue-164)"
           },
           "solid-text": {
-            "value": "var(--project-color-primitive-blue-36)"
+            "value": "var(--project-color-primitive-gray-246)"
           },
           "solid-icon-fill": {
             "value": "var(--project-color-primitive-blue-36)"
@@ -2564,18 +2576,18 @@
             "value": "var(--project-color-primitive-alpha-274)"
           },
           "outline-text": {
-            "value": "var(--project-color-primitive-blue-151)"
+            "value": "var(--project-color-primitive-blue-115)"
           },
           "outline-border": {
-            "value": "var(--project-color-primitive-blue-151)"
+            "value": "var(--project-color-primitive-blue-115)"
           },
           "outline-icon-fill": {
-            "value": "var(--project-color-primitive-blue-151)"
+            "value": "var(--project-color-primitive-blue-115)"
           }
         },
         "dark": {
           "solid-bg": {
-            "value": "var(--project-color-primitive-blue-128)"
+            "value": "var(--project-color-primitive-blue-131)"
           },
           "solid-bg-hover": {
             "value": "var(--project-color-primitive-blue-115)"
@@ -2590,16 +2602,16 @@
             "value": "transparent"
           },
           "outline-bg-hover": {
-            "value": "var(--project-color-primitive-alpha-264)"
+            "value": "var(--project-color-primitive-alpha-268)"
           },
           "outline-text": {
-            "value": "var(--project-color-primitive-blue-128)"
+            "value": "var(--project-color-primitive-blue-164)"
           },
           "outline-border": {
-            "value": "var(--project-color-primitive-blue-139)"
+            "value": "var(--project-color-primitive-blue-164)"
           },
           "outline-icon-fill": {
-            "value": "var(--project-color-primitive-blue-128)"
+            "value": "var(--project-color-primitive-blue-164)"
           }
         }
       },
@@ -2911,6 +2923,9 @@
       },
       "data-table": {
         "light": {
+          "solid-notice-tr-border": {
+            "value": "var(--project-color-primitive-gray-246)"
+          },
           "solid-outer-border": {
             "value": "transparent"
           },
@@ -2955,6 +2970,9 @@
           }
         },
         "dark": {
+          "solid-notice-tr-border": {
+            "value": "var(--project-color-primitive-alpha-322)"
+          },
           "solid-outer-border": {
             "value": "transparent"
           },

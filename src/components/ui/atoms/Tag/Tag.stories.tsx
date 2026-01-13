@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Tag from './Tag';
 import Icon from '../../atoms/Icon/Icon';
-import { GuideCell, GuideGroup, GuideWrapper } from '../../guide/Guide';
+import { GuideGroup, GuideWrapper } from '../../guide/Guide';
 import { useRef, useState } from 'react';
 import Button from '../../molecules/Button/Button';
 
@@ -9,6 +9,18 @@ const meta: Meta<typeof Tag> = {
   title: 'UI/Atoms/Tag',
   component: Tag,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '**Tag** 컴포넌트는 콘텐츠를 분류하거나 메타데이터를 나열할 때 사용하는 키워드 요소입니다. <br />' +
+          '인터랙션이 강조된 Chip과 달리 정보를 "표시"하고 "분류"하는 데 목적이 있으며, 필요에 따라 링크(Link)나 삭제(Delete) 기능을 포함할 수 있습니다. <br /><br />' +
+          '• 해시태그, 카테고리, 상태 키워드 등 용도에 최적화된 시각적 무게감 제공 <br />' +
+          '• 속성에 따라 정적 요소, 링크(`<a>`), 또는 삭제 가능 버튼(`<button>`)으로 렌더링 <br />' +
+          '• 삭제 기능 사용 시 포커스 유실을 방지하는 포지셔닝 로직 내장',
+      },
+    },
+  },
   argTypes: {
     // --- 1. Content & Identity ---
     label: {
@@ -101,9 +113,8 @@ export default meta;
 type Story = StoryObj<typeof Tag>;
 
 /**
- * 🏷️ Base: 정보를 분류하기 위한 가장 기본적인 정적 키워드 태그입니다.
- * 인터랙션이 필요한 Chip이나 상태를 나타내는 Badge와 달리,
- * 순수하게 콘텐츠의 메타데이터를 나열할 때 사용합니다.
+ * 정보 분류를 위한 가장 기본적인 정적 키워드 태그입니다.
+ * 별도의 인터랙션이 없는 순수 메타데이터 나열 시 사용합니다.
  */
 export const Base: Story = {
   render: args => (
@@ -114,9 +125,9 @@ export const Base: Story = {
 };
 
 /**
- * ✨ Variants: 태그의 시각적 무게감(Weight)을 결정합니다.
- * - Solid: 강한 강조가 필요하거나 배경색이 밝은 영역에 사용하여 가독성을 확보합니다.
- * - Outline: 보조적인 정보나 데이터가 밀집된 리스트 내에서 시각적 부하를 줄일 때 적합합니다.
+ * 시각적 무게감에 따른 변형입니다.
+ * - Solid: 강한 강조가 필요한 핵심 키워드에 사용합니다.
+ * - Outline: 보조 정보나 데이터가 많은 화면에서 시각적 간섭을 줄일 때 사용합니다.
  */
 export const Variants: Story = {
   render: args => (
@@ -132,8 +143,9 @@ export const Variants: Story = {
 };
 
 /**
- * 📏 Sizes: 다양한 레이아웃에 대응하기 위한 크기 시스템입니다.
- * 텍스트 밀도에 따라 SM(작은 영역, 리스트 내부)과 MD(일반적인 정보 레이아웃)를 선택할 수 있습니다.
+ * 레이아웃 밀도에 대응하는 크기 시스템입니다.
+ * - SM: 리스트, 테이블 내부 등 좁은 영역에 최적화되어 있습니다.
+ * - MD: 일반적인 상세 페이지나 카드 UI의 정보 표시용입니다.
  */
 export const Sizes: Story = {
   render: args => (
@@ -149,9 +161,9 @@ export const Sizes: Story = {
 };
 
 /**
- * 🔍 WithIcon: 아이콘을 결합하여 정보의 메타데이터 성격을 명확히 합니다.
- * - Start Icon: 해시(#)나 카테고리 기호 등 태그의 성격을 규정할 때 사용합니다.
- * - End Icon: 링크(Link) 표시 등 뒤따르는 동작이나 추가 정보를 암시할 때 사용합니다.
+ * 아이콘을 결합하여 정보의 성격이나 추가 동작을 암시합니다.
+ * - Start Icon: 해시(#)나 카테고리 기호 등 분류 체계를 나타냅니다.
+ * - End Icon: 링크 표시 등 후속 동작에 대한 시각적 힌트를 제공합니다.
  */
 export const WithIcon: Story = {
   render: args => (
@@ -235,9 +247,9 @@ export const WithIcon: Story = {
 };
 
 /**
- * 📐 Shapes: UI 성격에 따른 모서리 곡률 변형입니다.
- * - Square/Rounded: 시스템적인 관리 도구나 대시보드에서 정갈한 느낌을 줍니다.
- * - Pill: 완전한 곡선을 사용하여 해시태그나 카테고리 등 '키워드'의 성격을 강조합니다.
+ * 서비스 무드 및 컴포넌트 성격에 따른 외형 정의입니다.
+ * - Square/Rounded: 대시보드 및 관리 도구의 정갈한 스타일에 적합합니다.
+ * - Pill: 해시태그 등 캐주얼한 키워드 강조 시 권장합니다.
  */
 export const Shapes: Story = {
   render: args => (
@@ -280,10 +292,8 @@ export const Shapes: Story = {
 };
 
 /**
- * 🎨 Colors: 디자인 시스템의 의미적 컬러(Semantic Color)를 적용합니다.
- * * [접근성 포인트]
- * - 모든 컬러 세트는 배경 대비 4.5:1(AA) 이상의 명도 대비를 유지하도록 설계되었습니다.
- * - 특히 Outline 스타일의 경우, 테두리와 텍스트 색상이 배경에서 가려진(Obscured) 느낌을 주지 않도록 고대비 컬러를 할당했습니다.
+ * 세만틱 컬러를 통한 의미 전달입니다.
+ * 모든 조합은 배경 대비 4.5:1(AA) 이상의 명도 대비를 유지하여 가독성을 보장합니다.
  */
 export const Colors: Story = {
   render: args => (
@@ -326,11 +336,9 @@ export const Colors: Story = {
 };
 
 /**
- * 🗑️ Deletable: 사용자가 직접 항목을 제거할 수 있는 인터랙티브 태그입니다.
- * - UX 포인트: 삭제 버튼 클릭 시 onDelete 함수가 실행되며, 키보드 엔터/스페이스 키에 대응합니다.
- * * [접근성 포인트]
- * - 포커스 관리: 항목 삭제 직후 포커스가 유실되지 않도록 가장 가까운 인접 태그나 초기화 버튼으로 포커스를 강제 이동시킵니다.
- * - 레이블 제공: aria-label을 통해 '삭제 [레이블] 태그'라는 명확한 정보를 보조공학기기에 전달합니다.
+ * 삭제 기능이 포함된 인터랙티브 태그입니다.
+ * - 포커스 관리: 항목 삭제 시 포커스가 유실되지 않도록 인접 요소로 자동 이동시키는 로직이 포함되어 있습니다.
+ * - 접근성: 스크린 리더 사용자를 위해 삭제 버튼에 대한 명확한 aria-label 제공을 권장합니다.
  */
 export const Deletable: Story = {
   render: args => {
@@ -456,11 +464,8 @@ export const Deletable: Story = {
 };
 
 /**
- * 🔗 Navigational: 클릭 시 특정 경로로 이동하는 링크형 태그입니다.
- * <a> 태그로 렌더링되어 웹 표준 링크 역할을 수행하며, 해시태그나 검색 키워드에 최적화되어 있습니다.
- * * [접근성 포인트]
- * - 가림 방지: 링크 위에 마우스 오버 시 브라우저 기본 툴팁이 인접 태그를 가리는(Partially Obscured) 결함을 방지하기 위해 title 속성을 지양하고 aria-label을 권장합니다.
- * - 외부 링크: target='_blank' 사용 시 endIcon을 통해 새 창 이동임을 시각적으로 암시합니다.
+ * 클릭 시 특정 경로로 이동하는 링크형 태그입니다.
+ * - 렌더링: href 속성 존재 시 웹 표준 <a> 태그로 전환됩니다.
  */
 export const Navigational: Story = {
   args: {

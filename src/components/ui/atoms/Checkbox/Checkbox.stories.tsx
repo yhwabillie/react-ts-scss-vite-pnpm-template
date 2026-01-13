@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Checkbox from '@/components/ui/atoms/Checkbox/Checkbox';
-import { SpecimenCell, SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
+import {
+  SpecimenCell,
+  SpecimenGroup,
+  SpecimenRow,
+  SpecimenWrapper,
+} from '@/components/ui/guide/Specimen';
 
 const meta = {
   title: 'UI/Atoms/Checkbox',
@@ -118,9 +123,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * 다중 선택이 가능한 선택지 세트(Checkbox Group)를 구성하는 개별 요소입니다.
- * 독립적으로 사용되어 단일 동의 여부를 확인하거나, 여러 개가 하나의 그룹으로 묶여
- * 복수 개의 옵션을 동시에 선택하는 용도로 사용됩니다.
+ * 기본 사용 예시
+ * 체크박스의 기본적인 외형과 동작을 확인합니다.
+ * 스토리북 자동 문서화 환경에서 발생할 수 있는 ID 중복 문제를 방지하기 위해 랜덤 ID를 생성하여 적용합니다.
  */
 export const Base: Story = {
   parameters: {
@@ -146,13 +151,8 @@ export const Base: Story = {
 };
 
 /**
- * 서비스의 브랜드 성격에 따른 테마 시스템과 6가지 표준 색상 명세를 확인합니다.
- * * **테마 구성:**
- * - **Tech Theme:** 차갑고 신뢰감 있는 푸른 계열의 메인 컬러 시스템
- * - **Warm Theme:** 따뜻하고 친근한 노란 계열의 메인 컬러 시스템
- * * 각 테마는 **Light 모드**와 **Dark 모드** 환경에 최적화된 고유의 컬러 토큰을 가집니다.
- * 이 섹션에서는 각 테마 내에서 의미론적으로 정의된 6가지 색상(Primary ~ Danger)이
- * 토글 상태(On/Off)에 따라 어떻게 시각적으로 표현되는지 검증할 수 있습니다.
+ * 테마 색상 적용
+ * 브랜드 컬러 및 상태 컬러(성공, 경고, 위험 등)에 따른 체크박스의 시각적 변화를 확인합니다.
  */
 export const Colors: Story = {
   args: {
@@ -196,7 +196,8 @@ export const Colors: Story = {
 };
 
 /**
- * 5가지 표준 사이즈(XS ~ XL)에 따른 크기 변화를 확인합니다.
+ * 크기 변주
+ * 다섯 가지 사이즈(XL ~ XS) 구성을 통해 다양한 레이아웃 환경에 최적화된 크기를 확인합니다.
  */
 export const Sizes: Story = {
   args: {
@@ -230,10 +231,8 @@ export const Sizes: Story = {
 };
 
 /**
- * Checkbox 컴포넌트의 사용자 인터랙션에 따른 시각적 상태 변화를 확인합니다. <br>
- * 선택(Checked) 및 해제(Unchecked) 상태를 기준으로 마우스 오버(Hover), 클릭(Active),
- * 키보드 접근(Focus), 사용 불가(Disabled) 등의 명세가 의도대로 표현되는지 검증합니다.  <br>
- * pseudo-class를 활용하여 실제 입력 없이도 디자인 시스템의 모든 상태별 대응 로직을 한눈에 파악할 수 있습니다.
+ * 상태별 UI 확인
+ * 일반, 호버, 액티브, 포커스 등 인터랙션 상태와 비활성화(Disabled) 상태의 UI 차이를 비교합니다.
  */
 export const States: Story = {
   args: {

@@ -1,18 +1,29 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Badge from './Badge';
-import Icon from '../Icon/Icon';
-import { GuideCell, GuideGroup, GuideWrapper } from '../../guide/Guide';
-import Avatar from '../../molecules/Avatar/Avatar';
+import { GuideCell, GuideGroup, GuideWrapper } from '@/components/ui/guide/Guide';
+import Badge from '@/components/ui/atoms/Badge/Badge';
+import Icon from '@/components/ui/atoms/Icon/Icon';
+import Avatar from '@/components/ui/molecules/Avatar/Avatar';
+import IconButton from '@/components/ui/molecules/IconButton/IconButton';
 import sampleAvatar2 from '@/assets/images/avatar_profile_sample_2.png';
-import IconButton from '../../molecules/IconButton/IconButton';
 
 const meta: Meta<typeof Badge> = {
   title: 'UI/Atoms/Badge',
   component: Badge,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          '**Badge** 컴포넌트는 숫자, 상태 키워드 또는 단순한 점(Dot)을 통해 사용자에게 부가적인 정보를 전달합니다. <br />' +
+          '독립적으로 사용하거나 Avatar, Icon 등 다른 컴포넌트 위에 중첩하여 알림 상태를 표시할 수 있습니다. <br /><br />' +
+          '• 레이블이 있는 Solid/Outline 스타일과 간결한 알림용 Dot 스타일 지원 <br />' +
+          '• 부모 요소의 형태(`overlapShape`)를 감지하여 최적의 부착 위치를 자동 계산 <br />' +
+          '• 디자인 시스템의 시멘틱 컬러를 통해 정보의 중요도와 성격을 명확히 구분',
+      },
+    },
   },
   tags: ['autodocs'],
+
   argTypes: {
     // --- Appearance: 시각적 스타일 ---
     variant: {
@@ -33,7 +44,6 @@ const meta: Meta<typeof Badge> = {
         defaultValue: { summary: 'primary' },
       },
     },
-
     // --- Layout: 형태 및 위치 ---
     shape: {
       control: 'select',
@@ -72,7 +82,6 @@ const meta: Meta<typeof Badge> = {
         defaultValue: { summary: 'rounded' },
       },
     },
-
     // --- Content: 내용 ---
     label: {
       control: 'text',
@@ -91,7 +100,6 @@ const meta: Meta<typeof Badge> = {
         type: { summary: 'ReactNode' },
       },
     },
-
     // --- Accessibility: 접근성 ---
     ariaLabel: {
       control: 'text',
@@ -102,17 +110,25 @@ const meta: Meta<typeof Badge> = {
       },
     },
   },
+  args: {
+    size: 'md',
+    label: '공지',
+  },
 } satisfies Meta<typeof Badge>;
 
 export default meta;
 type Story = StoryObj<typeof Badge>;
 
+/**
+ * 기본 사용 예시
+ * 가장 기본적인 Badge 형태를 확인합니다.
+ */
 export const Base: Story = {
-  render: () => (
+  render: args => (
     <GuideWrapper>
       <GuideGroup>
         <GuideCell>
-          <Badge color='primary' label='공지'></Badge>
+          <Badge {...args} />
         </GuideCell>
       </GuideGroup>
     </GuideWrapper>
@@ -120,66 +136,62 @@ export const Base: Story = {
 };
 
 /**
- * 📏 Sizes: 배지의 크기 시스템을 정의합니다.
- * XS부터 XL까지(현재 스토리는 SM, MD, LG 중심) 다양한 위계의 UI에 대응합니다.
- * * [접근성 포인트]
- * - 가려짐 방지: 배지 크기가 커질 때 행 높이(Line-height)를 초과하여 위아래 텍스트를
- * 가리지(Obscured) 않도록 최적화된 Height 값을 할당했습니다.
- * - 최소 크기: 'circle' 형태의 배지는 최소 44x44px의 터치 타겟을 확보하거나,
- * 텍스트와 충분한 간격을 두어 오클릭을 방지해야 합니다.
+ * 크기 변주
+ * SM, MD, LG 세 가지 크기에 따라 레이블의 가독성과 전체적인 볼륨감을 확인합니다.
+ * 상황에 따라 사각형, 라운드, 알약, 원형 등 다양한 모양을 적용할 수 있습니다.
  */
 export const Sizes: Story = {
   render: () => (
     <GuideWrapper>
       <GuideGroup title='SM'>
         <GuideCell>
-          <Badge size='sm' shape='square' label='공지'></Badge>
+          <Badge size='sm' shape='square' label='공지' />
         </GuideCell>
         <GuideCell>
-          <Badge size='sm' shape='rounded' label='공지'></Badge>
+          <Badge size='sm' shape='rounded' label='공지' />
         </GuideCell>
         <GuideCell>
-          <Badge size='sm' shape='pill' color='danger' label='+999'></Badge>
+          <Badge size='sm' shape='pill' color='danger' label='+999' />
         </GuideCell>
         <GuideCell>
-          <Badge size='sm' color='danger' shape='circle' label='N'></Badge>
+          <Badge size='sm' color='danger' shape='circle' label='N' />
         </GuideCell>
         <GuideCell>
-          <Badge size='sm' color='danger' variant='dot' label='신규 알림 있음'></Badge>
+          <Badge size='sm' color='danger' variant='dot' label='신규 알림 있음' />
         </GuideCell>
       </GuideGroup>
       <GuideGroup title='MD'>
         <GuideCell>
-          <Badge size='md' shape='square' label='공지'></Badge>
+          <Badge size='md' shape='square' label='공지' />
         </GuideCell>
         <GuideCell>
-          <Badge size='md' shape='rounded' label='공지'></Badge>
+          <Badge size='md' shape='rounded' label='공지' />
         </GuideCell>
         <GuideCell>
-          <Badge size='md' shape='pill' color='danger' label='+999'></Badge>
+          <Badge size='md' shape='pill' color='danger' label='+999' />
         </GuideCell>
         <GuideCell>
-          <Badge size='md' color='danger' shape='circle' label='N'></Badge>
+          <Badge size='md' color='danger' shape='circle' label='N' />
         </GuideCell>
         <GuideCell>
-          <Badge size='md' color='danger' variant='dot' label='신규 알림 있음'></Badge>
+          <Badge size='md' color='danger' variant='dot' label='신규 알림 있음' />
         </GuideCell>
       </GuideGroup>
       <GuideGroup title='LG'>
         <GuideCell>
-          <Badge size='lg' shape='square' label='공지'></Badge>
+          <Badge size='lg' shape='square' label='공지' />
         </GuideCell>
         <GuideCell>
-          <Badge size='lg' shape='rounded' label='공지'></Badge>
+          <Badge size='lg' shape='rounded' label='공지' />
         </GuideCell>
         <GuideCell>
-          <Badge size='lg' shape='pill' color='danger' label='+999'></Badge>
+          <Badge size='lg' shape='pill' color='danger' label='+999' />
         </GuideCell>
         <GuideCell>
-          <Badge size='lg' color='danger' shape='circle' label='N'></Badge>
+          <Badge size='lg' color='danger' shape='circle' label='N' />
         </GuideCell>
         <GuideCell>
-          <Badge size='lg' color='danger' variant='dot' label='신규 알림 있음'></Badge>
+          <Badge size='lg' color='danger' variant='dot' label='신규 알림 있음' />
         </GuideCell>
       </GuideGroup>
     </GuideWrapper>
@@ -187,62 +199,58 @@ export const Sizes: Story = {
 };
 
 /**
- * 🌈 Colors: 시스템 테마별 컬러 배리에이션입니다.
- * Primary, Secondary, Tertiary 및 상태 컬러(Success, Warning, Danger)를 포함합니다.
- * * [접근성 포인트]
- * - 명도 대비: 모든 컬러는 배경과 텍스트의 대비비가 4.5:1(AA)을 넘도록 설계되었습니다.
- * - Warning 주의: 밝은 노랑 대신 금색 계열을 사용하여 흰색 배경에서 글자가
- * 가려진(Obscured) 것처럼 보이는 현상을 방지했습니다.
+ * 테마 색상 적용
+ * 브랜드 식별자 및 상태 정보(성공, 경고, 위험 등)를 나타내는 색상 구성을 확인합니다.
  */
 export const Colors: Story = {
   render: () => (
     <GuideWrapper>
       <GuideGroup title='Primary'>
         <GuideCell>
-          <Badge variant='solid' color='primary' label='공지'></Badge>
+          <Badge variant='solid' color='primary' label='공지' />
         </GuideCell>
         <GuideCell>
-          <Badge variant='outline' color='primary' label='공지'></Badge>
+          <Badge variant='outline' color='primary' label='공지' />
         </GuideCell>
       </GuideGroup>
       <GuideGroup title='Secondary'>
         <GuideCell>
-          <Badge variant='solid' color='secondary' label='공지'></Badge>
+          <Badge variant='solid' color='secondary' label='공지' />
         </GuideCell>
         <GuideCell>
-          <Badge variant='outline' color='secondary' label='공지'></Badge>
+          <Badge variant='outline' color='secondary' label='공지' />
         </GuideCell>
       </GuideGroup>
       <GuideGroup title='Tertiary'>
         <GuideCell>
-          <Badge variant='solid' color='tertiary' label='공지'></Badge>
+          <Badge variant='solid' color='tertiary' label='공지' />
         </GuideCell>
         <GuideCell>
-          <Badge variant='outline' color='tertiary' label='공지'></Badge>
+          <Badge variant='outline' color='tertiary' label='공지' />
         </GuideCell>
       </GuideGroup>
       <GuideGroup title='Success'>
         <GuideCell>
-          <Badge variant='solid' color='success' label='공지'></Badge>
+          <Badge variant='solid' color='success' label='공지' />
         </GuideCell>
         <GuideCell>
-          <Badge variant='outline' color='success' label='공지'></Badge>
+          <Badge variant='outline' color='success' label='공지' />
         </GuideCell>
       </GuideGroup>
       <GuideGroup title='Warning'>
         <GuideCell>
-          <Badge variant='solid' color='warning' label='공지'></Badge>
+          <Badge variant='solid' color='warning' label='공지' />
         </GuideCell>
         <GuideCell>
-          <Badge variant='outline' color='warning' label='공지'></Badge>
+          <Badge variant='outline' color='warning' label='공지' />
         </GuideCell>
       </GuideGroup>
       <GuideGroup title='Danger'>
         <GuideCell>
-          <Badge variant='solid' color='danger' label='공지'></Badge>
+          <Badge variant='solid' color='danger' label='공지' />
         </GuideCell>
         <GuideCell>
-          <Badge variant='outline' color='danger' label='공지'></Badge>
+          <Badge variant='outline' color='danger' label='공지' />
         </GuideCell>
       </GuideGroup>
     </GuideWrapper>
@@ -250,22 +258,21 @@ export const Colors: Story = {
 };
 
 /**
- * ✨ Variants: 배지의 시각적 무게감(Weight)을 결정하는 스타일입니다.
- * Solid: 강한 강조가 필요하거나 배경색이 밝은 영역에 사용합니다.
- * Outline: 보조적인 정보나 데이터가 밀집된 리스트 내에서 시각적 부하를 줄일 때 사용합니다.
+ * 외형 스타일 변주
+ * 배경을 채운 Solid, 테두리 중심의 Outline, 그리고 단순 상태 알림용 Dot 스타일을 확인합니다.
  */
 export const Variants: Story = {
   render: () => (
     <GuideWrapper>
       <GuideGroup>
         <GuideCell caption='Solid'>
-          <Badge variant='solid' label='공지'></Badge>
+          <Badge variant='solid' label='공지' />
         </GuideCell>
         <GuideCell caption='Outline'>
-          <Badge variant='outline' label='공지'></Badge>
+          <Badge variant='outline' label='공지' />
         </GuideCell>
         <GuideCell caption='Dot'>
-          <Badge color='danger' variant='dot' label='신규 알림 있음'></Badge>
+          <Badge color='danger' variant='dot' label='신규 알림 있음' />
         </GuideCell>
       </GuideGroup>
     </GuideWrapper>
@@ -273,30 +280,28 @@ export const Variants: Story = {
 };
 
 /**
- * 📐 Shapes: 배지의 모서리 곡률에 따른 형태 분류입니다.
- * Square: 정갈하고 딱딱한 느낌의 시스템 레이아웃에 적합합니다.
- * Rounded: 부드러운 인상을 주며 대부분의 현대적 UI에서 기본값으로 쓰입니다.
- * Circle: 숫자 알림(Count)이나 심볼(N, 1, !)을 강조할 때 사용하며, 1:1 비율을 유지합니다.
+ * 형태 변주
+ * 데이터의 성격에 맞춰 직각형(Square), 모서리 둥근형(Rounded), 알약형(Pill), 정원형(Circle)을 선택할 수 있습니다.
  */
 export const Shapes: Story = {
   render: () => (
     <GuideWrapper>
       <GuideGroup>
         <GuideCell caption='Square'>
-          <Badge shape='square' label='공지'></Badge>
-          <Badge variant='outline' shape='square' label='공지'></Badge>
+          <Badge shape='square' label='공지' />
+          <Badge variant='outline' shape='square' label='공지' />
         </GuideCell>
         <GuideCell caption='Rounded'>
-          <Badge shape='rounded' label='공지'></Badge>
-          <Badge variant='outline' shape='rounded' label='공지'></Badge>
+          <Badge shape='rounded' label='공지' />
+          <Badge variant='outline' shape='rounded' label='공지' />
         </GuideCell>
         <GuideCell caption='Pill'>
-          <Badge shape='pill' color='danger' label='+999'></Badge>
-          <Badge variant='outline' shape='pill' color='danger' label='+999'></Badge>
+          <Badge shape='pill' color='danger' label='+999' />
+          <Badge variant='outline' shape='pill' color='danger' label='+999' />
         </GuideCell>
         <GuideCell caption='Circle'>
-          <Badge shape='circle' color='danger' label='N'></Badge>
-          <Badge variant='outline' color='danger' shape='circle' label='N'></Badge>
+          <Badge shape='circle' color='danger' label='N' />
+          <Badge variant='outline' color='danger' shape='circle' label='N' />
         </GuideCell>
       </GuideGroup>
     </GuideWrapper>
@@ -304,10 +309,9 @@ export const Shapes: Story = {
 };
 
 /**
- * `Overlaid` 스토리는 배지가 다른 컴포넌트(Avatar, IconButton 등) 위에 겹쳐질 때의 레이아웃을 확인합니다.
- * * - `overlapShape`: 하위 요소의 형태(pill, rounded 등)에 따라 배지의 위치를 자동으로 보정합니다.
- * - 특히 `pill`(원형)인 경우, 시각적으로 자연스럽게 안착되도록 14.6% 안쪽으로 위치가 조정됩니다.
- * - 접근성: 배지가 콘텐츠를 가리는 상황을 고려하여 `title` 속성 대신 `aria-label` 사용을 권장합니다.
+ * 중첩 배치 (Overlaid)
+ * 아바타나 아이콘 버튼 같은 다른 컴포넌트 위에 Badge를 배치하여 알림이나 상태를 표시합니다.
+ * overlapShape와 position 속성을 통해 부모 요소와의 자연스러운 정렬을 지원합니다.
  */
 export const Overlaid: Story = {
   render: () => (

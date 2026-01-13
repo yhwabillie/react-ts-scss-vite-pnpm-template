@@ -420,6 +420,13 @@ export const TokenData = [
     "description": ""
   },
   {
+    "id": "--color-primary-data-table-solid-notice-tr-border",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-alpha-322)",
+    "usage": "primary-data-table-solid-notice-tr-border",
+    "description": ""
+  },
+  {
     "id": "--color-primary-data-table-solid-tbody-border",
     "lightValue": "var(--project-color-primitive-gray-190)",
     "darkValue": "var(--project-color-primitive-alpha-322)",
@@ -1660,23 +1667,30 @@ export const TokenData = [
   },
   {
     "id": "--color-secondary-badge-outline-bg",
-    "lightValue": "var(--project-color-primitive-alpha-317)",
-    "darkValue": "var(--project-color-primitive-gray-209)",
+    "lightValue": "var(--project-color-primitive-gray-209)",
+    "darkValue": "var(--project-color-primitive-alpha-317)",
     "usage": "secondary-badge-outline-bg",
     "description": ""
   },
   {
     "id": "--color-secondary-badge-outline-text",
-    "lightValue": "var(--project-color-primitive-blue-73)",
-    "darkValue": "var(--project-color-primitive-blue-88)",
+    "lightValue": "var(--project-color-primitive-blue-88)",
+    "darkValue": "var(--project-color-primitive-blue-73)",
     "usage": "secondary-badge-outline-text",
     "description": ""
   },
   {
     "id": "--color-secondary-badge-outline-border",
-    "lightValue": "var(--project-color-primitive-blue-73)",
-    "darkValue": "var(--project-color-primitive-blue-88)",
+    "lightValue": "var(--project-color-primitive-blue-88)",
+    "darkValue": "var(--project-color-primitive-blue-73)",
     "usage": "secondary-badge-outline-border",
+    "description": ""
+  },
+  {
+    "id": "--color-secondary-data-table-solid-notice-tr-border",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-alpha-322)",
+    "usage": "secondary-data-table-solid-notice-tr-border",
     "description": ""
   },
   {
@@ -2563,8 +2577,8 @@ export const TokenData = [
   },
   {
     "id": "--color-tertiary-tag-solid-bg",
-    "lightValue": "var(--project-color-primitive-blue-151)",
-    "darkValue": "var(--project-color-primitive-blue-128)",
+    "lightValue": "var(--project-color-primitive-blue-115)",
+    "darkValue": "var(--project-color-primitive-blue-131)",
     "usage": "tertiary-tag-solid-bg",
     "description": ""
   },
@@ -2577,7 +2591,7 @@ export const TokenData = [
   },
   {
     "id": "--color-tertiary-tag-solid-text",
-    "lightValue": "var(--project-color-primitive-blue-36)",
+    "lightValue": "var(--project-color-primitive-gray-246)",
     "darkValue": "var(--project-color-primitive-gray-246)",
     "usage": "tertiary-tag-solid-text",
     "description": ""
@@ -2599,28 +2613,28 @@ export const TokenData = [
   {
     "id": "--color-tertiary-tag-outline-bg-hover",
     "lightValue": "var(--project-color-primitive-alpha-274)",
-    "darkValue": "var(--project-color-primitive-alpha-264)",
+    "darkValue": "var(--project-color-primitive-alpha-268)",
     "usage": "tertiary-tag-outline-bg-hover",
     "description": ""
   },
   {
     "id": "--color-tertiary-tag-outline-text",
-    "lightValue": "var(--project-color-primitive-blue-151)",
-    "darkValue": "var(--project-color-primitive-blue-128)",
+    "lightValue": "var(--project-color-primitive-blue-115)",
+    "darkValue": "var(--project-color-primitive-blue-164)",
     "usage": "tertiary-tag-outline-text",
     "description": ""
   },
   {
     "id": "--color-tertiary-tag-outline-border",
-    "lightValue": "var(--project-color-primitive-blue-151)",
-    "darkValue": "var(--project-color-primitive-blue-139)",
+    "lightValue": "var(--project-color-primitive-blue-115)",
+    "darkValue": "var(--project-color-primitive-blue-164)",
     "usage": "tertiary-tag-outline-border",
     "description": ""
   },
   {
     "id": "--color-tertiary-tag-outline-icon-fill",
-    "lightValue": "var(--project-color-primitive-blue-151)",
-    "darkValue": "var(--project-color-primitive-blue-128)",
+    "lightValue": "var(--project-color-primitive-blue-115)",
+    "darkValue": "var(--project-color-primitive-blue-164)",
     "usage": "tertiary-tag-outline-icon-fill",
     "description": ""
   },
@@ -2944,6 +2958,13 @@ export const TokenData = [
     "lightValue": "var(--project-color-primitive-blue-128)",
     "darkValue": "var(--project-color-primitive-blue-151)",
     "usage": "tertiary-badge-outline-border",
+    "description": ""
+  },
+  {
+    "id": "--color-tertiary-data-table-solid-notice-tr-border",
+    "lightValue": "var(--project-color-primitive-gray-246)",
+    "darkValue": "var(--project-color-primitive-alpha-322)",
+    "usage": "tertiary-data-table-solid-notice-tr-border",
     "description": ""
   },
   {

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Spinner from './Spinner';
-import RingSpinner from './LoadingSpinner/RingSpinner';
-import { SpecimenCell, SpecimenRow } from '../../guide/Specimen';
+import Spinner from '@/components/ui/atoms/Spinner/Spinner';
+import RingSpinner from '@/components/ui/atoms/Spinner/Spinner';
+import { SpecimenCell, SpecimenRow } from '@/components/ui/guide/Specimen';
 
 const meta: Meta<typeof Spinner> = {
   title: 'UI/Atoms/Spinner/RingSpinner',
@@ -49,13 +49,13 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+/**
+ * 닫힌 고리 형태 (Closed Ring)
+ * 끊김이 없는 원형 선이 회전하며 로딩 상태를 나타내는 기본 변형입니다.
+ */
 export const ClosedRing: Story = {
   parameters: {
     docs: {
-      description: {
-        story:
-          '끊김이 없는 원형 선의 굵기 차이를 이용하여 회전 효과를 주는 기본 스타일입니다. 안정적이고 묵직한 로딩감을 줄 때 적합합니다.',
-      },
       canvas: {
         sourceState: 'shown',
       },
@@ -69,13 +69,13 @@ export const ClosedRing: Story = {
   },
 };
 
+/**
+ * 열린 고리 형태 (Open Ring)
+ * 선의 일부가 뚫려 있는 형태로, 회전 시 속도감과 방향성을 더 강조한 변형입니다.
+ */
 export const OpenRing: Story = {
   parameters: {
     docs: {
-      description: {
-        story:
-          '한쪽 끝이 트여있는 형태의 스피너입니다. 가볍고 경쾌한 느낌을 주며, 버튼 내부나 좁은 공간에서 간결하게 로딩 상태를 표시하기 좋습니다.',
-      },
       canvas: {
         sourceState: 'shown',
       },
@@ -89,15 +89,11 @@ export const OpenRing: Story = {
   },
 };
 
+/**
+ * 테마 색상 적용
+ * 브랜드 식별을 위한 Primary 컬러와 보조적인 용도의 Secondary, Tertiary 컬러 적용 모습을 확인합니다.
+ */
 export const Colors: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          '디자인 시스템의 시멘틱 컬러 시스템을 적용한 스피너입니다. 성공(success), 경고(warning), 에러(danger) 등 각 상황의 맥락에 맞는 컬러를 선택하여 사용합니다.',
-      },
-    },
-  },
   render: args => {
     const colorOptions: Array<'primary' | 'secondary' | 'tertiary'> = [
       'primary',
@@ -119,15 +115,11 @@ export const Colors: Story = {
   },
 };
 
+/**
+ * 규격 변주
+ * 아주 작은 요소 내부(XS)부터 화면 전체의 로딩(XL)까지, 다양한 맥락에 대응하는 5가지 크기를 제공합니다.
+ */
 export const Sizes: Story = {
-  parameters: {
-    docs: {
-      description: {
-        story:
-          '다섯 가지 표준 사이즈(XS ~ XL)에 따른 버튼의 크기 변화와 내부 요소의 비율을 확인합니다.',
-      },
-    },
-  },
   render: args => {
     const sizeOptions: Array<'xl' | 'lg' | 'md' | 'sm' | 'xs'> = ['xl', 'lg', 'md', 'sm', 'xs'];
 

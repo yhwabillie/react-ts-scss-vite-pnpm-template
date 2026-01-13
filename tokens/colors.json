@@ -257,12 +257,12 @@
     "label": {
       "text": {
         "light": {
-          "value": "var(--project-color-primitive-gray-246)",
+          "value": "var(--project-color-primitive-gray-34)",
           "usage": "Label Text Color",
           "comment": "밝은 모드에서 라벨 텍스트의 색상입니다."
         },
         "dark": {
-          "value": "var(--project-color-primitive-gray-34)",
+          "value": "var(--project-color-primitive-gray-246)",
           "usage": "Label Text Color",
           "comment": "어두운 모드에서 라벨 텍스트의 색상입니다."
         }

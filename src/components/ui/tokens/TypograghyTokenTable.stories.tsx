@@ -7,6 +7,19 @@ const meta: Meta<typeof TypographyTokenTable> = {
   title: 'Tokens/Typography',
   component: TypographyTokenTable,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '**Typography 토큰**은 다국어 환경에서 일관된 가독성을 제공하기 위한 서체 시스템입니다. <br />' +
+          '각 언어의 조형적 특성에 맞춰 최적화된 전용 서체를 다음과 같이 매핑하여 사용합니다. <br /><br />' +
+          '• **한국어 (KO)**: Pretendard GOV <br />' +
+          '• **영어 (EN)**: NanumSquare Neo <br />' +
+          '• **일본어 (JA)**: Noto Sans JP <br />' +
+          '• **코드 (Code)**: Fira Code',
+      },
+    },
+  },
   argTypes: {
     // --- [Category: Table Settings] ---
     title: {
