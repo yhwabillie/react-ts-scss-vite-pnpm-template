@@ -20,6 +20,16 @@ const meta: Meta<typeof FilePicker> = {
     },
   },
   argTypes: {
+    color: {
+      control: 'inline-radio',
+      options: ['primary', 'secondary', 'tertiary'],
+      description: '컴포넌트의 강조 색상 테마를 결정합니다.',
+      table: {
+        category: 'Appearance',
+        type: { summary: "'primary' | 'secondary' | 'tertiary'" },
+        defaultValue: { summary: 'primary' },
+      },
+    },
     title: {
       control: 'text',
       description: '컴포넌트 상단에 표시될 제목입니다.',

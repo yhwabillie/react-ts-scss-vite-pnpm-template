@@ -3,10 +3,10 @@ const scssPrimitiveMapFormat = ({ dictionary }) => {
   const { tokens } = dictionary;
   let output = '$g_primitive_colors: (\n';
 
+  // tokens.primitive 아래에 새로 생성된 그룹(sky, indigo 등)이 들어있어야 합니다.
   Object.entries(tokens.primitive).forEach(([category, colorTokens]) => {
     output += `  "${category}": (\n`;
     Object.entries(colorTokens).forEach(([name, token]) => {
-      // color-0 등에서 숫지만 추출하거나 이름을 정제
       const cleanName = name.replace('color-', '');
       output += `    "${cleanName}": ${token.value},\n`;
     });
@@ -21,14 +21,21 @@ const scssPrimitiveMapFormat = ({ dictionary }) => {
 const typescriptPrimitiveMetaFormat = ({ dictionary }) => {
   const { tokens } = dictionary;
 
+  // tokens.primitive 안에 'blue', 'sky', 'slate-blue' 등이 각각 존재해야 함
   const result = Object.entries(tokens.primitive).map(([category, colorTokens]) => ({
-    category: category.toUpperCase(),
-    colors: Object.entries(colorTokens).map(([key, token]) => ({
-      id: `primitive-${category}-${key}`,
-      name: key, // ✅ name 필드 추가 (color-0, color-1 등)
-      value: token.value,
-      variable: `--color-primitive-${category}-${key.replace('color-', '')}`,
-    })),
+    category: category.toUpperCase(), // ✅ 'BLUE', 'SKY', 'SLATE-BLUE' 등으로 표시됨
+    colors: Object.entries(colorTokens).map(([key, token]) => {
+      // name이 '50', '100' 등일 수도 있고 'color-50'일 수도 있음
+      const cleanKey = key.replace('color-', '');
+
+      return {
+        id: `primitive-${category}-${cleanKey}`,
+        name: cleanKey,
+        value: token.value,
+        // ✅ 여기서 변수명이 CSS 변수와 일치하는지 확인 (예: --color-primitive-sky-50)
+        variable: `--color-primitive-${category}-${cleanKey}`,
+      };
+    }),
   }));
 
   return `export const PrimitiveTokensData = ${JSON.stringify(result, null, 2)};`;

@@ -66,10 +66,28 @@ export const BrandColors: Story = {
     title: 'Brand & Point Colors',
     category: 'Base',
     tokens: [
+      // 1. 파란색 계열 (맑은 하늘색 -> 정직한 블루 -> 회색빛 블루 순서 추천)
+      ...(primitiveMap['sky'] || []),
+      ...(primitiveMap['cyan'] || []),
       ...(primitiveMap['blue'] || []),
-      ...(primitiveMap['red'] || []),
+      ...(primitiveMap['slate-blue'] || []),
+      ...(primitiveMap['indigo'] || []),
+      ...(primitiveMap['purple'] || []),
+    ],
+  },
+};
+
+export const PointColors: Story = {
+  args: {
+    title: 'Brand & Point Colors',
+    category: 'Base',
+    tokens: [
+      // 2. 포인트 및 상태 컬러
       ...(primitiveMap['green'] || []),
       ...(primitiveMap['yellow'] || []),
+      ...(primitiveMap['orange'] || []),
+      ...(primitiveMap['red'] || []),
+      ...(primitiveMap['pink'] || []),
     ],
   },
 };
