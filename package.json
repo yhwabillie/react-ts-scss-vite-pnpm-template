@@ -10,9 +10,10 @@
     "lint": "eslint .",
     "lint:css": "stylelint 'src/**/*.{css,scss}' --allow-empty-input",
     "lint:css:fix": "stylelint 'src/**/*.{css,scss}' --fix --allow-empty-input",
-    "build:tokens": "style-dictionary build --config sd.config.js",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "token:setup": "node scripts/organize-primitive.mjs && node scripts/replace.mjs",
+    "token:build": "pnpm run token:setup && style-dictionary build --config sd.config.js",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "prepare": "husky install"

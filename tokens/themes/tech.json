@@ -292,35 +292,6 @@
       "accordion": {
         "light": {
           "header-bg": {
-            "value": "var(--project-color-primitive-sky-490)"
-          },
-          "header-bg-hover": {
-            "value": "var(--project-color-primitive-sky-610)"
-          },
-          "header-text": {
-            "value": "var(--project-color-primitive-gray-white)"
-          },
-          "panel-bg": {
-            "value": "var(--project-color-primitive-gray-830)"
-          },
-          "nested-header-bg": {
-            "value": "var(--project-color-primitive-gray-770)"
-          },
-          "nested-header-bg-hover": {
-            "value": "var(--project-color-primitive-gray-700)"
-          },
-          "nested-header-text": {
-            "value": "var(--project-color-primitive-slate-blue-110)"
-          },
-          "nested-header-icon-fill": {
-            "value": "var(--project-color-primitive-slate-blue-180)"
-          },
-          "nested-header-panel-bg": {
-            "value": "var(--project-color-primitive-gray-870)"
-          }
-        },
-        "dark": {
-          "header-bg": {
             "value": "var(--project-color-primitive-sky-600)"
           },
           "header-bg-hover": {
@@ -346,6 +317,35 @@
           },
           "nested-header-panel-bg": {
             "value": "var(--project-color-primitive-gray-white)"
+          }
+        },
+        "dark": {
+          "header-bg": {
+            "value": "var(--project-color-primitive-sky-490)"
+          },
+          "header-bg-hover": {
+            "value": "var(--project-color-primitive-sky-610)"
+          },
+          "header-text": {
+            "value": "var(--project-color-primitive-gray-white)"
+          },
+          "panel-bg": {
+            "value": "var(--project-color-primitive-gray-830)"
+          },
+          "nested-header-bg": {
+            "value": "var(--project-color-primitive-gray-770)"
+          },
+          "nested-header-bg-hover": {
+            "value": "var(--project-color-primitive-gray-700)"
+          },
+          "nested-header-text": {
+            "value": "var(--project-color-primitive-slate-blue-110)"
+          },
+          "nested-header-icon-fill": {
+            "value": "var(--project-color-primitive-slate-blue-180)"
+          },
+          "nested-header-panel-bg": {
+            "value": "var(--project-color-primitive-gray-870)"
           }
         }
       },
@@ -733,7 +733,7 @@
             "value": "var(--project-color-primitive-sky-160)"
           },
           "ghost-text-selected": {
-            "value": "var(--project-color-primitive-blue-790)"
+            "value": "var(--project-color-primitive-sky-900)"
           },
           "ghost-bg-selected-hover": {
             "value": "var(--project-color-primitive-sky-200)"
@@ -3239,7 +3239,7 @@
             "value": "var(--project-color-primitive-indigo-80)"
           },
           "ghost-text-selected": {
-            "value": "var(--project-color-primitive-indigo-120)"
+            "value": "var(--project-color-primitive-indigo-650)"
           },
           "ghost-bg-selected-hover": {
             "value": "var(--project-color-primitive-indigo-150)"

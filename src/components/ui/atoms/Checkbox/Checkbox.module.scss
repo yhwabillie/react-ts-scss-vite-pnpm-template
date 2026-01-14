@@ -296,7 +296,7 @@ $checkbox-sizes: (
   }
 
   :global(.mark) {
-    color: var(--project-color-primitive-gray-246);
+    color: var(--project-color-checkbox-unchecked-bg);
 
     path {
       stroke-opacity: 0;

@@ -80,14 +80,14 @@ $slider-sizes: (
       cursor: not-allowed;
     }
     :global(.track) {
-      background-color: var(--project-color-slider-track-bg);
+      background-color: var(--project-color-slider-disabled-track-bg);
       :global(.fill) {
-        background-color: var(--disabled-fill-bg-color-slider) !important;
+        background-color: var(--project-color-slider-disabled-fill) !important;
       }
     }
     :global(.thumb) {
-      background-color: var(--project-color-slider-bg);
-      border-color: var(--disabled-thumb-stroke-color-slider) !important;
+      background-color: var(--project-color-slider-disabled-thumb-bg);
+      border-color: var(--project-color-slider-disabled-thumb-border) !important;
       cursor: not-allowed;
       :global(.tooltip) {
         display: none !important;

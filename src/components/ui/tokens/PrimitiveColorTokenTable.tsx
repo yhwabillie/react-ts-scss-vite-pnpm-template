@@ -81,21 +81,6 @@ const PrimitiveColorTokenTable = ({ title, category, tokens }: PrimitiveTablePro
         </button>
       ),
     },
-    {
-      key: 'description',
-      header: 'Metadata',
-      width: '30%',
-      render: (_, row) => (
-        <div className='token-table__description'>
-          <strong>{row.usage}</strong>
-          <p>{row.description}</p>
-          {/* RGBA 값일 경우 접근성 주의 뱃지 노출 */}
-          {row.value.includes('rgba') && (
-            <Badge variant='outline' size='sm' color='danger' label='A11y Check: Alpha' />
-          )}
-        </div>
-      ),
-    },
   ];
 
   return (

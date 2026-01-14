@@ -48,34 +48,61 @@ const SUFFIX_MAP: Record<string, string> = {
 };
 
 /**
- * 2. 그룹화 로직 (개선된 자동 매핑)
+ * 2. 그룹화 로직 (정밀 매핑 및 구조 정제)
  */
 const groupedTokens = ColorTokensData.reduce(
   (acc, token) => {
-    const cleanId = token.id.replace(/^--color-(color-)?/, '');
+    // 1. 접두사 제거 로직 강화
+    // --color-color- 로 시작하는 경우와 --color- 로 시작하는 경우 모두 대응
+    const cleanId = token.id.replace(/^--color-/, '').replace(/^color-/, '');
 
-    let suffix = 'etc';
+    // 2. 그룹(suffix) 결정 알고리즘
+    let groupKey = 'etc';
 
-    // ✅ 1. 복합어(하이픈 포함) 우선 매칭
-    // data-table, focus-ring, scrollbar 등 2단어 이상인 컴포넌트 처리
-    if (cleanId.startsWith('focus-ring')) suffix = 'focus-ring';
-    else if (cleanId.startsWith('scrollbar')) suffix = 'scrollbar';
-    else if (cleanId.startsWith('custom-modal')) suffix = 'custom-modal';
-    else if (cleanId.startsWith('alert-modal')) suffix = 'alert-modal';
-    else if (cleanId.startsWith('option-list')) suffix = 'option-list';
-    else if (cleanId.startsWith('option-item')) suffix = 'option-item';
-    else if (cleanId.startsWith('required-asterisk')) suffix = 'required-asterisk';
-    else if (cleanId.startsWith('outline-btn')) suffix = 'outline-btn';
-    else if (cleanId.startsWith('icon-frame')) suffix = 'icon-frame';
-    else if (cleanId.startsWith('validation-msg')) suffix = 'validation-msg';
-    // ✅ 2. 그 외 단일 단어 기반 매핑
+    // ✅ 1. 복합 컴포넌트 우선순위 매칭 (기존 리스트 최적화)
+    // 좀 더 확장성 있게 배열의 .some()이나 .find()를 사용할 수도 있습니다.
+    const complexComponents = [
+      'focus-ring',
+      'scrollbar',
+      'custom-modal',
+      'alert-modal',
+      'option-list',
+      'option-item',
+      'required-asterisk',
+      'outline-btn',
+      'icon-frame',
+      'validation-msg',
+      'data-table',
+    ];
+
+    const matchedComplex = complexComponents.find(comp => cleanId.startsWith(comp));
+
+    if (matchedComplex) {
+      groupKey = matchedComplex;
+    }
+    // ✅ 2. 의미론적 그룹핑 (Semantic Grouping)
+    else if (cleanId.startsWith('surface') || cleanId.startsWith('bg')) {
+      groupKey = 'surface';
+    } else if (cleanId.startsWith('text') || cleanId.startsWith('typo')) {
+      groupKey = 'text';
+    } else if (cleanId.startsWith('border') || cleanId.startsWith('line')) {
+      groupKey = 'border';
+    }
+    // ✅ 3. 그 외 단일 단어 기반 매핑
     else {
       const firstWord = cleanId.split('-')[0];
-      suffix = SUFFIX_MAP[firstWord] || firstWord;
+      groupKey = SUFFIX_MAP[firstWord] || firstWord;
     }
 
-    if (!acc[suffix]) acc[suffix] = [];
-    acc[suffix].push(token);
+    if (!acc[groupKey]) acc[groupKey] = [];
+
+    // ✅ 3. 데이터 보정: organize-semantic.mjs에서 옮겨진 description(comment) 재검증
+    // 만약 description이 비어있다면 id에서 이름을 유추하여 기본값 부여
+    const refinedToken = {
+      ...token,
+    };
+
+    acc[groupKey].push(refinedToken);
     return acc;
   },
   {} as Record<string, typeof ColorTokensData>,

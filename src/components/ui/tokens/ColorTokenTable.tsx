@@ -94,17 +94,6 @@ const ColorTokenTable = ({ title, category, tokens }: TokenTableProps) => {
         </button>
       ),
     },
-    {
-      key: 'description',
-      header: 'Usage & Description',
-      width: '30%',
-      render: (_, row) => (
-        <div className='token-table__description'>
-          <strong>{row.usage}</strong>
-          <p>{row.description}</p>
-        </div>
-      ),
-    },
   ];
 
   return (

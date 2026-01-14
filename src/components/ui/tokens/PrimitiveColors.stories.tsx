@@ -36,8 +36,6 @@ const primitiveMap = PrimitiveTokensData.reduce(
       id: color.variable, // --color-primitive-gray-0
       name: color.name, // color-0
       value: color.value, // #000000
-      usage: `${group.category} Scale`,
-      description: `Original Source: ${color.value}`,
     }));
     return acc;
   },
@@ -52,7 +50,26 @@ export const Grayscale: Story = {
   args: {
     title: 'Grayscale',
     category: 'Base',
-    tokens: primitiveMap['gray'] || [],
+    tokens: (primitiveMap['gray'] || [])
+      .slice() // 원본 배열 보호를 위한 복사
+      .sort((a, b) => {
+        // 1. 이름 정제 (예: 'color-white' -> 'white', 'color-50' -> '50')
+        const nameA = a.name.replace('color-', '').toLowerCase();
+        const nameB = b.name.replace('color-', '').toLowerCase();
+
+        // 2. White 최우선 배치
+        if (nameA === 'white') return -1;
+        if (nameB === 'white') return 1;
+
+        // 3. Black 최하단 배치
+        if (nameA === 'black') return 1;
+        if (nameB === 'black') return -1;
+
+        // 4. 숫자 단계 정렬 (50, 100, 200...)
+        const numA = parseInt(nameA, 10) || 0;
+        const numB = parseInt(nameB, 10) || 0;
+        return numA - numB;
+      }),
   },
 };
 
@@ -101,18 +118,5 @@ export const AlphaColors: Story = {
     title: 'Alpha Colors (RGBA)',
     category: 'Alpha',
     tokens: primitiveMap['alpha'] || [],
-  },
-};
-
-/**
- * 기타 및 시스템 공통 컬러
- * 위의 카테고리에 속하지 않는 특수 용도의 컬러나
- * 시스템 전반에서 보조적으로 사용되는 색상들을 정의합니다.
- */
-export const EtcColors: Story = {
-  args: {
-    title: 'Miscellaneous Colors',
-    category: 'System',
-    tokens: primitiveMap['etc'] || [],
   },
 };
