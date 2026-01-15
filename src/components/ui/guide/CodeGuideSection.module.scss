@@ -1,0 +1,22 @@
+/* GuideTable.module.scss */
+@use 'sass:map';
+@use '../../../styles/mixins' as *;
+
+.code-guide-section {
+  &:not(:last-child) {
+    margin-bottom: rem(40px);
+  }
+
+  :global {
+    .code-guide-section__title {
+      font: var(--project-typo-sub-title-1-700);
+      border-bottom: 0;
+      padding-bottom: 0;
+      margin-bottom: rem(8px);
+    }
+
+    .docblock-source {
+      margin: 0;
+    }
+  }
+}

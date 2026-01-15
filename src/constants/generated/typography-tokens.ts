@@ -101,7 +101,7 @@ export const TypographyTokensData = [
   {
     "id": "typo-heading-1-ko",
     "usage": "HEADING-1 / KO",
-    "fontSize": "32px",
+    "fontSize": "28px",
     "weights": [
       700
     ],
@@ -112,7 +112,7 @@ export const TypographyTokensData = [
   {
     "id": "typo-heading-1-ja",
     "usage": "HEADING-1 / JA",
-    "fontSize": "32px",
+    "fontSize": "28px",
     "weights": [
       700
     ],
@@ -123,7 +123,7 @@ export const TypographyTokensData = [
   {
     "id": "typo-heading-1-en",
     "usage": "HEADING-1 / EN",
-    "fontSize": "32px",
+    "fontSize": "28px",
     "weights": [
       700
     ],
@@ -134,7 +134,7 @@ export const TypographyTokensData = [
   {
     "id": "typo-heading-2-ko",
     "usage": "HEADING-2 / KO",
-    "fontSize": "28px",
+    "fontSize": "24px",
     "weights": [
       700
     ],
@@ -145,7 +145,7 @@ export const TypographyTokensData = [
   {
     "id": "typo-heading-2-ja",
     "usage": "HEADING-2 / JA",
-    "fontSize": "28px",
+    "fontSize": "24px",
     "weights": [
       700
     ],
@@ -156,7 +156,7 @@ export const TypographyTokensData = [
   {
     "id": "typo-heading-2-en",
     "usage": "HEADING-2 / EN",
-    "fontSize": "28px",
+    "fontSize": "24px",
     "weights": [
       700
     ],
@@ -167,7 +167,7 @@ export const TypographyTokensData = [
   {
     "id": "typo-heading-3-ko",
     "usage": "HEADING-3 / KO",
-    "fontSize": "24px",
+    "fontSize": "20px",
     "weights": [
       700
     ],
@@ -178,7 +178,7 @@ export const TypographyTokensData = [
   {
     "id": "typo-heading-3-ja",
     "usage": "HEADING-3 / JA",
-    "fontSize": "24px",
+    "fontSize": "20px",
     "weights": [
       700
     ],
@@ -189,7 +189,7 @@ export const TypographyTokensData = [
   {
     "id": "typo-heading-3-en",
     "usage": "HEADING-3 / EN",
-    "fontSize": "24px",
+    "fontSize": "20px",
     "weights": [
       700
     ],
@@ -200,9 +200,10 @@ export const TypographyTokensData = [
   {
     "id": "typo-sub-title-1-ko",
     "usage": "SUB-TITLE-1 / KO",
-    "fontSize": "20px",
+    "fontSize": "18px",
     "weights": [
-      600
+      600,
+      700
     ],
     "lineHeight": 1.5,
     "fontFamily": "ko",
@@ -211,9 +212,10 @@ export const TypographyTokensData = [
   {
     "id": "typo-sub-title-1-ja",
     "usage": "SUB-TITLE-1 / JA",
-    "fontSize": "20px",
+    "fontSize": "18px",
     "weights": [
-      600
+      600,
+      700
     ],
     "lineHeight": 1.5,
     "fontFamily": "ja",
@@ -222,9 +224,10 @@ export const TypographyTokensData = [
   {
     "id": "typo-sub-title-1-en",
     "usage": "SUB-TITLE-1 / EN",
-    "fontSize": "20px",
+    "fontSize": "18px",
     "weights": [
-      600
+      600,
+      700
     ],
     "lineHeight": 1.5,
     "fontFamily": "en",
@@ -233,9 +236,10 @@ export const TypographyTokensData = [
   {
     "id": "typo-sub-title-2-ko",
     "usage": "SUB-TITLE-2 / KO",
-    "fontSize": "18px",
+    "fontSize": "16px",
     "weights": [
-      600
+      600,
+      700
     ],
     "lineHeight": 1.5,
     "fontFamily": "ko",
@@ -244,9 +248,10 @@ export const TypographyTokensData = [
   {
     "id": "typo-sub-title-2-ja",
     "usage": "SUB-TITLE-2 / JA",
-    "fontSize": "18px",
+    "fontSize": "16px",
     "weights": [
-      600
+      600,
+      700
     ],
     "lineHeight": 1.5,
     "fontFamily": "ja",
@@ -255,9 +260,10 @@ export const TypographyTokensData = [
   {
     "id": "typo-sub-title-2-en",
     "usage": "SUB-TITLE-2 / EN",
-    "fontSize": "18px",
+    "fontSize": "16px",
     "weights": [
-      600
+      600,
+      700
     ],
     "lineHeight": 1.5,
     "fontFamily": "en",
@@ -266,9 +272,10 @@ export const TypographyTokensData = [
   {
     "id": "typo-sub-title-3-ko",
     "usage": "SUB-TITLE-3 / KO",
-    "fontSize": "16px",
+    "fontSize": "14px",
     "weights": [
-      600
+      600,
+      700
     ],
     "lineHeight": 1.5,
     "fontFamily": "ko",
@@ -277,9 +284,10 @@ export const TypographyTokensData = [
   {
     "id": "typo-sub-title-3-ja",
     "usage": "SUB-TITLE-3 / JA",
-    "fontSize": "16px",
+    "fontSize": "14px",
     "weights": [
-      600
+      600,
+      700
     ],
     "lineHeight": 1.5,
     "fontFamily": "ja",
@@ -288,9 +296,46 @@ export const TypographyTokensData = [
   {
     "id": "typo-sub-title-3-en",
     "usage": "SUB-TITLE-3 / EN",
-    "fontSize": "16px",
+    "fontSize": "14px",
     "weights": [
-      600
+      600,
+      700
+    ],
+    "lineHeight": 1.5,
+    "fontFamily": "en",
+    "description": "영문 작은 섹션이나 리스트 헤더"
+  },
+  {
+    "id": "typo-sub-title-4-ko",
+    "usage": "SUB-TITLE-4 / KO",
+    "fontSize": "12px",
+    "weights": [
+      400,
+      500
+    ],
+    "lineHeight": 1.5,
+    "fontFamily": "ko",
+    "description": "국문 작은 섹션이나 리스트 헤더"
+  },
+  {
+    "id": "typo-sub-title-4-ja",
+    "usage": "SUB-TITLE-4 / JA",
+    "fontSize": "12px",
+    "weights": [
+      400,
+      500
+    ],
+    "lineHeight": 1.5,
+    "fontFamily": "ja",
+    "description": "일문 작은 섹션이나 리스트 헤더"
+  },
+  {
+    "id": "typo-sub-title-4-en",
+    "usage": "SUB-TITLE-4 / EN",
+    "fontSize": "12px",
+    "weights": [
+      400,
+      500
     ],
     "lineHeight": 1.5,
     "fontFamily": "en",

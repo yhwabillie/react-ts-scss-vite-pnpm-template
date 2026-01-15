@@ -1,0 +1,50 @@
+/* FeatureGrid.module.scss */
+@use '../../../styles/mixins' as *;
+
+.feature-grid {
+  margin: 0 0 rem(60px) 0 !important;
+
+  :global {
+    .feature-grid__title {
+      font: var(--project-typo-heading-2-700);
+      border-bottom: 0;
+      padding-bottom: 0;
+      margin-bottom: rem(8px);
+    }
+
+    .feature-grid__list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(rem(250px), 1fr));
+      gap: rem(20px);
+    }
+
+    .feature-card {
+      border-radius: var(--project-border-radius-12);
+      border: rem(1px) solid #cccccc;
+      padding: rem(24px);
+      background: #f9fafb;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+      // 접근성 향상: 호버 시 카드 강조
+      &:hover {
+        transform: translateY(-4px) !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      &__title {
+        margin: 0 0 rem(8px) 0;
+        color: #667eea;
+        font: var(--project-typo-sub-title-1-700);
+      }
+
+      &__desc {
+        margin: 0;
+        font: var(--project-typo-sub-title-4-500);
+        color: #333333;
+        word-break: keep-all;
+      }
+    }
+  }
+}

@@ -1,0 +1,121 @@
+/* ColorPipeline.module.scss */
+@use '../../../styles/mixins' as *;
+
+// 1. 5단계 자동화 공정 그리드
+.pipeline-flow {
+  margin-bottom: rem(60px);
+
+  :global {
+    .pipeline-flow__title {
+      font: var(--project-typo-heading-2-700);
+      border-bottom: 0;
+      padding-bottom: 0;
+      margin-bottom: rem(30px);
+    }
+
+    .pipeline-flow__step-list {
+      margin: 0;
+      padding: rem(60px) rem(40px) rem(40px) rem(40px);
+      background-color: var(--project-color-primitive-gray-50);
+      border-radius: var(--project-border-radius-12);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: rem(20px);
+
+      @media (min-width: 600px) {
+        grid-template-columns: repeat(5, 1fr);
+        gap: rem(0px);
+      }
+    }
+
+    .pipeline-flow__step {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: flex-start;
+      position: relative;
+
+      &:first-child {
+        &::after {
+          left: 50%;
+          width: 50%;
+        }
+      }
+
+      &:last-child {
+        &::after {
+          right: 50%;
+          width: 50%;
+        }
+      }
+
+      &::after {
+        position: absolute;
+        top: rem(20px);
+        transform: translateY(-50%);
+        content: '';
+        display: inline-block;
+        width: 100%;
+        height: rem(3px);
+        background-color: var(--project-color-primitive-indigo-650);
+      }
+
+      :global {
+        .pipeline-flow__step-dot {
+          display: inline-block;
+          width: rem(40px);
+          height: rem(40px);
+          border-radius: var(--project-border-radius-max);
+          background-color: var(--project-color-primitive-indigo-240);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: rem(20px);
+          border: rem(2px) solid var(--project-color-primitive-indigo-650);
+          position: relative;
+          z-index: 1;
+
+          :global(.icon) {
+            color: white;
+            position: relative;
+            z-index: 1;
+            width: 50%;
+            height: 50%;
+          }
+        }
+
+        .pipeline-flow__step-title {
+          font: var(--project-typo-sub-title-4-500);
+          text-align: center;
+        }
+
+        .pipeline-flow__step-desc {
+          font: var(--project-typo-sub-title-3-700);
+          text-align: center;
+          color: var(--project-color-primitive-indigo-490);
+        }
+      }
+    }
+  }
+}
+
+// 2. 스테이지 상세 카드
+.pipeline-stage {
+  margin-bottom: rem(60px);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: rem(8px);
+    margin-bottom: rem(8px) !important;
+    font: var(--project-typo-sub-title-1-700);
+    padding-bottom: 0;
+  }
+
+  :global {
+    .docblock-source {
+      margin: 0;
+    }
+  }
+}

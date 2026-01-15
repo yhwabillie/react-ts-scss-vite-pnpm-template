@@ -89,27 +89,27 @@
     },
     "heading-1": {
       "ko": {
-        "fontSize": { "value": "32px" },
-        "tabletSize": { "value": "32px" },
-        "mobileSize": { "value": "32px" },
+        "fontSize": { "value": "28px" },
+        "tabletSize": { "value": "28px" },
+        "mobileSize": { "value": "28px" },
         "fontWeight": { "value": [700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 페이지 최상단 대제목" }
       },
       "ja": {
-        "fontSize": { "value": "32px" },
-        "tabletSize": { "value": "32px" },
-        "mobileSize": { "value": "32px" },
+        "fontSize": { "value": "28px" },
+        "tabletSize": { "value": "28px" },
+        "mobileSize": { "value": "28px" },
         "fontWeight": { "value": [700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 페이지 최상단 대제목" }
       },
       "en": {
-        "fontSize": { "value": "32px" },
-        "tabletSize": { "value": "32px" },
-        "mobileSize": { "value": "32px" },
+        "fontSize": { "value": "28px" },
+        "tabletSize": { "value": "28px" },
+        "mobileSize": { "value": "28px" },
         "fontWeight": { "value": [700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
@@ -118,27 +118,27 @@
     },
     "heading-2": {
       "ko": {
-        "fontSize": { "value": "28px" },
-        "tabletSize": { "value": "28px" },
-        "mobileSize": { "value": "28px" },
+        "fontSize": { "value": "24px" },
+        "tabletSize": { "value": "24px" },
+        "mobileSize": { "value": "24px" },
         "fontWeight": { "value": [700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 섹션별 주요 제목" }
       },
       "ja": {
-        "fontSize": { "value": "28px" },
-        "tabletSize": { "value": "28px" },
-        "mobileSize": { "value": "28px" },
+        "fontSize": { "value": "24px" },
+        "tabletSize": { "value": "24px" },
+        "mobileSize": { "value": "24px" },
         "fontWeight": { "value": [700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 섹션별 주요 제목" }
       },
       "en": {
-        "fontSize": { "value": "28px" },
-        "tabletSize": { "value": "28px" },
-        "mobileSize": { "value": "28px" },
+        "fontSize": { "value": "24px" },
+        "tabletSize": { "value": "24px" },
+        "mobileSize": { "value": "24px" },
         "fontWeight": { "value": [700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
@@ -147,27 +147,27 @@
     },
     "heading-3": {
       "ko": {
-        "fontSize": { "value": "24px" },
-        "tabletSize": { "value": "24px" },
-        "mobileSize": { "value": "24px" },
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "20px" },
         "fontWeight": { "value": [700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 콘텐츠 블록 제목" }
       },
       "ja": {
-        "fontSize": { "value": "24px" },
-        "tabletSize": { "value": "24px" },
-        "mobileSize": { "value": "24px" },
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "20px" },
         "fontWeight": { "value": [700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 콘텐츠 블록 제목" }
       },
       "en": {
-        "fontSize": { "value": "24px" },
-        "tabletSize": { "value": "24px" },
-        "mobileSize": { "value": "24px" },
+        "fontSize": { "value": "20px" },
+        "tabletSize": { "value": "20px" },
+        "mobileSize": { "value": "20px" },
         "fontWeight": { "value": [700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
@@ -176,28 +176,28 @@
     },
     "sub-title-1": {
       "ko": {
-        "fontSize": { "value": "20px" },
-        "tabletSize": { "value": "20px" },
-        "mobileSize": { "value": "20px" },
-        "fontWeight": { "value": [600] },
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [600, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 강한 강조가 필요한 본문 소제목" }
       },
       "ja": {
-        "fontSize": { "value": "20px" },
-        "tabletSize": { "value": "20px" },
-        "mobileSize": { "value": "20px" },
-        "fontWeight": { "value": [600] },
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [600, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 강한 강조가 필요한 본문 소제목" }
       },
       "en": {
-        "fontSize": { "value": "20px" },
-        "tabletSize": { "value": "20px" },
-        "mobileSize": { "value": "20px" },
-        "fontWeight": { "value": [600] },
+        "fontSize": { "value": "18px" },
+        "tabletSize": { "value": "18px" },
+        "mobileSize": { "value": "18px" },
+        "fontWeight": { "value": [600, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 강한 강조가 필요한 본문 소제목" }
@@ -205,28 +205,28 @@
     },
     "sub-title-2": {
       "ko": {
-        "fontSize": { "value": "18px" },
-        "tabletSize": { "value": "18px" },
-        "mobileSize": { "value": "18px" },
-        "fontWeight": { "value": [600] },
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [600, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 본문 그룹 제목" }
       },
       "ja": {
-        "fontSize": { "value": "18px" },
-        "tabletSize": { "value": "18px" },
-        "mobileSize": { "value": "18px" },
-        "fontWeight": { "value": [600] },
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [600, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 본문 그룹 제목" }
       },
       "en": {
-        "fontSize": { "value": "18px" },
-        "tabletSize": { "value": "18px" },
-        "mobileSize": { "value": "18px" },
-        "fontWeight": { "value": [600] },
+        "fontSize": { "value": "16px" },
+        "tabletSize": { "value": "16px" },
+        "mobileSize": { "value": "16px" },
+        "fontWeight": { "value": [600, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 본문 그룹 제목" }
@@ -234,28 +234,57 @@
     },
     "sub-title-3": {
       "ko": {
-        "fontSize": { "value": "16px" },
-        "tabletSize": { "value": "16px" },
-        "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [600] },
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [600, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 작은 섹션이나 리스트 헤더" }
       },
       "ja": {
-        "fontSize": { "value": "16px" },
-        "tabletSize": { "value": "16px" },
-        "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [600] },
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [600, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 작은 섹션이나 리스트 헤더" }
       },
       "en": {
-        "fontSize": { "value": "16px" },
-        "tabletSize": { "value": "16px" },
-        "mobileSize": { "value": "16px" },
-        "fontWeight": { "value": [600] },
+        "fontSize": { "value": "14px" },
+        "tabletSize": { "value": "14px" },
+        "mobileSize": { "value": "14px" },
+        "fontWeight": { "value": [600, 700] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "en" },
+        "description": { "value": "영문 작은 섹션이나 리스트 헤더" }
+      }
+    },
+    "sub-title-4": {
+      "ko": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ko" },
+        "description": { "value": "국문 작은 섹션이나 리스트 헤더" }
+      },
+      "ja": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500] },
+        "lineHeight": { "value": 1.5 },
+        "fontFamily": { "value": "ja" },
+        "description": { "value": "일문 작은 섹션이나 리스트 헤더" }
+      },
+      "en": {
+        "fontSize": { "value": "12px" },
+        "tabletSize": { "value": "12px" },
+        "mobileSize": { "value": "12px" },
+        "fontWeight": { "value": [400, 500] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 작은 섹션이나 리스트 헤더" }

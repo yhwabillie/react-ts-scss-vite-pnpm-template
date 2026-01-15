@@ -1,0 +1,127 @@
+/* MeshBanner.module.scss */
+@use 'sass:map';
+@use '../../../styles/mixins' as *;
+
+.mesh-banner {
+  position: relative;
+  overflow: hidden;
+  height: rem(300px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--project-border-radius-20);
+  background-color: #f8f9fa;
+  border: rem(1px) solid #cccccc;
+  margin: 0 0 rem(60px) 0 !important;
+
+  :global(.mesh-banner__spot--blue) {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.7) 0%, transparent 70%);
+    top: 10%;
+    left: 10%;
+    animation: move-1 10s infinite alternate ease-in-out;
+  }
+
+  :global(.mesh-banner__spot--purple) {
+    position: absolute;
+    width: rem(500px);
+    height: rem(500px);
+    background: radial-gradient(circle, rgba(118, 75, 162, 0.6) 0%, transparent 70%);
+    bottom: 20%;
+    right: 10%;
+    animation: move-2 12s infinite alternate ease-in-out;
+  }
+
+  :global(.mesh-banner__spot--pink) {
+    position: absolute;
+    width: rem(450px);
+    height: rem(450px);
+    background: radial-gradient(circle, rgba(255, 126, 179, 0.6) 0%, transparent 70%);
+    top: 20%;
+    right: 20%;
+    animation: move-3 18s infinite alternate ease-in-out;
+  }
+
+  :global(.mesh-banner__spot--cyan) {
+    position: absolute;
+    width: rem(550px);
+    height: rem(550px);
+    background: radial-gradient(circle, rgba(133, 255, 233, 0.5) 0%, transparent 70%);
+    bottom: 10%;
+    left: 20%;
+    animation: move-4 22s infinite alternate ease-in-out;
+  }
+
+  :global {
+    .mesh-banner__bg {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      filter: blur(rem(50px));
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    .mesh-banner__content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .mesh-banner__title {
+      color: #111;
+      font: var(--project-typo-display-2-700);
+      margin: 0;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+    }
+
+    .mesh-banner__sub {
+      font: var(--project-typo-sub-title-3-600);
+      margin: 10px 0 0;
+      display: inline-block;
+    }
+
+    .mesh-banner__desc {
+      font: var(--project-typo-sub-title-3-600);
+    }
+
+    @keyframes move-1 {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate(50%, 30%) rotate(120deg);
+      }
+    }
+
+    @keyframes move-2 {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate(-40%, -10%) rotate(-120deg);
+      }
+    }
+
+    @keyframes move-3 {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(-20%, 30%);
+      }
+    }
+    @keyframes move-4 {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(25%, -25%);
+      }
+    }
+  }
+}
