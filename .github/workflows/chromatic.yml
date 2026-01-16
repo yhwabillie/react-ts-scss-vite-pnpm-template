@@ -1,6 +1,5 @@
 name: 'Chromatic Deployment'
 
-# 1. 언제 실행할지 설정 (main 브랜치에 푸시하거나 PR을 보낼 때)
 on:
   push:
     branches:
@@ -11,21 +10,31 @@ jobs:
   chromatic-deployment:
     runs-on: ubuntu-latest
     steps:
-      # 2. 코드 체크아웃
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Chromatic의 히스토리 파악을 위해 필요합니다.
+          fetch-depth: 0
 
-      # 3. 의존성 설치 (npm 또는 yarn 중 사용하는 것에 맞춰 수정하세요)
+      # 1. pnpm 설치 (GitHub Actions 환경에는 pnpm이 기본으로 없습니다)
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9 # 사용 중인 pnpm 버전에 맞춰 수정 가능합니다.
+
+      # 2. Node.js 설정 및 pnpm 캐시 활용 (빌드 속도 향상)
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # 사용 중인 노드 버전
+          cache: 'pnpm'
+
+      # 3. pnpm으로 의존성 설치
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
 
       # 4. Chromatic 실행
       - name: Publish to Chromatic
         uses: chromaui/action@latest
         with:
-          # 아까 추천받은 빌드 대기 시간 단축 옵션
           exitOnceUploaded: true
-          # GitHub Secrets에 저장한 토큰 사용
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
