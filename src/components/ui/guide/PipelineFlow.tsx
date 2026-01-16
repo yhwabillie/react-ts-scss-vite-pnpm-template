@@ -124,7 +124,9 @@ const PipelineFlow = ({ title }: { title?: string }) => {
             />
           </span>
           <span className='pipeline-flow__step-title'>4단계</span>
-          <span className='pipeline-flow__step-desc'>다중 테마 자동 확장</span>
+          <span className='pipeline-flow__step-desc'>
+            다중 테마 자동 확장 <br /> (style-dictionary 활용)
+          </span>
         </li>
         <li className='pipeline-flow__step'>
           <span className='pipeline-flow__step-dot' aria-hidden>

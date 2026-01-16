@@ -36,17 +36,16 @@ const FEATURES: FeatureItem[] = [
     href: '#a11y',
   },
   {
-    emoji: '🌍',
-    title: '다국어 & 테마',
-    description: '여러 테마 및 다국어 환경에서 컴포넌트 동작 동시 테스트',
-    href: '#theme',
+    emoji: '⚙️',
+    title: '기술 스택 선정',
+    description: 'style-dictionary 포함 핵심 도구 선택 근거와 실효를 한눈에 정리',
+    href: '#requirements',
   },
-
   {
     emoji: '📕',
-    title: '한 곳에서 관리',
-    description: 'Storybook으로 모든 컴포넌트 상태 & 케이스 테스트',
-    href: '#requirements',
+    title: 'Storybook 활용 이유',
+    description: '문서화, 테마/다국어, 접근성 검증이 필요한 이유를 한눈에 정리',
+    href: '#storybook-reason',
   },
 ];
 

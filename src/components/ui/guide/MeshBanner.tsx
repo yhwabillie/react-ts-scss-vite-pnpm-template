@@ -56,6 +56,7 @@ const MeshBanner = ({
         <h1 className='mesh-banner__title'>{title}</h1>
         <strong className='mesh-banner__sub'>{description}</strong>
         <p className='mesh-banner__desc'>웹 접근성 & 테마 & 다국어를 지원하는 UI 컴포넌트 시스템</p>
+        <p className='mesh-banner__info'>Developed by @LeeYounhwa</p>
       </div>
     </section>
   );

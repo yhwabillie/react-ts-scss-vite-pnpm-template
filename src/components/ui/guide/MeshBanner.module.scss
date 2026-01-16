@@ -10,7 +10,6 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--project-border-radius-20);
-  background-color: #f8f9fa;
   border: rem(1px) solid #cccccc;
   margin: 0 0 rem(60px) 0 !important;
 
@@ -81,12 +80,19 @@
 
     .mesh-banner__sub {
       font: var(--project-typo-sub-title-3-600);
-      margin: 10px 0 0;
+      margin: rem(24px) 0 0;
       display: inline-block;
     }
 
     .mesh-banner__desc {
       font: var(--project-typo-sub-title-3-600);
+      margin-top: rem(8px);
+    }
+
+    .mesh-banner__info {
+      font: var(--project-typo-sub-title-4-700);
+      color: var(--project-color-primitive-sky-600);
+      margin-top: rem(24px);
     }
 
     @keyframes move-1 {
