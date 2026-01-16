@@ -71,50 +71,50 @@ const FeatureGrid = () => {
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 90%',
-          end: 'bottom 0%',
-          toggleActions: 'play reverse play reverse',
-        },
-      });
+  // useEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     const tl = gsap.timeline({
+  //       scrollTrigger: {
+  //         trigger: containerRef.current,
+  //         start: 'top 90%',
+  //         end: 'bottom 0%',
+  //         toggleActions: 'play reverse play reverse',
+  //       },
+  //     });
 
-      tl.from('.feature-grid__title', {
-        y: 10,
-        opacity: 0,
-        duration: 0.6,
-        ease: 'power1.out',
-      });
+  //     tl.from('.feature-grid__title', {
+  //       y: 10,
+  //       opacity: 0,
+  //       duration: 0.6,
+  //       ease: 'power1.out',
+  //     });
 
-      // ">" 는 이전 애니메이션의 종료 시점을 의미합니다.
-      // ">-0.2" 처럼 쓰면 타이틀이 거의 끝나갈 때쯤 카드가 미리 시작하게 할 수도 있습니다.
-      tl.fromTo(
-        '.feature-card',
-        {
-          y: 10,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.2,
-          ease: 'power1.out',
-          overwrite: 'auto',
+  //     // ">" 는 이전 애니메이션의 종료 시점을 의미합니다.
+  //     // ">-0.2" 처럼 쓰면 타이틀이 거의 끝나갈 때쯤 카드가 미리 시작하게 할 수도 있습니다.
+  //     tl.fromTo(
+  //       '.feature-card',
+  //       {
+  //         y: 10,
+  //         opacity: 0,
+  //       },
+  //       {
+  //         y: 0,
+  //         opacity: 1,
+  //         duration: 0.6,
+  //         stagger: 0.2,
+  //         ease: 'power1.out',
+  //         overwrite: 'auto',
 
-          onComplete: () => {
-            gsap.set('.feature-card', { clearProps: 'all' });
-          },
-        },
-        '>',
-      );
-    }, containerRef);
+  //         onComplete: () => {
+  //           gsap.set('.feature-card', { clearProps: 'all' });
+  //         },
+  //       },
+  //       '>',
+  //     );
+  //   }, containerRef);
 
-    return () => ctx.revert();
-  }, []);
+  //   return () => ctx.revert();
+  // }, []);
 
   return (
     <section ref={containerRef} className={styles['feature-grid']}>

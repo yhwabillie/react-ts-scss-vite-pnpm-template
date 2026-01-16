@@ -16,7 +16,8 @@
     "token:build": "pnpm run token:setup && style-dictionary build --config sd.config.js",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "chromatic": "npx chromatic"
   },
   "dependencies": {
     "@notionhq/client": "^5.4.0",
