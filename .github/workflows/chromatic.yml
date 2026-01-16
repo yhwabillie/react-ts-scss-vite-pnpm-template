@@ -1,7 +1,40 @@
-- name: Publish to Chromatic
-  uses: chromaui/action@latest
-  with:
-    # 1. 빌드 대기 시간 단축 옵션
-    exitOnceUploaded: true
-    # 2. GitHub Secrets에 저장한 토큰 사용 (보안 유지)
-    projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+name: 'Chromatic Deployment'
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  chromatic-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 1. pnpm 설치 (GitHub Actions 환경에는 pnpm이 기본으로 없습니다)
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9 # 사용 중인 pnpm 버전에 맞춰 수정 가능합니다.
+
+      # 2. Node.js 설정 및 pnpm 캐시 활용 (빌드 속도 향상)
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # 사용 중인 노드 버전
+          cache: 'pnpm'
+
+      # 3. pnpm으로 의존성 설치
+      - name: Install dependencies
+        run: pnpm install
+
+      # 4. Chromatic 실행
+      - name: Publish to Chromatic
+        uses: chromaui/action@latest
+        with:
+          exitOnceUploaded: true
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

@@ -2,27 +2,27 @@
   "typography": {
     "display-1": {
       "ko": {
-        "fontSize": { "value": "64px" },
-        "tabletSize": { "value": "64px" },
-        "mobileSize": { "value": "64px" },
+        "fontSize": { "value": "60px" },
+        "tabletSize": { "value": "60px" },
+        "mobileSize": { "value": "60px" },
         "fontWeight": { "value": [700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 마케팅용 최상위 대형 헤드라인" }
       },
       "ja": {
-        "fontSize": { "value": "64px" },
-        "tabletSize": { "value": "64px" },
-        "mobileSize": { "value": "64px" },
+        "fontSize": { "value": "60px" },
+        "tabletSize": { "value": "60px" },
+        "mobileSize": { "value": "60px" },
         "fontWeight": { "value": [700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 마케팅용 최상위 대형 헤드라인" }
       },
       "en": {
-        "fontSize": { "value": "64px" },
-        "tabletSize": { "value": "64px" },
-        "mobileSize": { "value": "64px" },
+        "fontSize": { "value": "60px" },
+        "tabletSize": { "value": "60px" },
+        "mobileSize": { "value": "60px" },
         "fontWeight": { "value": [700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
