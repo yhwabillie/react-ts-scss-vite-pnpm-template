@@ -346,7 +346,9 @@ export const Controlled: Story = {
     const input = canvas.getByRole('combobox') as HTMLInputElement;
 
     await step('1. 초기값 검증: 시작 값이 "apple"인지 확인합니다.', async () => {
-      await expect(input.value).toBe('apple');
+      await waitFor(() => {
+        expect(input.value).toBe('apple');
+      });
     });
 
     await step('2. Empty State 검증: 없는 값 입력 시 안내 문구 노출 확인', async () => {
