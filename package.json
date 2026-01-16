@@ -46,6 +46,7 @@
     "@vitest/browser-playwright": "^4.0.16",
     "@vitest/coverage-v8": "^4.0.9",
     "@vitest/ui": "4.0.16",
+    "chromatic": "^13.3.5",
     "dedent": "^1.7.1",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
