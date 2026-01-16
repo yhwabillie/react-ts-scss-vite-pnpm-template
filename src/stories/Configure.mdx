@@ -135,51 +135,90 @@ import A11yGuide from '@/components/ui/guide/A11yGuide';
 
 <PipelineStage
   num='01'
-  title='HSL 기반 자동 분류'
-  effect='새 색상 추가하면 자동으로 적절한 그룹 분류'
+   title='HSL 기반 자동 분류'
+effect={
+ 'Hue 기준 자동 분류로 색상 네이밍 고민을 제거하고, 디자이너·개발자 간 인식 차이 없이 확장 가능한 컬러 시스템을 유지'
+
+}
+
 >
- <Source
-    language='javascript'
-    dark={true}
-    code={dedent`
-      // Hue 범위로 자동 그룹화 예시 new Color #60a5fa (h: 217°) → "blue" 그룹 자동 배정
-// 🎨 색상을 자동으로 분류 (사람이 이름 정하지 않음!)
 
-// Hue 범위로 자동 그룹화:
-red: 0°-30° (빨강, 분홍)
-orange: 30°-60° (주황)
-yellow: 60°-90° (노랑, 연두)
-green: 90°-150° (초록, 민트)
-cyan: 150°-210° (파랑, 청록, 하늘)
-blue: 210°-270° (파랑, 보라)
-purple: 270°-330° (보라, 자주)
+<Source
+  language='javascript'
+  dark={true}
+  code={dedent`
+/**
+ * STEP 01. HSL 기반 색상 자동 분류
+ *
+ * ❌ 사람이 색상 이름을 정하지 않음
+ * ✅ Hue(색상각) 규칙으로 컴퓨터가 자동 분류
+ */
 
-예시:
-new Color #60a5fa (h: 217°) → "blue" 그룹 자동 배정
-새로운 청록색 #2dd4bf (h: 175°) → "cyan" 그룹 자동 배정
-`}
-/>
+// 1️⃣ Hex 색상을 HSL로 변환
+const hex = '#60a5fa';
+const { h, s, l } = hexToHsl(hex);
+// 결과 예시 → h: 217°, s: 91%, l: 67%
+
+// 2️⃣ Hue 범위 규칙 (사전에 고정)
+const HUE_GROUPS = [
+{ name: 'red', range: [0, 30] },
+{ name: 'orange', range: [30, 60] },
+{ name: 'yellow', range: [60, 90] },
+{ name: 'green', range: [90, 150] },
+{ name: 'cyan', range: [150, 210] },
+{ name: 'blue', range: [210, 270] },
+{ name: 'purple', range: [270, 330] },
+];
+
+// 3️⃣ Hue 값으로 그룹 자동 결정
+function getColorGroup(hue) {
+return HUE_GROUPS.find(
+g => hue >= g.range[0] && hue < g.range[1]
+)?.name;
+}
+
+const group = getColorGroup(h);
+// → 'blue'
+
+// ✅ 결과
+// '#60a5fa' → h: 217° → blue 그룹 자동 배정
+// '#2dd4bf' → h: 175° → cyan 그룹 자동 배정
+
+/\*\*
+
+- 📌 핵심 포인트
+- - 색상 이름을 사람이 고민하지 않음
+- - 언제 추가해도 항상 같은 규칙으로 분류됨
+- - 디자이너/개발자 판단 차이 제거
+    \*/
+    `}
+    />
 
 </PipelineStage>
 
-<PipelineStage num='02' title='명도 기반 스텝 생성' effect='균등한 스텝 배분, 중복 자동 방지'>
+<PipelineStage num='02' title='명도 기반 스텝 자동 생성' effect='명도(Lightness)를 기준으로 색상 단계를 자동 산출하여, 스텝 간 간격을 균등하게 유지하고 중복 없이 일관된 단계 체계를 생성'>
 <Source
     language='javascript'
     dark={true}
     code={dedent`
-     // 💡 밝기(Lightness)로 50~950 스텝 자동 생성
+// 💡 Lightness(L) 값 기반 스텝 자동 생성
+// → 사람이 숫자를 정하지 않아도, 색상 개수에 맞춰 단계가 자동 배치됨
 
-gray 그룹 색상 개수별 스텝 매핑:
-┌─────────────────────────────────┐
-│ 1개 → 500 (기본값) │
-│ 2개 → 300, 700 │
-│ 5개 → 200, 350, 500, 650, 800 │
-│ 10개 → 50, 150, 250, ..., 950 │
-└─────────────────────────────────┘
+// gray 그룹 예시 (색상 개수별 자동 스텝 분포)
+1개 → [500]
+2개 → [300, 700]
+5개 → [200, 350, 500, 650, 800]
+10개 → [50, 150, 250, ..., 950]
 
-충돌 방지:
+// 규칙
+// - 기준: 0~100 Lightness → 50~950 스텝으로 매핑
+// - 밝은 색일수록 낮은 숫자, 어두운 색일수록 높은 숫자
+
+// 중복 방지 로직
 if (step이 이미 존재) {
-while 루프로 step += 10 → 항상 고유한 값 생성
+// 기존 규칙을 깨지 않도록
+// 10 단위로 증가시키며 항상 고유한 step 생성
+step += 10;
 }
 `}
 
@@ -189,72 +228,92 @@ while 루프로 step += 10 → 항상 고유한 값 생성
 
 <PipelineStage
   num='03'
-  title='역방향 참조 (Hex-to-Var)'
-  effect='원천 색상 변경 시 전체 일관성 자동 유지'
+  title='역방향 참조 (Hex → Token)'
+  effect='프로젝트 내 모든 원시 Hex 값을 토큰 변수로 자동 치환하여, 원천 색상 변경 시 전체 스타일 일관성을 코드 수정 없이 유지'
 >
 <Source
     language='javascript'
     dark={true}
     code={dedent`
-    // 🔗 Hex 값 → 변수로 자동 치환
+   // 🔗 Hex 값 → Primitive Token 변수 자동 매핑
+// → 프로젝트 어디에서도 Raw 컬러를 직접 쓰지 않도록 강제
 
-// Step 1: 매핑 테이블 생성
+// Step 1. Primitive 컬러 기준으로 매핑 테이블 생성
 {
 "#ffffff": "var(--project-color-primitive-gray-50)",
 "#f9fafb": "var(--project-color-primitive-gray-100)",
 "#60a5fa": "var(--project-color-primitive-blue-500)",
 }
 
-// Step 2: 프로젝트 내 생(raw) Hex 발견 → 자동 치환
+// Step 2. 프로젝트 전체 JSON/토큰 파일 스캔
+// Raw Hex 발견 시 자동 치환
 // ❌ background: #60a5fa;
 // ✅ background: var(--project-color-primitive-blue-500);
 
-// Step 3: 미등록 색상 자동 추적
-// ⚠️ console.warn("새로운 색상 발견: #abc123")
+// Step 3. 미등록 색상 자동 감지
+// → 시스템 밖 컬러 유입을 즉시 확인 가능
+console.warn("미등록 컬러 발견: #abc123");
 `}
 
 />
 
 </PipelineStage>
 
-<PipelineStage num='04' title='다중 테마 자동 지원' effect='모든 테마에 동일한 로직 적용 자동화'>
+<PipelineStage num='04' title='다중 테마 자동 확장' effect='단일 Primitive 컬러 소스를 기준으로 모든 테마를 동일한 빌드 로직으로 자동 생성하여, 테마 추가·확장이 코드 수정 없이 가능'>
 <Source
     language='javascript'
     dark={true}
-    code={dedent`
-   // 🌓 colors.json + tech.json + custom.json 모두 지원
+code={dedent`
+  // 🌓 단일 Primitive 컬러 → 다중 테마 자동 생성 파이프라인
+  // 테마가 늘어나도 빌드 로직은 절대 증가하지 않음
 
 pnpm run token:build
 ↓
-primitive-color.json (원천 소스)
+primitive-color.json
+// 모든 컬러의 Single Source of Truth (원천)
+
 ↓
-┌─────────────────────────────────┐
-├─ colors.map (기본 테마 SCSS) │
-├─ tech.map (특수 테마 SCSS) │
-├─ tokens.ts (TypeScript 타입) │
-└─ tokens-meta.ts (Storybook) │
+┌───────────────────────────────────────────┐
+│ \_primitive-map.scss // Primitive SCSS Map │
+│ primitive-tokens.ts // Primitive Storybook Meta │
+│ \_color-map.scss // Light/Dark 컬러 SCSS Map │
+│ color-tokens.ts // Color TS Meta │
+│ \_theme-tech-map.scss // Tech 테마 SCSS Map │
+│ tech-tokens.ts // Tech 테마 TS Meta │
+└───────────────────────────────────────────┘
 ↓
-모든 테마에 동일한 로직 적용 자동화!
+모든 테마에 동일한 변환·정렬·참조 로직 자동 적용
 `}
 
 />
 
 </PipelineStage>
 
-<PipelineStage num='05' title='자동 문서화' effect='문서와 코드가 어긋나지 않음'>
+<PipelineStage num='05' title='자동 문서화 (Storybook 연동)'
+  effect='토큰 변경 즉시 문서가 자동 갱신되어, 코드와 문서 불일치가 발생하지 않음'>
  <Source
     language='javascript'
     dark={true}
     code={dedent`
-   // 📚 수동 작성 제거, 생성된 데이터가 문서화
+      // 📚 생성된 토큰 데이터 기반 자동 문서화
+      // 사람이 문서를 따로 관리하지 않음
 
-// 색상을 하나 추가하면:
-
-1. primitive-color.json 수정
-2. pnpm run token:build 실행
-3. ColorTokensData 자동 갱신
-4. Storybook ColorPalette 자동 반영
-   `}
+      primitive-color.json 수정
+      ↓
+      pnpm run token:build
+      ↓
+      ┌───────────────────────────────────────────┐
+      │ color-tokens.ts        // ColorTokensData │
+      │ primitive-tokens.ts    // PrimitiveTokensData │
+      │ tech-tokens.ts         // 테마 토큰 Meta │
+      └───────────────────────────────────────────┘
+      ↓
+      Storybook에서
+      - Color Palette
+      - Primitive 색상 목록
+      - Light / Dark / Tech 테마
+      자동 시각화 및 최신 상태 유지
+    `}
 
 />
 
@@ -630,50 +689,66 @@ primitive-color.json (원천 소스)
 <CommandGuide title='시작하기'>
   <CodeGuideSection title='Step 1: 의존성 설치'>
     <Source
-    language='bash'
-    dark={true}
-    code={dedent`
+      language='bash'
+      dark={true}
+      code={dedent`
 pnpm install
-`}
 
+# 프로젝트 실행 및 토큰 빌드에 필요한 환경 설치
+
+`}
 />
 
   </CodeGuideSection>
-  <CodeGuideSection title='Step 2: 토큰 빌드 (자동화 실행)'>
-        <Source
-    language='bash'
-    dark={true}
-    code={dedent`
+
+  <CodeGuideSection title='Step 2: 디자인 토큰 빌드 (자동화 파이프라인 실행)'>
+    <Source
+      language='bash'
+      dark={true}
+      code={dedent`
 pnpm run token:build
 
-# ✨ 자동 생성 파일:
+# ✨ 자동 생성 결과물
 
-# → src/tokens/colors.map (SCSS 변수)
+# SCSS (스타일에서 바로 사용)
 
-# → src/types/tokens.ts (TypeScript 타입)
+src/styles/generated/
+├─ \_primitive-map.scss
+├─ \_color-map.scss
+├─ \_theme-tech-map.scss
 
-# → .storybook/tokens-meta.ts (Storybook 문서)
+# TypeScript (타입 안전성 & 문서 메타)
+
+src/constants/generated/
+├─ primitive-tokens.ts
+├─ color-tokens.ts
+├─ tech-tokens.ts
+
+# 👉 토큰 추가/수정 시 수동 작업 없음
 
 `}
-
 />
 
   </CodeGuideSection>
-  <CodeGuideSection title='Step 3: 스토리북 실행'>
-          <Source
-    language='bash'
-    dark={true}
-    code={dedent`
+
+  <CodeGuideSection title='Step 3: Storybook 실행 (자동 문서화 확인)'>
+    <Source
+      language='bash'
+      dark={true}
+      code={dedent`
 pnpm run storybook
 
 # 🚀 http://localhost:6006
 
-# → ColorPalette 자동 반영
+# 자동 반영 내용
 
-# → Axe 접근성 패널 활성화
+# → Color / Primitive 토큰 시각화
+
+# → Light / Dark / Tech 테마 비교
+
+# → 실제 빌드된 토큰 기준 문서 유지
 
 `}
-
 />
 
   </CodeGuideSection>

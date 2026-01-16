@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import styles from './FeatureGrid.module.scss';
 import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
@@ -50,50 +51,6 @@ const FEATURES: FeatureItem[] = [
 ];
 
 const FeatureGrid = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.feature-grid__title', {
-        y: 20,
-        opacity: 0,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-          toggleActions: 'restart reset restart reset',
-        },
-      });
-
-      gsap.fromTo(
-        '.feature-card',
-        {
-          y: 10,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: 'power2.out',
-          overwrite: 'auto',
-
-          onComplete: () => {
-            gsap.set('.feature-card', { y: 0, opacity: 1 });
-          },
-
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top 80%',
-            toggleActions: 'restart reset restart reset',
-          },
-        },
-      );
-    }, containerRef);
-    return () => ctx.revert();
-  }, []);
-
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('#')) {
       e.preventDefault();
@@ -103,14 +60,61 @@ const FeatureGrid = () => {
       if (element) {
         element.scrollIntoView({
           behavior: 'smooth',
-          block: 'center', // 세로 방향 중앙 정렬
-          inline: 'nearest', // 가로 방향은 가장 가까운 곳으로
+          block: 'center',
+          inline: 'nearest',
         });
 
         window.history.pushState(null, '', href);
       }
     }
   };
+
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 90%',
+          end: 'bottom 0%',
+          toggleActions: 'play reverse play reverse',
+        },
+      });
+
+      tl.from('.feature-grid__title', {
+        y: 10,
+        opacity: 0,
+        duration: 0.6,
+        ease: 'power1.out',
+      });
+
+      // ">" 는 이전 애니메이션의 종료 시점을 의미합니다.
+      // ">-0.2" 처럼 쓰면 타이틀이 거의 끝나갈 때쯤 카드가 미리 시작하게 할 수도 있습니다.
+      tl.fromTo(
+        '.feature-card',
+        {
+          y: 10,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.2,
+          ease: 'power1.out',
+          overwrite: 'auto',
+
+          onComplete: () => {
+            gsap.set('.feature-card', { clearProps: 'all' });
+          },
+        },
+        '>',
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section ref={containerRef} className={styles['feature-grid']}>

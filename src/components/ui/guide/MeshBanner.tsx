@@ -15,7 +15,6 @@ const MeshBanner = ({
   description = 'Archive of Accessibility & Theming',
 }: MeshBannerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -23,13 +22,21 @@ const MeshBanner = ({
         y: 50,
         opacity: 0,
         filter: 'blur(10px)',
-        duration: 1,
+        duration: 0.6,
         stagger: 0.2,
-        ease: 'power3.out',
+        // ease: 애니메이션의 속도 곡선을 설정, "power1.out"은 부드럽게 가속 후 감속
+        ease: 'power1.out',
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top 80%',
-          toggleActions: 'restart reset restart reset',
+          start: 'top 90%',
+          end: 'bottom 0%',
+          // toggleActions: 스크롤 이벤트가 발생했을 때 실행할 애니메이션 동작 정의
+          // - onEnter: 트리거 영역에 처음 들어올 때 실행되는 동작
+          // - onLeave: 트리거 영역을 벗어날 때 실행되는 동작
+          // - onEnterBack: 트리거 영역에 다시 들어올 때 실행되는 동작
+          // - onLeaveBack: 트리거 영역을 다시 벗어날 때 실행되는 동작
+          toggleActions: 'play reverse play reverse',
+          // markers: true,
         },
       });
     }, containerRef);
@@ -45,7 +52,7 @@ const MeshBanner = ({
         <div className='mesh-banner__spot--pink' />
         <div className='mesh-banner__spot--cyan' />
       </div>
-      <div ref={contentRef} className='mesh-banner__content'>
+      <div className='mesh-banner__content'>
         <h1 className='mesh-banner__title'>{title}</h1>
         <strong className='mesh-banner__sub'>{description}</strong>
         <p className='mesh-banner__desc'>웹 접근성 & 테마 & 다국어를 지원하는 UI 컴포넌트 시스템</p>

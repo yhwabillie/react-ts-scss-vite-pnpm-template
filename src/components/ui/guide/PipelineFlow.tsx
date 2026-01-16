@@ -2,58 +2,73 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import Icon from '../atoms/Icon/Icon';
 import styles from './ColorPipeline.module.scss';
+import clsx from 'clsx';
 
 // 5단계 공정 그리드 컴포넌트
 const PipelineFlow = ({ title }: { title?: string }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // gsap 애니메이션
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 제목
-      gsap.from('.pipeline-flow__title', {
-        y: 20,
-        opacity: 0,
-        duration: 0.5,
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reset',
+          start: 'top 90%',
+          end: 'bottom 0%',
+          toggleActions: 'play none none reverse',
         },
       });
 
-      gsap.from('.pipeline-flow__step-list', {
-        y: 20,
+      tl.from('.pipeline-flow__title', {
+        y: 10,
         opacity: 0,
-        duration: 0.5,
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 10%',
-          toggleActions: 'play none none reset',
-        },
+        duration: 0.6,
+        ease: 'power1.out',
       });
 
-      gsap.fromTo(
-        '.pipeline-flow__step',
-        { opacity: 0 },
+      tl.from(
+        '.pipeline-flow__step-list',
         {
+          y: 10,
+          opacity: 0,
+          duration: 0.6,
+          ease: 'power1.out',
+        },
+        '>',
+      );
+
+      // ">" 는 이전 애니메이션의 종료 시점을 의미합니다.
+      // ">-0.2" 처럼 쓰면 타이틀이 거의 끝나갈 때쯤 카드가 미리 시작하게 할 수도 있습니다.
+      tl.fromTo(
+        '.pipeline-flow__step',
+        {
+          opacity: 0,
+        },
+        {
+          y: 0,
           opacity: 1,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '.pipeline-flow__step-list',
-            start: 'top 0%',
-            toggleActions: 'play none none reset',
+          duration: 0.6,
+          stagger: 0.2,
+          ease: 'power1.out',
+          overwrite: 'auto',
+
+          onComplete: () => {
+            gsap.set('.pipeline-flow__step', { clearProps: 'all' });
           },
         },
+        '>',
       );
     }, containerRef);
+
     return () => ctx.revert();
   }, []);
 
   return (
-    <section id='theme-color-token' ref={containerRef} className={styles['pipeline-flow']}>
+    <section
+      id='theme-color-token'
+      ref={containerRef}
+      className={clsx(styles['pipeline-flow'], 'pipeline-flow__ani-target')}
+    >
       {title && <h2 className='pipeline-flow__title'>{title}</h2>}
 
       <ol className='pipeline-flow__step-list'>
@@ -62,8 +77,8 @@ const PipelineFlow = ({ title }: { title?: string }) => {
             <Icon
               name='check'
               strokeWidth={3}
-              stroke-linecap='round'
-              stroke-linejoin='round'
+              strokeLinecap='round'
+              strokeLinejoin='round'
               className='icon'
             />
           </span>
@@ -75,8 +90,8 @@ const PipelineFlow = ({ title }: { title?: string }) => {
             <Icon
               name='check'
               strokeWidth={3}
-              stroke-linecap='round'
-              stroke-linejoin='round'
+              strokeLinecap='round'
+              strokeLinejoin='round'
               className='icon'
             />
           </span>
@@ -88,8 +103,8 @@ const PipelineFlow = ({ title }: { title?: string }) => {
             <Icon
               name='check'
               strokeWidth={3}
-              stroke-linecap='round'
-              stroke-linejoin='round'
+              strokeLinecap='round'
+              strokeLinejoin='round'
               className='icon'
             />
           </span>
@@ -103,8 +118,8 @@ const PipelineFlow = ({ title }: { title?: string }) => {
             <Icon
               name='check'
               strokeWidth={3}
-              stroke-linecap='round'
-              stroke-linejoin='round'
+              strokeLinecap='round'
+              strokeLinejoin='round'
               className='icon'
             />
           </span>
@@ -116,8 +131,8 @@ const PipelineFlow = ({ title }: { title?: string }) => {
             <Icon
               name='check'
               strokeWidth={3}
-              stroke-linecap='round'
-              stroke-linejoin='round'
+              strokeLinecap='round'
+              strokeLinejoin='round'
               className='icon'
             />
           </span>

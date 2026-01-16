@@ -26,35 +26,6 @@ const BackgroundCallout = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const containerClass = `${styles['bg-callout']} ${styles[`bg-callout--${type}`]} ${standalone && 'is-standalone'}`;
 
-  // gsap 애니메이션
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // 제목
-      gsap.from('.bg-callout__title', {
-        y: 20,
-        opacity: 0,
-        duration: 0.5,
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 72%',
-          toggleActions: 'play none none reset',
-        },
-      });
-
-      gsap.from('.bg-callout__container', {
-        y: 20,
-        opacity: 0,
-        duration: 0.5,
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 70%',
-          toggleActions: 'play none none reset',
-        },
-      });
-    }, containerRef);
-    return () => ctx.revert();
-  }, []);
-
   return (
     <section id={id} ref={containerRef} className={containerClass}>
       {title && <h2 className='bg-callout__title'>{title}</h2>}
