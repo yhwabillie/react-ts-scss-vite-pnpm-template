@@ -95,7 +95,7 @@ function getAlpha(color) {
 }
 
 const allTokens = [];
-function collect(obj) {
+function collect(groupName, obj) {
   for (const k in obj) {
     if (obj[k].value) {
       const val = normalizeColor(obj[k].value);
@@ -110,16 +110,27 @@ function collect(obj) {
           [r, g, b] = m.slice(0, 3).map(Number);
         }
         const { h, s, l } = rgbToHsl(r, g, b);
-        allTokens.push({ value: val, h, s, l, a: getAlpha(val), tint: getTintName(h, s, l) });
+        allTokens.push({
+          value: val,
+          h,
+          s,
+          l,
+          a: getAlpha(val),
+          tint: getTintName(h, s, l),
+          existingGroup: groupName,
+          existingKey: k,
+        });
       } catch (e) {
         console.warn(`⚠️ 무시됨: ${obj[k].value}`);
       }
     } else if (typeof obj[k] === 'object') {
-      collect(obj[k]);
+      collect(groupName, obj[k]);
     }
   }
 }
-collect(rawData.primitive);
+Object.entries(rawData.primitive).forEach(([groupName, groupTokens]) => {
+  collect(groupName, groupTokens);
+});
 
 // 5. 정렬 순서 정의
 const groupOrder = [
@@ -153,24 +164,30 @@ allTokens.sort((a, b) => {
 const organized = { primitive: {} };
 allTokens.forEach(item => {
   const isAlpha = item.a < 1;
-  const groupName = isAlpha ? 'alpha' : item.tint;
+  const computedGroupName = isAlpha ? 'alpha' : item.tint;
+  const groupName = item.existingGroup || computedGroupName;
   if (!organized.primitive[groupName]) organized.primitive[groupName] = {};
 
-  let key;
-  if (!isAlpha && item.tint === 'gray') {
-    if (item.l >= 99.9) key = 'white';
-    else if (item.l <= 0.1) key = 'black';
-  }
+  let key = item.existingKey;
   if (!key) {
-    let step = Math.round((100 - item.l) * 10);
-    step = Math.max(50, Math.round(step / 10) * 10);
-    key = isAlpha ? `${item.tint}-${step}` : `${step}`;
+    if (!isAlpha && item.tint === 'gray') {
+      if (item.l >= 99.9) key = 'white';
+      else if (item.l <= 0.1) key = 'black';
+    }
+    if (!key) {
+      let step = Math.round((100 - item.l) * 10);
+      step = Math.max(50, Math.round(step / 10) * 10);
+      key = isAlpha ? `${item.tint}-${step}` : `${step}`;
+    }
   }
   let finalKey = key;
-  let current = parseInt(key.split('-').pop()) || 50;
+  let current = parseInt(key.split('-').pop(), 10) || 50;
   while (organized.primitive[groupName][finalKey]) {
     current += 10;
     finalKey = isAlpha ? `${item.tint}-${current}` : `${current}`;
+  }
+  if (item.existingKey && finalKey !== item.existingKey) {
+    console.warn(`⚠️ 키 충돌로 변경됨: ${groupName}.${item.existingKey} -> ${finalKey}`);
   }
   organized.primitive[groupName][finalKey] = { value: item.value };
 });

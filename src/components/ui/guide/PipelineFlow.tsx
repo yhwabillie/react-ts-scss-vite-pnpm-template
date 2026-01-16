@@ -110,7 +110,7 @@ const PipelineFlow = ({ title }: { title?: string }) => {
           </span>
           <span className='pipeline-flow__step-title'>3단계</span>
           <span className='pipeline-flow__step-desc'>
-            역방향 참조 <br /> (Hex-to-Var)
+            역방향 참조 <br /> (Hex → Token)
           </span>
         </li>
         <li className='pipeline-flow__step'>
@@ -124,7 +124,7 @@ const PipelineFlow = ({ title }: { title?: string }) => {
             />
           </span>
           <span className='pipeline-flow__step-title'>4단계</span>
-          <span className='pipeline-flow__step-desc'>다중 테마 자동 지원</span>
+          <span className='pipeline-flow__step-desc'>다중 테마 자동 확장</span>
         </li>
         <li className='pipeline-flow__step'>
           <span className='pipeline-flow__step-dot' aria-hidden>
@@ -137,7 +137,9 @@ const PipelineFlow = ({ title }: { title?: string }) => {
             />
           </span>
           <span className='pipeline-flow__step-title'>5단계</span>
-          <span className='pipeline-flow__step-desc'>자동 문서화</span>
+          <span className='pipeline-flow__step-desc'>
+            자동 문서화 <br /> (Storybook 연동)
+          </span>
         </li>
       </ol>
     </section>

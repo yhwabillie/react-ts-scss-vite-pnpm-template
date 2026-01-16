@@ -308,12 +308,6 @@ export const PrimitiveTokensData = [
         "variable": "--color-primitive-slate-blue-120"
       },
       {
-        "id": "primitive-slate-blue-130",
-        "name": "130",
-        "value": "#e9ecef",
-        "variable": "--color-primitive-slate-blue-130"
-      },
-      {
         "id": "primitive-slate-blue-140",
         "name": "140",
         "value": "#e2e8f0",
@@ -910,12 +904,6 @@ export const PrimitiveTokensData = [
         "variable": "--color-primitive-indigo-80"
       },
       {
-        "id": "primitive-indigo-120",
-        "name": "120",
-        "value": "#d1c4ff",
-        "variable": "--color-primitive-indigo-120"
-      },
-      {
         "id": "primitive-indigo-150",
         "name": "150",
         "value": "#c4b5fd",
@@ -1372,12 +1360,6 @@ export const PrimitiveTokensData = [
         "name": "100",
         "value": "#d7f2df",
         "variable": "--color-primitive-green-100"
-      },
-      {
-        "id": "primitive-green-150",
-        "name": "150",
-        "value": "#c9ebd0",
-        "variable": "--color-primitive-green-150"
       },
       {
         "id": "primitive-green-190",
