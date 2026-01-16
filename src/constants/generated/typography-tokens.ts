@@ -2,7 +2,7 @@ export const TypographyTokensData = [
   {
     "id": "typo-display-1-ko",
     "usage": "DISPLAY-1 / KO",
-    "fontSize": "64px",
+    "fontSize": "60px",
     "weights": [
       700
     ],
@@ -13,7 +13,7 @@ export const TypographyTokensData = [
   {
     "id": "typo-display-1-ja",
     "usage": "DISPLAY-1 / JA",
-    "fontSize": "64px",
+    "fontSize": "60px",
     "weights": [
       700
     ],
@@ -24,7 +24,7 @@ export const TypographyTokensData = [
   {
     "id": "typo-display-1-en",
     "usage": "DISPLAY-1 / EN",
-    "fontSize": "64px",
+    "fontSize": "60px",
     "weights": [
       700
     ],
