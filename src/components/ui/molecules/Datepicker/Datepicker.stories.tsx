@@ -24,6 +24,15 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          '**Datepicker**는 날짜를 직접 입력하거나 캘린더 팝업을 통해 선택할 수 있는 복합 입력 컴포넌트입니다. <br /><br />' +
+          '• 캘린더 팝업은 DOM 최상단에 렌더링되어 부모 요소의 `overflow`나 `z-index` 설정에 구애받지 않고 항상 온전하게 노출됩니다. <br />' +
+          '• 팝업이 열릴 때 캘린더 내부로 포커스가 진입하고, 닫힐 때 원래의 입력창으로 복귀하여 완벽한 키보드 접근성을 제공합니다. <br />' +
+          '• 날짜 형식(YYYY-MM-DD)에 맞는 입력 유효성 검사 및 휴일 정보 표시 기능을 포함하고 있습니다.',
+      },
+    },
   },
 
   argTypes: {
@@ -166,10 +175,8 @@ export const Base: Story = {
 };
 
 /**
- * * `Datepicker`의 브랜드 테마별 색상을 정의합니다.
- * * **사용 가이드**:
- * - 서비스의 전체적인 톤앤매너에 맞춰 `primary`를 기본으로 사용합니다.
- * - 피드백이나 상태 강조가 필요한 경우 `success`, `warning`, `danger` 컬러를 전략적으로 배치합니다.
+ * 컴포넌트의 가장 기본적인 렌더링 형태입니다.
+ * 인풋 클릭 또는 우측 아이콘 버튼을 통해 캘린더를 호출할 수 있습니다.
  */
 export const Colors: Story = {
   render: args => {
@@ -196,11 +203,9 @@ export const Colors: Story = {
 };
 
 /**
- * * 입력창의 크기 스케일을 조절하여 UI 밀도를 결정합니다.
- * * **특징**:
- * - `xs`, `sm`: 데이터가 집약된 대시보드나 모달 내부에서 공간을 절약할 때 사용합니다.
- * - `md`: 표준 폼 입력 시 권장되는 크기입니다.
- * - `lg`, `xl`: 랜딩 페이지의 메인 검색이나 가독성이 중요한 모바일 환경에 최적화되어 있습니다.
+ * 디자인 시스템의 핵심 컬러 테마를 적용합니다.
+ * - **Visual Focus**: 선택된 날짜 및 오늘(Today) 표시, 그리고 인터랙션 피드백 컬러가 테마에 맞춰 변경됩니다.
+ * - **Consistency**: 다른 폼 요소(Input, Button)들과 동일한 컬러 토큰을 사용하여 일관된 사용자 경험을 제공합니다.
  */
 export const Sizes: Story = {
   render: args => {
@@ -223,11 +228,9 @@ export const Sizes: Story = {
 };
 
 /**
- * * 인터랙션에 따른 컴포넌트의 시각적 변화 및 동작 제한을 검증합니다.
- * * **주요 상태**:
- * - **Focus**: `pseudo-focus-visible` 클래스를 통해 입력 시 포커스 링을 고정 시뮬레이션합니다.
- * - **Read Only**: 사용자가 타이핑으로 값을 수정할 수 없으며, **현재 로직상 달력 팝업 트리거도 차단**되어 데이터 정합성을 유지합니다.
- * - **Disabled**: 컴포넌트가 완전히 비활성화되어 마우스/키보드 이벤트에 응답하지 않습니다.
+ * 인터랙션 과정에서 발생할 수 있는 주요 시각적 상태와 제약 사항을 확인합니다.
+ * - **Read Only**: 값의 수정이 불가능하며, 데이터 무결성을 위해 캘린더 트리거 동작 역시 제한됩니다.
+ * - **Disabled**: 컴포넌트가 비활성화되어 모든 이벤트(호버, 클릭 등)가 차단됩니다.
  */
 export const States: Story = {
   render: args => {
@@ -264,11 +267,9 @@ export const States: Story = {
 };
 
 /**
- * * 테두리의 곡률(Border-radius)에 따른 3가지 베리에이션을 제공합니다.
- * * **특징**:
- * - **SQUARE**: 격식 있고 견고한 느낌을 줍니다.
- * - **ROUNDED**: 가장 범용적인 표준 UI 형태입니다.
- * - **PILL**: 유연하고 모던한 느낌을 주며, 버튼이나 태그 위주의 UI와 잘 어우러집니다.
+ * 서비스의 디자인 언어에 맞춰 3가지 테두리 곡률을 선택할 수 있습니다.
+ * - **Pill**: 모던한 검색 인터페이스나 모바일 친화적인 레이아웃에 권장됩니다.
+ * - **Square/Rounded**: 정교하고 구조적인 대시보드나 전문 툴에 적합합니다.
  */
 export const Shapes: Story = {
   render: args => {
@@ -290,10 +291,9 @@ export const Shapes: Story = {
 };
 
 /**
- * * 우측 캘린더 트리거 버튼의 스타일(`ghost`, `solid`)을 설정합니다.
- * * **가이드**:
- * - **GHOST**: 입력창 내부의 시각적 요소가 많을 때 단순함을 유지하기 위해 권장합니다.
- * - **SOLID**: '날짜 선택'이라는 액션을 명확하게 유도하고 싶을 때 사용합니다.
+ * 우측 캘린더 트리거 버튼의 스타일을 결정합니다.
+ * - **Ghost**: 인풋 내부에 자연스럽게 녹아드는 미니멀한 디자인입니다.
+ * - **Solid**: 날짜 선택 액션을 명확하게 강조하여 사용자의 클릭을 유도합니다.
  */
 export const Variants: Story = {
   render: args => {
@@ -316,9 +316,8 @@ export const Variants: Story = {
 };
 
 /**
- * * `OptionListPortal`이 올바르게 작동하는지 확인하기 위한 테스트 스토리입니다.
- * * **핵심 기능**:
- * - 부모 요소에 `overflow: hidden`이 걸려 있더라도, 캘린더 팝업이 잘리지 않고 최상단 레이어에 정상적으로 렌더링되는지 보장합니다.
+ * 부모 요소가 `overflow: hidden`인 상황에서도 캘린더 레이어가 잘리지 않는지 검증합니다.
+ * 저장된 정보에 따르면, 이 컴포넌트는 'partially obscured' 에러를 방지하기 위해 포털을 통한 최상위 렌더링 전략을 취합니다.
  */
 export const PortalTest: Story = {
   render: args => (
@@ -329,7 +328,8 @@ export const PortalTest: Story = {
 };
 
 /**
- * * 외부 상태(State)에 의해 날짜가 제어되는 케이스입니다.
+ * 외부 상태(`useState`)를 통해 날짜를 강제로 주입하거나 변경을 감지하는 실무 예제입니다.
+ * - **State Sync**: 외부에서 변경된 날짜가 캘린더의 현재 뷰(Year/Month)와 선택 표시(`selectedDate`)에 정확히 반영되는지 확인합니다.
  */
 export const Controlled: Story = {
   render: args => {

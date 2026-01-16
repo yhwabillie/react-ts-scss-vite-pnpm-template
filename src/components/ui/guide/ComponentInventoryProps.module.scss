@@ -1,0 +1,30 @@
+/* FeatureGrid.module.scss */
+@use '../../../styles/mixins' as *;
+
+.component-inventory {
+  margin-bottom: rem(60px);
+
+  :global {
+    .component-inventory__title {
+      font: var(--project-typo-heading-2-700);
+      border-bottom: 0;
+      padding-bottom: 0;
+      margin-bottom: rem(30px);
+    }
+
+    .component-inventory__item {
+      &:not(:last-child) {
+        margin-bottom: rem(60px);
+      }
+
+      a {
+        text-decoration: underline;
+        font-weight: var(--project-font-weight-700);
+
+        &:hover {
+          color: var(--project-color-primitive-indigo-420);
+        }
+      }
+    }
+  }
+}

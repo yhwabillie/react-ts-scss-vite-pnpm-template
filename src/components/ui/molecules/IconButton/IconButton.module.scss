@@ -6,53 +6,53 @@
 $btn-colors: (
   primary: (
     solid: (
-      bg: var(--primary-bg-color-btn-solid),
-      label: var(--primary-text-color-btn-solid),
+      bg: var(--project-color-primary-btn-solid-bg),
+      label: var(--project-color-primary-btn-solid-text),
       hover: (
-        bg: var(--primary-hover-bg-color-btn-solid),
-        label: var(--primary-hover-text-color-btn-solid),
+        bg: var(--project-color-primary-btn-solid-bg-hover),
+        label: var(--project-color-primary-btn-solid-text-hover),
       ),
       active: (
-        bg: var(--primary-active-bg-color-btn-solid),
-        label: var(--primary-active-text-color-btn-solid),
+        bg: var(--project-color-primary-btn-solid-bg-active),
+        label: var(--project-color-primary-btn-solid-text-active),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-btn),
-        label: var(--disabled-text-color-btn),
+        bg: var(--project-color-btn-disabled-bg),
+        label: var(--project-color-btn-disabled-text),
       ),
     ),
 
     outline: (
-      bg: var(--bg-color-btn-outline),
-      label: var(--primary-text-color-btn-outline),
+      bg: var(--project-color-btn-outline-bg),
+      label: var(--project-color-primary-btn-outline-text),
       hover: (
-        bg: var(--primary-hover-bg-color-btn-outline),
-        label: var(--primary-hover-text-color-btn-outline),
+        bg: var(--project-color-primary-btn-outline-bg-hover),
+        label: var(--project-color-primary-btn-outline-text-hover),
       ),
       active: (
-        bg: var(--primary-active-bg-color-btn-outline),
-        label: var(--primary-active-text-color-btn-outline),
+        bg: var(--project-color-primary-btn-outline-bg-active),
+        label: var(--project-color-primary-btn-outline-text-active),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-btn),
-        label: var(--disabled-text-color-btn),
+        bg: var(--project-color-btn-disabled-bg),
+        label: var(--project-color-btn-disabled-text),
       ),
     ),
 
     ghost: (
-      bg: var(--primary-bg-color-btn-ghost),
-      label: var(--primary-text-color-btn-ghost),
+      bg: var(--project-color-primary-btn-ghost-bg),
+      label: var(--project-color-primary-btn-ghost-text),
       hover: (
-        bg: var(--primary-hover-bg-color-btn-ghost),
-        label: var(--primary-hover-text-color-btn-ghost),
+        bg: var(--project-color-primary-btn-ghost-bg-hover),
+        label: var(--project-color-primary-btn-ghost-text-hover),
       ),
       active: (
-        bg: var(--primary-active-bg-color-btn-ghost),
-        label: var(--primary-active-text-color-btn-ghost),
+        bg: var(--project-color-primary-btn-ghost-bg-active),
+        label: var(--project-color-primary-btn-ghost-text-active),
       ),
       disabled: (
-        bg: var(--ghost-disabled-bg-color-btn),
-        label: var(--disabled-text-color-btn),
+        bg: var(--project-color-btn-disabled-ghost-bg),
+        label: var(--project-color-btn-disabled-ghost-link-text),
       ),
     ),
   ),
@@ -60,55 +60,55 @@ $btn-colors: (
   secondary: (
     //
     solid: (
-        bg: var(--secondary-bg-color-btn-solid),
-        label: var(--secondary-text-color-btn-solid),
+        bg: var(--project-color-secondary-btn-solid-bg),
+        label: var(--project-color-secondary-btn-solid-text),
         hover: (
-          bg: var(--secondary-hover-bg-color-btn-solid),
-          label: var(--secondary-hover-text-color-btn-solid),
+          bg: var(--project-color-secondary-btn-solid-bg-hover),
+          label: var(--project-color-secondary-btn-solid-text-hover),
         ),
         active: (
-          bg: var(--secondary-active-bg-color-btn-solid),
-          label: var(--secondary-active-text-color-btn-solid),
+          bg: var(--project-color-secondary-btn-solid-bg-active),
+          label: var(--project-color-secondary-btn-solid-text-active),
         ),
         disabled: (
-          bg: var(--disabled-bg-color-btn),
-          label: var(--disabled-text-color-btn),
+          bg: var(--project-color-btn-disabled-bg),
+          label: var(--project-color-btn-disabled-text),
         ),
       ),
 
     //
     outline: (
-        bg: var(--bg-color-btn-outline),
-        label: var(--secondary-text-color-btn-outline),
+        bg: var(--project-color-btn-outline-bg),
+        label: var(--project-color-secondary-btn-outline-text),
         hover: (
-          bg: var(--secondary-hover-bg-color-btn-outline),
-          label: var(--secondary-hover-text-color-btn-outline),
+          bg: var(--project-color-secondary-btn-outline-bg-hover),
+          label: var(--project-color-secondary-btn-outline-text-hover),
         ),
         active: (
-          bg: var(--secondary-active-bg-color-btn-outline),
-          label: var(--secondary-active-text-color-btn-outline),
+          bg: var(--project-color-secondary-btn-outline-bg-active),
+          label: var(--project-color-secondary-btn-outline-text-active),
         ),
         disabled: (
-          bg: var(--disabled-bg-color-btn),
-          label: var(--disabled-text-color-btn),
+          bg: var(--project-color-btn-disabled-bg),
+          label: var(--project-color-btn-disabled-text),
         ),
       ),
 
     //
     ghost: (
-        bg: var(--secondary-bg-color-btn-ghost),
-        label: var(--secondary-text-color-btn-ghost),
+        bg: var(--project-color-secondary-btn-ghost-bg),
+        label: var(--project-color-secondary-btn-ghost-text),
         hover: (
-          bg: var(--secondary-hover-bg-color-btn-ghost),
-          label: var(--secondary-hover-text-color-btn-ghost),
+          bg: var(--project-color-secondary-btn-ghost-bg-hover),
+          label: var(--project-color-secondary-btn-ghost-text-hover),
         ),
         active: (
-          bg: var(--secondary-active-bg-color-btn-ghost),
-          label: var(--secondary-active-text-color-btn-ghost),
+          bg: var(--project-color-secondary-btn-ghost-bg-active),
+          label: var(--project-color-secondary-btn-ghost-text-active),
         ),
         disabled: (
-          bg: var(--ghost-disabled-bg-color-btn),
-          label: var(--disabled-text-color-btn),
+          bg: var(--project-color-btn-disabled-ghost-bg),
+          label: var(--project-color-btn-disabled-ghost-link-text),
         ),
       ),
   ),
@@ -116,215 +116,222 @@ $btn-colors: (
   tertiary: (
     //
     solid: (
-        bg: var(--tertiary-bg-color-btn-solid),
-        label: var(--tertiary-text-color-btn-solid),
+        bg: var(--project-color-tertiary-btn-solid-bg),
+        label: var(--project-color-tertiary-btn-solid-text),
         hover: (
-          bg: var(--tertiary-hover-bg-color-btn-solid),
-          label: var(--tertiary-hover-text-color-btn-solid),
+          bg: var(--project-color-tertiary-btn-solid-bg-hover),
+          label: var(--project-color-tertiary-btn-solid-text-hover),
         ),
         active: (
-          bg: var(--tertiary-active-bg-color-btn-solid),
-          label: var(--tertiary-active-text-color-btn-solid),
+          bg: var(--project-color-tertiary-btn-solid-bg-active),
+          label: var(--project-color-tertiary-btn-solid-text-active),
         ),
         disabled: (
-          bg: var(--disabled-bg-color-btn),
-          label: var(--disabled-text-color-btn),
+          bg: var(--project-color-btn-disabled-bg),
+          label: var(--project-color-btn-disabled-text),
         ),
       ),
 
     //
     outline: (
-        bg: var(--bg-color-btn-outline),
-        label: var(--tertiary-text-color-btn-outline),
+        bg: var(--project-color-btn-outline-bg),
+        label: var(--project-color-tertiary-btn-outline-text),
         hover: (
-          bg: var(--tertiary-hover-bg-color-btn-outline),
-          label: var(--tertiary-hover-text-color-btn-outline),
+          bg: var(--project-color-tertiary-btn-outline-bg-hover),
+          label: var(--project-color-tertiary-btn-outline-text-hover),
         ),
         active: (
-          bg: var(--tertiary-active-bg-color-btn-outline),
-          label: var(--tertiary-active-text-color-btn-outline),
+          bg: var(--project-color-tertiary-btn-outline-bg-active),
+          label: var(--project-color-tertiary-btn-outline-text-active),
         ),
         disabled: (
-          bg: var(--disabled-bg-color-btn),
-          label: var(--disabled-text-color-btn),
+          bg: var(--project-color-btn-disabled-bg),
+          label: var(--project-color-btn-disabled-text),
         ),
       ),
 
+    //
     ghost: (
-      bg: var(--tertiary-bg-color-btn-ghost),
-      label: var(--tertiary-text-color-btn-ghost),
-      hover: (
-        bg: var(--tertiary-hover-bg-color-btn-ghost),
-        label: var(--tertiary-hover-text-color-btn-ghost),
+        bg: var(--project-color-tertiary-btn-ghost-bg),
+        label: var(--project-color-tertiary-btn-ghost-text),
+        hover: (
+          bg: var(--project-color-tertiary-btn-ghost-bg-hover),
+          label: var(--project-color-tertiary-btn-ghost-text-hover),
+        ),
+        active: (
+          bg: var(--project-color-tertiary-btn-ghost-bg-active),
+          label: var(--project-color-tertiary-btn-ghost-text-active),
+        ),
+        disabled: (
+          bg: var(--project-color-btn-disabled-ghost-bg),
+          label: var(--project-color-btn-disabled-ghost-link-text),
+        ),
       ),
-      active: (
-        bg: var(--tertiary-active-bg-color-btn-ghost),
-        label: var(--tertiary-active-text-color-btn-ghost),
-      ),
-      disabled: (
-        bg: var(--ghost-disabled-bg-color-btn),
-        label: var(--disabled-text-color-btn),
-      ),
-    ),
   ),
 
   success: (
     //
     solid: (
-        bg: var(--success-bg-color-btn-solid),
-        label: var(--success-text-color-btn-solid),
+        bg: var(--project-color-btn-solid-success-bg),
+        label: var(--project-color-btn-solid-success-text),
         hover: (
-          bg: var(--success-hover-bg-color-btn-solid),
-          label: var(--success-hover-text-color-btn-solid),
+          bg: var(--project-color-btn-solid-success-bg-hover),
+          label: var(--project-color-btn-solid-success-text-hover),
         ),
         active: (
-          bg: var(--success-active-bg-color-btn-solid),
-          label: var(--success-active-text-color-btn-solid),
+          bg: var(--project-color-btn-solid-success-bg-active),
+          label: var(--project-color-btn-solid-success-text-active),
         ),
         disabled: (
-          bg: var(--disabled-bg-color-btn),
-          label: var(--disabled-text-color-btn),
+          bg: var(--project-color-btn-disabled-bg),
+          label: var(--project-color-btn-disabled-text),
         ),
       ),
 
     //
     outline: (
-        bg: var(--bg-color-btn-outline),
-        label: var(--success-text-color-btn-outline),
+        bg: var(--project-color-btn-outline-bg),
+        label: var(--project-color-btn-outline-success-text),
         hover: (
-          bg: var(--success-hover-bg-color-btn-outline),
-          label: var(--success-hover-text-color-btn-outline),
+          bg: var(--project-color-btn-outline-success-bg-hover),
+          label: var(--project-color-btn-outline-success-text-hover),
         ),
         active: (
-          bg: var(--success-active-bg-color-btn-outline),
-          label: var(--success-active-text-color-btn-outline),
+          bg: var(--project-color-btn-outline-success-bg-active),
+          label: var(--project-color-btn-outline-success-text-active),
         ),
         disabled: (
-          bg: var(--disabled-bg-color-btn),
-          label: var(--disabled-text-color-btn),
+          bg: var(--project-color-btn-disabled-bg),
+          label: var(--project-color-btn-disabled-text),
         ),
       ),
 
     //
     ghost: (
-        bg: var(--success-bg-color-btn-ghost),
-        label: var(--success-text-color-btn-ghost),
+        bg: var(--project-color-btn-ghost-success-bg),
+        label: var(--project-color-btn-ghost-success-text),
         hover: (
-          bg: var(--success-hover-bg-color-btn-ghost),
-          label: var(--success-hover-text-color-btn-ghost),
+          bg: var(--project-color-btn-ghost-success-bg-hover),
+          label: var(--project-color-btn-ghost-success-text-hover),
         ),
         active: (
-          bg: var(--success-active-bg-color-btn-ghost),
-          label: var(--success-active-text-color-btn-ghost),
+          bg: var(--project-color-btn-ghost-success-bg-active),
+          label: var(--project-color-btn-ghost-success-text-active),
         ),
         disabled: (
-          bg: var(--ghost-disabled-bg-color-btn),
-          label: var(--disabled-text-color-btn),
+          bg: var(--project-color-btn-disabled-ghost-bg),
+          label: var(--project-color-btn-disabled-ghost-link-text),
         ),
       ),
   ),
 
   warning: (
     solid: (
-      bg: var(--warning-bg-color-btn-solid),
-      label: var(--warning-text-color-btn-solid),
+      bg: var(--project-color-btn-solid-warning-bg),
+      label: var(--project-color-btn-solid-warning-text),
       hover: (
-        bg: var(--warning-hover-bg-color-btn-solid),
-        label: var(--warning-hover-text-color-btn-solid),
+        bg: var(--project-color-btn-solid-warning-bg-hover),
+        label: var(--project-color-btn-solid-warning-text-hover),
       ),
       active: (
-        bg: var(--warning-active-bg-color-btn-solid),
-        label: var(--warning-active-text-color-btn-solid),
+        bg: var(--project-color-btn-solid-warning-bg-active),
+        label: var(--project-color-btn-solid-warning-text-active),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-btn),
-        label: var(--disabled-text-color-btn),
-      ),
-    ),
-    outline: (
-      bg: var(--bg-color-btn-outline),
-      label: var(--warning-text-color-btn-outline),
-      hover: (
-        bg: var(--warning-hover-bg-color-btn-outline),
-        label: var(--warning-hover-text-color-btn-outline),
-      ),
-      active: (
-        bg: var(--warning-active-bg-color-btn-outline),
-        label: var(--warning-active-text-color-btn-outline),
-      ),
-      disabled: (
-        bg: var(--disabled-bg-color-btn),
-        label: var(--disabled-text-color-btn),
+        bg: var(--project-color-btn-disabled-bg),
+        label: var(--project-color-btn-disabled-text),
       ),
     ),
 
+    //
+    outline: (
+        bg: var(--project-color-btn-outline-bg),
+        label: var(--project-color-btn-outline-warning-text),
+        hover: (
+          bg: var(--project-color-btn-outline-warning-bg-hover),
+          label: var(--project-color-btn-outline-warning-text-hover),
+        ),
+        active: (
+          bg: var(--project-color-btn-outline-warning-bg-active),
+          label: var(--project-color-btn-outline-warning-text-active),
+        ),
+        disabled: (
+          bg: var(--project-color-btn-disabled-bg),
+          label: var(--project-color-btn-disabled-text),
+        ),
+      ),
+
+    //
     ghost: (
-      bg: var(--warning-bg-color-btn-ghost),
-      label: var(--warning-text-color-btn-ghost),
-      hover: (
-        bg: var(--warning-hover-bg-color-btn-ghost),
-        label: var(--warning-hover-text-color-btn-ghost),
+        bg: var(--project-color-btn-ghost-warning-bg),
+        label: var(--project-color-btn-ghost-warning-text),
+        hover: (
+          bg: var(--project-color-btn-ghost-warning-bg-hover),
+          label: var(--project-color-btn-ghost-warning-text-hover),
+        ),
+        active: (
+          bg: var(--project-color-btn-ghost-warning-bg-active),
+          label: var(--project-color-btn-ghost-warning-text-active),
+        ),
+        disabled: (
+          bg: var(--project-color-btn-disabled-ghost-bg),
+          label: var(--project-color-btn-disabled-ghost-link-text),
+        ),
       ),
-      active: (
-        bg: var(--warning-active-bg-color-btn-ghost),
-        label: var(--warning-active-text-color-btn-ghost),
-      ),
-      disabled: (
-        bg: var(--ghost-disabled-bg-color-btn),
-        label: var(--disabled-text-color-btn),
-      ),
-    ),
   ),
   danger: (
     solid: (
-      bg: var(--danger-bg-color-btn-solid),
-      label: var(--danger-text-color-btn-solid),
+      bg: var(--project-color-btn-solid-danger-bg),
+      label: var(--project-color-btn-solid-danger-text),
       hover: (
-        bg: var(--danger-hover-bg-color-btn-solid),
-        label: var(--danger-hover-text-color-btn-solid),
+        bg: var(--project-color-btn-solid-danger-bg-hover),
+        label: var(--project-color-btn-solid-danger-text-hover),
       ),
       active: (
-        bg: var(--danger-active-bg-color-btn-solid),
-        label: var(--danger-active-text-color-btn-solid),
+        bg: var(--project-color-btn-solid-danger-bg-active),
+        label: var(--project-color-btn-solid-danger-text-active),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-btn),
-        label: var(--disabled-text-color-btn),
-      ),
-    ),
-    outline: (
-      bg: var(--bg-color-btn-outline),
-      label: var(--danger-text-color-btn-outline),
-      hover: (
-        bg: var(--danger-hover-bg-color-btn-outline),
-        label: var(--danger-hover-text-color-btn-outline),
-      ),
-      active: (
-        bg: var(--danger-active-bg-color-btn-outline),
-        label: var(--danger-active-text-color-btn-outline),
-      ),
-      disabled: (
-        bg: var(--disabled-bg-color-btn),
-        label: var(--disabled-text-color-btn),
+        bg: var(--project-color-btn-disabled-bg),
+        label: var(--project-color-btn-disabled-text),
       ),
     ),
 
+    //
+    outline: (
+        bg: var(--project-color-btn-outline-bg),
+        label: var(--project-color-btn-outline-danger-text),
+        hover: (
+          bg: var(--project-color-btn-outline-danger-bg-hover),
+          label: var(--project-color-btn-outline-danger-text-hover),
+        ),
+        active: (
+          bg: var(--project-color-btn-outline-danger-bg-active),
+          label: var(--project-color-btn-outline-danger-text-active),
+        ),
+        disabled: (
+          bg: var(--project-color-btn-disabled-bg),
+          label: var(--project-color-btn-disabled-text),
+        ),
+      ),
+
+    //
     ghost: (
-      bg: var(--danger-bg-color-btn-ghost),
-      label: var(--danger-text-color-btn-ghost),
-      hover: (
-        bg: var(--danger-hover-bg-color-btn-ghost),
-        label: var(--danger-hover-text-color-btn-ghost),
+        bg: var(--project-color-btn-ghost-danger-bg),
+        label: var(--project-color-btn-ghost-danger-text),
+        hover: (
+          bg: var(--project-color-btn-ghost-danger-bg-hover),
+          label: var(--project-color-btn-ghost-danger-text-hover),
+        ),
+        active: (
+          bg: var(--project-color-btn-ghost-danger-bg-active),
+          label: var(--project-color-btn-ghost-danger-text-active),
+        ),
+        disabled: (
+          bg: var(--project-color-btn-disabled-ghost-bg),
+          label: var(--project-color-btn-disabled-ghost-link-text),
+        ),
       ),
-      active: (
-        bg: var(--danger-active-bg-color-btn-ghost),
-        label: var(--danger-active-text-color-btn-ghost),
-      ),
-      disabled: (
-        bg: var(--ghost-disabled-bg-color-btn),
-        label: var(--disabled-text-color-btn),
-      ),
-    ),
   ),
 );
 

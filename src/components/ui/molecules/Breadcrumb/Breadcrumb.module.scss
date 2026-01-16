@@ -4,22 +4,22 @@
 
 $breadcrumb-sizes: (
   sm: (
-    font: var(--project-typo-BreadcrumbText3-400),
-    current-font: var(--project-typo-BreadcrumbText3-700),
+    font: var(--project-typo-breadcrumb-3-400),
+    current-font: var(--project-typo-breadcrumb-3-700),
     icon-size: rem(20px),
     gap: rem(4px),
     padding: rem(16px) 0,
   ),
   md: (
-    font: var(--project-typo-BreadcrumbText2-400),
-    current-font: var(--project-typo-BreadcrumbText2-700),
+    font: var(--project-typo-breadcrumb-2-400),
+    current-font: var(--project-typo-breadcrumb-2-700),
     icon-size: rem(24px),
     gap: rem(6px),
     padding: rem(20px) 0,
   ),
   lg: (
-    font: var(--project-typo-BreadcrumbText1-400),
-    current-font: var(--project-typo-BreadcrumbText1-700),
+    font: var(--project-typo-breadcrumb-1-400),
+    current-font: var(--project-typo-breadcrumb-1-700),
     icon-size: rem(26px),
     gap: rem(8px),
     padding: rem(24px) 0,
@@ -28,16 +28,16 @@ $breadcrumb-sizes: (
 
 $breadcrumb-colors: (
   primary: (
-    current-label: var(--primary-current-text-color-breadcrumb),
-    hover-label: var(--primary-current-text-color-breadcrumb),
+    current-label: var(--project-color-primary-breadcrumb-current-text),
+    hover-label: var(--project-color-primary-breadcrumb-hover-text),
   ),
   secondary: (
-    current-label: var(--secondary-current-text-color-breadcrumb),
-    hover-label: var(--secondary-current-text-color-breadcrumb),
+    current-label: var(--project-color-secondary-breadcrumb-current-text),
+    hover-label: var(--project-color-secondary-breadcrumb-hover-text),
   ),
   tertiary: (
-    current-label: var(--tertiary-current-text-color-breadcrumb),
-    hover-label: var(--tertiary-current-text-color-breadcrumb),
+    current-label: var(--project-color-tertiary-breadcrumb-current-text),
+    hover-label: var(--project-color-tertiary-breadcrumb-hover-text),
   ),
 );
 

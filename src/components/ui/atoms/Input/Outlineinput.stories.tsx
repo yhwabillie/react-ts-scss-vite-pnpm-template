@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Input from './Input';
-import Icon from '../Icon/Icon'; // 아이콘 컴포넌트 가정
+import Icon from '../Icon/Icon';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { SpecimenCell, SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
 import React, { useId } from 'react';
-import { GuideCell, GuideGroup, GuideRow, GuideWrapper } from '../../guide/Guide';
+import { GuideCell, GuideGroup, GuideRow } from '../../guide/Guide';
 import IconButton from '../../molecules/IconButton/IconButton';
 import clsx from 'clsx';
 import IconFrame from '../../molecules/IconFrame/IconFrame';
@@ -15,6 +15,15 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          '**Outline Input**은 배경색 없이 테두리(Border)로 영역을 구분하는 스타일로, 페이지의 복잡도를 낮추고 깔끔한 레이아웃을 유지할 때 사용합니다. <br /><br />' +
+          '• 흰색 배경이나 밝은 톤의 레이아웃에서 가독성이 높으며 현대적인 느낌을 제공 <br />' +
+          '• 포커스 시 보더 컬러와 두께 변화를 통해 사용자의 입력 위치를 명확히 안내 <br />' +
+          '• 내부 아이콘 프레임 및 액션 버튼과 결합 시 보더 라인을 공유하여 시각적 통일성 부여',
+      },
+    },
   },
   argTypes: {
     // 1. Base Configuration (기본 식별 및 데이터 관련)
@@ -107,6 +116,7 @@ type Story = StoryObj<typeof meta>;
 
 /**
  * 컴포넌트의 가장 기본이 되는 형태입니다.
+ * 투명한 배경과 세밀한 보더 라인을 통해 정의된 Outline 스타일의 표준을 확인합니다.
  */
 export const Base: Story = {
   parameters: {
@@ -120,21 +130,13 @@ export const Base: Story = {
   render: args => {
     const uniqueId = useId();
 
-    return (
-      <AnatomyWrapper title='부모 요소 : 800px'>
-        <SpecimenRow>
-          <SpecimenCell style={{ width: '800px' }}>
-            <Input {...args} id={uniqueId} />
-          </SpecimenCell>
-        </SpecimenRow>
-      </AnatomyWrapper>
-    );
+    return <Input {...args} id={uniqueId} />;
   },
 };
 
 /**
- * 디자인 시스템의 시멘틱 컬러(Primary, Danger 등)가 적용된 상태를 비교합니다.
- * 빈 값(Empty)과 입력 완료(Filled) 상태에서 아이콘 버튼과의 색상 조화를 검수합니다.
+ * 테두리(Border)와 내부 텍스트, 아이콘에 시멘틱 컬러가 적용된 예시입니다.
+ * 배경색이 없는 만큼 보더 컬러를 통해 성공(Success)이나 오류(Danger) 상태를 명확히 구분합니다.
  */
 export const Colors: Story = {
   render: args => {
@@ -261,8 +263,8 @@ export const Colors: Story = {
 };
 
 /**
- * SCSS Map에 정의된 5가지 높이(32px ~ 48px) 규격을 확인합니다.
- * Adornment(아이콘)가 포함되어도 고정된 높이가 유지되는지, 텍스트 정렬이 올바른지 검증합니다.
+ * 5가지 표준 높이 규격에 따른 보더의 섬세함과 텍스트 정렬을 검수합니다.
+ * 특히 보더 라인이 얇은 특성상 사이즈가 작아질 때의 시인성을 중점적으로 확인합니다.
  */
 export const Sizes: Story = {
   render: args => {
@@ -412,8 +414,8 @@ export const Sizes: Story = {
 };
 
 /**
- * Input의 생애주기 상태(Normal, Hover, Focus, Disabled 등)를 대조합니다.
- * 특히 'Focus (Typing)' 상태에서 커서와 배경색 변화 등 타이핑 중 인터랙션을 중점적으로 확인합니다.
+ * 마우스 오버(Hover) 시의 보더 변화와 타이핑(Focus) 시의 강조 효과를 대조합니다.
+ * 비활성화(Disabled) 상태에서는 보더 라인의 투명도와 컬러가 어떻게 감쇠되는지 확인합니다.
  */
 export const States: Story = {
   render: args => {
@@ -546,8 +548,8 @@ export const States: Story = {
 };
 
 /**
- * 모서리 곡률(Square, Rounded, Pill) 설정에 따른 디자인 변화를 확인합니다.
- * Input의 Shape에 맞춰 내부 IconButton의 Shape도 함께 연동되어 일관성을 유지합니다.
+ * Outline 스타일에서 가장 시각적으로 두드러지는 모서리 곡률 옵션입니다.
+ * 직선적인 Square부터 부드러운 Pill까지, 보더 라인이 형성하는 외형을 테스트합니다.
  */
 export const Shapes: Story = {
   render: args => {
@@ -614,8 +616,8 @@ export const Shapes: Story = {
 };
 
 /**
- * 내부 슬롯(adornedStart, adornedEnd)에 IconButton이 배치된 결합 형태입니다.
- * 요소 간의 간격(Gap)과 클릭 영역이 충분히 확보되었는지 레이아웃을 검수합니다.
+ * 시작과 끝 슬롯에 요소가 배치된 결합 형태입니다.
+ * 보더로 구획된 내부 공간 안에서 아이콘과 입력 텍스트가 조화롭게 배치되었는지 확인합니다.
  */
 export const Composition: Story = {
   render: args => {
@@ -668,8 +670,8 @@ export const Composition: Story = {
 };
 
 /**
- * 입력창 너비보다 긴 텍스트가 입력되었을 때의 '말줄임(Ellipsis)' 처리 로직을 확인합니다.
- * 좌우 아이콘이 있는 상태에서도 텍스트가 영역을 침범하지 않고 안전하게 생략되는지 확인합니다.
+ * 보더 영역 내에서 긴 텍스트가 입력되었을 때의 말줄임 로직을 검증합니다.
+ * Outline 스타일의 특성상 텍스트가 보더 가이드라인을 벗어나지 않도록 안전 영역을 확인합니다.
  */
 export const LongText: Story = {
   render: args => {

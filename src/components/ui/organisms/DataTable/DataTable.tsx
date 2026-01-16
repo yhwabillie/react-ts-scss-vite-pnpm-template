@@ -1,9 +1,9 @@
-import { useId, type ReactNode } from 'react';
-import Styles from './DataTable.module.scss';
-import Checkbox from '../../atoms/Checkbox/Checkbox';
-import Icon from '../../atoms/Icon/Icon';
 import clsx from 'clsx';
-import IconButton from '../../molecules/IconButton/IconButton';
+import { useId, type ReactNode } from 'react';
+import Checkbox from '@/components/ui/atoms/Checkbox/Checkbox';
+import Icon from '@/components/ui/atoms/Icon/Icon';
+import IconButton from '@/components/ui/molecules/IconButton/IconButton';
+import Styles from '@/components/ui/organisms/DataTable/DataTable.module.scss';
 
 export type SortOrder = 'asc' | 'desc' | 'none';
 
@@ -35,7 +35,7 @@ interface DataTableProps<T extends { id: string | number }> {
   selectedRows?: Set<number | string>;
   onSelectRow?: (id: number | string) => void;
   onSelectAll?: (isAll: boolean) => void;
-  notices?: T[]; // 공지사항 전용 데이터 추가
+  notices?: T[];
 }
 
 const DataTable = <T extends { id: string | number }>({
@@ -57,7 +57,7 @@ const DataTable = <T extends { id: string | number }>({
   const tableId = useId();
   const summaryId = `${tableId}-summary`;
 
-  // 1. 공평한 너비 분배를 위한 계산 (체크박스 포함 여부 고려)
+  // 공평한 너비 분배를 위한 계산 (체크박스 포함 여부 고려)
   const totalCols = showCheckbox ? columns.length + 1 : columns.length;
   const minWidthPercentage = `${100 / totalCols}%`;
 
@@ -68,7 +68,7 @@ const DataTable = <T extends { id: string | number }>({
     return <Icon name='arrow-down-up' strokeWidth={2.5} />;
   };
 
-  // ✅ 수정: 단순히 개수(length)로 비교하지 말고, 현재 눈앞의 데이터가 모두 Set에 있는지 확인
+  // 현재 눈앞의 데이터가 모두 Set에 있는지 확인
   const isAllSelected = data.length > 0 && data.every(row => selectedRows?.has(row.id));
 
   const getAriaSort = (key: string): 'ascending' | 'descending' | 'none' | undefined => {
@@ -172,7 +172,6 @@ const DataTable = <T extends { id: string | number }>({
                   </div>
                 </td>
 
-                {/* 데이터 영역: idx === 0인 '번호' 컬럼을 건너뜁니다 */}
                 {columns.map((col, idx) => {
                   // '번호' 컬럼(idx 0)은 이미 위에서 아이콘 td가 자리를 차지했으므로 렌더링하지 않음
                   if (idx === 0) return null;

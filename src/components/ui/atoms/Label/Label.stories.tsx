@@ -52,7 +52,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * Label 컴포넌트의 가장 기본이 되는 형태입니다.
+ * 기본 사용 예시
+ * 라벨 컴포넌트의 기본적인 렌더링 형태를 확인합니다.
+ * 주로 입력 폼 요소의 제목이나 설명 텍스트로 활용됩니다.
  */
 export const Base: Story = {
   parameters: {
@@ -69,8 +71,9 @@ export const Base: Story = {
 };
 
 /**
- * 5가지 표준 사이즈(XS ~ XL)에 따른 텍스트 크기 변화를 확인합니다.
- * 본문의 위계나 주변 입력 요소의 크기에 맞춰 선택하여 사용합니다.
+ * 크기 변주
+ * XL부터 XS까지 다섯 가지 사이즈 구성을 통해 디자인 시스템의 타이포그래피 스케일을 확인합니다.
+ * 각 사이즈는 대응하는 입력 요소(Input, Radio, Checkbox 등)의 크기와 조화를 이루도록 설계되었습니다.
  */
 export const Sizes: Story = {
   render: args => {
@@ -90,7 +93,9 @@ export const Sizes: Story = {
 };
 
 /**
- * 라벨과 실제 입력 요소(Radio, Checkbox, Switch 등)가 결합되었을 때의 실제 정렬과 크기 조화를 확인합니다.
+ * 실무 적용 사례
+ * Radio, Checkbox, Switch 등 다양한 폼 제어 요소와 결합하여 사용되는 사례입니다.
+ * htmlFor 속성을 통해 입력 요소와 연결함으로써 접근성을 확보하고 클릭 영역을 확장합니다.
  */
 export const Usage: Story = {
   render: args => (

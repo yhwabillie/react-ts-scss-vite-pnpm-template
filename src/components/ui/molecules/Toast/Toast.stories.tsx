@@ -10,6 +10,17 @@ const meta: Meta<typeof Toast> = {
   title: 'UI/Molecules/Toast',
   component: Toast,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '**Toast**는 사용자의 액션에 대한 결과나 시스템의 상태 변화를 피드백하기 위해 나타나는 일시적인 알림 요소입니다. <br /><br />' +
+          '• **Contextual Feedback**: 성공, 에러, 정보, 경고 등 4가지 의미론적(Semantic) 테마를 제공합니다. <br />' +
+          '• **Provider**: `ToastProvider`를 통해 화면 내 위치 조절 및 여러 토스트의 동시 노출 순서를 지능적으로 관리합니다. <br />' +
+          '• **Interactive Actions**: 단순히 메시지만 보여주는 단계를 넘어, 링크 버튼(`link`)을 포함한 스낵바 형태로 확장 가능합니다.',
+      },
+    },
+  },
   // ToastProvider를 데코레이터로 설정하여 모든 스토리에 기본 적용
   decorators: [
     Story => (
@@ -83,6 +94,10 @@ const meta: Meta<typeof Toast> = {
 export default meta;
 type Story = StoryObj<typeof Toast>;
 
+/**
+ * 토스트의 가장 표준적인 렌더링 상태를 확인합니다.
+ * - **Checkpoint**: 메시지 길이와 인덱스에 따른 기본 레이아웃 및 닫기 버튼 동작을 점검합니다.
+ */
 export const Base: Story = {
   args: {
     index: 1,
@@ -100,14 +115,9 @@ export const Base: Story = {
 };
 
 /**
- * Toast 컴포넌트의 모든 시각적 상태(Type)와 구성 요소(Snackbar 형태 포함)를 한 화면에서 조망합니다.
- * 1. 타입별 컬러 시스템: 성공(Green), 에러(Red), 경고(Amber), 정보(Blue/White)의 아이콘 컬러와 배경 대비가 적절한지 확인합니다.
- * 2. 레이아웃 차이: 링크 버튼이 없는 일반 'Toast'와 링크 버튼이 포함된 'Snackbar' 형태의 너비 변화와 정렬을 비교합니다.
- * 3. 텍스트 가독성: 다크 모드 배경(rgba 25, 25, 25) 위에서 텍스트와 링크 버튼의 가독성을 점검합니다.
- * * * 접근성(A11y) 메모:
- * - 'Partially Obscured' 리마인드: 여러 토스트가 세로로 나열될 때, 개별 토스트가 너무 크면 화면의 상당 부분을 점유합니다.
- * 이로 인해 배경의 중요한 인터랙션 요소(예: title 속성이 있는 툴팁 트리거 등)가 가려지지 않는지 확인이 필요합니다.
- * - Role: 'error'와 'warning' 타입은 스크린 리더에서 'alert' 역할을 수행하여 즉각 공지되는지 확인합니다.
+ * 모든 시각적 타입(Type)과 스낵바(Snackbar) 확장 형태를 한눈에 비교합니다.
+ * - **Semantic Check**: 타입별 아이콘 및 테마 컬러가 의도한 의미(성공, 에러 등)를 명확히 전달하는지 점검합니다.
+ * - **A11y**: 'error/warning' 타입이 스크린 리더에서 `alert` 역할을 적절히 수행하는지 확인합니다.
  */
 export const States: Story = {
   render: args => {
@@ -246,15 +256,9 @@ export const States: Story = {
 };
 
 /**
- * 토스트가 화면의 각 방향(6개 위치)에서 나타나고 사라지는 동작을 테스트합니다.
- * 1. 위치 전환: 버튼 클릭 시 `ToastProvider`의 `position` 상태가 변경되며 컨테이너가 즉시 이동합니다.
- * 2. 3D 애니메이션: 사다리꼴(Trapezoid) 모양으로 뒤로 젖혀지며 사라지는 효과가 각 위치에서 자연스러운지 확인합니다.
- * 3. 레이아웃 흐름: 토스트가 사라질 때 뒤쪽 토스트들이 뚝 끊기지 않고 부드럽게 위치를 잡는지 점검합니다.
- * * 접근성(A11y) 점검 사항:
- * - Partially Obscured: 토스트가 나타나거나 사라지는 과정에서 뒤쪽 버튼(특히 title 속성이 있는 요소)을
- * 오랫동안 가리지 않는지 확인하세요. (현재 0.5s 애니메이션 설정)
- * - 모바일 대응: Viewport를 768px 미만으로 줄였을 때, 설정된 위치와 상관없이
- * 'bottom-center'로 강제 고정되는지 확인이 필요합니다.
+ * 화면의 6개 위치별 노출 및 3D 애니메이션 효과를 테스트합니다.
+ * - **Animation**: 토스트가 나타나고 사라질 때 뒤로 젖혀지는 효과가 각 위치(Top/Bottom)에서 자연스러운지 확인합니다.
+ * - **Responsive**: 모바일 환경(768px 미만)에서 설정된 위치와 관계없이 중앙 하단으로 강제 고정되는 대응 로직을 점검합니다.
  */
 export const AllPositions: Story = {
   render: args => {

@@ -10,8 +10,8 @@ $option-list-colors: (
       bg: var(--primary-bg-color-option-list-solid),
     ),
     outline: (
-      bg: var(--primary-bg-color-option-list-outline),
-      border: var(--primary-stroke-color-option-list-outline),
+      bg: var(--project-color-primary-option-list-outline-bg),
+      border: var(--project-color-primary-option-list-outline-border),
     ),
   ),
   secondary: (
@@ -19,8 +19,8 @@ $option-list-colors: (
       bg: var(--secondary-bg-color-option-list-solid),
     ),
     outline: (
-      bg: var(--secondary-bg-color-option-list-outline),
-      border: var(--secondary-stroke-color-option-list-outline),
+      bg: var(--project-color-secondary-option-list-outline-bg),
+      border: var(--project-color-secondary-option-list-outline-border),
     ),
   ),
   tertiary: (
@@ -28,8 +28,8 @@ $option-list-colors: (
       bg: var(--tertiary-bg-color-option-list-solid),
     ),
     outline: (
-      bg: var(--tertiary-bg-color-option-list-outline),
-      border: var(--tertiary-stroke-color-option-list-outline),
+      bg: var(--project-color-tertiary-option-list-outline-bg),
+      border: var(--project-color-tertiary-option-list-outline-border),
     ),
   ),
   success: (
@@ -37,8 +37,8 @@ $option-list-colors: (
       bg: var(--success-bg-color-option-list-solid),
     ),
     outline: (
-      bg: var(--success-bg-color-option-list-outline),
-      border: var(--success-stroke-color-option-list-outline),
+      bg: var(--project-color-option-list-outline-success-bg),
+      border: var(--project-color-option-list-outline-success-border),
     ),
   ),
   warning: (
@@ -46,8 +46,8 @@ $option-list-colors: (
       bg: var(--warning-bg-color-option-list-solid),
     ),
     outline: (
-      bg: var(--warning-bg-color-option-list-outline),
-      border: var(--warning-stroke-color-option-list-outline),
+      bg: var(--project-color-option-list-outline-warning-bg),
+      border: var(--project-color-option-list-outline-warning-border),
     ),
   ),
   danger: (
@@ -55,8 +55,8 @@ $option-list-colors: (
       bg: var(--danger-bg-color-option-list-solid),
     ),
     outline: (
-      bg: var(--danger-bg-color-option-list-outline),
-      border: var(--danger-stroke-color-option-list-outline),
+      bg: var(--project-color-option-list-outline-danger-bg),
+      border: var(--project-color-option-list-outline-danger-border),
     ),
   ),
 );

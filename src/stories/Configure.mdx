@@ -1,467 +1,773 @@
-import { Meta, IconGallery, IconItem, ColorPalette, ColorItem, Typeset } from "@storybook/addon-docs/blocks";
+import {
+  Meta,
+  ColorPalette,
+  ColorItem,
+  Typeset,
+  IconGallery,
+  IconItem,
+  Story,
+  Canvas,
+  Markdown,
+  Description,
+  Source,
+} from '@storybook/addon-docs/blocks';
+import dedent from 'dedent';
+import MeshBanner from '@/components/ui/guide/MeshBanner';
+import FeatureGrid from '@/components/ui/guide/FeatureGrid';
+import BackgroundCallout from '@/components/ui/guide/BackgroundCallout';
+import PipelineFlow from '@/components/ui/guide/PipelineFlow';
+import PipelineStage from '@/components/ui/guide/PipelineStage';
+import GuideTable from '@/components/ui/guide/GuideTable';
+import ComponentInventory from '@/components/ui/guide/ComponentInventory';
+import CommandGuide from '@/components/ui/guide/CommandGuide';
+import CodeGuideSection from '@/components/ui/guide/CodeGuideSection';
+import A11yGuide from '@/components/ui/guide/A11yGuide';
 
-import Github from "./assets/github.svg";
-import Discord from "./assets/discord.svg";
-import Youtube from "./assets/youtube.svg";
-import Tutorials from "./assets/tutorials.svg";
-import Styling from "./assets/styling.png";
-import Context from "./assets/context.png";
-import Assets from "./assets/assets.png";
-import Docs from "./assets/docs.png";
-import Share from "./assets/share.png";
-import FigmaPlugin from "./assets/figma-plugin.png";
-import Testing from "./assets/testing.png";
-import Accessibility from "./assets/accessibility.png";
-import Theming from "./assets/theming.png";
-import AddonLibrary from "./assets/addon-library.png";
-import Icon from "./../components/ui/atoms/Icon/Icon"
+<Meta title='Introduction' />
 
-export const RightArrow = () => <svg 
-    viewBox="0 0 14 14" 
-    width="8px" 
-    height="14px" 
-    style={{ 
-      marginLeft: '4px',
-      display: 'inline-block',
-      shapeRendering: 'inherit',
-      verticalAlign: 'middle',
-      fill: 'currentColor',
-      'path fill': 'currentColor'
-    }}
->
-  <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z" />
-</svg>
-
-
-
-<Meta title="Configure your project" />
-
-Primary UI component for user interaction
- 
-```js
-import { Button } from "@storybook/design-system";
-```
-
-export const typography = {
-  type: {
-    primary: '"Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
-  },
-  weight: {
-    regular: '400',
-    bold: '700',
-    extrabold: '800',
-    black: '900',
-  },
-  size: {
-    s1: 12,
-    s2: 14,
-    s3: 16,
-    m1: 20,
-    m2: 24,
-    m3: 28,
-    l1: 32,
-    l2: 40,
-    l3: 48,
-  },
-};
-
-export const SampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
-
-# Typography
- 
-**Font:** Nunito Sans
- 
-**Weights:** 400(regular), 700(bold), 800(extrabold), 900(black)
- 
-<Typeset
-  fontSizes={[
-    Number(typography.size.s1),
-    Number(typography.size.s2),
-    Number(typography.size.s3),
-    Number(typography.size.m1),
-    Number(typography.size.m2),
-    Number(typography.size.m3),
-    Number(typography.size.l1),
-    Number(typography.size.l2),
-    Number(typography.size.l3),
+<MeshBanner />
+<FeatureGrid />
+<BackgroundCallout
+  id='#scss-module'
+  type='warning'
+  title='프로젝트 배경'
+  label='🟡 실무 경험에서 발견한 문제점:'
+  margin='0 0 20px 0'
+  items={[
+    <>
+      매번 다른 시안이 들어와도 <strong>반복되는 컴포넌트 패턴</strong> 존재
+    </>,
+    <>
+      컴포넌트 네이밍 규칙 논의에 <strong>수 시간 소모</strong>
+    </>,
+    <>
+      테마/다국어 환경에서 <strong>컴포넌트 일괄 테스트 불가</strong>
+    </>,
+    <>
+      디자이너 부재 상황에서 <strong>웹 접근성 기준 모호</strong>
+    </>,
   ]}
-  fontWeight={typography.weight.black}
-  sampleText={SampleText}
-  fontFamily={typography.type.primary}
+/>
+<BackgroundCallout
+  type='info'
+  label='🔵 결론'
+  margin='0 0 60px 0'
+  items={[
+    <>
+      <strong>SCSS Module + BEM + 자동화된 컬러 파이프라인 결합</strong>을 통해 일관성 있는
+      <strong>UI 시스템 구축</strong> 필요
+    </>,
+  ]}
 />
 
-<ColorPalette>
- <ColorItem
-    title="theme.color.greyscale"
-    subtitle="Some of the greys"
-    colors={{ White: '#FFFFFF', Alabaster: '#F8F8F8', Concrete: '#F3F3F3' }}
-  />
-  <ColorItem 
-    title="theme.color.primary" 
-    subtitle="Coral" 
-    colors={{ WildWatermelon: '#FF4785' }} 
-  />
-  <ColorItem 
-    title="theme.color.secondary" 
-    subtitle="Ocean" 
-    colors={{ DodgerBlue: '#1EA7FD' }} 
-  />
-  <ColorItem
-    title="theme.color.positive"
-    subtitle="Green"
-    colors={{
-      Apple: 'rgba(102,191,60,1)',
-      Apple80: 'rgba(102,191,60,.8)',
-      Apple60: 'rgba(102,191,60,.6)',
-      Apple30: 'rgba(102,191,60,.3)',
-    }}
-  />
-  <ColorItem
-    title="gradient"
-    subtitle="Grayscale"
-    colors={{
-      Gradient: 'linear-gradient(to right,white,black)',
-    }}
-  />
-  <ColorItem
-    title="gradient"
-    subtitle="Grayscale"
-    colors={['linear-gradient(65deg,white,black)']}
-  />
-</ColorPalette>
+<BackgroundCallout
+  title='핵심 전략'
+  type='danger'
+  label='🔴 AS-IS: 네이밍 논의의 악순환'
+  margin='0 0 20px 0'
+  items={[
+    <>
+      디자이너: <strong>"primary? main? 뭐가 맞지?"</strong> → 기준 없는 작명
+    </>,
+    <>개발팀: "지난번엔 sky-blue였는데 왜 이번엔 light-blue죠?"</>,
+    <>
+      디자인-개발 간 <strong>명칭 불일치</strong>로 인한 불필요한 커뮤니케이션 핑퐁
+    </>,
+    <>
+      프로젝트 중반 투입 인원이 <strong>기존 네이밍 규칙을 이해하지 못함</strong>
+    </>,
+    <>
+      결국 <code>main-btn-bold-red</code> 같은 <strong>파편화된 클래스명</strong> 남발
+    </>,
+  ]}
+/>
+<BackgroundCallout 
+  type='info' 
+  label='🔵 TO-BE: 스타일 캡슐화 & 자동 네이밍'
+  margin='0 0 20px 0'
+>
+  <Source
+    language='scss'
+    dark={true}
+    code={dedent`
+      /* Button.module.scss */
+      .button-wrapper {
+        // 1. 최상위 요소만 클래스명 유일성 보장, 캡슐화 (Vite/Webpack이 해시화)
+        display: inline-flex;
+        gap: 8px;
 
-<IconGallery>
- <IconItem name="house">
-    <Icon name='house' />
-  </IconItem>
-</IconGallery>
+        :global {
+          // 2. BEM: 내부 요소는 .button__ 으로 시작하는 직관적 이름으로 자유롭게 사용
+          // 모듈 내부이므로 다른 컴포넌트의 .button__title과 충돌 걱정 없음
+          .button__title {
+            font-size: var(--project-font-size-m);
+            font-weight: 700;
+          }
 
-<div className="sb-container">
-  <div className='sb-section-title'>
-    # Configure your project
+          // 3. Modifier: 상태 변화도 표준화된 방식으로 대응
+          .button--loading {
+            cursor: wait;
+            opacity: 0.7;
+          }
 
-    Because Storybook works separately from your app, you'll need to configure it for your specific stack and setup. Below, explore guides for configuring Storybook with popular frameworks and tools. If you get stuck, learn how you can ask for help from our community.
-  </div>
-  <div className="sb-section">
-    <div className="sb-section-item">
-      <img
-        src={Styling}
-        alt="A wall of logos representing different styling technologies"
-      />
-      <h4 className="sb-section-item-heading">Add styling and CSS</h4>
-      <p className="sb-section-item-paragraph">Like with web applications, there are many ways to include CSS within Storybook. Learn more about setting up styling within Storybook.</p>
-      <a
-        href="https://storybook.js.org/docs/configure/styling-and-css/?renderer=react&ref=configure"
-        target="_blank"
-      >Learn more<RightArrow /></a>
-    </div>
-    <div className="sb-section-item">
-      <img
-        src={Context}
-        alt="An abstraction representing the composition of data for a component"
-      />
-      <h4 className="sb-section-item-heading">Provide context and mocking</h4>
-      <p className="sb-section-item-paragraph">Often when a story doesn't render, it's because your component is expecting a specific environment or context (like a theme provider) to be available.</p>
-      <a
-        href="https://storybook.js.org/docs/writing-stories/decorators/?renderer=react&ref=configure#context-for-mocking"
-        target="_blank"
-      >Learn more<RightArrow /></a>
-    </div>
-    <div className="sb-section-item">
-      <img src={Assets} alt="A representation of typography and image assets" />
-      <div>
-        <h4 className="sb-section-item-heading">Load assets and resources</h4>
-        <p className="sb-section-item-paragraph">To link static files (like fonts) to your projects and stories, use the
-        `staticDirs` configuration option to specify folders to load when
-        starting Storybook.</p>
-        <a
-          href="https://storybook.js.org/docs/configure/images-and-assets/?renderer=react&ref=configure"
-          target="_blank"
-        >Learn more<RightArrow /></a>
-      </div>
-    </div>
-  </div>
-</div>
-<div className="sb-container">
-  <div className='sb-section-title'>
-    # Do more with Storybook
+          .button--primary {
+            background: var(--project-color-primary-500);
+          }
+        }
+      }
+    `}
 
-    Now that you know the basics, let's explore other parts of Storybook that will improve your experience. This list is just to get you started. You can customise Storybook in many ways to fit your needs.
-  </div>
+/>
 
-  <div className="sb-section">
-    <div className="sb-features-grid">
-      <div className="sb-grid-item">
-        <img src={Docs} alt="A screenshot showing the autodocs tag being set, pointing a docs page being generated" />
-        <h4 className="sb-section-item-heading">Autodocs</h4>
-        <p className="sb-section-item-paragraph">Auto-generate living,
-          interactive reference documentation from your components and stories.</p>
-        <a
-          href="https://storybook.js.org/docs/writing-docs/autodocs/?renderer=react&ref=configure"
-          target="_blank"
-        >Learn more<RightArrow /></a>
-      </div>
-      <div className="sb-grid-item">
-        <img src={Share} alt="A browser window showing a Storybook being published to a chromatic.com URL" />
-        <h4 className="sb-section-item-heading">Publish to Chromatic</h4>
-        <p className="sb-section-item-paragraph">Publish your Storybook to review and collaborate with your entire team.</p>
-        <a
-          href="https://storybook.js.org/docs/sharing/publish-storybook/?renderer=react&ref=configure#publish-storybook-with-chromatic"
-          target="_blank"
-        >Learn more<RightArrow /></a>
-      </div>
-      <div className="sb-grid-item">
-        <img src={FigmaPlugin} alt="Windows showing the Storybook plugin in Figma" />
-        <h4 className="sb-section-item-heading">Figma Plugin</h4>
-        <p className="sb-section-item-paragraph">Embed your stories into Figma to cross-reference the design and live
-          implementation in one place.</p>
-        <a
-          href="https://storybook.js.org/docs/sharing/design-integrations/?renderer=react&ref=configure#embed-storybook-in-figma-with-the-plugin"
-          target="_blank"
-        >Learn more<RightArrow /></a>
-      </div>
-      <div className="sb-grid-item">
-        <img src={Testing} alt="Screenshot of tests passing and failing" />
-        <h4 className="sb-section-item-heading">Testing</h4>
-        <p className="sb-section-item-paragraph">Use stories to test a component in all its variations, no matter how
-          complex.</p>
-        <a
-          href="https://storybook.js.org/docs/writing-tests/?renderer=react&ref=configure"
-          target="_blank"
-        >Learn more<RightArrow /></a>
-      </div>
-      <div className="sb-grid-item">
-        <img src={Accessibility} alt="Screenshot of accessibility tests passing and failing" />
-        <h4 className="sb-section-item-heading">Accessibility</h4>
-        <p className="sb-section-item-paragraph">Automatically test your components for a11y issues as you develop.</p>
-        <a
-          href="https://storybook.js.org/docs/writing-tests/accessibility-testing/?renderer=react&ref=configure"
-          target="_blank"
-        >Learn more<RightArrow /></a>
-      </div>
-      <div className="sb-grid-item">
-        <img src={Theming} alt="Screenshot of Storybook in light and dark mode" />
-        <h4 className="sb-section-item-heading">Theming</h4>
-        <p className="sb-section-item-paragraph">Theme Storybook's UI to personalize it to your project.</p>
-        <a
-          href="https://storybook.js.org/docs/configure/theming/?renderer=react&ref=configure"
-          target="_blank"
-        >Learn more<RightArrow /></a>
-      </div>
-    </div>
-  </div>
-</div>
-<div className='sb-addon'>
-  <div className='sb-addon-text'>
-    <h4>Addons</h4>
-    <p className="sb-section-item-paragraph">Integrate your tools with Storybook to connect workflows.</p>
-    <a
-        href="https://storybook.js.org/addons/?ref=configure"
-        target="_blank"
-      >Discover all addons<RightArrow /></a>
-  </div>
-  <div className='sb-addon-img'>
-    <img src={AddonLibrary} alt="Integrate your tools with Storybook to connect workflows." />
-  </div>
-</div>
+</BackgroundCallout>
+<BackgroundCallout
+  type='success'
+  label='🟢 해결: 구조적 설계를 통한 작명 지옥 탈출'
+  margin='0 0 60px 0'
+  items={[
+    <><strong>논의 중단:</strong> '어떻게 지을까' 대신 '어떻게 짤까'에 집중</>,
+    <><strong>네이밍 격리:</strong> 캡슐화 덕분에 클래스명 중복 신경 쓰지 않고 자유로운 작명</>,
+    <><strong>유지보수 용이:</strong> BEM 구조를 통해 스타일의 영향 범위를 명확히 파악</>,
+  ]}
+/>
 
-<div className="sb-section sb-socials">
-    <div className="sb-section-item">
-      <img src={Github} alt="Github logo" className="sb-explore-image"/>
-      Join our contributors building the future of UI development.
+<PipelineFlow title='컬러 파이프라인 자동화 (5단계)' />
 
-      <a
-        href="https://github.com/storybookjs/storybook"
-        target="_blank"
-      >Star on GitHub<RightArrow /></a>
-    </div>
-    <div className="sb-section-item">
-      <img src={Discord} alt="Discord logo" className="sb-explore-image"/>
-      <div>
-        Get support and chat with frontend developers.
+<PipelineStage
+  num='01'
+   title='HSL 기반 자동 분류'
+effect={
+ 'Hue 기준 자동 분류로 색상 네이밍 고민을 제거하고, 디자이너·개발자 간 인식 차이 없이 확장 가능한 컬러 시스템을 유지'
 
-        <a
-          href="https://discord.gg/storybook"
-          target="_blank"
-        >Join Discord server<RightArrow /></a>
-      </div>
-    </div>
-    <div className="sb-section-item">
-      <img src={Youtube} alt="Youtube logo" className="sb-explore-image"/>
-      <div>
-        Watch tutorials, feature previews and interviews.
+}
 
-        <a
-          href="https://www.youtube.com/@chromaticui"
-          target="_blank"
-        >Watch on YouTube<RightArrow /></a>
-      </div>
-    </div>
-    <div className="sb-section-item">
-      <img src={Tutorials} alt="A book" className="sb-explore-image"/>
-      <p>Follow guided walkthroughs on for key workflows.</p>
+>
 
-      <a
-          href="https://storybook.js.org/tutorials/?ref=configure"
-          target="_blank"
-        >Discover tutorials<RightArrow /></a>
-    </div>
-</div>
+<Source
+  language='javascript'
+  dark={true}
+  code={dedent`
+/**
+ * STEP 01. HSL 기반 색상 자동 분류
+ *
+ * ❌ 사람이 색상 이름을 정하지 않음
+ * ✅ Hue(색상각) 규칙으로 컴퓨터가 자동 분류
+ */
+
+// 1️⃣ Hex 색상을 HSL로 변환
+const hex = '#60a5fa';
+const { h, s, l } = hexToHsl(hex);
+// 결과 예시 → h: 217°, s: 91%, l: 67%
+
+// 2️⃣ Hue 범위 규칙 (사전에 고정)
+const HUE_GROUPS = [
+{ name: 'red', range: [0, 30] },
+{ name: 'orange', range: [30, 60] },
+{ name: 'yellow', range: [60, 90] },
+{ name: 'green', range: [90, 150] },
+{ name: 'cyan', range: [150, 210] },
+{ name: 'blue', range: [210, 270] },
+{ name: 'purple', range: [270, 330] },
+];
+
+// 3️⃣ Hue 값으로 그룹 자동 결정
+function getColorGroup(hue) {
+return HUE_GROUPS.find(
+g => hue >= g.range[0] && hue < g.range[1]
+)?.name;
+}
+
+const group = getColorGroup(h);
+// → 'blue'
+
+// ✅ 결과
+// '#60a5fa' → h: 217° → blue 그룹 자동 배정
+// '#2dd4bf' → h: 175° → cyan 그룹 자동 배정
+
+/\*\*
+
+- 📌 핵심 포인트
+- - 색상 이름을 사람이 고민하지 않음
+- - 언제 추가해도 항상 같은 규칙으로 분류됨
+- - 디자이너/개발자 판단 차이 제거
+    \*/
+    `}
+    />
+
+</PipelineStage>
+
+<PipelineStage num='02' title='명도 기반 스텝 자동 생성' effect='명도(Lightness)를 기준으로 색상 단계를 자동 산출하여, 스텝 간 간격을 균등하게 유지하고 중복 없이 일관된 단계 체계를 생성'>
+<Source
+    language='javascript'
+    dark={true}
+    code={dedent`
+// 💡 Lightness(L) 값 기반 스텝 자동 생성
+// → 사람이 숫자를 정하지 않아도, 색상 개수에 맞춰 단계가 자동 배치됨
+
+// gray 그룹 예시 (색상 개수별 자동 스텝 분포)
+1개 → [500]
+2개 → [300, 700]
+5개 → [200, 350, 500, 650, 800]
+10개 → [50, 150, 250, ..., 950]
+
+// 규칙
+// - 기준: 0~100 Lightness → 50~950 스텝으로 매핑
+// - 밝은 색일수록 낮은 숫자, 어두운 색일수록 높은 숫자
+
+// 중복 방지 로직
+if (step이 이미 존재) {
+// 기존 규칙을 깨지 않도록
+// 10 단위로 증가시키며 항상 고유한 step 생성
+step += 10;
+}
+`}
+
+/>
+
+</PipelineStage>
+
+<PipelineStage
+  num='03'
+  title='역방향 참조 (Hex → Token)'
+  effect='프로젝트 내 모든 원시 Hex 값을 토큰 변수로 자동 치환하여, 원천 색상 변경 시 전체 스타일 일관성을 코드 수정 없이 유지'
+>
+<Source
+    language='javascript'
+    dark={true}
+    code={dedent`
+   // 🔗 Hex 값 → Primitive Token 변수 자동 매핑
+// → 프로젝트 어디에서도 Raw 컬러를 직접 쓰지 않도록 강제
+
+// Step 1. Primitive 컬러 기준으로 매핑 테이블 생성
+{
+"#ffffff": "var(--project-color-primitive-gray-50)",
+"#f9fafb": "var(--project-color-primitive-gray-100)",
+"#60a5fa": "var(--project-color-primitive-blue-500)",
+}
+
+// Step 2. 프로젝트 전체 JSON/토큰 파일 스캔
+// Raw Hex 발견 시 자동 치환
+// ❌ background: #60a5fa;
+// ✅ background: var(--project-color-primitive-blue-500);
+
+// Step 3. 미등록 색상 자동 감지
+// → 시스템 밖 컬러 유입을 즉시 확인 가능
+console.warn("미등록 컬러 발견: #abc123");
+`}
+
+/>
+
+</PipelineStage>
+
+<PipelineStage num='04' title='다중 테마 자동 확장' effect='단일 Primitive 컬러 소스를 기준으로 모든 테마를 동일한 빌드 로직으로 자동 생성하여, 테마 추가·확장이 코드 수정 없이 가능'>
+<Source
+    language='javascript'
+    dark={true}
+code={dedent`
+  // 🌓 단일 Primitive 컬러 → 다중 테마 자동 생성 파이프라인
+  // 테마가 늘어나도 빌드 로직은 절대 증가하지 않음
+
+pnpm run token:build
+↓
+primitive-color.json
+// 모든 컬러의 Single Source of Truth (원천)
+
+↓
+┌───────────────────────────────────────────┐
+│ \_primitive-map.scss // Primitive SCSS Map │
+│ primitive-tokens.ts // Primitive Storybook Meta │
+│ \_color-map.scss // Light/Dark 컬러 SCSS Map │
+│ color-tokens.ts // Color TS Meta │
+│ \_theme-tech-map.scss // Tech 테마 SCSS Map │
+│ tech-tokens.ts // Tech 테마 TS Meta │
+└───────────────────────────────────────────┘
+↓
+모든 테마에 동일한 변환·정렬·참조 로직 자동 적용
+`}
+
+/>
+
+</PipelineStage>
+
+<PipelineStage num='05' title='자동 문서화 (Storybook 연동)'
+  effect='토큰 변경 즉시 문서가 자동 갱신되어, 코드와 문서 불일치가 발생하지 않음'>
+ <Source
+    language='javascript'
+    dark={true}
+    code={dedent`
+      // 📚 생성된 토큰 데이터 기반 자동 문서화
+      // 사람이 문서를 따로 관리하지 않음
+
+      primitive-color.json 수정
+      ↓
+      pnpm run token:build
+      ↓
+      ┌───────────────────────────────────────────┐
+      │ color-tokens.ts        // ColorTokensData │
+      │ primitive-tokens.ts    // PrimitiveTokensData │
+      │ tech-tokens.ts         // 테마 토큰 Meta │
+      └───────────────────────────────────────────┘
+      ↓
+      Storybook에서
+      - Color Palette
+      - Primitive 색상 목록
+      - Light / Dark / Tech 테마
+      자동 시각화 및 최신 상태 유지
+    `}
+
+/>
+
+</PipelineStage>
+
+<A11yGuide id='a11y' title='핵심 접근성 설계 표준' />
+
+<GuideTable
+  id='requirements'
+  title='기술 스택 선정'
+  columns={[
+    {
+      header: '도구',
+      key: 'tool',
+    },
+    {
+      header: '선택 이유',
+      key: 'reason',
+    },
+    {
+      header: '실제 효과',
+      key: 'result',
+    },
+  ]}
+  data={[
+    {
+      tool: 'pnpm',
+      reason: 'npm 익숙함 + yarn 효율성',
+      result: '설치 속도 3배 빠름, 디스크 50% 절약',
+    },
+    {
+      tool: 'Vite',
+      reason: 'Esbuild 기반의 빠른 HMR',
+      result: '빠른 개발 빌드 속도',
+    },
+    {
+      tool: 'TypeScript',
+      reason: '컴포넌트 사용 방법(Props)에 대한 명확한 지시 가능',
+      result: '설계 의도에 맞는 정확한 데이터 주입 유도 및 개발자 경험(DX) 향상',
+    },
+    {
+      tool: 'SCSS',
+      reason: '변수 & 믹스인 시스템',
+      result: '테마 전환 간편, 복잡 로직 효율적 관리',
+    },
+  ]}
+/>
+
+<GuideTable
+  title='Storybook 활용 이유'
+  columns={[
+    {
+      header: '요구사항',
+      key: 'requirements',
+    },
+    {
+      header: 'Storybook',
+      key: 'storybook',
+    },
+    {
+      header: '다른 도구 or 직접 작업',
+      key: 'others',
+    },
+  ]}
+  data={[
+    {
+      requirements: 'Props 문서화',
+      storybook: '자동 생성 (ArgsTable)',
+      others: 'JSDoc 등 별도 수동 작성 필요',
+    },
+    {
+      requirements: '모든 Variation 테스트',
+      storybook: 'Controls를 통해 한 화면에서 실시간 확인',
+      others: '파일 수정 및 브라우저 리로드 반복',
+    },
+    {
+      requirements: '테마 및 다국어 테스트',
+      storybook: 'Toolbar 내 토글 기능을 통한 즉각 전환',
+      others: '브라우저 언어 설정 또는 코드 수동 변경',
+    },
+    {
+      requirements: '접근성 검증',
+      storybook: 'Axe-addon을 통한 자동 진단 및 시각화',
+      others: '별도 확장 프로그램 및 수동 검사 의존',
+    },
+  ]}
+/>
+
+<ComponentInventory
+  title='컴포넌트 분류 (43개)'
+  items={[
+    {
+      subtitle: 'Form 요소 관련 (14)',
+      columns: [
+        { 
+          header: '컴포넌트 이름', 
+          key: 'name',
+          render: (value, row) => (
+            <a href={row.href} target='_blank' title='새 창 열기'>{value}</a>
+          ),
+        },
+        { header: '작업된 컴포넌트 사양', key: 'specs' },
+      ],
+      data: [
+          {
+          name: '🔗 Button',
+          specs: 'Variant(Outline, Solid, Ghost), Size, Color, Shape',
+          href: "/docs/ui-molecules-button-solid--docs"
+        },
+          {
+          name: '🔗 IconButton',
+          specs: 'Variant(Outline, Solid, Ghost), Size, Color, Shape',
+          href: "/docs/ui-molecules-button-iconbutton-solid--docs"
+        },
+          {
+          name: '🔗 LinkButton',
+          specs: 'Variant(Outline, Solid, Ghost), Size, Color, Shape',
+          href: "/docs/ui-molecules-button-linkbutton--docs"
+        },
+        {
+          name: '🔗 Input',
+          specs: 'Variant(Solid, Outline), Color, Size, Shape',
+          href: "/docs/ui-molecules-input-outline--docs"
+        },
+        {
+          name: '🔗 Datepicker',
+          specs: 'Variant(Outline), Color, Size, Shape',
+          href: "/docs/ui-molecules-datepicker--docs"
+        },
+         {
+          name: '🔗 Switch',
+          specs: 'Color, Size',
+          href: "/docs/ui-molecules-switch--docs"
+        },
+         {
+          name: '🔗 Slider',
+          specs: 'Color, Size',
+          href: "/docs/ui-molecules-slider--docs"
+        },
+         {
+          name: '🔗 File Picker (Drag&Drop 파일 업로더)',
+          specs: 'Color',
+          href: "/docs/ui-organisms-filepicker--docs"
+        },
+        {
+          name: '🔗 Textarea',
+          specs: 'Variant(Solid, Outline), Color, Size, Shape',
+          href: "/docs/ui-atoms-textarea-outline--docs"
+        },
+        {
+          name: '🔗 Checkbox',
+          specs: 'Color, Size',
+          href: "/docs/ui-atoms-checkbox--docs"
+        },
+        {
+          name: '🔗 Radio',
+          specs: 'Color, Size',
+          href: "/docs/ui-atoms-radio--docs"
+        },
+        {
+          name: '🔗 Selectbox',
+          specs: 'Variant(Outline), Color, Size, Shape',
+          href: "/docs/ui-molecules-selectbox-outline--docs"
+        },
+        {
+          name: '🔗 Autocomplete (Combobox)',
+          specs: 'Variant(Outline), Color, Size, Shape',
+          href: "/docs/ui-molecules-combobox-autocomplete--docs"
+        },
+        {
+          name: '🔗 Searchbar (Combobox)',
+          specs: 'Variant(Outline), Color, Size, Shape',
+          href: "/docs/ui-molecules-combobox-searchbar--docs"
+        },
+      ],
+    },
+    {
+      subtitle: 'Form 요소 레이아웃 구조 관련 (10)',
+      columns: [
+        {
+          header: '컴포넌트 이름',
+          key: 'name',
+          render: (value, row) => (
+            <a href={row.href} target='_blank' title='새 창 열기'>{value}</a>
+          ),
+        },
+        { header: '작업된 컴포넌트 사양', key: 'specs' },
+      ],
+      data: [
+        {
+          name: '🔗 Label',
+          specs: 'Size',
+          href: "/docs/ui-atoms-label--docs"
+        },
+        {
+          name: '🔗 FormField',
+          specs: 'Size',
+          href: "/docs/ui-molecules-formfield--docs"
+        },
+        {
+          name: '🔗 FormFieldset',
+          specs: 'Size',
+          href: "/docs/ui-molecules-formfieldset--docs"
+        },
+        {
+          name: '🔗 Control Group',
+          specs: 'Size',
+          href: "/docs/ui-molecules-controlgroup--docs"
+        },
+        {
+          name: '🔗 Option Item (Selectbox 구성 컴포넌트)',
+          specs: 'Variant(Ghost), Color, Size',
+          href: "/docs/ui-molecules-optionitem-ghost--docs"
+        },
+         {
+          name: '🔗 Option List (Selectbox 구성 컴포넌트)',
+          specs: 'Variant(Ghost), Color, Size',
+          href: "/docs/ui-molecules-optionlist-outline--docs"
+        },
+         {
+          name: '🔗 Calendar Selectbox (Calendar 구성 컴포넌트)',
+          specs: 'Variant(Ghost), Color, Size',
+          href: "/docs/ui-organisms-calendar-calendarselectbox--docs"
+        },
+         {
+          name: '🔗 Calendar Option List (Calendar 구성 컴포넌트)',
+          specs: 'Variant(Ghost), Color, Size',
+          href: "/docs/ui-organisms-calendar-calendaroptionlist--docs"
+        },
+         {
+          name: '🔗 ButtonGroup',
+          specs: 'Size, Align',
+          href: "/docs/ui-molecules-button-buttongroup--docs"
+        },
+          {
+          name: '🔗 Validation Msg',
+          specs: 'Variant(Danger, Warning, Success, Guide) Size, Long Text',
+          href: "/docs/ui-molecules-validationmsg--docs"
+        },
+      ],
+    },
+      {
+      subtitle: 'Layout Components (11)',
+      columns: [
+        {
+          header: '컴포넌트 이름',
+          key: 'name',
+          render: (value, row) => (
+            <a href={row.href} target='_blank' title='새 창 열기'>{value}</a>
+          ),
+        },
+        { header: '작업된 컴포넌트 사양', key: 'specs' },
+      ],
+      data: [
+        {
+          name: '🔗 Accordion',
+          specs: 'Size, Color, Multiple(아코디언 묶음), Nested(다계층), Long Text',
+          href: "/docs/ui-molecules-accordion--docs"
+        },
+        {
+          name: '🔗 Tabs',
+          specs: 'Variant(Solid, Outline, Underline) Size, Color, Scrollable Tabs',
+          href: "/docs/ui-molecules-tabs--docs"
+        },
+        {
+          name: '🔗 Pagination',
+          specs: 'Variant(Solid, Outline) ,Color, Size, Shape, Long Range, Mobile',
+          href: "/docs/ui-molecules-pagination--docs"
+        },
+        {
+          name: '🔗 Segmented Control',
+          specs: 'Size, Color',
+          href: "/docs/ui-molecules-segmentedcontrol--docs"
+        },
+        {
+          name: '🔗 Breadcrumb',
+          specs: 'Size, Color',
+          href: "/docs/ui-molecules-breadcrumbs--docs"
+        },
+         {
+          name: '🔗 Language Selector',
+          specs: 'Color, Size',
+          href: "/docs/ui-molecules-languageselector--docs"
+        },
+         {
+          name: '🔗 Action Bar (논리적 버튼 그룹 컴포넌트)',
+          specs: 'Size',
+          href: "/docs/ui-organisms-actionbar--docs"
+        },
+         {
+          name: '🔗 Calendar',
+          specs: 'Color',
+          href: "/docs/ui-organisms-calendar-calendar--docs"
+        },
+        {
+          name: '🔗 DataTable',
+          specs: 'Variant(Outline, Solid), Color, Size, With Notices(게시판 형태), With Checkboxes, Sortable, Empty',
+          href: "/docs/ui-organisms-datatable--docs"
+        },
+         {
+          name: '🔗 AlertModal',
+          specs: 'Variant(Info, Danger), Interaction Pattern',
+          href: "/docs/ui-organisms-modal-alertmodal--docs"
+        },
+          {
+          name: '🔗 Custom Modal',
+          specs: 'Size, Scroll Type, Interaction Pattern',
+          href: "/docs/ui-organisms-modal-custommodal--docs"
+        },
+
+      ],
+    },
+
+    {
+      subtitle: 'Display Components (8)',
+      columns: [
+        {
+          header: '컴포넌트 이름',
+          key: 'name',
+          render: (value, row) => (
+            <a href={row.href} target='_blank' title='새 창 열기'>{value}</a>
+          ),
+        },
+        { header: '작업된 컴포넌트 사양', key: 'specs' },
+      ],
+      data: [
+        {
+          name: '🔗 Badge',
+          specs: 'Variant(Outline, Solid, Dot), Size, Color, Shape, Overlaid(다른 컴포넌트와 중첩 배치)',
+          href: "/docs/ui-atoms-badge--docs"
+        },
+         {
+          name: '🔗 Chip',
+          specs: 'Variant(Outline, Solid), Size, Color, Shape, With Icon, Choice Group, Filter Group, Input Group, Action Group',
+          href: "/docs/ui-molecules-chip--docs"
+        },
+         {
+          name: '🔗 Tag',
+          specs: 'Variant(Outline, Solid), Size, Color, Shape, With Icon, Deletable, Navigational',
+          href: "/docs/ui-atoms-tag--docs"
+        },
+         {
+          name: '🔗 Tooltip',
+          specs: 'Variant(Standard, Rich), Shape, Size, Position, Align',
+          href: "/docs/ui-atoms-tooltip--docs"
+        },
+         {
+          name: '🔗 Toast',
+          specs: 'Variant(Info, Success, Warning, Error), All Positions',
+          href: "/docs/ui-molecules-toast--docs"
+        },
+         {
+          name: '🔗 Skeleton',
+          specs: 'Size, Shape',
+          href: "/docs/ui-atoms-skeleton--docs"
+        },
+          {
+          name: '🔗 Spinner',
+          specs: 'Size, Color, Shape',
+          href: "/docs/ui-atoms-spinner-ringspinner--docs"
+        },
+         {
+          name: '🔗 Avatar',
+          specs: 'Variant(Outline, Solid), Size, Color, Shape',
+          href: "/docs/ui-molecules-avatar--docs"
+        },
+      ],
+    },
+
+]}
+/>
+
+<CommandGuide title='시작하기'>
+  <CodeGuideSection title='Step 1: 의존성 설치'>
+    <Source
+      language='bash'
+      dark={true}
+      code={dedent`
+pnpm install
+
+# 프로젝트 실행 및 토큰 빌드에 필요한 환경 설치
+
+`}
+/>
+
+  </CodeGuideSection>
+
+  <CodeGuideSection title='Step 2: 디자인 토큰 빌드 (자동화 파이프라인 실행)'>
+    <Source
+      language='bash'
+      dark={true}
+      code={dedent`
+pnpm run token:build
+
+# ✨ 자동 생성 결과물
+
+# SCSS (스타일에서 바로 사용)
+
+src/styles/generated/
+├─ \_primitive-map.scss
+├─ \_color-map.scss
+├─ \_theme-tech-map.scss
+
+# TypeScript (타입 안전성 & 문서 메타)
+
+src/constants/generated/
+├─ primitive-tokens.ts
+├─ color-tokens.ts
+├─ tech-tokens.ts
+
+# 👉 토큰 추가/수정 시 수동 작업 없음
+
+`}
+/>
+
+  </CodeGuideSection>
+
+  <CodeGuideSection title='Step 3: Storybook 실행 (자동 문서화 확인)'>
+    <Source
+      language='bash'
+      dark={true}
+      code={dedent`
+pnpm run storybook
+
+# 🚀 http://localhost:6006
+
+# 자동 반영 내용
+
+# → Color / Primitive 토큰 시각화
+
+# → Light / Dark / Tech 테마 비교
+
+# → 실제 빌드된 토큰 기준 문서 유지
+
+`}
+/>
+
+  </CodeGuideSection>
+</CommandGuide>
 
 <style>
   {`
-  .sb-container {
-    margin-bottom: 48px;
-  }
-
-  .sb-section {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-  }
-
-  img {
-    object-fit: cover;
-  }
-
-  .sb-section-title {
-    margin-bottom: 32px;
-  }
-
-  .sb-section a:not(h1 a, h2 a, h3 a) {
-    font-size: 14px;
-  }
-
-  .sb-section-item, .sb-grid-item {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .sb-section-item-heading {
-    padding-top: 20px !important;
-    padding-bottom: 5px !important;
-    margin: 0 !important;
-  }
-  .sb-section-item-paragraph {
-    margin: 0;
-    padding-bottom: 10px;
-  }
-
-  .sb-chevron {
-    margin-left: 5px;
-  }
-
-  .sb-features-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 32px 20px;
-  }
-
-  .sb-socials {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .sb-socials p {
-    margin-bottom: 10px;
-  }
-
-  .sb-explore-image {
-    max-height: 32px;
-    align-self: flex-start;
-  }
-
-  .sb-addon {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    position: relative;
-    background-color: #EEF3F8;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    background: #EEF3F8;
-    height: 180px;
-    margin-bottom: 48px;
-    overflow: hidden;
-  }
-
-  .sb-addon-text {
-    padding-left: 48px;
-    max-width: 240px;
-  }
-
-  .sb-addon-text h4 {
-    padding-top: 0px;
-  }
-
-  .sb-addon-img {
-    position: absolute;
-    left: 345px;
-    top: 0;
-    height: 100%;
-    width: 200%;
-    overflow: hidden;
-  }
-
-  .sb-addon-img img {
-    width: 650px;
-    transform: rotate(-15deg);
-    margin-left: 40px;
-    margin-top: -72px;
-    box-shadow: 0 0 1px rgba(255, 255, 255, 0);
-    backface-visibility: hidden;
-  }
-
-  @media screen and (max-width: 800px) {
-    .sb-addon-img {
-      left: 300px;
-    }
-  }
-
-  @media screen and (max-width: 600px) {
-    .sb-section {
-      flex-direction: column;
+    .sbdocs-wrapper {
+        background: radial-gradient(circle at 50% 0%, #e6edf7 0%, #f7f9fc 55%, #e6edf7 100%);
+        background-attachment: fixed; 
+        transition: background-color 0.3s ease;
+       
     }
 
-    .sb-features-grid {
-      grid-template-columns: repeat(1, 1fr);
+    .sbdocs-content {
+        border-radius: 36px;
+        padding: 30px;
+        background-color: var(--project-color-primitive-gray-white);
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
-
-    .sb-socials {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .sb-addon {
-      height: 280px;
-      align-items: flex-start;
-      padding-top: 32px;
-      overflow: hidden;
-    }
-
-    .sb-addon-text {
-      padding-left: 24px;
-    }
-
-    .sb-addon-img {
-      right: 0;
-      left: 0;
-      top: 130px;
-      bottom: 0;
-      overflow: hidden;
-      height: auto;
-      width: 124%;
-    }
-
-    .sb-addon-img img {
-      width: 1200px;
-      transform: rotate(-12deg);
-      margin-left: 0;
-      margin-top: 48px;
-      margin-bottom: -40px;
-      margin-left: -24px;
-    }
-  }
-  `}
+`}
 </style>

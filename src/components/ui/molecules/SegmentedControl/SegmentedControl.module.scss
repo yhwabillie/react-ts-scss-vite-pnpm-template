@@ -7,22 +7,22 @@
 // 💡 1. 컬러 시스템 맵 (보라색 계열 tertiary 반영)
 $segmented-colors: (
   primary: (
-    bg: var(--primary-bg-color-segmented-control),
-    indicator-bg: var(--primary-indicator-color-segmented-control),
-    text-default: var(--primary-text-color-segmented-control),
-    text-active: var(--primary-text-active-color-segmented-control),
+    bg: var(--project-color-primary-segmented-control-bg),
+    indicator-bg: var(--project-color-primary-segmented-control-indicator-bg),
+    text-default: var(--project-color-primary-segmented-control-text),
+    text-active: var(--project-color-primary-segmented-control-text-active),
   ),
   secondary: (
-    bg: var(--secondary-bg-color-segmented-control),
-    indicator-bg: var(--secondary-indicator-color-segmented-control),
-    text-default: var(--secondary-text-color-segmented-control),
-    text-active: var(--secondary-text-active-color-segmented-control),
+    bg: var(--project-color-secondary-segmented-control-bg),
+    indicator-bg: var(--project-color-secondary-segmented-control-indicator-bg),
+    text-default: var(--project-color-secondary-segmented-control-text),
+    text-active: var(--project-color-secondary-segmented-control-text-active),
   ),
   tertiary: (
-    bg: var(--tertiary-bg-color-segmented-control),
-    indicator-bg: var(--tertiary-indicator-color-segmented-control),
-    text-default: var(--tertiary-text-color-segmented-control),
-    text-active: var(--tertiary-text-active-color-segmented-control),
+    bg: var(--project-color-tertiary-segmented-control-bg),
+    indicator-bg: var(--project-color-tertiary-segmented-control-indicator-bg),
+    text-default: var(--project-color-tertiary-segmented-control-text),
+    text-active: var(--project-color-tertiary-segmented-control-text-active),
   ),
 );
 

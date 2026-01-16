@@ -1,0 +1,65 @@
+/* PreviewBox.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.previewWrapper {
+  display: flex;
+  gap: rem(12px);
+  align-items: center;
+  justify-content: center;
+
+  &.single {
+    .previewBoxLight {
+      width: 100%; // 단일 모드일 때 전체 차지
+    }
+  }
+}
+
+.previewBox {
+  width: 36px;
+  height: 36px;
+  border: 1px solid;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  background-size: 10px 10px;
+  background-position:
+    0 0,
+    0 5px,
+    5px 5px,
+    5px 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: inherit; // 인라인으로 들어오는 토큰 색상
+    z-index: 1;
+  }
+}
+
+.previewBoxLight {
+  @extend .previewBox;
+  border-color: rgba(0, 0, 0, 0.15);
+  background-color: #ffffff; // 베이스 흰색
+  // ✅ 라이트 체커: 흰색(#fff)과 아주 연한 회색(#f0f0f0)의 조합
+  background-image:
+    linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+    linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+    linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+}
+
+.previewBoxDark {
+  @extend .previewBox;
+  border-color: rgba(255, 255, 255, 0.25);
+  background-color: #121212; // ✅ 베이스 다크모드 배경 (#121212 고정)
+  // ✅ 다크 체커: 깊은 다크(#121212)와 약간 밝은 다크(#1e1e1e)의 조합
+  // 너무 밝은 회색을 쓰면 투명한 다크 토큰이 왜곡되어 보일 수 있으므로 미세한 차이만 줍니다.
+  background-image:
+    linear-gradient(45deg, #1e1e1e 25%, transparent 25%),
+    linear-gradient(-45deg, #1e1e1e 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #1e1e1e 75%),
+    linear-gradient(-45deg, transparent 75%, #1e1e1e 75%);
+}

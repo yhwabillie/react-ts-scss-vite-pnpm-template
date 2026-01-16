@@ -14,7 +14,7 @@ $formfield-sizes: (
       label-gap: rem(4px),
       div-gap: rem(2px),
     ),
-    font-token: var(--project-typo-legend5-600),
+    font-token: var(--project-typo-legend-5-600),
   ),
   sm: (
     row: (
@@ -25,7 +25,7 @@ $formfield-sizes: (
       label-gap: rem(6px),
       div-gap: rem(4px),
     ),
-    font-token: var(--project-typo-legend4-600),
+    font-token: var(--project-typo-legend-4-600),
   ),
   md: (
     row: (
@@ -36,7 +36,7 @@ $formfield-sizes: (
       label-gap: rem(8px),
       div-gap: rem(6px),
     ),
-    font-token: var(--project-typo-legend3-600),
+    font-token: var(--project-typo-legend-3-600),
   ),
   lg: (
     row: (
@@ -47,7 +47,7 @@ $formfield-sizes: (
       label-gap: rem(10px),
       div-gap: rem(8px),
     ),
-    font-token: var(--project-typo-legend2-600),
+    font-token: var(--project-typo-legend-2-600),
   ),
   xl: (
     row: (
@@ -58,7 +58,7 @@ $formfield-sizes: (
       label-gap: rem(12px),
       div-gap: rem(10px),
     ),
-    font-token: var(--project-typo-legend1-600),
+    font-token: var(--project-typo-legend-1-600),
   ),
 );
 
@@ -102,15 +102,9 @@ $formfield-sizes: (
 
       :global(.label) {
         font: $font-token;
-        // flex: 0 0 auto;
-        // width: fit-content;
-        // display: inline-flex;
-        // align-items: center;
-        // gap: rem(4px);
-        // flex-wrap: wrap;
 
         :global(.requried) {
-          color: var(--required-asterisk-color);
+          color: var(--project-color-feedback-required-asterisk-text);
           vertical-align: super;
           line-height: 0;
           display: inline-flex;

@@ -6,19 +6,19 @@
 // 💡 1. 컬러 시스템 정의
 $slider-colors: (
   primary: (
-    thumb-bg: var(--primary-thumb-bg-color-slider),
-    thumb-border: var(--primary-thumb-stroke-color-slider),
-    fill-bg: var(--primary-fill-bg-color-slider),
+    thumb-bg: var(--project-color-primary-slider-thumb-bg),
+    thumb-border: var(--project-color-primary-slider-thumb-border),
+    fill-bg: var(--project-color-primary-slider-bg),
   ),
   secondary: (
-    thumb-bg: var(--secondary-thumb-bg-color-slider),
-    thumb-border: var(--secondary-thumb-stroke-color-slider),
-    fill-bg: var(--secondary-fill-bg-color-slider),
+    thumb-bg: var(--project-color-secondary-slider-thumb-bg),
+    thumb-border: var(--project-color-secondary-slider-thumb-border),
+    fill-bg: var(--project-color-secondary-slider-bg),
   ),
   tertiary: (
-    thumb-bg: var(--tertiary-thumb-bg-color-slider),
-    thumb-border: var(--tertiary-thumb-stroke-color-slider),
-    fill-bg: var(--tertiary-fill-bg-color-slider),
+    thumb-bg: var(--project-color-tertiary-slider-thumb-bg),
+    thumb-border: var(--project-color-tertiary-slider-thumb-border),
+    fill-bg: var(--project-color-tertiary-slider-bg),
   ),
 );
 
@@ -80,14 +80,14 @@ $slider-sizes: (
       cursor: not-allowed;
     }
     :global(.track) {
-      background-color: var(--disabled-track-bg-color-slider);
+      background-color: var(--project-color-slider-disabled-track-bg);
       :global(.fill) {
-        background-color: var(--disabled-fill-bg-color-slider) !important;
+        background-color: var(--project-color-slider-disabled-fill) !important;
       }
     }
     :global(.thumb) {
-      background-color: var(--disabled-thumb-bg-color-slider);
-      border-color: var(--disabled-thumb-stroke-color-slider) !important;
+      background-color: var(--project-color-slider-disabled-thumb-bg);
+      border-color: var(--project-color-slider-disabled-thumb-border) !important;
       cursor: not-allowed;
       :global(.tooltip) {
         display: none !important;
@@ -131,7 +131,7 @@ $slider-sizes: (
         position: absolute;
         width: 100%;
         height: rem(map.get($props, track-height));
-        background-color: var(--track-bg-color-slider);
+        background-color: var(--project-color-slider-track-bg);
         border-radius: var(--project-border-radius-max);
         overflow: hidden;
 
@@ -160,8 +160,8 @@ $slider-sizes: (
           visibility: hidden;
           transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
           padding: rem(4px) rem(8px);
-          background-color: var(--tooltip-bg-color-slider);
-          color: var(--tooltip-text-color-slider);
+          background-color: var(--project-color-slider-bg);
+          color: var(--project-color-slider-text);
           border-radius: rem(4px);
           font-size: rem(12px);
           white-space: nowrap;
@@ -181,7 +181,7 @@ $slider-sizes: (
 
         &:focus-visible,
         &:global(.pseudo-focus-visible) {
-          outline: 2.5px dashed #2466eb !important;
+          outline: 2.5px dashed var(--project-color-interaction-focus-ring) !important;
           outline-offset: 2px;
         }
       }

@@ -1,0 +1,61 @@
+/* A11yGuide.module.scss */
+@use 'sass:map';
+@use '../../../styles/mixins' as *;
+
+.a11y-guide {
+  margin-bottom: rem(60px);
+
+  :global {
+    .a11y-guide__title {
+      font: var(--project-typo-heading-2-700);
+      border-bottom: 0;
+      padding-bottom: 0;
+      margin-bottom: rem(16px);
+    }
+
+    .a11y-guide__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(rem(308px), 1fr));
+      gap: rem(10px);
+    }
+  }
+}
+
+.a11y-card {
+  border: rem(1px) solid #cccccc;
+  transition: transform 0.2s ease;
+  border-radius: var(--project-border-radius-12);
+  padding: rem(24px);
+  background: #f9fafb;
+
+  :global {
+    .a11y-card__header {
+      display: flex;
+      align-items: center;
+      gap: rem(6px);
+      margin-bottom: rem(8px);
+
+      span {
+        color: #667eea;
+        font: var(--project-typo-sub-title-1-700);
+      }
+    }
+
+    .a11y-card__text {
+      margin: 0;
+      font: var(--project-typo-sub-title-3-600);
+      color: #333333;
+      word-break: keep-all;
+
+      &:not(:last-child) {
+        margin-bottom: rem(8px);
+      }
+
+      :global {
+        .a11y-card__label {
+          color: #1e44ea;
+        }
+      }
+    }
+  }
+}

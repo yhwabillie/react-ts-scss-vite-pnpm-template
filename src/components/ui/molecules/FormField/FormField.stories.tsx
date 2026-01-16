@@ -5,10 +5,8 @@ import Checkbox from '../../atoms/Checkbox/Checkbox';
 import Radio from '../../atoms/Radio/Radio';
 import Label from '../../atoms/Label/Label';
 import { useId } from 'react';
-import { GuideCell, GuideRow, GuideWrapper } from '../../guide/Guide';
-import { SpecimenCell, SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
+import { SpecimenGroup, SpecimenWrapper } from '../../guide/Specimen';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
-import ControlGroup from '../ControlGroup/ControlGroup';
 
 const meta = {
   title: 'UI/Molecules/FormField',
@@ -16,6 +14,15 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          '**FormField**는 레이블(Label), 입력 요소(Input/Control), 그리고 도움말 및 에러 메시지를 하나로 묶어주는 폼 구성의 최소 단위입니다. <br /><br />' +
+          '•`htmlFor`와 `id`를 매핑하여 클릭 영역 확장 및 스크린 리더 접근성 확보 <br />' +
+          '• 정보 인지 부하가 낮은 수직(Column) 배치와 공간 효율적인 수평(Row) 배치 지원 <br />' +
+          '• 필수 입력 표식 및 사이즈별 간격 규격을 일관되게 유지하여 폼의 완성도 향상',
+      },
+    },
   },
   argTypes: {
     // 1. Identification (식별 및 시맨틱 연결)
@@ -113,20 +120,10 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-// 반복 데이터
-const RADIO_OPTIONS = [
-  { id: '1', label: '검색' },
-  { id: '2', label: '지인 추천' },
-  { id: '3', label: '광고' },
-];
-
 /**
- * [01. Base / Layout Specimen]
- * FormField 내에서 단일 입력 요소(Input)와 그룹 요소(Radio/Checkbox)가
- * 방향성(direction)에 따라 어떻게 시각적으로 정렬되는지 검증합니다.
- * - **Column (Primary)**: 레이블이 상단에 위치하여 폼의 너비를 충분히 활용합니다. 모바일 및 정보 입력 중심 폼에 적합합니다.
- * - **Row (Secondary)**: 레이블과 입력 요소가 가로로 배치됩니다. 공간이 제한적이거나 필터바 등 유틸리티 영역에 권장됩니다.
- * - **Alignment**: `SpecimenGroup` 내에서 `alignItems: flex-end` 설정을 통해 요소들의 우측 정렬 가독성을 테스트합니다.
+ * 입력 요소의 성격(단일 인풋 vs 그룹 라디오)과 방향성에 따른 정렬 방식을 확인합니다.
+ * - **Column**: 레이블이 상단에 위치하여 모바일 환경 및 복잡한 입력 양식에 권장됩니다.
+ * - **Row**: 레이블과 인풋이 가로로 배치되어 필터바나 공간이 좁은 영역에 적합합니다.
  */
 export const Base: Story = {
   args: {
@@ -223,11 +220,8 @@ export const Base: Story = {
 };
 
 /**
- * [02. Status / Required Indicators]
- * 필수 입력 항목(`required: true`)에 대한 시각적 표식과 레이아웃 대응을 검증합니다.
- * - **Visual Cue**: 레이블 우측에 에스터리스크(*)가 누락 없이 표시되는지 확인합니다.
- * - **Consistency**: 단일 입력(Input)과 그룹 입력(Radio Group) 모두에서 필수 표식이 동일한 위계로 노출되는지 체크합니다.
- * - **Layout Adaptability**: `row` 레이아웃에서 레이블이 필수 표식과 함께 출력될 때 인풋과의 간격이 적절한지 검수합니다.
+ * 필수 입력 항목(`required: true`)에 대한 시각적 표식(에스터리스크)을 검증합니다.
+ * 레이블 우측의 표식이 레이아웃 방향(Row/Column)에 관계없이 가독성을 해치지 않는지 확인합니다.
  */
 export const Required: Story = {
   args: {
@@ -297,10 +291,8 @@ export const Required: Story = {
 };
 
 /**
- * XL부터 XS까지 5단계 사이즈에 따른 입력 요소와 그룹 레이아웃의 시각적 변화를 검증합니다.
- * - **Scaling Consistency**: 사이즈가 작아짐에 따라 폰트, 패딩, 간격(Gap)이 비례하여 축소되는지 확인합니다.
- * - **Layout Adaptability**: `row` 레이아웃에서 작은 사이즈(SM, XS) 적용 시 레이블과 컨트롤의 정렬이 유지되는지 체크합니다.
- * - **Hit Area**: XS 사이즈에서도 `label-input` 연결을 통해 최소한의 클릭 영역이 확보되는지 검수합니다.
+ * 5단계 표준 사이즈에 따른 레이블 폰트와 컨트롤 간의 간격(Gap) 변화를 대조합니다.
+ * 특히 가장 작은 XS 사이즈에서도 레이블 클릭을 통한 포커스 이동이 원활한지(Hit Area) 확인합니다.
  */
 export const Sizes: Story = {
   render: args => (

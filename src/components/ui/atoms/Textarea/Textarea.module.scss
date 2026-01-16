@@ -7,237 +7,247 @@
 $textarea-colors: (
   primary: (
     solid: (
-      bg: var(--primary-bg-color-textarea-solid),
-      color: var(--primary-text-color-textarea-solid),
-      placeholder: var(--primary-placeholder-color-textarea-solid),
+      bg: var(--project-color-primary-textarea-solid-bg),
+      color: var(--project-color-primary-textarea-solid-text),
+      placeholder: var(--project-color-primary-textarea-solid-placeholder),
       hover: (
-        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-textarea),
+        shadow: 0 0 0 rem(4px) var(--project-color-primary-textarea-shadow-hover),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-textarea),
-        color: var(--disabled-text-color-textarea),
-        placeholder: var(--disabled-placeholder-color-textarea),
+        bg: var(--project-color-textarea-disabled-bg),
+        color: var(--project-color-textarea-disabled-text),
+        placeholder: var(--project-color-textarea-disabled-placeholder),
       ),
       readonly: (
-        bg: var(--readonly-bg-color-textarea),
-        color: var(--readonly-text-color-textarea),
-        placeholder: var(--readonly-placeholder-color-textarea),
+        bg: var(--project-color-textarea-readonly-bg),
+        color: var(--project-color-textarea-readonly-text),
+        placeholder: var(--project-color-textarea-readonly-placeholder),
       ),
     ),
     outline: (
-      bg: var(--primary-bg-color-textarea-outline),
-      border: var(--primary-stroke-color-textarea-outline),
-      color: var(--primary-text-color-textarea-outline),
-      placeholder: var(--primary-placeholder-color-textarea-outline),
+      bg: var(--project-color-primary-textarea-outline-bg),
+      border: var(--project-color-primary-textarea-outline-border),
+      color: var(--project-color-primary-textarea-outline-text),
+      placeholder: var(--project-color-primary-textarea-outline-placeholder),
       hover: (
-        shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-textarea),
+        shadow: 0 0 0 rem(4px) var(--project-color-primary-textarea-shadow-hover),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-textarea),
-        color: var(--disabled-text-color-textarea),
-        border: var(--disabled-stroke-color-textarea),
-        placeholder: var(--disabled-placeholder-color-textarea),
+        bg: var(--project-color-textarea-disabled-bg),
+        color: var(--project-color-textarea-disabled-text),
+        border: var(--project-color-textarea-disabled-border),
+        placeholder: var(--project-color-textarea-disabled-placeholder),
       ),
       readonly: (
-        bg: var(--readonly-bg-color-textarea),
-        color: var(--readonly-text-color-textarea),
-        border: var(--readonly-stroke-color-textarea),
-        placeholder: var(--readonly-placeholder-color-textarea),
+        bg: var(--project-color-textarea-readonly-bg),
+        color: var(--project-color-textarea-readonly-text),
+        border: var(--project-color-textarea-readonly-border),
+        placeholder: var(--project-color-textarea-readonly-border),
       ),
     ),
   ),
   secondary: (
     solid: (
-      bg: var(--secondary-bg-color-textarea-solid),
-      color: var(--secondary-text-color-textarea-solid),
-      placeholder: var(--secondary-placeholder-color-textarea-solid),
+      bg: var(--project-color-secondary-textarea-solid-bg),
+      color: var(--project-color-secondary-textarea-solid-text),
+      placeholder: var(--project-color-secondary-textarea-solid-placeholder),
       hover: (
-        shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-textarea),
+        shadow: 0 0 0 rem(4px) var(--project-color-secondary-textarea-shadow-hover),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-textarea),
-        color: var(--disabled-text-color-textarea),
-        placeholder: var(--disabled-placeholder-color-textarea),
+        bg: var(--project-color-textarea-disabled-bg),
+        color: var(--project-color-textarea-disabled-text),
+        placeholder: var(--project-color-textarea-disabled-placeholder),
       ),
       readonly: (
-        bg: var(--readonly-bg-color-textarea),
-        color: var(--readonly-text-color-textarea),
-        placeholder: var(--readonly-placeholder-color-textarea),
+        bg: var(--project-color-textarea-readonly-bg),
+        color: var(--project-color-textarea-readonly-text),
+        placeholder: var(--project-color-textarea-readonly-placeholder),
       ),
     ),
     outline: (
-      bg: var(--secondary-bg-color-textarea-outline),
-      border: var(--secondary-stroke-color-textarea-outline),
-      color: var(--secondary-text-color-textarea-outline),
-      placeholder: var(--secondary-placeholder-color-textarea-outline),
+      bg: var(--project-color-secondary-textarea-outline-bg),
+      border: var(--project-color-secondary-textarea-outline-border),
+      color: var(--project-color-secondary-textarea-outline-text),
+      placeholder: var(--project-color-secondary-textarea-outline-placeholder),
       hover: (
-        shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-textarea),
+        shadow: 0 0 0 rem(4px) var(--project-color-secondary-textarea-shadow-hover),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-textarea),
-        color: var(--disabled-text-color-textarea),
-        placeholder: var(--disabled-placeholder-color-textarea),
+        bg: var(--project-color-textarea-disabled-bg),
+        color: var(--project-color-textarea-disabled-text),
+        border: var(--project-color-textarea-disabled-border),
+        placeholder: var(--project-color-textarea-disabled-placeholder),
       ),
       readonly: (
-        bg: var(--readonly-bg-color-textarea),
-        color: var(--readonly-text-color-textarea),
-        placeholder: var(--readonly-placeholder-color-textarea),
+        bg: var(--project-color-textarea-readonly-bg),
+        color: var(--project-color-textarea-readonly-text),
+        border: var(--project-color-textarea-readonly-border),
+        placeholder: var(--project-color-textarea-readonly-border),
       ),
     ),
   ),
   tertiary: (
     solid: (
-      bg: var(--tertiary-bg-color-textarea-solid),
-      color: var(--tertiary-text-color-textarea-solid),
-      placeholder: var(--tertiary-placeholder-color-textarea-solid),
+      bg: var(--project-color-tertiary-textarea-solid-bg),
+      color: var(--project-color-tertiary-textarea-solid-text),
+      placeholder: var(--project-color-tertiary-textarea-solid-placeholder),
       hover: (
-        shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-textarea),
+        shadow: 0 0 0 rem(4px) var(--project-color-tertiary-textarea-shadow-hover),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-textarea),
-        color: var(--disabled-text-color-textarea),
-        placeholder: var(--disabled-placeholder-color-textarea),
+        bg: var(--project-color-textarea-disabled-bg),
+        color: var(--project-color-textarea-disabled-text),
+        placeholder: var(--project-color-textarea-disabled-placeholder),
       ),
       readonly: (
-        bg: var(--readonly-bg-color-textarea),
-        color: var(--readonly-text-color-textarea),
-        placeholder: var(--readonly-placeholder-color-textarea),
+        bg: var(--project-color-textarea-readonly-bg),
+        color: var(--project-color-textarea-readonly-text),
+        placeholder: var(--project-color-textarea-readonly-placeholder),
       ),
     ),
     outline: (
-      bg: var(--tertiary-bg-color-textarea-outline),
-      border: var(--tertiary-stroke-color-textarea-outline),
-      color: var(--tertiary-text-color-textarea-outline),
-      placeholder: var(--tertiary-placeholder-color-textarea-outline),
+      bg: var(--project-color-tertiary-textarea-outline-bg),
+      border: var(--project-color-tertiary-textarea-outline-border),
+      color: var(--project-color-tertiary-textarea-outline-text),
+      placeholder: var(--project-color-tertiary-textarea-outline-placeholder),
       hover: (
-        shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-textarea),
+        shadow: 0 0 0 rem(4px) var(--project-color-tertiary-textarea-shadow-hover),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-textarea),
-        color: var(--disabled-text-color-textarea),
-        placeholder: var(--disabled-placeholder-color-textarea),
+        bg: var(--project-color-textarea-disabled-bg),
+        color: var(--project-color-textarea-disabled-text),
+        border: var(--project-color-textarea-disabled-border),
+        placeholder: var(--project-color-textarea-disabled-placeholder),
       ),
       readonly: (
-        bg: var(--readonly-bg-color-textarea),
-        color: var(--readonly-text-color-textarea),
-        placeholder: var(--readonly-placeholder-color-textarea),
+        bg: var(--project-color-textarea-readonly-bg),
+        color: var(--project-color-textarea-readonly-text),
+        border: var(--project-color-textarea-readonly-border),
+        placeholder: var(--project-color-textarea-readonly-border),
       ),
     ),
   ),
   success: (
     solid: (
-      bg: var(--success-bg-color-textarea-solid),
-      placeholder: var(--success-placeholder-color-textarea-solid),
-      color: var(--success-text-color-textarea-solid),
+      bg: var(--project-color-textarea-solid-success-bg),
+      placeholder: var(--project-color-textarea-solid-success-placeholder),
+      color: var(--project-color-textarea-solid-success-text),
       hover: (
-        shadow: 0 0 0 rem(4px) var(--success-hover-shadow-textarea),
+        shadow: 0 0 0 rem(4px) var(--project-color-textarea-success-hover-shadow),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-textarea),
-        color: var(--disabled-text-color-textarea),
-        placeholder: var(--disabled-placeholder-color-textarea),
+        bg: var(--project-color-textarea-disabled-bg),
+        color: var(--project-color-textarea-disabled-text),
+        placeholder: var(--project-color-textarea-disabled-placeholder),
       ),
       readonly: (
-        bg: var(--readonly-bg-color-textarea),
-        color: var(--readonly-text-color-textarea),
-        placeholder: var(--readonly-placeholder-color-textarea),
+        bg: var(--project-color-textarea-readonly-bg),
+        color: var(--project-color-textarea-readonly-text),
+        placeholder: var(--project-color-textarea-readonly-placeholder),
       ),
     ),
     outline: (
-      bg: var(--success-bg-color-textarea-outline),
-      border: var(--success-stroke-color-textarea-outline),
-      placeholder: var(--success-placeholder-color-textarea-outline),
-      color: var(--success-text-color-textarea-outline),
+      bg: var(--project-color-textarea-outline-success-bg),
+      border: var(--project-color-textarea-outline-success-border),
+      placeholder: var(--project-color-textarea-outline-success-placeholder),
+      color: var(--project-color-textarea-outline-success-text),
       hover: (
-        shadow: 0 0 0 rem(4px) var(--success-hover-shadow-textarea),
+        shadow: 0 0 0 rem(4px) var(--project-color-textarea-success-hover-shadow),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-textarea),
-        color: var(--disabled-text-color-textarea),
-        placeholder: var(--disabled-placeholder-color-textarea),
+        bg: var(--project-color-textarea-disabled-bg),
+        color: var(--project-color-textarea-disabled-text),
+        border: var(--project-color-textarea-disabled-border),
+        placeholder: var(--project-color-textarea-disabled-placeholder),
       ),
       readonly: (
-        bg: var(--readonly-bg-color-textarea),
-        color: var(--readonly-text-color-textarea),
-        placeholder: var(--readonly-placeholder-color-textarea),
+        bg: var(--project-color-textarea-readonly-bg),
+        color: var(--project-color-textarea-readonly-text),
+        border: var(--project-color-textarea-readonly-border),
+        placeholder: var(--project-color-textarea-readonly-border),
       ),
     ),
   ),
   warning: (
     solid: (
-      bg: var(--warning-bg-color-textarea-solid),
-      placeholder: var(--warning-placeholder-color-textarea-solid),
-      color: var(--warning-text-color-textarea-solid),
+      bg: var(--project-color-textarea-solid-warning-bg),
+      placeholder: var(--project-color-textarea-solid-warning-placeholder),
+      color: var(--project-color-textarea-solid-warning-text),
       hover: (
-        shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-textarea),
+        shadow: 0 0 0 rem(4px) var(--project-color-textarea-warning-hover-shadow),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-textarea),
-        color: var(--disabled-text-color-textarea),
-        placeholder: var(--disabled-placeholder-color-textarea),
+        bg: var(--project-color-textarea-disabled-bg),
+        color: var(--project-color-textarea-disabled-text),
+        placeholder: var(--project-color-textarea-disabled-placeholder),
       ),
       readonly: (
-        bg: var(--readonly-bg-color-textarea),
-        color: var(--readonly-text-color-textarea),
-        placeholder: var(--readonly-placeholder-color-textarea),
+        bg: var(--project-color-textarea-readonly-bg),
+        color: var(--project-color-textarea-readonly-text),
+        placeholder: var(--project-color-textarea-readonly-placeholder),
       ),
     ),
     outline: (
-      bg: var(--warning-bg-color-textarea-outline),
-      border: var(--warning-stroke-color-textarea-outline),
-      placeholder: var(--warning-placeholder-color-textarea-outline),
-      color: var(--warning-text-color-textarea-outline),
+      bg: var(--project-color-textarea-outline-warning-bg),
+      border: var(--project-color-textarea-outline-warning-border),
+      placeholder: var(--project-color-textarea-outline-warning-placeholder),
+      color: var(--project-color-textarea-outline-warning-text),
       hover: (
-        shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-textarea),
+        shadow: 0 0 0 rem(4px) var(--project-color-textarea-warning-hover-shadow),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-textarea),
-        color: var(--disabled-text-color-textarea),
-        placeholder: var(--disabled-placeholder-color-textarea),
+        bg: var(--project-color-textarea-disabled-bg),
+        color: var(--project-color-textarea-disabled-text),
+        border: var(--project-color-textarea-disabled-border),
+        placeholder: var(--project-color-textarea-disabled-placeholder),
       ),
       readonly: (
-        bg: var(--readonly-bg-color-textarea),
-        color: var(--readonly-text-color-textarea),
-        placeholder: var(--readonly-placeholder-color-textarea),
+        bg: var(--project-color-textarea-readonly-bg),
+        color: var(--project-color-textarea-readonly-text),
+        border: var(--project-color-textarea-readonly-border),
+        placeholder: var(--project-color-textarea-readonly-border),
       ),
     ),
   ),
   danger: (
     solid: (
-      bg: var(--danger-bg-color-textarea-solid),
-      placeholder: var(--danger-placeholder-color-textarea-solid),
-      color: var(--danger-text-color-textarea-solid),
+      bg: var(--project-color-textarea-solid-danger-bg),
+      placeholder: var(--project-color-textarea-solid-danger-placeholder),
+      color: var(--project-color-textarea-solid-danger-text),
       hover: (
-        shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-textarea),
+        shadow: 0 0 0 rem(4px) var(--project-color-textarea-danger-hover-shadow),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-textarea),
-        color: var(--disabled-text-color-textarea),
-        placeholder: var(--disabled-placeholder-color-textarea),
+        bg: var(--project-color-textarea-disabled-bg),
+        color: var(--project-color-textarea-disabled-text),
+        placeholder: var(--project-color-textarea-disabled-placeholder),
       ),
       readonly: (
-        bg: var(--readonly-bg-color-textarea),
-        color: var(--readonly-text-color-textarea),
-        placeholder: var(--readonly-placeholder-color-textarea),
+        bg: var(--project-color-textarea-readonly-bg),
+        color: var(--project-color-textarea-readonly-text),
+        placeholder: var(--project-color-textarea-readonly-placeholder),
       ),
     ),
     outline: (
-      bg: var(--danger-bg-color-textarea-outline),
-      border: var(--danger-stroke-color-textarea-outline),
-      placeholder: var(--danger-placeholder-color-textarea-outline),
-      color: var(--danger-text-color-textarea-outline),
+      bg: var(--project-color-textarea-outline-danger-bg),
+      border: var(--project-color-textarea-outline-danger-border),
+      placeholder: var(--project-color-textarea-outline-danger-placeholder),
+      color: var(--project-color-textarea-outline-danger-text),
       hover: (
-        shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-textarea),
+        shadow: 0 0 0 rem(4px) var(--project-color-textarea-danger-hover-shadow),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-textarea),
-        color: var(--disabled-text-color-textarea),
-        placeholder: var(--disabled-placeholder-color-textarea),
+        bg: var(--project-color-textarea-disabled-bg),
+        color: var(--project-color-textarea-disabled-text),
+        border: var(--project-color-textarea-disabled-border),
+        placeholder: var(--project-color-textarea-disabled-placeholder),
       ),
       readonly: (
-        bg: var(--readonly-bg-color-textarea),
-        color: var(--readonly-text-color-textarea),
-        placeholder: var(--readonly-placeholder-color-textarea),
+        bg: var(--project-color-textarea-readonly-bg),
+        color: var(--project-color-textarea-readonly-text),
+        border: var(--project-color-textarea-readonly-border),
+        placeholder: var(--project-color-textarea-readonly-border),
       ),
     ),
   ),
@@ -303,14 +313,14 @@ $textarea-sizes: (
           // 1. 오직 Disabled 일 때만 (Read-only는 제외)
           &:has(textarea:disabled) {
             cursor: not-allowed;
-            background-color: var(--disabled-bg-color-textarea);
-            border-color: var(--disabled-stroke-color-textarea);
+            background-color: var(--project-color-textarea-disabled-bg);
+            border-color: var(--project-color-textarea-disabled-border);
 
             :global(textarea) {
               cursor: not-allowed;
-              color: var(--disabled-text-color-textarea);
+              color: var(--project-color-textarea-disabled-text);
               &::placeholder {
-                color: var(--disabled-placeholder-color-textarea);
+                color: var(--project-color-textarea-disabled-placeholder);
               }
             }
           }
@@ -318,14 +328,14 @@ $textarea-sizes: (
           // 2. 오직 Read-only 일 때만 (Disabled는 제외)
           &:has(textarea:read-only):not(:has(textarea:disabled)) {
             cursor: default;
-            background-color: var(--readonly-bg-color-textarea);
-            border-color: var(--readonly-stroke-color-textarea);
+            background-color: var(--project-color-textarea-readonly-bg);
+            border-color: var(--project-color-textarea-readonly-border);
 
             :global(textarea) {
               cursor: text;
-              color: var(--readonly-text-color-textarea);
+              color: var(--project-color-textarea-readonly-text);
               &::placeholder {
-                color: var(--readonly-placeholder-color-textarea);
+                color: var(--project-color-textarea-readonly-placeholder);
               }
             }
           }
@@ -357,7 +367,7 @@ $textarea-sizes: (
   transition: all 0.2s ease;
 
   &:has(textarea:focus-visible) {
-    outline: 2.5px dashed #2466eb !important;
+    outline: 2.5px dashed var(--project-color-interaction-focus-ring) !important;
     outline-offset: 2px;
   }
 
@@ -368,7 +378,7 @@ $textarea-sizes: (
     height: 100%;
     outline: none !important;
     word-break: break-all;
-    font: var(--project-typo-input1-500);
+    font: var(--project-typo-input-1-500);
     background-color: inherit;
   }
 
@@ -380,9 +390,9 @@ $textarea-sizes: (
 
 .textarea-counter {
   align-self: end;
-  font: var(--project-typo-l3-500);
+  font: var(--project-typo-label-3-500);
 
   &:global(.is-max) {
-    color: var(--danger-max-text-color-textarea);
+    color: var(--project-color-textarea-danger-max-text);
   }
 }

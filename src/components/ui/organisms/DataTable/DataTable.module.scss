@@ -12,9 +12,9 @@ $data-table-sizes: (
     border-spacing: 0 rem(1px),
     th-radius: rem(8px),
     th-gap: rem(0px),
-    th-font: var(--project-typo-DataTableText3-700),
-    font: var(--project-typo-DataTableText3-400),
-    empty-state-font: var(--project-typo-DataTableText3-500),
+    th-font: var(--project-typo-data-table-3-700),
+    font: var(--project-typo-data-table-3-500),
+    empty-state-font: var(--project-typo-data-table-3-500),
     notice-icon-size: rem(14px),
   ),
   md: (
@@ -24,9 +24,9 @@ $data-table-sizes: (
     border-spacing: 0 rem(1px),
     th-radius: rem(8px),
     th-gap: rem(0px),
-    th-font: var(--project-typo-DataTableText2-700),
-    font: var(--project-typo-DataTableText2-400),
-    empty-state-font: var(--project-typo-DataTableText2-500),
+    th-font: var(--project-typo-data-table-2-700),
+    font: var(--project-typo-data-table-2-500),
+    empty-state-font: var(--project-typo-data-table-2-500),
     notice-icon-size: rem(18px),
   ),
   lg: (
@@ -36,9 +36,9 @@ $data-table-sizes: (
     border-spacing: 0 rem(1px),
     th-radius: rem(8px),
     th-gap: rem(0px),
-    th-font: var(--project-typo-DataTableText1-700),
-    font: var(--project-typo-DataTableText1-400),
-    empty-state-font: var(--project-typo-DataTableText1-500),
+    th-font: var(--project-typo-data-table-1-700),
+    font: var(--project-typo-data-table-1-500),
+    empty-state-font: var(--project-typo-data-table-1-500),
     notice-icon-size: rem(18px),
   ),
 );
@@ -47,62 +47,65 @@ $data-table-sizes: (
 $data-table-colors: (
   primary: (
     solid: (
-      border: var(--primary-outer-stroke-color-data-table-solid),
-      tbody-border: var(--primary-tbody-stroke-color-data-table-solid),
-      th-bg: var(--primary-thead-bg-color-data-table-solid),
-      th-text: var(--primary-thead-text-color-data-table-solid),
-      tbody-bg: var(--primary-tbody-bg-color-data-table-solid),
-      tbody-text: var(--primary-tbody-text-color-data-table-solid),
-      notice-tr-bg: var(--primary-notice-tr-bg-color-data-table-solid),
+      border: var(--project-color-primary-data-table-solid-outer-border),
+      notice-tr-border: var(--project-color-primary-data-table-solid-notice-tr-border),
+      tbody-border: var(--project-color-primary-data-table-solid-tbody-border),
+      th-bg: var(--project-color-primary-data-table-solid-thead-bg),
+      th-text: var(--project-color-primary-data-table-solid-thead-text),
+      tbody-bg: var(--project-color-primary-data-table-solid-tbody-bg),
+      tbody-text: var(--project-color-primary-data-table-solid-tbody-text),
+      notice-tr-bg: var(--project-color-primary-data-table-solid-notice-tr-bg),
     ),
     outline: (
-      border: var(--primary-outer-stroke-color-data-table-outline),
-      tbody-border: var(--primary-tbody-stroke-color-data-table-outline),
-      th-bg: var(--primary-thead-bg-color-data-table-outline),
-      th-text: var(--primary-thead-text-color-data-table-outline),
-      tbody-bg: var(--primary-tbody-bg-color-data-table-outline),
-      tbody-text: var(--primary-tbody-text-color-data-table-outline),
-      notice-tr-bg: var(--primary-notice-tr-bg-color-data-table-outline),
+      border: var(--project-color-primary-data-table-outline-outer-border),
+      tbody-border: var(--project-color-primary-data-table-outline-tbody-border),
+      th-bg: var(--project-color-primary-data-table-outline-thead-bg),
+      th-text: var(--project-color-primary-data-table-outline-thead-text),
+      tbody-bg: var(--project-color-primary-data-table-outline-tbody-bg),
+      tbody-text: var(--project-color-primary-data-table-outline-tbody-text),
+      notice-tr-bg: var(--project-color-primary-data-table-outline-notice-tr-bg),
     ),
   ),
   secondary: (
     solid: (
-      border: var(--secondary-outer-stroke-color-data-table-solid),
-      tbody-border: var(--secondary-tbody-stroke-color-data-table-solid),
-      th-bg: var(--secondary-thead-bg-color-data-table-solid),
-      th-text: var(--secondary-thead-text-color-data-table-solid),
-      tbody-bg: var(--secondary-tbody-bg-color-data-table-solid),
-      tbody-text: var(--secondary-tbody-text-color-data-table-solid),
-      notice-tr-bg: var(--secondary-notice-tr-bg-color-data-table-solid),
+      border: var(--project-color-secondary-data-table-solid-outer-border),
+      notice-tr-border: var(--project-color-primary-data-table-solid-notice-tr-border),
+      tbody-border: var(--project-color-secondary-data-table-solid-tbody-border),
+      th-bg: var(--project-color-secondary-data-table-solid-thead-bg),
+      th-text: var(--project-color-secondary-data-table-solid-thead-text),
+      tbody-bg: var(--project-color-secondary-data-table-solid-tbody-bg),
+      tbody-text: var(--project-color-secondary-data-table-solid-tbody-text),
+      notice-tr-bg: var(--project-color-secondary-data-table-solid-notice-tr-bg),
     ),
     outline: (
-      border: var(--secondary-outer-stroke-color-data-table-outline),
-      tbody-border: var(--secondary-tbody-stroke-color-data-table-outline),
-      th-bg: var(--secondary-thead-bg-color-data-table-outline),
-      th-text: var(--secondary-thead-text-color-data-table-outline),
-      tbody-bg: var(--secondary-tbody-bg-color-data-table-outline),
-      tbody-text: var(--secondary-tbody-text-color-data-table-outline),
-      notice-tr-bg: var(--secondary-notice-tr-bg-color-data-table-outline),
+      border: var(--project-color-secondary-data-table-outline-outer-border),
+      tbody-border: var(--project-color-secondary-data-table-outline-tbody-border),
+      th-bg: var(--project-color-secondary-data-table-outline-thead-bg),
+      th-text: var(--project-color-secondary-data-table-outline-thead-text),
+      tbody-bg: var(--project-color-secondary-data-table-outline-tbody-bg),
+      tbody-text: var(--project-color-secondary-data-table-outline-tbody-text),
+      notice-tr-bg: var(--project-color-secondary-data-table-outline-notice-tr-bg),
     ),
   ),
   tertiary: (
     solid: (
-      border: var(--tertiary-outer-stroke-color-data-table-solid),
-      tbody-border: var(--tertiary-tbody-stroke-color-data-table-solid),
-      th-bg: var(--tertiary-thead-bg-color-data-table-solid),
-      th-text: var(--tertiary-thead-text-color-data-table-solid),
-      tbody-bg: var(--tertiary-tbody-bg-color-data-table-solid),
-      tbody-text: var(--tertiary-tbody-text-color-data-table-solid),
-      notice-tr-bg: var(--tertiary-notice-tr-bg-color-data-table-solid),
+      border: var(--project-color-tertiary-data-table-solid-outer-border),
+      notice-tr-border: var(--project-color-primary-data-table-solid-notice-tr-border),
+      tbody-border: var(--project-color-tertiary-data-table-solid-tbody-border),
+      th-bg: var(--project-color-tertiary-data-table-solid-thead-bg),
+      th-text: var(--project-color-tertiary-data-table-solid-thead-text),
+      tbody-bg: var(--project-color-tertiary-data-table-solid-tbody-bg),
+      tbody-text: var(--project-color-tertiary-data-table-solid-tbody-text),
+      notice-tr-bg: var(--project-color-tertiary-data-table-solid-notice-tr-bg),
     ),
     outline: (
-      border: var(--tertiary-outer-stroke-color-data-table-outline),
-      tbody-border: var(--tertiary-tbody-stroke-color-data-table-outline),
-      th-bg: var(--tertiary-thead-bg-color-data-table-outline),
-      th-text: var(--tertiary-thead-text-color-data-table-outline),
-      tbody-bg: var(--tertiary-tbody-bg-color-data-table-outline),
-      tbody-text: var(--tertiary-tbody-text-color-data-table-outline),
-      notice-tr-bg: var(--tertiary-notice-tr-bg-color-data-table-outline),
+      border: var(--project-color-tertiary-data-table-outline-outer-border),
+      tbody-border: var(--project-color-tertiary-data-table-outline-tbody-border),
+      th-bg: var(--project-color-tertiary-data-table-outline-thead-bg),
+      th-text: var(--project-color-tertiary-data-table-outline-thead-text),
+      tbody-bg: var(--project-color-tertiary-data-table-outline-tbody-bg),
+      tbody-text: var(--project-color-tertiary-data-table-outline-tbody-text),
+      notice-tr-bg: var(--project-color-tertiary-data-table-outline-notice-tr-bg),
     ),
   ),
 );
@@ -111,25 +114,11 @@ $data-table-colors: (
   width: 100%;
 
   &:focus-visible {
-    outline: 1px solid var(--focus-ring-color);
+    outline: 1px solid var(--project-color-interaction-focus-ring);
     outline-offset: -2px;
   }
 
-  th,
-  td {
-    vertical-align: middle;
-    text-align: center;
-  }
-
-  thead th {
-    word-break: break-word;
-    line-height: initial;
-  }
-
-  tbody tr {
-    transition: all 0.2s ease-out;
-  }
-
+  // size 별 스타일
   @each $size-name, $props in $data-table-sizes {
     @include global-mod('size--#{$size-name}') {
       @include global-mod('variant--solid') {
@@ -167,16 +156,6 @@ $data-table-colors: (
             }
           }
         }
-
-        :global(.data-table__root) {
-          border-collapse: separate;
-        }
-      }
-
-      @include global-mod('variant--outline') {
-        :global(.data-table__root) {
-          border-collapse: collapse;
-        }
       }
 
       thead {
@@ -191,7 +170,6 @@ $data-table-colors: (
             min-height: map.get($props, min-height);
             padding: map.get($props, td-padding);
             font: map.get($props, font);
-            word-break: break-word;
           }
         }
       }
@@ -202,10 +180,6 @@ $data-table-colors: (
         }
 
         .data-table__status-icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
           .icon {
             width: map.get($props, notice-icon-size);
             height: map.get($props, notice-icon-size);
@@ -219,6 +193,10 @@ $data-table-colors: (
         }
 
         .data-table__notice-cell {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
           :global(.icon) {
             width: map.get($props, notice-icon-size);
             height: map.get($props, notice-icon-size);
@@ -232,6 +210,7 @@ $data-table-colors: (
     }
   }
 
+  // color, variant 별 스타일
   @each $color-name, $variants in $data-table-colors {
     // colors
     @include global-mod('color--#{$color-name}') {
@@ -262,6 +241,7 @@ $data-table-colors: (
             :global {
               .data-table__notice-row {
                 background-color: map.get($props, notice-tr-bg);
+                border-color: map.get($props, notice-tr-border);
               }
             }
           } @else if $variant-name == 'outline' {
@@ -298,6 +278,25 @@ $data-table-colors: (
   }
 
   :global {
+    th,
+    td {
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    thead th {
+      word-break: break-word;
+      line-height: initial;
+    }
+
+    tbody tr {
+      transition: all 0.2s ease-out;
+
+      td {
+        word-break: break-word;
+      }
+    }
+
     .data-table__root {
       width: 100%;
     }
@@ -338,6 +337,7 @@ $data-table-colors: (
     .data-table__link-title {
       @include ell();
     }
+
     .data-table__comment-count {
       flex: 0 0 auto;
       margin-left: rem(10px);
@@ -349,6 +349,7 @@ $data-table-colors: (
       align-items: center;
       word-break: break-all;
     }
+
     .data-table__empty-state {
       display: flex;
       justify-content: center;

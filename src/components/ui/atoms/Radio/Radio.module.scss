@@ -6,93 +6,93 @@
 // radio color
 $radio-colors: (
   primary: (
-    borderColor: var(--stroke-color-radio),
-    bg: var(--bg-color-unchecked-radio),
-    fill: var(--primary-checked-color-radio),
+    borderColor: var(--project-color-radio-border),
+    bg: var(--project-color-radio-unchecked-bg),
+    fill: var(--project-color-primary-radio-checked-bg),
     hover: (
-      shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-radio),
+      shadow: 0 0 0 rem(4px) var(--project-color-primary-radio-shadow-hover),
     ),
     active: (
-      shadow: 0 0 0 rem(6px) var(--primary-active-shadow-radio),
+      shadow: 0 0 0 rem(6px) var(--project-color-primary-radio-shadow-active),
     ),
     disabled: (
-      bg: var(--disabled-bg-color-radio),
-      border: var(--disabled-stroke-color-radio),
+      bg: var(--project-color-radio-disabled-bg),
+      border: var(--project-color-radio-disabled-border),
     ),
   ),
   secondary: (
-    borderColor: var(--stroke-color-radio),
-    bg: var(--bg-color-unchecked-radio),
-    fill: var(--secondary-checked-color-radio),
+    borderColor: var(--project-color-radio-border),
+    bg: var(--project-color-radio-unchecked-bg),
+    fill: var(--project-color-secondary-radio-checked-bg),
     hover: (
-      shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-radio),
+      shadow: 0 0 0 rem(4px) var(--project-color-secondary-radio-shadow-hover),
     ),
     active: (
-      shadow: 0 0 0 rem(6px) var(--secondary-active-shadow-radio),
+      shadow: 0 0 0 rem(6px) var(--project-color-secondary-radio-shadow-active),
     ),
     disabled: (
-      bg: var(--disabled-bg-color-radio),
-      border: var(--disabled-stroke-color-radio),
+      bg: var(--project-color-radio-disabled-bg),
+      border: var(--project-color-radio-disabled-border),
     ),
   ),
   tertiary: (
-    borderColor: var(--stroke-color-radio),
-    bg: var(--bg-color-unchecked-radio),
-    fill: var(--tertiary-checked-color-radio),
+    borderColor: var(--project-color-radio-border),
+    bg: var(--project-color-radio-unchecked-bg),
+    fill: var(--project-color-tertiary-radio-checked-bg),
     hover: (
-      shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-radio),
+      shadow: 0 0 0 rem(4px) var(--project-color-tertiary-radio-shadow-hover),
     ),
     active: (
-      shadow: 0 0 0 rem(6px) var(--tertiary-active-shadow-radio),
+      shadow: 0 0 0 rem(6px) var(--project-color-tertiary-radio-shadow-active),
     ),
     disabled: (
-      bg: var(--disabled-bg-color-radio),
-      border: var(--disabled-stroke-color-radio),
+      bg: var(--project-color-radio-disabled-bg),
+      border: var(--project-color-radio-disabled-border),
     ),
   ),
   success: (
-    borderColor: var(--stroke-color-radio),
-    bg: var(--bg-color-unchecked-radio),
-    fill: var(--success-checked-color-radio),
+    borderColor: var(--project-color-radio-border),
+    bg: var(--project-color-radio-unchecked-bg),
+    fill: var(--project-color-radio-success-checked),
     hover: (
-      shadow: 0 0 0 rem(4px) var(--success-hover-shadow-radio),
+      shadow: 0 0 0 rem(4px) var(--project-color-radio-success-shadow-hover),
     ),
     active: (
-      shadow: 0 0 0 rem(6px) var(--success-active-shadow-radio),
+      shadow: 0 0 0 rem(6px) var(--project-color-radio-success-shadow-active),
     ),
     disabled: (
-      bg: var(--disabled-bg-color-radio),
-      border: var(--disabled-stroke-color-radio),
+      bg: var(--project-color-radio-disabled-bg),
+      border: var(--project-color-radio-disabled-border),
     ),
   ),
   warning: (
-    borderColor: var(--stroke-color-radio),
-    bg: var(--bg-color-unchecked-radio),
-    fill: var(--warning-checked-color-radio),
+    borderColor: var(--project-color-radio-border),
+    bg: var(--project-color-radio-unchecked-bg),
+    fill: var(--project-color-radio-warning-checked),
     hover: (
-      shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-radio),
+      shadow: 0 0 0 rem(4px) var(--project-color-radio-warning-shadow-hover),
     ),
     active: (
-      shadow: 0 0 0 rem(6px) var(--warning-active-shadow-radio),
+      shadow: 0 0 0 rem(6px) var(--project-color-radio-warning-shadow-active),
     ),
     disabled: (
-      bg: var(--disabled-bg-color-radio),
-      border: var(--disabled-stroke-color-radio),
+      bg: var(--project-color-radio-disabled-bg),
+      border: var(--project-color-radio-disabled-border),
     ),
   ),
   danger: (
-    borderColor: var(--stroke-color-radio),
-    bg: var(--bg-color-unchecked-radio),
-    fill: var(--danger-checked-color-radio),
+    borderColor: var(--project-color-radio-border),
+    bg: var(--project-color-radio-unchecked-bg),
+    fill: var(--project-color-radio-danger-checked),
     hover: (
-      shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-radio),
+      shadow: 0 0 0 rem(4px) var(--project-color-radio-danger-shadow-hover),
     ),
     active: (
-      shadow: 0 0 0 rem(6px) var(--danger-active-shadow-radio),
+      shadow: 0 0 0 rem(6px) var(--project-color-radio-danger-shadow-active),
     ),
     disabled: (
-      bg: var(--disabled-bg-color-radio),
-      border: var(--disabled-stroke-color-radio),
+      bg: var(--project-color-radio-disabled-bg),
+      border: var(--project-color-radio-disabled-border),
     ),
   ),
 );
@@ -110,28 +110,28 @@ $radio-sizes: (
     size: (
       pc: rem(16px),
       tablet: rem(16px),
-      mobile: rem(44px),
+      mobile: rem(16px),
     ),
   ),
   md: (
     size: (
       pc: rem(20px),
       tablet: rem(20px),
-      mobile: rem(44px),
+      mobile: rem(20px),
     ),
   ),
   lg: (
     size: (
       pc: rem(24px),
       tablet: rem(24px),
-      mobile: rem(44px),
+      mobile: rem(24px),
     ),
   ),
   xl: (
     size: (
       pc: rem(28px),
       tablet: rem(28px),
-      mobile: rem(44px),
+      mobile: rem(28px),
     ),
   ),
 );
@@ -156,6 +156,7 @@ $radio-sizes: (
 
   &:global(.color--#{$color}) {
     border: rem(1px) solid $border-color;
+    background-color: $bg;
 
     &:has(input:checked) {
       border-color: $fill;

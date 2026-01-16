@@ -6,23 +6,23 @@
 // legend size
 $control-group-sizes: (
   xs: (
-    font-token: var(--project-typo-legend5-600),
+    font-token: var(--project-typo-legend-5-600),
     gap: rem(10px),
   ),
   sm: (
-    font-token: var(--project-typo-legend4-600),
+    font-token: var(--project-typo-legend-4-600),
     gap: rem(10px),
   ),
   md: (
-    font-token: var(--project-typo-legend3-600),
+    font-token: var(--project-typo-legend-3-600),
     gap: rem(18px),
   ),
   lg: (
-    font-token: var(--project-typo-legend2-600),
+    font-token: var(--project-typo-legend-2-600),
     gap: rem(18px),
   ),
   xl: (
-    font-token: var(--project-typo-legend1-600),
+    font-token: var(--project-typo-legend-1-600),
     gap: rem(18px),
   ),
 );

@@ -7,7 +7,7 @@ $badge-sizes: (
   sm: (
     height: rem(22px),
     padding: 0 rem(4px),
-    font: var(--project-typo-BadgeText3-500),
+    font: var(--project-typo-badge-3-500),
     min-width: rem(40px),
     radius: rem(4px),
     dot-size: rem(6px),
@@ -15,7 +15,7 @@ $badge-sizes: (
   md: (
     height: rem(28px),
     padding: 0 rem(6px),
-    font: var(--project-typo-BadgeText2-500),
+    font: var(--project-typo-badge-2-500),
     min-width: rem(50px),
     radius: rem(4px),
     dot-size: rem(8px),
@@ -23,7 +23,7 @@ $badge-sizes: (
   lg: (
     height: rem(32px),
     padding: 0 rem(8px),
-    font: var(--project-typo-BadgeText1-500),
+    font: var(--project-typo-badge-1-500),
     min-width: rem(60px),
     radius: rem(5px),
     dot-size: rem(10px),
@@ -33,92 +33,92 @@ $badge-sizes: (
 $badge-colors: (
   primary: (
     solid: (
-      bg: var(--primary-bg-color-badge-solid),
-      text: var(--primary-text-color-badge-solid),
-      border: var(--primary-stroke-color-badge-solid),
+      bg: var(--project-color-primary-badge-solid-bg),
+      text: var(--project-color-primary-badge-solid-text),
+      border: var(--project-color-primary-badge-solid-border),
     ),
     outline: (
-      bg: var(--primary-bg-color-badge-outline),
-      text: var(--primary-text-color-badge-outline),
-      border: var(--primary-stroke-color-badge-outline),
+      bg: var(--project-color-primary-badge-outline-bg),
+      text: var(--project-color-primary-badge-outline-text),
+      border: var(--project-color-primary-badge-outline-border),
     ),
     dot: (
-      bg: var(--primary-bg-color-badge-solid),
+      bg: var(--project-color-primary-badge-solid-bg),
     ),
   ),
   secondary: (
     solid: (
-      bg: var(--secondary-bg-color-badge-solid),
-      text: var(--secondary-text-color-badge-solid),
-      border: var(--secondary-stroke-color-badge-solid),
+      bg: var(--project-color-secondary-badge-solid-bg),
+      text: var(--project-color-secondary-badge-solid-text),
+      border: var(--project-color-secondary-badge-solid-border),
     ),
     outline: (
-      bg: var(--secondary-bg-color-badge-outline),
-      text: var(--secondary-text-color-badge-outline),
-      border: var(--secondary-stroke-color-badge-outline),
+      bg: var(--project-color-secondary-badge-outline-bg),
+      text: var(--project-color-secondary-badge-outline-text),
+      border: var(--project-color-secondary-badge-outline-border),
     ),
     dot: (
-      bg: var(--secondary-bg-color-badge-solid),
+      bg: var(--project-color-secondary-badge-solid-bg),
     ),
   ),
   tertiary: (
     solid: (
-      bg: var(--tertiary-bg-color-badge-solid),
-      text: var(--tertiary-text-color-badge-solid),
-      border: var(--tertiary-stroke-color-badge-solid),
+      bg: var(--project-color-tertiary-badge-solid-bg),
+      text: var(--project-color-tertiary-badge-solid-text),
+      border: var(--project-color-tertiary-badge-solid-border),
     ),
     outline: (
-      bg: var(--tertiary-bg-color-badge-outline),
-      text: var(--tertiary-text-color-badge-outline),
-      border: var(--tertiary-stroke-color-badge-outline),
+      bg: var(--project-color-tertiary-badge-outline-bg),
+      text: var(--project-color-tertiary-badge-outline-text),
+      border: var(--project-color-tertiary-badge-outline-border),
     ),
     dot: (
-      bg: var(--tertiary-bg-color-badge-solid),
+      bg: var(--project-color-tertiary-badge-solid-bg),
     ),
   ),
   success: (
     solid: (
-      bg: var(--success-bg-color-badge-solid),
-      text: var(--success-text-color-badge-solid),
-      border: var(--success-stroke-color-badge-solid),
+      bg: var(--project-color-badge-solid-success-bg),
+      text: var(--project-color-badge-solid-success-text),
+      border: var(--project-color-badge-solid-success-border),
     ),
     outline: (
-      bg: var(--success-bg-color-badge-outline),
-      text: var(--success-text-color-badge-outline),
-      border: var(--success-stroke-color-badge-outline),
+      bg: var(--project-color-badge-outline-success-bg),
+      text: var(--project-color-badge-outline-success-text),
+      border: var(--project-color-badge-outline-success-border),
     ),
     dot: (
-      bg: var(--success-bg-color-badge-solid),
+      bg: var(--project-color-badge-solid-success-bg),
     ),
   ),
   warning: (
     solid: (
-      bg: var(--warning-bg-color-badge-solid),
-      text: var(--warning-text-color-badge-solid),
-      border: var(--warning-stroke-color-badge-solid),
+      bg: var(--project-color-badge-solid-warning-bg),
+      text: var(--project-color-badge-solid-warning-text),
+      border: var(--project-color-badge-solid-warning-border),
     ),
     outline: (
-      bg: var(--warning-bg-color-badge-outline),
-      text: var(--warning-text-color-badge-outline),
-      border: var(--warning-stroke-color-badge-outline),
+      bg: var(--project-color-badge-outline-warning-bg),
+      text: var(--project-color-badge-outline-warning-text),
+      border: var(--project-color-badge-outline-warning-border),
     ),
     dot: (
-      bg: var(--warning-bg-color-badge-solid),
+      bg: var(--project-color-badge-solid-warning-bg),
     ),
   ),
   danger: (
     solid: (
-      bg: var(--danger-bg-color-badge-solid),
-      text: var(--danger-text-color-badge-solid),
-      border: var(--danger-stroke-color-badge-solid),
+      bg: var(--project-color-badge-solid-danger-bg),
+      text: var(--project-color-badge-solid-danger-text),
+      border: var(--project-color-badge-solid-danger-border),
     ),
     outline: (
-      bg: var(--danger-bg-color-badge-outline),
-      text: var(--danger-text-color-badge-outline),
-      border: var(--danger-stroke-color-badge-outline),
+      bg: var(--project-color-badge-outline-danger-bg),
+      text: var(--project-color-badge-outline-danger-text),
+      border: var(--project-color-badge-outline-danger-border),
     ),
     dot: (
-      bg: var(--danger-bg-color-badge-solid),
+      bg: var(--project-color-badge-solid-danger-bg),
     ),
   ),
 );
@@ -237,7 +237,7 @@ $badge-colors: (
             border: rem(1px) solid map.get($props, border);
           } @else if $variant-name == 'dot' {
             background-color: map.get($props, bg);
-            outline: rem(2px) solid var(--color-surface-sunken);
+            outline: rem(2px) solid var(--project-color-surface-sunken);
           }
         }
       }

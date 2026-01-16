@@ -5,11 +5,11 @@
 
 // label size
 $label-sizes: (
-  xs: var(--project-typo-l5-500),
-  sm: var(--project-typo-l4-500),
-  md: var(--project-typo-l3-500),
-  lg: var(--project-typo-l2-500),
-  xl: var(--project-typo-l1-500),
+  xs: var(--project-typo-label-5-500),
+  sm: var(--project-typo-label-4-500),
+  md: var(--project-typo-label-3-500),
+  lg: var(--project-typo-label-2-500),
+  xl: var(--project-typo-label-1-500),
 );
 
 // mixin - label sizes
@@ -22,7 +22,7 @@ $label-sizes: (
 }
 
 .label {
-  color: var(--text-color-label);
+  color: var(--project-color-label-text);
   cursor: pointer;
   flex: 1 1 auto;
 

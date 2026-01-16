@@ -9,7 +9,7 @@ $tooltip-sizes: (
     min-height: rem(22px),
     padding: rem(6px) rem(12px),
     radius: var(--project-border-radius-6),
-    font: var(--project-typo-TooltipText3-500),
+    font: var(--project-typo-tooltip-2-500),
     close-btn-size: rem(22px),
     close-btn-top: rem(-6px),
     close-btn-right: rem(-10px),
@@ -20,7 +20,7 @@ $tooltip-sizes: (
     min-height: rem(28px),
     padding: rem(8px) rem(14px),
     radius: var(--project-border-radius-6),
-    font: var(--project-typo-TooltipText2-500),
+    font: var(--project-typo-tooltip-1-500),
     close-btn-size: rem(28px),
     close-btn-top: rem(-8px),
     close-btn-right: rem(-14px),
@@ -31,8 +31,8 @@ $tooltip-sizes: (
 .tooltip {
   display: flex;
   align-items: center;
-  background-color: var(--bg-color-tooltip);
-  color: var(--text-color-tooltip);
+  background-color: var(--project-color-tooltip-bg);
+  color: var(--project-color-tooltip-text);
   position: relative;
 
   @each $size-name, $props in $tooltip-sizes {
@@ -71,7 +71,7 @@ $tooltip-sizes: (
 
           :global {
             path {
-              fill: var(--tail-bg-color-tooltip);
+              fill: var(--project-color-tooltip-tail-bg);
             }
           }
 
@@ -149,12 +149,12 @@ $tooltip-sizes: (
       justify-content: center;
       align-items: center;
       position: absolute;
-      background-color: var(--close-btn-bg-color-tooltip);
+      background-color: var(--project-color-tooltip-close-btn-bg);
       border-radius: var(--project-border-radius-max);
       transition: all 0.2s ease;
 
       &:hover {
-        background-color: var(--close-btn-hover-bg-color-tooltip);
+        background-color: var(--project-color-tooltip-close-btn-hover-bg);
       }
     }
   }

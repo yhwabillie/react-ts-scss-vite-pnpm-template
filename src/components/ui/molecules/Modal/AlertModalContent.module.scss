@@ -12,8 +12,8 @@
   min-height: rem(160px);
   margin: auto;
   border-radius: var(--project-border-radius-16);
-  box-shadow: 0 8px 20px var(--shadow-bg-color-alert-modal);
-  background-color: var(--bg-color-alert-modal);
+  box-shadow: 0 rem(8px) rem(20px) var(--project-color-alert-modal-shadow-bg);
+  background-color: var(--project-color-alert-modal-bg);
 
   :global(.modal-body) {
     padding: rem(32px) rem(24px) rem(24px);
@@ -23,14 +23,14 @@
   }
 
   :global(.modal-title) {
-    font: var(--project-typo-ModalText1-600);
+    font: var(--project-typo-modal-1-600);
   }
 
   :global(.modal-desc) {
     margin: rem(8px) 0 rem(28px);
     word-break: keep-all;
-    font: var(--project-typo-ModalText2-400);
-    color: var(--desc-text-color-alert-modal);
+    font: var(--project-typo-modal-2-400);
+    color: var(--project-color-alert-modal-desc-text);
   }
 
   :global(button) {
@@ -47,8 +47,8 @@
   min-height: rem(160px);
   margin: auto;
   border-radius: var(--project-border-radius-16);
-  box-shadow: 0 8px 20px var(--shadow-bg-color-alert-modal);
-  background-color: var(--bg-color-alert-modal);
+  box-shadow: 0 rem(8px) rem(20px) var(--project-color-alert-modal-shadow-bg);
+  background-color: var(--project-color-alert-modal-bg);
 
   :global(.modal-body) {
     padding: rem(32px) rem(24px) rem(24px);
@@ -58,14 +58,14 @@
   }
 
   :global(.modal-title) {
-    font: var(--project-typo-ModalText1-600);
+    font: var(--project-typo-modal-1-600);
   }
 
   :global(.modal-desc) {
     margin: rem(8px) 0 rem(28px);
     word-break: keep-all;
-    font: var(--project-typo-ModalText2-400);
-    color: var(--desc-text-color-alert-modal);
+    font: var(--project-typo-modal-2-400);
+    color: var(--project-color-alert-modal-desc-text);
   }
 
   :global(button) {

@@ -628,16 +628,15 @@ function App() {
 
   return (
     <>
-      {/*  */}
-      <section style={{ margin: '30px', width: '200px' }}>
+      {/* <section style={{ margin: '30px', width: '200px' }}>
         <Skeleton variant='text' width='50%' />
         <Skeleton variant='text' width='70%' />
         <Skeleton variant='rect' height={100} />
-        {/* ✅ 스크린 리더 사용자에게는 현재 로딩 중임을 텍스트로 안내 */}
+       
         <span className='sr-only'>데이터를 불러오는 중입니다. 잠시만 기다려 주세요.</span>
       </section>
       <nav>
-        {/* 아바타를 클릭하면 프로필 카드가 나타남 */}
+       
         <ProfilePopover
           userData={currentUser}
           trigger={
@@ -649,21 +648,21 @@ function App() {
             />
           }
         />
-      </nav>
-      <section>
-        {/* 1. 이미지와 상태가 있는 경우 */}
+      </nav> */}
+      {/* <section>
+       
         <Avatar src='/path/user.jpg' alt='박지성 님의 프로필 사진' status='online' size='lg' />
 
-        {/* 2. 이미지가 없어 이름 이니셜로 대체되는 경우 */}
+       
         <Avatar alt='김철수 님의 프로필 사진' name='김철수' size='md' />
 
-        {/* 3. 데이터 테이블 내 작은 아바타 */}
+       
         <Avatar src='/path/user.jpg' alt='박지성 님의 프로필 사진' size='sm' />
       </section>
 
       <section>
         <Breadcrumbs items={breadcrumbData} separator='/' />
-      </section>
+      </section> */}
 
       {/* <section>
         <div style={{ display: 'flex', gap: '20px' }}>

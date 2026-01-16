@@ -6,350 +6,182 @@
 // option-item color
 $option-item-colors: (
   primary: (
-    solid: (
-      bg: var(--primary-bg-color-option-item-solid),
-      label: var(--primary-text-color-option-item-solid),
-      hover: (
-        bg: var(--primary-hover-bg-color-option-item-solid),
-        label: var(--primary-hover-text-color-option-item-solid),
-      ),
-      active: (
-        bg: var(--primary-active-bg-option-item-solid),
-        label: var(--primary-active-text-option-item-solid),
-      ),
-      selected: (
-        bg: var(--primary-selected-bg-option-item-solid),
-        label: var(--primary-selected-text-option-item-solid),
-      ),
-      selected-hover: (
-        bg: var(--primary-hover-selected-bg-option-item-solid),
-        label: var(--primary-hover-selected-text-option-item-solid),
-      ),
-      selected-active: (
-        bg: var(--primary-active-selected-bg-option-item-solid),
-        label: var(--primary-active-selected-text-option-item-solid),
-      ),
-      disabled: (
-        bg: var(--disabled-bg-color-option-item),
-        label: var(--disabled-text-color-option-item),
-      ),
-    ),
     ghost: (
-      bg: var(--primary-bg-color-option-item-ghost),
-      label: var(--primary-text-color-option-item-ghost),
+      bg: var(--project-color-primary-option-item-ghost-bg),
+      label: var(--project-color-primary-option-item-ghost-text),
       hover: (
-        bg: var(--primary-hover-bg-color-option-item-ghost),
-        label: var(--primary-hover-text-color-option-item-ghost),
+        bg: var(--project-color-primary-option-item-ghost-bg-hover),
+        label: var(--project-color-primary-option-item-ghost-text-hover),
       ),
       active: (
-        bg: var(--primary-active-bg-option-item-ghost),
-        label: var(--primary-active-text-option-item-ghost),
+        bg: var(--project-color-primary-option-item-ghost-bg-active),
+        label: var(--project-color-primary-option-item-ghost-text-active),
       ),
       selected: (
-        bg: var(--primary-selected-bg-option-item-ghost),
-        label: var(--primary-selected-text-option-item-ghost),
+        bg: var(--project-color-primary-option-item-ghost-bg-selected),
+        label: var(--project-color-primary-option-item-ghost-text-selected),
       ),
       selected-hover: (
-        bg: var(--primary-hover-selected-bg-option-item-ghost),
-        label: var(--primary-hover-selected-text-option-item-ghost),
+        bg: var(--project-color-primary-option-item-ghost-bg-selected-hover),
+        label: var(--project-color-primary-option-item-ghost-text-selected-hover),
       ),
       selected-active: (
-        bg: var(--primary-active-selected-bg-option-item-ghost),
-        label: var(--primary-active-selected-text-option-item-ghost),
+        bg: var(--project-color-primary-option-item-ghost-bg-selected-active),
+        label: var(--project-color-primary-option-item-ghost-text-selected-active),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-option-item),
-        label: var(--disabled-text-color-option-item),
+        bg: var(--project-color-option-item-disabled-bg),
+        label: var(--project-color-option-item-disabled-text),
       ),
     ),
   ),
   secondary: (
-    solid: (
-      bg: var(--secondary-bg-color-option-item-solid),
-      label: var(--secondary-text-color-option-item-solid),
-      hover: (
-        bg: var(--secondary-hover-bg-color-option-item-solid),
-        label: var(--secondary-hover-text-color-option-item-solid),
-      ),
-      active: (
-        bg: var(--secondary-active-bg-option-item-solid),
-        label: var(--secondary-active-text-option-item-solid),
-      ),
-      selected: (
-        bg: var(--secondary-selected-bg-option-item-solid),
-        label: var(--secondary-selected-text-option-item-solid),
-      ),
-      selected-hover: (
-        bg: var(--secondary-hover-selected-bg-option-item-solid),
-        label: var(--secondary-hover-selected-text-option-item-solid),
-      ),
-      selected-active: (
-        bg: var(--secondary-active-selected-bg-option-item-solid),
-        label: var(--secondary-active-selected-text-option-item-solid),
-      ),
-      disabled: (
-        bg: var(--disabled-bg-color-option-item),
-        label: var(--disabled-text-color-option-item),
-      ),
-    ),
     ghost: (
-      bg: var(--secondary-bg-color-option-item-ghost),
-      label: var(--secondary-text-color-option-item-ghost),
+      bg: var(--project-color-secondary-option-item-ghost-bg),
+      label: var(--project-color-secondary-option-item-ghost-text),
       hover: (
-        bg: var(--secondary-hover-bg-color-option-item-ghost),
-        label: var(--secondary-hover-text-color-option-item-ghost),
+        bg: var(--project-color-secondary-option-item-ghost-bg-hover),
+        label: var(--project-color-secondary-option-item-ghost-text-hover),
       ),
       active: (
-        bg: var(--secondary-active-bg-option-item-ghost),
-        label: var(--secondary-active-text-option-item-ghost),
+        bg: var(--project-color-secondary-option-item-ghost-bg-active),
+        label: var(--project-color-secondary-option-item-ghost-text-active),
       ),
       selected: (
-        bg: var(--secondary-selected-bg-option-item-ghost),
-        label: var(--secondary-selected-text-option-item-ghost),
+        bg: var(--project-color-secondary-option-item-ghost-bg-selected),
+        label: var(--project-color-secondary-option-item-ghost-text-selected),
       ),
       selected-hover: (
-        bg: var(--secondary-hover-selected-bg-option-item-ghost),
-        label: var(--secondary-hover-selected-text-option-item-ghost),
+        bg: var(--project-color-secondary-option-item-ghost-bg-selected-hover),
+        label: var(--project-color-secondary-option-item-ghost-text-selected-hover),
       ),
       selected-active: (
-        bg: var(--secondary-active-selected-bg-option-item-ghost),
-        label: var(--secondary-active-selected-text-option-item-ghost),
+        bg: var(--project-color-secondary-option-item-ghost-bg-selected-active),
+        label: var(--project-color-secondary-option-item-ghost-text-selected-active),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-option-item),
-        label: var(--disabled-text-color-option-item),
+        bg: var(--project-color-option-item-disabled-bg),
+        label: var(--project-color-option-item-disabled-text),
       ),
     ),
   ),
   tertiary: (
-    solid: (
-      bg: var(--tertiary-bg-color-option-item-solid),
-      label: var(--tertiary-text-color-option-item-solid),
-      hover: (
-        bg: var(--tertiary-hover-bg-color-option-item-solid),
-        label: var(--tertiary-hover-text-color-option-item-solid),
-      ),
-      active: (
-        bg: var(--tertiary-active-bg-option-item-solid),
-        label: var(--tertiary-active-text-option-item-solid),
-      ),
-      selected: (
-        bg: var(--tertiary-selected-bg-option-item-solid),
-        label: var(--tertiary-selected-text-option-item-solid),
-      ),
-      selected-hover: (
-        bg: var(--tertiary-hover-selected-bg-option-item-solid),
-        label: var(--tertiary-hover-selected-text-option-item-solid),
-      ),
-      selected-active: (
-        bg: var(--tertiary-active-selected-bg-option-item-solid),
-        label: var(--tertiary-active-selected-text-option-item-solid),
-      ),
-      disabled: (
-        bg: var(--disabled-bg-color-option-item),
-        label: var(--disabled-text-color-option-item),
-      ),
-    ),
     ghost: (
-      bg: var(--tertiary-bg-color-option-item-ghost),
-      label: var(--tertiary-text-color-option-item-ghost),
+      bg: var(--project-color-tertiary-option-item-ghost-bg),
+      label: var(--project-color-tertiary-option-item-ghost-text),
       hover: (
-        bg: var(--tertiary-hover-bg-color-option-item-ghost),
-        label: var(--tertiary-hover-text-color-option-item-ghost),
+        bg: var(--project-color-tertiary-option-item-ghost-bg-hover),
+        label: var(--project-color-tertiary-option-item-ghost-text-hover),
       ),
       active: (
-        bg: var(--tertiary-active-bg-option-item-ghost),
-        label: var(--tertiary-active-text-option-item-ghost),
+        bg: var(--project-color-tertiary-option-item-ghost-bg-active),
+        label: var(--project-color-tertiary-option-item-ghost-text-active),
       ),
       selected: (
-        bg: var(--tertiary-selected-bg-option-item-ghost),
-        label: var(--tertiary-selected-text-option-item-ghost),
+        bg: var(--project-color-tertiary-option-item-ghost-bg-selected),
+        label: var(--project-color-tertiary-option-item-ghost-text-selected),
       ),
       selected-hover: (
-        bg: var(--tertiary-hover-selected-bg-option-item-ghost),
-        label: var(--tertiary-hover-selected-text-option-item-ghost),
+        bg: var(--project-color-tertiary-option-item-ghost-bg-selected-hover),
+        label: var(--project-color-tertiary-option-item-ghost-text-selected-hover),
       ),
       selected-active: (
-        bg: var(--tertiary-active-selected-bg-option-item-ghost),
-        label: var(--tertiary-active-selected-text-option-item-ghost),
+        bg: var(--project-color-tertiary-option-item-ghost-bg-selected-active),
+        label: var(--project-color-tertiary-option-item-ghost-text-selected-active),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-option-item),
-        label: var(--disabled-text-color-option-item),
+        bg: var(--project-color-option-item-disabled-bg),
+        label: var(--project-color-option-item-disabled-text),
       ),
     ),
   ),
   success: (
-    solid: (
-      bg: var(--success-bg-color-option-item-solid),
-      label: var(--success-text-color-option-item-solid),
-      hover: (
-        bg: var(--success-hover-bg-color-option-item-solid),
-        label: var(--success-hover-text-color-option-item-solid),
-      ),
-      active: (
-        bg: var(--success-active-bg-option-item-solid),
-        label: var(--success-active-text-option-item-solid),
-      ),
-      selected: (
-        bg: var(--success-selected-bg-option-item-solid),
-        label: var(--success-selected-text-option-item-solid),
-      ),
-      selected-hover: (
-        bg: var(--success-hover-selected-bg-option-item-solid),
-        label: var(--success-hover-selected-text-option-item-solid),
-      ),
-      selected-active: (
-        bg: var(--success-active-selected-bg-option-item-solid),
-        label: var(--success-active-selected-text-option-item-solid),
-      ),
-      disabled: (
-        bg: var(--disabled-bg-color-option-item),
-        label: var(--disabled-text-color-option-item),
-      ),
-    ),
     ghost: (
-      bg: var(--success-bg-color-option-item-ghost),
-      label: var(--success-text-color-option-item-ghost),
+      bg: var(--project-color-option-item-ghost-success-bg),
+      label: var(--project-color-option-item-ghost-success-text),
       hover: (
-        bg: var(--success-hover-bg-color-option-item-ghost),
-        label: var(--success-hover-text-color-option-item-ghost),
+        bg: var(--project-color-option-item-ghost-success-bg-hover),
+        label: var(--project-color-option-item-ghost-success-text-hover),
       ),
       active: (
-        bg: var(--success-active-bg-option-item-ghost),
-        label: var(--success-active-text-option-item-ghost),
+        bg: var(--project-color-option-item-ghost-success-bg-active),
+        label: var(--project-color-option-item-ghost-success-text-active),
       ),
       selected: (
-        bg: var(--success-selected-bg-option-item-ghost),
-        label: var(--success-selected-text-option-item-ghost),
+        bg: var(--project-color-option-item-ghost-success-bg-selected),
+        label: var(--project-color-option-item-ghost-success-text-selected),
       ),
       selected-hover: (
-        bg: var(--success-hover-selected-bg-option-item-ghost),
-        label: var(--success-hover-selected-text-option-item-ghost),
+        bg: var(--project-color-option-item-ghost-success-bg-selected-hover),
+        label: var(--project-color-option-item-ghost-success-text-selected-hover),
       ),
       selected-active: (
-        bg: var(--success-active-selected-bg-option-item-ghost),
-        label: var(--success-active-selected-text-option-item-ghost),
+        bg: var(--project-color-option-item-ghost-success-bg-selected-active),
+        label: var(--project-color-option-item-ghost-success-text-selected-active),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-option-item),
-        label: var(--disabled-text-color-option-item),
+        bg: var(--project-color-option-item-disabled-bg),
+        label: var(--project-color-option-item-disabled-text),
       ),
     ),
   ),
   warning: (
-    solid: (
-      bg: var(--warning-bg-color-option-item-solid),
-      label: var(--warning-text-color-option-item-solid),
-      hover: (
-        bg: var(--warning-hover-bg-color-option-item-solid),
-        label: var(--warning-hover-text-color-option-item-solid),
-      ),
-      active: (
-        bg: var(--warning-active-bg-option-item-solid),
-        label: var(--warning-active-text-option-item-solid),
-      ),
-      selected: (
-        bg: var(--warning-selected-bg-option-item-solid),
-        label: var(--warning-selected-text-option-item-solid),
-      ),
-      selected-hover: (
-        bg: var(--warning-hover-selected-bg-option-item-solid),
-        label: var(--warning-hover-selected-text-option-item-solid),
-      ),
-      selected-active: (
-        bg: var(--warning-active-selected-bg-option-item-solid),
-        label: var(--warning-active-selected-text-option-item-solid),
-      ),
-      disabled: (
-        bg: var(--disabled-bg-color-option-item),
-        label: var(--disabled-text-color-option-item),
-      ),
-    ),
     ghost: (
-      bg: var(--warning-bg-color-option-item-ghost),
-      label: var(--warning-text-color-option-item-ghost),
+      bg: var(--project-color-option-item-ghost-warning-bg),
+      label: var(--project-color-option-item-ghost-warning-text),
       hover: (
-        bg: var(--warning-hover-bg-color-option-item-ghost),
-        label: var(--warning-hover-text-color-option-item-ghost),
+        bg: var(--project-color-option-item-ghost-warning-bg-hover),
+        label: var(--project-color-option-item-ghost-warning-text-hover),
       ),
       active: (
-        bg: var(--warning-active-bg-option-item-ghost),
-        label: var(--warning-active-text-option-item-ghost),
+        bg: var(--project-color-option-item-ghost-warning-bg-active),
+        label: var(--project-color-option-item-ghost-warning-text-active),
       ),
       selected: (
-        bg: var(--warning-selected-bg-option-item-ghost),
-        label: var(--warning-selected-text-option-item-ghost),
+        bg: var(--project-color-option-item-ghost-warning-bg-selected),
+        label: var(--project-color-option-item-ghost-warning-text-selected),
       ),
       selected-hover: (
-        bg: var(--warning-hover-selected-bg-option-item-ghost),
-        label: var(--warning-hover-selected-text-option-item-ghost),
+        bg: var(--project-color-option-item-ghost-warning-bg-selected-hover),
+        label: var(--project-color-option-item-ghost-warning-text-selected-hover),
       ),
       selected-active: (
-        bg: var(--warning-active-selected-bg-option-item-ghost),
-        label: var(--warning-active-selected-text-option-item-ghost),
+        bg: var(--project-color-option-item-ghost-warning-bg-selected-active),
+        label: var(--project-color-option-item-ghost-warning-text-selected-active),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-option-item),
-        label: var(--disabled-text-color-option-item),
+        bg: var(--project-color-option-item-disabled-bg),
+        label: var(--project-color-option-item-disabled-text),
       ),
     ),
   ),
   danger: (
-    solid: (
-      bg: var(--danger-bg-color-option-item-solid),
-      label: var(--danger-text-color-option-item-solid),
-      hover: (
-        bg: var(--danger-hover-bg-color-option-item-solid),
-        label: var(--danger-hover-text-color-option-item-solid),
-      ),
-      active: (
-        bg: var(--danger-active-bg-option-item-solid),
-        label: var(--danger-active-text-option-item-solid),
-      ),
-      selected: (
-        bg: var(--danger-selected-bg-option-item-solid),
-        label: var(--danger-selected-text-option-item-solid),
-      ),
-      selected-hover: (
-        bg: var(--danger-hover-selected-bg-option-item-solid),
-        label: var(--danger-hover-selected-text-option-item-solid),
-      ),
-      selected-active: (
-        bg: var(--danger-active-selected-bg-option-item-solid),
-        label: var(--danger-active-selected-text-option-item-solid),
-      ),
-      disabled: (
-        bg: var(--disabled-bg-color-option-item),
-        label: var(--disabled-text-color-option-item),
-      ),
-    ),
     ghost: (
-      bg: var(--danger-bg-color-option-item-ghost),
-      label: var(--danger-text-color-option-item-ghost),
+      bg: var(--project-color-option-item-ghost-danger-bg),
+      label: var(--project-color-option-item-ghost-danger-text),
       hover: (
-        bg: var(--danger-hover-bg-color-option-item-ghost),
-        label: var(--danger-hover-text-color-option-item-ghost),
+        bg: var(--project-color-option-item-ghost-danger-bg-hover),
+        label: var(--project-color-option-item-ghost-danger-text-hover),
       ),
       active: (
-        bg: var(--danger-active-bg-option-item-ghost),
-        label: var(--danger-active-text-option-item-ghost),
+        bg: var(--project-color-option-item-ghost-danger-bg-active),
+        label: var(--project-color-option-item-ghost-danger-text-active),
       ),
       selected: (
-        bg: var(--danger-selected-bg-option-item-ghost),
-        label: var(--danger-selected-text-option-item-ghost),
+        bg: var(--project-color-option-item-ghost-danger-bg-selected),
+        label: var(--project-color-option-item-ghost-danger-text-selected),
       ),
       selected-hover: (
-        bg: var(--danger-hover-selected-bg-option-item-ghost),
-        label: var(--danger-hover-selected-text-option-item-ghost),
+        bg: var(--project-color-option-item-ghost-danger-bg-selected-hover),
+        label: var(--project-color-option-item-ghost-danger-text-selected-hover),
       ),
       selected-active: (
-        bg: var(--danger-active-selected-bg-option-item-ghost),
-        label: var(--danger-active-selected-text-option-item-ghost),
+        bg: var(--project-color-option-item-ghost-danger-bg-selected-active),
+        label: var(--project-color-option-item-ghost-danger-text-selected-active),
       ),
       disabled: (
-        bg: var(--disabled-bg-color-option-item),
-        label: var(--disabled-text-color-option-item),
+        bg: var(--project-color-option-item-disabled-bg),
+        label: var(--project-color-option-item-disabled-text),
       ),
     ),
   ),
@@ -361,35 +193,35 @@ $option-item-sizes: (
     height: rem(28px),
     radius: rem(4px),
     padding: rem(4px) rem(8px),
-    font-token: var(--project-typo-input3-500),
+    font-token: var(--project-typo-input-3-500),
     icon-size: rem(12px),
   ),
   sm: (
     height: rem(32px),
     radius: rem(6px),
     padding: rem(6px) rem(10px),
-    font-token: var(--project-typo-input2-500),
+    font-token: var(--project-typo-input-2-500),
     icon-size: rem(14px),
   ),
   md: (
     height: rem(36px),
     radius: rem(8px),
     padding: rem(8px) rem(12px),
-    font-token: var(--project-typo-input2-500),
+    font-token: var(--project-typo-input-2-500),
     icon-size: rem(18px),
   ),
   lg: (
     height: rem(40px),
     radius: rem(8px),
     padding: rem(10px) rem(14px),
-    font-token: var(--project-typo-input1-500),
+    font-token: var(--project-typo-input-1-500),
     icon-size: rem(20px),
   ),
   xl: (
     height: rem(44px),
     radius: rem(10px),
     padding: rem(12px) rem(16px),
-    font-token: var(--project-typo-input1-500),
+    font-token: var(--project-typo-input-1-500),
     icon-size: rem(24px),
   ),
 );
@@ -410,54 +242,7 @@ $option-item-sizes: (
 
         &:global(.color--#{$name}) {
           // variant
-          @if $variant == 'solid' or $variant == 'soft' {
-            &:global(.variant--#{$variant}) {
-              background-color: map.get($variant-props, bg);
-              color: map.get($variant-props, label);
-
-              &:not([aria-disabled='true'], [aria-selected='true']):hover {
-                background-color: map.get($hover-map, bg);
-                color: map.get($hover-map, label);
-              }
-
-              &:not([aria-disabled='true'], [aria-selected='true']):active {
-                background-color: map.get($active-map, bg);
-                color: map.get($active-map, label);
-              }
-
-              // selected
-              &[aria-selected='true'] {
-                background-color: map.get($selected-map, bg);
-                color: map.get($selected-map, label);
-                font-weight: 700;
-              }
-              &[aria-selected='true']:hover {
-                background-color: map.get($selected-hover-map, bg);
-                color: map.get($selected-hover-map, label);
-              }
-              &[aria-selected='true']:active {
-                background-color: map.get($selected-active-map, bg);
-                color: map.get($selected-active-map, label);
-              }
-
-              // disabled
-              &[aria-disabled='true'] {
-                background-color: map.get($disabled-map, bg);
-                color: map.get($disabled-map, label);
-                cursor: not-allowed;
-
-                // icon
-                :global(.icon) {
-                  // fill: map.get($disabled-map, label);
-                }
-              }
-
-              // icon
-              :global(.icon) {
-                // fill: map.get($variant-props, label);
-              }
-            }
-          } @else if $variant == 'ghost' {
+          @if $variant == 'ghost' {
             &:global(.variant--#{$variant}) {
               background-color: map.get($variant-props, bg);
               color: map.get($variant-props, label);
@@ -525,7 +310,7 @@ $option-item-sizes: (
   &:focus,
   &:focus-visible,
   &:global(.is-active) {
-    outline: 2.5px dashed #2466eb;
+    outline: 2.5px dashed var(--project-color-interaction-focus-ring);
     outline-offset: -2px;
   }
 
@@ -574,13 +359,13 @@ $option-item-sizes: (
             align-items: center;
             width: map.get($props, icon-size);
             height: map.get($props, icon-size);
-            background-color: var(--link-icon-bg-color-searchbar);
+            background-color: var(--project-color-searchbar-link-icon-bg);
             border-radius: var(--project-border-radius-max);
             flex: 0 0 auto;
 
             :global(.icon) {
               flex: initial;
-              color: var(--link-icon-color-searchbar);
+              color: var(--project-color-searchbar-link-icon);
             }
           }
         }

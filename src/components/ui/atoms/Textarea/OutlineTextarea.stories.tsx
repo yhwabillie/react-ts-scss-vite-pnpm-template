@@ -1,8 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import Textarea from './Textarea';
-import { SpecimenCell, SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
-import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import Textarea from '@/components/ui/atoms/Textarea/Textarea';
+import {
+  SpecimenCell,
+  SpecimenGroup,
+  SpecimenRow,
+  SpecimenWrapper,
+} from '@/components/ui/guide/Specimen';
+import AnatomyWrapper from '@/components/ui/guide/AnatomyWrapper';
 
 const meta = {
   title: 'UI/Atoms/Textarea/Outline',
@@ -10,6 +15,14 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          '**Textarea Outline** 스타일은 선(Border) 중심의 정갈한 디자인으로 깨끗하고 미니멀한 인터페이스를 구성합니다. <br />' +
+          '주변 요소와 조화롭게 어우러지며, 대시보드나 설정 페이지 등 많은 정보를 담고 있는 화면에서 시각적 무게감을 덜어줍니다. ' +
+          '상태 변화에 따른 정교한 테두리 피드백으로 안정적인 입력 환경을 제공합니다.',
+      },
+    },
   },
   argTypes: {
     // Identification
@@ -99,7 +112,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * 기본적인 텍스트 영역 형태입니다.
+ * 기본 사용 예시
+ * 텍스트 영역(Textarea)의 기본적인 형태를 확인합니다.
+ * 부모 요소의 너비에 반응하며, 고유 ID 생성을 통해 접근성을 보장합니다.
  */
 export const Base: Story = {
   parameters: {
@@ -129,6 +144,11 @@ export const Base: Story = {
   },
 };
 
+/**
+ * 테마 색상 적용
+ * 디자인 시스템의 시멘틱 컬러를 적용하여 포커스 상태의 테두리와 카운터 등의 색상 변화를 확인합니다.
+ * 빈 값(Empty)과 내용이 입력된(Filled) 상태를 비교할 수 있습니다.
+ */
 export const Colors: Story = {
   parameters: {
     docs: {
@@ -181,6 +201,11 @@ export const Colors: Story = {
   },
 };
 
+/**
+ * 규격 변주
+ * 가독성을 고려하여 정의된 5가지 표준 너비 규격을 확인합니다.
+ * XL 사이즈는 부모의 너비를 100% 사용하며, 그 외 사이즈는 지정된 최대 너비(max-width)를 가집니다.
+ */
 export const Sizes: Story = {
   parameters: {
     docs: {
@@ -219,6 +244,10 @@ export const Sizes: Story = {
   },
 };
 
+/**
+ * 상태별 UI 확인
+ * 인터랙션에 따른 호버, 포커스 상태와 더불어 읽기 전용(Read Only), 비활성화(Disabled) 처리 시의 외형 변화를 확인합니다.
+ */
 export const States: Story = {
   parameters: {
     docs: {
@@ -272,6 +301,11 @@ export const States: Story = {
   },
 };
 
+/**
+ * 글자 수 카운터 활용
+ * 최대 글자 수(maxLength) 제한과 실시간 카운트 표시(showCount) 기능을 확인합니다.
+ * 글자 수 초과 시 시각적인 강조 피드백이 제공됩니다.
+ */
 export const WithCount: Story = {
   parameters: {
     docs: {

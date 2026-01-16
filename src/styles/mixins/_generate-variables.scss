@@ -9,16 +9,13 @@
 // Font-Family 변수 생성
 @mixin generate-vars-font-family($prefix, $locales: null) {
   @each $lang in $locales {
-    // 언어별 폰트 가져오기
     $properties: map.get(vars.$g_font-family, $lang);
 
-    // null/빈 값 체크
     @if $properties == null or list.length($properties) == 0 {
       @warn "No font defined for locale `#{$lang}`.";
       @continue;
     }
 
-    // 사용자 정의 값 정리
     $cleaned: ();
     @each $item in $properties {
       @if $item != null and $item != '' {
@@ -26,15 +23,12 @@
       }
     }
 
-    // 기본 fallback 추가
     @each $item in vars.$g_font-family-default-fallbacks {
       $cleaned: list.append($cleaned, $item, comma);
     }
 
-    // 마지막 sans-serif
     $cleaned: list.append($cleaned, sans-serif, comma);
 
-    // font-family 문자열 생성
     $font-family-str: '';
     $len: list.length($cleaned);
     @for $i from 1 through $len {
@@ -44,7 +38,6 @@
       }
     }
 
-    // CSS 변수 생성
     --#{$prefix}-font-family-#{$lang}: #{$font-family-str};
   }
 }
@@ -63,46 +56,39 @@
   }
 }
 
-// Tablet Typograhy 변수 생성
+// Tablet Typography 변수 생성
 @mixin generate-vars-typography-tablet($lang) {
   @each $type, $locales in vars.$g_typography {
-    // $lang에 해당하는 스타일만 가져오기
     $style: map.get($locales, $lang);
     @if $style == null {
       @continue;
     }
 
-    $weights: fn.ensure-list(map.get($style, font-weight));
-
-    // ✅ if() 함수 대신 @if 문으로 안전하게 할당
+    // ✅ Deprecation Warning 해결: @if 문으로 할당
     $tablet-size-raw: null;
     @if map.has-key($style, tablet-size) {
       $tablet-size-raw: map.get($style, tablet-size);
     }
-
     @if not $tablet-size-raw {
       @continue;
     }
 
+    $weights: fn.ensure-list(map.get($style, font-weight));
     $line: map.get($style, line-height);
-
-    // 언어별 font-family CSS 변수 참조
     $family-var: string.unquote('var(--#{vars.$g_project-name}-font-family-#{$lang})');
 
     @each $weight in $weights {
       $font-tablet-rem: #{$weight} #{mix.rem($tablet-size-raw)}/#{$line} #{$family-var};
-      $var-base: --#{vars.$g_project-name}-typo-#{$type}-#{$weight};
-
-      // ✅ 변수명은 그대로, 값만 변경
+      // ✅ 대소문자 이슈 해결: string.to-lower-case
+      $var-base: --#{vars.$g_project-name}-typo-#{string.to-lower-case($type)}-#{$weight};
       #{$var-base}: #{$font-tablet-rem};
     }
   }
 }
 
-// Mobile Typograhy 변수 생성
+// Mobile Typography 변수 생성
 @mixin generate-vars-typography-mobile($lang) {
   @each $type, $locales in vars.$g_typography {
-    // $lang에 해당하는 스타일만 가져오기
     $style: map.get($locales, $lang);
     @if $style == null {
       @continue;
@@ -110,27 +96,23 @@
 
     $weights: fn.ensure-list(map.get($style, font-weight));
 
-    // ✅ 수정된 부분: if() 함수를 제거하고 @if 문으로 할당
+    // ✅ 기존 if() 함수 대신 @if 문으로 안전하게 할당
     $mobile-size-raw: null;
     @if map.has-key($style, mobile-size) {
       $mobile-size-raw: map.get($style, mobile-size);
     }
 
-    // mobile-size가 없으면 다음 루프로 넘어감
     @if not $mobile-size-raw {
       @continue;
     }
 
     $line: map.get($style, line-height);
-
-    // 언어별 font-family CSS 변수 참조
     $family-var: string.unquote('var(--#{vars.$g_project-name}-font-family-#{$lang})');
 
     @each $weight in $weights {
       $font-mobile-rem: #{$weight} #{mix.rem($mobile-size-raw)}/#{$line} #{$family-var};
-      $var-base: --#{vars.$g_project-name}-typo-#{$type}-#{$weight};
+      $var-base: --#{vars.$g_project-name}-typo-#{string.to-lower-case($type)}-#{$weight};
 
-      // ✅ 변수명은 그대로, 값만 변경
       #{$var-base}: #{$font-mobile-rem};
     }
   }
@@ -146,19 +128,16 @@
       $size-rem: mix.rem(map.get($style, font-size));
       $line: map.get($style, line-height);
       $family-key: map.get($style, font-family);
-
-      // ❗ 여기서 font-family 를 CSS 변수 참조로 변경
-      // 예: var(--project-font-family-ko)
       $family-var: string.unquote('var(--#{vars.$g_project-name}-font-family-#{$family-key})');
 
       @each $weight in $weights {
-        $var-name: --#{vars.$g_project-name}-typo-#{$type}-#{$weight};
+        // ✅ string.to-lower-case 적용하여 --project-typo-code-400 형태로 생성
+        $var-name: --#{vars.$g_project-name}-typo-#{string.to-lower-case($type)}-#{$weight};
         $value: #{$weight} #{$size-rem}/#{$line} #{$family-var};
         $entry: (
           $var-name: $value,
         );
 
-        // 언어 map에 누적
         @if map.has-key($lang-map, $locale) {
           $lang-map: map.merge(
             $lang-map,
@@ -180,12 +159,8 @@
     }
   }
 
-  // 최종 출력
   @each $locale, $styles in $lang-map {
-    // @debug '🔎  #{inspect($locale)}';
-
     html[lang='#{$locale}'] {
-      // 언어별 font-family 직접 적용
       font-family: var(--#{vars.$g_project-name}-font-family-#{$locale});
 
       @each $style-map in $styles {
@@ -204,5 +179,43 @@
         @include generate-vars-typography-mobile($locale);
       }
     }
+  }
+}
+
+/**
+ * Primitive 컬러 변수 생성 믹스인
+ * @param {Map} $primitive-map - Primitive 컬러 데이터 맵
+ */
+@mixin generate-primitive-vars($primitive-map) {
+  $project-prefix: vars.$g_project-name;
+
+  @each $category, $tokens in $primitive-map {
+    @each $name, $value in $tokens {
+      /** * 결과 예시:
+       * --project-color-primitive-gray-0: #000000;
+       */
+      --#{$project-prefix}-color-primitive-#{$category}-#{$name}: #{$value};
+    }
+  }
+}
+
+/**
+ * 테마별 컬러 변수 생성 믹스인 (프로젝트 Prefix 포함)
+ * @param {String} $theme-name - "light" 또는 "dark"
+ * @param {Map} $g_colors - 컬러 데이터 맵
+ */
+@mixin generate-theme-vars($theme-name, $g_colors) {
+  $theme-map: map.get($g_colors, $theme-name);
+  $project-prefix: vars.$g_project-name;
+
+  @if $theme-map {
+    @each $key, $value in $theme-map {
+      /** * 결과 예시:
+       * --project-color-surface-default: #ffffff;
+       */
+      --#{$project-prefix}-#{$key}: #{$value};
+    }
+  } @else {
+    @warn "Theme '#{$theme-name}'를 찾을 수 없습니다.";
   }
 }

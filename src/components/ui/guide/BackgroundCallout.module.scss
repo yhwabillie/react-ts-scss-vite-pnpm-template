@@ -1,0 +1,185 @@
+/* BackgroundCallout.module.scss */
+@use '../../../styles/mixins' as *;
+
+.bg-callout {
+  &--warning {
+    :global(.bg-callout__container) {
+      background-color: var(--project-color-primitive-yellow-50);
+      color: var(--project-color-primitive-yellow-470);
+    }
+
+    :global(.bg-callout__label) {
+      color: var(--project-color-primitive-orange-740);
+    }
+
+    :global(.bg-callout__list) {
+      li {
+        color: #333333;
+        &::before {
+          color: var(--project-color-primitive-orange-740);
+        }
+
+        strong {
+          color: var(--project-color-primitive-orange-740);
+          font-weight: var(--project-font-weight-700);
+        }
+      }
+    }
+  }
+
+  &--info {
+    :global(.bg-callout__container) {
+      background-color: var(--project-color-primitive-sky-50);
+      color: var(--project-color-primitive-sky-610);
+    }
+
+    :global(.bg-callout__label) {
+      color: var(--project-color-primitive-sky-610);
+    }
+
+    :global(.bg-callout__list) {
+      li {
+        color: #333333;
+        &::before {
+          color: var(--project-color-primitive-sky-670);
+        }
+
+        strong {
+          color: var(--project-color-primitive-sky-610);
+          font-weight: var(--project-font-weight-700);
+        }
+      }
+    }
+  }
+
+  &--danger {
+    :global(.bg-callout__container) {
+      background-color: var(--project-color-primitive-red-50);
+      color: var(--project-color-primitive-red-490);
+    }
+
+    :global(.bg-callout__label) {
+      color: var(--project-color-primitive-red-490);
+    }
+
+    :global(.bg-callout__list) {
+      li {
+        color: #333333;
+        &::before {
+          color: var(--project-color-primitive-red-730);
+        }
+
+        strong {
+          color: var(--project-color-primitive-red-490);
+          font-weight: var(--project-font-weight-700);
+        }
+
+        code {
+          background-color: var(--project-color-primitive-slate-blue-870);
+          color: var(--project-color-primitive-slate-blue-100);
+          padding: rem(2px) rem(8px);
+          border-radius: var(--project-border-radius-4);
+          margin: 0;
+          border: none;
+          font: var(--project-typo-code-400);
+          font-weight: var(--project-font-weight-600);
+        }
+      }
+    }
+  }
+
+  &--success {
+    :global(.bg-callout__container) {
+      background-color: var(--project-color-primitive-alpha-green-710);
+      color: var(--project-color-primitive-green-740);
+    }
+
+    :global(.bg-callout__label) {
+      color: var(--project-color-primitive-green-740);
+    }
+
+    :global(.bg-callout__list) {
+      li {
+        color: #333333;
+        &::before {
+          color: var(--project-color-primitive-green-740);
+        }
+
+        strong {
+          color: var(--project-color-primitive-green-740);
+          font-weight: var(--project-font-weight-700);
+        }
+      }
+    }
+  }
+
+  &:global(.is-standalone) {
+    :global {
+      .bg-callout__label {
+        margin-bottom: 0;
+        font: var(--project-typo-sub-title-3-700);
+      }
+    }
+  }
+
+  :global {
+    .bg-callout__title {
+      font: var(--project-typo-heading-2-700);
+      border-bottom: 0;
+      padding-bottom: 0;
+      margin-bottom: rem(8px);
+    }
+
+    .bg-callout__container {
+      padding: rem(16px) rem(16px);
+      border-radius: var(--project-border-radius-12);
+      border: rem(1px) solid currentColor;
+
+      // 변수가 들어오면 그 값을 쓰고, 없으면 기본값(0)
+      margin: var(--callout-margin, 0) !important;
+    }
+
+    .bg-callout__content {
+      margin: 0;
+      font-size: rem(14px);
+      line-height: 1.6;
+      color: var(--project-color-text-natural, #333);
+    }
+
+    .bg-callout__label {
+      display: block;
+      margin-bottom: rem(16px);
+      font: var(--project-typo-sub-title-2-700);
+    }
+
+    .bg-callout__text {
+      :global {
+        .docblock-source {
+          margin: 0;
+        }
+      }
+    }
+
+    .bg-callout__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        position: relative;
+        padding-left: rem(16px);
+        font: var(--project-typo-body-2-400);
+
+        &:not(:last-child) {
+          margin-bottom: rem(12px);
+        }
+
+        &::before {
+          content: '•';
+          position: absolute;
+          left: 0;
+        }
+      }
+    }
+  }
+}

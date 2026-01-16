@@ -12,6 +12,15 @@ const meta = {
   component: CalendarOptionList,
   tags: ['autodocs'],
   parameters: {
+    docs: {
+      description: {
+        component:
+          '**CalendarOptionList**는 달력 상단에서 연도나 월을 선택하기 위해 사용되는 스크롤 가능한 옵션 목록입니다. <br /><br />' +
+          '• **Semantic Listbox**: `role="listbox"`를 통해 보조 공학 기기에 선택 가능한 목록임을 명확히 전달합니다. <br />' +
+          '• **Scroll Optimization**: `max-height`를 통해 고정된 영역 내에서 다량의 옵션(예: 100년 단위 연도)을 효율적으로 탐색할 수 있습니다. <br />' +
+          '• **Consistent Interaction**: 내부 `OptionItem`들과 연동되어 일관된 호버 및 선택 시각적 피드백을 제공합니다.',
+      },
+    },
     // 웹접근성 검사 차단, storybook 검사 도구 한계
     // max-height로 가려진 스크롤 영역으로 가려지는 부분을 배경 색상 감지 불가로 체크
     // 웹접근성 에러가 아닌데 도구의 한계로 에러로 알려줌
@@ -90,6 +99,11 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+/**
+ * 연도와 월을 선택하는 가장 기본적인 리스트 형태를 확인합니다.
+ * - **UX**: `AnatomyWrapper`를 통해 연도(수치 위주)와 월(텍스트 위주) 각각의 너비 최적화 상태를 점검합니다.
+ * - **A11y**: 스토리북 자동 검사 도구의 한계로 인해 `color-contrast` 및 `scrollable-region-focusable` 규칙은 비활성화되어 있으나, 실제 스크롤 영역의 포커스 동작은 수동 검수가 필요합니다.
+ */
 export const Base: Story = {
   render: args => {
     return (
@@ -134,12 +148,9 @@ export const Base: Story = {
 };
 
 /**
- * * `CalendarOptionList`에 적용되는 다양한 브랜드 컬러 테마를 확인합니다.
- * * **사용 가이드**:
- * - **Primary**: 일반적인 날짜 선택(연도, 월) 시 표준으로 사용합니다.
- * - **Secondary / Tertiary**: 보조적인 정보나 대체 선택 그룹을 구분할 때 활용합니다.
- * - **Success / Warning / Danger**: 특정 기간의 예약 상태, 마감 임박, 선택 불가능한 날짜 등 데이터의 성격에 따른 상태 피드백이 필요한 경우 전략적으로 선택합니다.
- * - 각 컬러는 호버(Hover) 및 선택(Selected) 상태의 시각적 피드백에 반영됩니다.
+ * [02. Colors]
+ * 브랜드 컬러 시스템에 따른 선택 및 호버 상태의 변화를 점검합니다.
+ * - **Usage**: Primary(표준), Success(예약 가능), Danger(마감/불가) 등 데이터의 상태에 맞춘 컬러 전략을 제안합니다.
  */
 export const Colors: Story = {
   render: args => {

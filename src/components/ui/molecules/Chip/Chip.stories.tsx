@@ -3,12 +3,22 @@ import Chip from './Chip';
 import Icon from '../../atoms/Icon/Icon';
 import { GuideCell, GuideGroup, GuideWrapper } from '../../guide/Guide';
 import { useRef, useState } from 'react';
-import Button from '../Button/Button';
 
 const meta: Meta<typeof Chip> = {
   title: 'UI/Molecules/Chip',
   component: Chip,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '**Chip**은 입력, 선택, 필터링 등 다양한 액션을 컴팩트한 형태로 제공하는 요소입니다. <br /><br />' +
+          '• **Role-based Semantic**: 설정된 `role`에 따라 내부적으로 `span`, `button`, `a` 태그로 자동 변환되어 의미론적 마크업을 완성합니다. <br />' +
+          '• **Accessibility Focus**: 선택(`aria-checked`), 필터(`aria-pressed`), 비활성화(`aria-disabled`) 등의 상태를 보조 공학 기기에 정확히 전달합니다. <br />' +
+          '• **UX Interaction**: 입력형 칩(`input`) 삭제 시 다음 요소로 포커스를 자동 이동시키는 등의 세밀한 조작 경험이 포함되어 있습니다.',
+      },
+    },
+  },
   argTypes: {
     // --- 1. Identity & Content ---
     role: {
@@ -83,8 +93,9 @@ const meta: Meta<typeof Chip> = {
 export default meta;
 type Story = StoryObj<typeof Chip>;
 
-/** * Static: 가장 기본적인 정적 칩 형태입니다.
- * 단순 정보 표시(Badge, Tag) 목적으로 사용되며 인터랙션이 없습니다.
+/**
+ * 인터랙션이 없는 가장 기본적인 정적 상태입니다.
+ * - **Use Case**: 카테고리 태그, 읽기 전용 상태 표시(배지) 등에 사용됩니다.
  */
 export const Static: Story = {
   args: {
@@ -102,8 +113,9 @@ export const Static: Story = {
   },
 };
 
-/** * Sizes: SM, MD 두 가지 사이즈별 칩을 보여줍니다.
- * 아이콘 유무, Role(static, input)에 따른 크기 변화를 한눈에 비교할 수 있습니다.
+/**
+ * SM(Small)과 MD(Medium) 두 가지 사이즈를 검증합니다.
+ * - **Checklist**: 아이콘 포함 여부나 삭제 버튼 유무에 관계없이 일정한 높이와 내부 여백이 유지되는지 확인합니다.
  */
 export const Sizes: Story = {
   args: {
@@ -252,7 +264,10 @@ export const Sizes: Story = {
   },
 };
 
-/** * Variants: Solid(채우기)와 Outline(선) 두 가지 핵심 스타일을 비교합니다.
+/**
+ * 시각적 무게감에 따른 두 가지 스타일입니다.
+ * - **Solid**: 강조하고 싶은 핵심 정보나 선택된 상태에 사용합니다.
+ * - **Outline**: 부가적인 정보나 선택되지 않은 대기 상태에 적합합니다.
  */
 export const Variants: Story = {
   args: {
@@ -277,8 +292,9 @@ export const Variants: Story = {
   },
 };
 
-/** * Colors: Primary, Secondary, Tertiary 테마 색상별 적용 모습을 확인합니다.
- * 명도 대비(Contrast Check)를 확인하기에 적합한 스토리입니다.
+/**
+ * 디자인 시스템의 테마 컬러를 적용합니다.
+ * - **Caution**: Tertiary 컬러(#a78bfa)의 경우 배경 대비 텍스트 가독성 수치를 확인하여 접근성 기준을 준수하는지 점검하세요.
  */
 export const Colors: Story = {
   args: {
@@ -317,7 +333,9 @@ export const Colors: Story = {
   },
 };
 
-/** * Shapes: Square, Rounded, Pill 세 가지 모서리 곡률 옵션을 보여줍니다.
+/**
+ * 모서리 곡률(Square, Rounded, Pill)에 따른 디자인 변화를 확인합니다.
+ * - 서비스 전반의 톤앤매너와 일치하는 형태를 선택하여 일관성을 유지합니다.
  */
 export const Shapes: Story = {
   args: {
@@ -356,7 +374,9 @@ export const Shapes: Story = {
   },
 };
 
-/** * WithIcon: 텍스트 앞(Start) 또는 뒤(End)에 아이콘이 배치된 형태를 보여줍니다.
+/**
+ * 텍스트 전후방에 아이콘이 배치된 형태입니다.
+ * - **Visual Clue**: 아이콘을 통해 칩이 수행할 액션(삭제, 공유, 체크 등)을 직관적으로 암시합니다.
  */
 export const WithIcon: Story = {
   args: {
@@ -435,9 +455,10 @@ export const WithIcon: Story = {
   },
 };
 
-/** * States: 칩의 논리적/물리적 상태를 정의합니다.
- * - Interaction: Hover, Focus 시의 시각적 피드백 확인
- * - Logic: Selected(선택됨), Disabled(비활성) 상태의 ARIA 속성 및 스타일 확인
+/**
+ * 칩의 물리적 인터랙션과 논리적 상태를 검증합니다.
+ * - **Focus/Hover**: 마우스 및 키보드 접근 시 나타나는 시각적 피드백을 확인합니다.
+ * - **Disabled**: 비활성 상태 시 클릭 이벤트와 포커스 진입이 차단되는지 체크합니다.
  */
 export const States: Story = {
   args: {
@@ -488,8 +509,9 @@ export const States: Story = {
   },
 };
 
-/** * ChoiceGroup: 라디오 버튼처럼 동작하는 단일 선택 그룹입니다.
- * 내부적으로 role="radio" 및 aria-checked가 적용되어 접근성을 보장합니다.
+/**
+ * 여러 옵션 중 하나만 선택할 수 있는 라디오 버튼 형식의 그룹입니다.
+ * - **A11y**: 내부적으로 `role="radio"`와 `aria-checked`가 동작하여 접근성을 보장합니다.
  */
 export const ChoiceGroup: StoryObj<typeof Chip> = {
   render: args => {
@@ -522,8 +544,9 @@ export const ChoiceGroup: StoryObj<typeof Chip> = {
   },
 };
 
-/** * FilterGroup: 체크박스처럼 동작하는 다중 선택 그룹입니다.
- * 1, 2번째 항목이 기본 선택되어 있으며, role="filter"와 aria-pressed로 상태를 알립니다.
+/**
+ * 여러 옵션을 다중 선택하거나 해제할 수 있는 체크박스 형식의 그룹입니다.
+ * - **Feedback**: 선택된 상태에서 'Check' 아이콘을 동적으로 노출하여 시각적 인지도를 높입니다.
  */
 export const FilterGroup: StoryObj<typeof Chip> = {
   render: args => {
@@ -567,9 +590,10 @@ export const FilterGroup: StoryObj<typeof Chip> = {
   },
 };
 
-/** * InputGroup: 사용자가 항목을 삭제할 수 있는 입력형 칩 그룹입니다.
- * - UX 포인트: 삭제 시 forwardRef를 이용해 가장 가까운 칩의 닫기 버튼으로 포커스를 자동 이동시킵니다.
- * - 주의: 연속 삭제 시 Partially Obscured 문제를 방지하기 위해 title 속성 사용을 지양합니다.
+/**
+ * 사용자가 항목을 자유롭게 삭제할 수 있는 입력형 칩 그룹입니다.
+ * - **Focus Management**: 칩 삭제 후 포커스가 사라지지 않도록 다음(또는 이전) 칩으로 포커스를 자동 이동시키는 로직을 포함합니다.
+ * - **A11y Reminder**: 저장하신 지침에 따라, 연속 삭제 시 브라우저 툴팁이 다른 요소를 가리는 'partially obscured' 문제를 방지하기 위해 `title` 속성 사용을 지양합니다.
  */
 export const InputGroup: StoryObj<typeof Chip> = {
   render: args => {
@@ -655,9 +679,9 @@ export const InputGroup: StoryObj<typeof Chip> = {
   },
 };
 
-/** * ActionGroup: 클릭 시 특정 함수를 실행하거나 링크로 이동하는 칩입니다.
- * - Interaction: 버튼 형태의 액션 실행
- * - Navigation: href 속성을 통한 페이지 이동 (a 태그로 렌더링)
+/**
+ * 특정 액션(다운로드, 공유)을 실행하거나 외부 링크로 이동하는 브리지 역할을 합니다.
+ * - **Tag Morphing**: `href` 속성 존재 시 자동으로 `<a>` 태그로 변환되어 검색 엔진과 접근성을 최적화합니다.
  */
 export const ActionGroup: StoryObj<typeof Chip> = {
   render: args => {

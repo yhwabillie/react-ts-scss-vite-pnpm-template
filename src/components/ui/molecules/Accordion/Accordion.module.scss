@@ -9,7 +9,7 @@ $accordion-sizes: (
     radius: rem(6px),
     first-margin: rem(18px) 0 0 0,
     trigger: (
-      font: var(--project-typo-AccordionText3-700),
+      font: var(--project-typo-accordion-title-3-700),
       padding: rem(10px) rem(18px),
       min-height: rem(44px),
       icon-size: rem(20px),
@@ -18,13 +18,13 @@ $accordion-sizes: (
       padding: rem(18px),
     ),
     content: (
-      font: var(--project-typo-AccordionText3-500),
+      font: var(--project-typo-accordion-title-3-500),
     ),
     nested: (
-      trigger-font: var(--project-typo-AccordionSubText4-700),
+      trigger-font: var(--project-typo-accordion-sub-title-3-700),
       trigger-min-height: rem(27px),
       trigger-padding: rem(10px) rem(16px),
-      content-font: var(--project-typo-AccordionSubText4-500),
+      content-font: var(--project-typo-accordion-sub-title-4-500),
       panel-padding: rem(16px),
       group-margin: rem(16px) 0 0 0,
       group-gap: rem(16px),
@@ -36,7 +36,7 @@ $accordion-sizes: (
     radius: rem(8px),
     first-margin: rem(16px) 0 0 0,
     trigger: (
-      font: var(--project-typo-AccordionText2-700),
+      font: var(--project-typo-accordion-title-2-700),
       padding: rem(12px) rem(24px),
       min-height: rem(52px),
       icon-size: rem(22px),
@@ -45,13 +45,13 @@ $accordion-sizes: (
       padding: rem(16px) rem(24px),
     ),
     content: (
-      font: var(--project-typo-AccordionText2-500),
+      font: var(--project-typo-accordion-title-2-500),
     ),
     nested: (
-      trigger-font: var(--project-typo-AccordionSubText2-700),
+      trigger-font: var(--project-typo-accordion-sub-title-2-700),
       trigger-min-height: rem(26px),
       trigger-padding: rem(12px) rem(18px),
-      content-font: var(--project-typo-AccordionSubText2-500),
+      content-font: var(--project-typo-accordion-sub-title-2-500),
       panel-padding: rem(18px),
       group-margin: rem(18px) 0 0 0,
       group-gap: rem(18px),
@@ -63,7 +63,7 @@ $accordion-sizes: (
     radius: rem(10px),
     first-margin: rem(26px) 0 0 0,
     trigger: (
-      font: var(--project-typo-AccordionText1-700),
+      font: var(--project-typo-accordion-title-1-700),
       padding: rem(14px) rem(28px),
       min-height: rem(60px),
       icon-size: rem(26px),
@@ -72,13 +72,13 @@ $accordion-sizes: (
       padding: rem(26px),
     ),
     content: (
-      font: var(--project-typo-AccordionText1-500),
+      font: var(--project-typo-accordion-title-1-500),
     ),
     nested: (
-      trigger-font: var(--project-typo-AccordionSubText1-700),
+      trigger-font: var(--project-typo-accordion-sub-title-1-700),
       trigger-min-height: rem(31px),
       trigger-padding: rem(14px) rem(20px),
-      content-font: var(--project-typo-AccordionSubText1-500),
+      content-font: var(--project-typo-accordion-sub-title-1-500),
       panel-padding: rem(20px),
       group-margin: rem(20px) 0 0 0,
       group-gap: rem(20px),
@@ -90,42 +90,42 @@ $accordion-sizes: (
 // accordion colors
 $accordion-colors: (
   primary: (
-    header-bg: var(--primary-header-bg-color),
-    header-hover-bg: var(--primary-hover-header-bg-color),
-    header-text: var(--primary-header-text-color),
-    panel-bg: var(--primary-panel-bg-color),
+    header-bg: var(--project-color-primary-accordion-header-bg),
+    header-hover-bg: var(--project-color-primary-accordion-header-bg-hover),
+    header-text: var(--project-color-primary-accordion-header-text),
+    panel-bg: var(--project-color-primary-accordion-panel-bg),
     nested: (
-      header-bg: var(--primary-nested-header-bg-color),
-      header-hover-bg: var(--primary-nested-hover-header-bg-color),
-      header-text: var(--primary-nested-header-text-color),
-      header-icon: var(--primary-nested-header-icon-color),
-      panel-bg: var(--primary-nested-panel-bg-color),
+      header-bg: var(--project-color-primary-accordion-nested-header-bg),
+      header-hover-bg: var(--project-color-primary-accordion-nested-header-bg-hover),
+      header-text: var(--project-color-primary-accordion-nested-header-text),
+      header-icon: var(--project-color-primary-accordion-nested-header-icon-fill),
+      panel-bg: var(--project-color-primary-accordion-nested-header-panel-bg),
     ),
   ),
   secondary: (
-    header-bg: var(--secondary-header-bg-color),
-    header-hover-bg: var(--secondary-hover-header-bg-color),
-    header-text: var(--secondary-header-text-color),
-    panel-bg: var(--secondary-panel-bg-color),
+    header-bg: var(--project-color-secondary-accordion-header-bg),
+    header-hover-bg: var(--project-color-secondary-accordion-header-bg-hover),
+    header-text: var(--project-color-secondary-accordion-header-text),
+    panel-bg: var(--project-color-secondary-accordion-panel-bg),
     nested: (
-      header-bg: var(--secondary-nested-header-bg-color),
-      header-hover-bg: var(--secondary-nested-hover-header-bg-color),
-      header-text: var(--secondary-nested-header-text-color),
-      header-icon: var(--secondary-nested-header-icon-color),
-      panel-bg: var(--secondary-nested-panel-bg-color),
+      header-bg: var(--project-color-secondary-accordion-nested-header-bg),
+      header-hover-bg: var(--project-color-secondary-accordion-nested-header-bg-hover),
+      header-text: var(--project-color-secondary-accordion-nested-header-text),
+      header-icon: var(--project-color-secondary-accordion-nested-header-icon-fill),
+      panel-bg: var(--project-color-secondary-accordion-nested-header-panel-bg),
     ),
   ),
   tertiary: (
-    header-bg: var(--tertiary-header-bg-color),
-    header-hover-bg: var(--tertiary-hover-header-bg-color),
-    header-text: var(--tertiary-header-text-color),
-    panel-bg: var(--tertiary-panel-bg-color),
+    header-bg: var(--project-color-tertiary-accordion-header-bg),
+    header-hover-bg: var(--project-color-tertiary-accordion-header-bg-hover),
+    header-text: var(--project-color-tertiary-accordion-header-text),
+    panel-bg: var(--project-color-tertiary-accordion-panel-bg),
     nested: (
-      header-bg: var(--tertiary-nested-header-bg-color),
-      header-hover-bg: var(--tertiary-nested-hover-header-bg-color),
-      header-text: var(--tertiary-nested-header-text-color),
-      header-icon: var(--tertiary-nested-header-icon-color),
-      panel-bg: var(--tertiary-nested-panel-bg-color),
+      header-bg: var(--project-color-tertiary-accordion-nested-header-bg),
+      header-hover-bg: var(--project-color-tertiary-accordion-nested-header-bg-hover),
+      header-text: var(--project-color-tertiary-accordion-nested-header-text),
+      header-icon: var(--project-color-tertiary-accordion-nested-header-icon-fill),
+      panel-bg: var(--project-color-tertiary-accordion-nested-header-panel-bg),
     ),
   ),
 );
@@ -143,7 +143,7 @@ $accordion-colors: (
 
     @include global-mod('size--#{$size-name}') {
       @include global-mod('accordion__first') {
-        filter: drop-shadow(0 0.375rem 0.75rem var(--drop-shadow-color-accordion));
+        filter: drop-shadow(0 0.375rem 0.75rem var(--project-color-accordion-drop-shadow));
         width: map.get($props, width);
 
         &:global {

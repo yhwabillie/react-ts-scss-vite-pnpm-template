@@ -6,46 +6,46 @@ $avatar-sizes: (
   sm: (
     size: rem(32px),
     icon-size: rem(18px),
-    font: var(--project-typo-AvatarText4-500),
+    font: var(--project-typo-avatar-4-500),
   ),
   md: (
     size: rem(48px),
     icon-size: rem(24px),
-    font: var(--project-typo-AvatarText3-500),
+    font: var(--project-typo-avatar-3-500),
   ),
   lg: (
     size: rem(64px),
     icon-size: rem(32px),
-    font: var(--project-typo-AvatarText2-500),
+    font: var(--project-typo-avatar-2-500),
   ),
   xl: (
     size: rem(80px),
     icon-size: rem(40px),
-    font: var(--project-typo-AvatarText1-500),
+    font: var(--project-typo-avatar-1-500),
   ),
 );
 
 $avatar-colors: (
   primary: (
-    hover-border: var(--primary-hover-stroke-color-avatar),
-    active-border: var(--primary-active-stroke-color-avatar),
+    hover-border: var(--project-color-primary-avatar-hover-border),
+    active-border: var(--project-color-primary-avatar-active-border),
   ),
   secondary: (
-    hover-border: var(--secondary-hover-stroke-color-avatar),
-    active-border: var(--secondary-active-stroke-color-avatar),
+    hover-border: var(--project-color-secondary-avatar-hover-border),
+    active-border: var(--project-color-secondary-avatar-active-border),
   ),
   tertiary: (
-    hover-border: var(--tertiary-hover-stroke-color-avatar),
-    active-border: var(--tertiary-active-stroke-color-avatar),
+    hover-border: var(--project-color-tertiary-avatar-hover-border),
+    active-border: var(--project-color-tertiary-avatar-active-border),
   ),
 );
 
 .avatar {
   position: relative;
   display: inline-flex;
-  border: rem(2px) solid var(--bg-color-avatar);
+  border: rem(2px) solid transparent;
   overflow: hidden;
-  background-color: var(--bg-color-avatar);
+  background-color: var(--project-color-avatar-bg);
   transition: all 0.2s ease;
 
   @each $size-name, $props in $avatar-sizes {
@@ -85,36 +85,36 @@ $avatar-colors: (
         @at-root button#{&},
           a#{&} {
           &:hover {
-            background-color: var(--hover-bg-color-avatar);
-            box-shadow: 0 rem(4px) rem(10px) 0 var(--hover-shadow-color-avatar);
+            background-color: var(--project-color-avatar-hover-bg);
+            box-shadow: 0 rem(4px) rem(10px) 0 var(--project-color-avatar-hover-shadow);
           }
 
           &:focus-visible,
           &:active {
             transform: scale(0.95);
-            background-color: var(--hover-bg-color-avatar);
-            box-shadow: 0 rem(4px) rem(10px) 0 var(--hover-shadow-color-avatar);
+            background-color: var(--project-color-avatar-hover-bg);
+            box-shadow: 0 rem(4px) rem(10px) 0 var(--project-color-avatar-hover-shadow);
           }
         }
       }
 
       @include global-mod('variant--outline') {
-        border-color: var(--stroke-color-avatar);
+        border-color: var(--project-color-avatar-border);
 
         @at-root button#{&},
           a#{&} {
           &:hover {
-            background-color: var(--hover-bg-color-avatar);
+            background-color: var(--project-color-avatar-hover-bg);
             border-color: map.get($variant-map, hover-border);
-            box-shadow: 0 rem(4px) rem(10px) 0 var(--hover-shadow-color-avatar);
+            box-shadow: 0 rem(4px) rem(10px) 0 var(--project-color-avatar-hover-shadow);
           }
 
           &:focus-visible,
           &:active {
             transform: scale(0.95);
-            background-color: var(--hover-bg-color-avatar);
+            background-color: var(--project-color-avatar-hover-bg);
             border-color: map.get($variant-map, active-border);
-            box-shadow: 0 rem(4px) rem(10px) 0 var(--hover-shadow-color-avatar);
+            box-shadow: 0 rem(4px) rem(10px) 0 var(--project-color-avatar-hover-shadow);
           }
         }
       }
@@ -133,7 +133,7 @@ $avatar-colors: (
       justify-content: center;
       align-self: center;
       flex: 1;
-      color: var(--fallback-text-color-avatar);
+      color: var(--project-color-avatar-fallback-text);
     }
   }
 }

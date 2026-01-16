@@ -118,8 +118,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * 상호 배타적인 선택지 세트(Radio Group)를 구성하는 개별 라디오 요소입니다.
- * 여러 개가 하나의 그룹으로 묶여, 그중 하나의 옵션만 선택하는 용도로 사용됩니다.
+ * 기본 사용 예시
+ * 단일 라디오 버튼의 기본적인 외형과 동작을 확인합니다.
+ * 스토리북의 자동 문서화(Autodocs) 환경에서 ID 충돌을 방지하기 위해 고유한 랜덤 ID를 생성하여 적용합니다.
  */
 export const Base: Story = {
   parameters: {
@@ -145,13 +146,8 @@ export const Base: Story = {
 };
 
 /**
- * 서비스의 브랜드 성격에 따른 테마 시스템과 6가지 표준 색상 명세를 확인합니다.
- * * **테마 구성:**
- * - **Tech Theme:** 차갑고 신뢰감 있는 푸른 계열의 메인 컬러 시스템
- * - **Warm Theme:** 따뜻하고 친근한 노란 계열의 메인 컬러 시스템
- * * 각 테마는 **Light 모드**와 **Dark 모드** 환경에 최적화된 고유의 컬러 토큰을 가집니다.
- * 이 섹션에서는 각 테마 내에서 의미론적으로 정의된 6가지 색상(Primary ~ Danger)이
- * 토글 상태(On/Off)에 따라 어떻게 시각적으로 표현되는지 검증할 수 있습니다.
+ * 테마 색상 적용
+ * 시스템에서 제공하는 각 테마 컬러별 선택(ON) 및 해제(OFF) 상태의 시각적 변화를 확인합니다.
  */
 export const Colors: Story = {
   args: {
@@ -190,7 +186,9 @@ export const Colors: Story = {
 };
 
 /**
- * 5가지 표준 사이즈(XS ~ XL)에 따른 크기 변화를 확인합니다.
+ * 크기 변주
+ * 다섯 가지 사이즈(XL ~ XS)에 따른 라디오 버튼의 크기 변화를 확인합니다.
+ * 레이아웃 밀도에 따라 적절한 크기를 선택하여 사용할 수 있습니다.
  */
 export const Sizes: Story = {
   args: {
@@ -224,7 +222,9 @@ export const Sizes: Story = {
 };
 
 /**
- 버튼의 다양한 인터랙션 상태(Hover, Focus, Active, Disabled)를 확인할 수 있습니다.
+ * 상태별 UI 확인
+ * 일반, 호버, 액티브, 포커스 등 사용자 인터랙션에 따른 시각적 피드백과
+ * 비활성화(Disabled) 처리 시의 외형을 확인합니다.
  */
 export const States: Story = {
   args: {

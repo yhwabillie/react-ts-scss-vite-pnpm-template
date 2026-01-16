@@ -6,29 +6,26 @@
 $calendar-colors: (
   primary: (
     outline: (
-      color: var(--primary-text-color-input-outline),
-      border: var(--primary-panel-stroke-color-calendar),
-      day-text: var(--primary-day-text-color-calendar),
-      selected-bg: var(--primary-selected-date-bg-color-calendar),
-      selected-text: var(--primary-selected-date-text-color-calendar),
+      border: var(--project-color-primary-calendar-panel-border),
+      day-text: var(--project-color-primary-calendar-day-text),
+      selected-bg: var(--project-color-primary-calendar-date-bg-selected),
+      selected-text: var(--project-color-primary-calendar-date-text-selected),
     ),
   ),
   secondary: (
     outline: (
-      color: var(--secondary-text-color-input-outline),
-      border: var(--secondary-panel-stroke-color-calendar),
-      day-text: var(--secondary-day-text-color-calendar),
-      selected-bg: var(--secondary-selected-date-bg-color-calendar),
-      selected-text: var(--secondary-selected-date-text-color-calendar),
+      border: var(--project-color-secondary-calendar-panel-border),
+      day-text: var(--project-color-secondary-calendar-day-text),
+      selected-bg: var(--project-color-secondary-calendar-date-bg-selected),
+      selected-text: var(--project-color-secondary-calendar-date-text-selected),
     ),
   ),
   tertiary: (
     outline: (
-      color: var(--tertiary-text-color-input-outline),
-      border: var(--tertiary-panel-stroke-color-calendar),
-      day-text: var(--tertiary-day-text-color-calendar),
-      selected-bg: var(--tertiary-selected-date-bg-color-calendar),
-      selected-text: var(--tertiary-selected-date-text-color-calendar),
+      border: var(--project-color-tertiary-calendar-panel-border),
+      day-text: var(--project-color-tertiary-calendar-day-text),
+      selected-bg: var(--project-color-tertiary-calendar-date-bg-selected),
+      selected-text: var(--project-color-tertiary-calendar-date-text-selected),
     ),
   ),
 );
@@ -39,9 +36,9 @@ $calendar-colors: (
       :global(.calendar-wrap) {
         $outline-map: map.get($props, outline);
 
-        background-color: var(--bg-color-calendar);
+        background-color: var(--project-color-calendar-bg);
         border: rem(1px) solid map.get($outline-map, border);
-        filter: drop-shadow(0 0.375rem 0.75rem var(--shadow-bg-color-calendar));
+        filter: drop-shadow(0 0.375rem 0.75rem var(--project-color-calendar-shadow-bg));
         color: var(--date-text-color-calendar);
 
         :global(.calendar-body) {
@@ -60,15 +57,15 @@ $calendar-colors: (
                   td {
                     &:global(.old) {
                       :global(.btn-set-date) {
-                        color: var(--old-date-text-color-calendar);
+                        color: var(--project-color-calendar-old-date-text);
                         font-weight: var(--project-font-weight-400);
                       }
                     }
 
                     &:global(.today) {
                       :global(.btn-set-date) {
-                        background-color: var(--today-date-bg-color-calendar);
-                        color: var(--today-date-text-color-calendar);
+                        background-color: var(--project-color-calendar-today-date-bg);
+                        color: var(--project-color-calendar-today-date-text);
                       }
                     }
 
@@ -121,7 +118,7 @@ $calendar-colors: (
             tr {
               th {
                 padding-bottom: rem(16px);
-                font: var(--project-typo-calendarTable1-600);
+                font: var(--project-typo-calendar-1-600);
               }
             }
           }
@@ -140,14 +137,14 @@ $calendar-colors: (
                   flex-direction: column;
                   margin-inline: auto;
                   border-radius: var(--project-border-radius-max);
-                  font: var(--project-typo-calendarTable1-600);
+                  font: var(--project-typo-calendar-1-600);
 
                   :global(.mark) {
                     display: inline-block;
                     width: rem(6px);
                     height: rem(6px);
                     border-radius: var(--project-border-radius-max);
-                    background-color: var(--holiday-dot-dot-color-calendar);
+                    background-color: var(--project-color-calendar-holiday-dot);
                     position: relative;
 
                     &:global(.is-active) {
@@ -166,8 +163,8 @@ $calendar-colors: (
                       transform: translate(-50%, -50%) scale(0.6);
                       transform-origin: center center;
 
-                      background-color: var(--holiday-tooltip-bg-color-calendar);
-                      color: var(--holiday-tooltip-text-color-calendar);
+                      background-color: var(--project-color-calendar-holiday-tooltip-bg);
+                      color: var(--project-color-calendar-holiday-tooltip-text);
                       padding: rem(3px) rem(6px);
                       border-radius: var(--project-border-radius-4);
                       width: max-content;

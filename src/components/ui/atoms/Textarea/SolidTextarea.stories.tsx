@@ -1,8 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import Textarea from './Textarea';
-import { SpecimenCell, SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
-import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import Textarea from '@/components/ui/atoms/Textarea/Textarea';
+import {
+  SpecimenCell,
+  SpecimenGroup,
+  SpecimenRow,
+  SpecimenWrapper,
+} from '@/components/ui/guide/Specimen';
+import AnatomyWrapper from '@/components/ui/guide/AnatomyWrapper';
+import { GuideWrapper } from '../../guide/Guide';
 
 const meta = {
   title: 'UI/Atoms/Textarea/Solid',
@@ -10,6 +16,14 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          '**Textarea Solid** 스타일은 면(Surface) 중심의 시각적 요소를 강조하여 높은 주목도를 제공합니다. <br />' +
+          '배경색을 통해 입력 영역을 명확히 정의하며, 복잡한 폼 레이아웃에서 사용자의 시선을 효과적으로 유도합니다. ' +
+          '글자 수 카운팅 및 시멘틱 컬러 피드백을 통해 직관적인 입력 경험을 지원합니다.',
+      },
+    },
   },
   argTypes: {
     // Identification
@@ -99,7 +113,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * 기본적인 텍스트 영역 형태입니다.
+ * 기본 사용 예시
+ * 텍스트 영역(Textarea)의 기본적인 렌더링 형태를 확인합니다.
+ * 부모 요소의 너비에 따라 유연하게 확장되며, 고유 ID 생성을 통해 접근성을 보장합니다.
  */
 export const Base: Story = {
   parameters: {
@@ -117,18 +133,15 @@ export const Base: Story = {
      */
     const uniqueId = `textarea-${Math.random().toString(36).slice(2, 7)}`;
 
-    return (
-      <AnatomyWrapper title='부모 요소 : 800px'>
-        <SpecimenRow>
-          <SpecimenCell style={{ width: '800px' }}>
-            <Textarea {...args} id={uniqueId} name={uniqueId} />
-          </SpecimenCell>
-        </SpecimenRow>
-      </AnatomyWrapper>
-    );
+    return <Textarea {...args} id={uniqueId} name={uniqueId} />;
   },
 };
 
+/**
+ * 테마 색상 적용
+ * 디자인 시스템의 시멘틱 컬러를 적용하여 포커스 테두리, 카운터 숫자 등의 색상 변화를 확인합니다.
+ * 빈 값(Empty) 상태와 내용이 있는(Filled) 상태를 비교할 수 있습니다.
+ */
 export const Colors: Story = {
   parameters: {
     docs: {
@@ -181,6 +194,11 @@ export const Colors: Story = {
   },
 };
 
+/**
+ * 규격 변주 (Sizes)
+ * 디자인 시스템 가이드에 정의된 5가지 표준 너비를 확인합니다.
+ * XL 사이즈는 부모 요소의 너비를 100% 활용하며, 그 외 사이즈는 최적의 가독성을 위한 최대 너비(max-width)를 가집니다.
+ */
 export const Sizes: Story = {
   parameters: {
     docs: {
@@ -219,6 +237,10 @@ export const Sizes: Story = {
   },
 };
 
+/**
+ * 상태별 UI 확인
+ * 일반, 호버, 포커스 상태와 더불어 읽기 전용(Read Only), 비활성화(Disabled) 처리 시의 외형 변화를 비교합니다.
+ */
 export const States: Story = {
   parameters: {
     docs: {
@@ -272,6 +294,11 @@ export const States: Story = {
   },
 };
 
+/**
+ * 글자 수 카운터 (With Count)
+ * showCount와 maxLength 속성을 사용하여 실시간 입력 글자 수를 표시합니다.
+ * 글자 수가 한도에 도달했을 때의 강조 스타일 피드백을 확인할 수 있습니다.
+ */
 export const WithCount: Story = {
   parameters: {
     docs: {

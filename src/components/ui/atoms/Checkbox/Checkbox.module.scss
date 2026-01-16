@@ -6,93 +6,93 @@
 // checkbox color
 $checkbox-colors: (
   primary: (
-    borderColor: var(--stroke-color-checkbox),
-    bg: var(--bg-color-unchecked-checkbox),
-    fill: var(--primary-checked-color-checkbox),
+    borderColor: var(--project-color-checkbox-border),
+    bg: var(--project-color-checkbox-unchecked-bg),
+    fill: var(--project-color-primary-checkbox-checked-bg),
     hover: (
-      shadow: 0 0 0 rem(4px) var(--primary-hover-shadow-checkbox),
+      shadow: 0 0 0 rem(4px) var(--project-color-primary-checkbox-shadow-hover),
     ),
     active: (
-      shadow: 0 0 0 rem(6px) var(--primary-active-shadow-checkbox),
+      shadow: 0 0 0 rem(6px) var(--project-color-primary-checkbox-shadow-active),
     ),
     disabled: (
-      bg: var(--disabled-bg-color-checkbox),
-      border: var(--disabled-stroke-color-checkbox),
+      bg: var(--project-color-checkbox-disabled-bg),
+      border: var(--project-color-checkbox-disabled-border),
     ),
   ),
   secondary: (
-    borderColor: var(--stroke-color-checkbox),
-    bg: var(--bg-color-unchecked-checkbox),
-    fill: var(--secondary-checked-color-checkbox),
+    borderColor: var(--project-color-checkbox-border),
+    bg: var(--project-color-checkbox-unchecked-bg),
+    fill: var(--project-color-secondary-checkbox-checked-bg),
     hover: (
-      shadow: 0 0 0 rem(4px) var(--secondary-hover-shadow-checkbox),
+      shadow: 0 0 0 rem(4px) var(--project-color-secondary-checkbox-shadow-hover),
     ),
     active: (
-      shadow: 0 0 0 rem(6px) var(--secondary-active-shadow-checkbox),
+      shadow: 0 0 0 rem(6px) var(--project-color-secondary-checkbox-shadow-active),
     ),
     disabled: (
-      bg: var(--disabled-bg-color-checkbox),
-      border: var(--disabled-stroke-color-checkbox),
+      bg: var(--project-color-checkbox-disabled-bg),
+      border: var(--project-color-checkbox-disabled-border),
     ),
   ),
   tertiary: (
-    borderColor: var(--stroke-color-checkbox),
-    bg: var(--bg-color-unchecked-checkbox),
-    fill: var(--tertiary-checked-color-checkbox),
+    borderColor: var(--project-color-checkbox-border),
+    bg: var(--project-color-checkbox-unchecked-bg),
+    fill: var(--project-color-tertiary-checkbox-checked-bg),
     hover: (
-      shadow: 0 0 0 rem(4px) var(--tertiary-hover-shadow-checkbox),
+      shadow: 0 0 0 rem(4px) var(--project-color-tertiary-checkbox-shadow-hover),
     ),
     active: (
-      shadow: 0 0 0 rem(6px) var(--tertiary-active-shadow-checkbox),
+      shadow: 0 0 0 rem(6px) var(--project-color-tertiary-checkbox-shadow-active),
     ),
     disabled: (
-      bg: var(--disabled-bg-color-checkbox),
-      border: var(--disabled-stroke-color-checkbox),
+      bg: var(--project-color-checkbox-disabled-bg),
+      border: var(--project-color-checkbox-disabled-border),
     ),
   ),
   success: (
-    borderColor: var(--stroke-color-checkbox),
-    bg: var(--bg-color-unchecked-checkbox),
-    fill: var(--success-checked-color-checkbox),
+    borderColor: var(--project-color-checkbox-border),
+    bg: var(--project-color-checkbox-unchecked-bg),
+    fill: var(--project-color-checkbox-success-checked),
     hover: (
-      shadow: 0 0 0 rem(4px) var(--success-hover-shadow-checkbox),
+      shadow: 0 0 0 rem(4px) var(--project-color-checkbox-success-shadow-hover),
     ),
     active: (
-      shadow: 0 0 0 rem(6px) var(--success-active-shadow-checkbox),
+      shadow: 0 0 0 rem(6px) var(--project-color-checkbox-success-shadow-active),
     ),
     disabled: (
-      bg: var(--disabled-bg-color-checkbox),
-      border: var(--disabled-stroke-color-checkbox),
+      bg: var(--project-color-checkbox-disabled-bg),
+      border: var(--project-color-checkbox-disabled-border),
     ),
   ),
   warning: (
-    borderColor: var(--stroke-color-checkbox),
-    bg: var(--bg-color-unchecked-checkbox),
-    fill: var(--warning-checked-color-checkbox),
+    borderColor: var(--project-color-checkbox-border),
+    bg: var(--project-color-checkbox-unchecked-bg),
+    fill: var(--project-color-checkbox-warning-checked),
     hover: (
-      shadow: 0 0 0 rem(4px) var(--warning-hover-shadow-checkbox),
+      shadow: 0 0 0 rem(4px) var(--project-color-checkbox-warning-shadow-hover),
     ),
     active: (
-      shadow: 0 0 0 rem(6px) var(--warning-active-shadow-checkbox),
+      shadow: 0 0 0 rem(6px) var(--project-color-checkbox-warning-shadow-active),
     ),
     disabled: (
-      bg: var(--disabled-bg-color-checkbox),
-      border: var(--disabled-stroke-color-checkbox),
+      bg: var(--project-color-checkbox-disabled-bg),
+      border: var(--project-color-checkbox-disabled-border),
     ),
   ),
   danger: (
-    borderColor: var(--stroke-color-checkbox),
-    bg: var(--bg-color-unchecked-checkbox),
-    fill: var(--danger-checked-color-checkbox),
+    borderColor: var(--project-color-checkbox-border),
+    bg: var(--project-color-checkbox-unchecked-bg),
+    fill: var(--project-color-checkbox-danger-checked),
     hover: (
-      shadow: 0 0 0 rem(4px) var(--danger-hover-shadow-checkbox),
+      shadow: 0 0 0 rem(4px) var(--project-color-checkbox-danger-shadow-hover),
     ),
     active: (
-      shadow: 0 0 0 rem(6px) var(--danger-active-shadow-checkbox),
+      shadow: 0 0 0 rem(6px) var(--project-color-checkbox-danger-shadow-active),
     ),
     disabled: (
-      bg: var(--disabled-bg-color-checkbox),
-      border: var(--disabled-stroke-color-checkbox),
+      bg: var(--project-color-checkbox-disabled-bg),
+      border: var(--project-color-checkbox-disabled-border),
     ),
   ),
 );
@@ -103,12 +103,12 @@ $checkbox-sizes: (
     size: (
       pc: rem(12px),
       tablet: rem(12px),
-      mobile: rem(44px),
+      mobile: rem(12px),
     ),
     radius: (
       pc: rem(2px),
       tablet: rem(2px),
-      mobile: rem(6px),
+      mobile: rem(2px),
       // 44px 터치 영역 대비 자연스러운 반경
     ),
   ),
@@ -116,48 +116,48 @@ $checkbox-sizes: (
     size: (
       pc: rem(16px),
       tablet: rem(16px),
-      mobile: rem(44px),
+      mobile: rem(16px),
     ),
     radius: (
       pc: rem(2px),
       tablet: rem(2px),
-      mobile: rem(6px),
+      mobile: rem(2px),
     ),
   ),
   md: (
     size: (
       pc: rem(20px),
       tablet: rem(20px),
-      mobile: rem(44px),
+      mobile: rem(20px),
     ),
     radius: (
       pc: rem(3px),
       tablet: rem(3px),
-      mobile: rem(7px),
+      mobile: rem(3px),
     ),
   ),
   lg: (
     size: (
       pc: rem(24px),
       tablet: rem(24px),
-      mobile: rem(44px),
+      mobile: rem(24px),
     ),
     radius: (
       pc: rem(4px),
       tablet: rem(4px),
-      mobile: rem(8px),
+      mobile: rem(4px),
     ),
   ),
   xl: (
     size: (
       pc: rem(28px),
       tablet: rem(28px),
-      mobile: rem(44px),
+      mobile: rem(28px),
     ),
     radius: (
       pc: rem(5px),
       tablet: rem(5px),
-      mobile: rem(8px),
+      mobile: rem(5px),
     ),
   ),
 );
@@ -180,9 +180,8 @@ $checkbox-sizes: (
   $disabled-bg: map.get($disabled-props, bg);
   $disabled-border: map.get($disabled-props, border);
 
-  border: rem(1px) solid $border-color;
-
   &:global(.color--#{$color}) {
+    border: rem(1px) solid $border-color;
     background-color: $bg;
     transition: all 0.2s ease;
 
@@ -297,7 +296,7 @@ $checkbox-sizes: (
   }
 
   :global(.mark) {
-    color: #ffffff;
+    color: var(--project-color-checkbox-unchecked-bg);
 
     path {
       stroke-opacity: 0;
