@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-const PATH = './tokens/primitive-color.json';
+const PATH = './tokens/color/primitive-color.json';
 
 if (!fs.existsSync(PATH)) {
   console.error('❌ 파일을 찾을 수 없습니다.');

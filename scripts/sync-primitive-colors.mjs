@@ -1,8 +1,8 @@
 import fs from 'fs';
 
 const PROJECT_NAME = 'project';
-const PRIMITIVE_PATH = './tokens/primitive-color.json';
-const SOURCE_FILES = ['./tokens/colors.json', './tokens/themes/tech.json'];
+const PRIMITIVE_PATH = './tokens/color/primitive-color.json';
+const SOURCE_FILES = ['./tokens/color/colors.json', './tokens/color/themes/tech.json'];
 
 if (!fs.existsSync(PRIMITIVE_PATH)) {
   console.error('❌ primitive-color.json 파일이 없습니다.');

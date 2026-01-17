@@ -3,9 +3,7 @@
 @use '../../../styles/mixins' as *;
 
 .guide-table {
-  + .guide-table {
-    margin-top: rem(60px);
-  }
+  margin-bottom: rem(60px);
 
   :global {
     .guide-table__title {
