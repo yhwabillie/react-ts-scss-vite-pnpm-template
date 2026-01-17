@@ -4,12 +4,12 @@ import clsx from 'clsx';
 import IconButton from '../IconButton/IconButton';
 import Icon from '../../atoms/Icon/Icon';
 
-interface TabItem {
+export interface TabItem {
   title: string;
   content: React.ReactNode;
 }
 
-interface TabsProps {
+export interface TabsProps {
   items: TabItem[];
   defaultIndex?: number;
   variant?: 'solid' | 'outline' | 'underline';

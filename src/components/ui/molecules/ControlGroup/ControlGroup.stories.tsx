@@ -8,6 +8,7 @@ import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { SpecimenCell, SpecimenRow } from '../../guide/Specimen';
 import { GuideGroup, GuideWrapper } from '../../guide/Guide';
 import { useId } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const meta = {
   title: 'UI/Molecules/ControlGroup',
@@ -75,7 +76,6 @@ const meta = {
   },
   args: {
     size: 'xl',
-
     role: 'group',
     children: undefined,
     ariaLabel: '선택 옵션 그룹',
@@ -94,6 +94,7 @@ type Story = StoryObj<typeof meta>;
 export const Base: Story = {
   render: args => {
     const baseId = useId();
+    const { t } = useTranslation();
 
     const CONTROL_TYPES = [
       { type: 'radio', label: 'Radio ControlGroup', Component: Radio },
@@ -101,9 +102,9 @@ export const Base: Story = {
     ] as const;
 
     const OPTIONS = [
-      { label: '옵션 1', defaultChecked: true },
-      { label: '옵션 2' },
-      { label: '옵션 3' },
+      { label: t('control-group.options.label_a'), defaultChecked: true },
+      { label: t('control-group.options.label_b') },
+      { label: t('control-group.options.label_c') },
     ];
 
     return (

@@ -4,6 +4,7 @@ import OptionItem from '../OptionItem/OptionItem';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { SpecimenGroup, SpecimenWrapper } from '../../guide/Specimen';
 import { useId } from 'react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * [OptionList]
@@ -98,7 +99,8 @@ type Story = StoryObj<typeof meta>;
  */
 export const Base: Story = {
   render: args => {
-    const uniqueValue = '옵션';
+    const { t } = useTranslation();
+    const labels = ['label_a', 'label_b', 'label_c', 'label_d', 'label_e', 'label_f'];
 
     return (
       <AnatomyWrapper title='OptionList' style={{ width: 'fit-content', margin: 'auto' }}>
@@ -110,7 +112,9 @@ export const Base: Story = {
               color={args.color}
               size={args.size}
               id={idx.toString()}
-              value={item === '' ? '옵션을 선택해 주세요' : `${uniqueValue} ${idx + 1}`}
+              value={
+                item === '' ? t('option-item.placeholder') : t(`option-item.items.${labels[idx]}`)
+              }
               selected={idx === 1}
               disabled={item === ''}
             />
@@ -132,7 +136,8 @@ export const Colors: Story = {
       'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger'
     > = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'];
 
-    const uniqueValue = '옵션';
+    const { t } = useTranslation();
+    const labels = ['label_a', 'label_b', 'label_c', 'label_d', 'label_e', 'label_f'];
 
     return (
       <SpecimenWrapper style={{ width: '450px', margin: 'auto' }}>
@@ -146,7 +151,11 @@ export const Colors: Story = {
                   color={color}
                   size={args.size}
                   id={idx.toString()}
-                  value={item === '' ? '옵션을 선택해 주세요' : `${uniqueValue} ${idx + 1}`}
+                  value={
+                    item === ''
+                      ? t('option-item.placeholder')
+                      : t(`option-item.items.${labels[idx]}`)
+                  }
                   selected={idx === 1}
                   disabled={item === ''}
                 />
@@ -167,7 +176,8 @@ export const Colors: Story = {
 export const Sizes: Story = {
   render: args => {
     const sizeOptions: Array<'xl' | 'lg' | 'md' | 'sm' | 'xs'> = ['xl', 'lg', 'md', 'sm', 'xs'];
-    const uniqueValue = '옵션';
+    const { t } = useTranslation();
+    const labels = ['label_a', 'label_b', 'label_c', 'label_d', 'label_e', 'label_f'];
 
     return (
       <SpecimenWrapper style={{ width: '450px', margin: 'auto' }}>
@@ -181,7 +191,11 @@ export const Sizes: Story = {
                   color={args.color}
                   size={size}
                   id={idx.toString()}
-                  value={item === '' ? '옵션을 선택해 주세요' : `${uniqueValue} ${idx + 1}`}
+                  value={
+                    item === ''
+                      ? t('option-item.placeholder')
+                      : t(`option-item.items.${labels[idx]}`)
+                  }
                   selected={idx === 1}
                   disabled={item === ''}
                 />

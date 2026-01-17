@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import Avatar from './Avatar';
 import sampleAvatar1 from '@/assets/images/avatar_profile_sample_1.png';
 import { GuideCell, GuideGroup, GuideWrapper } from '../../guide/Guide';
+import { useTranslation } from 'react-i18next';
 
 const meta: Meta<typeof Avatar> = {
   title: 'UI/Molecules/Avatar',
@@ -84,11 +85,12 @@ type Story = StoryObj<typeof Avatar>;
  */
 export const Base: Story = {
   render: args => {
+    const { t } = useTranslation();
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
         <GuideGroup>
           <GuideCell>
-            <Avatar {...args} src={sampleAvatar1} />
+            <Avatar {...args} src={sampleAvatar1} name={t('avatar.name')} />
           </GuideCell>
         </GuideGroup>
       </GuideWrapper>
@@ -102,11 +104,12 @@ export const Base: Story = {
  */
 export const FallbackName: Story = {
   render: args => {
+    const { t } = useTranslation();
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
         <GuideGroup>
           <GuideCell>
-            <Avatar {...args} src='' />
+            <Avatar {...args} src='' name={t('avatar.name')} />
           </GuideCell>
         </GuideGroup>
       </GuideWrapper>
@@ -142,22 +145,23 @@ export const Variants: Story = {
     src: sampleAvatar1,
   },
   render: args => {
+    const { t } = useTranslation();
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '24px' }}>
         <GuideGroup title='Solid'>
           <GuideCell>
-            <Avatar {...args} variant='solid' />
+            <Avatar {...args} variant='solid' name={t('avatar.name')} />
           </GuideCell>
           <GuideCell>
-            <Avatar {...args} src='' variant='solid' />
+            <Avatar {...args} src='' variant='solid' name={t('avatar.name')} />
           </GuideCell>
         </GuideGroup>
         <GuideGroup title='Outline'>
           <GuideCell>
-            <Avatar {...args} variant='outline' />
+            <Avatar {...args} variant='outline' name={t('avatar.name')} />
           </GuideCell>
           <GuideCell>
-            <Avatar {...args} src='' variant='outline' />
+            <Avatar {...args} src='' variant='outline' name={t('avatar.name')} />
           </GuideCell>
         </GuideGroup>
       </GuideWrapper>
@@ -175,30 +179,31 @@ export const Shapes: Story = {
     src: sampleAvatar1,
   },
   render: args => {
+    const { t } = useTranslation();
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '24px' }}>
         <GuideGroup title='Square'>
           <GuideCell>
-            <Avatar {...args} shape='square' />
+            <Avatar {...args} shape='square' name={t('avatar.name')} />
           </GuideCell>
           <GuideCell>
-            <Avatar {...args} src='' shape='square' />
+            <Avatar {...args} src='' shape='square' name={t('avatar.name')} />
           </GuideCell>
         </GuideGroup>
         <GuideGroup title='Rounded'>
           <GuideCell>
-            <Avatar {...args} shape='rounded' />
+            <Avatar {...args} shape='rounded' name={t('avatar.name')} />
           </GuideCell>
           <GuideCell>
-            <Avatar {...args} src='' shape='rounded' />
+            <Avatar {...args} src='' shape='rounded' name={t('avatar.name')} />
           </GuideCell>
         </GuideGroup>
         <GuideGroup title='Pill'>
           <GuideCell>
-            <Avatar {...args} shape='pill' />
+            <Avatar {...args} shape='pill' name={t('avatar.name')} />
           </GuideCell>
           <GuideCell>
-            <Avatar {...args} src='' shape='pill' />
+            <Avatar {...args} src='' shape='pill' name={t('avatar.name')} />
           </GuideCell>
         </GuideGroup>
       </GuideWrapper>
@@ -211,68 +216,73 @@ export const Shapes: Story = {
  * - **Proportionality**: 크기에 따라 이니셜 폰트 사이즈와 기본 아이콘 크기가 조화롭게 변경되는지 확인합니다.
  */
 export const Sizes: Story = {
-  render: args => (
-    <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '20px' }}>
-      <div style={{ display: 'flex', flexDirection: 'row', gap: '40px', alignItems: 'flex-start' }}>
-        <GuideCell caption='sm'>
-          <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
-            <Avatar {...args} src={sampleAvatar1} shape='square' size='sm' />
-            <Avatar {...args} src='' shape='square' size='sm' />
-          </div>
-          <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
-            <Avatar {...args} src={sampleAvatar1} shape='rounded' size='sm' />
-            <Avatar {...args} src='' shape='rounded' size='sm' />
-          </div>
-          <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
-            <Avatar {...args} src={sampleAvatar1} shape='pill' size='sm' />
-            <Avatar {...args} src='' shape='pill' size='sm' />
-          </div>
-        </GuideCell>
-        <GuideCell caption='md'>
-          <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
-            <Avatar {...args} src={sampleAvatar1} shape='square' size='md' />
-            <Avatar {...args} src='' shape='square' size='md' />
-          </div>
-          <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
-            <Avatar {...args} src={sampleAvatar1} shape='rounded' size='md' />
-            <Avatar {...args} src='' shape='rounded' size='md' />
-          </div>
-          <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
-            <Avatar {...args} src={sampleAvatar1} shape='pill' size='md' />
-            <Avatar {...args} src='' shape='pill' size='md' />
-          </div>
-        </GuideCell>
-        <GuideCell caption='lg'>
-          <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
-            <Avatar {...args} src={sampleAvatar1} shape='square' size='lg' />
-            <Avatar {...args} src='' shape='square' size='lg' />
-          </div>
-          <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
-            <Avatar {...args} src={sampleAvatar1} shape='rounded' size='lg' />
-            <Avatar {...args} src='' shape='rounded' size='lg' />
-          </div>
-          <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
-            <Avatar {...args} src={sampleAvatar1} shape='pill' size='lg' />
-            <Avatar {...args} src='' shape='pill' size='lg' />
-          </div>
-        </GuideCell>
-        <GuideCell caption='xl'>
-          <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
-            <Avatar {...args} src={sampleAvatar1} shape='square' size='xl' />
-            <Avatar {...args} src='' shape='square' size='xl' />
-          </div>
-          <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
-            <Avatar {...args} src={sampleAvatar1} shape='rounded' size='xl' />
-            <Avatar {...args} src='' shape='rounded' size='xl' />
-          </div>
-          <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
-            <Avatar {...args} src={sampleAvatar1} shape='pill' size='xl' />
-            <Avatar {...args} src='' shape='pill' size='xl' />
-          </div>
-        </GuideCell>
-      </div>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const name = t('avatar.name');
+
+    return (
+      <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '20px' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '40px', alignItems: 'flex-start' }}>
+          <GuideCell caption='sm'>
+            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+              <Avatar {...args} src={sampleAvatar1} shape='square' size='sm' name={name} />
+              <Avatar {...args} src='' shape='square' size='sm' name={name} />
+            </div>
+            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+              <Avatar {...args} src={sampleAvatar1} shape='rounded' size='sm' name={name} />
+              <Avatar {...args} src='' shape='rounded' size='sm' name={name} />
+            </div>
+            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+              <Avatar {...args} src={sampleAvatar1} shape='pill' size='sm' name={name} />
+              <Avatar {...args} src='' shape='pill' size='sm' name={name} />
+            </div>
+          </GuideCell>
+          <GuideCell caption='md'>
+            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+              <Avatar {...args} src={sampleAvatar1} shape='square' size='md' name={name} />
+              <Avatar {...args} src='' shape='square' size='md' name={name} />
+            </div>
+            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+              <Avatar {...args} src={sampleAvatar1} shape='rounded' size='md' name={name} />
+              <Avatar {...args} src='' shape='rounded' size='md' name={name} />
+            </div>
+            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+              <Avatar {...args} src={sampleAvatar1} shape='pill' size='md' name={name} />
+              <Avatar {...args} src='' shape='pill' size='md' name={name} />
+            </div>
+          </GuideCell>
+          <GuideCell caption='lg'>
+            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+              <Avatar {...args} src={sampleAvatar1} shape='square' size='lg' name={name} />
+              <Avatar {...args} src='' shape='square' size='lg' name={name} />
+            </div>
+            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+              <Avatar {...args} src={sampleAvatar1} shape='rounded' size='lg' name={name} />
+              <Avatar {...args} src='' shape='rounded' size='lg' name={name} />
+            </div>
+            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+              <Avatar {...args} src={sampleAvatar1} shape='pill' size='lg' name={name} />
+              <Avatar {...args} src='' shape='pill' size='lg' name={name} />
+            </div>
+          </GuideCell>
+          <GuideCell caption='xl'>
+            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+              <Avatar {...args} src={sampleAvatar1} shape='square' size='xl' name={name} />
+              <Avatar {...args} src='' shape='square' size='xl' name={name} />
+            </div>
+            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+              <Avatar {...args} src={sampleAvatar1} shape='rounded' size='xl' name={name} />
+              <Avatar {...args} src='' shape='rounded' size='xl' name={name} />
+            </div>
+            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+              <Avatar {...args} src={sampleAvatar1} shape='pill' size='xl' name={name} />
+              <Avatar {...args} src='' shape='pill' size='xl' name={name} />
+            </div>
+          </GuideCell>
+        </div>
+      </GuideWrapper>
+    );
+  },
 };
 
 /**
@@ -280,49 +290,63 @@ export const Sizes: Story = {
  * - **Accessibility**: 버튼(`button`)으로 렌더링 시 키보드 접근성이 확보되는지, 링크(`a`)로 렌더링 시 이동 기능이 정상 작동하는지 점검합니다.
  */
 export const Polymorphic: Story = {
-  render: args => (
-    <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '20px' }}>
-      <GuideGroup title='Standard (div)'>
-        <GuideCell>
-          <Avatar {...args} as='div' src={sampleAvatar1} alt='General User' />
-        </GuideCell>
-        <GuideCell>
-          <Avatar {...args} as='div' name='John Doe' src='' alt='Initial User' />
-        </GuideCell>
-      </GuideGroup>
-      <GuideGroup title='Linkable (anchor)'>
-        <GuideCell>
-          <Avatar
-            {...args}
-            as='a'
-            href='https://github.com'
-            target='_blank'
-            src={sampleAvatar1}
-            alt='General User'
-          />
-        </GuideCell>
-        <GuideCell>
-          <Avatar
-            {...args}
-            as='a'
-            href='https://github.com'
-            target='_blank'
-            name='John Doe'
-            src=''
-            alt='Initial User'
-          />
-        </GuideCell>
-      </GuideGroup>
-      <GuideGroup title='Action (button)'>
-        <GuideCell>
-          <Avatar {...args} as='button' type='button' src={sampleAvatar1} alt='General User' />
-        </GuideCell>
-        <GuideCell>
-          <Avatar {...args} as='button' type='button' name='John Doe' src='' alt='Initial User' />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const name = t('avatar.name');
+    const altText = `${name} 프로필`;
+
+    return (
+      <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '20px' }}>
+        <GuideGroup title='Standard (div)'>
+          <GuideCell>
+            <Avatar {...args} as='div' src={sampleAvatar1} alt={altText} name={name} />
+          </GuideCell>
+          <GuideCell>
+            <Avatar {...args} as='div' name={name} src='' alt={altText} />
+          </GuideCell>
+        </GuideGroup>
+        <GuideGroup title='Linkable (anchor)'>
+          <GuideCell>
+            <Avatar
+              {...args}
+              as='a'
+              href='https://github.com'
+              target='_blank'
+              src={sampleAvatar1}
+              alt={altText}
+              name={name}
+            />
+          </GuideCell>
+          <GuideCell>
+            <Avatar
+              {...args}
+              as='a'
+              href='https://github.com'
+              target='_blank'
+              name={name}
+              src=''
+              alt={altText}
+            />
+          </GuideCell>
+        </GuideGroup>
+        <GuideGroup title='Action (button)'>
+          <GuideCell>
+            <Avatar
+              {...args}
+              as='button'
+              type='button'
+              src={sampleAvatar1}
+              alt={altText}
+              name={name}
+            />
+          </GuideCell>
+          <GuideCell>
+            <Avatar {...args} as='button' type='button' name={name} src='' alt={altText} />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
 };
 
 /**
@@ -334,45 +358,86 @@ export const States: Story = {
     src: sampleAvatar1,
   },
   render: args => {
+    const { t } = useTranslation();
+    const name = t('avatar.name');
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '20px' }}>
         <GuideGroup title='Default'>
           <GuideCell caption='solid'>
-            <Avatar {...args} as='button' variant='solid' />
+            <Avatar {...args} as='button' variant='solid' name={name} />
           </GuideCell>
           <GuideCell caption='outline'>
-            <Avatar {...args} as='button' variant='outline' />
+            <Avatar {...args} as='button' variant='outline' name={name} />
           </GuideCell>
           <GuideCell caption='solid'>
-            <Avatar {...args} src='' as='button' variant='solid' />
+            <Avatar {...args} src='' as='button' variant='solid' name={name} />
           </GuideCell>
           <GuideCell caption='outline'>
-            <Avatar {...args} src='' as='button' variant='outline' />
+            <Avatar {...args} src='' as='button' variant='outline' name={name} />
           </GuideCell>
         </GuideGroup>
         <GuideGroup title='Hover'>
           <GuideCell>
-            <Avatar {...args} as='button' variant='solid' className='pseudo-hover' />
+            <Avatar {...args} as='button' variant='solid' className='pseudo-hover' name={name} />
           </GuideCell>
           <GuideCell>
-            <Avatar {...args} as='button' variant='outline' className='pseudo-hover' />
+            <Avatar
+              {...args}
+              as='button'
+              variant='outline'
+              className='pseudo-hover'
+              name={name}
+            />
           </GuideCell>
           <GuideCell>
-            <Avatar {...args} src='' as='button' variant='solid' className='pseudo-hover' />
+            <Avatar
+              {...args}
+              src=''
+              as='button'
+              variant='solid'
+              className='pseudo-hover'
+              name={name}
+            />
           </GuideCell>
           <GuideCell>
-            <Avatar {...args} src='' as='button' variant='outline' className='pseudo-hover' />
+            <Avatar
+              {...args}
+              src=''
+              as='button'
+              variant='outline'
+              className='pseudo-hover'
+              name={name}
+            />
           </GuideCell>
         </GuideGroup>
         <GuideGroup title='Focus'>
           <GuideCell>
-            <Avatar {...args} as='button' variant='solid' className='pseudo-focus-visible' />
+            <Avatar
+              {...args}
+              as='button'
+              variant='solid'
+              className='pseudo-focus-visible'
+              name={name}
+            />
           </GuideCell>
           <GuideCell>
-            <Avatar {...args} as='button' variant='outline' className='pseudo-focus-visible' />
+            <Avatar
+              {...args}
+              as='button'
+              variant='outline'
+              className='pseudo-focus-visible'
+              name={name}
+            />
           </GuideCell>
           <GuideCell>
-            <Avatar {...args} src='' as='button' variant='solid' className='pseudo-focus-visible' />
+            <Avatar
+              {...args}
+              src=''
+              as='button'
+              variant='solid'
+              className='pseudo-focus-visible'
+              name={name}
+            />
           </GuideCell>
           <GuideCell>
             <Avatar
@@ -381,6 +446,7 @@ export const States: Story = {
               as='button'
               variant='outline'
               className='pseudo-focus-visible'
+              name={name}
             />
           </GuideCell>
         </GuideGroup>
@@ -398,6 +464,8 @@ export const StateColors: Story = {
     src: sampleAvatar1,
   },
   render: args => {
+    const { t } = useTranslation();
+    const name = t('avatar.name');
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '20px' }}>
         <GuideGroup title='Hover'>
@@ -408,6 +476,7 @@ export const StateColors: Story = {
               as='button'
               variant='outline'
               className='pseudo-hover'
+              name={name}
             />
           </GuideCell>
           <GuideCell caption='Secondary'>
@@ -417,6 +486,7 @@ export const StateColors: Story = {
               as='button'
               variant='outline'
               className='pseudo-hover'
+              name={name}
             />
           </GuideCell>
           <GuideCell caption='Tertiary'>
@@ -426,6 +496,7 @@ export const StateColors: Story = {
               as='button'
               variant='outline'
               className='pseudo-hover'
+              name={name}
             />
           </GuideCell>
           <GuideCell caption='Primary'>
@@ -436,6 +507,7 @@ export const StateColors: Story = {
               as='button'
               variant='outline'
               className='pseudo-hover'
+              name={name}
             />
           </GuideCell>
           <GuideCell caption='Secondary'>
@@ -446,6 +518,7 @@ export const StateColors: Story = {
               as='button'
               variant='outline'
               className='pseudo-hover'
+              name={name}
             />
           </GuideCell>
           <GuideCell caption='Tertiary'>
@@ -456,6 +529,7 @@ export const StateColors: Story = {
               as='button'
               variant='outline'
               className='pseudo-hover'
+              name={name}
             />
           </GuideCell>
         </GuideGroup>
@@ -468,6 +542,7 @@ export const StateColors: Story = {
               as='button'
               variant='outline'
               className='pseudo-focus-visible'
+              name={name}
             />
           </GuideCell>
           <GuideCell caption='Secondary'>
@@ -477,6 +552,7 @@ export const StateColors: Story = {
               as='button'
               variant='outline'
               className='pseudo-focus-visible'
+              name={name}
             />
           </GuideCell>
           <GuideCell caption='Tertiary'>
@@ -486,6 +562,7 @@ export const StateColors: Story = {
               as='button'
               variant='outline'
               className='pseudo-focus-visible'
+              name={name}
             />
           </GuideCell>
           <GuideCell caption='Primary'>
@@ -496,6 +573,7 @@ export const StateColors: Story = {
               as='button'
               variant='outline'
               className='pseudo-focus-visible'
+              name={name}
             />
           </GuideCell>
           <GuideCell caption='Secondary'>
@@ -506,6 +584,7 @@ export const StateColors: Story = {
               as='button'
               variant='outline'
               className='pseudo-focus-visible'
+              name={name}
             />
           </GuideCell>
           <GuideCell caption='Tertiary'>
@@ -516,6 +595,7 @@ export const StateColors: Story = {
               as='button'
               variant='outline'
               className='pseudo-focus-visible'
+              name={name}
             />
           </GuideCell>
         </GuideGroup>

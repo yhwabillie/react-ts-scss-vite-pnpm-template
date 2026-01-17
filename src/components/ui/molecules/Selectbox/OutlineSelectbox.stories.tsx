@@ -7,6 +7,38 @@ import { useId, useState } from 'react';
 import Button from '../Button/Button';
 import { GuideWrapper } from '../../guide/Guide';
 import { within, userEvent, expect, screen } from 'storybook/test';
+import { useTranslation } from 'react-i18next';
+
+const SELECTBOX_ITEM_KEYS = [
+  'label_a',
+  'label_b',
+  'label_c',
+  'label_d',
+  'label_e',
+  'label_f',
+  'label_g',
+  'label_h',
+  'label_i',
+  'label_j',
+];
+
+const localizeSelectboxOptions = (t: (key: string) => string, options: typeof selectboxOptions) => {
+  let index = 0;
+
+  return options.map(option => {
+    if (option.id === 'placeholder') return option;
+
+    const key = SELECTBOX_ITEM_KEYS[index];
+    index += 1;
+
+    if (!key) return option;
+
+    return {
+      ...option,
+      value: t(`selectbox.items.${key}`),
+    };
+  });
+};
 
 const meta = {
   title: 'UI/Molecules/Selectbox/Outline',
@@ -121,17 +153,30 @@ type Story = StoryObj<typeof meta>;
  * `updateArgs`를 연동하여 스토리북 컨트롤 패널에서도 선택 상태가 실시간으로 동기화되도록 구성되었습니다.
  */
 export const Base: Story = {
-  render: (args, { updateArgs }) => {
+  render: (args, context) => {
+    const { t } = useTranslation();
     const uniqueId = useId();
+    const localizedOptions = localizeSelectboxOptions(t, args.options);
+    const { updateArgs } = context;
 
     const handleChange = (id: string) => {
       // 스토리북 Controls 패널의 defaultOptionId를 즉시 업데이트
-      updateArgs({ defaultOptionId: id });
+      if (typeof updateArgs === 'function') {
+        updateArgs({ defaultOptionId: id });
+      }
       // Actions 패널에 이벤트 로그 출력
       args.onValueChange?.(id);
     };
 
-    return <Selectbox {...args} aria-labelledby={uniqueId} onValueChange={handleChange} />;
+    return (
+      <Selectbox
+        {...args}
+        aria-labelledby={uniqueId}
+        onValueChange={handleChange}
+        options={localizedOptions}
+        placeholder={t('selectbox.placeholder')}
+      />
+    );
   },
 };
 
@@ -142,9 +187,11 @@ export const Base: Story = {
  */
 export const Colors: Story = {
   render: args => {
+    const { t } = useTranslation();
     const colorOptions: Array<
       'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger'
     > = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'];
+    const localizedOptions = localizeSelectboxOptions(t, args.options);
 
     return (
       <SpecimenWrapper>
@@ -154,7 +201,13 @@ export const Colors: Story = {
           return (
             <SpecimenGroup key={color} title={color}>
               <SpecimenRow>
-                <Selectbox {...args} color={color} aria-labelledby={uniqueId} />
+                <Selectbox
+                  {...args}
+                  color={color}
+                  aria-labelledby={uniqueId}
+                  options={localizedOptions}
+                  placeholder={t('selectbox.placeholder')}
+                />
               </SpecimenRow>
             </SpecimenGroup>
           );
@@ -171,7 +224,9 @@ export const Colors: Story = {
  */
 export const Sizes: Story = {
   render: args => {
+    const { t } = useTranslation();
     const sizeOptions: Array<'xs' | 'sm' | 'md' | 'lg' | 'xl'> = ['xs', 'sm', 'md', 'lg', 'xl'];
+    const localizedOptions = localizeSelectboxOptions(t, args.options);
 
     return (
       <SpecimenWrapper>
@@ -181,7 +236,13 @@ export const Sizes: Story = {
           return (
             <SpecimenGroup key={size} title={size.toUpperCase()}>
               <SpecimenRow>
-                <Selectbox {...args} size={size} aria-labelledby={uniqueId} />
+                <Selectbox
+                  {...args}
+                  size={size}
+                  aria-labelledby={uniqueId}
+                  options={localizedOptions}
+                  placeholder={t('selectbox.placeholder')}
+                />
               </SpecimenRow>
             </SpecimenGroup>
           );
@@ -198,6 +259,7 @@ export const Sizes: Story = {
  */
 export const States: Story = {
   render: args => {
+    const { t } = useTranslation();
     const states = [
       { label: 'Normal', props: {} },
       { label: 'Hover', props: { className: 'pseudo-hover' } },
@@ -205,6 +267,7 @@ export const States: Story = {
       { label: 'Read Only', props: { readOnly: true } },
       { label: 'Disabled', props: { disabled: true } },
     ];
+    const localizedOptions = localizeSelectboxOptions(t, args.options);
 
     return (
       <SpecimenWrapper>
@@ -219,6 +282,8 @@ export const States: Story = {
                   {...state.props}
                   aria-labelledby={uniqueId}
                   defaultOptionId='select-3'
+                  options={localizedOptions}
+                  placeholder={t('selectbox.placeholder')}
                 />
               </SpecimenRow>
             </SpecimenGroup>
@@ -234,11 +299,23 @@ export const States: Story = {
  * 드롭다운 리스트가 잘리지 않고 정상적으로 노출(Portal 렌더링)되는지 확인합니다.
  */
 export const PortalTest: Story = {
-  render: args => (
-    <AnatomyWrapper title='부모 요소가 overflow: hidden 상태입니다.' style={{ overflow: 'hidden' }}>
-      <Selectbox {...args} />
-    </AnatomyWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const localizedOptions = localizeSelectboxOptions(t, args.options);
+
+    return (
+      <AnatomyWrapper
+        title='부모 요소가 overflow: hidden 상태입니다.'
+        style={{ overflow: 'hidden' }}
+      >
+        <Selectbox
+          {...args}
+          options={localizedOptions}
+          placeholder={t('selectbox.placeholder')}
+        />
+      </AnatomyWrapper>
+    );
+  },
 };
 
 /**
@@ -248,7 +325,9 @@ export const PortalTest: Story = {
  */
 export const Controlled: Story = {
   render: args => {
+    const { t } = useTranslation();
     const uniqueId = useId();
+    const localizedOptions = localizeSelectboxOptions(t, args.options);
 
     // 실제 상태 관리
     const [value, setValue] = useState('');
@@ -270,6 +349,8 @@ export const Controlled: Story = {
           aria-labelledby={uniqueId}
           defaultOptionId={value}
           onValueChange={id => setValue(id)}
+          options={localizedOptions}
+          placeholder={t('selectbox.placeholder')}
         />
         <Button variant='solid' color='danger' size='sm' onClick={handleReset}>
           Reset (Re-mount)

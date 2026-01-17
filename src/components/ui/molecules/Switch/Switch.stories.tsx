@@ -4,6 +4,7 @@ import Label from '../../atoms/Label/Label';
 import { SpecimenCell, SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { GuideWrapper } from '../../guide/Guide';
+import { useTranslation } from 'react-i18next';
 
 const meta = {
   title: 'UI/Molecules/Switch',
@@ -281,13 +282,15 @@ export const Placement: Story = {
     name: 'switch-placement-group',
   },
   render: args => {
+    const { t } = useTranslation();
+
     return (
       <SpecimenRow>
         {/* Label Placement: Start */}
         <GuideWrapper title='PLACEMENT: START'>
           <Switch {...args} labelPlacement='start' id='placement-start' defaultChecked>
             <AnatomyWrapper minimal={true}>
-              <Label size={args.size}>왼쪽 라벨</Label>
+              <Label size={args.size}>{t('switch.left-label')}</Label>
             </AnatomyWrapper>
           </Switch>
         </GuideWrapper>
@@ -296,7 +299,7 @@ export const Placement: Story = {
         <GuideWrapper title='PLACEMENT: END'>
           <Switch {...args} labelPlacement='end' id='placement-end'>
             <AnatomyWrapper minimal={true}>
-              <Label size={args.size}>오른쪽 라벨</Label>
+              <Label size={args.size}>{t('switch.right-label')}</Label>
             </AnatomyWrapper>
           </Switch>
         </GuideWrapper>

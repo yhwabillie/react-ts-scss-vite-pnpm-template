@@ -1,3 +1,7 @@
+/**
+ * primitive-color.json을 색상 특성(HSL/alpha) 기준으로 정렬하고,
+ * 기존 그룹/키는 유지하면서 충돌 시에만 안전하게 재배치합니다.
+ */
 import fs from 'fs';
 
 const PATH = './tokens/color/primitive-color.json';

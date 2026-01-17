@@ -1,3 +1,7 @@
+/**
+ * semantic color 소스(colors.json, tech.json)를 스캔해
+ * primitive-color.json과 동기화하며 미사용 항목은 정리합니다.
+ */
 import fs from 'fs';
 
 const PROJECT_NAME = 'project';

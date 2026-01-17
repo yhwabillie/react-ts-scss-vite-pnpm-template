@@ -165,7 +165,7 @@ export const Base: Story = {
   },
   render: args => {
     const { t } = useTranslation();
-    return <Button {...args}>{t('hello')}</Button>;
+    return <Button {...args}>{t('button')}</Button>;
   },
 };
 
@@ -230,7 +230,7 @@ export const Colors: Story = {
               return (
                 <SpecimenCell key={`${color}-${id}`}>
                   <Button {...args} color={color} {...variationProps}>
-                    {t('hello')}
+                    {t('button')}
                   </Button>
                 </SpecimenCell>
               );
@@ -270,7 +270,7 @@ export const States: Story = {
             <SpecimenGroup key={state.label} title={state.label}>
               <SpecimenRow>
                 <Button {...args} className={state.class} {...state.props} id={uniqueId}>
-                  {t('hello')}
+                  {t('button')}
                 </Button>
                 <Button
                   {...args}
@@ -287,7 +287,7 @@ export const States: Story = {
                     />
                   }
                 >
-                  {t('hello')}
+                  {t('button')}
                 </Button>
               </SpecimenRow>
             </SpecimenGroup>
@@ -361,7 +361,7 @@ export const Sizes: Story = {
               return (
                 <GuideCell key={`${size}-${id}`} caption={id === 'default' ? size : undefined}>
                   <Button {...args} size={size} {...variationProps}>
-                    {t('hello')}
+                    {t('button')}
                   </Button>
                 </GuideCell>
               );
@@ -430,7 +430,7 @@ export const Shapes: Story = {
             {variations.map(({ id, props }) => (
               <GuideCell key={`${shape}-${id}`} caption={id === 'default' ? shape : undefined}>
                 <Button {...args} shape={shape} {...props}>
-                  {t('hello')}
+                  {t('button')}
                 </Button>
               </GuideCell>
             ))}
@@ -514,7 +514,7 @@ export const Composition: Story = {
         {cases.map(item => (
           <GuideCell key={item.label} caption={item.label}>
             <Button {...args} {...item.props}>
-              {t('hello')}
+              {t('button')}
             </Button>
           </GuideCell>
         ))}

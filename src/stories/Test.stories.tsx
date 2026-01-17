@@ -15,9 +15,9 @@ const I18nTestComponent = () => {
 
       <div style={{ marginTop: '20px', backgroundColor: '#f0f0f0', padding: '15px' }}>
         <p>
-          <strong>번역 결과 (key: "hello"):</strong>
+          <strong>번역 결과 (key: "button"):</strong>
         </p>
-        <h1 style={{ color: '#007bff' }}>{t('hello')}</h1>
+        <h1 style={{ color: '#007bff' }}>{t('button')}</h1>
       </div>
 
       <ul style={{ marginTop: '10px', fontSize: '14px', color: '#666' }}>

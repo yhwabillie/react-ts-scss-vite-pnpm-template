@@ -2,6 +2,37 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import Tabs from './Tabs';
 import { GuideCell, GuideGroup, GuideWrapper } from '../../guide/Guide';
 import { SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
+import { useTranslation } from 'react-i18next';
+import type { TabsProps } from './Tabs';
+
+const TAB_ITEM_KEYS = [
+  'label_a',
+  'label_b',
+  'label_c',
+  'label_d',
+  'label_e',
+  'label_f',
+  'label_g',
+  'label_h',
+  'label_i',
+  'label_j',
+  'label_k',
+  'label_l',
+  'label_m',
+  'label_n',
+  'label_o',
+];
+
+const localizeTabsItems = (t: (key: string) => string, items: TabsProps['items']) =>
+  items.map((item: TabsProps['items'][number], index: number) => {
+    const key = TAB_ITEM_KEYS[index];
+    if (!key) return item;
+
+    return {
+      ...item,
+      title: t(`tabs.items.${key}`),
+    };
+  });
 
 const meta: Meta<typeof Tabs> = {
   title: 'UI/Molecules/Tabs',
@@ -84,9 +115,9 @@ const meta: Meta<typeof Tabs> = {
     color: 'primary',
     items: [
       { title: '카테고리 탭 1', content: '첫 번째 탭의 콘텐츠입니다.' },
-      { title: '테고리 탭 2', content: '두 번째 탭의 콘텐츠입니다.' },
-      { title: '테고리 탭 3', content: '세 번째 탭의 콘텐츠입니다.' },
-      { title: '테고리 탭 4', content: '네 번째 탭의 콘텐츠입니다.' },
+      { title: '카테고리 탭 2', content: '두 번째 탭의 콘텐츠입니다.' },
+      { title: '카테고리 탭 3', content: '세 번째 탭의 콘텐츠입니다.' },
+      { title: '카테고리 탭 4', content: '네 번째 탭의 콘텐츠입니다.' },
     ],
   },
 } satisfies Meta<typeof Tabs>;
@@ -100,15 +131,20 @@ type Story = StoryObj<typeof Tabs>;
  * - **Extensibility**: `className`을 통해 외부에서 전달된 스타일이 최상단 컨테이너에 올바르게 주입되는지 점검합니다.
  */
 export const Base: Story = {
-  render: args => (
-    <GuideWrapper>
-      <GuideGroup direction='column'>
-        <GuideCell>
-          <Tabs {...args} />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const localizedItems = localizeTabsItems(t, args.items);
+
+    return (
+      <GuideWrapper>
+        <GuideGroup direction='column'>
+          <GuideCell>
+            <Tabs {...args} items={localizedItems} />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
 };
 
 /**
@@ -118,31 +154,36 @@ export const Base: Story = {
  * - **Outline**: 독립된 버튼 형태로 테두리가 강조된 스타일입니다.
  */
 export const Variant: Story = {
-  render: args => (
-    <SpecimenWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-      <SpecimenGroup title='Underline'>
-        <SpecimenRow>
-          <GuideCell>
-            <Tabs {...args} variant='underline' />
-          </GuideCell>
-        </SpecimenRow>
-      </SpecimenGroup>
-      <SpecimenGroup title='Solid'>
-        <SpecimenRow>
-          <GuideCell>
-            <Tabs {...args} variant='solid' />
-          </GuideCell>
-        </SpecimenRow>
-      </SpecimenGroup>
-      <SpecimenGroup title='Outline'>
-        <SpecimenRow>
-          <GuideCell>
-            <Tabs {...args} variant='outline' />
-          </GuideCell>
-        </SpecimenRow>
-      </SpecimenGroup>
-    </SpecimenWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const localizedItems = localizeTabsItems(t, args.items);
+
+    return (
+      <SpecimenWrapper style={{ width: 'fit-content', margin: 'auto' }}>
+        <SpecimenGroup title='Underline'>
+          <SpecimenRow>
+            <GuideCell>
+              <Tabs {...args} variant='underline' items={localizedItems} />
+            </GuideCell>
+          </SpecimenRow>
+        </SpecimenGroup>
+        <SpecimenGroup title='Solid'>
+          <SpecimenRow>
+            <GuideCell>
+              <Tabs {...args} variant='solid' items={localizedItems} />
+            </GuideCell>
+          </SpecimenRow>
+        </SpecimenGroup>
+        <SpecimenGroup title='Outline'>
+          <SpecimenRow>
+            <GuideCell>
+              <Tabs {...args} variant='outline' items={localizedItems} />
+            </GuideCell>
+          </SpecimenRow>
+        </SpecimenGroup>
+      </SpecimenWrapper>
+    );
+  },
 };
 
 /**
@@ -151,37 +192,42 @@ export const Variant: Story = {
  * - **접근성**: 사이즈 축소 시에도 텍스트 가독성 및 명도 대비 유지 확인.
  */
 export const Sizes: Story = {
-  render: args => (
-    <SpecimenWrapper style={{ width: 'fit-content', margin: 'auto', gap: '80px' }}>
-      <SpecimenGroup title='SM'>
-        <SpecimenRow>
-          <GuideCell>
-            <Tabs {...args} variant='underline' size='sm' />
-            <Tabs {...args} variant='solid' size='sm' />
-            <Tabs {...args} variant='outline' size='sm' />
-          </GuideCell>
-        </SpecimenRow>
-      </SpecimenGroup>
-      <SpecimenGroup title='MD'>
-        <SpecimenRow>
-          <GuideCell>
-            <Tabs {...args} variant='underline' size='md' />
-            <Tabs {...args} variant='solid' size='md' />
-            <Tabs {...args} variant='outline' size='md' />
-          </GuideCell>
-        </SpecimenRow>
-      </SpecimenGroup>
-      <SpecimenGroup title='LG'>
-        <SpecimenRow>
-          <GuideCell>
-            <Tabs {...args} variant='underline' size='lg' />
-            <Tabs {...args} variant='solid' size='lg' />
-            <Tabs {...args} variant='outline' size='lg' />
-          </GuideCell>
-        </SpecimenRow>
-      </SpecimenGroup>
-    </SpecimenWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const localizedItems = localizeTabsItems(t, args.items);
+
+    return (
+      <SpecimenWrapper style={{ width: 'fit-content', margin: 'auto', gap: '80px' }}>
+        <SpecimenGroup title='SM'>
+          <SpecimenRow>
+            <GuideCell>
+              <Tabs {...args} variant='underline' size='sm' items={localizedItems} />
+              <Tabs {...args} variant='solid' size='sm' items={localizedItems} />
+              <Tabs {...args} variant='outline' size='sm' items={localizedItems} />
+            </GuideCell>
+          </SpecimenRow>
+        </SpecimenGroup>
+        <SpecimenGroup title='MD'>
+          <SpecimenRow>
+            <GuideCell>
+              <Tabs {...args} variant='underline' size='md' items={localizedItems} />
+              <Tabs {...args} variant='solid' size='md' items={localizedItems} />
+              <Tabs {...args} variant='outline' size='md' items={localizedItems} />
+            </GuideCell>
+          </SpecimenRow>
+        </SpecimenGroup>
+        <SpecimenGroup title='LG'>
+          <SpecimenRow>
+            <GuideCell>
+              <Tabs {...args} variant='underline' size='lg' items={localizedItems} />
+              <Tabs {...args} variant='solid' size='lg' items={localizedItems} />
+              <Tabs {...args} variant='outline' size='lg' items={localizedItems} />
+            </GuideCell>
+          </SpecimenRow>
+        </SpecimenGroup>
+      </SpecimenWrapper>
+    );
+  },
 };
 
 /**
@@ -190,37 +236,42 @@ export const Sizes: Story = {
  * - **환경 대응**: 다크모드 또는 특정 배경에서 Tertiary 컬러의 시인성 중점 확인.
  */
 export const Colors: Story = {
-  render: args => (
-    <SpecimenWrapper style={{ width: 'fit-content', margin: 'auto', gap: '80px' }}>
-      <SpecimenGroup title='Primary'>
-        <SpecimenRow>
-          <GuideCell>
-            <Tabs {...args} variant='underline' color='primary' />
-            <Tabs {...args} variant='solid' color='primary' />
-            <Tabs {...args} variant='outline' color='primary' />
-          </GuideCell>
-        </SpecimenRow>
-      </SpecimenGroup>
-      <SpecimenGroup title='Secondary'>
-        <SpecimenRow>
-          <GuideCell>
-            <Tabs {...args} variant='underline' color='secondary' />
-            <Tabs {...args} variant='solid' color='secondary' />
-            <Tabs {...args} variant='outline' color='secondary' />
-          </GuideCell>
-        </SpecimenRow>
-      </SpecimenGroup>
-      <SpecimenGroup title='Tertiary'>
-        <SpecimenRow>
-          <GuideCell>
-            <Tabs {...args} variant='underline' color='tertiary' />
-            <Tabs {...args} variant='solid' color='tertiary' />
-            <Tabs {...args} variant='outline' color='tertiary' />
-          </GuideCell>
-        </SpecimenRow>
-      </SpecimenGroup>
-    </SpecimenWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const localizedItems = localizeTabsItems(t, args.items);
+
+    return (
+      <SpecimenWrapper style={{ width: 'fit-content', margin: 'auto', gap: '80px' }}>
+        <SpecimenGroup title='Primary'>
+          <SpecimenRow>
+            <GuideCell>
+              <Tabs {...args} variant='underline' color='primary' items={localizedItems} />
+              <Tabs {...args} variant='solid' color='primary' items={localizedItems} />
+              <Tabs {...args} variant='outline' color='primary' items={localizedItems} />
+            </GuideCell>
+          </SpecimenRow>
+        </SpecimenGroup>
+        <SpecimenGroup title='Secondary'>
+          <SpecimenRow>
+            <GuideCell>
+              <Tabs {...args} variant='underline' color='secondary' items={localizedItems} />
+              <Tabs {...args} variant='solid' color='secondary' items={localizedItems} />
+              <Tabs {...args} variant='outline' color='secondary' items={localizedItems} />
+            </GuideCell>
+          </SpecimenRow>
+        </SpecimenGroup>
+        <SpecimenGroup title='Tertiary'>
+          <SpecimenRow>
+            <GuideCell>
+              <Tabs {...args} variant='underline' color='tertiary' items={localizedItems} />
+              <Tabs {...args} variant='solid' color='tertiary' items={localizedItems} />
+              <Tabs {...args} variant='outline' color='tertiary' items={localizedItems} />
+            </GuideCell>
+          </SpecimenRow>
+        </SpecimenGroup>
+      </SpecimenWrapper>
+    );
+  },
 };
 
 /**
@@ -228,28 +279,48 @@ export const Colors: Story = {
  * - **Focus Ring**: 모든 테마에서 포커스 라인이 인접 요소와 겹치지 않는지 확인.
  */
 export const States: Story = {
-  render: args => (
-    <SpecimenWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-      <SpecimenGroup title='Hover'>
-        <SpecimenRow>
-          <GuideCell>
-            <Tabs {...args} variant='underline' className='pseudo-hover' />
-            <Tabs {...args} variant='solid' className='pseudo-hover' />
-            <Tabs {...args} variant='outline' className='pseudo-hover' />
-          </GuideCell>
-        </SpecimenRow>
-      </SpecimenGroup>
-      <SpecimenGroup title='Focus'>
-        <SpecimenRow>
-          <GuideCell>
-            <Tabs {...args} variant='underline' className='pseudo-focus-visible' />
-            <Tabs {...args} variant='solid' className='pseudo-focus-visible' />
-            <Tabs {...args} variant='outline' className='pseudo-focus-visible' />
-          </GuideCell>
-        </SpecimenRow>
-      </SpecimenGroup>
-    </SpecimenWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const localizedItems = localizeTabsItems(t, args.items);
+
+    return (
+      <SpecimenWrapper style={{ width: 'fit-content', margin: 'auto' }}>
+        <SpecimenGroup title='Hover'>
+          <SpecimenRow>
+            <GuideCell>
+              <Tabs {...args} variant='underline' className='pseudo-hover' items={localizedItems} />
+              <Tabs {...args} variant='solid' className='pseudo-hover' items={localizedItems} />
+              <Tabs {...args} variant='outline' className='pseudo-hover' items={localizedItems} />
+            </GuideCell>
+          </SpecimenRow>
+        </SpecimenGroup>
+        <SpecimenGroup title='Focus'>
+          <SpecimenRow>
+            <GuideCell>
+              <Tabs
+                {...args}
+                variant='underline'
+                className='pseudo-focus-visible'
+                items={localizedItems}
+              />
+              <Tabs
+                {...args}
+                variant='solid'
+                className='pseudo-focus-visible'
+                items={localizedItems}
+              />
+              <Tabs
+                {...args}
+                variant='outline'
+                className='pseudo-focus-visible'
+                items={localizedItems}
+              />
+            </GuideCell>
+          </SpecimenRow>
+        </SpecimenGroup>
+      </SpecimenWrapper>
+    );
+  },
 };
 
 /**
@@ -258,26 +329,31 @@ export const States: Story = {
  * - **UX**: 스크롤 시 양 끝의 그라데이션 마스크가 자연스럽게 동작하는지 점검.
  */
 export const ScrollableVariants: Story = {
-  render: args => (
-    <GuideWrapper>
-      <GuideGroup direction='column'>
-        {/* Underline Variant */}
-        <GuideCell caption='Underline Variant (Default)' style={{ width: '100%' }}>
-          <Tabs {...args} variant='underline' />
-        </GuideCell>
+  render: args => {
+    const { t } = useTranslation();
+    const localizedItems = localizeTabsItems(t, args.items);
 
-        {/* Solid / Index Variant (인덱스 스타일) */}
-        <GuideCell caption='Solid Variant (Index Type)' style={{ width: '100%' }}>
-          <Tabs {...args} variant='solid' />
-        </GuideCell>
+    return (
+      <GuideWrapper>
+        <GuideGroup direction='column'>
+          {/* Underline Variant */}
+          <GuideCell caption='Underline Variant (Default)' style={{ width: '100%' }}>
+            <Tabs {...args} variant='underline' items={localizedItems} />
+          </GuideCell>
 
-        {/* Outline Variant */}
-        <GuideCell caption='Outline Variant' style={{ width: '100%' }}>
-          <Tabs {...args} variant='outline' />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+          {/* Solid / Index Variant (인덱스 스타일) */}
+          <GuideCell caption='Solid Variant (Index Type)' style={{ width: '100%' }}>
+            <Tabs {...args} variant='solid' items={localizedItems} />
+          </GuideCell>
+
+          {/* Outline Variant */}
+          <GuideCell caption='Outline Variant' style={{ width: '100%' }}>
+            <Tabs {...args} variant='outline' items={localizedItems} />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
   args: {
     size: 'md',
     color: 'primary',
@@ -294,19 +370,24 @@ export const ScrollableVariants: Story = {
  * - **반응성**: 클릭 시 상태 변경과 콘텐츠 전환의 즉각적인 피드백 확인.
  */
 export const InitialSelection: Story = {
-  render: args => (
-    <GuideWrapper>
-      <GuideGroup direction='column'>
-        <GuideCell caption='Index 0 (Default Initial)'>
-          <Tabs {...args} />
-        </GuideCell>
+  render: args => {
+    const { t } = useTranslation();
+    const localizedItems = localizeTabsItems(t, args.items);
 
-        <GuideCell caption='Index 1 (Pre-selected)'>
-          <Tabs {...args} defaultIndex={1} />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+    return (
+      <GuideWrapper>
+        <GuideGroup direction='column'>
+          <GuideCell caption='Index 0 (Default Initial)'>
+            <Tabs {...args} items={localizedItems} />
+          </GuideCell>
+
+          <GuideCell caption='Index 1 (Pre-selected)'>
+            <Tabs {...args} defaultIndex={1} items={localizedItems} />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
   args: {
     ...Base.args,
   },

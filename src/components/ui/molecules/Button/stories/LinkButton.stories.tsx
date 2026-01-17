@@ -28,124 +28,111 @@ const meta: Meta<typeof LinkButton> = {
   },
 
   argTypes: {
-    // Appearance (가장 많이 건드리는 핵심 스타일)
-    variant: {
-      control: 'select',
-      options: ['solid', 'outline', 'ghost', 'link'],
-      description: '버튼의 시각적 형태를 결정합니다.',
-      table: {
-        category: 'Appearance',
-        type: { summary: 'string' },
-        defaultValue: { summary: 'solid' },
-      },
-    },
+    // Appearance
     color: {
       control: 'select',
       options: ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'],
-      description: '디자인 시스템에 정의된 의미론적(Semantic) 색상을 적용합니다.',
+      description: '의미론적(Semantic) 색상을 적용합니다.',
       table: {
         category: 'Appearance',
-        type: { summary: 'string' },
-        defaultValue: { summary: 'primary' },
+        type: {
+          summary: '"primary" | "secondary" | "tertiary" | "success" | "warning" | "danger"',
+        },
       },
     },
-
-    // Layout & Geometry
     size: {
       control: 'inline-radio',
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
-      description: '버튼의 높이와 패딩을 결정합니다.',
+      description: '버튼의 크기(높이/패딩)를 결정합니다.',
       table: {
-        category: 'Layout',
-        type: { summary: 'string' },
-        defaultValue: { summary: 'md' },
+        category: 'Appearance',
+        type: { summary: '"xs" | "sm" | "md" | "lg" | "xl"' },
       },
     },
-    shape: {
-      control: 'inline-radio',
-      options: ['square', 'rounded', 'pill'],
-      description: '버튼 모서리의 굴곡(Radius)을 조절합니다.',
-      table: {
-        category: 'Layout',
-        type: { summary: 'string' },
-        defaultValue: { summary: 'rounded' },
-      },
-    },
+
+    // Layout
     fullWidth: {
       control: 'boolean',
-      description: '부모 요소의 너비를 100% 채울지 여부입니다.',
+      description: '부모 요소의 너비를 100% 채웁니다.',
       table: {
         category: 'Layout',
         type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
       },
     },
 
-    // Content (아이콘 및 텍스트)
+    // Content
     children: {
       control: 'text',
-      description: '버튼 내부 텍스트 콘텐츠입니다.',
+      description: '버튼 텍스트입니다.',
       table: { category: 'Content' },
     },
     startIcon: {
-      description: '텍스트 왼쪽에 배치될 아이콘입니다.',
-      table: { category: 'Content' },
+      description: '텍스트 왼쪽 아이콘 슬롯입니다.',
+      table: { category: 'Content', type: { summary: 'ReactNode' } },
     },
     endIcon: {
-      description: '텍스트 오른쪽에 배치될 아이콘입니다.',
-      table: { category: 'Content' },
+      description: '텍스트 오른쪽 아이콘 슬롯입니다.',
+      table: { category: 'Content', type: { summary: 'ReactNode' } },
+    },
+    startSpinner: {
+      description: '로딩 스피너(왼쪽) 슬롯입니다.',
+      table: { category: 'Content', type: { summary: 'ReactNode' } },
+    },
+    endSpinner: {
+      description: '로딩 스피너(오른쪽) 슬롯입니다.',
+      table: { category: 'Content', type: { summary: 'ReactNode' } },
     },
 
-    // Link
+    // Link (Anchor)
     href: {
       control: 'text',
-      description: 'as="a"일 때 이동할 목적지 주소입니다.',
-      table: {
-        category: 'Link',
-        type: { summary: 'string' },
-      },
+      description: '이동할 링크 주소입니다.',
+      table: { category: 'Link', type: { summary: 'string' } },
     },
     target: {
       control: 'select',
       options: ['_self', '_blank', '_parent', '_top'],
-      description: '링크를 열 창의 위치를 지정합니다.',
+      description: '링크를 열 위치를 지정합니다.',
       table: {
         category: 'Link',
-        type: { summary: 'string' },
+        type: { summary: '"_self" | "_blank" | "_parent" | "_top"' },
         defaultValue: { summary: '_self' },
       },
     },
     rel: {
       control: 'text',
-      description: '보안 및 SEO를 위한 링크 관계 속성입니다.',
-      table: {
-        category: 'Link',
-        type: { summary: 'string' },
-      },
+      description: '보안/SEO를 위한 링크 관계 속성입니다.',
+      table: { category: 'Link', type: { summary: 'string' } },
     },
     title: {
       control: 'text',
-      description: '마우스 호버 시 나타나는 설명 텍스트입니다.',
-      table: {
-        category: 'Link',
-        type: { summary: 'string' },
-      },
+      description: '호버 시 표시되는 툴팁 텍스트입니다.',
+      table: { category: 'Link', type: { summary: 'string' } },
     },
 
     // Behavior
     onClick: {
       action: 'clicked',
-      description: '버튼 클릭 시 호출되는 함수입니다.',
-      table: {
-        category: 'Behavior',
-        type: { summary: 'function' },
-      },
+      description: '클릭 시 호출됩니다.',
+      table: { category: 'Behavior', type: { summary: '(event) => void' } },
     },
 
     // Etc
     className: {
       control: 'text',
-      table: { category: 'Etc' },
+      table: { category: 'Etc', type: { summary: 'string' } },
+    },
+
+    // ✅ LinkButton에선 고정값이라 컨트롤 제거/비활성 권장
+    variant: {
+      control: false,
+      description: 'LinkButton은 항상 variant="link" 입니다.',
+      table: { category: 'Appearance', disable: true },
+    },
+    shape: {
+      control: false,
+      description: 'LinkButton은 현재 shape="rounded"만 지원합니다.',
+      table: { category: 'Layout', disable: true },
     },
   },
   args: {
@@ -166,7 +153,6 @@ export const Base: Story = {
     target: '_blank',
     title: '새 창 열기',
     rel: 'noopener noreferrer',
-    children: '구글로 이동 (Anchor Tag)',
     onClick: fn(),
   },
   parameters: {
@@ -177,7 +163,8 @@ export const Base: Story = {
     },
   },
   render: args => {
-    return <LinkButton {...args}></LinkButton>;
+    const { t } = useTranslation();
+    return <LinkButton {...args}>{t('link-button')}</LinkButton>;
   },
 };
 
@@ -238,7 +225,7 @@ export const Colors: Story = {
               return (
                 <SpecimenCell key={`${color}-${id}`} style={{ width: '130px' }}>
                   <LinkButton {...args} color={color} {...variationProps}>
-                    {t('hello')}
+                    {t('link-button')}
                   </LinkButton>
                 </SpecimenCell>
               );
@@ -278,7 +265,7 @@ export const States: Story = {
             <SpecimenGroup key={state.label} title={state.label}>
               <SpecimenRow style={{ width: '400px' }}>
                 <LinkButton {...args} className={state.class} {...state.props} id={uniqueId}>
-                  {t('hello')}
+                  {t('link-button')}
                 </LinkButton>
                 <LinkButton
                   {...args}
@@ -295,7 +282,7 @@ export const States: Story = {
                     />
                   }
                 >
-                  {t('hello')}
+                  {t('link-button')}
                 </LinkButton>
               </SpecimenRow>
             </SpecimenGroup>
@@ -363,7 +350,7 @@ export const Sizes: Story = {
               return (
                 <GuideCell key={`${size}-${id}`} caption={id === 'default' ? size : undefined}>
                   <LinkButton {...args} size={size} {...variationProps}>
-                    {t('hello')}
+                    {t('link-button')}
                   </LinkButton>
                 </GuideCell>
               );
@@ -423,7 +410,7 @@ export const Composition: Story = {
         {cases.map(item => (
           <GuideCell key={item.label} caption={item.label}>
             <LinkButton {...args} {...item.props}>
-              {t('hello')}
+              {t('link-button')}
             </LinkButton>
           </GuideCell>
         ))}
@@ -449,7 +436,7 @@ export const FullWidth: Story = {
       <AnatomyWrapper title='부모 요소 width: 500px'>
         <SpecimenRow>
           <SpecimenCell style={{ width: '500px' }}>
-            <LinkButton {...args}>{t('Full Width Button')}</LinkButton>
+            <LinkButton {...args}>{t('link-button')}</LinkButton>
           </SpecimenCell>
         </SpecimenRow>
       </AnatomyWrapper>
@@ -467,11 +454,11 @@ export const LongText: Story = {
     },
   },
   args: {
-    children:
-      '이 버튼의 글자는 매우 길어서 컨테이너를 벗어날 수 있습니다. 말줄임 처리가 필요합니다.',
     fullWidth: true,
   },
   render: args => {
+    const { t } = useTranslation();
+
     return (
       <div style={{ display: 'flex', gap: '20px' }}>
         <AnatomyWrapper title='부모 요소 width: 200px' style={{ width: '200px' }}>
@@ -488,7 +475,9 @@ export const LongText: Story = {
                     className='icon'
                   />
                 }
-              />
+              >
+                {t('long-text')}
+              </LinkButton>
             </SpecimenCell>
           </SpecimenRow>
         </AnatomyWrapper>

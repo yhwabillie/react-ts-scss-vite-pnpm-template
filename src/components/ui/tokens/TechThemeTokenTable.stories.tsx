@@ -29,38 +29,40 @@ const meta: Meta<typeof ColorTokenTable> = {
 export default meta;
 type Story = StoryObj<typeof ColorTokenTable>;
 
+// 하이픈 복합 키를 우선 매칭해 그룹 오분류를 방지합니다.
+const COMPLEX_KEYS = [
+  'data-table',
+  'icon-frame',
+  'filepicker',
+  'required-asterisk',
+  'custom-modal',
+  'alert-modal',
+  'option-list',
+  'option-item',
+  'outline-btn',
+  'validation-msg',
+  'segmented-control',
+];
+
+// 테마 접두어는 그룹 계산에서 제외합니다.
+const SKIP_WORDS = new Set(['primary', 'secondary', 'tertiary']);
+
 /**
- * 1. 테마 전용 그룹화 로직
- * ID 패턴: --color-primary-breadcrumb-current-text
+ * 테마 토큰을 컴포넌트 단위로 그룹화합니다.
+ * ID 패턴 예시: --color-primary-breadcrumb-current-text
  */
 const groupedTechTokens = TechTokens.reduce(
   (acc, token) => {
     // 1. 접두사 제거 (--color- 제거)
     const cleanId = token.id.replace(/^--color-/, '');
 
-    let groupKey = 'etc';
-
-    // ✅ 1. 복합어(하이픈 포함) 우선 매칭
-    // ID의 어느 위치에 있든 해당 키워드가 포함되면 해당 그룹으로 분류
-    if (cleanId.includes('data-table')) groupKey = 'data-table';
-    else if (cleanId.includes('icon-frame')) groupKey = 'icon-frame';
-    else if (cleanId.includes('filepicker')) groupKey = 'filepicker';
-    else if (cleanId.includes('required-asterisk')) groupKey = 'required-asterisk';
-    else if (cleanId.includes('custom-modal')) groupKey = 'custom-modal';
-    else if (cleanId.includes('alert-modal')) groupKey = 'alert-modal';
-    else if (cleanId.includes('option-list')) groupKey = 'option-list';
-    else if (cleanId.includes('option-item')) groupKey = 'option-item';
-    else if (cleanId.includes('outline-btn')) groupKey = 'outline-btn';
-    else if (cleanId.includes('validation-msg')) groupKey = 'validation-msg';
-    else if (cleanId.includes('segmented-control')) groupKey = 'segmented-control';
-    // ✅ 2. 그 외 단일 단어 기반 매핑 (primary/secondary 건너뛰기 로직 포함)
-    else {
-      const parts = cleanId.split('-');
-      const skipWords = ['primary', 'secondary', 'tertiary'];
-
-      // 첫 번째 단어가 primary/secondary면 두 번째 단어를 사용, 아니면 첫 번째 단어 사용
-      groupKey = skipWords.includes(parts[0]) ? parts[1] || 'etc' : parts[0];
-    }
+    const complexKey = COMPLEX_KEYS.find(key => cleanId.includes(key));
+    const groupKey = complexKey
+      ? complexKey
+      : (() => {
+          const [first, second] = cleanId.split('-');
+          return SKIP_WORDS.has(first) ? second || 'etc' : first || 'etc';
+        })();
 
     if (!acc[groupKey]) acc[groupKey] = [];
     acc[groupKey].push(token);

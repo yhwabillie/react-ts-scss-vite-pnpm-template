@@ -7,6 +7,7 @@ import Label from '../../atoms/Label/Label';
 import { useId } from 'react';
 import { SpecimenGroup, SpecimenWrapper } from '../../guide/Specimen';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
+import { useTranslation } from 'react-i18next';
 
 const meta = {
   title: 'UI/Molecules/FormField',
@@ -132,6 +133,7 @@ export const Base: Story = {
   },
   render: args => {
     const uniqueId = useId();
+    const { t } = useTranslation();
 
     return (
       <SpecimenWrapper style={{ width: '600px' }}>
@@ -142,7 +144,7 @@ export const Base: Story = {
             <AnatomyWrapper minimal>
               <FormField
                 {...args}
-                labelText='이메일 주소'
+                labelText={t('formfield.input.label')}
                 direction='column'
                 htmlFor={`${uniqueId}-in-col`}
               >
@@ -150,7 +152,7 @@ export const Base: Story = {
                   as='div'
                   id={`${uniqueId}-in-col`}
                   size={args.size}
-                  placeholder='example@mail.com'
+                  placeholder={t('formfield.input.placeholder')}
                   variant='solid'
                 />
               </FormField>
@@ -172,7 +174,7 @@ export const Base: Story = {
                   as='div'
                   id={`${uniqueId}-in-row`}
                   size={args.size}
-                  placeholder='example@mail.com'
+                  placeholder={t('formfield.input.placeholder')}
                   variant='solid'
                 />
               </FormField>
@@ -197,7 +199,7 @@ export const Base: Story = {
                   size={args.size}
                   defaultChecked
                 />
-                <Label size={args.size}>사용자 (여)</Label>
+                <Label size={args.size}>{t('formfield.radio.label')}</Label>
               </FormField>
             </AnatomyWrapper>
 
@@ -209,7 +211,7 @@ export const Base: Story = {
                 direction='row'
               >
                 <Checkbox as='span' id={`${uniqueId}-single-c`} size={args.size} defaultChecked />
-                <Label size={args.size}>마케팅 동의</Label>
+                <Label size={args.size}>{t('formfield.checkbox.label')}</Label>
               </FormField>
             </AnatomyWrapper>
           </div>
@@ -230,13 +232,7 @@ export const Required: Story = {
   },
   render: args => {
     const uniqueId = useId();
-
-    // 1. 반복 데이터 외부 참조 (2025-12-26 최적화)
-    const RADIO_OPTIONS = [
-      { id: '1', label: '검색' },
-      { id: '2', label: '지인 추천' },
-      { id: '3', label: '광고' },
-    ];
+    const { t } = useTranslation();
 
     return (
       <SpecimenWrapper style={{ width: '600px' }}>
@@ -247,7 +243,7 @@ export const Required: Story = {
             <AnatomyWrapper minimal>
               <FormField
                 {...args}
-                labelText='이메일 주소'
+                labelText={t('formfield.input.label')}
                 direction='column'
                 htmlFor={`${uniqueId}-col-req`}
               >
@@ -255,7 +251,7 @@ export const Required: Story = {
                   as='div'
                   id={`${uniqueId}-col-req`}
                   size={args.size}
-                  placeholder='example@mail.com'
+                  placeholder={t('formfield.input.placeholder')}
                   variant='solid'
                 />
               </FormField>
@@ -270,7 +266,7 @@ export const Required: Story = {
             <AnatomyWrapper minimal>
               <FormField
                 {...args}
-                labelText='이메일 주소'
+                labelText={t('formfield.input.label')}
                 direction='row'
                 htmlFor={`${uniqueId}-row-req`}
               >
@@ -278,7 +274,7 @@ export const Required: Story = {
                   as='div'
                   id={`${uniqueId}-row-req`}
                   size={args.size}
-                  placeholder='example@mail.com'
+                  placeholder={t('formfield.input.placeholder')}
                   variant='solid'
                 />
               </FormField>
@@ -299,6 +295,7 @@ export const Sizes: Story = {
     <SpecimenWrapper style={{ width: '700px' }}>
       {(['xl', 'lg', 'md', 'sm', 'xs'] as const).map(size => {
         const uniqueId = useId();
+        const { t } = useTranslation();
 
         return (
           <SpecimenGroup title={size.toUpperCase()}>
@@ -311,7 +308,7 @@ export const Sizes: Story = {
               >
                 <FormField
                   {...args}
-                  labelText='이메일 주소'
+                  labelText={t('formfield.input.label')}
                   direction='column'
                   size={size}
                   htmlFor={`${uniqueId}-col-${size}-col-input`}
@@ -320,7 +317,7 @@ export const Sizes: Story = {
                     as='div'
                     id={`${uniqueId}-col-${size}-col-input`}
                     size={size}
-                    placeholder='example@mail.com'
+                    placeholder={t('formfield.input.placeholder')}
                     variant='solid'
                   />
                 </FormField>
@@ -334,7 +331,7 @@ export const Sizes: Story = {
                 <FormField
                   {...args}
                   size={size}
-                  labelText='이메일 주소'
+                  labelText={t('formfield.input.label')}
                   direction='row'
                   htmlFor={`${uniqueId}-col-${size}-row-input`}
                 >
@@ -342,7 +339,7 @@ export const Sizes: Story = {
                     as='div'
                     id={`${uniqueId}-col-${size}-row-input`}
                     size={size}
-                    placeholder='example@mail.com'
+                    placeholder={t('formfield.input.placeholder')}
                     variant='solid'
                   />
                 </FormField>
@@ -361,7 +358,7 @@ export const Sizes: Story = {
                     size={size}
                     defaultChecked
                   />
-                  <Label size={size}>사용자 (여)</Label>
+                  <Label size={size}>{t('formfield.radio.label')}</Label>
                 </FormField>
               </AnatomyWrapper>
               <AnatomyWrapper minimal>
@@ -378,7 +375,7 @@ export const Sizes: Story = {
                     size={size}
                     defaultChecked
                   />
-                  <Label size={size}>마케팅 동의</Label>
+                  <Label size={size}>{t('formfield.checkbox.label')}</Label>
                 </FormField>
               </AnatomyWrapper>
             </SpecimenGroup>

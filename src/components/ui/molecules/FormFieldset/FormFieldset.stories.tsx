@@ -8,6 +8,7 @@ import Label from '../../atoms/Label/Label';
 import { useId } from 'react';
 import { SpecimenCell, SpecimenGroup, SpecimenWrapper } from '../../guide/Specimen';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
+import { useTranslation } from 'react-i18next';
 
 const meta = {
   title: 'UI/Molecules/FormFieldset',
@@ -105,27 +106,15 @@ const meta = {
     },
   },
   args: {
-    legend: '가입 경로 선택',
     size: 'md',
     children: null,
+    legend: '',
   },
 } satisfies Meta<typeof FormFieldset>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
-
-// 반복 데이터
-const RADIO_OPTIONS = [
-  { id: '1', label: '검색' },
-  { id: '2', label: '지인 추천' },
-  { id: '3', label: '광고' },
-];
-const CHECKBOX_TERMS_OPTIONS = [
-  { id: '1', label: '서비스 이용약관 동의' },
-  { id: '2', label: '개인정보 수집 및 이용 동의' },
-  { id: '3', label: '마케팅 정보 수신 동의' },
-];
 
 /**
  * FormFieldset 내부에서 컨트롤 그룹이 방향성(direction)에 따라 어떻게 배치되는지 검증합니다.
@@ -135,12 +124,24 @@ const CHECKBOX_TERMS_OPTIONS = [
 export const Base: Story = {
   render: args => {
     const uniqueId = useId();
+    const { t } = useTranslation();
 
     const renderGroupContent = (
       type: 'radio' | 'checkbox',
       size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | undefined,
       idPrefix: string,
     ) => {
+      const RADIO_OPTIONS = [
+        { id: '1', label: t('formfieldset.radio.options.label_a') },
+        { id: '2', label: t('formfieldset.radio.options.label_a') },
+        { id: '3', label: t('formfieldset.radio.options.label_a') },
+      ];
+      const CHECKBOX_TERMS_OPTIONS = [
+        { id: '1', label: t('formfieldset.checkbox.options.label_a') },
+        { id: '2', label: t('formfieldset.checkbox.options.label_a') },
+        { id: '3', label: t('formfieldset.checkbox.options.label_a') },
+      ];
+
       const options = type === 'radio' ? RADIO_OPTIONS : CHECKBOX_TERMS_OPTIONS;
       const Component = type === 'radio' ? Radio : Checkbox;
 
@@ -175,13 +176,13 @@ export const Base: Story = {
           <SpecimenCell caption='radio'>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
               <AnatomyWrapper minimal>
-                <FormFieldset {...args} legend='가입 경로 선택' direction='column'>
+                <FormFieldset {...args} legend={t('formfieldset.radio.legend')} direction='column'>
                   {renderGroupContent('radio', args.size, 'r-col')}
                 </FormFieldset>
               </AnatomyWrapper>
 
               <AnatomyWrapper minimal>
-                <FormFieldset {...args} legend='가입 경로 선택' direction='row'>
+                <FormFieldset {...args} legend={t('formfieldset.radio.legend')} direction='row'>
                   {renderGroupContent('radio', args.size, 'r-row')}
                 </FormFieldset>
               </AnatomyWrapper>
@@ -192,13 +193,17 @@ export const Base: Story = {
           <SpecimenCell caption='checkbox'>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
               <AnatomyWrapper minimal>
-                <FormFieldset {...args} legend='약관 동의' direction='column'>
+                <FormFieldset
+                  {...args}
+                  legend={t('formfieldset.checkbox.legend')}
+                  direction='column'
+                >
                   {renderGroupContent('checkbox', args.size, 'c-col')}
                 </FormFieldset>
               </AnatomyWrapper>
 
               <AnatomyWrapper minimal>
-                <FormFieldset {...args} legend='약관 동의' direction='row'>
+                <FormFieldset {...args} legend={t('formfieldset.checkbox.legend')} direction='row'>
                   {renderGroupContent('checkbox', args.size, 'c-row')}
                 </FormFieldset>
               </AnatomyWrapper>
@@ -221,12 +226,12 @@ export const Required: Story = {
   },
   render: args => {
     const uniqueId = useId();
+    const { t } = useTranslation();
 
-    // 1. 반복 데이터 외부 참조 (2025-12-26 최적화)
     const RADIO_OPTIONS = [
-      { id: '1', label: '검색' },
-      { id: '2', label: '지인 추천' },
-      { id: '3', label: '광고' },
+      { id: '1', label: t('formfieldset.radio.options.label_a') },
+      { id: '2', label: t('formfieldset.radio.options.label_b') },
+      { id: '3', label: t('formfieldset.radio.options.label_c') },
     ];
 
     return (
@@ -236,7 +241,12 @@ export const Required: Story = {
           <SpecimenGroup direction='column' style={{ gap: '20px', alignItems: 'flex-end' }}>
             {/* 필수 라디오 그룹 */}
             <AnatomyWrapper minimal>
-              <FormFieldset {...args} legend='가입 경로 선택' size={args.size} direction='column'>
+              <FormFieldset
+                {...args}
+                legend={t('formfieldset.radio.legend')}
+                size={args.size}
+                direction='column'
+              >
                 <ControlGroup role='group' size={args.size} ariaLabel='가입 경로 필수 선택'>
                   {RADIO_OPTIONS.map(opt => (
                     <FormField
@@ -267,7 +277,12 @@ export const Required: Story = {
           <SpecimenGroup direction='column' style={{ gap: '20px', alignItems: 'flex-end' }}>
             {/* 필수 라디오 그룹 */}
             <AnatomyWrapper minimal>
-              <FormFieldset {...args} legend='가입 경로 선택' size={args.size} direction='row'>
+              <FormFieldset
+                {...args}
+                legend={t('formfieldset.radio.legend')}
+                size={args.size}
+                direction='row'
+              >
                 <ControlGroup role='group' size={args.size} ariaLabel='가입 경로 필수 선택'>
                   {RADIO_OPTIONS.map(opt => (
                     <FormField
@@ -302,141 +317,181 @@ export const Required: Story = {
  * 특히 작은 사이즈(SM, XS)에서 레이블과 체크 박스가 겹치지 않고 충분한 클릭 영역을 유지하는지 검증합니다.
  */
 export const Sizes: Story = {
-  render: args => (
-    <SpecimenWrapper style={{ width: '700px' }}>
-      {(['xl', 'lg', 'md', 'sm', 'xs'] as const).map(size => {
-        const uniqueId = useId();
+  render: args => {
+    const uniqueId = useId();
+    const { t } = useTranslation();
 
-        return (
-          <SpecimenGroup title={size.toUpperCase()} direction='column' style={{ gap: '10px' }}>
-            <AnatomyWrapper
-              minimal
-              style={{
-                ...((size === 'xl' || size === 'lg') && {
-                  width: 'max-content',
-                }),
-              }}
-            >
-              <FormFieldset {...args} size={size} legend='가입 경로 선택' direction='column'>
-                <ControlGroup role='group' size={size} ariaLabel='가입 경로 그룹'>
-                  {RADIO_OPTIONS.map((opt, idx) => (
-                    <FormField
-                      key={opt.id}
-                      as='label'
-                      htmlFor={`${uniqueId}-${opt.id}-${size}-col-radio-${idx}`}
-                      size={size}
-                      direction='row'
-                    >
-                      <Radio
-                        as='span'
-                        id={`${uniqueId}-${opt.id}-${size}-col-radio-${idx}`}
-                        name={`${uniqueId}-r-group-col-${size}-radio`}
-                        size={size}
-                        defaultChecked={opt.id === '1'}
-                      />
-                      <Label size={size}>{opt.label}</Label>
-                    </FormField>
-                  ))}
-                </ControlGroup>
-              </FormFieldset>
-            </AnatomyWrapper>
-            <AnatomyWrapper
-              minimal
-              style={{
-                ...((size === 'xl' || size === 'lg') && {
-                  width: 'max-content',
-                }),
-              }}
-            >
-              <FormFieldset {...args} legend='가입 경로 선택' size={size} direction='row'>
-                <ControlGroup role='group' size={size} ariaLabel='가입 경로 그룹'>
-                  {RADIO_OPTIONS.map((opt, idx) => (
-                    <FormField
-                      key={opt.id}
-                      as='label'
-                      htmlFor={`${uniqueId}-${opt.id}-${size}-row-radio-${idx}`}
-                      size={size}
-                      direction='row'
-                    >
-                      <Radio
-                        as='span'
-                        id={`${uniqueId}-${opt.id}-${size}-row-radio-${idx}`}
-                        name={`${uniqueId}-r-group-row-${size}-radio`}
-                        size={size}
-                        defaultChecked={opt.id === '1'}
-                      />
-                      <Label size={size}>{opt.label}</Label>
-                    </FormField>
-                  ))}
-                </ControlGroup>
-              </FormFieldset>
-            </AnatomyWrapper>
+    const RADIO_OPTIONS = [
+      { id: '1', label: t('formfieldset.radio.options.label_a') },
+      { id: '2', label: t('formfieldset.radio.options.label_b') },
+      { id: '3', label: t('formfieldset.radio.options.label_c') },
+    ];
 
-            <AnatomyWrapper
-              minimal
-              style={{
-                ...((size === 'xl' || size === 'lg') && {
-                  width: 'max-content',
-                }),
-              }}
+    const CHECKBOX_TERMS_OPTIONS = [
+      { id: '1', label: t('formfieldset.checkbox.options.label_a') },
+      { id: '2', label: t('formfieldset.checkbox.options.label_b') },
+      { id: '3', label: t('formfieldset.checkbox.options.label_c') },
+    ];
+
+    return (
+      <SpecimenWrapper style={{ width: '700px' }}>
+        {(['xl', 'lg', 'md', 'sm', 'xs'] as const).map(size => {
+          return (
+            <SpecimenGroup
+              key={size}
+              title={size.toUpperCase()}
+              direction='column'
+              style={{ gap: '10px' }}
             >
-              <FormFieldset {...args} size={size} legend='가입 경로 선택' direction='column'>
-                <ControlGroup role='group' size={size} ariaLabel='가입 경로 그룹'>
-                  {CHECKBOX_TERMS_OPTIONS.map((opt, idx) => (
-                    <FormField
-                      key={opt.id}
-                      as='label'
-                      htmlFor={`${uniqueId}-${opt.id}-${size}-col-checkbox-${idx}`}
-                      size={size}
-                      direction='row'
-                    >
-                      <Checkbox
-                        as='span'
-                        id={`${uniqueId}-${opt.id}-${size}-col-checkbox-${idx}`}
-                        name={`${uniqueId}-r-group-col-${size}-checkbox`}
+              <AnatomyWrapper
+                minimal
+                style={{
+                  ...((size === 'xl' || size === 'lg') && {
+                    width: 'max-content',
+                  }),
+                }}
+              >
+                <FormFieldset
+                  {...args}
+                  size={size}
+                  legend={t('formfieldset.radio.legend')}
+                  direction='column'
+                >
+                  <ControlGroup role='group' size={size} ariaLabel='가입 경로 그룹'>
+                    {RADIO_OPTIONS.map((opt, idx) => (
+                      <FormField
+                        key={opt.id}
+                        as='label'
+                        htmlFor={`${uniqueId}-${opt.id}-${size}-col-radio-${idx}`}
                         size={size}
-                        defaultChecked={opt.id === '1'}
-                      />
-                      <Label size={size}>{opt.label}</Label>
-                    </FormField>
-                  ))}
-                </ControlGroup>
-              </FormFieldset>
-            </AnatomyWrapper>
-            <AnatomyWrapper
-              minimal
-              style={{
-                ...((size === 'xl' || size === 'lg') && {
-                  width: 'max-content',
-                }),
-              }}
-            >
-              <FormFieldset {...args} size={size} legend='가입 경로 선택' direction='row'>
-                <ControlGroup role='group' size={size} ariaLabel='가입 경로 그룹'>
-                  {CHECKBOX_TERMS_OPTIONS.map((opt, idx) => (
-                    <FormField
-                      key={opt.id}
-                      as='label'
-                      htmlFor={`${uniqueId}-${opt.id}-${size}-row-checkbox-${idx}`}
-                      size={size}
-                      direction='row'
-                    >
-                      <Checkbox
-                        as='span'
-                        id={`${uniqueId}-${opt.id}-${size}-row-checkbox-${idx}`}
-                        name={`${uniqueId}-r-group-row-${size}-checkbox`}
+                        direction='row'
+                      >
+                        <Radio
+                          as='span'
+                          id={`${uniqueId}-${opt.id}-${size}-col-radio-${idx}`}
+                          name={`${uniqueId}-r-group-col-${size}-radio`}
+                          size={size}
+                          defaultChecked={opt.id === '1'}
+                        />
+                        <Label size={size}>{opt.label}</Label>
+                      </FormField>
+                    ))}
+                  </ControlGroup>
+                </FormFieldset>
+              </AnatomyWrapper>
+              <AnatomyWrapper
+                minimal
+                style={{
+                  ...((size === 'xl' || size === 'lg') && {
+                    width: 'max-content',
+                  }),
+                }}
+              >
+                <FormFieldset
+                  {...args}
+                  legend={t('formfieldset.radio.legend')}
+                  size={size}
+                  direction='row'
+                >
+                  <ControlGroup role='group' size={size} ariaLabel='가입 경로 그룹'>
+                    {RADIO_OPTIONS.map((opt, idx) => (
+                      <FormField
+                        key={opt.id}
+                        as='label'
+                        htmlFor={`${uniqueId}-${opt.id}-${size}-row-radio-${idx}`}
                         size={size}
-                        defaultChecked={opt.id === '1'}
-                      />
-                      <Label size={size}>{opt.label}</Label>
-                    </FormField>
-                  ))}
-                </ControlGroup>
-              </FormFieldset>
-            </AnatomyWrapper>
-          </SpecimenGroup>
-        );
-      })}
-    </SpecimenWrapper>
-  ),
+                        direction='row'
+                      >
+                        <Radio
+                          as='span'
+                          id={`${uniqueId}-${opt.id}-${size}-row-radio-${idx}`}
+                          name={`${uniqueId}-r-group-row-${size}-radio`}
+                          size={size}
+                          defaultChecked={opt.id === '1'}
+                        />
+                        <Label size={size}>{opt.label}</Label>
+                      </FormField>
+                    ))}
+                  </ControlGroup>
+                </FormFieldset>
+              </AnatomyWrapper>
+
+              <AnatomyWrapper
+                minimal
+                style={{
+                  ...((size === 'xl' || size === 'lg') && {
+                    width: 'max-content',
+                  }),
+                }}
+              >
+                <FormFieldset
+                  {...args}
+                  size={size}
+                  legend={t('formfieldset.checkbox.legend')}
+                  direction='column'
+                >
+                  <ControlGroup role='group' size={size} ariaLabel='가입 경로 그룹'>
+                    {CHECKBOX_TERMS_OPTIONS.map((opt, idx) => (
+                      <FormField
+                        key={opt.id}
+                        as='label'
+                        htmlFor={`${uniqueId}-${opt.id}-${size}-col-checkbox-${idx}`}
+                        size={size}
+                        direction='row'
+                      >
+                        <Checkbox
+                          as='span'
+                          id={`${uniqueId}-${opt.id}-${size}-col-checkbox-${idx}`}
+                          name={`${uniqueId}-r-group-col-${size}-checkbox`}
+                          size={size}
+                          defaultChecked={opt.id === '1'}
+                        />
+                        <Label size={size}>{opt.label}</Label>
+                      </FormField>
+                    ))}
+                  </ControlGroup>
+                </FormFieldset>
+              </AnatomyWrapper>
+              <AnatomyWrapper
+                minimal
+                style={{
+                  ...((size === 'xl' || size === 'lg') && {
+                    width: 'max-content',
+                  }),
+                }}
+              >
+                <FormFieldset
+                  {...args}
+                  size={size}
+                  legend={t('formfieldset.checkbox.legend')}
+                  direction='row'
+                >
+                  <ControlGroup role='group' size={size} ariaLabel='가입 경로 그룹'>
+                    {CHECKBOX_TERMS_OPTIONS.map((opt, idx) => (
+                      <FormField
+                        key={opt.id}
+                        as='label'
+                        htmlFor={`${uniqueId}-${opt.id}-${size}-row-checkbox-${idx}`}
+                        size={size}
+                        direction='row'
+                      >
+                        <Checkbox
+                          as='span'
+                          id={`${uniqueId}-${opt.id}-${size}-row-checkbox-${idx}`}
+                          name={`${uniqueId}-r-group-row-${size}-checkbox`}
+                          size={size}
+                          defaultChecked={opt.id === '1'}
+                        />
+                        <Label size={size}>{opt.label}</Label>
+                      </FormField>
+                    ))}
+                  </ControlGroup>
+                </FormFieldset>
+              </AnatomyWrapper>
+            </SpecimenGroup>
+          );
+        })}
+      </SpecimenWrapper>
+    );
+  },
 };

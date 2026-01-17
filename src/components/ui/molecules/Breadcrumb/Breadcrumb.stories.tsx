@@ -3,6 +3,23 @@ import Icon from '../../atoms/Icon/Icon'; // 프로젝트 내 아이콘 컴포�
 
 import { GuideCell, GuideGroup, GuideWrapper } from '../../guide/Guide';
 import Breadcrumb from './Breadcrumb';
+import { useTranslation } from 'react-i18next';
+
+const getBreadcrumbCopy = (t: (key: string) => string) => ({
+  default: {
+    depth1: t('breadcrumb.default.depth_1'),
+    depth2: t('breadcrumb.default.depth_2'),
+    depth3: t('breadcrumb.default.depth_3'),
+  },
+  long: {
+    depth1: t('breadcrumb.long.depth_1'),
+    depth2: t('breadcrumb.long.depth_2'),
+    depth3: t('breadcrumb.long.depth_3'),
+    depth4: t('breadcrumb.long.depth_4'),
+    depth5: t('breadcrumb.long.depth_5'),
+    depth6: t('breadcrumb.long.depth_6'),
+  },
+});
 
 const meta: Meta<typeof Breadcrumb> = {
   title: 'UI/Molecules/Breadcrumbs',
@@ -71,24 +88,26 @@ type Story = StoryObj<typeof Breadcrumb>;
  * - **Current Page**: 마지막 아이템은 링크를 제외하여 현재 머무르고 있는 페이지임을 나타냅니다.
  */
 export const Base: Story = {
-  args: {
-    items: [
-      {
-        label: '홈',
-        href: '/',
-        icon: <Icon name='house' className='icon' strokeWidth={1.8} />,
-      },
-      {
-        label: '제품 목록',
-        href: '/products',
-      },
-      { label: '상세 페이지' },
-    ],
-  },
   render: args => {
+    const { t } = useTranslation();
+    const copy = getBreadcrumbCopy(t);
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-        <Breadcrumb {...args} />
+        <Breadcrumb
+          {...args}
+          items={[
+            {
+              label: copy.default.depth1,
+              href: '/',
+              icon: <Icon name='house' className='icon' strokeWidth={1.8} />,
+            },
+            {
+              label: copy.default.depth2,
+              href: '/products',
+            },
+            { label: copy.default.depth3 },
+          ]}
+        />
       </GuideWrapper>
     );
   },
@@ -100,25 +119,30 @@ export const Base: Story = {
  * - **Design Integrity**: 다크모드 등 다양한 배경에서도 아이콘과 텍스트의 명도 대비를 3:1 이상 유지하도록 설계되었습니다.
  */
 export const WithIcon: Story = {
-  args: {
-    items: [
-      {
-        label: '홈',
-        href: '/',
-        icon: <Icon name='house' className='icon' strokeWidth={1.8} />,
-      },
-      {
-        label: '제품 목록',
-        href: '/products',
-        icon: <Icon name='list' className='icon' strokeWidth={1.8} />,
-      },
-      { label: '상세 페이지', icon: <Icon name='file' className='icon' strokeWidth={1.8} /> },
-    ],
-  },
   render: args => {
+    const { t } = useTranslation();
+    const copy = getBreadcrumbCopy(t);
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-        <Breadcrumb {...args} />
+        <Breadcrumb
+          {...args}
+          items={[
+            {
+              label: copy.default.depth1,
+              href: '/',
+              icon: <Icon name='house' className='icon' strokeWidth={1.8} />,
+            },
+            {
+              label: copy.default.depth2,
+              href: '/products',
+              icon: <Icon name='list' className='icon' strokeWidth={1.8} />,
+            },
+            {
+              label: copy.default.depth3,
+              icon: <Icon name='file' className='icon' strokeWidth={1.8} />,
+            },
+          ]}
+        />
       </GuideWrapper>
     );
   },
@@ -129,23 +153,19 @@ export const WithIcon: Story = {
  * - **Minimalism**: 정보 밀도가 높은 복잡한 대시보드 환경에서 내비게이션의 시각적 피로도를 낮추고 싶을 때 사용합니다.
  */
 export const WithoutIcon: Story = {
-  args: {
-    items: [
-      {
-        label: '홈',
-        href: '/',
-      },
-      {
-        label: '제품 목록',
-        href: '/products',
-      },
-      { label: '상세 페이지' },
-    ],
-  },
   render: args => {
+    const { t } = useTranslation();
+    const copy = getBreadcrumbCopy(t);
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-        <Breadcrumb {...args} />
+        <Breadcrumb
+          {...args}
+          items={[
+            { label: copy.default.depth1, href: '/' },
+            { label: copy.default.depth2, href: '/products' },
+            { label: copy.default.depth3 },
+          ]}
+        />
       </GuideWrapper>
     );
   },
@@ -157,31 +177,55 @@ export const WithoutIcon: Story = {
  * - **Interaction**: 링크가 포함된 아이템의 호버(Hover) 상태 시각 피드백을 검증합니다.
  */
 export const Colors: Story = {
-  args: {
-    items: [
-      {
-        label: '홈',
-        href: '/',
-        icon: <Icon name='house' className='icon' strokeWidth={1.8} />,
-      },
-      {
-        label: '제품 목록',
-        href: '/products',
-      },
-      { label: '상세 페이지' },
-    ],
-  },
   render: args => {
+    const { t } = useTranslation();
+    const copy = getBreadcrumbCopy(t);
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '40px' }}>
         <GuideCell caption='Primary'>
-          <Breadcrumb {...args} color='primary' />
+          <Breadcrumb
+            {...args}
+            color='primary'
+            items={[
+              {
+                label: copy.default.depth1,
+                href: '/',
+                icon: <Icon name='house' className='icon' strokeWidth={1.8} />,
+              },
+              { label: copy.default.depth2, href: '/products' },
+              { label: copy.default.depth3 },
+            ]}
+          />
         </GuideCell>
         <GuideCell caption='Secondary'>
-          <Breadcrumb {...args} color='secondary' />
+          <Breadcrumb
+            {...args}
+            color='secondary'
+            items={[
+              {
+                label: copy.default.depth1,
+                href: '/',
+                icon: <Icon name='house' className='icon' strokeWidth={1.8} />,
+              },
+              { label: copy.default.depth2, href: '/products' },
+              { label: copy.default.depth3 },
+            ]}
+          />
         </GuideCell>
         <GuideCell caption='Tertiary'>
-          <Breadcrumb {...args} color='tertiary' />
+          <Breadcrumb
+            {...args}
+            color='tertiary'
+            items={[
+              {
+                label: copy.default.depth1,
+                href: '/',
+                icon: <Icon name='house' className='icon' strokeWidth={1.8} />,
+              },
+              { label: copy.default.depth2, href: '/products' },
+              { label: copy.default.depth3 },
+            ]}
+          />
         </GuideCell>
       </GuideWrapper>
     );
@@ -193,31 +237,55 @@ export const Colors: Story = {
  * - **Scale Logic**: 크기에 따라 글자 크기, 아이콘 크기, 그리고 아이템 간의 간격(Gap)이 비례적으로 조정됩니다.
  */
 export const sizes: Story = {
-  args: {
-    items: [
-      {
-        label: '홈',
-        href: '/',
-        icon: <Icon name='house' className='icon' strokeWidth={1.8} />,
-      },
-      {
-        label: '제품 목록',
-        href: '/products',
-      },
-      { label: '상세 페이지' },
-    ],
-  },
   render: args => {
+    const { t } = useTranslation();
+    const copy = getBreadcrumbCopy(t);
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '40px' }}>
         <GuideCell caption='SM'>
-          <Breadcrumb {...args} size='sm' />
+          <Breadcrumb
+            {...args}
+            size='sm'
+            items={[
+              {
+                label: copy.default.depth1,
+                href: '/',
+                icon: <Icon name='house' className='icon' strokeWidth={1.8} />,
+              },
+              { label: copy.default.depth2, href: '/products' },
+              { label: copy.default.depth3 },
+            ]}
+          />
         </GuideCell>
         <GuideCell caption='MD'>
-          <Breadcrumb {...args} size='md' />
+          <Breadcrumb
+            {...args}
+            size='md'
+            items={[
+              {
+                label: copy.default.depth1,
+                href: '/',
+                icon: <Icon name='house' className='icon' strokeWidth={1.8} />,
+              },
+              { label: copy.default.depth2, href: '/products' },
+              { label: copy.default.depth3 },
+            ]}
+          />
         </GuideCell>
         <GuideCell caption='LG'>
-          <Breadcrumb {...args} size='lg' />
+          <Breadcrumb
+            {...args}
+            size='lg'
+            items={[
+              {
+                label: copy.default.depth1,
+                href: '/',
+                icon: <Icon name='house' className='icon' strokeWidth={1.8} />,
+              },
+              { label: copy.default.depth2, href: '/products' },
+              { label: copy.default.depth3 },
+            ]}
+          />
         </GuideCell>
       </GuideWrapper>
     );
@@ -230,20 +298,22 @@ export const sizes: Story = {
  * - **UX Guide**: 공간이 부족할 경우 말줄임(Ellipsis)을 적용하거나 중간 경로를 생략하는 방식의 고려가 필요합니다.
  */
 export const LongPath: Story = {
-  args: {
-    items: [
-      { label: 'Depth 1', href: '#' },
-      { label: 'Depth 2', href: '#' },
-      { label: 'Depth 3', href: '#' },
-      { label: 'Depth 4', href: '#' },
-      { label: 'Depth 5', href: '#' },
-      { label: '매우 길어서 가로 길이를 많이 차지하는 마지막 페이지 제목' },
-    ],
-  },
   render: args => {
+    const { t } = useTranslation();
+    const copy = getBreadcrumbCopy(t);
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-        <Breadcrumb {...args} />
+        <Breadcrumb
+          {...args}
+          items={[
+            { label: copy.long.depth1, href: '#' },
+            { label: copy.long.depth2, href: '#' },
+            { label: copy.long.depth3, href: '#' },
+            { label: copy.long.depth4, href: '#' },
+            { label: copy.long.depth5, href: '#' },
+            { label: copy.long.depth6 },
+          ]}
+        />
       </GuideWrapper>
     );
   },
