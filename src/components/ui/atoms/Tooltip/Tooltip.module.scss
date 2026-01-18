@@ -44,7 +44,7 @@ $tooltip-sizes: (
 
       :global {
         .tooltip__content {
-          word-break: keep-all;
+          word-break: auto-phrase;
           font: map.get($props, font);
         }
 

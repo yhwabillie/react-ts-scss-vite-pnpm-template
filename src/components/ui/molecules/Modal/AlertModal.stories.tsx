@@ -149,23 +149,17 @@ export const Base: Story = {
     const { t } = useTranslation();
 
     return (
-      <GuideWrapper style={{ margin: 'auto', width: 'fit-content', gap: '80px' }}>
-        <GuideGroup direction='row'>
-          <GuideRow direction='column'>
-            <GuideCell>
-              <AlertModalContent
-                {...props}
-                config={{
-                  ...props.config,
-                  variant: 'alert-info',
-                  title: t('modal.alert.base.title'),
-                  description: t('modal.alert.base.description'),
-                  confirmText: t('modal.alert.base.footer.confirm'),
-                }}
-              />
-            </GuideCell>
-          </GuideRow>
-        </GuideGroup>
+      <GuideWrapper style={{ margin: 'auto', width: 'min-content', gap: '80px' }}>
+        <AlertModalContent
+          {...props}
+          config={{
+            ...props.config,
+            variant: 'alert-info',
+            title: t('modal.alert.base.title'),
+            description: t('modal.alert.base.description'),
+            confirmText: t('modal.alert.base.footer.confirm'),
+          }}
+        />
       </GuideWrapper>
     );
   },
@@ -189,7 +183,7 @@ export const InteractionPattern: Story = {
     const { t } = useTranslation();
 
     return (
-      <GuideWrapper style={{ margin: 'auto', width: 'fit-content', gap: '80px' }}>
+      <GuideWrapper style={{ margin: 'auto', width: 'min-content', gap: '80px' }}>
         <GuideGroup direction='row'>
           <GuideRow direction='column'>
             <GuideCell caption='Information'>
@@ -255,7 +249,9 @@ export const Variant: Story = {
                   variant: 'alert-info',
                   title: t('modal.alert.variants.info.interaction.information.title'),
                   description: t('modal.alert.variants.info.interaction.information.description'),
-                  confirmText: t('modal.alert.variants.info.interaction.information.footer.confirm'),
+                  confirmText: t(
+                    'modal.alert.variants.info.interaction.information.footer.confirm',
+                  ),
                 }}
               />
             </GuideCell>
@@ -301,8 +297,9 @@ export const Variant: Story = {
                   ...props.config,
                   variant: 'alert-danger',
                   title: t('modal.alert.variants.danger.interaction.confirmation.title'),
-                  description:
-                    t('modal.alert.variants.danger.interaction.confirmation.description'),
+                  description: t(
+                    'modal.alert.variants.danger.interaction.confirmation.description',
+                  ),
                   confirmText: t(
                     'modal.alert.variants.danger.interaction.confirmation.footer.delete',
                   ),
@@ -335,6 +332,7 @@ export const SequenceAndStackTest: StoryObj = {
         title: t('modal.alert.test.sequential.parent.title'),
         description: t('modal.alert.test.sequential.parent.description'),
         cancelText: t('modal.alert.test.sequential.parent.footer.cancel'),
+        confirmText: t('modal.alert.test.sequential.parent.footer.confirm'),
         onConfirm: (currentId?: string) => {
           // 1. 현재 모달 닫기
           closeModal(currentId || 'alert-info');
@@ -354,7 +352,7 @@ export const SequenceAndStackTest: StoryObj = {
     return (
       <GuideWrapper style={{ flexDirection: 'row', justifyContent: 'center' }}>
         <Button variant='solid' color='secondary' onClick={handleSequenceFlow}>
-          연쇄 모달 실행 (삭제 흐름)
+          {t('modal.alert.test.sequential.parent.title')}
         </Button>
         <Button
           variant='outline'
@@ -367,7 +365,7 @@ export const SequenceAndStackTest: StoryObj = {
             })
           }
         >
-          단일 모달 실행
+          {t('modal.alert.test.default.title')}
         </Button>
       </GuideWrapper>
     );

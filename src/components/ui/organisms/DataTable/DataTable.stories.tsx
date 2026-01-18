@@ -253,13 +253,13 @@ const buildMockBoard = (t: (key: string) => string): MockDataTableItem[] => [
 ];
 
 const buildUserColumns = (t: (key: string) => string): Column<MockUser>[] => [
-  { key: 'id', header: 'ID', width: '80px' },
-  { key: 'name', header: '이름' },
-  { key: 'email', header: '이메일' },
-  { key: 'role', header: '권한' },
+  { key: 'id', header: t('data-table.headers.id'), width: '80px' },
+  { key: 'name', header: t('data-table.headers.name') },
+  { key: 'email', header: t('data-table.headers.email') },
+  { key: 'role', header: t('data-table.headers.role') },
   {
     key: 'status',
-    header: '상태',
+    header: t('data-table.headers.status'),
     render: (value, row) => {
       const label = row.statusLabel ?? String(value);
       return (
@@ -279,16 +279,20 @@ const buildUserColumns = (t: (key: string) => string): Column<MockUser>[] => [
  * - **Checklist**: 열(Column)의 너비 설정과 데이터 매핑이 정확한지 확인합니다.
  */
 export const Base: Story = {
-  args: {
-    caption: '사용자 목록',
-    summary: '시스템에 등록된 전체 사용자 정보를 나타내는 표입니다.',
-  },
   render: args => {
     const { t } = useTranslation();
     const columns = useMemo(() => buildUserColumns(t), [t]);
     const data = useMemo(() => buildMockUsers(t), [t]);
 
-    return <DataTable {...args} columns={columns} data={data} />;
+    return (
+      <DataTable
+        {...args}
+        columns={columns}
+        data={data}
+        caption={args.caption ?? t('data-table.caption.users')}
+        summary={args.summary ?? t('data-table.summary.users')}
+      />
+    );
   },
 };
 
@@ -312,8 +316,8 @@ export const Variants: Story = {
               columns={columns}
               data={data}
               variant='solid'
-              aria-label='Solid Table'
-              caption='Solid Table'
+              aria-label={t('data-table.a11y.variant-solid')}
+              caption={t('data-table.caption.variant-solid')}
             />
           </GuideCell>
         </GuideGroup>
@@ -324,8 +328,8 @@ export const Variants: Story = {
               columns={columns}
               data={data}
               variant='outline'
-              aria-label='Outline Table'
-              caption='Outline Table'
+              aria-label={t('data-table.a11y.variant-outline')}
+              caption={t('data-table.caption.variant-outline')}
             />
           </GuideCell>
         </GuideGroup>
@@ -462,6 +466,82 @@ export const WithNotices: StoryObj<typeof DataTable<MockDataTableItem>> = {
     const { t } = useTranslation();
     const notices = useMemo(() => buildMockNotices(t), [t]);
     const boardItems = useMemo(() => buildMockBoard(t), [t]);
+    const columns = useMemo<Column<MockDataTableItem>[]>(
+      () => [
+        { key: 'id', header: t('data-table.headers.no'), width: '80px', sortable: true },
+        {
+          key: 'title',
+          header: t('data-table.headers.title'),
+          minWidth: '400px',
+          render: (value, row) => {
+            const item = row as MockDataTableItem;
+            if (!item.href) return value;
+            return (
+              <a
+                href={item.href}
+                className='data-table__link'
+                onClick={e => {
+                  if (!item.href.startsWith('http')) {
+                    e.preventDefault();
+                    console.log('SPA Routing Log');
+                  }
+                }}
+              >
+                {/* 제목 텍스트 - CSS에서 ellipsis 처리 권장 */}
+                <span className='data-table__link-title'>{value}</span>
+
+                {/* 비밀글 아이콘 */}
+                {item.isSecret && (
+                  <span className='data-table__status-icon'>
+                    <Icon
+                      name='lock'
+                      className='icon'
+                      size='md'
+                      strokeWidth={2.5}
+                      aria-hidden='true'
+                    />
+                    <span className='sr-only'>{t('data-table.a11y.secret')}</span>
+                  </span>
+                )}
+
+                {/* 댓글 개수 */}
+                {item.commentCount > 0 && (
+                  <span className='data-table__comment-count'>
+                    <span aria-hidden='true'>[{item.commentCount}]</span>
+                    <span className='sr-only'>
+                      {t('data-table.a11y.comments', { count: item.commentCount })}
+                    </span>
+                  </span>
+                )}
+              </a>
+            );
+          },
+        },
+        {
+          key: 'hasFile',
+          header: t('data-table.headers.file'),
+          width: '60px',
+          render: (_, row) => {
+            const item = row as MockDataTableItem;
+            return item.hasFile ? (
+              <div className='data-table__status-icon'>
+                <Icon
+                  name='file'
+                  className='icon'
+                  size='md'
+                  strokeWidth={2.5}
+                  aria-label={t('data-table.a11y.has-file')}
+                />
+              </div>
+            ) : null;
+          },
+        },
+        { key: 'author', header: t('data-table.headers.author'), width: '120px' },
+        { key: 'date', header: t('data-table.headers.date'), width: '150px', sortable: true },
+        { key: 'views', header: t('data-table.headers.views'), width: '100px', sortable: true },
+      ],
+      [t],
+    );
 
     // 1. SortState 타입(key: string)과의 호환을 위해 타입을 string으로 지정
     const [sort, setSort] = useState<{
@@ -503,6 +583,8 @@ export const WithNotices: StoryObj<typeof DataTable<MockDataTableItem>> = {
           data={sortedData}
           sortState={sort}
           onSort={handleSort}
+          columns={columns}
+          caption={args.caption ?? t('data-table.caption.board')}
         />
         <DataTable
           {...args}
@@ -511,83 +593,11 @@ export const WithNotices: StoryObj<typeof DataTable<MockDataTableItem>> = {
           data={sortedData}
           sortState={sort}
           onSort={handleSort}
+          columns={columns}
+          caption={args.caption ?? t('data-table.caption.board')}
         />
       </GuideWrapper>
     );
-  },
-  args: {
-    caption: '공지사항 및 게시글 목록 예시',
-    columns: [
-      { key: 'id', header: '번호', width: '80px', sortable: true },
-      {
-        key: 'title',
-        header: '제목',
-        minWidth: '400px',
-        render: (value, row) => {
-          const item = row as MockDataTableItem;
-          if (!item.href) return value;
-          return (
-            <a
-              href={item.href}
-              className='data-table__link'
-              onClick={e => {
-                if (!item.href.startsWith('http')) {
-                  e.preventDefault();
-                  console.log('SPA Routing Log');
-                }
-              }}
-            >
-              {/* 제목 텍스트 - CSS에서 ellipsis 처리 권장 */}
-              <span className='data-table__link-title'>{value}</span>
-
-              {/* 비밀글 아이콘 */}
-              {item.isSecret && (
-                <span className='data-table__status-icon'>
-                  <Icon
-                    name='lock'
-                    className='icon'
-                    size='md'
-                    strokeWidth={2.5}
-                    aria-hidden='true'
-                  />
-                  <span className='sr-only'>비공개 글</span>
-                </span>
-              )}
-
-              {/* 댓글 개수 */}
-              {item.commentCount > 0 && (
-                <span className='data-table__comment-count'>
-                  <span aria-hidden='true'>[{item.commentCount}]</span>
-                  <span className='sr-only'>댓글 {item.commentCount}개</span>
-                </span>
-              )}
-            </a>
-          );
-        },
-      },
-      {
-        key: 'hasFile',
-        header: '파일',
-        width: '60px',
-        render: (_, row) => {
-          const item = row as MockDataTableItem;
-          return item.hasFile ? (
-            <div className='data-table__status-icon'>
-              <Icon
-                name='file'
-                className='icon'
-                size='md'
-                strokeWidth={2.5}
-                aria-label='첨부파일 있음'
-              />
-            </div>
-          ) : null;
-        },
-      },
-      { key: 'author', header: '작성자', width: '120px' },
-      { key: 'date', header: '날짜', width: '150px', sortable: true },
-      { key: 'views', header: '조회수', width: '100px', sortable: true },
-    ],
   },
 };
 
@@ -622,11 +632,11 @@ export const WithCheckboxes: Story = {
         selectedRows={selectedRows}
         onSelectRow={handleSelectRow}
         onSelectAll={handleSelectAll}
+        caption={args.caption ?? t('data-table.caption.checkbox')}
       />
     );
   },
   args: {
-    caption: '체크박스 선택 가능 표',
     showCheckbox: true,
   },
 };
@@ -637,7 +647,6 @@ export const WithCheckboxes: Story = {
  */
 export const Sortable: Story = {
   args: {
-    caption: '정렬 기능이 활성화된 표',
     // 📌 중요: 각 컬럼 객체에 sortable: true를 추가해야 버튼이 나타납니다.
   },
   render: args => {
@@ -681,6 +690,7 @@ export const Sortable: Story = {
         data={sortedData}
         sortState={sort}
         onSort={(key, order) => setSort({ key: String(key), order })}
+        caption={args.caption ?? t('data-table.caption.sortable')}
       />
     );
   },
@@ -692,13 +702,14 @@ export const Sortable: Story = {
  */
 export const Empty: Story = {
   args: {
-    caption: '데이터 없음 상태',
     data: [],
   },
   render: args => {
     const { t } = useTranslation();
     const columns = useMemo(() => buildUserColumns(t), [t]);
 
-    return <DataTable {...args} columns={columns} />;
+    return (
+      <DataTable {...args} columns={columns} caption={args.caption ?? t('data-table.caption.empty')} />
+    );
   },
 };

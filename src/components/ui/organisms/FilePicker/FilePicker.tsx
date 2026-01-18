@@ -6,6 +6,7 @@ import Button from '../../molecules/Button/Button';
 import ValidationMsg from '../../atoms/ValidationMsg/ValidationMsg';
 import IconFrame from '../../molecules/IconFrame/IconFrame';
 import RingSpinner from '../../atoms/Spinner/LoadingSpinner/RingSpinner';
+import { useTranslation } from 'react-i18next';
 
 export interface FileItem {
   id: string;
@@ -31,6 +32,7 @@ interface FilePickerProps {
 
 const FilePicker = forwardRef<HTMLDivElement, FilePickerProps>(
   ({ color = 'primary', title, desc, files, onDrop, onRemove, onClear, accept, maxCount }, ref) => {
+    const { t } = useTranslation();
     // 📌 현재 하나라도 업로드 중인지 확인 (전체 제어용)
     const isAnyFileUploading = files.some(file => file.status === 'uploading');
     const [isDragging, setIsDragging] = useState(false);
@@ -151,8 +153,8 @@ const FilePicker = forwardRef<HTMLDivElement, FilePickerProps>(
         className={clsx(`${Styles['file-picker']} color--${color}`)}
       >
         <div className='head'>
-          <h3 className='head-title'>{title}</h3>
-          <p className='head-desc'>{desc}</p>
+          <h3 className='head-title'>{title ?? t('filepicker.base.title')}</h3>
+          <p className='head-desc'>{desc ?? t('filepicker.base.desc')}</p>
         </div>
         <div
           className={clsx(
@@ -167,17 +169,17 @@ const FilePicker = forwardRef<HTMLDivElement, FilePickerProps>(
           onDrop={handleDrop}
           aria-disabled={isAnyFileUploading}
           role='button'
-          aria-label='파일 업로드 영역'
+          aria-label={t('filepicker.aria.dropzone')}
         >
           <div aria-live='polite' className='sr-only'>
-            {isDragging && '파일을 업로드 영역에 올려두었습니다'}
+            {isDragging && t('filepicker.drag-and-drop.announcement')}
           </div>
           <p className='hint-msg'>
             {isAnyFileUploading
-              ? '현재 파일 업로드 중에는 추가로 파일을 등록할 수 없습니다.'
+              ? t('filepicker.drag-and-drop.uploading')
               : isDragging
-                ? '여기에 파일을 놓아 업로드하세요.'
-                : '첨부할 파일을 여기에 끌어다 놓거나, 파일 선택 버튼을 눌러주세요.'}
+                ? t('filepicker.drag-and-drop.draging')
+                : t('filepicker.drag-and-drop.default')}
           </p>
           <div className='actions'>
             <input
@@ -207,7 +209,7 @@ const FilePicker = forwardRef<HTMLDivElement, FilePickerProps>(
                 />
               }
             >
-              파일 선택
+              {t('filepicker.btn')}
             </Button>
           </div>
         </div>
@@ -215,9 +217,15 @@ const FilePicker = forwardRef<HTMLDivElement, FilePickerProps>(
           {files.length > 0 && (
             <div className='head'>
               <div className='count'>
-                <span className='count-current'>{files.length}개</span>
+                <span className='count-current'>
+                  {files.length}
+                  {t('filepicker.unit')}
+                </span>
                 <span className='count-divide'>/</span>
-                <span className='count-max'>{maxCount}개</span>
+                <span className='count-max'>
+                  {maxCount}
+                  {t('filepicker.unit')}
+                </span>
               </div>
               <Button
                 variant='outline'
@@ -237,7 +245,7 @@ const FilePicker = forwardRef<HTMLDivElement, FilePickerProps>(
                   />
                 }
               >
-                전체 파일 삭제
+                {t('filepicker.delete-all-btn')}
               </Button>
             </div>
           )}
@@ -288,7 +296,7 @@ const FilePicker = forwardRef<HTMLDivElement, FilePickerProps>(
                         disabled={isAnyFileUploading}
                         onClick={() => handleRemove(file.id, idx)}
                       >
-                        삭제
+                        {t('filepicker.delete-btn')}
                       </Button>
                     )}
                   </span>

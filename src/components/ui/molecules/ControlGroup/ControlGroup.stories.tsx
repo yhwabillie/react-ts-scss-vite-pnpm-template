@@ -155,6 +155,7 @@ export const Base: Story = {
  */
 export const Sizes: Story = {
   render: args => {
+    const { t } = useTranslation();
     const baseId = useId();
 
     // 1. 상수 데이터 추출 (렌더링 최적화 및 가독성)
@@ -165,9 +166,9 @@ export const Sizes: Story = {
     ] as const;
 
     const SAMPLE_OPTIONS = [
-      { label: '옵션 1', defaultChecked: true },
-      { label: '옵션 2' },
-      { label: '옵션 3' },
+      { label: t('control-group.options.label_a'), defaultChecked: true },
+      { label: t('control-group.options.label_b') },
+      { label: t('control-group.options.label_c') },
     ];
 
     return (

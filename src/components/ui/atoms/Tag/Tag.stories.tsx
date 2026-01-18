@@ -125,7 +125,7 @@ export const Base: Story = {
     const { t } = useTranslation();
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-        <Tag {...args}>{t('tag.base.label')}</Tag>
+        <Tag {...args} label={t('tag.base.label')} />
       </GuideWrapper>
     );
   },

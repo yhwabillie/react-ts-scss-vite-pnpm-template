@@ -11,6 +11,7 @@ export type ToastType = 'success' | 'error' | 'info' | 'warning';
 // 링크 데이터 인터페이스 정의
 interface ToastLink {
   url: string;
+  label?: string;
   external?: boolean; // 외부 링크 여부
 }
 
@@ -125,7 +126,7 @@ const Toast = ({ id, message, type = 'info', duration, onClose, index, link }: T
             // 링크 클릭 시 토스트를 닫음으로써 포커스 복구 트리거
             onClick={() => onClose(id)}
           >
-            바로가기
+            {link.label ?? '바로가기'}
           </a>
         )}
       </div>

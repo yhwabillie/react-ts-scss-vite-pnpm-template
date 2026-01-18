@@ -4,6 +4,7 @@ import Checkbox from '@/components/ui/atoms/Checkbox/Checkbox';
 import Icon from '@/components/ui/atoms/Icon/Icon';
 import IconButton from '@/components/ui/molecules/IconButton/IconButton';
 import Styles from '@/components/ui/organisms/DataTable/DataTable.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export type SortOrder = 'asc' | 'desc' | 'none';
 
@@ -54,6 +55,7 @@ const DataTable = <T extends { id: string | number }>({
   onSelectAll,
   notices,
 }: DataTableProps<T>) => {
+  const { t } = useTranslation();
   const tableId = useId();
   const summaryId = `${tableId}-summary`;
 
@@ -119,7 +121,7 @@ const DataTable = <T extends { id: string | number }>({
                     size='md'
                     checked={isAllSelected}
                     onChange={e => onSelectAll?.(e.target.checked)}
-                    aria-label='전체 행 선택'
+                    aria-label={t('data-table.a11y.select-all')}
                   />
                 </div>
               </th>
@@ -145,7 +147,7 @@ const DataTable = <T extends { id: string | number }>({
                             : 'asc';
                         onSort(col.key as keyof T, nextOrder);
                       }}
-                      aria-label={`${col.header} 정렬`}
+                      aria-label={t('data-table.a11y.sort', { column: col.header })}
                       icon={getSortIcon(String(col.key))}
                     />
                   )}
@@ -200,7 +202,7 @@ const DataTable = <T extends { id: string | number }>({
                         id={`chk-${row.id}`}
                         checked={selectedRows?.has(row.id) || false}
                         onChange={() => onSelectRow?.(row.id)}
-                        aria-label={`${row.id}번 행 선택`}
+                        aria-label={t('data-table.a11y.select-row', { id: row.id })}
                       />
                     </div>
                   </td>
@@ -216,7 +218,7 @@ const DataTable = <T extends { id: string | number }>({
           ) : (
             <tr>
               <td colSpan={totalCols}>
-                <div className='data-table__empty-state'>데이터가 없습니다.</div>
+                <div className='data-table__empty-state'>{t('data-table.empty')}</div>
               </td>
             </tr>
           )}

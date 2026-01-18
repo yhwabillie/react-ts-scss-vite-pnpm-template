@@ -288,6 +288,7 @@ export const ScrollType: StoryObj = {
             openModal('custom', {
               scrollType: 'outer',
               title: t('modal.custom.scroll-type.outer.title'),
+              confirmText: t('modal.custom.scroll-type.footer.confirm'),
               children: (
                 <div style={{ width: '100%', height: '3000px', backgroundColor: '#dddd' }}>
                   {t('modal.custom.scroll-type.outer.content')}
@@ -296,7 +297,7 @@ export const ScrollType: StoryObj = {
             })
           }
         >
-          Modal Body 외부 스크롤
+          {t('modal.custom.scroll-type.buttons.outer')}
         </Button>
         <Button
           variant='outline'
@@ -305,6 +306,7 @@ export const ScrollType: StoryObj = {
             openModal('custom', {
               scrollType: 'inner',
               title: t('modal.custom.scroll-type.inner.title'),
+              confirmText: t('modal.custom.scroll-type.footer.confirm'),
               children: (
                 <div style={{ width: '100%', height: '3000px', backgroundColor: '#dddd' }}>
                   {t('modal.custom.scroll-type.inner.content')}
@@ -313,7 +315,7 @@ export const ScrollType: StoryObj = {
             })
           }
         >
-          Modal Body 내부 스크롤
+          {t('modal.custom.scroll-type.buttons.inner')}
         </Button>
       </GuideWrapper>
     );
@@ -336,6 +338,7 @@ export const SequenceAndStackTest: StoryObj = {
         title: t('modal.custom.test.sequential.parent.title'),
         description: t('modal.custom.test.sequential.parent.description'),
         cancelText: t('modal.custom.test.sequential.parent.footer.cancel'),
+        confirmText: t('modal.custom.test.sequential.parent.footer.confirm'),
         onConfirm: (currentId?: string) => {
           // 1. 현재 모달 닫기
           closeModal(currentId || 'custom');
@@ -355,7 +358,7 @@ export const SequenceAndStackTest: StoryObj = {
     return (
       <GuideWrapper style={{ flexDirection: 'row', justifyContent: 'center' }}>
         <Button variant='solid' color='secondary' onClick={handleSequenceFlow}>
-          연쇄 모달 실행 (삭제 흐름)
+          {t('modal.custom.test.sequential.parent.title')}
         </Button>
         <Button
           variant='outline'
@@ -368,7 +371,7 @@ export const SequenceAndStackTest: StoryObj = {
             })
           }
         >
-          단일 모달 실행
+          {t('modal.custom.test.default.title')}
         </Button>
       </GuideWrapper>
     );

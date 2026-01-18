@@ -166,7 +166,7 @@ export const Base: Story = {
             <AnatomyWrapper minimal>
               <FormField
                 {...args}
-                labelText='이메일 주소'
+                labelText={t('formfield.input.label')}
                 direction='row'
                 htmlFor={`${uniqueId}-in-row`}
               >
