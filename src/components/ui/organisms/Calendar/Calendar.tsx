@@ -4,7 +4,12 @@ import styles from '@/components/ui/organisms/Calendar/Calendar.module.scss';
 import clsx from 'clsx';
 import React, { forwardRef, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import CalendarSelectbox from './CalendarSelectbox';
-import { useCalendarMatrix, type CalendarCell } from './Calendar.mock';
+import {
+  getCalendarStatusLabels,
+  getWeekdayNames,
+  useCalendarMatrix,
+  type CalendarCell,
+} from './Calendar.mock';
 import Icon from '../../atoms/Icon/Icon';
 import IconButton from '../../molecules/IconButton/IconButton';
 import ActionBar from '../ActionBar/ActionBar';
@@ -30,6 +35,7 @@ export interface CalendarProps extends StyleProps, NativeDivProps {
   selectedMonth?: number;
   selectedDate?: Date | null;
   initialSelectedDate?: Date | null;
+  locale?: string;
   calendarProps?: {
     yearOptions?: Omit<OptionBase, 'label'>[];
     monthOptions?: Omit<OptionBase, 'label'>[];
@@ -55,6 +61,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       selectedMonth,
       selectedDate,
       initialSelectedDate = null,
+      locale = 'ko',
       calendarProps = {},
       holidays = [],
       onYearChange,
@@ -90,7 +97,8 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     // -----------------------------
     // 📌 요일 이름 정의 (일요일: 0, 토요일: 6)
     // -----------------------------
-    const WEEKDAY_NAMES = ['일', '월', '화', '수', '목', '금', '토'];
+    const WEEKDAY_NAMES = useMemo(() => getWeekdayNames(locale), [locale]);
+    const statusLabels = useMemo(() => getCalendarStatusLabels(locale), [locale]);
 
     // -----------------------------
     // 🎯 이전/다음 달 이동
@@ -129,19 +137,25 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     // -----------------------------
     // 🎯 날짜 선택 (수정)
     // -----------------------------
+    const formatDateLabel = useCallback(
+      (date: Date) =>
+        new Intl.DateTimeFormat(locale, {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          weekday: 'short',
+        }).format(date),
+      [locale],
+    );
+
     const handleDateClick = (cell: CalendarCell) => {
       if (cell.disabled) return;
       onDateSelect?.(cell.date);
 
       // 🚨 추가: 날짜 선택 시 Live Region 업데이트
       if (calendarAnnouncerRef.current) {
-        const year = cell.date.getFullYear();
-        const month = cell.date.getMonth() + 1;
-        const day = cell.date.getDate();
-        const weekday = WEEKDAY_NAMES[cell.date.getDay()];
-
         // 포커스 이동과 동시에 스크린 리더에게 선택 사실 공지
-        calendarAnnouncerRef.current.textContent = `${year}년 ${month}월 ${day}일 ${weekday}요일 선택됨`;
+        calendarAnnouncerRef.current.textContent = `${formatDateLabel(cell.date)} ${statusLabels.selected}`;
       }
     };
 
@@ -468,8 +482,10 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                 defaultOptionId={currentYearOptionId}
                 onValueChange={(_, option) => {
                   if (!option) return;
-                  const year = Number(option.value.replace('년', ''));
-                  onYearChange?.(year);
+                  const year = Number(option.id.replace('year-', ''));
+                  if (!Number.isNaN(year)) {
+                    onYearChange?.(year);
+                  }
                 }}
                 onOpenChange={updateYearSelectboxOpenState}
                 disabled={isLoading}
@@ -487,7 +503,10 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                 defaultOptionId={currentMonthOptionId}
                 onValueChange={(_, option) => {
                   if (!option) return;
-                  onMonthChange?.(Number(option.value.replace('월', '')));
+                  const month = Number(option.id.replace('month-', ''));
+                  if (!Number.isNaN(month)) {
+                    onMonthChange?.(month);
+                  }
                 }}
                 onOpenChange={updateMonthSelectboxOpenState}
                 disabled={isLoading}
@@ -519,27 +538,11 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
               <table className='calendar-table' role='grid'>
                 <thead>
                   <tr role='row'>
-                    <th scope='col' role='columnheader'>
-                      일
-                    </th>
-                    <th scope='col' role='columnheader'>
-                      월
-                    </th>
-                    <th scope='col' role='columnheader'>
-                      화
-                    </th>
-                    <th scope='col' role='columnheader'>
-                      수
-                    </th>
-                    <th scope='col' role='columnheader'>
-                      목
-                    </th>
-                    <th scope='col' role='columnheader'>
-                      금
-                    </th>
-                    <th scope='col' role='columnheader'>
-                      토
-                    </th>
+                    {WEEKDAY_NAMES.map(name => (
+                      <th key={name} scope='col' role='columnheader'>
+                        {name}
+                      </th>
+                    ))}
                   </tr>
                 </thead>
                 <tbody>
@@ -587,7 +590,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                                 }
                                 aria-selected={cell.isSelected}
                                 // 🚨 수정된 aria-label
-                                aria-label={`${derivedYear}년 ${derivedMonth}월 ${cell.day}일 ${WEEKDAY_NAMES[cell.date.getDay()]}요일${cell.isHoliday ? ` ${cell.holidayName}` : ''}${cell.isToday ? ' 오늘' : ''}${cell.isSelected ? ' 선택됨' : ''}`}
+                                aria-label={`${formatDateLabel(cell.date)}${cell.isHoliday ? ` ${cell.holidayName}` : ''}${cell.isToday ? ` ${statusLabels.today}` : ''}${cell.isSelected ? ` ${statusLabels.selected}` : ''}`}
                                 onClick={() => handleDateClick(cell)}
                                 onKeyDown={e => handleDateKeyDown(e, rowIdx, colIdx)}
                                 onMouseEnter={() =>

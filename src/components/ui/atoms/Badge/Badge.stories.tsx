@@ -5,6 +5,7 @@ import Icon from '@/components/ui/atoms/Icon/Icon';
 import Avatar from '@/components/ui/molecules/Avatar/Avatar';
 import IconButton from '@/components/ui/molecules/IconButton/IconButton';
 import sampleAvatar2 from '@/assets/images/avatar_profile_sample_2.png';
+import { useTranslation } from 'react-i18next';
 
 const meta: Meta<typeof Badge> = {
   title: 'UI/Atoms/Badge',
@@ -112,7 +113,6 @@ const meta: Meta<typeof Badge> = {
   },
   args: {
     size: 'md',
-    label: '공지',
   },
 } satisfies Meta<typeof Badge>;
 
@@ -124,15 +124,19 @@ type Story = StoryObj<typeof Badge>;
  * 가장 기본적인 Badge 형태를 확인합니다.
  */
 export const Base: Story = {
-  render: args => (
-    <GuideWrapper>
-      <GuideGroup>
-        <GuideCell>
-          <Badge {...args} />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+
+    return (
+      <GuideWrapper>
+        <GuideGroup>
+          <GuideCell>
+            <Badge {...args} label={t('badge.label')} />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
 };
 
 /**
@@ -141,61 +145,65 @@ export const Base: Story = {
  * 상황에 따라 사각형, 라운드, 알약, 원형 등 다양한 모양을 적용할 수 있습니다.
  */
 export const Sizes: Story = {
-  render: () => (
-    <GuideWrapper>
-      <GuideGroup title='SM'>
-        <GuideCell>
-          <Badge size='sm' shape='square' label='공지' />
-        </GuideCell>
-        <GuideCell>
-          <Badge size='sm' shape='rounded' label='공지' />
-        </GuideCell>
-        <GuideCell>
-          <Badge size='sm' shape='pill' color='danger' label='+999' />
-        </GuideCell>
-        <GuideCell>
-          <Badge size='sm' color='danger' shape='circle' label='N' />
-        </GuideCell>
-        <GuideCell>
-          <Badge size='sm' color='danger' variant='dot' label='신규 알림 있음' />
-        </GuideCell>
-      </GuideGroup>
-      <GuideGroup title='MD'>
-        <GuideCell>
-          <Badge size='md' shape='square' label='공지' />
-        </GuideCell>
-        <GuideCell>
-          <Badge size='md' shape='rounded' label='공지' />
-        </GuideCell>
-        <GuideCell>
-          <Badge size='md' shape='pill' color='danger' label='+999' />
-        </GuideCell>
-        <GuideCell>
-          <Badge size='md' color='danger' shape='circle' label='N' />
-        </GuideCell>
-        <GuideCell>
-          <Badge size='md' color='danger' variant='dot' label='신규 알림 있음' />
-        </GuideCell>
-      </GuideGroup>
-      <GuideGroup title='LG'>
-        <GuideCell>
-          <Badge size='lg' shape='square' label='공지' />
-        </GuideCell>
-        <GuideCell>
-          <Badge size='lg' shape='rounded' label='공지' />
-        </GuideCell>
-        <GuideCell>
-          <Badge size='lg' shape='pill' color='danger' label='+999' />
-        </GuideCell>
-        <GuideCell>
-          <Badge size='lg' color='danger' shape='circle' label='N' />
-        </GuideCell>
-        <GuideCell>
-          <Badge size='lg' color='danger' variant='dot' label='신규 알림 있음' />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: () => {
+    const { t } = useTranslation();
+
+    return (
+      <GuideWrapper>
+        <GuideGroup title='SM'>
+          <GuideCell>
+            <Badge size='sm' shape='square' label={t('badge.label')} />
+          </GuideCell>
+          <GuideCell>
+            <Badge size='sm' shape='rounded' label={t('badge.label')} />
+          </GuideCell>
+          <GuideCell>
+            <Badge size='sm' shape='pill' color='danger' label='+999' />
+          </GuideCell>
+          <GuideCell>
+            <Badge size='sm' color='danger' shape='circle' label='N' />
+          </GuideCell>
+          <GuideCell>
+            <Badge size='sm' color='danger' variant='dot' label='신규 알림 있음' />
+          </GuideCell>
+        </GuideGroup>
+        <GuideGroup title='MD'>
+          <GuideCell>
+            <Badge size='md' shape='square' label={t('badge.label')} />
+          </GuideCell>
+          <GuideCell>
+            <Badge size='md' shape='rounded' label={t('badge.label')} />
+          </GuideCell>
+          <GuideCell>
+            <Badge size='md' shape='pill' color='danger' label='+999' />
+          </GuideCell>
+          <GuideCell>
+            <Badge size='md' color='danger' shape='circle' label='N' />
+          </GuideCell>
+          <GuideCell>
+            <Badge size='md' color='danger' variant='dot' label='신규 알림 있음' />
+          </GuideCell>
+        </GuideGroup>
+        <GuideGroup title='LG'>
+          <GuideCell>
+            <Badge size='lg' shape='square' label={t('badge.label')} />
+          </GuideCell>
+          <GuideCell>
+            <Badge size='lg' shape='rounded' label={t('badge.label')} />
+          </GuideCell>
+          <GuideCell>
+            <Badge size='lg' shape='pill' color='danger' label='+999' />
+          </GuideCell>
+          <GuideCell>
+            <Badge size='lg' color='danger' shape='circle' label='N' />
+          </GuideCell>
+          <GuideCell>
+            <Badge size='lg' color='danger' variant='dot' label='신규 알림 있음' />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
 };
 
 /**
@@ -203,58 +211,62 @@ export const Sizes: Story = {
  * 브랜드 식별자 및 상태 정보(성공, 경고, 위험 등)를 나타내는 색상 구성을 확인합니다.
  */
 export const Colors: Story = {
-  render: () => (
-    <GuideWrapper>
-      <GuideGroup title='Primary'>
-        <GuideCell>
-          <Badge variant='solid' color='primary' label='공지' />
-        </GuideCell>
-        <GuideCell>
-          <Badge variant='outline' color='primary' label='공지' />
-        </GuideCell>
-      </GuideGroup>
-      <GuideGroup title='Secondary'>
-        <GuideCell>
-          <Badge variant='solid' color='secondary' label='공지' />
-        </GuideCell>
-        <GuideCell>
-          <Badge variant='outline' color='secondary' label='공지' />
-        </GuideCell>
-      </GuideGroup>
-      <GuideGroup title='Tertiary'>
-        <GuideCell>
-          <Badge variant='solid' color='tertiary' label='공지' />
-        </GuideCell>
-        <GuideCell>
-          <Badge variant='outline' color='tertiary' label='공지' />
-        </GuideCell>
-      </GuideGroup>
-      <GuideGroup title='Success'>
-        <GuideCell>
-          <Badge variant='solid' color='success' label='공지' />
-        </GuideCell>
-        <GuideCell>
-          <Badge variant='outline' color='success' label='공지' />
-        </GuideCell>
-      </GuideGroup>
-      <GuideGroup title='Warning'>
-        <GuideCell>
-          <Badge variant='solid' color='warning' label='공지' />
-        </GuideCell>
-        <GuideCell>
-          <Badge variant='outline' color='warning' label='공지' />
-        </GuideCell>
-      </GuideGroup>
-      <GuideGroup title='Danger'>
-        <GuideCell>
-          <Badge variant='solid' color='danger' label='공지' />
-        </GuideCell>
-        <GuideCell>
-          <Badge variant='outline' color='danger' label='공지' />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: () => {
+    const { t } = useTranslation();
+
+    return (
+      <GuideWrapper>
+        <GuideGroup title='Primary'>
+          <GuideCell>
+            <Badge variant='solid' color='primary' label={t('badge.label')} />
+          </GuideCell>
+          <GuideCell>
+            <Badge variant='outline' color='primary' label={t('badge.label')} />
+          </GuideCell>
+        </GuideGroup>
+        <GuideGroup title='Secondary'>
+          <GuideCell>
+            <Badge variant='solid' color='secondary' label={t('badge.label')} />
+          </GuideCell>
+          <GuideCell>
+            <Badge variant='outline' color='secondary' label={t('badge.label')} />
+          </GuideCell>
+        </GuideGroup>
+        <GuideGroup title='Tertiary'>
+          <GuideCell>
+            <Badge variant='solid' color='tertiary' label={t('badge.label')} />
+          </GuideCell>
+          <GuideCell>
+            <Badge variant='outline' color='tertiary' label={t('badge.label')} />
+          </GuideCell>
+        </GuideGroup>
+        <GuideGroup title='Success'>
+          <GuideCell>
+            <Badge variant='solid' color='success' label={t('badge.label')} />
+          </GuideCell>
+          <GuideCell>
+            <Badge variant='outline' color='success' label={t('badge.label')} />
+          </GuideCell>
+        </GuideGroup>
+        <GuideGroup title='Warning'>
+          <GuideCell>
+            <Badge variant='solid' color='warning' label={t('badge.label')} />
+          </GuideCell>
+          <GuideCell>
+            <Badge variant='outline' color='warning' label={t('badge.label')} />
+          </GuideCell>
+        </GuideGroup>
+        <GuideGroup title='Danger'>
+          <GuideCell>
+            <Badge variant='solid' color='danger' label={t('badge.label')} />
+          </GuideCell>
+          <GuideCell>
+            <Badge variant='outline' color='danger' label={t('badge.label')} />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
 };
 
 /**
@@ -262,21 +274,24 @@ export const Colors: Story = {
  * 배경을 채운 Solid, 테두리 중심의 Outline, 그리고 단순 상태 알림용 Dot 스타일을 확인합니다.
  */
 export const Variants: Story = {
-  render: () => (
-    <GuideWrapper>
-      <GuideGroup>
-        <GuideCell caption='Solid'>
-          <Badge variant='solid' label='공지' />
-        </GuideCell>
-        <GuideCell caption='Outline'>
-          <Badge variant='outline' label='공지' />
-        </GuideCell>
-        <GuideCell caption='Dot'>
-          <Badge color='danger' variant='dot' label='신규 알림 있음' />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: () => {
+    const { t } = useTranslation();
+    return (
+      <GuideWrapper>
+        <GuideGroup>
+          <GuideCell caption='Solid'>
+            <Badge variant='solid' label={t('badge.label')} />
+          </GuideCell>
+          <GuideCell caption='Outline'>
+            <Badge variant='outline' label={t('badge.label')} />
+          </GuideCell>
+          <GuideCell caption='Dot'>
+            <Badge color='danger' variant='dot' label='신규 알림 있음' />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
 };
 
 /**
@@ -284,28 +299,32 @@ export const Variants: Story = {
  * 데이터의 성격에 맞춰 직각형(Square), 모서리 둥근형(Rounded), 알약형(Pill), 정원형(Circle)을 선택할 수 있습니다.
  */
 export const Shapes: Story = {
-  render: () => (
-    <GuideWrapper>
-      <GuideGroup>
-        <GuideCell caption='Square'>
-          <Badge shape='square' label='공지' />
-          <Badge variant='outline' shape='square' label='공지' />
-        </GuideCell>
-        <GuideCell caption='Rounded'>
-          <Badge shape='rounded' label='공지' />
-          <Badge variant='outline' shape='rounded' label='공지' />
-        </GuideCell>
-        <GuideCell caption='Pill'>
-          <Badge shape='pill' color='danger' label='+999' />
-          <Badge variant='outline' shape='pill' color='danger' label='+999' />
-        </GuideCell>
-        <GuideCell caption='Circle'>
-          <Badge shape='circle' color='danger' label='N' />
-          <Badge variant='outline' color='danger' shape='circle' label='N' />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: () => {
+    const { t } = useTranslation();
+
+    return (
+      <GuideWrapper>
+        <GuideGroup>
+          <GuideCell caption='Square'>
+            <Badge shape='square' label={t('badge.label')} />
+            <Badge variant='outline' shape='square' label={t('badge.label')} />
+          </GuideCell>
+          <GuideCell caption='Rounded'>
+            <Badge shape='rounded' label={t('badge.label')} />
+            <Badge variant='outline' shape='rounded' label={t('badge.label')} />
+          </GuideCell>
+          <GuideCell caption='Pill'>
+            <Badge shape='pill' color='danger' label='+999' />
+            <Badge variant='outline' shape='pill' color='danger' label='+999' />
+          </GuideCell>
+          <GuideCell caption='Circle'>
+            <Badge shape='circle' color='danger' label='N' />
+            <Badge variant='outline' color='danger' shape='circle' label='N' />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
 };
 
 /**
@@ -314,106 +333,120 @@ export const Shapes: Story = {
  * overlapShape와 position 속성을 통해 부모 요소와의 자연스러운 정렬을 지원합니다.
  */
 export const Overlaid: Story = {
-  render: () => (
-    <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '40px' }}>
-      <GuideGroup title='Avatar'>
-        <GuideCell>
-          <Badge variant='dot' size='lg' color='danger' position='bottom-right' overlapShape='pill'>
-            <Avatar
-              alt='홍길동님 프로필'
-              name='홍길동'
+  render: () => {
+    return (
+      <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '40px' }}>
+        <GuideGroup title='Avatar'>
+          <GuideCell>
+            <Badge
+              variant='dot'
+              size='lg'
+              color='danger'
+              position='bottom-right'
+              overlapShape='pill'
+            >
+              <Avatar
+                alt='홍길동님 프로필'
+                name='홍길동'
+                shape='pill'
+                size='md'
+                src={sampleAvatar2}
+              />
+            </Badge>
+          </GuideCell>
+          <GuideCell>
+            <Badge
               shape='pill'
-              size='md'
-              src={sampleAvatar2}
-            />
-          </Badge>
-        </GuideCell>
-        <GuideCell>
-          <Badge
-            shape='pill'
-            size='sm'
-            color='danger'
-            label='+999'
-            position='top-right'
-            overlapShape='pill'
-          >
-            <Avatar
-              alt='홍길동님 프로필'
-              name='홍길동'
+              size='sm'
+              color='danger'
+              label='+999'
+              position='top-right'
+              overlapShape='pill'
+            >
+              <Avatar
+                alt='홍길동님 프로필'
+                name='홍길동'
+                shape='pill'
+                size='md'
+                src={sampleAvatar2}
+              />
+            </Badge>
+          </GuideCell>
+          <GuideCell>
+            <Badge
+              size='sm'
+              shape='rounded'
+              color='danger'
+              label='NEW'
+              position='top-right'
+              overlapShape='pill'
+            >
+              <Avatar
+                alt='홍길동님 프로필'
+                name='홍길동'
+                shape='pill'
+                size='md'
+                src={sampleAvatar2}
+              />
+            </Badge>
+          </GuideCell>
+        </GuideGroup>
+        <GuideGroup title='Icon Button'>
+          <GuideCell>
+            <Badge
+              variant='dot'
+              size='lg'
+              color='danger'
+              position='top-right'
+              overlapShape='rounded'
+            >
+              <IconButton
+                color='primary'
+                shape='rounded'
+                size='md'
+                variant='outline'
+                icon={<Icon name='bell' className='icon' strokeWidth={2.5} />}
+              />
+            </Badge>
+          </GuideCell>
+          <GuideCell>
+            <Badge
               shape='pill'
-              size='md'
-              src={sampleAvatar2}
-            />
-          </Badge>
-        </GuideCell>
-        <GuideCell>
-          <Badge
-            size='sm'
-            shape='rounded'
-            color='danger'
-            label='NEW'
-            position='top-right'
-            overlapShape='pill'
-          >
-            <Avatar
-              alt='홍길동님 프로필'
-              name='홍길동'
-              shape='pill'
-              size='md'
-              src={sampleAvatar2}
-            />
-          </Badge>
-        </GuideCell>
-      </GuideGroup>
-      <GuideGroup title='Icon Button'>
-        <GuideCell>
-          <Badge variant='dot' size='lg' color='danger' position='top-right' overlapShape='rounded'>
-            <IconButton
-              color='primary'
+              size='sm'
+              color='danger'
+              label='+999'
+              position='top-right'
+              overlapShape='rounded'
+            >
+              <IconButton
+                color='primary'
+                shape='rounded'
+                size='md'
+                variant='outline'
+                icon={<Icon name='bell' className='icon' strokeWidth={2.5} />}
+              />
+            </Badge>
+          </GuideCell>
+          <GuideCell>
+            <Badge
+              size='sm'
               shape='rounded'
-              size='md'
-              variant='outline'
-              icon={<Icon name='bell' className='icon' strokeWidth={2.5} />}
-            />
-          </Badge>
-        </GuideCell>
-        <GuideCell>
-          <Badge
-            shape='pill'
-            size='sm'
-            color='danger'
-            label='+999'
-            position='top-right'
-            overlapShape='rounded'
-          >
-            <IconButton
-              color='primary'
-              shape='rounded'
-              size='md'
-              variant='outline'
-              icon={<Icon name='bell' className='icon' strokeWidth={2.5} />}
-            />
-          </Badge>
-        </GuideCell>
-        <GuideCell>
-          <Badge
-            size='sm'
-            shape='rounded'
-            color='danger'
-            label='NEW'
-            position='top-right'
-            overlapShape='rounded'
-          >
-            <IconButton
-              color='primary'
-              shape='rounded'
-              size='md'
-              variant='outline'
-              icon={<Icon name='bell' className='icon' strokeWidth={2.5} />}
-            />
-          </Badge>
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+              color='danger'
+              label='NEW'
+              position='top-right'
+              overlapShape='rounded'
+            >
+              <IconButton
+                color='primary'
+                shape='rounded'
+                size='md'
+                variant='outline'
+                icon={<Icon name='bell' className='icon' strokeWidth={2.5} />}
+              />
+            </Badge>
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
 };

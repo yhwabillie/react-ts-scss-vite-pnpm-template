@@ -3,9 +3,10 @@ import CalendarOptionList from './CalendarOptionList';
 import OptionItem from '../../molecules/OptionItem/OptionItem';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { SpecimenCell, SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
-import { useId } from 'react';
-import { calendarMonthOptions, calendarYearOptions } from './Calendar.mock';
+import { useMemo } from 'react';
+import { getCalendarMonthOptions, getCalendarYearOptions } from './Calendar.mock';
 import { GuideCell, GuideGroup, GuideWrapper } from '../../guide/Guide';
+import { useTranslation } from 'react-i18next';
 
 const meta = {
   title: 'UI/Organisms/Calendar/CalendarOptionList',
@@ -106,12 +107,16 @@ type Story = StoryObj<typeof meta>;
  */
 export const Base: Story = {
   render: args => {
+    const { i18n } = useTranslation();
+    const yearOptions = useMemo(() => getCalendarYearOptions(i18n.language), [i18n.language]);
+    const monthOptions = useMemo(() => getCalendarMonthOptions(i18n.language), [i18n.language]);
+
     return (
       <SpecimenRow style={{ justifyContent: 'center' }}>
         <SpecimenCell>
           <AnatomyWrapper title='연도 선택' style={{ width: 'fit-content', margin: 'auto' }}>
             <CalendarOptionList {...args} aria-label='연도 옵션 리스트'>
-              {calendarYearOptions.map((item, idx) => (
+              {yearOptions.map((item, idx) => (
                 <OptionItem
                   key={item.id}
                   variant='ghost'
@@ -128,7 +133,7 @@ export const Base: Story = {
         <SpecimenCell>
           <AnatomyWrapper title='월 선택' style={{ width: 'fit-content', margin: 'auto' }}>
             <CalendarOptionList {...args} aria-label='월 옵션 리스트'>
-              {calendarMonthOptions.map((item, idx) => (
+              {monthOptions.map((item, idx) => (
                 <OptionItem
                   key={item.id}
                   variant='ghost'
@@ -154,16 +159,18 @@ export const Base: Story = {
  */
 export const Colors: Story = {
   render: args => {
+    const { i18n } = useTranslation();
     const colorOptions: Array<
       'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger'
     > = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'];
+    const yearOptions = useMemo(() => getCalendarYearOptions(i18n.language), [i18n.language]);
 
     return (
       <SpecimenWrapper style={{ width: '450px', margin: 'auto' }}>
         {colorOptions.map((color, _) => (
           <SpecimenGroup key={color} title={color}>
             <CalendarOptionList {...args} color={color} aria-label='연도 옵션 리스트'>
-              {calendarYearOptions.map((item, idx) => (
+              {yearOptions.map((item, idx) => (
                 <OptionItem
                   key={item.id}
                   variant='ghost'

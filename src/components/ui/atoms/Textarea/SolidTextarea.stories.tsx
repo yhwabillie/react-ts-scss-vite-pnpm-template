@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/guide/Specimen';
 import AnatomyWrapper from '@/components/ui/guide/AnatomyWrapper';
 import { GuideWrapper } from '../../guide/Guide';
+import { useTranslation } from 'react-i18next';
 
 const meta = {
   title: 'UI/Atoms/Textarea/Solid',
@@ -127,13 +128,21 @@ export const Base: Story = {
   },
   args: {},
   render: args => {
+    const { t } = useTranslation();
     /** * Storybook Autodocs에서는 같은 스토리가 여러 번 렌더링될 수 있으므로,
      * 각 인스턴스가 고유한 name과 id를 갖도록 랜덤값을 활용하거나
      * 고유한 접미사를 붙여줌.
      */
     const uniqueId = `textarea-${Math.random().toString(36).slice(2, 7)}`;
 
-    return <Textarea {...args} id={uniqueId} name={uniqueId} />;
+    return (
+      <Textarea
+        {...args}
+        id={uniqueId}
+        name={uniqueId}
+        placeholder={t('textarea.default.placeholder')}
+      />
+    );
   },
 };
 
@@ -155,6 +164,7 @@ export const Colors: Story = {
     name: 'textarea-color-group',
   },
   render: args => {
+    const { t } = useTranslation();
     const colorOptions: Array<
       'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger'
     > = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'];
@@ -174,6 +184,7 @@ export const Colors: Story = {
                     id={`${uniqueId}-empty`}
                     name={`${uniqueId}-empty`}
                     defaultValue=''
+                    placeholder={t('textarea.default.placeholder')}
                   />
                 </SpecimenCell>
                 <SpecimenCell caption='Filled'>
@@ -182,7 +193,7 @@ export const Colors: Story = {
                     color={color}
                     id={`${uniqueId}-fill`}
                     name={`${uniqueId}-fill`}
-                    defaultValue='내용이 입력된 상태입니다.'
+                    defaultValue={t('textarea.default.value')}
                   />
                 </SpecimenCell>
               </SpecimenRow>
@@ -209,6 +220,7 @@ export const Sizes: Story = {
     },
   },
   render: args => {
+    const { t } = useTranslation();
     const sizeOptions: Array<'xs' | 'sm' | 'md' | 'lg' | 'xl'> = ['xs', 'sm', 'md', 'lg', 'xl'];
 
     return (
@@ -219,14 +231,14 @@ export const Sizes: Story = {
               <AnatomyWrapper title='부모 요소 : 800px'>
                 <SpecimenRow>
                   <SpecimenCell caption='XL (100%)' style={{ width: '800px' }}>
-                    <Textarea {...args} size={size} />
+                    <Textarea {...args} size={size} placeholder={t('textarea.default.placeholder')} />
                   </SpecimenCell>
                 </SpecimenRow>
               </AnatomyWrapper>
             ) : (
               <SpecimenRow>
                 <SpecimenCell caption={size}>
-                  <Textarea {...args} size={size} />
+                  <Textarea {...args} size={size} placeholder={t('textarea.default.placeholder')} />
                 </SpecimenCell>
               </SpecimenRow>
             )}
@@ -250,6 +262,7 @@ export const States: Story = {
     },
   },
   render: args => {
+    const { t } = useTranslation();
     const states = [
       { label: 'Normal', class: '' },
       { label: 'Hover', class: 'pseudo-hover' },
@@ -273,6 +286,7 @@ export const States: Story = {
                     {...state.props}
                     id={`${uniqueId}-empty`}
                     name={`${uniqueId}-empty`}
+                    placeholder={t('textarea.default.placeholder')}
                   />
                 </SpecimenCell>
                 <SpecimenCell caption='Filled'>
@@ -282,7 +296,7 @@ export const States: Story = {
                     {...state.props}
                     id={`${uniqueId}-fill`}
                     name={`${uniqueId}-fill`}
-                    defaultValue='내용이 입력된 상태입니다.'
+                    defaultValue={t('textarea.default.value')}
                   />
                 </SpecimenCell>
               </SpecimenRow>
@@ -309,12 +323,16 @@ export const WithCount: Story = {
     },
   },
   render: args => {
+    const { t } = useTranslation();
     const scenarios = [
-      { label: 'Empty', props: { defaultValue: '', placeholder: '글자를 입력해보세요.' } },
-      { label: 'Typing', props: { defaultValue: '현재 입력 중인 상태입니다.' } },
+      {
+        label: 'Empty',
+        props: { defaultValue: '', placeholder: t('textarea.width_count.placeholder') },
+      },
+      { label: 'Typing', props: { defaultValue: t('textarea.width_count.value.typing') } },
       {
         label: 'Max Limit',
-        props: { defaultValue: '최대 글자 수에 도달하면 카운터 색상이 변합니다.' },
+        props: { defaultValue: t('textarea.width_count.value.max') },
       },
     ];
 

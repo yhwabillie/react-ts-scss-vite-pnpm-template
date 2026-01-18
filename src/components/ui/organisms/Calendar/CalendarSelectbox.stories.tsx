@@ -2,8 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import CalendarSelectbox from './CalendarSelectbox';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
-import { calendarMonthOptions, calendarYearOptions } from './Calendar.mock';
-import { useId } from 'react';
+import { getCalendarMonthOptions, getCalendarYearOptions } from './Calendar.mock';
+import { useId, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const meta = {
   title: 'UI/Organisms/Calendar/CalendarSelectbox',
@@ -49,7 +50,10 @@ type Story = StoryObj<typeof meta>;
  */
 export const Base: Story = {
   render: args => {
+    const { i18n } = useTranslation();
     const uniqueId = useId();
+    const yearOptions = useMemo(() => getCalendarYearOptions(i18n.language), [i18n.language]);
+    const monthOptions = useMemo(() => getCalendarMonthOptions(i18n.language), [i18n.language]);
 
     return (
       <SpecimenGroup>
@@ -58,7 +62,7 @@ export const Base: Story = {
             <CalendarSelectbox
               {...args}
               selectId={`${uniqueId}-year`}
-              options={calendarYearOptions}
+              options={yearOptions}
               defaultOptionId='year-2020'
               aria-label='연도 선택'
             />
@@ -69,7 +73,7 @@ export const Base: Story = {
             <CalendarSelectbox
               {...args}
               selectId={`${uniqueId}-month`}
-              options={calendarMonthOptions}
+              options={monthOptions}
               defaultOptionId='month-3'
               aria-label='월 선택'
             />
@@ -87,11 +91,13 @@ export const Base: Story = {
  */
 export const Colors: Story = {
   render: args => {
+    const { i18n } = useTranslation();
     const colorOptions: Array<'primary' | 'secondary' | 'tertiary'> = [
       'primary',
       'secondary',
       'tertiary',
     ];
+    const monthOptions = useMemo(() => getCalendarMonthOptions(i18n.language), [i18n.language]);
 
     return (
       <SpecimenWrapper>
@@ -106,7 +112,7 @@ export const Colors: Story = {
                   color={color}
                   selectId={`${uniqueId}-month`}
                   aria-labelledby={`${uniqueId}-month-label`}
-                  options={calendarMonthOptions}
+                  options={monthOptions}
                   defaultOptionId='month-3'
                 />
               </SpecimenRow>
@@ -125,12 +131,14 @@ export const Colors: Story = {
  */
 export const States: Story = {
   render: args => {
+    const { i18n } = useTranslation();
     const states = [
       { label: 'Normal', props: {} },
       { label: 'Hover', props: { className: 'pseudo-hover' } },
       { label: 'Focus', props: { className: 'pseudo-focus-visible' } },
       { label: 'Disabled', props: { disabled: true } },
     ];
+    const monthOptions = useMemo(() => getCalendarMonthOptions(i18n.language), [i18n.language]);
 
     return (
       <SpecimenWrapper>
@@ -145,7 +153,7 @@ export const States: Story = {
                   {...state.props}
                   selectId={`${uniqueId}-month`}
                   aria-labelledby={`${uniqueId}-month-label`}
-                  options={calendarMonthOptions}
+                  options={monthOptions}
                   defaultOptionId='month-3'
                 />
               </SpecimenRow>

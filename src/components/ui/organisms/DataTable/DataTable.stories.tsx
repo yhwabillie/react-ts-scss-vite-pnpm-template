@@ -7,6 +7,7 @@ import DataTable, {
 import { GuideCell, GuideGroup, GuideWrapper } from '@/components/ui/guide/Guide';
 import Badge from '@/components/ui/atoms/Badge/Badge';
 import Icon from '@/components/ui/atoms/Icon/Icon';
+import { useTranslation } from 'react-i18next';
 
 // 테스트용 데이터 타입 정의
 interface MockUser {
@@ -15,6 +16,7 @@ interface MockUser {
   email: string;
   role: string;
   status: 'active' | 'inactive';
+  statusLabel?: string;
 }
 
 interface MockDataTableItem {
@@ -175,18 +177,38 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable<MockUser>>;
 
-// 목업 데이터 정의
-const MOCK_USER: MockUser[] = [
-  { id: 1, name: 'Gemini', email: 'gemini@example.com', role: 'Admin', status: 'active' },
-  { id: 2, name: 'John Doe', email: 'john@example.com', role: 'User', status: 'inactive' },
-  { id: 3, name: 'Jane Smith', email: 'jane@example.com', role: 'Editor', status: 'active' },
+const buildMockUsers = (t: (key: string) => string): MockUser[] => [
+  {
+    id: 1,
+    name: t('data-table.default.items.item_a.name'),
+    email: 'chulsoo@example.com',
+    role: t('data-table.default.items.item_a.role'),
+    status: 'active',
+    statusLabel: t('data-table.default.items.item_a.status'),
+  },
+  {
+    id: 2,
+    name: t('data-table.default.items.item_b.name'),
+    email: 'sosuke@example.com',
+    role: t('data-table.default.items.item_b.role'),
+    status: 'inactive',
+    statusLabel: t('data-table.default.items.item_b.status'),
+  },
+  {
+    id: 3,
+    name: t('data-table.default.items.item_c.name'),
+    email: 'john@example.com',
+    role: t('data-table.default.items.item_c.role'),
+    status: 'active',
+    statusLabel: t('data-table.default.items.item_c.status'),
+  },
 ];
 
-const MOCK_NOTICES: MockDataTableItem[] = [
+const buildMockNotices = (t: (key: string) => string): MockDataTableItem[] => [
   {
     id: 'notice-1',
-    title: '[공지] 서비스 정기 점검 안내 및 이용 제한 관련 긴급 공지사항입니다 (1/10)',
-    author: '관리자',
+    title: t('data-table.notice.notice_item.item_a.title'),
+    author: t('data-table.notice.notice_item.item_a.writer'),
     date: '2026-01-01',
     views: 1542,
     href: '/notice/1',
@@ -195,8 +217,8 @@ const MOCK_NOTICES: MockDataTableItem[] = [
   },
   {
     id: 'notice-2',
-    title: '[안내] 2026년 상반기 디자인 시스템 업데이트 로드맵 공유',
-    author: '운영자',
+    title: t('data-table.notice.notice_item.item_b.title'),
+    author: t('data-table.notice.notice_item.item_b.writer'),
     date: '2026-01-02',
     views: 840,
     href: '/notice/2',
@@ -205,12 +227,11 @@ const MOCK_NOTICES: MockDataTableItem[] = [
   },
 ];
 
-const MOCK_BOARD: MockDataTableItem[] = [
+const buildMockBoard = (t: (key: string) => string): MockDataTableItem[] => [
   {
     id: 10,
-    title:
-      '제목이 매우 길어서 한 줄을 넘어가고 다음 칸을 가릴 정도로 길게 작성된 게시글의 제목입니다. 말줄임표 처리가 필요합니다.',
-    author: '김철수',
+    title: t('data-table.notice.default_items.item_a.title'),
+    author: t('data-table.notice.default_items.item_a.name'),
     date: '2026-01-04',
     views: 45,
     href: '/board/10',
@@ -220,8 +241,8 @@ const MOCK_BOARD: MockDataTableItem[] = [
   },
   {
     id: 9,
-    title: '디자인 시스템 가이드',
-    author: '이영희',
+    title: t('data-table.notice.default_items.item_b.title'),
+    author: t('data-table.notice.default_items.item_b.name'),
     date: '2026-01-02',
     views: 210,
     href: '/board/9',
@@ -231,8 +252,7 @@ const MOCK_BOARD: MockDataTableItem[] = [
   },
 ];
 
-// 컬럼 정의
-const columns: Column<MockUser>[] = [
+const buildUserColumns = (t: (key: string) => string): Column<MockUser>[] => [
   { key: 'id', header: 'ID', width: '80px' },
   { key: 'name', header: '이름' },
   { key: 'email', header: '이메일' },
@@ -240,14 +260,17 @@ const columns: Column<MockUser>[] = [
   {
     key: 'status',
     header: '상태',
-    render: value => (
-      <Badge
-        variant='outline'
-        size='sm'
-        color={value === 'active' ? 'success' : 'danger'}
-        label={value.toUpperCase()}
-      />
-    ),
+    render: (value, row) => {
+      const label = row.statusLabel ?? String(value);
+      return (
+        <Badge
+          variant='outline'
+          size='sm'
+          color={value === 'active' ? 'success' : 'danger'}
+          label={label}
+        />
+      );
+    },
   },
 ];
 
@@ -259,8 +282,13 @@ export const Base: Story = {
   args: {
     caption: '사용자 목록',
     summary: '시스템에 등록된 전체 사용자 정보를 나타내는 표입니다.',
-    columns,
-    data: MOCK_USER,
+  },
+  render: args => {
+    const { t } = useTranslation();
+    const columns = useMemo(() => buildUserColumns(t), [t]);
+    const data = useMemo(() => buildMockUsers(t), [t]);
+
+    return <DataTable {...args} columns={columns} data={data} />;
   },
 };
 
@@ -271,17 +299,30 @@ export const Base: Story = {
  */
 export const Variants: Story = {
   render: args => {
+    const { t } = useTranslation();
+    const columns = useMemo(() => buildUserColumns(t), [t]);
+    const data = useMemo(() => buildMockUsers(t), [t]);
+
     return (
       <GuideWrapper>
         <GuideGroup title='Solid'>
           <GuideCell>
-            <DataTable {...args} variant='solid' aria-label='Solid Table' caption='Solid Table' />
+            <DataTable
+              {...args}
+              columns={columns}
+              data={data}
+              variant='solid'
+              aria-label='Solid Table'
+              caption='Solid Table'
+            />
           </GuideCell>
         </GuideGroup>
         <GuideGroup title='Outline'>
           <GuideCell>
             <DataTable
               {...args}
+              columns={columns}
+              data={data}
               variant='outline'
               aria-label='Outline Table'
               caption='Outline Table'
@@ -292,8 +333,6 @@ export const Variants: Story = {
     );
   },
   args: {
-    columns,
-    data: MOCK_USER,
     color: 'primary',
     size: 'md',
   },
@@ -304,41 +343,77 @@ export const Variants: Story = {
  * 시스템 키 컬러(Primary, Secondary, Tertiary)에 따른 색상 변화를 확인합니다.
  */
 export const Colors: Story = {
-  render: args => (
-    <GuideWrapper style={{ gap: '50px' }}>
-      <GuideGroup title='primary'>
-        <GuideCell>
-          <DataTable {...args} color='primary' variant='solid' caption='Primary Solid Table' />
-          <DataTable {...args} color='primary' variant='outline' caption='Primary Outline Table' />
-        </GuideCell>
-      </GuideGroup>
-      <GuideGroup title='secondary'>
-        <GuideCell>
-          <DataTable {...args} color='secondary' variant='solid' caption='Secondary Solid Table' />
-          <DataTable
-            {...args}
-            color='secondary'
-            variant='outline'
-            caption='secondary Outline Table'
-          />
-        </GuideCell>
-      </GuideGroup>
-      <GuideGroup title='tertiary'>
-        <GuideCell>
-          <DataTable {...args} color='tertiary' variant='solid' caption='tertiary Solid Table' />
-          <DataTable
-            {...args}
-            color='tertiary'
-            variant='outline'
-            caption='Tertiary Outline Table'
-          />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const columns = useMemo(() => buildUserColumns(t), [t]);
+    const data = useMemo(() => buildMockUsers(t), [t]);
+
+    return (
+      <GuideWrapper style={{ gap: '50px' }}>
+        <GuideGroup title='primary'>
+          <GuideCell>
+            <DataTable
+              {...args}
+              columns={columns}
+              data={data}
+              color='primary'
+              variant='solid'
+              caption='Primary Solid Table'
+            />
+            <DataTable
+              {...args}
+              columns={columns}
+              data={data}
+              color='primary'
+              variant='outline'
+              caption='Primary Outline Table'
+            />
+          </GuideCell>
+        </GuideGroup>
+        <GuideGroup title='secondary'>
+          <GuideCell>
+            <DataTable
+              {...args}
+              columns={columns}
+              data={data}
+              color='secondary'
+              variant='solid'
+              caption='Secondary Solid Table'
+            />
+            <DataTable
+              {...args}
+              columns={columns}
+              data={data}
+              color='secondary'
+              variant='outline'
+              caption='secondary Outline Table'
+            />
+          </GuideCell>
+        </GuideGroup>
+        <GuideGroup title='tertiary'>
+          <GuideCell>
+            <DataTable
+              {...args}
+              columns={columns}
+              data={data}
+              color='tertiary'
+              variant='solid'
+              caption='tertiary Solid Table'
+            />
+            <DataTable
+              {...args}
+              columns={columns}
+              data={data}
+              color='tertiary'
+              variant='outline'
+              caption='Tertiary Outline Table'
+            />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
   args: {
-    columns,
-    data: MOCK_USER,
     size: 'md',
   },
 };
@@ -348,24 +423,28 @@ export const Colors: Story = {
  * - **Checkpoint**: SM 사이즈 사용 시 텍스트가 겹치지 않는지, 모바일 환경에서도 최소 터치 영역이 확보되는지 점검합니다.
  */
 export const Sizes: Story = {
-  render: args => (
-    <GuideWrapper>
-      <GuideGroup direction='column'>
-        <GuideCell caption='SM'>
-          <DataTable {...args} size='sm' caption='Small Table' />
-        </GuideCell>
-        <GuideCell caption='MD'>
-          <DataTable {...args} size='md' caption='Medium Table' />
-        </GuideCell>
-        <GuideCell caption='LG'>
-          <DataTable {...args} size='lg' caption='Large Table' />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const columns = useMemo(() => buildUserColumns(t), [t]);
+    const data = useMemo(() => buildMockUsers(t), [t]);
+
+    return (
+      <GuideWrapper>
+        <GuideGroup direction='column'>
+          <GuideCell caption='SM'>
+            <DataTable {...args} columns={columns} data={data} size='sm' caption='Small Table' />
+          </GuideCell>
+          <GuideCell caption='MD'>
+            <DataTable {...args} columns={columns} data={data} size='md' caption='Medium Table' />
+          </GuideCell>
+          <GuideCell caption='LG'>
+            <DataTable {...args} columns={columns} data={data} size='lg' caption='Large Table' />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
   args: {
-    columns,
-    data: MOCK_USER,
     variant: 'solid',
     color: 'primary',
   },
@@ -380,6 +459,10 @@ export const Sizes: Story = {
  */
 export const WithNotices: StoryObj<typeof DataTable<MockDataTableItem>> = {
   render: args => {
+    const { t } = useTranslation();
+    const notices = useMemo(() => buildMockNotices(t), [t]);
+    const boardItems = useMemo(() => buildMockBoard(t), [t]);
+
     // 1. SortState 타입(key: string)과의 호환을 위해 타입을 string으로 지정
     const [sort, setSort] = useState<{
       key: string;
@@ -391,9 +474,9 @@ export const WithNotices: StoryObj<typeof DataTable<MockDataTableItem>> = {
 
     // 2. 정렬 로직 (useMemo로 성능 최적화)
     const sortedData = useMemo(() => {
-      if (sort.order === 'none') return MOCK_BOARD;
+      if (sort.order === 'none') return boardItems;
 
-      return [...MOCK_BOARD].sort((a, b) => {
+      return [...boardItems].sort((a, b) => {
         // 인덱스 접근을 위해 keyof DataTableItem으로 타입 단언
         const currentKey = sort.key as keyof MockDataTableItem;
         const aValue = a[currentKey];
@@ -404,7 +487,7 @@ export const WithNotices: StoryObj<typeof DataTable<MockDataTableItem>> = {
         if (aValue > bValue) return sort.order === 'asc' ? 1 : -1;
         return 0;
       });
-    }, [sort]);
+    }, [boardItems, sort]);
 
     // 3. DataTable의 onSort 인터페이스 대응 핸들러
     const handleSort = (key: string | number | symbol, order: SortOrder) => {
@@ -416,7 +499,7 @@ export const WithNotices: StoryObj<typeof DataTable<MockDataTableItem>> = {
         <DataTable
           {...args}
           variant='solid'
-          notices={MOCK_NOTICES}
+          notices={notices}
           data={sortedData}
           sortState={sort}
           onSort={handleSort}
@@ -424,7 +507,7 @@ export const WithNotices: StoryObj<typeof DataTable<MockDataTableItem>> = {
         <DataTable
           {...args}
           variant='outline'
-          notices={MOCK_NOTICES}
+          notices={notices}
           data={sortedData}
           sortState={sort}
           onSort={handleSort}
@@ -514,6 +597,9 @@ export const WithNotices: StoryObj<typeof DataTable<MockDataTableItem>> = {
  */
 export const WithCheckboxes: Story = {
   render: args => {
+    const { t } = useTranslation();
+    const columns = useMemo(() => buildUserColumns(t), [t]);
+    const data = useMemo(() => buildMockUsers(t), [t]);
     const [selectedRows, setSelectedRows] = useState<Set<number | string>>(new Set());
 
     const handleSelectRow = (id: number | string) => {
@@ -524,13 +610,15 @@ export const WithCheckboxes: Story = {
     };
 
     const handleSelectAll = (isAll: boolean) => {
-      if (isAll) setSelectedRows(new Set(MOCK_USER.map(d => d.id)));
+      if (isAll) setSelectedRows(new Set(data.map(d => d.id)));
       else setSelectedRows(new Set());
     };
 
     return (
       <DataTable
         {...args}
+        columns={columns}
+        data={data}
         selectedRows={selectedRows}
         onSelectRow={handleSelectRow}
         onSelectAll={handleSelectAll}
@@ -539,8 +627,6 @@ export const WithCheckboxes: Story = {
   },
   args: {
     caption: '체크박스 선택 가능 표',
-    columns,
-    data: MOCK_USER,
     showCheckbox: true,
   },
 };
@@ -550,20 +636,39 @@ export const WithCheckboxes: Story = {
  * 특정 열의 헤더를 클릭하여 데이터를 오름차순/내림차순으로 정렬합니다.
  */
 export const Sortable: Story = {
+  args: {
+    caption: '정렬 기능이 활성화된 표',
+    // 📌 중요: 각 컬럼 객체에 sortable: true를 추가해야 버튼이 나타납니다.
+  },
   render: args => {
-    // 1. 정렬 상태 관리
+    const { t } = useTranslation();
+    const columns = useMemo(
+      () =>
+        buildUserColumns(t).map(col => ({
+          ...col,
+          sortable:
+            col.key === 'id' ||
+            col.key === 'name' ||
+            col.key === 'role' ||
+            col.key === 'status' ||
+            col.key === 'email',
+        })),
+      [t],
+    );
+    const data = useMemo(() => buildMockUsers(t), [t]);
+
     const [sort, setSort] = useState<{ key: string; order: 'asc' | 'desc' | 'none' }>({
       key: 'id',
       order: 'asc',
     });
 
-    // 2. 정렬 로직 구현 (실제 데이터 정렬)
-    const sortedData = [...MOCK_USER].sort((a, b) => {
+    const sortedData = [...data].sort((a, b) => {
       if (sort.order === 'none') return 0;
 
       const aValue = a[sort.key as keyof MockUser];
       const bValue = b[sort.key as keyof MockUser];
 
+      if (aValue === undefined || bValue === undefined) return 0;
       if (aValue < bValue) return sort.order === 'asc' ? -1 : 1;
       if (aValue > bValue) return sort.order === 'asc' ? 1 : -1;
       return 0;
@@ -572,24 +677,12 @@ export const Sortable: Story = {
     return (
       <DataTable
         {...args}
-        data={sortedData} // 정렬된 데이터 전달
+        columns={columns}
+        data={sortedData}
         sortState={sort}
         onSort={(key, order) => setSort({ key: String(key), order })}
       />
     );
-  },
-  args: {
-    caption: '정렬 기능이 활성화된 표',
-    // 📌 중요: 각 컬럼 객체에 sortable: true를 추가해야 버튼이 나타납니다.
-    columns: columns.map(col => ({
-      ...col,
-      sortable:
-        col.key === 'id' ||
-        col.key === 'name' ||
-        col.key === 'role' ||
-        col.key === 'status' ||
-        col.key === 'email',
-    })),
   },
 };
 
@@ -600,7 +693,12 @@ export const Sortable: Story = {
 export const Empty: Story = {
   args: {
     caption: '데이터 없음 상태',
-    columns,
     data: [],
+  },
+  render: args => {
+    const { t } = useTranslation();
+    const columns = useMemo(() => buildUserColumns(t), [t]);
+
+    return <DataTable {...args} columns={columns} />;
   },
 };

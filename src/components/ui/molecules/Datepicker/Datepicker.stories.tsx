@@ -1,15 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Datepicker from './Datepicker';
+import Datepicker, { type DatepickerProps } from './Datepicker';
 import {
-  calendarYearOptions,
-  calendarMonthOptions,
+  getCalendarMonthOptions,
+  getCalendarYearOptions,
   TODAY_YEAR,
   TODAY_MONTH,
 } from '../../organisms/Calendar/Calendar.mock';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
 import { GuideCell, GuideGroup, GuideRow } from '../../guide/Guide';
-import { useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import type { Holiday } from '@/App';
 
 /**
  * [Datepicker]
@@ -148,15 +150,14 @@ const meta = {
     color: 'primary',
     size: 'md',
     inputProps: {
-      id: 'datepicker-input',
       placeholder: 'YYYY-MM-DD',
     },
     calendar: {
       selectedYear: TODAY_YEAR,
       selectedMonth: TODAY_MONTH,
       calendarProps: {
-        yearOptions: calendarYearOptions,
-        monthOptions: calendarMonthOptions,
+        yearOptions: getCalendarYearOptions('ko'),
+        monthOptions: getCalendarMonthOptions('ko'),
       },
       holidays: [
         { date: '20251225', name: '크리스마스' },
@@ -170,8 +171,142 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const pad2 = (value: number) => String(value).padStart(2, '0');
+
+const buildHolidaySamples = (year: number, month: number) => [
+  { date: `${year}${pad2(month)}01`, name: 'Sample Holiday' },
+  { date: `${year}${pad2(month)}15`, name: 'Sample Event' },
+];
+
+const holidayCache = new Map<string, Holiday[]>();
+
+const fetchHolidays = async (year: number, month: number, signal?: AbortSignal) => {
+  const apiKey = import.meta.env.VITE_OPEN_API_KEY as string | undefined;
+  if (!apiKey) return null;
+
+  const cacheKey = `${year}-${pad2(month)}`;
+  const cached = holidayCache.get(cacheKey);
+  if (cached) return cached;
+
+  const url =
+    'https://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getRestDeInfo' +
+    `?serviceKey=${apiKey}` +
+    `&solYear=${year}` +
+    `&solMonth=${pad2(month)}`;
+
+  try {
+    const res = await fetch(url, { signal });
+    const text = await res.text();
+
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(text, 'application/xml');
+    const items = Array.from(xmlDoc.getElementsByTagName('item'));
+
+    const parsed: Holiday[] = items.map(item => ({
+      date: item.getElementsByTagName('locdate')[0]?.textContent ?? '',
+      name: item.getElementsByTagName('dateName')[0]?.textContent ?? '',
+    }));
+
+    holidayCache.set(cacheKey, parsed);
+    return parsed;
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') return null;
+    throw error;
+  }
+};
+
+const useApiHolidays = (year: number, month: number) => {
+  const [holidays, setHolidays] = useState<Holiday[] | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetchHolidays(year, month, controller.signal)
+      .then(data => {
+        if (data) setHolidays(data);
+      })
+      .catch(error => {
+        if (error instanceof DOMException && error.name === 'AbortError') return;
+        console.error(error);
+      });
+
+    return () => controller.abort();
+  }, [year, month]);
+
+  return holidays;
+};
+
+const buildCalendarConfig = (
+  calendar: DatepickerProps['calendar'] | undefined,
+  language: string,
+  holidaysOverride?: Holiday[] | null,
+) => {
+  const selectedYear = calendar?.selectedYear ?? TODAY_YEAR;
+  const selectedMonth = calendar?.selectedMonth ?? TODAY_MONTH;
+
+  return {
+    ...calendar,
+    selectedYear,
+    selectedMonth,
+    calendarProps: {
+      yearOptions: getCalendarYearOptions(language),
+      monthOptions: getCalendarMonthOptions(language),
+    },
+    holidays:
+      holidaysOverride ?? calendar?.holidays ?? buildHolidaySamples(selectedYear, selectedMonth),
+  };
+};
+
+const useCalendarConfig = (calendar: DatepickerProps['calendar'] | undefined, language: string) => {
+  const initialYear = calendar?.selectedYear ?? TODAY_YEAR;
+  const initialMonth = calendar?.selectedMonth ?? TODAY_MONTH;
+  const [year, setYear] = useState(initialYear);
+  const [month, setMonth] = useState(initialMonth);
+  const apiHolidays = useApiHolidays(year, month);
+  const prevInitialRef = useRef({ year: initialYear, month: initialMonth });
+
+  useEffect(() => {
+    const prev = prevInitialRef.current;
+    if (prev.year !== initialYear || prev.month !== initialMonth) {
+      prevInitialRef.current = { year: initialYear, month: initialMonth };
+      setYear(initialYear);
+      setMonth(initialMonth);
+    }
+  }, [initialMonth, initialYear]);
+
+  return useMemo(
+    () =>
+      buildCalendarConfig(
+        {
+          ...calendar,
+          selectedYear: year,
+          selectedMonth: month,
+          onYearChange: setYear,
+          onMonthChange: setMonth,
+        },
+        language,
+        apiHolidays,
+      ),
+    [apiHolidays, calendar, language, month, year],
+  );
+};
+
 export const Base: Story = {
-  render: args => <Datepicker {...args} />,
+  render: args => {
+    const { i18n } = useTranslation();
+    const inputId = useId();
+    const calendar = useCalendarConfig(args.calendar, i18n.language);
+
+    return (
+      <Datepicker
+        {...args}
+        id={inputId}
+        locale={i18n.language}
+        inputProps={{ ...args.inputProps, id: inputId }}
+        calendar={calendar}
+      />
+    );
+  },
 };
 
 /**
@@ -180,6 +315,9 @@ export const Base: Story = {
  */
 export const Colors: Story = {
   render: args => {
+    const { i18n } = useTranslation();
+    const baseId = useId();
+    const calendar = useCalendarConfig(args.calendar, i18n.language);
     const colorOptions: Array<'primary' | 'secondary' | 'tertiary'> = [
       'primary',
       'secondary',
@@ -189,10 +327,18 @@ export const Colors: Story = {
     return (
       <SpecimenWrapper>
         {colorOptions.map(color => {
+          const inputId = `${baseId}-${color}`;
           return (
             <SpecimenGroup key={color} title={color}>
               <SpecimenRow>
-                <Datepicker {...args} color={color} />
+                <Datepicker
+                  {...args}
+                  color={color}
+                  locale={i18n.language}
+                  id={inputId}
+                  inputProps={{ ...args.inputProps, id: inputId }}
+                  calendar={calendar}
+                />
               </SpecimenRow>
             </SpecimenGroup>
           );
@@ -209,15 +355,26 @@ export const Colors: Story = {
  */
 export const Sizes: Story = {
   render: args => {
+    const { i18n } = useTranslation();
+    const baseId = useId();
+    const calendar = useCalendarConfig(args.calendar, i18n.language);
     const sizeOptions: Array<'xs' | 'sm' | 'md' | 'lg' | 'xl'> = ['xs', 'sm', 'md', 'lg', 'xl'];
 
     return (
       <SpecimenWrapper>
         {sizeOptions.map(size => {
+          const inputId = `${baseId}-${size}`;
           return (
             <SpecimenGroup key={size} title={size.toUpperCase()}>
               <SpecimenRow>
-                <Datepicker {...args} size={size} />
+                <Datepicker
+                  {...args}
+                  size={size}
+                  locale={i18n.language}
+                  id={inputId}
+                  inputProps={{ ...args.inputProps, id: inputId }}
+                  calendar={calendar}
+                />
               </SpecimenRow>
             </SpecimenGroup>
           );
@@ -234,6 +391,9 @@ export const Sizes: Story = {
  */
 export const States: Story = {
   render: args => {
+    const { i18n } = useTranslation();
+    const baseId = useId();
+    const calendar = useCalendarConfig(args.calendar, i18n.language);
     const states = [
       { label: 'Normal', props: {} },
       { label: 'Hover', props: { className: 'pseudo-hover' } },
@@ -245,14 +405,19 @@ export const States: Story = {
     return (
       <SpecimenWrapper>
         {states.map((state, idx) => {
+          const inputId = `${baseId}-${idx}`;
           return (
             <SpecimenGroup key={idx} title={state.label}>
               <SpecimenRow>
                 <Datepicker
                   {...args}
                   {...state.props}
+                  locale={i18n.language}
+                  id={inputId}
+                  calendar={calendar}
                   inputProps={{
                     ...args.inputProps,
+                    id: inputId,
                     disabled: state.props.disabled,
                     readOnly: state.props.readOnly,
                   }}
@@ -273,6 +438,8 @@ export const States: Story = {
  */
 export const Shapes: Story = {
   render: args => {
+    const { i18n } = useTranslation();
+    const calendar = useCalendarConfig(args.calendar, i18n.language);
     const shapeOptions: Array<'square' | 'rounded' | 'pill'> = ['square', 'rounded', 'pill'];
 
     return (
@@ -281,7 +448,14 @@ export const Shapes: Story = {
           <GuideRow key={shape} direction='column'>
             {/* 상단 캡션용 Cell */}
             <GuideCell caption={shape.toUpperCase()}>
-              <Datepicker {...args} shape={shape} />
+              <Datepicker
+                {...args}
+                shape={shape}
+                locale={i18n.language}
+                id={`${shape}-input`}
+                inputProps={{ ...args.inputProps, id: `${shape}-input` }}
+                calendar={calendar}
+              />
             </GuideCell>
           </GuideRow>
         ))}
@@ -297,6 +471,9 @@ export const Shapes: Story = {
  */
 export const Variants: Story = {
   render: args => {
+    const { i18n } = useTranslation();
+    const baseId = useId();
+    const calendar = useCalendarConfig(args.calendar, i18n.language);
     type btnVariantsType = 'ghost' | 'solid';
 
     const btnVariants: btnVariantsType[] = ['ghost', 'solid'];
@@ -304,9 +481,17 @@ export const Variants: Story = {
     return (
       <SpecimenWrapper>
         {btnVariants.map((variant, idx) => {
+          const inputId = `${baseId}-${variant}-${idx}`;
           return (
             <SpecimenGroup key={idx} title={variant}>
-              <Datepicker {...args} buttonProps={{ variant: variant }} />
+              <Datepicker
+                {...args}
+                buttonProps={{ variant: variant }}
+                locale={i18n.language}
+                id={inputId}
+                inputProps={{ ...args.inputProps, id: inputId }}
+                calendar={calendar}
+              />
             </SpecimenGroup>
           );
         })}
@@ -320,11 +505,25 @@ export const Variants: Story = {
  * 저장된 정보에 따르면, 이 컴포넌트는 'partially obscured' 에러를 방지하기 위해 포털을 통한 최상위 렌더링 전략을 취합니다.
  */
 export const PortalTest: Story = {
-  render: args => (
-    <AnatomyWrapper title='부모 요소가 overflow: hidden 상태입니다.' style={{ overflow: 'hidden' }}>
-      <Datepicker {...args} />
-    </AnatomyWrapper>
-  ),
+  render: args => {
+    const { i18n } = useTranslation();
+    const calendar = useCalendarConfig(args.calendar, i18n.language);
+
+    return (
+      <AnatomyWrapper
+        title='부모 요소가 overflow: hidden 상태입니다.'
+        style={{ overflow: 'hidden' }}
+      >
+        <Datepicker
+          {...args}
+          locale={i18n.language}
+          id='portal-test-input'
+          inputProps={{ ...args.inputProps, id: 'portal-test-input' }}
+          calendar={calendar}
+        />
+      </AnatomyWrapper>
+    );
+  },
 };
 
 /**
@@ -333,21 +532,23 @@ export const PortalTest: Story = {
  */
 export const Controlled: Story = {
   render: args => {
+    const { i18n } = useTranslation();
+    const baseCalendar = useCalendarConfig(args.calendar, i18n.language);
     // 외부에서 2026년 1월 1일로 상태 관리
     const [selectedDate, setSelectedDate] = useState<Date | null>(new Date(2026, 0, 1));
-    const [year, setYear] = useState(2026);
-    const [month, setMonth] = useState(1);
+    const inputId = useId();
 
     return (
       <GuideGroup title='Controlled Datepicker (2026-01-01)'>
         <Datepicker
           {...args}
+          locale={i18n.language}
+          id={inputId}
           calendar={{
-            ...args.calendar,
+            ...baseCalendar,
             selectedDate: selectedDate,
-            selectedYear: year,
-            selectedMonth: month,
           }}
+          inputProps={{ ...args.inputProps, id: inputId }}
           onDateChange={(value, date) => {
             setSelectedDate(date);
             console.log('선택된 날짜 문자열:', value);

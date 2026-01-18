@@ -1,43 +1,50 @@
 import type { OptionBase } from '../../molecules/OptionItem/OptionItem';
 
+type CalendarLocale = string;
+
 // 연도
 const currentYear = new Date().getFullYear();
 
 const PAST_YEARS = 10;
 const FUTURE_YEARS = 2;
 
-export const calendarYearOptions: Omit<OptionBase, 'label'>[] = Array.from(
-  { length: PAST_YEARS + FUTURE_YEARS + 1 },
-  (_, i) => {
+const formatYearLabel = (year: number, locale: CalendarLocale) =>
+  new Intl.DateTimeFormat(locale, { year: 'numeric' }).format(new Date(year, 0, 1));
+
+const formatMonthLabel = (month: number, locale: CalendarLocale) =>
+  new Intl.DateTimeFormat(locale, { month: 'long' }).format(new Date(2024, month - 1, 1));
+
+export const getCalendarYearOptions = (locale: CalendarLocale = 'ko') =>
+  Array.from({ length: PAST_YEARS + FUTURE_YEARS + 1 }, (_, i) => {
     const year = currentYear - PAST_YEARS + i;
 
     return {
       id: `year-${year}`,
-      value: `${year}년`,
+      value: formatYearLabel(year, locale),
       selected: year === currentYear,
       disabled: false,
     };
-  },
-);
+  });
 
 // 월
 const currentMonth = new Date().getMonth() + 1; // 1 ~ 12
 
 const TOTAL_MONTHS = 12;
 
-export const calendarMonthOptions: Omit<OptionBase, 'label'>[] = Array.from(
-  { length: TOTAL_MONTHS },
-  (_, i) => {
+export const getCalendarMonthOptions = (locale: CalendarLocale = 'ko') =>
+  Array.from({ length: TOTAL_MONTHS }, (_, i) => {
     const month = i + 1;
 
     return {
       id: `month-${month}`,
-      value: `${month}월`,
+      value: formatMonthLabel(month, locale),
       selected: month === currentMonth,
       disabled: false,
     };
-  },
-);
+  });
+
+export const calendarYearOptions: Omit<OptionBase, 'label'>[] = getCalendarYearOptions('ko');
+export const calendarMonthOptions: Omit<OptionBase, 'label'>[] = getCalendarMonthOptions('ko');
 
 // 달력 matrix
 const today = new Date();
@@ -53,6 +60,34 @@ export function isSameDate(a: Date, b: Date) {
     a.getDate() === b.getDate()
   );
 }
+
+export const getWeekdayNames = (locale: CalendarLocale = 'ko', weekStartsOn: number = 0) => {
+  const formatter = new Intl.DateTimeFormat(locale, { weekday: 'short' });
+  const base = new Date(Date.UTC(2021, 0, 3));
+  const names = Array.from({ length: 7 }, (_, i) => {
+    const date = new Date(base);
+    date.setUTCDate(base.getUTCDate() + i);
+    return formatter.format(date);
+  });
+
+  if (weekStartsOn === 0) return names;
+  const offset = ((weekStartsOn % 7) + 7) % 7;
+  return names.slice(offset).concat(names.slice(0, offset));
+};
+
+export const getCalendarStatusLabels = (locale: CalendarLocale = 'ko') => {
+  const base = locale.split('-')[0];
+
+  switch (base) {
+    case 'en':
+      return { today: 'today', selected: 'selected' };
+    case 'ja':
+      return { today: '今日', selected: '選択済み' };
+    case 'ko':
+    default:
+      return { today: '오늘', selected: '선택됨' };
+  }
+};
 
 export interface CalendarCell {
   date: Date;

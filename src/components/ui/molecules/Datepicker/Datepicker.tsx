@@ -27,9 +27,11 @@ export interface DatepickerProps extends StyleProps, NativeDivPorps {
   id?: string;
   as?: React.ElementType;
   className?: string;
+  locale?: string;
   inputProps?: {
     id?: string;
     value?: string;
+    onChange?: React.ChangeEventHandler<HTMLInputElement>;
     readOnly?: boolean;
     disabled?: boolean;
     placeholder?: string;
@@ -63,6 +65,7 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
       id,
       'aria-labelledby': ariaLabelledBy,
       className,
+      locale = 'ko',
       as: Component = 'label',
       inputProps = {},
       buttonProps = {
@@ -73,6 +76,7 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
     },
     ref,
   ) => {
+    const resolvedReadOnly = inputProps.readOnly ?? false;
     const {
       selectedYear,
       selectedMonth,
@@ -108,6 +112,8 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
     // ✅ 캘린더가 키보드로 열렸는지 추적
     const [openedByKeyboard, setOpenedByKeyboard] = useState(false);
     const triggerButtonRef = useRef<HTMLButtonElement>(null);
+    const resolvedInputId = inputProps.id ?? id;
+    const labelId = id && resolvedInputId && id === resolvedInputId ? `${id}-label` : id;
 
     const formatDate = (date: Date): string => {
       const y = date.getFullYear();
@@ -155,6 +161,32 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
 
     const [tempSelectedDate, setTempSelectedDate] = useState<Date | null>(resolvedSelectedDate);
     const [confirmedDate, setConfirmedDate] = useState<Date | null>(resolvedSelectedDate); // 확정 값
+    const [inputValue, setInputValue] = useState<string>(
+      confirmedDate ? formatDate(confirmedDate) : inputProps.value || '',
+    );
+
+    useEffect(() => {
+      if (confirmedDate) {
+        setInputValue(formatDate(confirmedDate));
+      } else {
+        setInputValue(inputProps.value || '');
+      }
+    }, [confirmedDate, inputProps.value]);
+
+    const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+      setInputValue(event.target.value);
+      inputProps.onChange?.(event);
+    };
+
+    const handleInputBlur: React.FocusEventHandler<HTMLInputElement> = () => {
+      if (resolvedReadOnly) return;
+      const parsed = parseDateString(inputValue);
+      if (!parsed) return;
+
+      setConfirmedDate(parsed);
+      setTempSelectedDate(parsed);
+      onDateChange?.(formatDate(parsed), parsed);
+    };
 
     // -----------------------------------------------------
     // 🔧 [Portal] 위치 계산
@@ -273,15 +305,15 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
 
     const toggle = useCallback(() => {
       // readOnly일 경우 함수 실행을 즉시 중단
-      if (inputProps.readOnly) return;
+      if (resolvedReadOnly) return;
 
       setIsOpen(prev => !prev);
-    }, [inputProps.readOnly]);
+    }, [resolvedReadOnly]);
 
     // ⌨️ [Interaction] 달력 트리거 버튼 키다운 핸들러 수정 (이 부분은 유지)
     const handleTriggerKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
       // readOnly일 경우 키 이벤트를 무시
-      if (inputProps.readOnly) return;
+      if (resolvedReadOnly) return;
 
       // Enter 또는 Space 키를 감지
       if (e.key === 'Enter' || e.key === ' ') {
@@ -355,9 +387,9 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
     // -----------------------------
     return (
       <Component
-        {...(Component === 'label' ? { htmlFor: id } : {})}
+        {...(Component === 'label' ? { htmlFor: resolvedInputId } : {})}
         ref={containerRef}
-        id={id}
+        id={labelId}
         className={clsx(
           `${styles['datepicker']} variant--${variant} ${`shape--${shape}`} color--${color} size--${size}`,
           filteredClassName,
@@ -369,10 +401,13 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
             type='text'
             className={clsx('custom-input-text', pseudoClassName)}
             {...inputProps}
+            id={resolvedInputId}
             aria-labelledby={ariaLabelledBy}
             // 1. 확정된 날짜가 있으면 포맷팅된 값을 보여주고, 없으면 inputProps의 초기값 사용
-            value={confirmedDate ? formatDate(confirmedDate) : inputProps.value || ''}
-            readOnly={inputProps.readOnly}
+            value={inputValue}
+            onChange={handleInputChange}
+            onBlur={handleInputBlur}
+            readOnly={resolvedReadOnly}
           />
           <span id={ariaLabelledBy} className='sr-only'>
             {inputProps?.placeholder}
@@ -381,7 +416,7 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
             ref={triggerButtonRef}
             className='trigger-calendar'
             aria-expanded={isOpen}
-            disabled={inputProps.disabled || inputProps.readOnly}
+            disabled={inputProps.disabled || resolvedReadOnly}
             type='button'
             aria-label={isOpen ? '달력 닫기' : '달력 열기'}
             onClick={() => {
@@ -415,6 +450,7 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
                 calendarRef={calendarRef}
                 variant='outline'
                 color={color}
+                locale={locale}
                 selectedYear={viewYear ?? calendar.selectedYear}
                 selectedMonth={viewMonth ?? calendar.selectedMonth}
                 selectedDate={tempSelectedDate}

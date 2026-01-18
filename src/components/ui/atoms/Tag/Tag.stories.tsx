@@ -4,6 +4,10 @@ import Icon from '../../atoms/Icon/Icon';
 import { GuideGroup, GuideWrapper } from '../../guide/Guide';
 import { useRef, useState } from 'react';
 import Button from '../../molecules/Button/Button';
+import { useTranslation } from 'react-i18next';
+
+const TAG_KEYS = ['label_a', 'label_b', 'label_c'];
+const NAV_KEYS = ['label_a', 'label_b'];
 
 const meta: Meta<typeof Tag> = {
   title: 'UI/Atoms/Tag',
@@ -117,11 +121,14 @@ type Story = StoryObj<typeof Tag>;
  * 별도의 인터랙션이 없는 순수 메타데이터 나열 시 사용합니다.
  */
 export const Base: Story = {
-  render: args => (
-    <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-      <Tag {...args}>태그</Tag>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    return (
+      <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
+        <Tag {...args}>{t('tag.base.label')}</Tag>
+      </GuideWrapper>
+    );
+  },
 };
 
 /**
@@ -130,16 +137,20 @@ export const Base: Story = {
  * - Outline: 보조 정보나 데이터가 많은 화면에서 시각적 간섭을 줄일 때 사용합니다.
  */
 export const Variants: Story = {
-  render: args => (
-    <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-      <GuideGroup title='Solid'>
-        <Tag {...args} variant='solid' />
-      </GuideGroup>
-      <GuideGroup title='Outline'>
-        <Tag {...args} variant='outline' />
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const label = t('tag.base.label');
+    return (
+      <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
+        <GuideGroup title='Solid'>
+          <Tag {...args} variant='solid' label={label} />
+        </GuideGroup>
+        <GuideGroup title='Outline'>
+          <Tag {...args} variant='outline' label={label} />
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
 };
 
 /**
@@ -148,16 +159,20 @@ export const Variants: Story = {
  * - MD: 일반적인 상세 페이지나 카드 UI의 정보 표시용입니다.
  */
 export const Sizes: Story = {
-  render: args => (
-    <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-      <GuideGroup title='SM'>
-        <Tag {...args} size='sm' />
-      </GuideGroup>
-      <GuideGroup title='MD'>
-        <Tag {...args} size='md' />
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const label = t('tag.base.label');
+    return (
+      <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
+        <GuideGroup title='SM'>
+          <Tag {...args} size='sm' label={label} />
+        </GuideGroup>
+        <GuideGroup title='MD'>
+          <Tag {...args} size='md' label={label} />
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
 };
 
 /**
@@ -166,84 +181,91 @@ export const Sizes: Story = {
  * - End Icon: 링크 표시 등 후속 동작에 대한 시각적 힌트를 제공합니다.
  */
 export const WithIcon: Story = {
-  render: args => (
-    <GuideWrapper style={{ width: 'fit-content', margin: 'auto', alignItems: 'flex-start' }}>
-      <GuideGroup title='Start Icon'>
-        <div
-          style={{
-            display: 'flex',
-            gap: '10px',
-          }}
-        >
-          <Tag
-            {...args}
-            startIcon={
-              <Icon
-                name='hash'
-                className='icon'
-                strokeWidth={2.5}
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-            }
-          />
-          <Tag
-            {...args}
-            variant='outline'
-            startIcon={
-              <Icon
-                name='hash'
-                className='icon'
-                strokeWidth={2.5}
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-            }
-          />
-        </div>
-      </GuideGroup>
-      <GuideGroup title='End Icon'>
-        <div
-          style={{
-            display: 'flex',
-            gap: '10px',
-          }}
-        >
-          <Tag
-            {...args}
-            label='네이버로 이동'
-            href='https://www.naver.com/'
-            target='_blank'
-            endIcon={
-              <Icon
-                name='link'
-                className='icon'
-                strokeWidth={2.5}
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-            }
-          />
-          <Tag
-            {...args}
-            variant='outline'
-            label='네이버로 이동'
-            href='https://www.naver.com/'
-            target='_blank'
-            endIcon={
-              <Icon
-                name='link'
-                className='icon'
-                strokeWidth={2.5}
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-            }
-          />
-        </div>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const label = t('tag.base.label');
+    const navLabel = t('tag.navigational.solid_items.label_a');
+    return (
+      <GuideWrapper style={{ width: 'fit-content', margin: 'auto', alignItems: 'flex-start' }}>
+        <GuideGroup title='Start Icon'>
+          <div
+            style={{
+              display: 'flex',
+              gap: '10px',
+            }}
+          >
+            <Tag
+              {...args}
+              label={label}
+              startIcon={
+                <Icon
+                  name='hash'
+                  className='icon'
+                  strokeWidth={2.5}
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                />
+              }
+            />
+            <Tag
+              {...args}
+              variant='outline'
+              label={label}
+              startIcon={
+                <Icon
+                  name='hash'
+                  className='icon'
+                  strokeWidth={2.5}
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                />
+              }
+            />
+          </div>
+        </GuideGroup>
+        <GuideGroup title='End Icon'>
+          <div
+            style={{
+              display: 'flex',
+              gap: '10px',
+            }}
+          >
+            <Tag
+              {...args}
+              label={navLabel}
+              href='https://www.naver.com/'
+              target='_blank'
+              endIcon={
+                <Icon
+                  name='link'
+                  className='icon'
+                  strokeWidth={2.5}
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                />
+              }
+            />
+            <Tag
+              {...args}
+              variant='outline'
+              label={navLabel}
+              href='https://www.naver.com/'
+              target='_blank'
+              endIcon={
+                <Icon
+                  name='link'
+                  className='icon'
+                  strokeWidth={2.5}
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                />
+              }
+            />
+          </div>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
 };
 
 /**
@@ -252,43 +274,47 @@ export const WithIcon: Story = {
  * - Pill: 해시태그 등 캐주얼한 키워드 강조 시 권장합니다.
  */
 export const Shapes: Story = {
-  render: args => (
-    <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-      <GuideGroup title='Square'>
-        <div
-          style={{
-            display: 'flex',
-            gap: '10px',
-          }}
-        >
-          <Tag {...args} variant='solid' shape='square' />
-          <Tag {...args} variant='outline' shape='square' />
-        </div>
-      </GuideGroup>
-      <GuideGroup title='Rounded'>
-        <div
-          style={{
-            display: 'flex',
-            gap: '10px',
-          }}
-        >
-          <Tag {...args} variant='solid' shape='rounded' />
-          <Tag {...args} variant='outline' shape='rounded' />
-        </div>
-      </GuideGroup>
-      <GuideGroup title='Pill'>
-        <div
-          style={{
-            display: 'flex',
-            gap: '10px',
-          }}
-        >
-          <Tag {...args} variant='solid' shape='pill' />
-          <Tag {...args} variant='outline' shape='pill' />
-        </div>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const label = t('tag.base.label');
+    return (
+      <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
+        <GuideGroup title='Square'>
+          <div
+            style={{
+              display: 'flex',
+              gap: '10px',
+            }}
+          >
+            <Tag {...args} variant='solid' shape='square' label={label} />
+            <Tag {...args} variant='outline' shape='square' label={label} />
+          </div>
+        </GuideGroup>
+        <GuideGroup title='Rounded'>
+          <div
+            style={{
+              display: 'flex',
+              gap: '10px',
+            }}
+          >
+            <Tag {...args} variant='solid' shape='rounded' label={label} />
+            <Tag {...args} variant='outline' shape='rounded' label={label} />
+          </div>
+        </GuideGroup>
+        <GuideGroup title='Pill'>
+          <div
+            style={{
+              display: 'flex',
+              gap: '10px',
+            }}
+          >
+            <Tag {...args} variant='solid' shape='pill' label={label} />
+            <Tag {...args} variant='outline' shape='pill' label={label} />
+          </div>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
 };
 
 /**
@@ -296,43 +322,47 @@ export const Shapes: Story = {
  * 모든 조합은 배경 대비 4.5:1(AA) 이상의 명도 대비를 유지하여 가독성을 보장합니다.
  */
 export const Colors: Story = {
-  render: args => (
-    <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-      <GuideGroup title='Primary'>
-        <div
-          style={{
-            display: 'flex',
-            gap: '10px',
-          }}
-        >
-          <Tag {...args} variant='solid' color='primary' />
-          <Tag {...args} variant='outline' color='primary' />
-        </div>
-      </GuideGroup>
-      <GuideGroup title='Secondary'>
-        <div
-          style={{
-            display: 'flex',
-            gap: '10px',
-          }}
-        >
-          <Tag {...args} variant='solid' color='secondary' />
-          <Tag {...args} variant='outline' color='secondary' />
-        </div>
-      </GuideGroup>
-      <GuideGroup title='Tertiary'>
-        <div
-          style={{
-            display: 'flex',
-            gap: '10px',
-          }}
-        >
-          <Tag {...args} variant='solid' color='tertiary' />
-          <Tag {...args} variant='outline' color='tertiary' />
-        </div>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const label = t('tag.base.label');
+    return (
+      <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
+        <GuideGroup title='Primary'>
+          <div
+            style={{
+              display: 'flex',
+              gap: '10px',
+            }}
+          >
+            <Tag {...args} variant='solid' color='primary' label={label} />
+            <Tag {...args} variant='outline' color='primary' label={label} />
+          </div>
+        </GuideGroup>
+        <GuideGroup title='Secondary'>
+          <div
+            style={{
+              display: 'flex',
+              gap: '10px',
+            }}
+          >
+            <Tag {...args} variant='solid' color='secondary' label={label} />
+            <Tag {...args} variant='outline' color='secondary' label={label} />
+          </div>
+        </GuideGroup>
+        <GuideGroup title='Tertiary'>
+          <div
+            style={{
+              display: 'flex',
+              gap: '10px',
+            }}
+          >
+            <Tag {...args} variant='solid' color='tertiary' label={label} />
+            <Tag {...args} variant='outline' color='tertiary' label={label} />
+          </div>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
 };
 
 /**
@@ -342,11 +372,14 @@ export const Colors: Story = {
  */
 export const Deletable: Story = {
   render: args => {
-    const initialState = ['JavaScript', 'TypeScript', 'React'];
+    const { t } = useTranslation();
+    const solidSeed = TAG_KEYS.map(key => t(`tag.deletable.solid_items.${key}`));
+    const outlineSeed = TAG_KEYS.map(key => t(`tag.deletable.outline_items.${key}`));
+    const initialState = solidSeed;
 
     // 1. 상태 분리 (Solid용, Outline용)
-    const [solidTags, setSolidTags] = useState(initialState);
-    const [outlineTags, setOutlineTags] = useState(initialState);
+    const [solidTags, setSolidTags] = useState(solidSeed);
+    const [outlineTags, setOutlineTags] = useState(outlineSeed);
 
     // 2. Ref 배열 분리
     const solidRefs = useRef<(HTMLElement | null)[]>([]);
@@ -408,7 +441,7 @@ export const Deletable: Story = {
                 size='xs'
                 variant='outline'
                 color='danger'
-                onClick={() => setSolidTags(initialState)}
+                onClick={() => setSolidTags(solidSeed)}
                 startIcon={<Icon name='rotate' className='icon' strokeWidth={2.5} />}
                 style={{ width: 'max-content' }}
               >
@@ -449,7 +482,7 @@ export const Deletable: Story = {
                 size='xs'
                 variant='outline'
                 color='danger'
-                onClick={() => setOutlineTags(initialState)}
+                onClick={() => setOutlineTags(outlineSeed)}
                 startIcon={<Icon name='rotate' className='icon' strokeWidth={2.5} />}
                 style={{ width: 'max-content' }}
               >
@@ -473,45 +506,53 @@ export const Navigational: Story = {
     href: 'https://www.naver.com/',
     target: '_blank',
   },
-  render: args => (
-    <GuideWrapper style={{ margin: 'auto', width: 'fit-content' }}>
-      {/* --- Solid Navigational --- */}
-      <GuideGroup title='Solid Link'>
-        <div style={{ display: 'flex', gap: '10px' }}>
-          <Tag
-            {...args}
-            variant='solid'
-            color='primary'
-            endIcon={<Icon name='link' className='icon' strokeWidth={2.5} />}
-          />
-          <Tag
-            {...args}
-            variant='solid'
-            color='secondary'
-            label='문서 확인'
-            endIcon={<Icon name='file' className='icon' strokeWidth={2.5} />}
-          />
-        </div>
-      </GuideGroup>
+  render: args => {
+    const { t } = useTranslation();
+    const solidLabels = NAV_KEYS.map(key => t(`tag.navigational.solid_items.${key}`));
+    const outlineLabels = NAV_KEYS.map(key => t(`tag.navigational.outline_items.${key}`));
 
-      {/* --- Outline Navigational --- */}
-      <GuideGroup title='Outline Link'>
-        <div style={{ display: 'flex', gap: '10px' }}>
-          <Tag
-            {...args}
-            variant='outline'
-            color='primary'
-            endIcon={<Icon name='link' className='icon' strokeWidth={2.5} />}
-          />
-          <Tag
-            {...args}
-            variant='outline'
-            color='secondary'
-            label='문서 확인'
-            endIcon={<Icon name='file' className='icon' strokeWidth={2.5} />}
-          />
-        </div>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+    return (
+      <GuideWrapper style={{ margin: 'auto', width: 'fit-content' }}>
+        {/* --- Solid Navigational --- */}
+        <GuideGroup title='Solid Link'>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <Tag
+              {...args}
+              variant='solid'
+              color='primary'
+              label={solidLabels[0]}
+              endIcon={<Icon name='link' className='icon' strokeWidth={2.5} />}
+            />
+            <Tag
+              {...args}
+              variant='solid'
+              color='secondary'
+              label={solidLabels[1]}
+              endIcon={<Icon name='file' className='icon' strokeWidth={2.5} />}
+            />
+          </div>
+        </GuideGroup>
+
+        {/* --- Outline Navigational --- */}
+        <GuideGroup title='Outline Link'>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <Tag
+              {...args}
+              variant='outline'
+              color='primary'
+              label={outlineLabels[0]}
+              endIcon={<Icon name='link' className='icon' strokeWidth={2.5} />}
+            />
+            <Tag
+              {...args}
+              variant='outline'
+              color='secondary'
+              label={outlineLabels[1]}
+              endIcon={<Icon name='file' className='icon' strokeWidth={2.5} />}
+            />
+          </div>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
 };
