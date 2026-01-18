@@ -367,11 +367,12 @@ export const Controlled: Story = {
     await userEvent.click(trigger);
 
     // 2. 옵션 선택 테스트 (Portal 대응을 위해 screen 사용)
-    const targetOption = args.options?.[1]; // '진행 중' 등 두 번째 옵션
+    const targetOption = args.options?.[1]; // 두 번째 옵션
     if (targetOption) {
       // 중복 텍스트 에러 방지: role="option"인 요소 중 이름이 일치하는 것만 탐색
+      const optionNamePattern = new RegExp(targetOption.value.replace(/\s+/g, '\\s*'), 'i');
       const optionElement = await screen.findByRole('option', {
-        name: new RegExp(targetOption.value, 'i'),
+        name: optionNamePattern,
       });
       await userEvent.click(optionElement);
 
