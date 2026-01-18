@@ -8,7 +8,7 @@ import {
 } from './Calendar.mock';
 import { useEffect, useState } from 'react';
 import { GuideGroup } from '../../guide/Guide';
-import { expect, within, userEvent, waitFor, waitForElementToBeRemoved } from 'storybook/test';
+import { expect, within, userEvent, waitFor } from 'storybook/test';
 import { useTranslation } from 'react-i18next';
 import type { Holiday } from '@/App';
 

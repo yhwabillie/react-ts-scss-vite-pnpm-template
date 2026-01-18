@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { ToastProvider } from '../molecules/Toast/ToastProvider';
 import { ColorTokensData } from '../../../constants/generated/color-tokens';
+import semanticColors from '../../../../tokens/color/colors.json';
 import ColorTokenTable from './ColorTokenTable';
 
 const meta: Meta<typeof ColorTokenTable> = {
@@ -47,10 +48,46 @@ const SUFFIX_MAP: Record<string, string> = {
   'focus-ring': 'focus-ring',
 };
 
+const buildGuideTokens = (
+  node: Record<string, any>,
+  prefix: string[] = [],
+): typeof ColorTokensData => {
+  const tokens: typeof ColorTokensData = [];
+
+  Object.entries(node).forEach(([key, value]) => {
+    if (value && typeof value === 'object' && 'value' in value) {
+      const id = `--color-guide-${[...prefix, key].join('-')}`;
+      tokens.push({
+        id,
+        lightValue: value.value,
+        darkValue: value.value,
+      });
+      return;
+    }
+
+    if (value && typeof value === 'object') {
+      tokens.push(...buildGuideTokens(value as Record<string, any>, [...prefix, key]));
+    }
+  });
+
+  return tokens;
+};
+
+const guideTokens = buildGuideTokens(
+  (semanticColors as { color?: { guide?: Record<string, any> } }).color?.guide || {},
+);
+
+const mergedTokens = [
+  ...ColorTokensData,
+  ...guideTokens.filter(
+    token => !ColorTokensData.some(existing => existing.id === token.id),
+  ),
+];
+
 /**
  * 2. 그룹화 로직 (정밀 매핑 및 구조 정제)
  */
-const groupedTokens = ColorTokensData.reduce(
+const groupedTokens = mergedTokens.reduce(
   (acc, token) => {
     // 1. 접두사 제거 로직 강화
     // --color-color- 로 시작하는 경우와 --color- 로 시작하는 경우 모두 대응
@@ -345,5 +382,13 @@ export const Chip: Story = {
     title: 'Chip Tokens',
     category: 'Component',
     tokens: [...(groupedTokens['chip'] || [])],
+  },
+};
+// Guide 그룹
+export const Guide: Story = {
+  args: {
+    title: 'Guide Tokens',
+    category: 'System',
+    tokens: groupedTokens['guide'] || [],
   },
 };

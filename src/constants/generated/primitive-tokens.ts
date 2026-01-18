@@ -81,6 +81,12 @@ export const PrimitiveTokensData = [
         "variable": "--color-primitive-gray-160"
       },
       {
+        "id": "primitive-gray-200",
+        "name": "200",
+        "value": "#cccccc",
+        "variable": "--color-primitive-gray-200"
+      },
+      {
         "id": "primitive-gray-260",
         "name": "260",
         "value": "#bdbdbd",
@@ -247,6 +253,12 @@ export const PrimitiveTokensData = [
         "name": "930",
         "value": "#121212",
         "variable": "--color-primitive-gray-930"
+      },
+      {
+        "id": "primitive-gray-940",
+        "name": "940",
+        "value": "#111111",
+        "variable": "--color-primitive-gray-940"
       },
       {
         "id": "primitive-gray-black",
@@ -862,6 +874,18 @@ export const PrimitiveTokensData = [
   {
     "category": "BLUE",
     "colors": [
+      {
+        "id": "primitive-blue-340",
+        "name": "340",
+        "value": "#667eea",
+        "variable": "--color-primitive-blue-340"
+      },
+      {
+        "id": "primitive-blue-480",
+        "name": "480",
+        "value": "#1e44ea",
+        "variable": "--color-primitive-blue-480"
+      },
       {
         "id": "primitive-blue-660",
         "name": "660",
@@ -2043,6 +2067,36 @@ export const PrimitiveTokensData = [
         "name": "green-750",
         "value": "rgba(21,128,101,0.25)",
         "variable": "--color-primitive-alpha-green-750"
+      },
+      {
+        "id": "primitive-alpha-gray-140",
+        "name": "gray-140",
+        "value": "rgba(255,255,255,0.8)",
+        "variable": "--color-primitive-alpha-gray-140"
+      },
+      {
+        "id": "primitive-alpha-blue-340",
+        "name": "blue-340",
+        "value": "rgba(102,126,234,0.7)",
+        "variable": "--color-primitive-alpha-blue-340"
+      },
+      {
+        "id": "primitive-alpha-indigo-540",
+        "name": "indigo-540",
+        "value": "rgba(118,75,162,0.6)",
+        "variable": "--color-primitive-alpha-indigo-540"
+      },
+      {
+        "id": "primitive-alpha-pink-250",
+        "name": "pink-250",
+        "value": "rgba(255,126,179,0.6)",
+        "variable": "--color-primitive-alpha-pink-250"
+      },
+      {
+        "id": "primitive-alpha-green-240",
+        "name": "green-240",
+        "value": "rgba(133,255,233,0.5)",
+        "variable": "--color-primitive-alpha-green-240"
       }
     ]
   }

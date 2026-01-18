@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import Icon from '../atoms/Icon/Icon';
-import styles from './ColorPipeline.module.scss';
+import styles from './Pipeline.module.scss';
 import clsx from 'clsx';
 
 // 5단계 공정 그리드 컴포넌트

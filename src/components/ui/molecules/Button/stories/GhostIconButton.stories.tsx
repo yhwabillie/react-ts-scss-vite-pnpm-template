@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useId } from 'react';
-import { expect, fn, within } from 'storybook/test';
+import { fn } from 'storybook/test';
 
 import Icon from '../../../atoms/Icon/Icon';
 import IconButton from '../../IconButton/IconButton';

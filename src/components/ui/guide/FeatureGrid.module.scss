@@ -20,9 +20,9 @@
 
     .feature-card {
       border-radius: var(--project-border-radius-12);
-      border: rem(1px) solid #cccccc;
+      border: rem(1px) solid var(--project-color-primitive-gray-200);
       padding: rem(24px);
-      background: #f9fafb;
+      background: var(--project-color-primitive-slate-blue-60);
       transition:
         transform 0.2s ease,
         box-shadow 0.2s ease;
@@ -30,19 +30,19 @@
       // 접근성 향상: 호버 시 카드 강조
       &:hover {
         transform: translateY(-4px) !important;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 12px var(--project-color-primitive-alpha-gray-1000);
       }
 
       &__title {
         margin: 0 0 rem(8px) 0;
-        color: #667eea;
+        color: var(--project-color-primitive-blue-340);
         font: var(--project-typo-sub-title-1-700);
       }
 
       &__desc {
         margin: 0;
         font: var(--project-typo-sub-title-4-500);
-        color: #333333;
+        color: var(--project-color-primitive-gray-800);
         word-break: keep-all;
       }
     }

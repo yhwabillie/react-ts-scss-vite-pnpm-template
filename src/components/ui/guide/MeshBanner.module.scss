@@ -10,14 +10,18 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--project-border-radius-20);
-  border: rem(1px) solid #cccccc;
+  border: rem(1px) solid var(--project-color-primitive-gray-200);
   margin: 0 0 rem(60px) 0 !important;
 
   :global(.mesh-banner__spot--blue) {
     position: absolute;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(102, 126, 234, 0.7) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      var(--project-color-primitive-alpha-blue-340) 0%,
+      transparent 70%
+    );
     top: 10%;
     left: 10%;
     animation: move-1 10s infinite alternate ease-in-out;
@@ -27,7 +31,11 @@
     position: absolute;
     width: rem(500px);
     height: rem(500px);
-    background: radial-gradient(circle, rgba(118, 75, 162, 0.6) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      var(--project-color-primitive-alpha-indigo-540) 0%,
+      transparent 70%
+    );
     bottom: 20%;
     right: 10%;
     animation: move-2 12s infinite alternate ease-in-out;
@@ -37,7 +45,11 @@
     position: absolute;
     width: rem(450px);
     height: rem(450px);
-    background: radial-gradient(circle, rgba(255, 126, 179, 0.6) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      var(--project-color-primitive-alpha-pink-250) 0%,
+      transparent 70%
+    );
     top: 20%;
     right: 20%;
     animation: move-3 18s infinite alternate ease-in-out;
@@ -47,7 +59,11 @@
     position: absolute;
     width: rem(550px);
     height: rem(550px);
-    background: radial-gradient(circle, rgba(133, 255, 233, 0.5) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      var(--project-color-primitive-alpha-green-240) 0%,
+      transparent 70%
+    );
     bottom: 10%;
     left: 20%;
     animation: move-4 22s infinite alternate ease-in-out;
@@ -72,10 +88,10 @@
     }
 
     .mesh-banner__title {
-      color: #111;
+      color: var(--project-color-primitive-gray-940);
       font: var(--project-typo-display-2-700);
       margin: 0;
-      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+      filter: drop-shadow(0 0 10px var(--project-color-primitive-alpha-gray-140));
     }
 
     .mesh-banner__sub {
