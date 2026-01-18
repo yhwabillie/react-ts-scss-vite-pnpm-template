@@ -560,7 +560,7 @@ const Selectbox = forwardRef<HTMLDivElement, SelectboxProps>(
                     optionRefs.current[idx] = el;
                   }}
                   key={opt.id}
-                  variant={variant === 'outline' ? 'ghost' : 'solid'}
+                  variant='ghost'
                   color={color}
                   size={size}
                   index={idx}

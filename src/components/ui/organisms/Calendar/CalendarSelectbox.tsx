@@ -1,4 +1,4 @@
-import React, {
+import {
   forwardRef,
   useCallback,
   useEffect,
@@ -65,7 +65,7 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
     ref,
   ) => {
     // -----------------------------
-    // 📌 상태 선언
+    // 📌 상태
     // -----------------------------
     const [isOpen, setIsOpen] = useState(false);
     const [positioned, setPositioned] = useState(false);
@@ -73,30 +73,23 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
     const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
 
     // -----------------------------
-    // 🧩 Ref 선언
+    // 🧩 Ref
     // -----------------------------
     const portalRef = useRef<HTMLDivElement | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
-    const customSelectRef = React.useRef<HTMLDivElement>(null);
-    const nativeSelectRef = React.useRef<HTMLSelectElement>(null);
+    const customSelectRef = useRef<HTMLDivElement>(null);
+    const nativeSelectRef = useRef<HTMLSelectElement>(null);
     const hasScrolledRef = useRef(false);
     const optionRefs = useRef<(HTMLLIElement | null)[]>([]);
-    const openReasonRef = useRef<'click' | 'keyboard' | null>(null);
 
     // -----------------------------
-    // 🔑 [ID 관리] Combobox 및 리스트박스 식별자
-    // - baseId: 사용자로부터 id가 전달되면 사용, 없으면 useId()로 생성
-    // - listboxId: 리스트박스(옵션 컨테이너)의 고유 ID, aria-controls 등에 사용
+    // 🔑 [ID] 컴포넌트/리스트박스 식별자
     // -----------------------------
     const baseId = id ?? useId();
     const listboxId = `${baseId}-listbox`;
 
     // -----------------------------
-    // 🏁 [초기 선택 옵션 계산]
-    // - 최초 마운트 시 options 중
-    //   selected: true && disabled 아님 && value가 빈 값이 아닌 옵션을 탐색
-    // - 조건을 만족하는 첫 번째 옵션을 초기 선택값으로 사용
-    // - 없으면 초기 선택 없음 (null / '')
+    // 🏁 초기 선택 옵션 계산
     // -----------------------------
     const initialSelectedOption = useMemo(() => {
       if (defaultOptionId) {
@@ -115,35 +108,24 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
 
     // -----------------------------
     // ♿️ [ARIA] 활성 옵션 ID
-    // - 키보드 포커스가 있는 옵션의 ID를 aria-activedescendant에 사용
-    // - focusedIndex가 null이면 undefined 반환
     // -----------------------------
     const activeDescendantId = focusedIndex !== null ? options[focusedIndex]?.id : undefined;
 
-    const open = (reason: 'click' | 'keyboard') => {
-      openReasonRef.current = reason;
+    const open = () => {
       setIsOpen(true);
 
-      // 🚨 추가: 열림 상태를 부모에게 알림
       onOpenChange?.(true);
     };
 
     const close = () => {
-      openReasonRef.current = null;
       setIsOpen(false);
       setFocusedIndex(null);
 
-      // 🚨 추가: 닫힘 상태를 부모에게 알림
       onOpenChange?.(false);
     };
 
     // ------------------------------------------------------
-    // ⚡️ handleSelect
-    // - 옵션 선택 시 실행되는 이벤트 핸들러
-    // - selectedId, selectedValue 상태 업데이트
-    // - onValueChange 콜백 실행
-    // - 드롭다운 메뉴 닫기(isOpen = false)
-    // - 선택 후 포커스(focusedIndex) 초기화
+    // ⚡️ 옵션 선택 처리
     // ------------------------------------------------------
     const handleSelect = useCallback(
       (id: string, value: string) => {
@@ -159,18 +141,14 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
     );
 
     // -----------------------------
-    // ⚡️ handleChange
-    // - Select 요소 변경 이벤트 핸들러
-    // - 사용자가 옵션 선택 시 handleSelect 호출 (id, value 전달)
+    // ⚡️ native select 변경 처리
     // -----------------------------
     const handleChange: React.ChangeEventHandler<HTMLSelectElement> = e => {
       handleSelect(e.target.id, e.target.value);
     };
 
     // -----------------------------------------------------
-    // 🔁 [Keyboard Utils] 다음/이전 활성 옵션 인덱스 계산
-    // - disabled 옵션은 건너뜀
-    // - 범위를 벗어나면 기존 인덱스 유지
+    // 🔁 [Keyboard] 다음/이전 활성 인덱스 계산
     // -----------------------------------------------------
     const findNextEnabled = useCallback(
       (current: number | null, step: 1 | -1) => {
@@ -191,39 +169,24 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
     );
 
     // ------------------------------------------------------
-    // ⚡️ OptionList 내부 ESC 키 처리
-    // - Option List가 열려 있을 때, OptionList 내부의 요소에 포커스가 있으면 호출됨
+    // ⚡️ OptionList 내부 ESC 처리
     // ------------------------------------------------------
     const handleOptionListEscape = useCallback(
       (e: React.KeyboardEvent) => {
         if (e.key === 'Escape' && isOpen) {
           e.preventDefault();
-          e.stopPropagation(); // 🚨 OptionList가 닫힐 때 상위 컴포넌트(Calendar, Datepicker)로 전파 방지
+          e.stopPropagation();
 
-          // console.log('Option List ESC 처리'); // 로그 테스트용
-
-          // 1. OptionList 닫기
           close();
 
-          // 2. 포커스를 트리거 버튼으로 복귀
           customSelectRef.current?.focus();
-
-          // (이 로직이 실행되면, 아래 handleKeyDown의 'Escape' case는 트리거될 필요가 없습니다.)
         }
       },
       [isOpen, close],
     ); // close와 isOpen에 의존
 
     // ------------------------------------------------------
-    // ⚡️ handleKeyDown
-    // - custom-select 드롭다운 키보드 이벤트 핸들러
-    // - 드롭다운이 닫혀 있을 때:
-    //   • Enter / Space → 드롭다운 열기, 선택된 옵션 또는 첫 활성 옵션 포커스
-    // - 드롭다운이 열려 있을 때 키 처리:
-    //   • Escape → 메뉴 닫기, 포커스 초기화, custom-select로 포커스 이동
-    //   • ArrowDown → 다음 활성 옵션으로 포커스 이동
-    //   • ArrowUp → 이전 활성 옵션으로 포커스 이동
-    //   • Enter / Space → 현재 포커스 옵션 선택, 메뉴 닫기, custom-select로 포커스 이동
+    // ⚡️ 키보드 이벤트 처리
     // ------------------------------------------------------
     const lastKeyEventRef = useRef<{ key: string; timestamp: number } | null>(null);
 
@@ -249,13 +212,11 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
           case 'Enter': {
             e.preventDefault();
 
-            // 🔓 닫혀 있으면 키보드로 열기
             if (!isOpen) {
-              open('keyboard');
+              open();
               return;
             }
 
-            // 🔒 열려 있고 포커스된 옵션이 있으면 선택
             if (focusedIndex !== null) {
               const opt = options[focusedIndex];
               if (!opt.disabled) {
@@ -271,7 +232,7 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
 
             // 🔓 닫혀 있으면 열기만 (포커스 이동은 다음 tick)
             if (!isOpen) {
-              open('keyboard');
+              open();
               return;
             }
 
@@ -537,7 +498,7 @@ const CalendarSelectbox = forwardRef<HTMLDivElement, SelectboxProps>(
             e.stopPropagation(); // document로의 전파만 막습니다.
 
             if (isOpen) close();
-            else open('click');
+            else open();
           }}
           onKeyDown={handleKeyDown}
         >

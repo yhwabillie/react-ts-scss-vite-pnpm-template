@@ -9,6 +9,7 @@ import IconButton from '../../molecules/IconButton/IconButton';
 import clsx from 'clsx';
 import IconFrame from '../../molecules/IconFrame/IconFrame';
 import { useTranslation } from 'react-i18next';
+import Card from '../../molecules/Card/Card';
 
 const meta = {
   title: 'UI/Molecules/Input/Solid',
@@ -131,7 +132,11 @@ export const Base: Story = {
     const uniqueId = useId();
     const { t } = useTranslation();
 
-    return <Input {...args} id={uniqueId} placeholder={t('input.placeholder.default')} />;
+    return (
+      <Card>
+        <Input {...args} id={uniqueId} placeholder={t('input.placeholder.default')} />
+      </Card>
+    );
   },
 };
 
@@ -154,7 +159,7 @@ export const Colors: Story = {
           return (
             <SpecimenGroup key={color} title={color}>
               <SpecimenRow>
-                <SpecimenCell caption='Empty'>
+                <Card style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   <Input
                     {...args}
                     color={color}
@@ -205,8 +210,8 @@ export const Colors: Story = {
                       />
                     }
                   />
-                </SpecimenCell>
-                <SpecimenCell caption='Filled'>
+                </Card>
+                <Card style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   <Input
                     {...args}
                     color={color}
@@ -260,7 +265,7 @@ export const Colors: Story = {
                       />
                     }
                   />
-                </SpecimenCell>
+                </Card>
               </SpecimenRow>
             </SpecimenGroup>
           );
@@ -367,14 +372,16 @@ export const Sizes: Story = {
               ) : (
                 <GuideRow direction='column'>
                   <GuideCell caption={captionText}>
-                    <Input
-                      {...args}
-                      size={size}
-                      id={`${uniqueId}-${size}`}
-                      placeholder={t('input.placeholder.default')}
-                    />
+                    <Card>
+                      <Input
+                        {...args}
+                        size={size}
+                        id={`${uniqueId}-${size}`}
+                        placeholder={t('input.placeholder.default')}
+                      />
+                    </Card>
                   </GuideCell>
-                  <GuideCell>
+                  <Card>
                     <Input
                       {...args}
                       size={size}
@@ -393,8 +400,8 @@ export const Sizes: Story = {
                         </IconFrame>
                       }
                     />
-                  </GuideCell>
-                  <GuideCell>
+                  </Card>
+                  <Card>
                     <Input
                       {...args}
                       size={size}
@@ -421,7 +428,7 @@ export const Sizes: Story = {
                         />
                       }
                     />
-                  </GuideCell>
+                  </Card>
                 </GuideRow>
               )}
             </React.Fragment>
@@ -455,7 +462,7 @@ export const States: Story = {
           return (
             <SpecimenGroup key={uniqueId} title={state.label}>
               <SpecimenRow>
-                <SpecimenCell caption='Empty'>
+                <Card style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   <Input
                     {...args}
                     {...state.props}
@@ -507,8 +514,8 @@ export const States: Story = {
                       />
                     }
                   />
-                </SpecimenCell>
-                <SpecimenCell caption='Filled'>
+                </Card>
+                <Card style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   <Input
                     {...args}
                     {...state.props}
@@ -563,7 +570,7 @@ export const States: Story = {
                       />
                     }
                   />
-                </SpecimenCell>
+                </Card>
               </SpecimenRow>
             </SpecimenGroup>
           );
@@ -601,44 +608,46 @@ export const Shapes: Story = {
           <GuideRow key={shape} direction='column'>
             {/* 상단 캡션용 Cell */}
             <GuideCell caption={shape.toUpperCase()}>
-              {/* 케이스 1: 기본 형태 (Empty) */}
-              <Input
-                {...args}
-                shape={shape}
-                id={`${baseId}-${shape}-empty`}
-                placeholder={t('input.placeholder.default')}
-              />
+              <Card style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {/* 케이스 1: 기본 형태 (Empty) */}
+                <Input
+                  {...args}
+                  shape={shape}
+                  id={`${baseId}-${shape}-empty`}
+                  placeholder={t('input.placeholder.default')}
+                />
 
-              {/* 케이스 2: Adorned Start (Filled) */}
-              <Input
-                {...args}
-                shape={shape}
-                id={`${baseId}-${shape}-start`}
-                className='adorned-start'
-                placeholder='YYYY-MM-DD'
-                adornedStart={
-                  <IconFrame size={args.size}>
-                    <Icon
-                      className='icon'
-                      name='calendar'
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth={2.5}
-                    />
-                  </IconFrame>
-                }
-              />
+                {/* 케이스 2: Adorned Start (Filled) */}
+                <Input
+                  {...args}
+                  shape={shape}
+                  id={`${baseId}-${shape}-start`}
+                  className='adorned-start'
+                  placeholder='YYYY-MM-DD'
+                  adornedStart={
+                    <IconFrame size={args.size}>
+                      <Icon
+                        className='icon'
+                        name='calendar'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        strokeWidth={2.5}
+                      />
+                    </IconFrame>
+                  }
+                />
 
-              {/* 케이스 3: Adorned End (Filled) */}
-              <Input
-                {...args}
-                shape={shape}
-                id={`${baseId}-${shape}-end`}
-                type='password'
-                className='adorned-end'
-                placeholder={t('input.placeholder.password')}
-                adornedEnd={renderIconButton(shape)}
-              />
+                {/* 케이스 3: Adorned End (Filled) */}
+                <Input
+                  {...args}
+                  shape={shape}
+                  id={`${baseId}-${shape}-end`}
+                  type='password'
+                  className='adorned-end'
+                  placeholder={t('input.placeholder.password')}
+                  adornedEnd={renderIconButton(shape)}
+                />
+              </Card>
             </GuideCell>
           </GuideRow>
         ))}
@@ -660,41 +669,45 @@ export const Composition: Story = {
       <GuideGroup>
         <GuideRow direction='column'>
           <GuideCell caption='Left Icon'>
-            <Input
-              {...args}
-              id={`${uniqueId}-left`}
-              className='adorned-start'
-              placeholder='YYYY-MM-DD'
-              adornedStart={
-                <IconFrame size={args.size}>
-                  <Icon
-                    className='icon'
-                    name='calendar'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2.5}
-                  />
-                </IconFrame>
-              }
-            />
+            <Card>
+              <Input
+                {...args}
+                id={`${uniqueId}-left`}
+                className='adorned-start'
+                placeholder='YYYY-MM-DD'
+                adornedStart={
+                  <IconFrame size={args.size}>
+                    <Icon
+                      className='icon'
+                      name='calendar'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth={2.5}
+                    />
+                  </IconFrame>
+                }
+              />
+            </Card>
           </GuideCell>
           <GuideCell caption='Right Icon'>
-            <Input
-              {...args}
-              id={`${uniqueId}-right`}
-              type='password'
-              className='adorned-end'
-              placeholder={t('input.placeholder.password')}
-              adornedEnd={
-                <IconButton
-                  variant='ghost'
-                  color='primary'
-                  size={args.size}
-                  ariaLabel='비밀번호 표시'
-                  icon={<Icon className='icon' name='eye' strokeWidth={2.5} />}
-                />
-              }
-            />
+            <Card>
+              <Input
+                {...args}
+                id={`${uniqueId}-right`}
+                type='password'
+                className='adorned-end'
+                placeholder={t('input.placeholder.password')}
+                adornedEnd={
+                  <IconButton
+                    variant='ghost'
+                    color='primary'
+                    size={args.size}
+                    ariaLabel='비밀번호 표시'
+                    icon={<Icon className='icon' name='eye' strokeWidth={2.5} />}
+                  />
+                }
+              />
+            </Card>
           </GuideCell>
         </GuideRow>
       </GuideGroup>
@@ -777,7 +790,7 @@ export const LongText: Story = {
               </AnatomyWrapper>
             ) : (
               <SpecimenRow>
-                <SpecimenCell>
+                <Card style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   <Input
                     {...args}
                     size={size}
@@ -830,7 +843,7 @@ export const LongText: Story = {
                       />
                     }
                   />
-                </SpecimenCell>
+                </Card>
               </SpecimenRow>
             )}
           </React.Fragment>

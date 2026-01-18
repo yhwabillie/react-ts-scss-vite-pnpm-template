@@ -193,15 +193,17 @@ type Story = StoryObj<typeof meta>;
  * `updateArgs`를 통해 입력된 값과 스토리북 컨트롤 패널의 상태를 실시간으로 동기화합니다.
  */
 export const Base: Story = {
-  render: (args, { updateArgs }) => {
+  render: (args, context) => {
     const { t } = useTranslation();
     const uniqueId = useId();
     const localizedOptions = localizeComboboxOptions(t, args.options);
     const localizedInputProps = localizeComboboxInputProps(t, args.inputProps);
 
     const handleChange = (value: string) => {
-      // 선택된 값을 스토리북 패널의 value(또는 inputValue)와 동기화
-      updateArgs({ value });
+      // 선택된 값을 스토리북 패널과 동기화
+      if (typeof context.updateArgs === 'function') {
+        context.updateArgs({ value });
+      }
       args.onValueChange?.(value);
     };
 

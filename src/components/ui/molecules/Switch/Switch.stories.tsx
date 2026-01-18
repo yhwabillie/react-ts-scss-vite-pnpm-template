@@ -5,6 +5,7 @@ import { SpecimenCell, SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../..
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { GuideWrapper } from '../../guide/Guide';
 import { useTranslation } from 'react-i18next';
+import Card from '../Card/Card';
 
 const meta = {
   title: 'UI/Molecules/Switch',
@@ -288,20 +289,24 @@ export const Placement: Story = {
       <SpecimenRow>
         {/* Label Placement: Start */}
         <GuideWrapper title='PLACEMENT: START'>
-          <Switch {...args} labelPlacement='start' id='placement-start' defaultChecked>
-            <AnatomyWrapper minimal={true}>
-              <Label size={args.size}>{t('switch.left-label')}</Label>
-            </AnatomyWrapper>
-          </Switch>
+          <Card>
+            <Switch {...args} labelPlacement='start' id='placement-start' defaultChecked>
+              <AnatomyWrapper minimal={true}>
+                <Label size={args.size}>{t('switch.left-label')}</Label>
+              </AnatomyWrapper>
+            </Switch>
+          </Card>
         </GuideWrapper>
 
         {/* Label Placement: End */}
         <GuideWrapper title='PLACEMENT: END'>
-          <Switch {...args} labelPlacement='end' id='placement-end'>
-            <AnatomyWrapper minimal={true}>
-              <Label size={args.size}>{t('switch.right-label')}</Label>
-            </AnatomyWrapper>
-          </Switch>
+          <Card>
+            <Switch {...args} labelPlacement='end' id='placement-end'>
+              <AnatomyWrapper minimal={true}>
+                <Label size={args.size}>{t('switch.right-label')}</Label>
+              </AnatomyWrapper>
+            </Switch>
+          </Card>
         </GuideWrapper>
       </SpecimenRow>
     );

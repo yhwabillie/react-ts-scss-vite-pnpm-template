@@ -9,6 +9,7 @@ import { useId } from 'react';
 import { SpecimenCell, SpecimenGroup, SpecimenWrapper } from '../../guide/Specimen';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { useTranslation } from 'react-i18next';
+import Card from '../Card/Card';
 
 const meta = {
   title: 'UI/Molecules/FormFieldset',
@@ -174,7 +175,7 @@ export const Base: Story = {
         <SpecimenGroup direction='column' style={{ gap: '40px' }}>
           {/* 1. Radio Group Section */}
           <SpecimenCell caption='radio'>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            <Card style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
               <AnatomyWrapper minimal>
                 <FormFieldset {...args} legend={t('formfieldset.radio.legend')} direction='column'>
                   {renderGroupContent('radio', args.size, 'r-col')}
@@ -186,12 +187,12 @@ export const Base: Story = {
                   {renderGroupContent('radio', args.size, 'r-row')}
                 </FormFieldset>
               </AnatomyWrapper>
-            </div>
+            </Card>
           </SpecimenCell>
 
           {/* 2. Checkbox Group Section */}
           <SpecimenCell caption='checkbox'>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            <Card style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
               <AnatomyWrapper minimal>
                 <FormFieldset
                   {...args}
@@ -207,7 +208,7 @@ export const Base: Story = {
                   {renderGroupContent('checkbox', args.size, 'c-row')}
                 </FormFieldset>
               </AnatomyWrapper>
-            </div>
+            </Card>
           </SpecimenCell>
         </SpecimenGroup>
       </SpecimenWrapper>
@@ -240,35 +241,37 @@ export const Required: Story = {
         <SpecimenGroup title='column (Required)'>
           <SpecimenGroup direction='column' style={{ gap: '20px', alignItems: 'flex-end' }}>
             {/* 필수 라디오 그룹 */}
-            <AnatomyWrapper minimal>
-              <FormFieldset
-                {...args}
-                legend={t('formfieldset.radio.legend')}
-                size={args.size}
-                direction='column'
-              >
-                <ControlGroup role='group' size={args.size} ariaLabel='가입 경로 필수 선택'>
-                  {RADIO_OPTIONS.map(opt => (
-                    <FormField
-                      key={opt.id}
-                      as='label'
-                      htmlFor={`${uniqueId}-r-col-${opt.id}`}
-                      size={args.size}
-                      direction='row'
-                    >
-                      <Radio
-                        as='span'
-                        id={`${uniqueId}-r-col-${opt.id}`}
-                        name={`${uniqueId}-r-grp-col`}
+            <Card>
+              <AnatomyWrapper minimal>
+                <FormFieldset
+                  {...args}
+                  legend={t('formfieldset.radio.legend')}
+                  size={args.size}
+                  direction='column'
+                >
+                  <ControlGroup role='group' size={args.size} ariaLabel='가입 경로 필수 선택'>
+                    {RADIO_OPTIONS.map(opt => (
+                      <FormField
+                        key={opt.id}
+                        as='label'
+                        htmlFor={`${uniqueId}-r-col-${opt.id}`}
                         size={args.size}
-                        defaultChecked={opt.id === '1'}
-                      />
-                      <Label size={args.size}>{opt.label}</Label>
-                    </FormField>
-                  ))}
-                </ControlGroup>
-              </FormFieldset>
-            </AnatomyWrapper>
+                        direction='row'
+                      >
+                        <Radio
+                          as='span'
+                          id={`${uniqueId}-r-col-${opt.id}`}
+                          name={`${uniqueId}-r-grp-col`}
+                          size={args.size}
+                          defaultChecked={opt.id === '1'}
+                        />
+                        <Label size={args.size}>{opt.label}</Label>
+                      </FormField>
+                    ))}
+                  </ControlGroup>
+                </FormFieldset>
+              </AnatomyWrapper>
+            </Card>
           </SpecimenGroup>
         </SpecimenGroup>
 
@@ -276,35 +279,37 @@ export const Required: Story = {
         <SpecimenGroup title='row (Required)'>
           <SpecimenGroup direction='column' style={{ gap: '20px', alignItems: 'flex-end' }}>
             {/* 필수 라디오 그룹 */}
-            <AnatomyWrapper minimal>
-              <FormFieldset
-                {...args}
-                legend={t('formfieldset.radio.legend')}
-                size={args.size}
-                direction='row'
-              >
-                <ControlGroup role='group' size={args.size} ariaLabel='가입 경로 필수 선택'>
-                  {RADIO_OPTIONS.map(opt => (
-                    <FormField
-                      key={opt.id}
-                      as='label'
-                      htmlFor={`${uniqueId}-r-row-${opt.id}`}
-                      size={args.size}
-                      direction='row'
-                    >
-                      <Radio
-                        as='span'
-                        id={`${uniqueId}-r-row-${opt.id}`}
-                        name={`${uniqueId}-r-grp-row`}
+            <Card>
+              <AnatomyWrapper minimal>
+                <FormFieldset
+                  {...args}
+                  legend={t('formfieldset.radio.legend')}
+                  size={args.size}
+                  direction='row'
+                >
+                  <ControlGroup role='group' size={args.size} ariaLabel='가입 경로 필수 선택'>
+                    {RADIO_OPTIONS.map(opt => (
+                      <FormField
+                        key={opt.id}
+                        as='label'
+                        htmlFor={`${uniqueId}-r-row-${opt.id}`}
                         size={args.size}
-                        defaultChecked={opt.id === '1'}
-                      />
-                      <Label size={args.size}>{opt.label}</Label>
-                    </FormField>
-                  ))}
-                </ControlGroup>
-              </FormFieldset>
-            </AnatomyWrapper>
+                        direction='row'
+                      >
+                        <Radio
+                          as='span'
+                          id={`${uniqueId}-r-row-${opt.id}`}
+                          name={`${uniqueId}-r-grp-row`}
+                          size={args.size}
+                          defaultChecked={opt.id === '1'}
+                        />
+                        <Label size={args.size}>{opt.label}</Label>
+                      </FormField>
+                    ))}
+                  </ControlGroup>
+                </FormFieldset>
+              </AnatomyWrapper>
+            </Card>
           </SpecimenGroup>
         </SpecimenGroup>
       </SpecimenWrapper>
@@ -337,157 +342,154 @@ export const Sizes: Story = {
       <SpecimenWrapper style={{ width: '700px' }}>
         {(['xl', 'lg', 'md', 'sm', 'xs'] as const).map(size => {
           return (
-            <SpecimenGroup
-              key={size}
-              title={size.toUpperCase()}
-              direction='column'
-              style={{ gap: '10px' }}
-            >
-              <AnatomyWrapper
-                minimal
-                style={{
-                  ...((size === 'xl' || size === 'lg') && {
-                    width: 'max-content',
-                  }),
-                }}
-              >
-                <FormFieldset
-                  {...args}
-                  size={size}
-                  legend={t('formfieldset.radio.legend')}
-                  direction='column'
+            <SpecimenGroup key={size} title={size.toUpperCase()} direction='column'>
+              <Card style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <AnatomyWrapper
+                  minimal
+                  style={{
+                    ...((size === 'xl' || size === 'lg') && {
+                      width: 'max-content',
+                    }),
+                  }}
                 >
-                  <ControlGroup role='group' size={size} ariaLabel='가입 경로 그룹'>
-                    {RADIO_OPTIONS.map((opt, idx) => (
-                      <FormField
-                        key={opt.id}
-                        as='label'
-                        htmlFor={`${uniqueId}-${opt.id}-${size}-col-radio-${idx}`}
-                        size={size}
-                        direction='row'
-                      >
-                        <Radio
-                          as='span'
-                          id={`${uniqueId}-${opt.id}-${size}-col-radio-${idx}`}
-                          name={`${uniqueId}-r-group-col-${size}-radio`}
+                  <FormFieldset
+                    {...args}
+                    size={size}
+                    legend={t('formfieldset.radio.legend')}
+                    direction='column'
+                  >
+                    <ControlGroup role='group' size={size} ariaLabel='가입 경로 그룹'>
+                      {RADIO_OPTIONS.map((opt, idx) => (
+                        <FormField
+                          key={opt.id}
+                          as='label'
+                          htmlFor={`${uniqueId}-${opt.id}-${size}-col-radio-${idx}`}
                           size={size}
-                          defaultChecked={opt.id === '1'}
-                        />
-                        <Label size={size}>{opt.label}</Label>
-                      </FormField>
-                    ))}
-                  </ControlGroup>
-                </FormFieldset>
-              </AnatomyWrapper>
-              <AnatomyWrapper
-                minimal
-                style={{
-                  ...((size === 'xl' || size === 'lg') && {
-                    width: 'max-content',
-                  }),
-                }}
-              >
-                <FormFieldset
-                  {...args}
-                  legend={t('formfieldset.radio.legend')}
-                  size={size}
-                  direction='row'
+                          direction='row'
+                        >
+                          <Radio
+                            as='span'
+                            id={`${uniqueId}-${opt.id}-${size}-col-radio-${idx}`}
+                            name={`${uniqueId}-r-group-col-${size}-radio`}
+                            size={size}
+                            defaultChecked={opt.id === '1'}
+                          />
+                          <Label size={size}>{opt.label}</Label>
+                        </FormField>
+                      ))}
+                    </ControlGroup>
+                  </FormFieldset>
+                </AnatomyWrapper>
+                <AnatomyWrapper
+                  minimal
+                  style={{
+                    ...((size === 'xl' || size === 'lg') && {
+                      width: 'max-content',
+                    }),
+                  }}
                 >
-                  <ControlGroup role='group' size={size} ariaLabel='가입 경로 그룹'>
-                    {RADIO_OPTIONS.map((opt, idx) => (
-                      <FormField
-                        key={opt.id}
-                        as='label'
-                        htmlFor={`${uniqueId}-${opt.id}-${size}-row-radio-${idx}`}
-                        size={size}
-                        direction='row'
-                      >
-                        <Radio
-                          as='span'
-                          id={`${uniqueId}-${opt.id}-${size}-row-radio-${idx}`}
-                          name={`${uniqueId}-r-group-row-${size}-radio`}
+                  <FormFieldset
+                    {...args}
+                    legend={t('formfieldset.radio.legend')}
+                    size={size}
+                    direction='row'
+                  >
+                    <ControlGroup role='group' size={size} ariaLabel='가입 경로 그룹'>
+                      {RADIO_OPTIONS.map((opt, idx) => (
+                        <FormField
+                          key={opt.id}
+                          as='label'
+                          htmlFor={`${uniqueId}-${opt.id}-${size}-row-radio-${idx}`}
                           size={size}
-                          defaultChecked={opt.id === '1'}
-                        />
-                        <Label size={size}>{opt.label}</Label>
-                      </FormField>
-                    ))}
-                  </ControlGroup>
-                </FormFieldset>
-              </AnatomyWrapper>
+                          direction='row'
+                        >
+                          <Radio
+                            as='span'
+                            id={`${uniqueId}-${opt.id}-${size}-row-radio-${idx}`}
+                            name={`${uniqueId}-r-group-row-${size}-radio`}
+                            size={size}
+                            defaultChecked={opt.id === '1'}
+                          />
+                          <Label size={size}>{opt.label}</Label>
+                        </FormField>
+                      ))}
+                    </ControlGroup>
+                  </FormFieldset>
+                </AnatomyWrapper>
 
-              <AnatomyWrapper
-                minimal
-                style={{
-                  ...((size === 'xl' || size === 'lg') && {
-                    width: 'max-content',
-                  }),
-                }}
-              >
-                <FormFieldset
-                  {...args}
-                  size={size}
-                  legend={t('formfieldset.checkbox.legend')}
-                  direction='column'
+                <AnatomyWrapper
+                  minimal
+                  style={{
+                    ...((size === 'xl' || size === 'lg') && {
+                      width: 'max-content',
+                    }),
+                  }}
                 >
-                  <ControlGroup role='group' size={size} ariaLabel='가입 경로 그룹'>
-                    {CHECKBOX_TERMS_OPTIONS.map((opt, idx) => (
-                      <FormField
-                        key={opt.id}
-                        as='label'
-                        htmlFor={`${uniqueId}-${opt.id}-${size}-col-checkbox-${idx}`}
-                        size={size}
-                        direction='row'
-                      >
-                        <Checkbox
-                          as='span'
-                          id={`${uniqueId}-${opt.id}-${size}-col-checkbox-${idx}`}
-                          name={`${uniqueId}-r-group-col-${size}-checkbox`}
+                  <FormFieldset
+                    {...args}
+                    size={size}
+                    legend={t('formfieldset.checkbox.legend')}
+                    direction='column'
+                  >
+                    <ControlGroup role='group' size={size} ariaLabel='가입 경로 그룹'>
+                      {CHECKBOX_TERMS_OPTIONS.map((opt, idx) => (
+                        <FormField
+                          key={opt.id}
+                          as='label'
+                          htmlFor={`${uniqueId}-${opt.id}-${size}-col-checkbox-${idx}`}
                           size={size}
-                          defaultChecked={opt.id === '1'}
-                        />
-                        <Label size={size}>{opt.label}</Label>
-                      </FormField>
-                    ))}
-                  </ControlGroup>
-                </FormFieldset>
-              </AnatomyWrapper>
-              <AnatomyWrapper
-                minimal
-                style={{
-                  ...((size === 'xl' || size === 'lg') && {
-                    width: 'max-content',
-                  }),
-                }}
-              >
-                <FormFieldset
-                  {...args}
-                  size={size}
-                  legend={t('formfieldset.checkbox.legend')}
-                  direction='row'
+                          direction='row'
+                        >
+                          <Checkbox
+                            as='span'
+                            id={`${uniqueId}-${opt.id}-${size}-col-checkbox-${idx}`}
+                            name={`${uniqueId}-r-group-col-${size}-checkbox`}
+                            size={size}
+                            defaultChecked={opt.id === '1'}
+                          />
+                          <Label size={size}>{opt.label}</Label>
+                        </FormField>
+                      ))}
+                    </ControlGroup>
+                  </FormFieldset>
+                </AnatomyWrapper>
+                <AnatomyWrapper
+                  minimal
+                  style={{
+                    ...((size === 'xl' || size === 'lg') && {
+                      width: 'max-content',
+                    }),
+                  }}
                 >
-                  <ControlGroup role='group' size={size} ariaLabel='가입 경로 그룹'>
-                    {CHECKBOX_TERMS_OPTIONS.map((opt, idx) => (
-                      <FormField
-                        key={opt.id}
-                        as='label'
-                        htmlFor={`${uniqueId}-${opt.id}-${size}-row-checkbox-${idx}`}
-                        size={size}
-                        direction='row'
-                      >
-                        <Checkbox
-                          as='span'
-                          id={`${uniqueId}-${opt.id}-${size}-row-checkbox-${idx}`}
-                          name={`${uniqueId}-r-group-row-${size}-checkbox`}
+                  <FormFieldset
+                    {...args}
+                    size={size}
+                    legend={t('formfieldset.checkbox.legend')}
+                    direction='row'
+                  >
+                    <ControlGroup role='group' size={size} ariaLabel='가입 경로 그룹'>
+                      {CHECKBOX_TERMS_OPTIONS.map((opt, idx) => (
+                        <FormField
+                          key={opt.id}
+                          as='label'
+                          htmlFor={`${uniqueId}-${opt.id}-${size}-row-checkbox-${idx}`}
                           size={size}
-                          defaultChecked={opt.id === '1'}
-                        />
-                        <Label size={size}>{opt.label}</Label>
-                      </FormField>
-                    ))}
-                  </ControlGroup>
-                </FormFieldset>
-              </AnatomyWrapper>
+                          direction='row'
+                        >
+                          <Checkbox
+                            as='span'
+                            id={`${uniqueId}-${opt.id}-${size}-row-checkbox-${idx}`}
+                            name={`${uniqueId}-r-group-row-${size}-checkbox`}
+                            size={size}
+                            defaultChecked={opt.id === '1'}
+                          />
+                          <Label size={size}>{opt.label}</Label>
+                        </FormField>
+                      ))}
+                    </ControlGroup>
+                  </FormFieldset>
+                </AnatomyWrapper>
+              </Card>
             </SpecimenGroup>
           );
         })}

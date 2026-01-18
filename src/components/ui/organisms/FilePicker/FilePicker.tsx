@@ -33,7 +33,7 @@ interface FilePickerProps {
 const FilePicker = forwardRef<HTMLDivElement, FilePickerProps>(
   ({ color = 'primary', title, desc, files, onDrop, onRemove, onClear, accept, maxCount }, ref) => {
     const { t } = useTranslation();
-    // 📌 현재 하나라도 업로드 중인지 확인 (전체 제어용)
+    // 업로드 중 여부
     const isAnyFileUploading = files.some(file => file.status === 'uploading');
     const [isDragging, setIsDragging] = useState(false);
     const dragCounter = useRef(0);
@@ -42,20 +42,17 @@ const FilePicker = forwardRef<HTMLDivElement, FilePickerProps>(
     const pickerRef = useRef<HTMLDivElement>(null);
 
     const handleRemove = (id: string, index: number) => {
-      // 📌 1. 현재 삭제할 버튼의 인덱스를 기억
       onRemove(id);
 
-      // 📌 2. 삭제 후 포커스 재배치 (DOM 업데이트 이후 실행)
+      // 삭제 후 포커스 재배치
       setTimeout(() => {
         const itemButtons =
           pickerRef.current?.querySelectorAll<HTMLButtonElement>('.file-item button');
 
         if (itemButtons && itemButtons.length > 0) {
-          // 다음 아이템이 있으면 그곳으로, 없으면 마지막 아이템으로 포커스
           const nextIndex = index < itemButtons.length ? index : itemButtons.length - 1;
           itemButtons[nextIndex]?.focus();
         } else {
-          // 파일이 하나도 없으면 파일 선택 버튼으로 포커스 이동
           const selectBtn =
             pickerRef.current?.querySelector<HTMLLabelElement>('.file-picker-label');
           selectBtn?.focus();
@@ -63,7 +60,7 @@ const FilePicker = forwardRef<HTMLDivElement, FilePickerProps>(
       }, 0);
     };
 
-    // 📌 2. 버튼 클릭 시 input을 대신 클릭해주는 함수
+    // 파일 선택 버튼 클릭 처리
     const handleButtonClick = () => {
       if (isAnyFileUploading) return;
       fileInputRef.current?.click();
@@ -71,7 +68,7 @@ const FilePicker = forwardRef<HTMLDivElement, FilePickerProps>(
 
     const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
       e.preventDefault();
-      // 🔥 파일 드래그가 아니거나 이미 업로드 중이면 시각적 효과 무시
+      // 파일 드래그가 아니거나 업로드 중이면 무시
       if (!e.dataTransfer.types.includes('Files') || isAnyFileUploading) return;
 
       dragCounter.current += 1;
@@ -83,7 +80,6 @@ const FilePicker = forwardRef<HTMLDivElement, FilePickerProps>(
       dragCounter.current = 0;
       setIsDragging(false);
 
-      // 📌 업로드 중일 때는 로직 실행 방지
       if (isAnyFileUploading) return;
 
       onDrop(Array.from(e.dataTransfer.files));
@@ -94,7 +90,6 @@ const FilePicker = forwardRef<HTMLDivElement, FilePickerProps>(
       if (!e.dataTransfer.types.includes('Files')) return;
 
       if (isAnyFileUploading) {
-        // 📌 커서를 금지(🚫) 모양으로 변경하여 시각적 차단 알림
         e.dataTransfer.dropEffect = 'none';
       } else {
         e.dataTransfer.dropEffect = 'copy';
@@ -113,41 +108,38 @@ const FilePicker = forwardRef<HTMLDivElement, FilePickerProps>(
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (!e.target.files) return;
       onDrop(Array.from(e.target.files));
-      e.target.value = ''; // 같은 파일 재선택 가능하게
+      e.target.value = '';
     };
 
     const getFileIconName = (ext: string) => {
       const extension = ext.toLowerCase();
 
-      // 1. 이미지 관련
+      // 이미지
       if (['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp', 'bmp'].includes(extension)) {
         return 'file-image';
       }
-      // 2. 문서 관련
+      // 문서
       if (['pdf', 'doc', 'docx', 'txt', 'ppt', 'pptx', 'xls', 'xlsx'].includes(extension)) {
-        return 'file-doc'; // 또는 'file-text' 등 정의된 이름에 맞게
+        return 'file-doc';
       }
-      // 3. 비디오 관련
+      // 비디오
       if (['mp4', 'mov', 'avi', 'wmv', 'mkv'].includes(extension)) {
         return 'file-video';
       }
-      // 4. 압축 파일 관련
+      // 압축 파일
       if (['zip', 'rar', '7z', 'tar', 'gz'].includes(extension)) {
         return 'file-zip';
       }
 
-      // 기본 아이콘
       return 'file';
     };
 
     return (
       <div
         ref={node => {
-          // 1. 외부에서 받은 ref 처리
           if (typeof ref === 'function') ref(node);
           else if (ref) ref.current = node;
 
-          // 2. 내부 포커스 제어용 pickerRef 처리
           pickerRef.current = node;
         }}
         className={clsx(`${Styles['file-picker']} color--${color}`)}

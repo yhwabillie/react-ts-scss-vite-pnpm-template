@@ -1779,7 +1779,7 @@
       },
       "outline-warning-bg-active": {
         "light": {
-          "value": "var(--project-color-primitive-orange-630)"
+          "value": "var(--project-color-primitive-alpha-orange-660)"
         },
         "dark": {
           "value": "var(--project-color-primitive-alpha-orange-460)"
@@ -1787,7 +1787,7 @@
       },
       "outline-warning-text-active": {
         "light": {
-          "value": "var(--project-color-primitive-orange-440)"
+          "value": "var(--project-color-primitive-orange-630)"
         },
         "dark": {
           "value": "var(--project-color-primitive-orange-440)"

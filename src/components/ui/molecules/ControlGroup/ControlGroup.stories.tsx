@@ -9,6 +9,7 @@ import { SpecimenCell, SpecimenRow } from '../../guide/Specimen';
 import { GuideGroup, GuideWrapper } from '../../guide/Guide';
 import { useId } from 'react';
 import { useTranslation } from 'react-i18next';
+import Card from '../Card/Card';
 
 const meta = {
   title: 'UI/Molecules/ControlGroup',
@@ -114,32 +115,30 @@ export const Base: Story = {
 
           return (
             <GuideWrapper key={groupId} title={label}>
-              <SpecimenRow>
-                <SpecimenCell>
-                  <AnatomyWrapper minimal={true}>
-                    <ControlGroup {...args}>
-                      {OPTIONS.map((option, idx) => {
-                        const fieldId = `${groupId}-opt-${idx}`;
+              <Card>
+                <AnatomyWrapper minimal={true}>
+                  <ControlGroup {...args}>
+                    {OPTIONS.map((option, idx) => {
+                      const fieldId = `${groupId}-opt-${idx}`;
 
-                        return (
-                          <FormField key={fieldId} as='label' htmlFor={fieldId} size={args.size}>
-                            <Component
-                              as='span'
-                              id={fieldId}
-                              name={groupId}
-                              color='primary'
-                              size={args.size}
-                              value={option.label}
-                              defaultChecked={option.defaultChecked}
-                            />
-                            <Label size={args.size}>{option.label}</Label>
-                          </FormField>
-                        );
-                      })}
-                    </ControlGroup>
-                  </AnatomyWrapper>
-                </SpecimenCell>
-              </SpecimenRow>
+                      return (
+                        <FormField key={fieldId} as='label' htmlFor={fieldId} size={args.size}>
+                          <Component
+                            as='span'
+                            id={fieldId}
+                            name={groupId}
+                            color='primary'
+                            size={args.size}
+                            value={option.label}
+                            defaultChecked={option.defaultChecked}
+                          />
+                          <Label size={args.size}>{option.label}</Label>
+                        </FormField>
+                      );
+                    })}
+                  </ControlGroup>
+                </AnatomyWrapper>
+              </Card>
             </GuideWrapper>
           );
         })}
@@ -180,7 +179,7 @@ export const Sizes: Story = {
 
               return (
                 <SpecimenRow key={groupId}>
-                  <SpecimenCell>
+                  <Card>
                     <AnatomyWrapper minimal={true}>
                       <ControlGroup {...args} size={size}>
                         {SAMPLE_OPTIONS.map((option, idx) => {
@@ -203,7 +202,7 @@ export const Sizes: Story = {
                         })}
                       </ControlGroup>
                     </AnatomyWrapper>
-                  </SpecimenCell>
+                  </Card>
                 </SpecimenRow>
               );
             })}

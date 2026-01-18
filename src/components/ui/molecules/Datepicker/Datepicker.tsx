@@ -1,15 +1,19 @@
 import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import styles from '@/components/ui/molecules/Datepicker/Datepicker.module.scss';
 import clsx from 'clsx';
-import type { Color, Size, Variant } from '@/types/design/design-tokens.types';
+import type { Color, Size } from '@/types/design/design-tokens.types';
 import type { InputA11yProps } from '@/types/a11y/a11y-roles.types';
 import Icon from '../../atoms/Icon/Icon';
 import type { PortalPosition } from '../OptionListPortal/OptionListPortal';
 import OptionListPortal from '../OptionListPortal/OptionListPortal';
 import type { OptionBase } from '../OptionItem/OptionItem';
-import type { Holiday } from '@/App';
 import Calendar from '../../organisms/Calendar/Calendar';
 import IconButton from '../IconButton/IconButton';
+
+export type Holiday = {
+  date: string;
+  name: string;
+};
 
 interface StyleProps {
   variant: 'solid' | 'outline';
@@ -77,41 +81,28 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
     ref,
   ) => {
     const resolvedReadOnly = inputProps.readOnly ?? false;
-    const {
-      selectedYear,
-      selectedMonth,
-      selectedDate,
-      calendarProps,
-      holidays,
-      onYearChange,
-      onMonthChange,
-      onDateSelect,
-    } = calendar ?? {};
+    const { selectedYear, selectedMonth, selectedDate } = calendar ?? {};
     // -----------------------------
-    // 📌 상태 선언
+    // 📌 상태
     // -----------------------------
-    // 📌 Datepicker 내부
     const [isOpen, setIsOpen] = useState(false);
     const [positioned, setPositioned] = useState(false);
     const [portalPos, setPortalPos] = useState<PortalPosition | null>(null);
 
-    // "현재 보고 있는" 달력 상태
+    // 달력 표시용 연/월 (선택값과 분리)
     const [viewYear, setViewYear] = useState<number | null>(null);
     const [viewMonth, setViewMonth] = useState<number | null>(null);
 
     // -----------------------------
-    // 🧩 Ref 선언
+    // 🧩 Ref
     // -----------------------------
     const portalRef = useRef<HTMLDivElement | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const customInputRef = React.useRef<HTMLDivElement>(null);
     const nativeInputRef = React.useRef<HTMLInputElement>(null);
     const calendarRef = useRef<HTMLDivElement>(null);
-    const buttonRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
-
-    // ✅ 캘린더가 키보드로 열렸는지 추적
+    // ✅ 키보드로 열린 경우 포커스 이동 처리
     const [openedByKeyboard, setOpenedByKeyboard] = useState(false);
-    const triggerButtonRef = useRef<HTMLButtonElement>(null);
     const resolvedInputId = inputProps.id ?? id;
     const labelId = id && resolvedInputId && id === resolvedInputId ? `${id}-label` : id;
 
@@ -149,18 +140,8 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
       ? resolvedSelectedDate.getMonth() + 1
       : (selectedMonth ?? today.getMonth() + 1);
 
-    const handleYearChange = (year: number) => {
-      setViewYear(year);
-      calendar?.onYearChange?.(year); // 외부로 전달
-    };
-
-    const handleMonthChange = (month: number) => {
-      setViewMonth(month);
-      calendar?.onMonthChange?.(month);
-    };
-
     const [tempSelectedDate, setTempSelectedDate] = useState<Date | null>(resolvedSelectedDate);
-    const [confirmedDate, setConfirmedDate] = useState<Date | null>(resolvedSelectedDate); // 확정 값
+    const [confirmedDate, setConfirmedDate] = useState<Date | null>(resolvedSelectedDate);
     const [inputValue, setInputValue] = useState<string>(
       confirmedDate ? formatDate(confirmedDate) : inputProps.value || '',
     );
@@ -190,9 +171,7 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
 
     // -----------------------------------------------------
     // 🔧 [Portal] 위치 계산
-    // - customInputRef 또는 containerRef 기준으로 위치 측정
-    // - getBoundingClientRect() + window.scrollY/X로 스크롤 반영
-    // - top: 요소 하단, left/width: 요소 좌측 및 너비
+    // - 트리거 기준 rect + scroll
     // -----------------------------------------------------
     const updatePosition = useCallback(() => {
       if (!isOpen) return null;
@@ -210,9 +189,7 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
 
     // -----------------------------------------------------
     // 🖱️ [Interaction] 외부 클릭 감지
-    // - Combobox 외부 영역 클릭 시 리스트 닫기
-    // - input 영역(containerRef)과 포털(portalRef) 모두 체크
-    // - 포털 구조에서도 정상 동작하도록 ref 기반 검사
+    // - 트리거/포털/캘린더 외부 클릭 시 닫기
     // -----------------------------------------------------
     const handleOutsideClick = useCallback((event: MouseEvent) => {
       const path = event.composedPath();
@@ -229,27 +206,22 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
     }, []);
 
     // -----------------------------------------------------
-    // ✨ [Effect] 달력이 열릴 때 초기 뷰(Year/Month) 설정
+    // ✨ [Effect] 달력 열림 시 초기 뷰 설정
     // -----------------------------------------------------
     useEffect(() => {
       if (!isOpen) return;
 
-      // 1. 확정된 날짜(confirmedDate)가 있으면 그것을 기준으로,
-      // 2. 없으면 resolvedSelectedDate(props 기반),
-      // 3. 그것도 없으면 오늘 날짜를 기준으로 설정합니다.
+      // confirmedDate -> selectedDate -> today 순으로 기준 선정
       const baseDate = confirmedDate ?? resolvedSelectedDate ?? new Date();
 
       setViewYear(baseDate.getFullYear());
       setViewMonth(baseDate.getMonth() + 1);
 
-      // 만약 달력 내부의 임시 선택값(tempSelectedDate)도 확정된 값과 맞추고 싶다면 추가
       setTempSelectedDate(confirmedDate ?? resolvedSelectedDate);
     }, [isOpen, confirmedDate, resolvedSelectedDate]);
 
     // -----------------------------------------------------
     // ✨ [Effect] 외부 클릭 이벤트 등록
-    // - isOpen 상태일 때만 이벤트 리스너 등록
-    // - mousedown 이벤트로 외부 클릭 감지
     // -----------------------------------------------------
     useEffect(() => {
       if (!isOpen) return;
@@ -262,9 +234,6 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
 
     // -----------------------------------------------------
     // ✨ [Effect] Portal 위치 초기화
-    // - isOpen 상태에 따라 Portal 위치 계산
-    // - 열려있으면 동기적으로 위치 계산 후 상태 업데이트
-    // - 닫히면 positioned, portalPos 초기화
     // -----------------------------------------------------
     useEffect(() => {
       if (!isOpen) {
@@ -276,15 +245,12 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
       const pos = updatePosition();
       if (pos) {
         setPortalPos(pos);
-        setPositioned(true); // 👈 캘린더가 렌더링을 시작할 수 있는 신호
+        setPositioned(true);
       }
     }, [isOpen, updatePosition]);
 
     // -----------------------------------------------------
-    // ✨ [Effect] 윈도우 리사이즈/스크롤 시 Portal 위치 재계산
-    // - isOpen 상태에서만 이벤트 리스너 등록
-    // - 리사이즈 및 스크롤 이벤트 발생 시 updatePosition 실행
-    // - 컴포넌트 언마운트 시 이벤트 제거
+    // ✨ [Effect] 리사이즈/스크롤 시 위치 재계산
     // -----------------------------------------------------
     useEffect(() => {
       if (!isOpen) return;
@@ -310,22 +276,19 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
       setIsOpen(prev => !prev);
     }, [resolvedReadOnly]);
 
-    // ⌨️ [Interaction] 달력 트리거 버튼 키다운 핸들러 수정 (이 부분은 유지)
+    // ⌨️ [Interaction] 트리거 키보드 열기
     const handleTriggerKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
       // readOnly일 경우 키 이벤트를 무시
       if (resolvedReadOnly) return;
 
-      // Enter 또는 Space 키를 감지
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        // 1. 캘린더 열기
         setIsOpen(true);
-        // 2. 키보드로 열림 플래그 설정
         setOpenedByKeyboard(true);
       }
     };
 
-    // ✅ 키보드 포커스 제어 로직 통합 및 수정
+    // ✅ 키보드로 열렸을 때 캘린더로 포커스 이동
     useEffect(() => {
       // 1. 달력이 열렸고 (isOpen)
       // 2. 키보드로 열렸으며 (openedByKeyboard)
@@ -342,7 +305,7 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
               calendarWrap.focus();
               setOpenedByKeyboard(false); // 포커스 이동 성공 후 플래그 초기화
             } else {
-              // calendar-wrap을 찾지 못했다면, 이전에 하려던 날짜 버튼 포커스를 시도 (대비책)
+              // calendar-wrap이 없으면 첫 날짜 버튼으로 대체
               const firstDateBtn = calendarRef.current.querySelector<HTMLElement>(
                 '.btn-set-date:not([disabled])',
               );
@@ -356,29 +319,29 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
       }
     }, [isOpen, openedByKeyboard, positioned]);
 
-    // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하지 않는 것
+    // storybook 상태 클래스: 일반 클래스만
     const filteredClassName = useMemo(() => {
       if (!className) return '';
 
       return className
         .split(' ')
         .filter(name => {
-          // 1. 'pseudo-'로 시작하지 않는 일반 클래스는 무조건 통과
+          // 1. 'pseudo-'가 아니면 통과
           if (!name.startsWith('pseudo-')) return true;
 
-          // 2. 'pseudo-'로 시작하더라도 'pseudo-hover'인 경우는 통과
+          // 2. 'pseudo-hover'는 통과
           return name === 'pseudo-hover';
         })
         .join(' ');
     }, [className]);
 
-    // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하는 것
+    // storybook 상태 클래스: pseudo 전용
     const pseudoClassName = useMemo(() => {
       if (!className) return '';
 
       return className
         .split(' ')
-        .filter(name => name.startsWith('pseudo-') && name !== 'pseudo-hover') // ✅ pseudo-로 시작하지만, pseudo-hover는 아닐 때만 남김
+        .filter(name => name.startsWith('pseudo-') && name !== 'pseudo-hover')
         .join(' ');
     }, [className]);
 
@@ -403,7 +366,6 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
             {...inputProps}
             id={resolvedInputId}
             aria-labelledby={ariaLabelledBy}
-            // 1. 확정된 날짜가 있으면 포맷팅된 값을 보여주고, 없으면 inputProps의 초기값 사용
             value={inputValue}
             onChange={handleInputChange}
             onBlur={handleInputBlur}
@@ -413,15 +375,12 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
             {inputProps?.placeholder}
           </span>
           <IconButton
-            ref={triggerButtonRef}
             className='trigger-calendar'
             aria-expanded={isOpen}
             disabled={inputProps.disabled || resolvedReadOnly}
             type='button'
             aria-label={isOpen ? '달력 닫기' : '달력 열기'}
-            onClick={() => {
-              toggle();
-            }}
+            onClick={toggle}
             onKeyDown={handleTriggerKeyDown}
             variant={buttonProps.variant}
             color={color}
@@ -468,7 +427,6 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
                 onCancel={() => {
                   setTempSelectedDate(confirmedDate);
                   setIsOpen(false);
-                  // ✅ 트리거 버튼으로 포커스 복귀
                   nativeInputRef.current?.focus();
                 }}
                 onConfirm={() => {
@@ -477,12 +435,10 @@ const Datepicker = forwardRef<HTMLDivElement, DatepickerProps>(
                   onDateChange?.(formatted, tempSelectedDate);
                   setConfirmedDate(tempSelectedDate);
                   setIsOpen(false);
-                  // ✅ 트리거 버튼으로 포커스 복귀
                   nativeInputRef.current?.focus();
                 }}
                 onClose={() => {
                   setIsOpen(false);
-                  // ✅ ESC로 닫을 때도 트리거 버튼으로 포커스 복귀
                   nativeInputRef.current?.focus();
                 }}
               />

@@ -76,19 +76,15 @@ const preview: Preview = {
       storySort: {
         order: [
           'Tokens',
-          [
-            'Colors',
-            ['Primitive', 'Semantic', 'Theme', ['Tech']],
-            'Typography',
-          ],
+          ['Colors', ['Primitive', 'Semantic', 'Theme', ['Tech']], 'Typography'],
           'UI',
           [
             'Atoms',
             [
               'Badge',
               'Checkbox',
-              'Label',
               'Radio',
+              'Label',
               'Skeleton',
               'Spinner',
               ['RingSpinner'],

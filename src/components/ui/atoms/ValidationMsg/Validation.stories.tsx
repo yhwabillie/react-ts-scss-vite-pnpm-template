@@ -11,6 +11,7 @@ import { useId } from 'react';
 import Checkbox from '../Checkbox/Checkbox';
 import Input from '../Input/Input';
 import { useTranslation } from 'react-i18next';
+import Card from '../../molecules/Card/Card';
 
 const meta = {
   title: 'UI/Molecules/ValidationMsg',
@@ -251,7 +252,8 @@ export const Usage: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
         {/* --- SECTION 1: ROW LAYOUT (수평 레이아웃) --- */}
         {/* 1-1. Input (Row) */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+
+        <Card style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <FormField
             direction='row'
             htmlFor={`${baseId}-email-row`}
@@ -273,10 +275,10 @@ export const Usage: Story = {
               {t('validation-msg.usage.row.input.validation-msg.success.label')}
             </span>
           </ValidationMsg>
-        </div>
+        </Card>
 
         {/* 1-2. Radio (Row) */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <Card style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <FormFieldset
             direction='row'
             legend={t('validation-msg.usage.row.radio.formfieldset.legend')}
@@ -300,10 +302,10 @@ export const Usage: Story = {
               {t('validation-msg.usage.row.radio.validation-msg.warning.label')}
             </span>
           </ValidationMsg>
-        </div>
+        </Card>
 
         {/* 1-3. Checkbox (Row) */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <Card style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <FormFieldset
             direction='row'
             legend={t('validation-msg.usage.row.checkbox.formfieldset.legend')}
@@ -327,10 +329,10 @@ export const Usage: Story = {
               {t('validation-msg.usage.row.checkbox.validation-msg.warning.label')}
             </span>
           </ValidationMsg>
-        </div>
+        </Card>
 
         {/* --- SECTION 2: COLUMN LAYOUT (수직 레이아웃) --- */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+        <Card style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
           {/* 2-1. Input (Column) */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <FormField
@@ -418,7 +420,7 @@ export const Usage: Story = {
               </span>
             </ValidationMsg>
           </div>
-        </div>
+        </Card>
       </div>
     );
   },

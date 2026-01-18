@@ -1,5 +1,5 @@
 import Styles from './Tag.module.scss';
-import Icon from '../../atoms/Icon/Icon'; // Icon 컴포넌트 가정
+import Icon from '../../atoms/Icon/Icon';
 import { forwardRef } from 'react';
 
 interface TagProps {
@@ -33,11 +33,11 @@ const Tag = forwardRef<HTMLAnchorElement & HTMLDivElement & HTMLButtonElement, T
     },
     ref,
   ) => {
-    // 공통 클래스 및 데이터 속성
+    // 공통 클래스 구성
     const tagClassName =
       `${Styles['tag']} variant--${variant} shape--${shape} color--${color} size--${size} ${onDelete ? Styles['tag--deletable'] : ''} ${className}`.trim();
 
-    // 1. 네비게이션용 (Link)
+    // 링크 태그 (네비게이션)
     if (href) {
       return (
         <a ref={ref} href={href} className={tagClassName} target={target}>
@@ -48,7 +48,7 @@ const Tag = forwardRef<HTMLAnchorElement & HTMLDivElement & HTMLButtonElement, T
       );
     }
 
-    // 2. 삭제 가능한 태그 (Action/Deletable)
+    // 삭제 가능한 태그 (action)
     if (onDelete) {
       return (
         <button
@@ -65,7 +65,7 @@ const Tag = forwardRef<HTMLAnchorElement & HTMLDivElement & HTMLButtonElement, T
       );
     }
 
-    // 3. 정적 표시용 (Static)
+    // 정적 태그
     return (
       <div ref={ref} className={tagClassName}>
         {startIcon}

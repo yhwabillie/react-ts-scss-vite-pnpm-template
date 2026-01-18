@@ -94,11 +94,6 @@ const meta = {
       description: '날짜를 클릭했을 때 실행되는 콜백',
       table: { category: 'Events' },
     },
-    onDateChange: {
-      action: 'date changed',
-      description: '최종 선택 날짜가 변경되었을 때 실행되는 콜백',
-      table: { category: 'Events' },
-    },
     onConfirm: {
       action: 'confirmed',
       description: '확인 버튼 클릭 시 실행',

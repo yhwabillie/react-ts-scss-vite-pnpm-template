@@ -3,6 +3,7 @@ import Avatar from './Avatar';
 import sampleAvatar1 from '@/assets/images/avatar_profile_sample_1.png';
 import { GuideCell, GuideGroup, GuideWrapper } from '../../guide/Guide';
 import { useTranslation } from 'react-i18next';
+import Card from '../Card/Card';
 
 const meta: Meta<typeof Avatar> = {
   title: 'UI/Molecules/Avatar',
@@ -88,11 +89,9 @@ export const Base: Story = {
     const { t } = useTranslation();
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-        <GuideGroup>
-          <GuideCell>
-            <Avatar {...args} src={sampleAvatar1} name={t('avatar.name')} />
-          </GuideCell>
-        </GuideGroup>
+        <Card>
+          <Avatar {...args} src={sampleAvatar1} name={t('avatar.name')} />
+        </Card>
       </GuideWrapper>
     );
   },
@@ -107,11 +106,9 @@ export const FallbackName: Story = {
     const { t } = useTranslation();
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-        <GuideGroup>
-          <GuideCell>
-            <Avatar {...args} src='' name={t('avatar.name')} />
-          </GuideCell>
-        </GuideGroup>
+        <Card>
+          <Avatar {...args} src='' name={t('avatar.name')} />
+        </Card>
       </GuideWrapper>
     );
   },
@@ -125,11 +122,9 @@ export const UndefinedName: Story = {
   render: args => {
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-        <GuideGroup>
-          <GuideCell>
-            <Avatar {...args} src='' name='' />
-          </GuideCell>
-        </GuideGroup>
+        <Card>
+          <Avatar {...args} src='' name='' />
+        </Card>
       </GuideWrapper>
     );
   },
@@ -149,20 +144,16 @@ export const Variants: Story = {
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '24px' }}>
         <GuideGroup title='Solid'>
-          <GuideCell>
+          <Card style={{ display: 'flex', gap: '40px' }}>
             <Avatar {...args} variant='solid' name={t('avatar.name')} />
-          </GuideCell>
-          <GuideCell>
             <Avatar {...args} src='' variant='solid' name={t('avatar.name')} />
-          </GuideCell>
+          </Card>
         </GuideGroup>
         <GuideGroup title='Outline'>
-          <GuideCell>
+          <Card style={{ display: 'flex', gap: '40px' }}>
             <Avatar {...args} variant='outline' name={t('avatar.name')} />
-          </GuideCell>
-          <GuideCell>
             <Avatar {...args} src='' variant='outline' name={t('avatar.name')} />
-          </GuideCell>
+          </Card>
         </GuideGroup>
       </GuideWrapper>
     );
@@ -183,28 +174,22 @@ export const Shapes: Story = {
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '24px' }}>
         <GuideGroup title='Square'>
-          <GuideCell>
+          <Card style={{ display: 'flex', gap: '40px' }}>
             <Avatar {...args} shape='square' name={t('avatar.name')} />
-          </GuideCell>
-          <GuideCell>
             <Avatar {...args} src='' shape='square' name={t('avatar.name')} />
-          </GuideCell>
+          </Card>
         </GuideGroup>
         <GuideGroup title='Rounded'>
-          <GuideCell>
+          <Card style={{ display: 'flex', gap: '40px' }}>
             <Avatar {...args} shape='rounded' name={t('avatar.name')} />
-          </GuideCell>
-          <GuideCell>
             <Avatar {...args} src='' shape='rounded' name={t('avatar.name')} />
-          </GuideCell>
+          </Card>
         </GuideGroup>
         <GuideGroup title='Pill'>
-          <GuideCell>
+          <Card style={{ display: 'flex', gap: '40px' }}>
             <Avatar {...args} shape='pill' name={t('avatar.name')} />
-          </GuideCell>
-          <GuideCell>
             <Avatar {...args} src='' shape='pill' name={t('avatar.name')} />
-          </GuideCell>
+          </Card>
         </GuideGroup>
       </GuideWrapper>
     );
@@ -222,62 +207,64 @@ export const Sizes: Story = {
 
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '20px' }}>
-        <div style={{ display: 'flex', flexDirection: 'row', gap: '40px', alignItems: 'flex-start' }}>
+        <div
+          style={{ display: 'flex', flexDirection: 'row', gap: '40px', alignItems: 'flex-start' }}
+        >
           <GuideCell caption='sm'>
-            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+            <Card style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
               <Avatar {...args} src={sampleAvatar1} shape='square' size='sm' name={name} />
               <Avatar {...args} src='' shape='square' size='sm' name={name} />
-            </div>
-            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+            </Card>
+            <Card style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
               <Avatar {...args} src={sampleAvatar1} shape='rounded' size='sm' name={name} />
               <Avatar {...args} src='' shape='rounded' size='sm' name={name} />
-            </div>
-            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+            </Card>
+            <Card style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
               <Avatar {...args} src={sampleAvatar1} shape='pill' size='sm' name={name} />
               <Avatar {...args} src='' shape='pill' size='sm' name={name} />
-            </div>
+            </Card>
           </GuideCell>
           <GuideCell caption='md'>
-            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+            <Card style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
               <Avatar {...args} src={sampleAvatar1} shape='square' size='md' name={name} />
               <Avatar {...args} src='' shape='square' size='md' name={name} />
-            </div>
-            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+            </Card>
+            <Card style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
               <Avatar {...args} src={sampleAvatar1} shape='rounded' size='md' name={name} />
               <Avatar {...args} src='' shape='rounded' size='md' name={name} />
-            </div>
-            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+            </Card>
+            <Card style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
               <Avatar {...args} src={sampleAvatar1} shape='pill' size='md' name={name} />
               <Avatar {...args} src='' shape='pill' size='md' name={name} />
-            </div>
+            </Card>
           </GuideCell>
           <GuideCell caption='lg'>
-            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+            <Card style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
               <Avatar {...args} src={sampleAvatar1} shape='square' size='lg' name={name} />
               <Avatar {...args} src='' shape='square' size='lg' name={name} />
-            </div>
-            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+            </Card>
+            <Card style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
               <Avatar {...args} src={sampleAvatar1} shape='rounded' size='lg' name={name} />
               <Avatar {...args} src='' shape='rounded' size='lg' name={name} />
-            </div>
-            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+            </Card>
+            <Card style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
               <Avatar {...args} src={sampleAvatar1} shape='pill' size='lg' name={name} />
               <Avatar {...args} src='' shape='pill' size='lg' name={name} />
-            </div>
+            </Card>
           </GuideCell>
           <GuideCell caption='xl'>
-            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+            <Card style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
               <Avatar {...args} src={sampleAvatar1} shape='square' size='xl' name={name} />
               <Avatar {...args} src='' shape='square' size='xl' name={name} />
-            </div>
-            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+            </Card>
+            <Card style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
               <Avatar {...args} src={sampleAvatar1} shape='rounded' size='xl' name={name} />
               <Avatar {...args} src='' shape='rounded' size='xl' name={name} />
-            </div>
-            <div style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
+            </Card>
+            <Card style={{ display: 'flex', gap: '10px', flexDirection: 'row' }}>
               <Avatar {...args} src={sampleAvatar1} shape='pill' size='xl' name={name} />
               <Avatar {...args} src='' shape='pill' size='xl' name={name} />
-            </div>
+            </Card>
           </GuideCell>
         </div>
       </GuideWrapper>
@@ -298,15 +285,13 @@ export const Polymorphic: Story = {
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '20px' }}>
         <GuideGroup title='Standard (div)'>
-          <GuideCell>
+          <Card>
             <Avatar {...args} as='div' src={sampleAvatar1} alt={altText} name={name} />
-          </GuideCell>
-          <GuideCell>
             <Avatar {...args} as='div' name={name} src='' alt={altText} />
-          </GuideCell>
+          </Card>
         </GuideGroup>
         <GuideGroup title='Linkable (anchor)'>
-          <GuideCell>
+          <Card>
             <Avatar
               {...args}
               as='a'
@@ -316,8 +301,6 @@ export const Polymorphic: Story = {
               alt={altText}
               name={name}
             />
-          </GuideCell>
-          <GuideCell>
             <Avatar
               {...args}
               as='a'
@@ -327,10 +310,10 @@ export const Polymorphic: Story = {
               src=''
               alt={altText}
             />
-          </GuideCell>
+          </Card>
         </GuideGroup>
         <GuideGroup title='Action (button)'>
-          <GuideCell>
+          <Card>
             <Avatar
               {...args}
               as='button'
@@ -339,10 +322,8 @@ export const Polymorphic: Story = {
               alt={altText}
               name={name}
             />
-          </GuideCell>
-          <GuideCell>
             <Avatar {...args} as='button' type='button' name={name} src='' alt={altText} />
-          </GuideCell>
+          </Card>
         </GuideGroup>
       </GuideWrapper>
     );
@@ -364,32 +345,34 @@ export const States: Story = {
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '20px' }}>
         <GuideGroup title='Default'>
           <GuideCell caption='solid'>
-            <Avatar {...args} as='button' variant='solid' name={name} />
+            <Card>
+              <Avatar {...args} as='button' variant='solid' name={name} />
+            </Card>
           </GuideCell>
           <GuideCell caption='outline'>
-            <Avatar {...args} as='button' variant='outline' name={name} />
+            <Card>
+              <Avatar {...args} as='button' variant='outline' name={name} />
+            </Card>
           </GuideCell>
           <GuideCell caption='solid'>
-            <Avatar {...args} src='' as='button' variant='solid' name={name} />
+            <Card>
+              <Avatar {...args} src='' as='button' variant='solid' name={name} />
+            </Card>
           </GuideCell>
           <GuideCell caption='outline'>
-            <Avatar {...args} src='' as='button' variant='outline' name={name} />
+            <Card>
+              <Avatar {...args} src='' as='button' variant='outline' name={name} />
+            </Card>
           </GuideCell>
         </GuideGroup>
         <GuideGroup title='Hover'>
-          <GuideCell>
+          <Card>
             <Avatar {...args} as='button' variant='solid' className='pseudo-hover' name={name} />
-          </GuideCell>
-          <GuideCell>
-            <Avatar
-              {...args}
-              as='button'
-              variant='outline'
-              className='pseudo-hover'
-              name={name}
-            />
-          </GuideCell>
-          <GuideCell>
+          </Card>
+          <Card>
+            <Avatar {...args} as='button' variant='outline' className='pseudo-hover' name={name} />
+          </Card>
+          <Card>
             <Avatar
               {...args}
               src=''
@@ -398,8 +381,8 @@ export const States: Story = {
               className='pseudo-hover'
               name={name}
             />
-          </GuideCell>
-          <GuideCell>
+          </Card>
+          <Card>
             <Avatar
               {...args}
               src=''
@@ -408,10 +391,10 @@ export const States: Story = {
               className='pseudo-hover'
               name={name}
             />
-          </GuideCell>
+          </Card>
         </GuideGroup>
         <GuideGroup title='Focus'>
-          <GuideCell>
+          <Card>
             <Avatar
               {...args}
               as='button'
@@ -419,8 +402,8 @@ export const States: Story = {
               className='pseudo-focus-visible'
               name={name}
             />
-          </GuideCell>
-          <GuideCell>
+          </Card>
+          <Card>
             <Avatar
               {...args}
               as='button'
@@ -428,8 +411,8 @@ export const States: Story = {
               className='pseudo-focus-visible'
               name={name}
             />
-          </GuideCell>
-          <GuideCell>
+          </Card>
+          <Card>
             <Avatar
               {...args}
               src=''
@@ -438,8 +421,8 @@ export const States: Story = {
               className='pseudo-focus-visible'
               name={name}
             />
-          </GuideCell>
-          <GuideCell>
+          </Card>
+          <Card>
             <Avatar
               {...args}
               src=''
@@ -448,7 +431,7 @@ export const States: Story = {
               className='pseudo-focus-visible'
               name={name}
             />
-          </GuideCell>
+          </Card>
         </GuideGroup>
       </GuideWrapper>
     );
@@ -470,133 +453,157 @@ export const StateColors: Story = {
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '20px' }}>
         <GuideGroup title='Hover'>
           <GuideCell caption='Primary'>
-            <Avatar
-              {...args}
-              color='primary'
-              as='button'
-              variant='outline'
-              className='pseudo-hover'
-              name={name}
-            />
+            <Card>
+              <Avatar
+                {...args}
+                color='primary'
+                as='button'
+                variant='outline'
+                className='pseudo-hover'
+                name={name}
+              />
+            </Card>
           </GuideCell>
           <GuideCell caption='Secondary'>
-            <Avatar
-              {...args}
-              color='secondary'
-              as='button'
-              variant='outline'
-              className='pseudo-hover'
-              name={name}
-            />
+            <Card>
+              <Avatar
+                {...args}
+                color='secondary'
+                as='button'
+                variant='outline'
+                className='pseudo-hover'
+                name={name}
+              />
+            </Card>
           </GuideCell>
           <GuideCell caption='Tertiary'>
-            <Avatar
-              {...args}
-              color='tertiary'
-              as='button'
-              variant='outline'
-              className='pseudo-hover'
-              name={name}
-            />
+            <Card>
+              <Avatar
+                {...args}
+                color='tertiary'
+                as='button'
+                variant='outline'
+                className='pseudo-hover'
+                name={name}
+              />
+            </Card>
           </GuideCell>
           <GuideCell caption='Primary'>
-            <Avatar
-              {...args}
-              color='primary'
-              src=''
-              as='button'
-              variant='outline'
-              className='pseudo-hover'
-              name={name}
-            />
+            <Card>
+              <Avatar
+                {...args}
+                color='primary'
+                src=''
+                as='button'
+                variant='outline'
+                className='pseudo-hover'
+                name={name}
+              />
+            </Card>
           </GuideCell>
           <GuideCell caption='Secondary'>
-            <Avatar
-              {...args}
-              color='secondary'
-              src=''
-              as='button'
-              variant='outline'
-              className='pseudo-hover'
-              name={name}
-            />
+            <Card>
+              <Avatar
+                {...args}
+                color='secondary'
+                src=''
+                as='button'
+                variant='outline'
+                className='pseudo-hover'
+                name={name}
+              />
+            </Card>
           </GuideCell>
           <GuideCell caption='Tertiary'>
-            <Avatar
-              {...args}
-              color='tertiary'
-              src=''
-              as='button'
-              variant='outline'
-              className='pseudo-hover'
-              name={name}
-            />
+            <Card>
+              <Avatar
+                {...args}
+                color='tertiary'
+                src=''
+                as='button'
+                variant='outline'
+                className='pseudo-hover'
+                name={name}
+              />
+            </Card>
           </GuideCell>
         </GuideGroup>
 
         <GuideGroup title='Focus'>
           <GuideCell caption='Primary'>
-            <Avatar
-              {...args}
-              color='primary'
-              as='button'
-              variant='outline'
-              className='pseudo-focus-visible'
-              name={name}
-            />
+            <Card>
+              <Avatar
+                {...args}
+                color='primary'
+                as='button'
+                variant='outline'
+                className='pseudo-focus-visible'
+                name={name}
+              />
+            </Card>
           </GuideCell>
           <GuideCell caption='Secondary'>
-            <Avatar
-              {...args}
-              color='secondary'
-              as='button'
-              variant='outline'
-              className='pseudo-focus-visible'
-              name={name}
-            />
+            <Card>
+              <Avatar
+                {...args}
+                color='secondary'
+                as='button'
+                variant='outline'
+                className='pseudo-focus-visible'
+                name={name}
+              />
+            </Card>
           </GuideCell>
           <GuideCell caption='Tertiary'>
-            <Avatar
-              {...args}
-              color='tertiary'
-              as='button'
-              variant='outline'
-              className='pseudo-focus-visible'
-              name={name}
-            />
+            <Card>
+              <Avatar
+                {...args}
+                color='tertiary'
+                as='button'
+                variant='outline'
+                className='pseudo-focus-visible'
+                name={name}
+              />
+            </Card>
           </GuideCell>
           <GuideCell caption='Primary'>
-            <Avatar
-              {...args}
-              color='primary'
-              src=''
-              as='button'
-              variant='outline'
-              className='pseudo-focus-visible'
-              name={name}
-            />
+            <Card>
+              <Avatar
+                {...args}
+                color='primary'
+                src=''
+                as='button'
+                variant='outline'
+                className='pseudo-focus-visible'
+                name={name}
+              />
+            </Card>
           </GuideCell>
           <GuideCell caption='Secondary'>
-            <Avatar
-              {...args}
-              color='secondary'
-              src=''
-              as='button'
-              variant='outline'
-              className='pseudo-focus-visible'
-              name={name}
-            />
+            <Card>
+              <Avatar
+                {...args}
+                color='secondary'
+                src=''
+                as='button'
+                variant='outline'
+                className='pseudo-focus-visible'
+                name={name}
+              />
+            </Card>
           </GuideCell>
           <GuideCell caption='Tertiary'>
-            <Avatar
-              {...args}
-              color='tertiary'
-              src=''
-              as='button'
-              variant='outline'
-              className='pseudo-focus-visible'
-              name={name}
-            />
+            <Card>
+              <Avatar
+                {...args}
+                color='tertiary'
+                src=''
+                as='button'
+                variant='outline'
+                className='pseudo-focus-visible'
+                name={name}
+              />
+            </Card>
           </GuideCell>
         </GuideGroup>
       </GuideWrapper>

@@ -31,9 +31,8 @@ const Pagination = ({
   siblingCount = 1,
   className,
 }: PaginationProps) => {
-  // 1. 말줄임 로직이 포함된 페이지 배열 생성
+  // 페이지 배열 생성 (말줄임 포함)
   const pageRange = useMemo(() => {
-    // 말줄임표 없이 모든 숫자를 보여줄 수 있는 최대 개수
     const totalNumbers = siblingCount * 2 + 5;
 
     if (totalNumbers >= totalPages) {
@@ -46,14 +45,14 @@ const Pagination = ({
     const shouldShowLeftDots = leftSiblingIndex > 2;
     const shouldShowRightDots = rightSiblingIndex < totalPages - 2;
 
-    // Case 1: 오른쪽만 말줄임 (초반부)
+    // Case 1: 오른쪽만 말줄임
     if (!shouldShowLeftDots && shouldShowRightDots) {
       let leftItemCount = 3 + 2 * siblingCount;
       let leftRange = Array.from({ length: leftItemCount }, (_, i) => i + 1);
       return [...leftRange, DOTS, totalPages];
     }
 
-    // Case 2: 왼쪽만 말줄임 (후반부)
+    // Case 2: 왼쪽만 말줄임
     if (shouldShowLeftDots && !shouldShowRightDots) {
       let rightItemCount = 3 + 2 * siblingCount;
       let rightRange = Array.from(
@@ -63,7 +62,7 @@ const Pagination = ({
       return [1, DOTS, ...rightRange];
     }
 
-    // Case 3: 양쪽 모두 말줄임 (중간부)
+    // Case 3: 양쪽 말줄임
     if (shouldShowLeftDots && shouldShowRightDots) {
       let middleRange = Array.from(
         { length: rightSiblingIndex - leftSiblingIndex + 1 },
@@ -80,32 +79,32 @@ const Pagination = ({
   const handlePrev = () => currentPage > 1 && onPageChange(currentPage - 1);
   const handleNext = () => currentPage < totalPages && onPageChange(currentPage + 1);
 
-  // 공통 버튼 속성 (DRY 원칙)
+  // 공통 버튼 속성
   const commonProps = { shape, color, size, type: 'button' as const };
 
-  // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하지 않는 것
+  // storybook 상태 클래스: 일반 클래스만
   const filteredClassName = useMemo(() => {
     if (!className) return '';
 
     return className
       .split(' ')
       .filter(name => {
-        // 1. 'pseudo-'로 시작하지 않는 일반 클래스는 무조건 통과
+        // 1. 'pseudo-'가 아니면 통과
         if (!name.startsWith('pseudo-')) return true;
 
-        // 2. 'pseudo-'로 시작하더라도 'pseudo-hover'인 경우는 통과
+        // 2. 'pseudo-hover'는 통과
         return name === 'pseudo-hover';
       })
       .join(' ');
   }, [className]);
 
-  // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하는 것
+  // storybook 상태 클래스: pseudo 전용
   const pseudoClassName = useMemo(() => {
     if (!className) return '';
 
     return className
       .split(' ')
-      .filter(name => name.startsWith('pseudo-')) // ✅ pseudo-로 시작
+      .filter(name => name.startsWith('pseudo-'))
       .join(' ');
   }, [className]);
 

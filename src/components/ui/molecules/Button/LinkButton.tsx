@@ -12,7 +12,6 @@ type BaseProps = {
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
 
-  /** DOM으로 내려가면 안 되는 커스텀 슬롯 */
   startSpinner?: React.ReactNode;
   endSpinner?: React.ReactNode;
 
@@ -20,7 +19,6 @@ type BaseProps = {
   className?: string;
 };
 
-/** <a> 전용 Props */
 type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
 type LinkButtonProps = BaseProps & AnchorProps;
@@ -40,7 +38,6 @@ const LinkButton: React.FC<LinkButtonProps> = ({
   fullWidth,
   className,
 
-  // 커스텀 props는 위에서 구조분해로 제거됨 → rest에는 DOM-safe props만 남음
   ...anchorProps
 }) => {
   return (

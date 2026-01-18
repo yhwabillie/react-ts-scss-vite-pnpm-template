@@ -164,13 +164,28 @@ export const Sizes: Story = {
       <GuideWrapper>
         <GuideGroup direction='column'>
           <GuideCell caption='Small (sm)' style={{ width: '100%' }}>
-            <Accordion {...args} size='sm' title={copy.depth1.title} content={copy.depth1.content} />
+            <Accordion
+              {...args}
+              size='sm'
+              title={`${copy.depth1.title} (sm)`}
+              content={copy.depth1.content}
+            />
           </GuideCell>
           <GuideCell caption='Medium (md)' style={{ width: '100%' }}>
-            <Accordion {...args} size='md' title={copy.depth1.title} content={copy.depth1.content} />
+            <Accordion
+              {...args}
+              size='md'
+              title={`${copy.depth1.title} (md)`}
+              content={copy.depth1.content}
+            />
           </GuideCell>
           <GuideCell caption='Large (lg)' style={{ width: '100%' }}>
-            <Accordion {...args} size='lg' title={copy.depth1.title} content={copy.depth1.content} />
+            <Accordion
+              {...args}
+              size='lg'
+              title={`${copy.depth1.title} (lg)`}
+              content={copy.depth1.content}
+            />
           </GuideCell>
         </GuideGroup>
       </GuideWrapper>
@@ -201,7 +216,7 @@ export const Colors: Story = {
             <Accordion
               {...args}
               color='primary'
-              title={copy.depth1.title}
+              title={`${copy.depth1.title} (Primary)`}
               content={copy.depth1.content}
             />
           </GuideCell>
@@ -209,7 +224,7 @@ export const Colors: Story = {
             <Accordion
               {...args}
               color='secondary'
-              title={copy.depth1.title}
+              title={`${copy.depth1.title} (Secondary)`}
               content={copy.depth1.content}
             />
           </GuideCell>
@@ -217,7 +232,7 @@ export const Colors: Story = {
             <Accordion
               {...args}
               color='tertiary'
-              title={copy.depth1.title}
+              title={`${copy.depth1.title} (Tertiary)`}
               content={copy.depth1.content}
             />
           </GuideCell>
@@ -290,12 +305,12 @@ export const Nested: Story = {
           items: [
             {
               ...(args.items?.[0]?.items?.[0] ?? {}),
-              title: copy.depth3.title,
+              title: `${copy.depth3.title} A`,
               content: copy.depth3.content,
             },
             {
               ...(args.items?.[0]?.items?.[1] ?? {}),
-              title: copy.depth3.title,
+              title: `${copy.depth3.title} B`,
               content: copy.depth3.content,
             },
           ],
@@ -370,14 +385,22 @@ export const States: Story = {
           {/* Hover 상태 확인 */}
           <GuideCell caption='Hover State' style={{ width: '100%' }}>
             <div className='pseudo-hover-wrapper'>
-              <Accordion {...args} title={copy.depth1.title} content={copy.depth1.content} />
+              <Accordion
+                {...args}
+                title={`${copy.depth1.title} (Hover)`}
+                content={copy.depth1.content}
+              />
             </div>
           </GuideCell>
 
           {/* Active / Focus 상태 확인 */}
           <GuideCell caption='Active / Focus State' style={{ width: '100%' }}>
             <div className='pseudo-active-wrapper'>
-              <Accordion {...args} title={copy.depth1.title} content={copy.depth1.content} />
+              <Accordion
+                {...args}
+                title={`${copy.depth1.title} (Active)`}
+                content={copy.depth1.content}
+              />
             </div>
           </GuideCell>
         </GuideGroup>

@@ -66,7 +66,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     ref,
   ) => {
     // -----------------------------
-    // 📌 상태 선언
+    // 📌 상태
     // -----------------------------
     const [isOpen, setIsOpen] = useState(false);
     const [positioned, setPositioned] = useState(false);
@@ -74,7 +74,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
 
     // -----------------------------
-    // 🧩 Ref 선언
+    // 🧩 Ref
     // -----------------------------
     const portalRef = useRef<HTMLDivElement | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -84,19 +84,14 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     const openReasonRef = useRef<'input' | 'keyboard' | 'button' | null>(null);
 
     // -----------------------------
-    // 🔑 [ID 관리] Combobox 및 리스트박스 식별자
-    // - baseId: 사용자로부터 id가 전달되면 사용, 없으면 useId()로 생성
-    // - listboxId: 리스트박스(옵션 컨테이너)의 고유 ID, aria-controls 등에 사용
+    // 🔑 [ID] 컴포넌트/리스트박스 식별자
     // -----------------------------
     const baseId = id ?? useId();
     const listboxId = `${baseId}-listbox`;
 
     // -----------------------------
-    // 🏁 초기 선택값 설정
-    // - 최초 마운트 시 options 중
-    //   selected: true && disabled 아님 && value가 빈 값이 아닌 옵션을 찾음
-    // - 해당 옵션이 있으면 selectedId / inputValue의 초기값으로 사용
-    // - 없으면 선택 없음 (selectedId: null, inputValue: '')
+    // 🏁 초기 선택값
+    // - selected && !disabled && value !== ''만 허용
     // -----------------------------
     const initialSelectedOption = useMemo(
       () => options.find(opt => opt.selected && !opt.disabled && opt.value !== '') ?? null,
@@ -112,26 +107,19 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     );
 
     // -----------------------------
-    // 🎯 [Controlled] value prop 동기화
-    // - 외부에서 value prop이 전달되면 제어 컴포넌트로 동작
-    // - value가 변경될 때마다 내부 상태(inputValue, selectedId) 업데이트
-    // - value에 해당하는 옵션을 찾아 selectedId도 함께 업데이트
+    // 🎯 [Controlled] value 동기화
     // -----------------------------
     useEffect(() => {
       if (value === undefined) return; // uncontrolled 모드
 
       setInputValue(value);
 
-      // value에 해당하는 옵션 찾기
       const matchedOption = options.find(opt => opt.value === value);
       setSelectedId(matchedOption?.id ?? null);
     }, [value, options]);
 
     // -----------------------------
-    // 🔎 [옵션 필터링] filteredOptions
-    // - inputValue(사용자 입력값)를 기준으로 옵션 필터링
-    // - 입력값 없으면 전체 옵션 반환
-    // - 대소문자 구분 없이 포함 여부 검사
+    // 🔎 [필터링] inputValue 기준 옵션 필터링
     // -----------------------------
     const filteredOptions = useMemo(() => {
       if (!inputValue) return options;
@@ -143,19 +131,12 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
 
     // -----------------------------
     // ♿️ [ARIA] 활성 옵션 ID
-    // - 키보드 포커스가 있는 옵션의 ID를 aria-activedescendant에 사용
-    // - focusedIndex가 null이면 undefined 반환
     // -----------------------------
     const activeDescendantId =
       focusedIndex !== null ? filteredOptions[focusedIndex]?.id : undefined;
 
     // -----------------------------------------------------
-    // ⚡️ [Input] handleInputChange
-    // - 사용자가 입력창에 타이핑할 때 호출
-    // - 입력값을 내부 상태(inputValue)에 반영
-    // - 입력 시 옵션 리스트를 열고(isOpen = true)
-    // - 키보드 포커스 인덱스 초기화
-    // - 외부에서 전달된 inputProps.onChange가 있다면 함께 호출
+    // ⚡️ [Input] 입력 변화 처리
     // -----------------------------------------------------
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const value = e.target.value;
@@ -164,10 +145,8 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
       setIsOpen(true);
       openReasonRef.current = 'input';
 
-      // 🔥 검색 중에는 포커스 이동 금지
       setFocusedIndex(null);
 
-      // ✅ 선택된 옵션과 input 값이 달라지면 선택 해제
       if (selectedOption && selectedOption.value !== value) {
         setSelectedId(null);
       }
@@ -176,14 +155,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     };
 
     // -----------------------------------------------------
-    // ⚡️ [Option] handleSelect
-    // - OptionItem 선택 시 호출되는 콜백
-    // - 선택된 옵션의 value를 inputValue에 반영
-    // - 선택된 옵션의 id를 selectedId로 저장
-    // - 옵션 리스트 닫기
-    // - 키보드 포커스 인덱스 초기화
-    // - 선택된 옵션 정보를 조합하여
-    //   외부 onValueChange(value, option)로 전달
+    // ⚡️ [Option] 옵션 선택 처리
     // -----------------------------------------------------
     const handleSelect = useCallback(
       (id: string, value: string) => {
@@ -199,9 +171,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     );
 
     // -----------------------------------------------------
-    // 🔁 [Keyboard Utils] 다음/이전 활성 옵션 인덱스 계산
-    // - disabled 옵션은 건너뜀
-    // - 범위를 벗어나면 기존 인덱스 유지
+    // 🔁 [Keyboard] 다음/이전 활성 인덱스 계산
     // -----------------------------------------------------
     const findNextEnabled = useCallback(
       (current: number | null, step: 1 | -1) => {
@@ -222,15 +192,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     );
 
     // -----------------------------------------------------
-    // ⌨️ [Keyboard] handleKeyDown
-    // - Combobox 키보드 인터랙션 처리 (웹 접근성 준수)
-    // - ArrowDown / ArrowUp : 옵션 포커스 이동
-    // - Enter : 포커스된 옵션 선택
-    // - Escape : 옵션 리스트 닫기
-    // - Tab : 기본 포커스 이동 허용 (리스트 닫기만 처리)
-    // - aria-activedescendant 패턴 사용
-    // - 최초 진입 시 포커스가 없다면
-    //   → 선택된 옵션 또는 첫 번째 옵션부터 포커싱
+    // ⌨️ [Keyboard] 키보드 인터랙션
     // -----------------------------------------------------
     const lastKeyEventRef = useRef<{ key: string; timestamp: number } | null>(null);
 
@@ -238,7 +200,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
       (e: React.KeyboardEvent<HTMLInputElement>) => {
         const now = Date.now();
 
-        // 50ms 이내에 같은 키 이벤트가 발생하면 무시 (중복 이벤트 방지)
+        // 50ms 이내 중복 키 입력 방지
         if (
           lastKeyEventRef.current &&
           lastKeyEventRef.current.key === e.key &&
@@ -268,7 +230,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
             let nextIndex: number | null;
 
             if (focusedIndex === null) {
-              // 초기 진입: 선택된 옵션 또는 첫 번째 활성 옵션으로
+              // 초기 진입: 선택된 옵션 또는 첫 활성 옵션
               if (selectedId) {
                 const idx = filteredOptions.findIndex(
                   opt => opt.id === selectedId && !opt.disabled,
@@ -279,7 +241,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
               }
               nextIndex = nextIndex !== -1 ? nextIndex : null;
             } else {
-              // 이미 포커스가 있으면 다음/이전으로 이동
+              // 기존 포커스가 있으면 다음/이전
               nextIndex = findNextEnabled(focusedIndex, step);
             }
 
@@ -320,12 +282,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     );
 
     // -----------------------------------------------------
-    // ✨ [Accessibility] 활성 옵션 스크롤 동기화
-    // - aria-activedescendant 기반 포커싱에서는
-    //   브라우저가 자동으로 스크롤하지 않으므로
-    //   수동으로 scrollIntoView() 호출
-    // - 키보드로 포커스 이동 시 화면 밖 옵션을 뷰포트로 이동
-    // - block: 'nearest' → 최소한의 스크롤만 발생
+    // ✨ [A11y] 활성 옵션 스크롤 동기화
     // -----------------------------------------------------
     useLayoutEffect(() => {
       if (!isOpen || !positioned) return;
@@ -341,42 +298,28 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     }, [isOpen, positioned, focusedIndex]);
 
     // -----------------------------------------------------
-    // 🖱️ [Interaction] handleOutsideClick
-    // - Combobox 외부 영역 클릭 감지
-    // - input 영역(containerRef)과
-    //   옵션 리스트 포털(portalRef) 모두 포함하지 않을 경우
-    //   → 옵션 리스트 닫기
-    // - 포털 구조에서도 정상 동작하도록 ref 기준 검사
+    // 🖱️ [Interaction] 외부 클릭 감지
     // -----------------------------------------------------
     const handleOutsideClick = useCallback((event: MouseEvent) => {
       const target = event.target as Node | null;
 
       // 1. 트리거 컨테이너 내부 클릭인지 확인
       const isInsideContainer = containerRef.current?.contains(target);
-      // 2. 실제 커스텀 셀렉트 영역 클릭인지 확인 (가장 확실한 트리거 영역)
+      // 2. 실제 커스텀 셀렉트 영역 클릭인지 확인
       const isInsideCustomSelect = customInputRef.current?.contains(target);
       // 3. 옵션 목록(Portal) 내부 클릭인지 확인
       const isInsidePortal = portalRef.current?.contains(target);
 
-      // 💡 트리거 내부나 포털 내부라면 'Outside'가 아니므로 아무것도 하지 않음
       if (isInsideContainer || isInsideCustomSelect || isInsidePortal) {
         return;
       }
 
-      // 💡 그 외 지역(진짜 외부)을 클릭했을 때만 닫기
       setIsOpen(false);
       setFocusedIndex(null);
     }, []);
 
     // -----------------------------------------------------
     // ✨ [Focus Sync] 활성 옵션 스크롤 동기화
-    // - 키보드 이동(ArrowUp / ArrowDown)으로 focusedIndex 변경 시
-    //   실제 DOM 옵션이 화면 밖에 있으면 자동으로 스크롤 이동
-    // - aria-activedescendant 기반 포커싱에서는
-    //   브라우저가 스크롤을 자동 처리하지 않기 때문에
-    //   scrollIntoView()를 수동으로 호출해야 함
-    // - block: 'nearest'
-    //   → 최소한의 스크롤만 발생시켜 UX 튀는 현상 방지
     // -----------------------------------------------------
     useLayoutEffect(() => {
       if (!isOpen || !positioned) return;
@@ -391,10 +334,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     }, [isOpen, positioned, focusedIndex]);
 
     // -----------------------------------------------------
-    // ✨ 외부 클릭 이벤트 등록 / 해제
-    // - document 기준 mousedown 이벤트 사용
-    // - 컴포넌트 마운트 시 등록
-    // - 언마운트 시 이벤트 해제
+    // ✨ 외부 클릭 이벤트 등록/해제
     // -----------------------------------------------------
     useEffect(() => {
       document.addEventListener('mousedown', handleOutsideClick);
@@ -404,11 +344,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     }, [handleOutsideClick]);
 
     // -----------------------------------------------------
-    // 🔧 [Portal] updatePosition
-    // - customInputRef 또는 containerRef 기준으로 위치 측정
-    // - getBoundingClientRect() + window.scrollY/X → 스크롤 반영
-    // - top: 요소 하단 기준, left/width: 요소 좌측 및 너비
-    // - 외부 클릭 닫기 등 포털 렌더링 위치 계산에 사용
+    // 🔧 [Portal] 위치 계산
     // -----------------------------------------------------
     const updatePosition = useCallback(() => {
       const el = customInputRef.current ?? containerRef.current;
@@ -422,10 +358,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     }, []);
 
     // ----------------------------------------------
-    // ✨ [Portal] OptionList 위치 초기화
-    // - isOpen 상태에 따라 Portal 위치 계산
-    // - 열려있으면 동기적으로 위치 계산 후 상태 업데이트
-    // - 닫히면 positioned, portalPos 초기화
+    // ✨ [Portal] 열림/닫힘에 따른 위치 초기화
     // ----------------------------------------------
     useLayoutEffect(() => {
       if (!isOpen) {
@@ -442,10 +375,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     }, [isOpen, updatePosition]);
 
     // ---------------------------------------------------------------
-    // ✨ [Portal] OptionList 윈도우 리사이즈 / 스크롤 시 Portal 위치 재계산
-    // - isOpen 상태에서만 이벤트 리스너 등록
-    // - 리사이즈 및 스크롤 이벤트 발생 시 updatePosition 실행
-    // - 컴포넌트 언마운트 시 이벤트 제거
+    // ✨ [Portal] 리사이즈/스크롤 시 위치 재계산
     // ---------------------------------------------------------------
     useEffect(() => {
       if (!isOpen) return;
@@ -465,15 +395,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     }, [isOpen, updatePosition]);
 
     // -----------------------------------------------------
-    // 🔊 [Accessibility] 스크린리더 검색 결과 안내
-    // - 검색어 입력 시 필터링된 옵션 수를 안내
-    // - 검색 중 연속 입력 시 안내가 너무 자주 발생하지 않도록 debounce 적용 (300ms)
-    // - 이전 안내와 동일하면 중복 안내 방지
-    // - 검색 결과가 없으면 중요 메시지(assertive)로 안내
-    // - 검색 결과가 1개 이상이면 일반 안내(polite)로 안내
-    // - live region 갱신 시 기존 메시지를 초기화 후 requestAnimationFrame으로 새 메시지 설정하여
-    //   스크린리더가 변경을 감지하도록 보장
-    // - 검색어가 비어있으면 안내하지 않음 (초기 상태)
+    // 🔊 [A11y] 검색 결과 안내 (i18n 포인트)
     // -----------------------------------------------------
     const prevAnnounceRef = useRef<string>('');
     const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -481,38 +403,32 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
     const [announceRole, setAnnounceRole] = useState<'assertive' | 'polite'>('polite');
 
     useEffect(() => {
-      // 이전 타이머 취소
       if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current);
 
-      // 검색어 없으면 안내 초기화
       if (!inputValue.trim()) {
         setAnnounceMsg('');
         prevAnnounceRef.current = '';
         return;
       }
 
-      // debounce: 300ms
       typingTimeoutRef.current = setTimeout(() => {
         let newMsg = '';
         let liveType: 'assertive' | 'polite' = 'polite';
 
         if (filteredOptions.length === 0) {
           newMsg = '검색 결과가 없습니다.';
-          liveType = 'assertive'; // 결과 없음은 중요 메시지
+          liveType = 'assertive';
         } else if (filteredOptions.length === 1) {
           newMsg = '1개의 검색 결과가 있습니다.';
         } else {
           newMsg = `${filteredOptions.length}개의 검색 결과가 있습니다.`;
         }
 
-        // 이전 메시지와 같으면 업데이트하지 않음 (중복 방지)
         if (prevAnnounceRef.current !== newMsg) {
           prevAnnounceRef.current = newMsg;
 
-          // live region 갱신
           setAnnounceRole(liveType);
 
-          // DOM 업데이트 보장: 기존 메시지 초기화 후 다음 렌더에서 새 메시지 설정
           setAnnounceMsg('');
           requestAnimationFrame(() => {
             setAnnounceMsg(newMsg);
@@ -525,33 +441,31 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
       };
     }, [inputValue, filteredOptions.length]);
 
-    // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하지 않는 것
+    // storybook 상태 클래스: 일반 클래스만
     const filteredClassName = useMemo(() => {
       if (!className) return '';
 
       return className
         .split(' ')
         .filter(name => {
-          // 1. 'pseudo-'로 시작하지 않는 일반 클래스는 무조건 통과
           if (!name.startsWith('pseudo-')) return true;
 
-          // 2. 'pseudo-'로 시작하더라도 'pseudo-hover'인 경우는 통과
           return name === 'pseudo-hover';
         })
         .join(' ');
     }, [className]);
 
-    // storybook states 스타일 클래스 적용 - 'pseudo-'로 시작하는 것
+    // storybook 상태 클래스: pseudo 전용
     const pseudoClassName = useMemo(() => {
       if (!className) return '';
 
       return className
         .split(' ')
-        .filter(name => name.startsWith('pseudo-') && name !== 'pseudo-hover') // ✅ pseudo-로 시작하지만, pseudo-hover는 아닐 때만 남김
+        .filter(name => name.startsWith('pseudo-') && name !== 'pseudo-hover')
         .join(' ');
     }, [className]);
 
-    // 인터랙션 차단 로직 (readonly 또는 disabled일 때)
+    // 인터랙션 차단 여부
     const isInteractive = !disabled && !readOnly;
 
     // -----------------------------
@@ -609,11 +523,8 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
               />
             }
             onClick={e => {
-              if (!isInteractive) return; // disabled 혹은 readonly면 클릭 시 열리지 않음
-
-              // 1. 이벤트가 document의 mousedown/click으로 전파되는 것을 방지
-              e.stopPropagation();
-
+              if (!isInteractive) return;
+              e.stopPropagation(); // document mousedown close 방지
               setIsOpen(prev => !prev);
             }}
           />
@@ -626,6 +537,7 @@ const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
               {filteredOptions.map((opt, idx) => (
                 <OptionItem
                   ref={el => {
+                    // filteredOptions 순서가 optionRefs 인덱스와 일치해야 함
                     optionRefs.current[idx] = el;
                   }}
                   key={opt.id}

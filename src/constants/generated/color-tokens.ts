@@ -1081,12 +1081,12 @@ export const ColorTokensData = [
   },
   {
     "id": "--color-btn-outline-warning-bg-active",
-    "lightValue": "var(--project-color-primitive-orange-630)",
+    "lightValue": "var(--project-color-primitive-alpha-orange-660)",
     "darkValue": "var(--project-color-primitive-alpha-orange-460)"
   },
   {
     "id": "--color-btn-outline-warning-text-active",
-    "lightValue": "var(--project-color-primitive-orange-440)",
+    "lightValue": "var(--project-color-primitive-orange-630)",
     "darkValue": "var(--project-color-primitive-orange-440)"
   },
   {

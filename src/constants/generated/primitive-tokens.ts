@@ -1589,6 +1589,12 @@ export const PrimitiveTokensData = [
         "variable": "--color-primitive-alpha-gray-120"
       },
       {
+        "id": "primitive-alpha-gray-140",
+        "name": "gray-140",
+        "value": "rgba(255,255,255,0.8)",
+        "variable": "--color-primitive-alpha-gray-140"
+      },
+      {
         "id": "primitive-alpha-gray-130",
         "name": "gray-130",
         "value": "rgba(255,255,255,0.95)",
@@ -1829,6 +1835,12 @@ export const PrimitiveTokensData = [
         "variable": "--color-primitive-alpha-sky-640"
       },
       {
+        "id": "primitive-alpha-blue-340",
+        "name": "blue-340",
+        "value": "rgba(102,126,234,0.7)",
+        "variable": "--color-primitive-alpha-blue-340"
+      },
+      {
         "id": "primitive-alpha-blue-800",
         "name": "blue-800",
         "value": "rgba(30,27,75,0.2)",
@@ -1905,6 +1917,18 @@ export const PrimitiveTokensData = [
         "name": "indigo-470",
         "value": "rgba(124,58,237,0.25)",
         "variable": "--color-primitive-alpha-indigo-470"
+      },
+      {
+        "id": "primitive-alpha-indigo-540",
+        "name": "indigo-540",
+        "value": "rgba(118,75,162,0.6)",
+        "variable": "--color-primitive-alpha-indigo-540"
+      },
+      {
+        "id": "primitive-alpha-pink-250",
+        "name": "pink-250",
+        "value": "rgba(255,126,179,0.6)",
+        "variable": "--color-primitive-alpha-pink-250"
       },
       {
         "id": "primitive-alpha-red-290",
@@ -2009,6 +2033,12 @@ export const PrimitiveTokensData = [
         "variable": "--color-primitive-alpha-orange-660"
       },
       {
+        "id": "primitive-alpha-green-240",
+        "name": "green-240",
+        "value": "rgba(133,255,233,0.5)",
+        "variable": "--color-primitive-alpha-green-240"
+      },
+      {
         "id": "primitive-alpha-green-420",
         "name": "green-420",
         "value": "rgba(45,252,82,0.05)",
@@ -2067,36 +2097,6 @@ export const PrimitiveTokensData = [
         "name": "green-750",
         "value": "rgba(21,128,101,0.25)",
         "variable": "--color-primitive-alpha-green-750"
-      },
-      {
-        "id": "primitive-alpha-gray-140",
-        "name": "gray-140",
-        "value": "rgba(255,255,255,0.8)",
-        "variable": "--color-primitive-alpha-gray-140"
-      },
-      {
-        "id": "primitive-alpha-blue-340",
-        "name": "blue-340",
-        "value": "rgba(102,126,234,0.7)",
-        "variable": "--color-primitive-alpha-blue-340"
-      },
-      {
-        "id": "primitive-alpha-indigo-540",
-        "name": "indigo-540",
-        "value": "rgba(118,75,162,0.6)",
-        "variable": "--color-primitive-alpha-indigo-540"
-      },
-      {
-        "id": "primitive-alpha-pink-250",
-        "name": "pink-250",
-        "value": "rgba(255,126,179,0.6)",
-        "variable": "--color-primitive-alpha-pink-250"
-      },
-      {
-        "id": "primitive-alpha-green-240",
-        "name": "green-240",
-        "value": "rgba(133,255,233,0.5)",
-        "variable": "--color-primitive-alpha-green-240"
       }
     ]
   }

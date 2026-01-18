@@ -13,8 +13,8 @@ export interface SliderProps {
   value?: number;
   onChange?: (value: number) => void;
   className?: string;
-  inputProps?: React.InputHTMLAttributes<HTMLInputElement>; // 💡 추가
-  thumbProps?: React.HTMLAttributes<HTMLDivElement>; // 💡 추가
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+  thumbProps?: React.HTMLAttributes<HTMLDivElement>;
 }
 
 const Slider = ({
@@ -39,17 +39,14 @@ const Slider = ({
     if (controlledValue !== undefined) setInternalValue(controlledValue);
   }, [controlledValue]);
 
-  // 💡 공통 값 업데이트 로직 (범위 제한 및 Step 적용)
+  // Clamp 범위 + step 정렬 후 값 업데이트
   const updateValue = (newValue: number) => {
     const clampedValue = Math.min(Math.max(newValue, min), max);
 
-    // 💡 소수점 오차 해결 로직
-    // 1. step이 몇 번째 소수점 자리까지 있는지 계산 (예: 0.1 -> 1, 0.01 -> 2)
+    // step의 소수 자릿수 기준으로 반올림하여 부동소수 오차 제거
     const stepString = step.toString();
     const decimalPlaces = stepString.includes('.') ? stepString.split('.')[1].length : 0;
 
-    // 2. step 단위로 나누고 반올림한 뒤 다시 곱함
-    // 3. toFixed를 사용해 부동 소수점 오차를 완전히 제거 후 숫자로 변환
     const steppedValue = Number((Math.round(clampedValue / step) * step).toFixed(decimalPlaces));
 
     if (steppedValue !== currentValue) {
@@ -62,7 +59,7 @@ const Slider = ({
     updateValue(Number(e.target.value));
   };
 
-  // 💡 키보드 접근성 핸들러
+  // 키보드 접근성: 방향키/홈/엔드로 값 이동
   const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     switch (e.key) {
       case 'ArrowRight':
@@ -105,7 +102,7 @@ const Slider = ({
 
   return (
     <div className={clsx(styles['slider'], `color--${color}`, `size--${size}`, className)}>
-      {/* 웹 접근성: 화면에는 보이지 않지만 스크린 리더가 참조할 레이블 */}
+      {/* 스크린 리더용 라벨 */}
       <label id={`${id}-label`} className='sr-only'>
         {label}
       </label>
@@ -116,7 +113,7 @@ const Slider = ({
           thumbProps?.className === 'pseudo-hover' && thumbProps.className,
         )}
       >
-        {/* 1. 마우스/터치 조작용 Native Input (투명) */}
+        {/* 마우스/터치 입력용 native range */}
         <input
           id={id}
           type='range'
@@ -131,27 +128,27 @@ const Slider = ({
           disabled={inputProps?.disabled}
         />
 
-        {/* 2. 시각적 트랙 */}
+        {/* 트랙 */}
         <div className='track'>
           <div className='fill' style={{ width: `${percentage}%` }} />
         </div>
 
-        {/* 3. 조작 주체인 커스텀 Thumb */}
+        {/* 커스텀 thumb (키보드 조작 포커스) */}
         <div
           {...thumbProps}
-          role='slider' // 슬라이더 역할 명시
-          tabIndex={0} // 키보드 포커스 허용
+          role='slider'
+          tabIndex={0}
           aria-labelledby={`${id}-label`}
           aria-valuemin={min}
           aria-valuemax={max}
           aria-valuenow={currentValue}
-          onKeyDown={handleKeyDown} // 화살표 키 조작 연결
+          onKeyDown={handleKeyDown}
           className={clsx('thumb', thumbProps?.className)}
           style={{
             left: `calc(${percentage}% + ${correctionRem})`,
           }}
         >
-          {/* 값 표시 툴팁 */}
+          {/* 현재 값 표시 */}
           <span className='tooltip'>{currentValue}</span>
         </div>
       </div>
