@@ -83,7 +83,9 @@ const PipelineFlow = ({ title }: { title?: string }) => {
             />
           </span>
           <span className='pipeline-flow__step-title'>1단계</span>
-          <span className='pipeline-flow__step-desc'>HSL 기반 자동 분류</span>
+          <span className='pipeline-flow__step-desc'>
+            정규화 <br /> (입력 포맷 통일)
+          </span>
         </li>
         <li className='pipeline-flow__step'>
           <span className='pipeline-flow__step-dot' aria-hidden>
@@ -96,7 +98,9 @@ const PipelineFlow = ({ title }: { title?: string }) => {
             />
           </span>
           <span className='pipeline-flow__step-title'>2단계</span>
-          <span className='pipeline-flow__step-desc'>명도 기반 스텝 생성</span>
+          <span className='pipeline-flow__step-desc'>
+            HSL 변환 <br /> (HEX/RGB → HSL)
+          </span>
         </li>
         <li className='pipeline-flow__step'>
           <span className='pipeline-flow__step-dot' aria-hidden>
@@ -109,9 +113,7 @@ const PipelineFlow = ({ title }: { title?: string }) => {
             />
           </span>
           <span className='pipeline-flow__step-title'>3단계</span>
-          <span className='pipeline-flow__step-desc'>
-            역방향 참조 <br /> (Hex → Token)
-          </span>
+          <span className='pipeline-flow__step-desc'>Tint 분류</span>
         </li>
         <li className='pipeline-flow__step'>
           <span className='pipeline-flow__step-dot' aria-hidden>
@@ -124,9 +126,7 @@ const PipelineFlow = ({ title }: { title?: string }) => {
             />
           </span>
           <span className='pipeline-flow__step-title'>4단계</span>
-          <span className='pipeline-flow__step-desc'>
-            다중 테마 자동 확장 <br /> (style-dictionary 활용)
-          </span>
+          <span className='pipeline-flow__step-desc'>정렬 규칙</span>
         </li>
         <li className='pipeline-flow__step'>
           <span className='pipeline-flow__step-dot' aria-hidden>
@@ -139,9 +139,7 @@ const PipelineFlow = ({ title }: { title?: string }) => {
             />
           </span>
           <span className='pipeline-flow__step-title'>5단계</span>
-          <span className='pipeline-flow__step-desc'>
-            자동 문서화 <br /> (Storybook 연동)
-          </span>
+          <span className='pipeline-flow__step-desc'>재배치/저장</span>
         </li>
       </ol>
     </section>

@@ -176,226 +176,152 @@ import A11yGuide from '@/components/ui/guide/A11yGuide';
 
 <PipelineStage
   num='01'
-  title='HSL 기반 자동 분류'
-  effect='색상 이름을 사람이 정하지 않고 Hue 규칙으로 자동 분류하여, 디자이너·개발자 간 색상 인식 차이를 제거하고 언제 추가해도 일관된 컬러 체계를 유지'
+  title='정규화'
+  effect='시맨틱 컬러의 raw 값(HEX/RGB)을 비교 가능한 포맷으로 통일'
 >
   <Source
     language='javascript'
     dark={true}
     code={dedent`
 /**
- * STEP 01. HSL 기반 색상 자동 분류
+ * STEP 01. 정규화
  *
  * 목적:
- * - 컬러 네이밍 논의를 시스템에서 제거
- * - 사람이 아닌 규칙이 색상을 분류
+ * - colors.json/tech.json의 raw 값을 비교 가능한 포맷으로 통일
  */
 
-// 1️⃣ Hex 색상을 HSL로 변환
-const hex = '#60a5fa';
-const { h, s, l } = hexToHsl(hex);
-// 예시 결과 → h: 217°, s: 91%, l: 67%
-
-// 2️⃣ Hue 기준 고정 분류 규칙
-// (프로젝트 전체에서 변경되지 않는 기준)
-const HUE_GROUPS = [
-{ name: 'red', range: [0, 30] },
-{ name: 'orange', range: [30, 60] },
-{ name: 'yellow', range: [60, 90] },
-{ name: 'green', range: [90, 150] },
-{ name: 'cyan', range: [150, 210] },
-{ name: 'blue', range: [210, 270] },
-{ name: 'purple', range: [270, 330] },
-];
-
-// 3️⃣ Hue 값으로 그룹 자동 결정
-function getColorGroup(hue) {
-return HUE_GROUPS.find(
-g => hue >= g.range[0] && hue < g.range[1]
-)?.name;
-}
-
-const group = getColorGroup(h);
-// → 'blue'
-
-// 결과:
-// '#60a5fa' → h: 217° → blue
-// '#2dd4bf' → h: 175° → cyan
-
-/\*\*
-
-- 핵심:
-- - 색상 이름을 고민하지 않음
-- - 언제 추가해도 항상 동일한 분류 결과
-- - 디자이너/개발자 판단 차이 개입 불가
-    \*/
-    `}
-    />
-    </PipelineStage>
+// tokens/color/colors.json, tokens/color/themes/tech.json에 입력된 raw 값 처리
+normalizeColor('#abc'); // -> #aabbcc
+normalizeColor('#abcd'); // -> #aabbccdd
+`}
+/>
+</PipelineStage>
 
 <PipelineStage
   num='02'
-  title='명도 기반 스텝 자동 생성'
-  effect='명도(Lightness)를 기준으로 단계 값을 자동 산출하여, 색상 개수 변화에도 균등하고 중복 없는 스텝 구조를 유지'
+  title='HSL 변환'
+  effect='HEX/RGB 값을 HSL로 변환해 분류·정렬 기준을 만든다'
 >
   <Source
     language='javascript'
     dark={true}
     code={dedent`
 /**
- * STEP 02. Lightness 기반 스텝 자동 생성
+ * STEP 02. HSL 변환
  *
  * 목적:
- * - 100, 200, 500 같은 숫자 네이밍을 사람이 정하지 않음
- * - 색상 개수 변화에도 단계 체계 유지
+ * - HEX/RGB 값을 HSL로 변환해 분류·정렬 기준 생성
  */
 
-// 색상 개수별 자동 스텝 분포 예시
-1개 → [500]
-2개 → [300, 700]
-5개 → [200, 350, 500, 650, 800]
-10개 → [50, 150, 250, ..., 950]
-
-// 규칙:
-// - Lightness(0~100) → Step(50~950) 매핑
-// - 밝을수록 낮은 숫자, 어두울수록 높은 숫자
-
-// 중복 방지 로직
-if (step이 이미 존재) {
-// 기존 규칙을 깨지 않으면서
-// 항상 고유한 step 생성
-step += 10;
+const val = normalizeColor('#60a5fa');
+let r, g, b;
+if (val.startsWith('#')) {
+r = parseInt(val.slice(1, 3), 16);
+g = parseInt(val.slice(3, 5), 16);
+b = parseInt(val.slice(5, 7), 16);
+} else {
+const m = val.match(/[\d.]+/g);
+[r, g, b] = m.slice(0, 3).map(Number);
 }
-
-/\*\*
-
-- 결과:
-- - "이건 400인가 500인가?" 논의 제거
-- - 컬러 추가/삭제 시에도 단계 자동 재배치
-    \*/
-    `}
-    />
-    </PipelineStage>
+const { h, s, l } = rgbToHsl(r, g, b);
+// 예: #60a5fa -> r:96 g:165 b:250 -> h: 210, s: 93, l: 68
+`}
+/>
+</PipelineStage>
 
 <PipelineStage
   num='03'
-  title='역방향 참조 (Hex → Token)'
-  effect='프로젝트 내 모든 Raw Hex 값을 Primitive 토큰으로 자동 치환하여, 컬러 변경 시 코드 수정 없이 전체 스타일 일관성을 유지'
+  title='Tint 분류'
+  effect='HSL 기준으로 색상군을 결정하고 이후 primitive 그룹/키 기준으로 사용'
 >
   <Source
     language='javascript'
     dark={true}
     code={dedent`
 /**
- * STEP 03. Hex → Primitive Token 역방향 참조
+ * STEP 03. tint 분류
  *
  * 목적:
- * - Raw 컬러 직접 사용 차단
- * - 컬러 일관성을 구조로 보장
+ * - HSL 기준으로 색상군(tint) 결정
  */
 
-// 1️⃣ Primitive 기준 매핑 테이블 생성
-const COLOR_MAP = {
-"#ffffff": "var(--project-color-primitive-gray-50)",
-"#f9fafb": "var(--project-color-primitive-gray-100)",
-"#60a5fa": "var(--project-color-primitive-blue-500)",
-};
+function getTintName(h, s, l) {
+if (s <= 2.5 || l >= 99.5 || l <= 0.5) return 'gray';
+if (h >= 170 && h < 260 && s < 45) return 'slate-blue';
+if (h >= 345 || h < 11) return 'red';
+if (h >= 11 && h < 45) return 'orange';
+if (h >= 45 && h < 65) return 'yellow';
+if (h >= 65 && h < 170) return 'green';
+if (h >= 170 && h < 205) return 'cyan';
+if (h >= 205 && h < 225) return 'sky';
+if (h >= 225 && h < 245) return 'blue';
+if (h >= 245 && h < 270) return 'indigo';
+if (h >= 270 && h < 310) return 'purple';
+if (h >= 310 && h < 345) return 'pink';
+return 'etc';
+}
 
-// 2️⃣ 프로젝트 전체 스캔
-// ❌ background: #60a5fa;
-// ✅ background: var(--project-color-primitive-blue-500);
-
-// 3️⃣ 미등록 컬러 감지
-console.warn("미등록 컬러 발견: #abc123");
-
-/\*\*
-
-- 결과:
-- - 개발자 실수에 의존하지 않음
-- - 시스템 밖 컬러 유입 즉시 확인
-    \*/
-    `}
-    />
-    </PipelineStage>
+const tint = getTintName(h, s, l);
+// 결과: gray, slate-blue, blue, purple ...
+`}
+/>
+</PipelineStage>
 
 <PipelineStage
   num='04'
-  title='다중 테마 자동 확장 (style-dictionary 활용)'
-  effect='단일 Primitive 컬러 소스를 기준으로 모든 테마를 동일한 빌드 로직으로 생성하고, style-dictionary로 산출물을 자동 생성해 테마가 늘어나도 관리 복잡도가 증가하지 않음'
+  title='정렬 규칙'
+  effect='alpha는 뒤로, tint → 명도(L) 기준으로 정렬'
 >
   <Source
     language='javascript'
     dark={true}
     code={dedent`
 /**
- * STEP 04. 다중 테마 자동 확장
+ * STEP 04. 정렬 규칙
  *
  * 목적:
- * - 테마 수와 관리 비용의 비례 관계 제거
- * - style-dictionary로 공통 토큰을 다양한 산출물로 자동 변환
+ * - alpha는 뒤로, tint → 명도(L) 기준으로 정렬
  */
 
-pnpm run token:build
-↓
-primitive-color.json
-// 모든 컬러의 Single Source of Truth
-
-↓
-// style-dictionary가 아래 산출물을 자동 생성
-\_primitive-map.scss
-\_color-map.scss // Light / Dark
-\_theme-tech-map.scss // Tech
-primitive-tokens.ts
-color-tokens.ts
-tech-tokens.ts
-
-/\*\*
-
-- 결과:
-- - 테마 추가 시 코드 수정 최소화
-- - 동일한 규칙이 모든 테마에 자동 적용
-    \*/
-    `}
-    />
-    </PipelineStage>
+allTokens.sort((a, b) => {
+const isAlphaA = a.a < 1;
+const isAlphaB = b.a < 1;
+if (isAlphaA !== isAlphaB) return isAlphaA ? 1 : -1;
+if (a.tint !== b.tint) return groupOrder.indexOf(a.tint) - groupOrder.indexOf(b.tint);
+if (Math.abs(b.l - a.l) > 0.01) return b.l - a.l;
+return a.a - b.a;
+});
+// 예: alpha 컬러는 항상 뒤쪽, 같은 tint는 밝은 컬러가 먼저 정렬
+`}
+/>
+</PipelineStage>
 
 <PipelineStage
   num='05'
-  title='자동 문서화 (Storybook 연동)'
-  effect='토큰 변경 시 문서가 자동으로 갱신되어, 코드와 문서 간 불일치가 발생하지 않음'
+  title='재배치/저장'
+  effect='충돌 시 +10 스텝으로 고유 key를 보장'
 >
   <Source
     language='javascript'
     dark={true}
     code={dedent`
 /**
- * STEP 05. 자동 문서화
+ * STEP 05. 재배치/저장
  *
  * 목적:
- * - 문서를 사람이 관리하지 않음
- * - 항상 최신 상태 유지
+ * - 충돌 시 +10 스텝으로 안전하게 재배치
  */
 
-primitive-color.json 수정
-↓
-pnpm run token:build
-↓
-color-tokens.ts
-primitive-tokens.ts
-tech-tokens.ts
-↓
-Storybook 자동 반영
+let finalKey = key;
+let current = parseInt(key.split('-').pop(), 10) || 50;
+while (organized.primitive[groupName][finalKey]) {
+current += 10;
+finalKey = isAlpha ? item.tint + '-' + current : String(current);
+}
+// 예: gray.500 충돌 -> gray.510
+`}
+/>
 
-/\*\*
-
-- 결과:
-- - Color Palette
-- - Primitive 목록
-- - Light / Dark / Tech 테마
-- 항상 코드와 동일한 상태 유지
-  \*/
-  `}
-  />
   </PipelineStage>
 
 <A11yGuide id='a11y' title='핵심 접근성 설계 표준' />
