@@ -16,6 +16,7 @@ interface PaginationProps {
   isMobileUI?: boolean;
   siblingCount?: number;
   className?: string;
+  ariaLabel?: string;
 }
 
 const DOTS = '...'; // 말줄임 식별자
@@ -30,6 +31,7 @@ const Pagination = ({
   isMobileUI = false,
   siblingCount = 1,
   className,
+  ariaLabel = '페이지 네비게이션',
 }: PaginationProps) => {
   // 페이지 배열 생성 (말줄임 포함)
   const pageRange = useMemo(() => {
@@ -111,7 +113,7 @@ const Pagination = ({
   return (
     <nav
       className={clsx(`${Styles['pagination']} color--${color} size--${size}`, filteredClassName)}
-      aria-label='페이지 네비게이션'
+      aria-label={ariaLabel}
     >
       {/* 1. 처음/이전 버튼 그룹 */}
       <div className='pagination__btn-group'>

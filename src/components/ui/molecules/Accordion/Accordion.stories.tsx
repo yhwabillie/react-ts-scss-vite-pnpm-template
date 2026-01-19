@@ -435,28 +435,32 @@ export const LongText: Story = {
         <GuideGroup direction='column'>
           {/* 케이스 1: 단일 구조에서 매우 긴 제목 */}
           <GuideCell caption='Single - Long Title' style={{ width: '100%' }}>
-            <Accordion {...args} title={copy.depth1.title} content={copy.depth1.content} />
+            <Accordion
+              {...args}
+              title={`${copy.depth1.title} (Single)`}
+              content={copy.depth1.content}
+            />
           </GuideCell>
 
           {/* 케이스 2: 중첩 구조에서 모든 단계의 텍스트가 긴 경우 */}
           <GuideCell caption='Nested - All Levels Long Text' style={{ width: '100%' }}>
             <Accordion
               {...args}
-              title={copy.depth1.title}
+              title={`${copy.depth1.title} (Nested)`}
               content={copy.depth1.content}
               level={3}
               defaultOpen={true}
               items={[
                 {
                   ...args,
-                  title: copy.depth2.title,
+                  title: `${copy.depth2.title} (Depth 2)`,
                   content: copy.depth2.content,
                   level: 4,
                   defaultOpen: true,
                   items: [
                     {
                       ...args,
-                      title: copy.depth3.title,
+                      title: `${copy.depth3.title} (Depth 3)`,
                       content: copy.depth3.content,
                       level: 5,
                       defaultOpen: true,

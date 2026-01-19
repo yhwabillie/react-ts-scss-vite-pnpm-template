@@ -144,6 +144,7 @@ export const Sizes: Story = {
             <Pagination
               {...args}
               size='sm'
+              ariaLabel='페이지 네비게이션(SM)'
               currentPage={currentPage}
               onPageChange={page => {
                 setCurrentPage(page);
@@ -157,6 +158,7 @@ export const Sizes: Story = {
             <Pagination
               {...args}
               size='md'
+              ariaLabel='페이지 네비게이션(MD)'
               currentPage={currentPage}
               onPageChange={page => {
                 setCurrentPage(page);
@@ -170,6 +172,7 @@ export const Sizes: Story = {
             <Pagination
               {...args}
               size='lg'
+              ariaLabel='페이지 네비게이션(LG)'
               currentPage={currentPage}
               onPageChange={page => {
                 setCurrentPage(page);
@@ -202,6 +205,7 @@ export const Shapes: Story = {
             <Pagination
               {...args}
               shape='square'
+              ariaLabel='페이지 네비게이션(Square)'
               currentPage={currentPage}
               onPageChange={page => {
                 setCurrentPage(page);
@@ -215,6 +219,7 @@ export const Shapes: Story = {
             <Pagination
               {...args}
               shape='rounded'
+              ariaLabel='페이지 네비게이션(Rounded)'
               currentPage={currentPage}
               onPageChange={page => {
                 setCurrentPage(page);
@@ -228,6 +233,7 @@ export const Shapes: Story = {
             <Pagination
               {...args}
               shape='pill'
+              ariaLabel='페이지 네비게이션(Pill)'
               currentPage={currentPage}
               onPageChange={page => {
                 setCurrentPage(page);
@@ -260,6 +266,7 @@ export const Colors: Story = {
             <Pagination
               {...args}
               color='primary'
+              ariaLabel='페이지 네비게이션(Primary)'
               currentPage={currentPage}
               onPageChange={page => {
                 setCurrentPage(page);
@@ -273,6 +280,7 @@ export const Colors: Story = {
             <Pagination
               {...args}
               color='secondary'
+              ariaLabel='페이지 네비게이션(Secondary)'
               currentPage={currentPage}
               onPageChange={page => {
                 setCurrentPage(page);
@@ -286,6 +294,7 @@ export const Colors: Story = {
             <Pagination
               {...args}
               color='tertiary'
+              ariaLabel='페이지 네비게이션(Tertiary)'
               currentPage={currentPage}
               onPageChange={page => {
                 setCurrentPage(page);
@@ -325,6 +334,7 @@ export const LongRange: Story = {
             <Pagination
               {...args}
               shape='square'
+              ariaLabel='페이지 네비게이션(Long Range Square)'
               currentPage={currentPage}
               onPageChange={handlePageChange}
             />
@@ -335,6 +345,7 @@ export const LongRange: Story = {
             <Pagination
               {...args}
               shape='rounded'
+              ariaLabel='페이지 네비게이션(Long Range Rounded)'
               currentPage={currentPage}
               onPageChange={handlePageChange}
             />
@@ -345,6 +356,7 @@ export const LongRange: Story = {
             <Pagination
               {...args}
               shape='pill'
+              ariaLabel='페이지 네비게이션(Long Range Pill)'
               currentPage={currentPage}
               onPageChange={handlePageChange}
             />
@@ -380,6 +392,7 @@ export const Mobile: Story = {
               {...args}
               size='sm'
               isMobileUI={true}
+              ariaLabel='페이지 네비게이션(Mobile SM)'
               currentPage={currentPage}
               onPageChange={handlePageChange}
             />
@@ -392,6 +405,7 @@ export const Mobile: Story = {
               {...args}
               size='md'
               isMobileUI={true}
+              ariaLabel='페이지 네비게이션(Mobile MD)'
               currentPage={currentPage}
               onPageChange={handlePageChange}
             />
@@ -404,6 +418,7 @@ export const Mobile: Story = {
               {...args}
               size='lg'
               isMobileUI={true}
+              ariaLabel='페이지 네비게이션(Mobile LG)'
               currentPage={currentPage}
               onPageChange={handlePageChange}
             />
@@ -430,23 +445,43 @@ export const States: Story = {
       {/* 1. 기본 인터랙션 상태 (Pseudo 클래스 활용) */}
       <GuideGroup direction='column'>
         <GuideCell caption='Normal'>
-          <Pagination {...args} currentPage={2} />
+          <Pagination {...args} ariaLabel='페이지 네비게이션(Normal)' currentPage={2} />
         </GuideCell>
         <GuideCell caption='Hover'>
-          <Pagination {...args} className='pseudo-hover' currentPage={2} />
+          <Pagination
+            {...args}
+            ariaLabel='페이지 네비게이션(Hover)'
+            className='pseudo-hover'
+            currentPage={2}
+          />
         </GuideCell>
         <GuideCell caption='Active'>
-          <Pagination {...args} className='pseudo-active' currentPage={2} />
+          <Pagination
+            {...args}
+            ariaLabel='페이지 네비게이션(Active)'
+            className='pseudo-active'
+            currentPage={2}
+          />
         </GuideCell>
       </GuideGroup>
 
       {/* 2. 논리적 상태 (Disabled / Active Page) */}
       <GuideGroup direction='column'>
         <GuideCell caption='First Page (Prev Disabled)'>
-          <Pagination {...args} currentPage={1} totalPages={10} />
+          <Pagination
+            {...args}
+            ariaLabel='페이지 네비게이션(First Page)'
+            currentPage={1}
+            totalPages={10}
+          />
         </GuideCell>
         <GuideCell caption='Last Page (Next Disabled)'>
-          <Pagination {...args} currentPage={10} totalPages={10} />
+          <Pagination
+            {...args}
+            ariaLabel='페이지 네비게이션(Last Page)'
+            currentPage={10}
+            totalPages={10}
+          />
         </GuideCell>
       </GuideGroup>
     </GuideWrapper>

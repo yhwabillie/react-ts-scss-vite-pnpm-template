@@ -154,13 +154,12 @@ const FilePicker = forwardRef<HTMLDivElement, FilePickerProps>(
             isDragging && 'is-dragging',
             isAnyFileUploading && 'is-disabled',
           )}
-          tabIndex={isAnyFileUploading ? -1 : 0}
           onDragEnter={handleDragEnter}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
           aria-disabled={isAnyFileUploading}
-          role='button'
+          role='group'
           aria-label={t('filepicker.aria.dropzone')}
         >
           <div aria-live='polite' className='sr-only'>
