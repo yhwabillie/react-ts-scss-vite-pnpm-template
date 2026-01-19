@@ -8,13 +8,15 @@
 - `react-i18next` 기반 `다국어(한국어/일본어/영어)` 지원
 - Storybook a11y/인터랙션 테스트 지원(Axe 애드온 + Vitest 연동)
 - 단일 토큰 소스 → SCSS/TS 산출물 자동 생성
-- Calendar, Datepicker 컴포넌트 공휴일 데이터 연동(공공데이터 포털: 한국천문연구원 특일 정보)
+- Datepicker 컴포넌트 공휴일 데이터 연동(공공데이터 포털: 한국천문연구원 특일 정보)
 
 <br/>
 
 ## 배포/링크
 
-- Storybook(Chromatic): https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/introduction--docs
+- Storybook(Chromatic): <a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/introduction--docs" target="_blank" rel="noopener noreferrer">
+  🔗 https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/introduction--docs
+  </a>
 - main 브랜치 push 시 GitHub Actions 워크플로우로 자동 배포
 
 <br/>
@@ -30,19 +32,19 @@
 
 ## 기술 스택
 
-| 도구              | 버전     | 선택 이유                                      | 실제 효과                              |
-| ----------------- | -------- | ---------------------------------------------- | -------------------------------------- |
-| Node.js           | v20.19.2 | 최신 툴체인을 안정적으로 지원하는 LTS 런타임   | 빌드 및 개발 환경 안정성 확보          |
-| React / React DOM | v19.2.0  | 최신 React 기반 컴포넌트 설계                  | 일관된 컴포넌트 구조 유지              |
-| TypeScript        | v5.9.3   | 컴포넌트 인터페이스를 명확히 정의              | 설계 의도에 맞는 사용 유도 및 DX 향상  |
-| SCSS (Dart Sass)  | v1.93.3  | 변수·믹스인 기반 구조적 스타일링               | 테마 확장과 유지보수 용이              |
-| pnpm              | v9.5.0   | 효율적인 의존성 관리                           | 설치 속도 개선 및 디스크 절약          |
-| Vite              | v7.2.2   | 빠른 개발 서버와 HMR                           | 개발 피드백 속도 향상                  |
-| style-dictionary  | v5.1.3   | 디자인 토큰 단일 소스 관리                     | 토큰 변경 시 자동 반영                 |
-| Storybook         | v10.1.11 | 컴포넌트 문서화 및 시각적 검증                 | 협업 효율 및 사용 가이드 강화          |
-| Vitest            | v3.2.4   | Storybook 인터랙션/단위 테스트 실행            | UI 동작 검증 및 회귀 방지              |
-| Chromatic         | v11.29.0 | Storybook 배포 도구로 사용, 빠른 퍼블리싱 목적 | 빌드 후 즉시 공유 가능한 스토리북 배포 |
-| GitHub Actions    | workflow | main 브랜치 push 시 자동 배포 워크플로우 실행  | 명령 없이 스토리북 배포 자동화         |
+| 도구              | 버전       | 선택 이유                                      | 실제 효과                              |
+| ----------------- | ---------- | ---------------------------------------------- | -------------------------------------- |
+| Node.js           | `v20.19.2` | 최신 툴체인을 안정적으로 지원하는 LTS 런타임   | 빌드 및 개발 환경 안정성 확보          |
+| React / React DOM | `v19.2.0`  | 최신 React 기반 컴포넌트 설계                  | 일관된 컴포넌트 구조 유지              |
+| TypeScript        | `v5.9.3`   | 컴포넌트 인터페이스를 명확히 정의              | 설계 의도에 맞는 사용 유도 및 DX 향상  |
+| SCSS (Dart Sass)  | `v1.93.3`  | 변수·믹스인 기반 구조적 스타일링               | 테마 확장과 유지보수 용이              |
+| pnpm              | `v9.5.0`   | 효율적인 의존성 관리                           | 설치 속도 개선 및 디스크 절약          |
+| Vite              | `v7.2.2`   | 빠른 개발 서버와 HMR                           | 개발 피드백 속도 향상                  |
+| style-dictionary  | `v5.1.3`   | 디자인 토큰 단일 소스 관리                     | 토큰 변경 시 자동 반영                 |
+| Storybook         | `v10.1.11` | 컴포넌트 문서화 및 시각적 검증                 | 협업 효율 및 사용 가이드 강화          |
+| Vitest            | `v3.2.4`   | Storybook 인터랙션/단위 테스트 실행            | UI 동작 검증 및 회귀 방지              |
+| Chromatic         | `v11.29.0` | Storybook 배포 도구로 사용, 빠른 퍼블리싱 목적 | 빌드 후 즉시 공유 가능한 스토리북 배포 |
+| GitHub Actions    | `workflow` | main 브랜치 push 시 자동 배포 워크플로우 실행  | 명령 없이 스토리북 배포 자동화         |
 
 <br/>
 
@@ -77,6 +79,7 @@ Vitest를 통해 다양한 컴포넌트 시나리오를 한 번에 검증하고,
 
 ![alt text](/src/assets/images/screenshots/screenshot_focusing_modal.gif)
 ![alt text](/src/assets/images/screenshots/screenshot_focusing_tabs.gif)
+![alt text](/src/assets/images/screenshots/screenshot_focusing_calendar.gif)
 
 <br/>
 
@@ -144,7 +147,9 @@ flowchart TD
 
 Primitive 컬러가 늘어나도 규칙과 일관성이 유지되도록 정렬·분류·재배치 과정을 자동화하려는 목적에서 만들었습니다. <br/> <br/>
 추출된 토큰으로 구성한 색상은 스토리북에서 확인할 수 있습니다. <br/>
+<a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/tokens-colors-primitive--docs" target="_blank" rel="noopener noreferrer">
 🔗 https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/tokens-colors-primitive--docs
+</a>
 
 ```mermaid
 flowchart LR
@@ -263,7 +268,6 @@ while (organized.primitive[groupName][finalKey]) {
 
 - Atoms(단일 기능), Molecules(조합), Organisms(복합 레이아웃)로 분류
 - 분류 기준: 역할 단위(Atoms) → 조합 단위(Molecules) → 화면/레이아웃 단위(Organisms)
-- 상세 목록은 Storybook `Introduction` 및 각 카테고리에서 확인
 
 ### Atoms (단일 기능)
 
@@ -278,15 +282,15 @@ while (organized.primitive[groupName][finalKey]) {
     </tr>
   </thead>
   <tbody>
-    <tr><td>Badge</td><td></td><td>상태/카테고리 라벨</td></tr>
-    <tr><td>Checkbox</td><td></td><td>다중 선택 입력</td></tr>
-    <tr><td>Radio</td><td></td><td>단일 선택 입력</td></tr>
-    <tr><td>Label</td><td></td><td>폼 라벨/캡션</td></tr>
-    <tr><td>Skeleton</td><td></td><td>로딩 스켈레톤</td></tr>
-    <tr><td>Spinner</td><td>RingSpinner</td><td>로딩 인디케이터</td></tr>
-    <tr><td>Tag</td><td></td><td>키워드/속성 표시</td></tr>
-    <tr><td>Textarea</td><td>Solid, Outline</td><td>멀티라인 입력</td></tr>
-    <tr><td>Tooltip</td><td></td><td>보조 설명/힌트</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-atoms-badge--docs" target="_blank" rel="noopener noreferrer">🔗 Badge</a></td><td></td><td>상태/카테고리 라벨</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-atoms-checkbox--docs" target="_blank" rel="noopener noreferrer">🔗 Checkbox</a></td><td></td><td>다중 선택 입력</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-atoms-radio--docs" target="_blank" rel="noopener noreferrer">🔗 Radio</a></td><td></td><td>단일 선택 입력</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-atoms-label--docs" target="_blank" rel="noopener noreferrer">🔗 Label</a></td><td></td><td>폼 라벨/캡션</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-atoms-skeleton--docs" target="_blank" rel="noopener noreferrer">🔗 Skeleton</a></td><td></td><td>로딩 스켈레톤</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-atoms-spinner-ringspinner--docs" target="_blank" rel="noopener noreferrer">🔗 Spinner</a></td><td>RingSpinner</td><td>로딩 인디케이터</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-atoms-tag--docs" target="_blank" rel="noopener noreferrer">🔗 Tag</a></td><td></td><td>키워드/속성 표시</td></tr>
+    <tr><td>Textarea</td><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-atoms-textarea-solid--docs" target="_blank" rel="noopener noreferrer">🔗 Solid</a>, <a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-atoms-textarea-outline--docs" target="_blank" rel="noopener noreferrer">🔗 Outline</a></td><td>멀티라인 입력</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-atoms-tooltip--docs" target="_blank" rel="noopener noreferrer">🔗 Tooltip</a></td><td></td><td>보조 설명/힌트</td></tr>
   </tbody>
 </table>
 
@@ -303,29 +307,29 @@ Atoms를 조합해 하나의 입력/동작 흐름을 완성하는 단위입니�
     </tr>
   </thead>
   <tbody>
-    <tr><td>Button</td><td>Solid, Outline, Ghost, IconButton, LinkButton</td><td>기본 액션 버튼</td></tr>
-    <tr><td>ButtonGroup</td><td></td><td>버튼 정렬/그룹화</td></tr>
-    <tr><td>Accordion</td><td></td><td>섹션 접기/펼치기</td></tr>
-    <tr><td>Avatar</td><td></td><td>사용자 프로필 표시</td></tr>
-    <tr><td>Breadcrumbs</td><td></td><td>경로/위치 표시</td></tr>
-    <tr><td>Chip</td><td></td><td>필터/선택 상태 표시</td></tr>
-    <tr><td>Combobox</td><td>AutoComplete, Searchbar</td><td>입력+옵션 검색 선택</td></tr>
-    <tr><td>ControlGroup</td><td></td><td>라디오/체크 옵션 그룹</td></tr>
-    <tr><td>Datepicker</td><td></td><td>날짜 선택</td></tr>
-    <tr><td>Switch</td><td></td><td>온/오프 토글</td></tr>
-    <tr><td>Input</td><td>Solid, Outline</td><td>단일 텍스트 입력</td></tr>
-    <tr><td>FormField</td><td></td><td>입력 + 라벨 + 메시지</td></tr>
-    <tr><td>FormFieldset</td><td></td><td>폼 섹션 그룹</td></tr>
-    <tr><td>LanguageSelector</td><td></td><td>언어 전환</td></tr>
-    <tr><td>ValidationMsg</td><td></td><td>검증 메시지 표시</td></tr>
-    <tr><td>OptionItem</td><td>Ghost</td><td>옵션 리스트 아이템</td></tr>
-    <tr><td>OptionList</td><td>Outline</td><td>옵션 목록 컨테이너</td></tr>
-    <tr><td>Pagination</td><td></td><td>페이지 이동</td></tr>
-    <tr><td>Selectbox</td><td>Outline</td><td>드롭다운 선택</td></tr>
-    <tr><td>SegmentedControl</td><td></td><td>탭형 단일 선택</td></tr>
-    <tr><td>Slider</td><td></td><td>값 범위 조절</td></tr>
-    <tr><td>Tabs</td><td></td><td>콘텐츠 탭 전환</td></tr>
-    <tr><td>Toast</td><td></td><td>비동기 알림</td></tr>
+    <tr><td>Button</td><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-button-solid--docs" target="_blank" rel="noopener noreferrer">🔗 Solid</a>, <a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-button-outline--docs" target="_blank" rel="noopener noreferrer">🔗 Outline</a>, <a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-button-ghost--docs" target="_blank" rel="noopener noreferrer">🔗 Ghost</a>, <a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-button-iconbutton-solid--docs" target="_blank" rel="noopener noreferrer">🔗 IconButton</a>, <a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-button-linkbutton--docs" target="_blank" rel="noopener noreferrer">🔗 LinkButton</a></td><td>기본 액션 버튼</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-button-buttongroup--docs" target="_blank" rel="noopener noreferrer">🔗 ButtonGroup</a></td><td></td><td>버튼 정렬/그룹화</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-accordion--docs" target="_blank" rel="noopener noreferrer">🔗 Accordion</a></td><td></td><td>섹션 접기/펼치기</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-avatar--docs" target="_blank" rel="noopener noreferrer">🔗 Avatar</a></td><td></td><td>사용자 프로필 표시</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-breadcrumbs--docs" target="_blank" rel="noopener noreferrer">🔗 Breadcrumbs</a></td><td></td><td>경로/위치 표시</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-chip--docs" target="_blank" rel="noopener noreferrer">🔗 Chip</a></td><td></td><td>필터/선택 상태 표시</td></tr>
+    <tr><td>Combobox</td><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-combobox-autocomplete--docs" target="_blank" rel="noopener noreferrer">🔗 AutoComplete</a>, <a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-combobox-searchbar--docs" target="_blank" rel="noopener noreferrer">🔗 Searchbar</a></td><td>입력+옵션 검색 선택</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-controlgroup--docs" target="_blank" rel="noopener noreferrer">🔗 ControlGroup</a></td><td></td><td>라디오/체크 옵션 그룹</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-datepicker--docs" target="_blank" rel="noopener noreferrer">🔗 Datepicker</a></td><td></td><td>날짜 선택</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-switch--docs" target="_blank" rel="noopener noreferrer">🔗 Switch</a></td><td></td><td>온/오프 토글</td></tr>
+    <tr><td>Input</td><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-input-solid--docs" target="_blank" rel="noopener noreferrer">🔗 Solid</a>, <a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-input-outline--docs" target="_blank" rel="noopener noreferrer">🔗 Outline</a></td><td>단일 텍스트 입력</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-formfield--docs" target="_blank" rel="noopener noreferrer">🔗 FormField</a></td><td></td><td>입력 + 라벨 + 메시지</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-formfieldset--docs" target="_blank" rel="noopener noreferrer">🔗 FormFieldset</a></td><td></td><td>폼 섹션 그룹</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-languageselector--docs" target="_blank" rel="noopener noreferrer">🔗 LanguageSelector</a></td><td></td><td>언어 전환</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-validationmsg--docs" target="_blank" rel="noopener noreferrer">🔗 ValidationMsg</a></td><td></td><td>검증 메시지 표시</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-optionitem-ghost--docs" target="_blank" rel="noopener noreferrer">🔗 OptionItem</a></td><td>Ghost</td><td>옵션 리스트 아이템</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-optionlist-outline--docs" target="_blank" rel="noopener noreferrer">🔗 OptionList</a></td><td>Outline</td><td>옵션 목록 컨테이너</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-pagination--docs" target="_blank" rel="noopener noreferrer">🔗 Pagination</a></td><td></td><td>페이지 이동</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-selectbox-outline--docs" target="_blank" rel="noopener noreferrer">🔗 Selectbox</a></td><td>Outline</td><td>드롭다운 선택</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-segmentedcontrol--docs" target="_blank" rel="noopener noreferrer">🔗 SegmentedControl</a></td><td></td><td>탭형 단일 선택</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-slider--docs" target="_blank" rel="noopener noreferrer">🔗 Slider</a></td><td></td><td>값 범위 조절</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-tabs--docs" target="_blank" rel="noopener noreferrer">🔗 Tabs</a></td><td></td><td>콘텐츠 탭 전환</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-molecules-toast--docs" target="_blank" rel="noopener noreferrer">🔗 Toast</a></td><td></td><td>비동기 알림</td></tr>
   </tbody>
 </table>
 
@@ -342,11 +346,11 @@ Atoms를 조합해 하나의 입력/동작 흐름을 완성하는 단위입니�
     </tr>
   </thead>
   <tbody>
-    <tr><td>ActionBar</td><td></td><td>상단/하단 액션 영역</td></tr>
-    <tr><td>Calendar</td><td>Calendar, CalendarSelectbox, CalendarOptionList</td><td>캘린더 뷰/선택</td></tr>
-    <tr><td>DataTable</td><td></td><td>데이터 테이블 표시</td></tr>
-    <tr><td>FilePicker</td><td></td><td>파일 업로드/리스트</td></tr>
-    <tr><td>Modal</td><td>AlertModal, CustomModal</td><td>모달 다이얼로그</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-organisms-actionbar--docs" target="_blank" rel="noopener noreferrer">🔗 ActionBar</a></td><td></td><td>상단/하단 액션 영역</td></tr>
+    <tr><td>Calendar</td><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-organisms-calendar-calendar--docs" target="_blank" rel="noopener noreferrer">🔗 Calendar</a>, <a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-organisms-calendar-calendarselectbox--docs" target="_blank" rel="noopener noreferrer">🔗 CalendarSelectbox</a>, <a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-organisms-calendar-calendaroptionlist--docs" target="_blank" rel="noopener noreferrer">🔗 CalendarOptionList</a></td><td>캘린더 뷰/선택</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-organisms-datatable--docs" target="_blank" rel="noopener noreferrer">🔗 DataTable</a></td><td></td><td>데이터 테이블 표시</td></tr>
+    <tr><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-organisms-filepicker--docs" target="_blank" rel="noopener noreferrer">🔗 FilePicker</a></td><td></td><td>파일 업로드/리스트</td></tr>
+    <tr><td>Modal</td><td><a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-organisms-modal-alertmodal--docs" target="_blank" rel="noopener noreferrer">🔗 AlertModal</a>, <a href="https://main--6969cd54eb28cb3e2b57b769.chromatic.com/?path=/docs/ui-organisms-modal-custommodal--docs" target="_blank" rel="noopener noreferrer">🔗 CustomModal</a></td><td>모달 다이얼로그</td></tr>
   </tbody>
 </table>
 

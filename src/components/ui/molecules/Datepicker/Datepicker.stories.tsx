@@ -218,8 +218,6 @@ const fetchHolidays = async (year: number, month: number, signal?: AbortSignal) 
 const useApiHolidays = (year: number, month: number) => {
   const [holidays, setHolidays] = useState<Holiday[] | null>(null);
 
-  console.log('[storybook] has key:', Boolean(import.meta.env.VITE_OPEN_API_KEY));
-
   useEffect(() => {
     const controller = new AbortController();
 
