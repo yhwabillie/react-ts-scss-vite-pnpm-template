@@ -1,6 +1,8 @@
 /**
- * semantic color 소스(colors.json, tech.json)를 스캔해
- * primitive-color.json과 동기화하며 미사용 항목은 정리합니다.
+ * sync-primitive-colors.mjs
+ * - colors.json/tech.json을 스캔해 Raw Hex를 Primitive 토큰으로 치환
+ * - primitive-color.json에 없는 색상은 자동 추가
+ * - 사용되지 않는 primitive는 정리
  */
 import fs from 'fs';
 
@@ -18,19 +20,16 @@ const hexToVarMap = {};
 let primitiveDirty = false;
 const usedPrimitiveVars = new Set();
 
-/** 1. Primitive 맵 빌드 (Value -> CSS Var Name) */
+// ========== Utility: collect ==========
+// Primitive 맵 빌드 (Value -> CSS Var Name)
 function buildVarMap(obj, currentPath = []) {
   for (const key in obj) {
-    // value가 있다는 것은 최종 토큰이라는 의미
-    if (obj[key].value) {
-      // 뎁스 예: ["primitive", "slate-blue"]
-      // 우리는 카테고리 이름(slate-blue, sky 등)이 필요함
-      const category = currentPath[currentPath.length - 1];
-      const varName = `var(--${PROJECT_NAME}-color-primitive-${category}-${key})`;
+      if (obj[key].value) {
+        const category = currentPath[currentPath.length - 1];
+        const varName = `var(--${PROJECT_NAME}-color-primitive-${category}-${key})`;
 
-      // 값 정규화 (공백 제거, 소문자)
-      const normalizedValue = normalizeColor(obj[key].value);
-      hexToVarMap[normalizedValue] = varName;
+        const normalizedValue = normalizeColor(obj[key].value);
+        hexToVarMap[normalizedValue] = varName;
     } else if (typeof obj[key] === 'object' && obj[key] !== null) {
       buildVarMap(obj[key], [...currentPath, key]);
     }
@@ -38,6 +37,8 @@ function buildVarMap(obj, currentPath = []) {
 }
 buildVarMap(primitiveData.primitive);
 
+// ========== Utility: collect ==========
+// 소스 파일에서 사용된 primitive var 수집
 function collectUsedVars(node) {
   for (const k in node) {
     if (typeof node[k] === 'object' && node[k] !== null) {
@@ -53,6 +54,8 @@ function collectUsedVars(node) {
   }
 }
 
+// ========== Utility: normalize ==========
+// #rgb/#rgba/rgba 등 입력을 비교 가능한 형태로 통일
 function normalizeColor(val) {
   let color = val.toLowerCase().replace(/\s+/g, '');
   if (color.startsWith('#')) {
@@ -64,6 +67,8 @@ function normalizeColor(val) {
   return color;
 }
 
+// ========== Utility: convert ==========
+// RGB -> HSL 변환 (tint 분류/스텝 계산용)
 function rgbToHsl(r, g, b) {
   r /= 255;
   g /= 255;
@@ -95,6 +100,8 @@ function rgbToHsl(r, g, b) {
   return { h: h * 360, s: s * 100, l: l * 100 };
 }
 
+// ========== Rule: tint ==========
+// hue/채도/명도 기준으로 색상군 결정
 function getTintName(h, s, l) {
   if (s <= 2.5 || l >= 99.5 || l <= 0.5) return 'gray';
   if (h >= 170 && h < 260 && s < 45) return 'slate-blue';
@@ -111,6 +118,8 @@ function getTintName(h, s, l) {
   return 'etc';
 }
 
+// ========== Utility: alpha ==========
+// rgba/#rrggbbaa 에서 알파값 추출
 function getAlpha(color) {
   if (color.startsWith('rgba')) {
     const m = color.match(/[\d.]+/g);
@@ -120,6 +129,8 @@ function getAlpha(color) {
   return 1;
 }
 
+// ========== Step 1: ensure ==========
+// primitive에 없으면 새 key를 생성하고 var 반환
 function ensurePrimitiveToken(rawValue) {
   const normalized = normalizeColor(rawValue);
   if (hexToVarMap[normalized]) return hexToVarMap[normalized];
@@ -172,7 +183,8 @@ function ensurePrimitiveToken(rawValue) {
   return varName;
 }
 
-/** 2. 소스 파일 치환 및 미등록 컬러 감지 */
+// ========== Step 2: replace ==========
+// 소스 파일 치환 및 미등록 컬러 감지
 SOURCE_FILES.forEach(file => {
   if (!fs.existsSync(file)) return;
   const rawContent = fs.readFileSync(file, 'utf-8');
@@ -192,7 +204,6 @@ SOURCE_FILES.forEach(file => {
           let val = normalizeColor(node[k].value);
           if (val === 'transparent') continue;
 
-          // 치환 진행
           if (hexToVarMap[val]) {
             node[k].value = hexToVarMap[val];
             replaceCount++;
@@ -227,6 +238,8 @@ SOURCE_FILES.forEach(file => {
   }
 });
 
+// ========== Step 3: cleanup ==========
+// 사용되지 않는 primitive 정리
 let removedCount = 0;
 for (const [category, colorTokens] of Object.entries(primitiveData.primitive)) {
   for (const key of Object.keys(colorTokens)) {

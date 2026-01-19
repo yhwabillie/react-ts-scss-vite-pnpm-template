@@ -1,6 +1,7 @@
 /**
- * primitive-color.json을 색상 특성(HSL/alpha) 기준으로 정렬하고,
- * 기존 그룹/키는 유지하면서 충돌 시에만 안전하게 재배치합니다.
+ * primitive-color.json 정리 흐름
+ * - normalize → HSL/alpha → tint 분류 → 정렬
+ * - 기존 group/key 유지, 충돌 시만 key 재배치
  */
 import fs from 'fs';
 
@@ -12,7 +13,8 @@ if (!fs.existsSync(PATH)) {
 }
 const rawData = JSON.parse(fs.readFileSync(PATH, 'utf-8'));
 
-/** 1. 색상 값 정규화 */
+// ========== Utility: normalize ==========
+// #rgb/#rgba/rgba 등 입력을 비교 가능한 형태로 통일
 function normalizeColor(val) {
   let color = val.toLowerCase().replace(/\s+/g, '');
   if (color.startsWith('#')) {
@@ -24,7 +26,8 @@ function normalizeColor(val) {
   return color;
 }
 
-/** 2. 유틸리티: RGB to HSL */
+// ========== Utility: convert ==========
+// RGB -> HSL 변환 (tint 분류/정렬용)
 function rgbToHsl(r, g, b) {
   r /= 255;
   g /= 255;
@@ -54,7 +57,8 @@ function rgbToHsl(r, g, b) {
   return { h: h * 360, s: s * 100, l: l * 100 };
 }
 
-/** 🎨 색상 그룹 판별 함수 (사용자 피드백 반영 최종판) */
+// ========== Rule: tint ==========
+// hue/채도/명도 기준으로 색상군 결정
 function getTintName(h, s, l) {
   // 1. Gray: 채도 2.5% 이하
   if (s <= 2.5 || l >= 99.5 || l <= 0.5) return 'gray';
@@ -67,28 +71,28 @@ function getTintName(h, s, l) {
   if (h >= 11 && h < 45) return 'orange';
   if (h >= 45 && h < 65) return 'yellow';
 
-  // ✅ Green: 65~170 (어두운 청록색 #059669 등을 초록으로 흡수)
+  // ✅ Green: 65~170
   if (h >= 65 && h < 170) return 'green';
 
-  // ✅ Cyan: 170~205 (사용자가 말한 #7dd3fc, #38bdf8 등이 포함되는 구간)
+  // ✅ Cyan: 170~205
   if (h >= 170 && h < 205) return 'cyan';
 
-  // ✅ Sky: 205~225 (맑은 파랑)
+  // ✅ Sky: 205~225
   if (h >= 205 && h < 225) return 'sky';
 
-  // ✅ Blue: 225~245 (진한 파랑)
+  // ✅ Blue: 225~245
   if (h >= 225 && h < 245) return 'blue';
 
-  // ✅ Indigo: 245~270 (보라빛 파랑)
+  // ✅ Indigo: 245~270
   if (h >= 245 && h < 270) return 'indigo';
-
   if (h >= 270 && h < 310) return 'purple';
   if (h >= 310 && h < 345) return 'pink';
 
   return 'etc';
 }
 
-/** 4. 유틸리티: 알파값 추출 */
+// ========== Utility: alpha ==========
+// rgba/#rrggbbaa 에서 알파값 추출
 function getAlpha(color) {
   if (color.startsWith('rgba')) {
     const m = color.match(/[\d.]+/g);
@@ -98,6 +102,8 @@ function getAlpha(color) {
   return 1;
 }
 
+// ========== Step 1: collect ==========
+// 토큰 수집 + 기존 group/key 메타 보존
 const allTokens = [];
 function collect(groupName, obj) {
   for (const k in obj) {
@@ -136,7 +142,8 @@ Object.entries(rawData.primitive).forEach(([groupName, groupTokens]) => {
   collect(groupName, groupTokens);
 });
 
-// 5. 정렬 순서 정의
+// ========== Step 2: sort ==========
+// alpha는 뒤로, tint/명도 기준으로 정렬
 const groupOrder = [
   'gray',
   'slate-blue',
@@ -164,7 +171,8 @@ allTokens.sort((a, b) => {
   return a.a - b.a;
 });
 
-// 6. 배치 및 저장
+// ========== Step 3: write ==========
+// 기존 key 유지, 충돌 시만 +10 스텝으로 회피
 const organized = { primitive: {} };
 allTokens.forEach(item => {
   const isAlpha = item.a < 1;
