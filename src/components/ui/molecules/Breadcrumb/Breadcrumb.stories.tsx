@@ -186,6 +186,7 @@ export const Colors: Story = {
           <Breadcrumb
             {...args}
             color='primary'
+            ariaLabel='보조 네비게이션(Primary)'
             items={[
               {
                 label: copy.default.depth1,
@@ -201,6 +202,7 @@ export const Colors: Story = {
           <Breadcrumb
             {...args}
             color='secondary'
+            ariaLabel='보조 네비게이션(Secondary)'
             items={[
               {
                 label: copy.default.depth1,
@@ -216,6 +218,7 @@ export const Colors: Story = {
           <Breadcrumb
             {...args}
             color='tertiary'
+            ariaLabel='보조 네비게이션(Tertiary)'
             items={[
               {
                 label: copy.default.depth1,
@@ -246,6 +249,7 @@ export const sizes: Story = {
           <Breadcrumb
             {...args}
             size='sm'
+            ariaLabel='보조 네비게이션(SM)'
             items={[
               {
                 label: copy.default.depth1,
@@ -261,6 +265,7 @@ export const sizes: Story = {
           <Breadcrumb
             {...args}
             size='md'
+            ariaLabel='보조 네비게이션(MD)'
             items={[
               {
                 label: copy.default.depth1,
@@ -276,6 +281,7 @@ export const sizes: Story = {
           <Breadcrumb
             {...args}
             size='lg'
+            ariaLabel='보조 네비게이션(LG)'
             items={[
               {
                 label: copy.default.depth1,

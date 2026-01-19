@@ -28,6 +28,7 @@ interface DataTableProps<T extends { id: string | number }> {
   size?: 'sm' | 'md' | 'lg';
   caption: string;
   summary?: string;
+  ariaLabel?: string;
   columns: Column<T>[];
   data: T[];
   onSort?: (key: keyof T, order: SortOrder) => void;
@@ -45,6 +46,7 @@ const DataTable = <T extends { id: string | number }>({
   size = 'md',
   caption,
   summary,
+  ariaLabel,
   columns,
   data,
   onSort,
@@ -84,7 +86,8 @@ const DataTable = <T extends { id: string | number }>({
     <div
       className={clsx(`${Styles['data-table']} variant--${variant} color--${color} size--${size}`)}
       role='region'
-      aria-labelledby={`${tableId}-caption`}
+      aria-label={ariaLabel}
+      aria-labelledby={ariaLabel ? undefined : `${tableId}-caption`}
       tabIndex={0}
     >
       {summary && (

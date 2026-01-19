@@ -301,6 +301,7 @@ export const States: Story = {
 export const PortalTest: Story = {
   render: args => {
     const { t } = useTranslation();
+    const uniqueId = useId();
     const localizedOptions = localizeSelectboxOptions(t, args.options);
 
     return (
@@ -310,6 +311,7 @@ export const PortalTest: Story = {
       >
         <Selectbox
           {...args}
+          aria-labelledby={uniqueId}
           options={localizedOptions}
           placeholder={t('selectbox.placeholder')}
         />

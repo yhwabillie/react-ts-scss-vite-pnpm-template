@@ -579,6 +579,7 @@ export const WithNotices: StoryObj<typeof DataTable<MockDataTableItem>> = {
         <DataTable
           {...args}
           variant='solid'
+          ariaLabel='게시판 공지 테이블(Solid)'
           notices={notices}
           data={sortedData}
           sortState={sort}
@@ -589,6 +590,7 @@ export const WithNotices: StoryObj<typeof DataTable<MockDataTableItem>> = {
         <DataTable
           {...args}
           variant='outline'
+          ariaLabel='게시판 공지 테이블(Outline)'
           notices={notices}
           data={sortedData}
           sortState={sort}

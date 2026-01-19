@@ -13,12 +13,14 @@ interface BreadcrumbProps {
   items: BreadcrumbItem[];
   separator?: string | React.ReactNode; // 커스텀 구분자
   size?: 'sm' | 'md' | 'lg';
+  ariaLabel?: string;
 }
 
 const Breadcrumb = ({
   items,
   size = 'md',
   color = 'primary',
+  ariaLabel = '보조 네비게이션(현재 위치)',
   separator = (
     <Icon
       name='chevron-right'
@@ -34,7 +36,7 @@ const Breadcrumb = ({
   return (
     <nav
       className={`${Styles['breadcrumb']} size--${size} color--${color}`}
-      aria-label='보조 네비게이션(현재 위치)'
+      aria-label={ariaLabel}
     >
       <ol className='breadcrumb__list'>
         {items.map((item, index) => {
