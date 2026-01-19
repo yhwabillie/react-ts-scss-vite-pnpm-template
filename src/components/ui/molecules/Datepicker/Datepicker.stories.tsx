@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Datepicker, { type DatepickerProps } from './Datepicker';
+import Datepicker, { type DatepickerProps, type Holiday } from './Datepicker';
 import {
   getCalendarMonthOptions,
   getCalendarYearOptions,
@@ -11,7 +11,6 @@ import { SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specime
 import { GuideCell, GuideGroup, GuideRow } from '../../guide/Guide';
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { Holiday } from '@/App';
 
 /**
  * [Datepicker]

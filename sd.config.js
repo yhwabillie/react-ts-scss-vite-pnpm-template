@@ -196,7 +196,7 @@ const typescriptTypographyMetaObjectFormat = ({ dictionary }) => {
         id: `typo-${scale}-${lang}`,
         usage: `${scale.toUpperCase()} / ${lang.toUpperCase()}`,
         fontSize: props.fontSize.value,
-        weights: weights, // ✅ 배열 그대로 전달
+        weights: weights,
         lineHeight: props.lineHeight.value,
         fontFamily: props.fontFamily.value,
         description: props.description?.value || `${lang.toUpperCase()} 가이드`,
