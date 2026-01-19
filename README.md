@@ -1,5 +1,7 @@
 # UI System Guide
 
+디자인 토큰 설계부터 자동화 파이프라인 구축, 접근성/테스트 기반 품질 관리까지 구현한 UI System Guide 구축 프로젝트입니다.
+
 - `Storybook` 중심 검증 워크플로우 + `SCSS`/`Style Dictionary` 기반 토큰 자동화
 - `React` + `TypeScript` UI 시스템 템플릿
 - 실무에서 가장 자주 쓰는 43개 컴포넌트를 케이스별 스토리로 아카이빙
@@ -9,6 +11,8 @@
 - Storybook a11y/인터랙션 테스트 지원(Axe 애드온 + Vitest 연동)
 - 단일 토큰 소스 → SCSS/TS 산출물 자동 생성
 - Datepicker 컴포넌트 공휴일 데이터 연동(공공데이터 포털: 한국천문연구원 특일 정보)
+
+![alt text](/src/assets/images/screenshots/screenshot_main.png)
 
 <br/>
 
@@ -27,6 +31,13 @@
 - Semantic/Primitive 컬러 관리의 충돌을 자동화 파이프라인으로 해결.
 - 색상 추가/삭제가 잦은 환경에서도 안정적인 테마 확장을 보장.
 - 다국어/테마/a11y 테스트를 Storybook에서 일괄 검증할 수 있는 구조 필요.
+
+<br/>
+
+## 기여도
+
+- 단독 개발(기여도 100%)
+- 디자인 레퍼런스: KRDS 등 접근성 기준을 준수하는 사례 + 실무에서 자주 쓰는 패턴을 참고해 재구성
 
 <br/>
 
