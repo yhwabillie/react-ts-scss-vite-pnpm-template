@@ -34,10 +34,10 @@ jobs:
 
       - name: Check env presence
         run: |
-          if [ -z "${VITE_OPEN_API_KEY}" ]; then
-            echo "VITE_OPEN_API_KEY is EMPTY"
+          if [ -z "${secrets.VITE_OPEN_API_KEY}" ]; then
+            echo "secrets.VITE_OPEN_API_KEY is EMPTY"
           else
-            echo "VITE_OPEN_API_KEY is SET"
+            echo "secrets.VITE_OPEN_API_KEY is SET"
           fi
 
       # 4. Chromatic 실행
