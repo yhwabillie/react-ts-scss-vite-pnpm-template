@@ -32,12 +32,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Check env presence
+      - name: Check secret presence
+        env:
+          VITE_OPEN_API_KEY: ${{ secrets.VITE_OPEN_API_KEY }}
         run: |
-          if [ -z "${secrets.VITE_OPEN_API_KEY}" ]; then
-            echo "secrets.VITE_OPEN_API_KEY is EMPTY"
+          if [ -z "$VITE_OPEN_API_KEY" ]; then
+            echo "VITE_OPEN_API_KEY is EMPTY"
           else
-            echo "secrets.VITE_OPEN_API_KEY is SET"
+            echo "VITE_OPEN_API_KEY is SET"
           fi
 
       # 4. Chromatic 실행
