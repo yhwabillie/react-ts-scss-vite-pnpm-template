@@ -1,0 +1,39 @@
+/* Card.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+// button size
+$card-sizes: (
+  xs: (
+    padding: rem(15px),
+    radius: var(--project-border-radius-16),
+  ),
+  sm: (
+    padding: rem(25px),
+    radius: var(--project-border-radius-16),
+  ),
+  md: (
+    padding: rem(30px),
+    radius: var(--project-border-radius-16),
+  ),
+  lg: (
+    padding: rem(35px),
+    radius: var(--project-border-radius-16),
+  ),
+  xl: (
+    padding: rem(45px),
+    radius: var(--project-border-radius-16),
+  ),
+);
+
+.card {
+  background-color: var(--project-color-surface-default);
+
+  @each $size-name, $props in $card-sizes {
+    @include global-mod('size--#{$size-name}') {
+      padding: map.get($props, padding);
+      border-radius: map.get($props, radius);
+    }
+  }
+}

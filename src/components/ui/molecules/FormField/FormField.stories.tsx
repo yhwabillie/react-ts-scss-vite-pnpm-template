@@ -7,6 +7,8 @@ import Label from '../../atoms/Label/Label';
 import { useId } from 'react';
 import { SpecimenGroup, SpecimenWrapper } from '../../guide/Specimen';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
+import { useTranslation } from 'react-i18next';
+import Card from '../Card/Card';
 
 const meta = {
   title: 'UI/Molecules/FormField',
@@ -132,6 +134,7 @@ export const Base: Story = {
   },
   render: args => {
     const uniqueId = useId();
+    const { t } = useTranslation();
 
     return (
       <SpecimenWrapper style={{ width: '600px' }}>
@@ -139,50 +142,54 @@ export const Base: Story = {
         <SpecimenGroup title='column'>
           <SpecimenGroup direction='column' style={{ gap: '16px', alignItems: 'flex-end' }}>
             {/* Input 영역 */}
-            <AnatomyWrapper minimal>
-              <FormField
-                {...args}
-                labelText='이메일 주소'
-                direction='column'
-                htmlFor={`${uniqueId}-in-col`}
-              >
-                <Input
-                  as='div'
-                  id={`${uniqueId}-in-col`}
-                  size={args.size}
-                  placeholder='example@mail.com'
-                  variant='solid'
-                />
-              </FormField>
-            </AnatomyWrapper>
+            <Card>
+              <AnatomyWrapper minimal>
+                <FormField
+                  {...args}
+                  labelText={t('formfield.input.label')}
+                  direction='column'
+                  htmlFor={`${uniqueId}-in-col`}
+                >
+                  <Input
+                    as='div'
+                    id={`${uniqueId}-in-col`}
+                    size={args.size}
+                    placeholder={t('formfield.input.placeholder')}
+                    variant='solid'
+                  />
+                </FormField>
+              </AnatomyWrapper>
+            </Card>
           </SpecimenGroup>
         </SpecimenGroup>
 
         {/* CASE 2. ROW LAYOUT: 수평 병렬 구조 */}
         <SpecimenGroup title='row'>
           <SpecimenGroup direction='column' style={{ gap: '16px', alignItems: 'flex-end' }}>
-            <AnatomyWrapper minimal>
-              <FormField
-                {...args}
-                labelText='이메일 주소'
-                direction='row'
-                htmlFor={`${uniqueId}-in-row`}
-              >
-                <Input
-                  as='div'
-                  id={`${uniqueId}-in-row`}
-                  size={args.size}
-                  placeholder='example@mail.com'
-                  variant='solid'
-                />
-              </FormField>
-            </AnatomyWrapper>
+            <Card>
+              <AnatomyWrapper minimal>
+                <FormField
+                  {...args}
+                  labelText={t('formfield.input.label')}
+                  direction='row'
+                  htmlFor={`${uniqueId}-in-row`}
+                >
+                  <Input
+                    as='div'
+                    id={`${uniqueId}-in-row`}
+                    size={args.size}
+                    placeholder={t('formfield.input.placeholder')}
+                    variant='solid'
+                  />
+                </FormField>
+              </AnatomyWrapper>
+            </Card>
           </SpecimenGroup>
         </SpecimenGroup>
 
         {/* CASE 3. STANDALONE: 개별 요소 수평 배치 */}
         <SpecimenGroup title='standalone (row)'>
-          <div style={{ display: 'flex', gap: '20px' }}>
+          <Card style={{ display: 'flex', gap: '20px' }}>
             <AnatomyWrapper minimal>
               <FormField
                 as='label'
@@ -197,10 +204,9 @@ export const Base: Story = {
                   size={args.size}
                   defaultChecked
                 />
-                <Label size={args.size}>사용자 (여)</Label>
+                <Label size={args.size}>{t('formfield.radio.label')}</Label>
               </FormField>
             </AnatomyWrapper>
-
             <AnatomyWrapper minimal>
               <FormField
                 as='label'
@@ -209,10 +215,10 @@ export const Base: Story = {
                 direction='row'
               >
                 <Checkbox as='span' id={`${uniqueId}-single-c`} size={args.size} defaultChecked />
-                <Label size={args.size}>마케팅 동의</Label>
+                <Label size={args.size}>{t('formfield.checkbox.label')}</Label>
               </FormField>
             </AnatomyWrapper>
-          </div>
+          </Card>
         </SpecimenGroup>
       </SpecimenWrapper>
     );
@@ -230,13 +236,7 @@ export const Required: Story = {
   },
   render: args => {
     const uniqueId = useId();
-
-    // 1. 반복 데이터 외부 참조 (2025-12-26 최적화)
-    const RADIO_OPTIONS = [
-      { id: '1', label: '검색' },
-      { id: '2', label: '지인 추천' },
-      { id: '3', label: '광고' },
-    ];
+    const { t } = useTranslation();
 
     return (
       <SpecimenWrapper style={{ width: '600px' }}>
@@ -244,22 +244,24 @@ export const Required: Story = {
         <SpecimenGroup title='column (Required)'>
           <SpecimenGroup direction='column' style={{ gap: '20px', alignItems: 'flex-end' }}>
             {/* 필수 인풋 */}
-            <AnatomyWrapper minimal>
-              <FormField
-                {...args}
-                labelText='이메일 주소'
-                direction='column'
-                htmlFor={`${uniqueId}-col-req`}
-              >
-                <Input
-                  as='div'
-                  id={`${uniqueId}-col-req`}
-                  size={args.size}
-                  placeholder='example@mail.com'
-                  variant='solid'
-                />
-              </FormField>
-            </AnatomyWrapper>
+            <Card>
+              <AnatomyWrapper minimal>
+                <FormField
+                  {...args}
+                  labelText={t('formfield.input.label')}
+                  direction='column'
+                  htmlFor={`${uniqueId}-col-req`}
+                >
+                  <Input
+                    as='div'
+                    id={`${uniqueId}-col-req`}
+                    size={args.size}
+                    placeholder={t('formfield.input.placeholder')}
+                    variant='solid'
+                  />
+                </FormField>
+              </AnatomyWrapper>
+            </Card>
           </SpecimenGroup>
         </SpecimenGroup>
 
@@ -267,22 +269,24 @@ export const Required: Story = {
         <SpecimenGroup title='row (Required)'>
           <SpecimenGroup direction='column' style={{ gap: '20px', alignItems: 'flex-end' }}>
             {/* 필수 인풋 */}
-            <AnatomyWrapper minimal>
-              <FormField
-                {...args}
-                labelText='이메일 주소'
-                direction='row'
-                htmlFor={`${uniqueId}-row-req`}
-              >
-                <Input
-                  as='div'
-                  id={`${uniqueId}-row-req`}
-                  size={args.size}
-                  placeholder='example@mail.com'
-                  variant='solid'
-                />
-              </FormField>
-            </AnatomyWrapper>
+            <Card>
+              <AnatomyWrapper minimal>
+                <FormField
+                  {...args}
+                  labelText={t('formfield.input.label')}
+                  direction='row'
+                  htmlFor={`${uniqueId}-row-req`}
+                >
+                  <Input
+                    as='div'
+                    id={`${uniqueId}-row-req`}
+                    size={args.size}
+                    placeholder={t('formfield.input.placeholder')}
+                    variant='solid'
+                  />
+                </FormField>
+              </AnatomyWrapper>
+            </Card>
           </SpecimenGroup>
         </SpecimenGroup>
       </SpecimenWrapper>
@@ -296,91 +300,101 @@ export const Required: Story = {
  */
 export const Sizes: Story = {
   render: args => (
-    <SpecimenWrapper style={{ width: '700px' }}>
+    <SpecimenWrapper>
       {(['xl', 'lg', 'md', 'sm', 'xs'] as const).map(size => {
         const uniqueId = useId();
+        const { t } = useTranslation();
 
         return (
           <SpecimenGroup title={size.toUpperCase()}>
-            <SpecimenGroup direction='column' style={{ gap: '20px', alignItems: 'flex-end' }}>
-              <AnatomyWrapper
-                minimal
+            <SpecimenGroup direction='column'>
+              <Card
                 style={{
-                  ...(size === 'xl' && { width: '650px' }),
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '20px',
+                  alignItems: 'flex-end',
                 }}
               >
-                <FormField
-                  {...args}
-                  labelText='이메일 주소'
-                  direction='column'
-                  size={size}
-                  htmlFor={`${uniqueId}-col-${size}-col-input`}
+                <AnatomyWrapper
+                  minimal
+                  style={{
+                    ...(size === 'xl' && { width: '650px' }),
+                  }}
                 >
-                  <Input
-                    as='div'
-                    id={`${uniqueId}-col-${size}-col-input`}
+                  <FormField
+                    {...args}
+                    labelText={t('formfield.input.label')}
+                    direction='column'
                     size={size}
-                    placeholder='example@mail.com'
-                    variant='solid'
-                  />
-                </FormField>
-              </AnatomyWrapper>
-              <AnatomyWrapper
-                minimal
-                style={{
-                  ...(size === 'xl' && { width: '650px' }),
-                }}
-              >
-                <FormField
-                  {...args}
-                  size={size}
-                  labelText='이메일 주소'
-                  direction='row'
-                  htmlFor={`${uniqueId}-col-${size}-row-input`}
+                    htmlFor={`${uniqueId}-col-${size}-col-input`}
+                  >
+                    <Input
+                      as='div'
+                      id={`${uniqueId}-col-${size}-col-input`}
+                      size={size}
+                      placeholder={t('formfield.input.placeholder')}
+                      variant='solid'
+                    />
+                  </FormField>
+                </AnatomyWrapper>
+                <AnatomyWrapper
+                  minimal
+                  style={{
+                    ...(size === 'xl' && { width: '650px' }),
+                  }}
                 >
-                  <Input
-                    as='div'
-                    id={`${uniqueId}-col-${size}-row-input`}
+                  <FormField
+                    {...args}
                     size={size}
-                    placeholder='example@mail.com'
-                    variant='solid'
-                  />
-                </FormField>
-              </AnatomyWrapper>
-              <AnatomyWrapper minimal>
-                <FormField
-                  as='label'
-                  htmlFor={`${uniqueId}-${size}-single-r`}
-                  size={size}
-                  direction='row'
-                >
-                  <Radio
-                    as='span'
-                    id={`${uniqueId}-${size}-single-r`}
-                    name={`${uniqueId}-${size}-single-r`}
+                    labelText={t('formfield.input.label')}
+                    direction='row'
+                    htmlFor={`${uniqueId}-col-${size}-row-input`}
+                  >
+                    <Input
+                      as='div'
+                      id={`${uniqueId}-col-${size}-row-input`}
+                      size={size}
+                      placeholder={t('formfield.input.placeholder')}
+                      variant='solid'
+                    />
+                  </FormField>
+                </AnatomyWrapper>
+                <AnatomyWrapper minimal>
+                  <FormField
+                    as='label'
+                    htmlFor={`${uniqueId}-${size}-single-r`}
                     size={size}
-                    defaultChecked
-                  />
-                  <Label size={size}>사용자 (여)</Label>
-                </FormField>
-              </AnatomyWrapper>
-              <AnatomyWrapper minimal>
-                <FormField
-                  as='label'
-                  htmlFor={`${uniqueId}-${size}-single-c`}
-                  size={size}
-                  direction='row'
-                >
-                  <Checkbox
-                    as='span'
-                    id={`${uniqueId}-${size}-single-c`}
-                    name={`${uniqueId}-${size}-single-c`}
+                    direction='row'
+                  >
+                    <Radio
+                      as='span'
+                      id={`${uniqueId}-${size}-single-r`}
+                      name={`${uniqueId}-${size}-single-r`}
+                      size={size}
+                      defaultChecked
+                    />
+                    <Label size={size}>{t('formfield.radio.label')}</Label>
+                  </FormField>
+                </AnatomyWrapper>
+                <AnatomyWrapper minimal>
+                  <FormField
+                    as='label'
+                    htmlFor={`${uniqueId}-${size}-single-c`}
                     size={size}
-                    defaultChecked
-                  />
-                  <Label size={size}>마케팅 동의</Label>
-                </FormField>
-              </AnatomyWrapper>
+                    direction='row'
+                  >
+                    <Checkbox
+                      as='span'
+                      id={`${uniqueId}-${size}-single-c`}
+                      name={`${uniqueId}-${size}-single-c`}
+                      size={size}
+                      defaultChecked
+                    />
+                    <Label size={size}>{t('formfield.checkbox.label')}</Label>
+                  </FormField>
+                </AnatomyWrapper>
+              </Card>
             </SpecimenGroup>
           </SpecimenGroup>
         );

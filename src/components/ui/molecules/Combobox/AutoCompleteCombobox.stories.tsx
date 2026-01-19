@@ -7,10 +7,50 @@ import { useId, useState } from 'react';
 import Button from '../Button/Button';
 import { within, userEvent, expect, waitFor } from 'storybook/test';
 import type { OptionBase } from '../OptionItem/OptionItem';
+import type { ComboboxInputProps } from '@/types/form-control.types';
+import { useTranslation } from 'react-i18next';
 
 const comboboxOptionsWithoutPlaceholder = comboboxOptions.filter(
   option => option.id !== 'placeholder',
 );
+
+const AUTOCOMPLETE_ITEM_KEYS = [
+  'label_a',
+  'label_b',
+  'label_c',
+  'label_d',
+  'label_e',
+  'label_f',
+  'label_g',
+  'label_h',
+  'label_i',
+];
+
+const localizeComboboxOptions = (t: (key: string) => string, options: OptionBase[]) => {
+  let index = 0;
+
+  return options.map(option => {
+    if (option.id === 'placeholder') return option;
+
+    const key = AUTOCOMPLETE_ITEM_KEYS[index];
+    index += 1;
+
+    if (!key) return option;
+
+    return {
+      ...option,
+      value: t(`autocomplete.items.${key}`),
+    };
+  });
+};
+
+const localizeComboboxInputProps = (
+  t: (key: string) => string,
+  inputProps?: ComboboxInputProps,
+): ComboboxInputProps => ({
+  ...(inputProps ?? comboboxInputProps),
+  placeholder: t('autocomplete.placeholder'),
+});
 
 /**
  * [Combobox]
@@ -153,17 +193,28 @@ type Story = StoryObj<typeof meta>;
  * `updateArgs`를 통해 입력된 값과 스토리북 컨트롤 패널의 상태를 실시간으로 동기화합니다.
  */
 export const Base: Story = {
-  render: (args, { updateArgs }) => {
+  render: (args, context) => {
+    const { t } = useTranslation();
     const uniqueId = useId();
+    const localizedOptions = localizeComboboxOptions(t, args.options);
+    const localizedInputProps = localizeComboboxInputProps(t, args.inputProps);
 
     const handleChange = (value: string) => {
-      // 선택된 값을 스토리북 패널의 value(또는 inputValue)와 동기화
-      updateArgs({ value });
+      // 선택된 값을 스토리북 패널과 동기화
+      if (typeof context.updateArgs === 'function') {
+        context.updateArgs({ value });
+      }
       args.onValueChange?.(value);
     };
 
     return (
-      <Combobox {...args} aria-labelledby={`${uniqueId}-label`} onValueChange={handleChange} />
+      <Combobox
+        {...args}
+        aria-labelledby={`${uniqueId}-label`}
+        onValueChange={handleChange}
+        options={localizedOptions}
+        inputProps={localizedInputProps}
+      />
     );
   },
 };
@@ -175,9 +226,12 @@ export const Base: Story = {
  */
 export const Colors: Story = {
   render: args => {
+    const { t } = useTranslation();
     const colorOptions: Array<
       'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger'
     > = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'];
+    const localizedOptions = localizeComboboxOptions(t, args.options);
+    const localizedInputProps = localizeComboboxInputProps(t, args.inputProps);
 
     return (
       <SpecimenWrapper>
@@ -187,7 +241,13 @@ export const Colors: Story = {
           return (
             <SpecimenGroup key={color} title={color}>
               <SpecimenRow>
-                <Combobox {...args} color={color} aria-labelledby={`${uniqueId}-label`} />
+                <Combobox
+                  {...args}
+                  color={color}
+                  aria-labelledby={`${uniqueId}-label`}
+                  options={localizedOptions}
+                  inputProps={localizedInputProps}
+                />
               </SpecimenRow>
             </SpecimenGroup>
           );
@@ -204,7 +264,10 @@ export const Colors: Story = {
  */
 export const Sizes: Story = {
   render: args => {
+    const { t } = useTranslation();
     const sizeOptions: Array<'xs' | 'sm' | 'md' | 'lg' | 'xl'> = ['xs', 'sm', 'md', 'lg', 'xl'];
+    const localizedOptions = localizeComboboxOptions(t, args.options);
+    const localizedInputProps = localizeComboboxInputProps(t, args.inputProps);
 
     return (
       <SpecimenWrapper>
@@ -214,7 +277,13 @@ export const Sizes: Story = {
           return (
             <SpecimenGroup key={size} title={size.toUpperCase()}>
               <SpecimenRow>
-                <Combobox {...args} size={size} aria-labelledby={`${uniqueId}-label`} />
+                <Combobox
+                  {...args}
+                  size={size}
+                  aria-labelledby={`${uniqueId}-label`}
+                  options={localizedOptions}
+                  inputProps={localizedInputProps}
+                />
               </SpecimenRow>
             </SpecimenGroup>
           );
@@ -231,6 +300,7 @@ export const Sizes: Story = {
  */
 export const States: Story = {
   render: args => {
+    const { t } = useTranslation();
     const states = [
       { label: 'Normal', props: {} },
       { label: 'Hover', props: { className: 'pseudo-hover' } },
@@ -238,6 +308,8 @@ export const States: Story = {
       { label: 'Read Only', props: { readOnly: true } },
       { label: 'Disabled', props: { disabled: true } },
     ];
+    const localizedOptions = localizeComboboxOptions(t, args.options);
+    const localizedInputProps = localizeComboboxInputProps(t, args.inputProps);
 
     return (
       <SpecimenWrapper>
@@ -247,7 +319,13 @@ export const States: Story = {
           return (
             <SpecimenGroup key={uniqueId} title={state.label}>
               <SpecimenRow>
-                <Combobox {...args} {...state.props} aria-labelledby={`${uniqueId}-label`} />
+                <Combobox
+                  {...args}
+                  {...state.props}
+                  aria-labelledby={`${uniqueId}-label`}
+                  options={localizedOptions}
+                  inputProps={localizedInputProps}
+                />
               </SpecimenRow>
             </SpecimenGroup>
           );
@@ -262,11 +340,17 @@ export const States: Story = {
  * 드롭다운 리스트가 포털(Portal)을 통해 안전하게 최상위에 렌더링되는지 확인합니다.
  */
 export const PortalTest: Story = {
-  render: args => (
-    <AnatomyWrapper title='부모 요소가 overflow: hidden 상태입니다.' style={{ overflow: 'hidden' }}>
-      <Combobox {...args} />
-    </AnatomyWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const localizedOptions = localizeComboboxOptions(t, args.options);
+    const localizedInputProps = localizeComboboxInputProps(t, args.inputProps);
+
+    return (
+      <AnatomyWrapper title='부모 요소가 overflow: hidden 상태입니다.' style={{ overflow: 'hidden' }}>
+        <Combobox {...args} options={localizedOptions} inputProps={localizedInputProps} />
+      </AnatomyWrapper>
+    );
+  },
 };
 
 /**

@@ -2,7 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import Chip from './Chip';
 import Icon from '../../atoms/Icon/Icon';
 import { GuideCell, GuideGroup, GuideWrapper } from '../../guide/Guide';
-import { useRef, useState } from 'react';
+import { useId, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
+const CHIP_KEYS = ['label_a', 'label_b', 'label_c'];
 
 const meta: Meta<typeof Chip> = {
   title: 'UI/Molecules/Chip',
@@ -103,10 +106,11 @@ export const Static: Story = {
     label: '정적 태그',
   },
   render: args => {
+    const { t } = useTranslation();
     return (
       <GuideWrapper>
         <GuideCell>
-          <Chip {...args} />
+          <Chip {...args} label={t('chip.static.label')} />
         </GuideCell>
       </GuideWrapper>
     );
@@ -123,17 +127,20 @@ export const Sizes: Story = {
     label: '정적 태그',
   },
   render: args => {
+    const { t } = useTranslation();
+    const label = t('chip.static.label');
     return (
       <GuideWrapper
         style={{ width: 'fit-content', margin: 'auto', gap: '40px', alignItems: 'center' }}
       >
         <GuideGroup title='SM'>
           <GuideCell>
-            <Chip {...args} variant='solid' size='sm' />
+            <Chip {...args} variant='solid' size='sm' label={label} />
             <Chip
               {...args}
               variant='solid'
               size='sm'
+              label={label}
               startIcon={
                 <Icon
                   name='check'
@@ -148,6 +155,7 @@ export const Sizes: Story = {
               {...args}
               variant='solid'
               size='sm'
+              label={label}
               endIcon={
                 <Icon
                   name='share'
@@ -158,14 +166,15 @@ export const Sizes: Story = {
                 />
               }
             />
-            <Chip {...args} role='input' variant='solid' size='sm' />
+            <Chip {...args} role='input' variant='solid' size='sm' label={label} />
           </GuideCell>
           <GuideCell>
-            <Chip {...args} variant='outline' size='sm' />
+            <Chip {...args} variant='outline' size='sm' label={label} />
             <Chip
               {...args}
               variant='outline'
               size='sm'
+              label={label}
               startIcon={
                 <Icon
                   name='check'
@@ -180,6 +189,7 @@ export const Sizes: Story = {
               {...args}
               variant='outline'
               size='sm'
+              label={label}
               endIcon={
                 <Icon
                   name='share'
@@ -190,16 +200,17 @@ export const Sizes: Story = {
                 />
               }
             />
-            <Chip {...args} role='input' variant='outline' size='sm' />
+            <Chip {...args} role='input' variant='outline' size='sm' label={label} />
           </GuideCell>
         </GuideGroup>
         <GuideGroup title='MD'>
           <GuideCell>
-            <Chip {...args} variant='solid' size='md' />
+            <Chip {...args} variant='solid' size='md' label={label} />
             <Chip
               {...args}
               variant='solid'
               size='md'
+              label={label}
               startIcon={
                 <Icon
                   name='check'
@@ -214,6 +225,7 @@ export const Sizes: Story = {
               {...args}
               variant='solid'
               size='md'
+              label={label}
               endIcon={
                 <Icon
                   name='share'
@@ -224,14 +236,15 @@ export const Sizes: Story = {
                 />
               }
             />
-            <Chip {...args} role='input' variant='solid' size='md' />
+            <Chip {...args} role='input' variant='solid' size='md' label={label} />
           </GuideCell>
           <GuideCell>
-            <Chip {...args} variant='outline' size='md' />
+            <Chip {...args} variant='outline' size='md' label={label} />
             <Chip
               {...args}
               variant='outline'
               size='md'
+              label={label}
               startIcon={
                 <Icon
                   name='check'
@@ -246,6 +259,7 @@ export const Sizes: Story = {
               {...args}
               variant='outline'
               size='md'
+              label={label}
               endIcon={
                 <Icon
                   name='share'
@@ -256,7 +270,7 @@ export const Sizes: Story = {
                 />
               }
             />
-            <Chip {...args} role='input' variant='outline' size='md' />
+            <Chip {...args} role='input' variant='outline' size='md' label={label} />
           </GuideCell>
         </GuideGroup>
       </GuideWrapper>
@@ -275,16 +289,18 @@ export const Variants: Story = {
     label: '정적 태그',
   },
   render: args => {
+    const { t } = useTranslation();
+    const label = t('chip.static.label');
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
         <GuideGroup title='Solid'>
           <GuideCell>
-            <Chip {...args} variant='solid' />
+            <Chip {...args} variant='solid' label={label} />
           </GuideCell>
         </GuideGroup>
         <GuideGroup title='Outline'>
           <GuideCell>
-            <Chip {...args} variant='outline' />
+            <Chip {...args} variant='outline' label={label} />
           </GuideCell>
         </GuideGroup>
       </GuideWrapper>
@@ -302,30 +318,32 @@ export const Colors: Story = {
     label: '정적 태그',
   },
   render: args => {
+    const { t } = useTranslation();
+    const label = t('chip.static.label');
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
         <GuideGroup title='Primary'>
           <GuideCell>
-            <Chip {...args} variant='solid' color='primary' />
+            <Chip {...args} variant='solid' color='primary' label={label} />
           </GuideCell>
           <GuideCell>
-            <Chip {...args} variant='outline' color='primary' />
+            <Chip {...args} variant='outline' color='primary' label={label} />
           </GuideCell>
         </GuideGroup>
         <GuideGroup title='Secondary'>
           <GuideCell>
-            <Chip {...args} variant='solid' color='secondary' />
+            <Chip {...args} variant='solid' color='secondary' label={label} />
           </GuideCell>
           <GuideCell>
-            <Chip {...args} variant='outline' color='secondary' />
+            <Chip {...args} variant='outline' color='secondary' label={label} />
           </GuideCell>
         </GuideGroup>
         <GuideGroup title='Tertiary'>
           <GuideCell>
-            <Chip {...args} variant='solid' color='tertiary' />
+            <Chip {...args} variant='solid' color='tertiary' label={label} />
           </GuideCell>
           <GuideCell>
-            <Chip {...args} variant='outline' color='tertiary' />
+            <Chip {...args} variant='outline' color='tertiary' label={label} />
           </GuideCell>
         </GuideGroup>
       </GuideWrapper>
@@ -343,30 +361,32 @@ export const Shapes: Story = {
     label: '정적 태그',
   },
   render: args => {
+    const { t } = useTranslation();
+    const label = t('chip.static.label');
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
         <GuideGroup title='Square'>
           <GuideCell>
-            <Chip {...args} shape='square' variant='solid' />
+            <Chip {...args} shape='square' variant='solid' label={label} />
           </GuideCell>
           <GuideCell>
-            <Chip {...args} shape='square' variant='outline' />
+            <Chip {...args} shape='square' variant='outline' label={label} />
           </GuideCell>
         </GuideGroup>
         <GuideGroup title='Rouned'>
           <GuideCell>
-            <Chip {...args} shape='rounded' variant='solid' />
+            <Chip {...args} shape='rounded' variant='solid' label={label} />
           </GuideCell>
           <GuideCell>
-            <Chip {...args} shape='rounded' variant='outline' />
+            <Chip {...args} shape='rounded' variant='outline' label={label} />
           </GuideCell>
         </GuideGroup>
         <GuideGroup title='Pill'>
           <GuideCell>
-            <Chip {...args} shape='pill' variant='solid' />
+            <Chip {...args} shape='pill' variant='solid' label={label} />
           </GuideCell>
           <GuideCell>
-            <Chip {...args} shape='pill' variant='outline' />
+            <Chip {...args} shape='pill' variant='outline' label={label} />
           </GuideCell>
         </GuideGroup>
       </GuideWrapper>
@@ -384,6 +404,8 @@ export const WithIcon: Story = {
     label: '정적 태그',
   },
   render: args => {
+    const { t } = useTranslation();
+    const label = t('chip.static.label');
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
         <GuideGroup title='Start Icon'>
@@ -391,6 +413,7 @@ export const WithIcon: Story = {
             <Chip
               {...args}
               variant='solid'
+              label={label}
               startIcon={
                 <Icon
                   name='check'
@@ -406,6 +429,7 @@ export const WithIcon: Story = {
             <Chip
               {...args}
               variant='outline'
+              label={label}
               startIcon={
                 <Icon
                   name='check'
@@ -423,6 +447,7 @@ export const WithIcon: Story = {
             <Chip
               {...args}
               variant='solid'
+              label={label}
               endIcon={
                 <Icon
                   name='share'
@@ -438,6 +463,7 @@ export const WithIcon: Story = {
             <Chip
               {...args}
               variant='outline'
+              label={label}
               endIcon={
                 <Icon
                   name='share'
@@ -466,23 +492,26 @@ export const States: Story = {
     role: 'action',
   },
   render: args => {
+    const { t } = useTranslation();
+    const label = t('chip.status.label');
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '30px' }}>
         <GuideGroup title='인터랙션 상태'>
           <GuideCell caption='Default'>
-            <Chip {...args} />
+            <Chip {...args} label={label} />
           </GuideCell>
           <GuideCell caption='Hover'>
-            <Chip {...args} className='pseudo-hover' />
+            <Chip {...args} className='pseudo-hover' label={label} />
           </GuideCell>
           <GuideCell caption='Focus'>
-            <Chip {...args} className='pseudo-focus' />
+            <Chip {...args} className='pseudo-focus' label={label} />
           </GuideCell>
         </GuideGroup>
         <GuideGroup title='논리적 상태'>
           <GuideCell caption='Selected'>
             <Chip
               {...args}
+              label={label}
               startIcon={<Icon name='check' className='icon' strokeWidth={2.5} />}
               selected={true}
             />
@@ -490,6 +519,7 @@ export const States: Story = {
           <GuideCell caption='Disabled'>
             <Chip
               {...args}
+              label={label}
               startIcon={<Icon name='check' className='icon' strokeWidth={2.5} />}
               disabled={true}
             />
@@ -498,6 +528,7 @@ export const States: Story = {
             <Chip
               {...args}
               variant='outline'
+              label={label}
               startIcon={<Icon name='check' className='icon' strokeWidth={2.5} />}
               selected={true}
               disabled={true}
@@ -515,8 +546,9 @@ export const States: Story = {
  */
 export const ChoiceGroup: StoryObj<typeof Chip> = {
   render: args => {
-    const [selectedLabel, setSelectedLabel] = useState<string>('옵션 1');
-    const options = ['옵션 1', '옵션 2', '옵션 3'];
+    const { t } = useTranslation();
+    const options = CHIP_KEYS.map(key => t(`chip.choice.items.${key}`));
+    const [selectedLabel, setSelectedLabel] = useState<string>(options[0]);
 
     return (
       <GuideWrapper style={{ gap: '14px', margin: 'auto', width: 'fit-content' }}>
@@ -550,9 +582,10 @@ export const ChoiceGroup: StoryObj<typeof Chip> = {
  */
 export const FilterGroup: StoryObj<typeof Chip> = {
   render: args => {
-    // 1. 초기값에 '필터 1', '필터 2'를 포함시켜 1, 2번째를 기본 선택 상태로 설정
-    const [selected, setSelected] = useState<string[]>(['필터 1', '필터 2']);
-    const options = ['필터 1', '필터 2', '필터 3', '필터 4'];
+    const { t } = useTranslation();
+    const options = CHIP_KEYS.map(key => t(`chip.filter.items.${key}`));
+    // 1. 초기값에 1, 2번째를 포함시켜 기본 선택 상태로 설정
+    const [selected, setSelected] = useState<string[]>(options.slice(0, 2));
 
     const toggle = (label: string) => {
       setSelected(prev =>
@@ -597,42 +630,38 @@ export const FilterGroup: StoryObj<typeof Chip> = {
  */
 export const InputGroup: StoryObj<typeof Chip> = {
   render: args => {
-    const [solidTags, setSolidTags] = useState<string[]>(['React', 'TypeScript', 'Storybook']);
-    const [outlineTags, setOutlineTags] = useState<string[]>(['Vite', 'PNPM', 'SCSS']);
+    const { t } = useTranslation();
+    const solidSeed = CHIP_KEYS.map(key => t(`chip.input.solid.items.${key}`));
+    const outlineSeed = CHIP_KEYS.map(key => t(`chip.input.outline.items.${key}`));
+    const [solidTags, setSolidTags] = useState<string[]>(solidSeed);
+    const [outlineTags, setOutlineTags] = useState<string[]>(outlineSeed);
 
-    // 각 그룹별 독립적인 Ref 배열
-    const solidRefs = useRef<(HTMLElement | null)[]>([]);
-    const outlineRefs = useRef<(HTMLElement | null)[]>([]);
+    const solidGroupId = useId();
+    const outlineGroupId = useId();
 
-    const handleFocusNext = (
-      refs: React.RefObject<(HTMLElement | null)[]>,
-      index: number,
-      currentTagsLength: number,
-    ) => {
+    const handleFocusNext = (groupId: string, index: number) => {
       // 상태 업데이트 및 리렌더링이 완료된 후 실행되도록 보장
       setTimeout(() => {
-        if (!refs.current) return;
+        const container = document.querySelector<HTMLDivElement>(
+          `[data-chip-group="${groupId}"]`,
+        );
+        if (!container) return;
 
-        // 가장 가까운 인덱스 계산 (다음 요소, 없으면 이전 요소)
-        const nextIndex = index < currentTagsLength - 1 ? index : currentTagsLength - 2;
+        const buttons = Array.from(container.querySelectorAll<HTMLButtonElement>('button'));
+        if (buttons.length === 0) return;
 
-        if (nextIndex >= 0) {
-          const targetChip = refs.current[nextIndex];
-          // Chip 내부의 삭제 버튼(.chip__delete-btn)을 정확히 찾아 포커스
-          // CSS Module을 사용 중이라면 Styles['chip__delete-btn'] 클래스를 사용해야 합니다.
-          const deleteBtn = targetChip?.querySelector('button');
-          deleteBtn?.focus();
-        }
+        const nextIndex = Math.min(index, buttons.length - 1);
+        buttons[nextIndex]?.focus();
       }, 0);
     };
 
     const handleSolidDelete = (tag: string, index: number) => {
-      handleFocusNext(solidRefs, index, solidTags.length);
+      handleFocusNext(solidGroupId, index);
       setSolidTags(prev => prev.filter(t => t !== tag));
     };
 
     const handleOutlineDelete = (tag: string, index: number) => {
-      handleFocusNext(outlineRefs, index, outlineTags.length);
+      handleFocusNext(outlineGroupId, index);
       setOutlineTags(prev => prev.filter(t => t !== tag));
     };
 
@@ -641,14 +670,11 @@ export const InputGroup: StoryObj<typeof Chip> = {
         style={{ gap: '14px', margin: 'auto', width: 'fit-content', alignItems: 'flex-start' }}
       >
         <GuideGroup title='Solid Input Chips'>
-          <div style={{ display: 'flex', gap: '10px' }}>
+          <div data-chip-group={solidGroupId} style={{ display: 'flex', gap: '10px' }}>
             {solidTags.map((tag, index) => (
               <Chip
                 {...args}
                 key={tag}
-                ref={el => {
-                  solidRefs.current[index] = el;
-                }}
                 label={tag}
                 role='input'
                 variant='solid'
@@ -658,14 +684,11 @@ export const InputGroup: StoryObj<typeof Chip> = {
           </div>
         </GuideGroup>
         <GuideGroup title='Outline Input Chips'>
-          <div style={{ display: 'flex', gap: '10px' }}>
+          <div data-chip-group={outlineGroupId} style={{ display: 'flex', gap: '10px' }}>
             {outlineTags.map((tag, index) => (
               <Chip
                 {...args}
                 key={tag}
-                ref={el => {
-                  outlineRefs.current[index] = el;
-                }}
                 label={tag}
                 role='input'
                 variant='outline'
@@ -685,6 +708,11 @@ export const InputGroup: StoryObj<typeof Chip> = {
  */
 export const ActionGroup: StoryObj<typeof Chip> = {
   render: args => {
+    const { t } = useTranslation();
+    const shareLabel = t('chip.action.interaction.share');
+    const downloadLabel = t('chip.action.interaction.download');
+    const navLabel1 = t('chip.action.navigation.label_1');
+    const navLabel2 = t('chip.action.navigation.label_2');
     const handleDownload = () => alert('파일 다운로드를 시작합니다.');
     const handleShare = () => alert('공유하기 모달을 엽니다.');
 
@@ -696,21 +724,21 @@ export const ActionGroup: StoryObj<typeof Chip> = {
           <div style={{ display: 'flex', gap: '10px' }}>
             <Chip
               {...args}
-              label='파일 다운로드'
+              label={downloadLabel}
               role='action'
               onSelect={handleDownload}
               endIcon={<Icon name='download' className='icon' strokeWidth={2.5} />}
             />
             <Chip
               {...args}
-              label='공유하기'
+              label={shareLabel}
               role='action'
               onSelect={handleShare}
               endIcon={<Icon name='share' className='icon' strokeWidth={2.5} />}
             />
             <Chip
               {...args}
-              label='파일 다운로드'
+              label={downloadLabel}
               role='action'
               variant='outline'
               onSelect={handleDownload}
@@ -718,7 +746,7 @@ export const ActionGroup: StoryObj<typeof Chip> = {
             />
             <Chip
               {...args}
-              label='공유하기'
+              label={shareLabel}
               role='action'
               variant='outline'
               onSelect={handleShare}
@@ -730,16 +758,16 @@ export const ActionGroup: StoryObj<typeof Chip> = {
           <div style={{ display: 'flex', gap: '10px' }}>
             <Chip
               {...args}
-              label='공식 문서 확인'
+              label={navLabel1}
               role='action'
               href='https://storybook.js.org/'
               target='_blank'
               endIcon={<Icon name='share' className='icon' strokeWidth={2.5} />}
             />
-            <Chip {...args} label='내 프로필로 이동' role='action' href='/profile' />
+            <Chip {...args} label={navLabel2} role='action' href='/profile' />
             <Chip
               {...args}
-              label='공식 문서 확인'
+              label={navLabel1}
               role='action'
               href='https://storybook.js.org/'
               target='_blank'
@@ -748,7 +776,7 @@ export const ActionGroup: StoryObj<typeof Chip> = {
             />
             <Chip
               {...args}
-              label='내 프로필로 이동'
+              label={navLabel2}
               role='action'
               href='/profile'
               variant='outline'

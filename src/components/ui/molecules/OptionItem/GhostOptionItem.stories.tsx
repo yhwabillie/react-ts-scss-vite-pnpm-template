@@ -3,6 +3,7 @@ import OptionItem from './OptionItem';
 import { SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { useId } from 'react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * [OptionItem]
@@ -185,6 +186,7 @@ export const Base: Story = {
   },
   render: args => {
     const uniqueId = useId();
+    const { t } = useTranslation();
 
     return (
       <AnatomyWrapper
@@ -193,7 +195,7 @@ export const Base: Story = {
         role='listbox'
         aria-label='옵션 리스트'
       >
-        <OptionItem {...args} id={uniqueId} value='개발자' />
+        <OptionItem {...args} id={uniqueId} value={t('option-item.items.label_a')} />
       </AnatomyWrapper>
     );
   },
@@ -210,7 +212,8 @@ export const Colors: Story = {
     > = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'];
 
     const uniqueId = useId();
-    const uniqueValue = '옵션';
+    const { t } = useTranslation();
+    const labels = ['label_a', 'label_b', 'label_c', 'label_d', 'label_e', 'label_f'];
 
     return (
       <SpecimenWrapper style={{ width: '450px', margin: 'auto' }}>
@@ -221,7 +224,7 @@ export const Colors: Story = {
                 {...args}
                 color={color}
                 id={uniqueId}
-                value={`${uniqueValue} ${idx + 1}`}
+                value={t(`option-item.items.${labels[idx]}`)}
               />
             </SpecimenRow>
           </SpecimenGroup>
@@ -240,7 +243,6 @@ export const Colors: Story = {
 export const States: Story = {
   render: args => {
     const uniqueId = useId();
-    const uniqueValue = '옵션';
 
     const states = [
       { label: 'Normal', class: '' },
@@ -251,6 +253,9 @@ export const States: Story = {
       { label: 'Active', class: 'pseudo-active' },
       { label: 'Disabled', props: { disabled: true } },
     ];
+
+    const { t } = useTranslation();
+    const labels = ['label_a', 'label_b', 'label_c', 'label_d', 'label_e', 'label_f', 'label_g'];
 
     return (
       <SpecimenWrapper style={{ width: '450px', margin: 'auto' }}>
@@ -263,8 +268,8 @@ export const States: Story = {
                   id={uniqueId}
                   value={
                     state.label === 'Placeholder'
-                      ? '옵션을 선택해 주세요'
-                      : `${uniqueValue} ${idx + 1}`
+                      ? t('option-item.placeholder')
+                      : t(`option-item.items.${labels[idx]}`)
                   }
                   className={state.class}
                   {...state.props}
@@ -287,14 +292,20 @@ export const Sizes: Story = {
     const sizeOptions: Array<'xl' | 'lg' | 'md' | 'sm' | 'xs'> = ['xl', 'lg', 'md', 'sm', 'xs'];
 
     const uniqueId = useId();
-    const uniqueValue = '옵션';
+    const { t } = useTranslation();
+    const labels = ['label_a', 'label_b', 'label_c', 'label_d', 'label_e'];
 
     return (
       <SpecimenWrapper style={{ width: '450px', margin: 'auto' }}>
         {sizeOptions.map((size, idx) => (
           <SpecimenGroup key={size} title={size.toUpperCase()}>
             <SpecimenRow style={{ width: '300px' }} role='listbox' aria-label='옵션 리스트'>
-              <OptionItem {...args} size={size} id={uniqueId} value={`${uniqueValue} ${idx + 1}`} />
+              <OptionItem
+                {...args}
+                size={size}
+                id={uniqueId}
+                value={t(`option-item.items.${labels[idx]}`)}
+              />
             </SpecimenRow>
           </SpecimenGroup>
         ))}
@@ -310,6 +321,7 @@ export const Sizes: Story = {
 export const LongText: Story = {
   render: args => {
     const uniqueId = useId();
+    const { t } = useTranslation();
 
     return (
       <AnatomyWrapper
@@ -318,17 +330,8 @@ export const LongText: Story = {
         role='listbox'
         aria-label='옵션 리스트'
       >
-        <OptionItem
-          {...args}
-          id={`${uniqueId}-1`}
-          value='이 옵션은 공간이 부족할 경우 말줄임표가 제대로 표시되는지 테스트하기 위한 긴 문장입니다.'
-        />
-        <OptionItem
-          {...args}
-          id={`${uniqueId}-2`}
-          value='이 옵션은 공간이 부족할 경우 말줄임표가 제대로 표시되는지 테스트하기 위한 긴 문장입니다.'
-          selected={true}
-        />
+        <OptionItem {...args} id={`${uniqueId}-1`} value={t('long-text')} />
+        <OptionItem {...args} id={`${uniqueId}-2`} value={t('long-text')} selected={true} />
       </AnatomyWrapper>
     );
   },

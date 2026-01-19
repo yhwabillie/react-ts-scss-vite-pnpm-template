@@ -5,6 +5,7 @@ import IconButton from '../../molecules/IconButton/IconButton';
 import Icon from '../Icon/Icon';
 import { within, userEvent } from 'storybook/test';
 import { GuideCell, GuideGroup, GuideWrapper } from '../../guide/Guide';
+import { useTranslation } from 'react-i18next';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'UI/Atoms/Tooltip',
@@ -121,19 +122,26 @@ type Story = StoryObj<typeof Tooltip>;
  */
 export const Base: Story = {
   render: args => {
+    const { t } = useTranslation();
+    const baseLabels = [
+      t('tooltip.base.items.label_a'),
+      t('tooltip.base.items.label_b'),
+      t('tooltip.base.items.label_c'),
+    ];
+
     return (
       <GuideWrapper
         style={{ flexDirection: 'row', gap: '10px', margin: 'auto', width: 'fit-content' }}
       >
         <Tooltip
-          content='도움말'
+          content={baseLabels[0]}
           variant={args.variant}
           shape={args.shape}
           size={args.size}
           align={args.align}
         >
           <IconButton
-            aria-label='도움말'
+            aria-label={baseLabels[0]}
             color='primary'
             size='md'
             variant='outline'
@@ -142,14 +150,14 @@ export const Base: Story = {
           />
         </Tooltip>
         <Tooltip
-          content='알림'
+          content={baseLabels[1]}
           variant={args.variant}
           shape={args.shape}
           size={args.size}
           align={args.align}
         >
           <IconButton
-            aria-label='알림'
+            aria-label={baseLabels[1]}
             color='secondary'
             size='md'
             variant='outline'
@@ -158,14 +166,14 @@ export const Base: Story = {
           />
         </Tooltip>
         <Tooltip
-          content='더보기'
+          content={baseLabels[2]}
           variant={args.variant}
           shape={args.shape}
           size={args.size}
           align={args.align}
         >
           <IconButton
-            aria-label='더보기'
+            aria-label={baseLabels[2]}
             color='tertiary'
             size='md'
             variant='solid'
@@ -193,14 +201,18 @@ export const Base: Story = {
  */
 export const Shape: Story = {
   render: () => {
+    const { t } = useTranslation();
+    const helpLabel = t('tooltip.base.items.label_a');
+    const alertLabel = t('tooltip.base.items.label_b');
+
     return (
       <GuideWrapper
         style={{ flexDirection: 'row', gap: '60px', margin: 'auto', width: 'fit-content' }}
       >
         <GuideCell caption='balloon'>
-          <Tooltip content='말풍선 꼬리 형태' shape='balloon' size='sm'>
+          <Tooltip content={t('tooltip.shape.ballon')} shape='balloon' size='sm'>
             <IconButton
-              aria-label='도움말'
+              aria-label={helpLabel}
               color='primary'
               size='md'
               variant='outline'
@@ -210,9 +222,9 @@ export const Shape: Story = {
           </Tooltip>
         </GuideCell>
         <GuideCell caption='plain'>
-          <Tooltip content='단순 사각형 형태' shape='plain' size='sm'>
+          <Tooltip content={t('tooltip.shape.plain')} shape='plain' size='sm'>
             <IconButton
-              aria-label='알림'
+              aria-label={alertLabel}
               color='secondary'
               size='md'
               variant='outline'
@@ -242,29 +254,23 @@ export const Shape: Story = {
  */
 export const Variants: Story = {
   render: () => {
+    const { t } = useTranslation();
+    const standardContent = t('tooltip.sizes.standard.plain.content');
+    const richContent = t('tooltip.sizes.rich.plain.content');
+
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '40px' }}>
         <GuideGroup title='Standard' direction='column'>
-          <Tooltip
-            variant='standard'
-            shape='balloon'
-            size='sm'
-            content='짧은 툴팁 내용에 사용합니다.'
-          >
+          <Tooltip variant='standard' shape='balloon' size='sm' content={standardContent}>
             <Button color='primary' size='sm'>
-              Standard 툴팁
+              {t('tooltip.variants.standard.label')}
             </Button>
           </Tooltip>
         </GuideGroup>
         <GuideGroup title='Rich' direction='column'>
-          <Tooltip
-            variant='rich'
-            shape='balloon'
-            size='sm'
-            content='작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요.'
-          >
+          <Tooltip variant='rich' shape='balloon' size='sm' content={richContent}>
             <Button color='secondary' size='sm'>
-              Rich 툴팁
+              {t('tooltip.variants.rich.label')}
             </Button>
           </Tooltip>
         </GuideGroup>
@@ -280,72 +286,70 @@ export const Variants: Story = {
  */
 export const Sizes: Story = {
   render: () => {
+    const { t } = useTranslation();
+    const standardPlain = {
+      content: t('tooltip.sizes.standard.plain.content'),
+      button: t('tooltip.sizes.standard.plain.button'),
+    };
+    const standardBalloon = {
+      content: t('tooltip.sizes.standard.ballon.content'),
+      button: t('tooltip.sizes.standard.ballon.button'),
+    };
+    const richPlain = {
+      content: t('tooltip.sizes.rich.plain.content'),
+      button: t('tooltip.sizes.rich.plain.button'),
+    };
+    const richBalloon = {
+      content: t('tooltip.sizes.rich.ballon.content'),
+      button: t('tooltip.sizes.rich.ballon.button'),
+    };
+
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto', gap: '50px' }}>
         <GuideGroup title='SM' direction='column'>
           <div style={{ display: 'flex', gap: '10px', flex: '0 0 auto', width: '100%' }}>
-            <Tooltip size='sm' shape='plain' content='Standard Plain 툴팁'>
+            <Tooltip size='sm' shape='plain' content={standardPlain.content}>
               <Button type='button' variant='solid' size='sm'>
-                Standard Plain 툴팁
+                {standardPlain.button}
               </Button>
             </Tooltip>
-            <Tooltip size='sm' shape='balloon' content='Standard Balloon 툴팁'>
+            <Tooltip size='sm' shape='balloon' content={standardBalloon.content}>
               <Button type='button' variant='outline' color='secondary' size='sm'>
-                Standard Balloon 툴팁
+                {standardBalloon.button}
               </Button>
             </Tooltip>
-            <Tooltip
-              size='sm'
-              variant='rich'
-              shape='balloon'
-              content='작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요.'
-            >
+            <Tooltip size='sm' variant='rich' shape='balloon' content={richPlain.content}>
               <Button type='button' variant='solid' color='tertiary' size='sm'>
-                Rich Plain 툴팁
+                {richPlain.button}
               </Button>
             </Tooltip>
-            <Tooltip
-              size='sm'
-              variant='rich'
-              shape='balloon'
-              content='작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요.'
-            >
+            <Tooltip size='sm' variant='rich' shape='balloon' content={richBalloon.content}>
               <Button type='button' variant='outline' color='tertiary' size='sm'>
-                Rich Balloon 툴팁
+                {richBalloon.button}
               </Button>
             </Tooltip>
           </div>
         </GuideGroup>
         <GuideGroup title='MD' direction='column'>
           <div style={{ display: 'flex', gap: '10px', flex: '0 0 auto', width: '100%' }}>
-            <Tooltip size='md' shape='plain' content='Standard Plain 툴팁'>
+            <Tooltip size='md' shape='plain' content={standardPlain.content}>
               <Button type='button' variant='solid' size='md'>
-                Standard Plain 툴팁
+                {standardPlain.button}
               </Button>
             </Tooltip>
-            <Tooltip size='md' shape='balloon' content='Standard Balloon 툴팁'>
+            <Tooltip size='md' shape='balloon' content={standardBalloon.content}>
               <Button type='button' variant='outline' color='secondary' size='md'>
-                Standard Balloon 툴팁
+                {standardBalloon.button}
               </Button>
             </Tooltip>
-            <Tooltip
-              size='md'
-              variant='rich'
-              shape='balloon'
-              content='작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요.'
-            >
+            <Tooltip size='md' variant='rich' shape='balloon' content={richPlain.content}>
               <Button type='button' variant='solid' color='tertiary' size='md'>
-                Rich Plain 툴팁
+                {richPlain.button}
               </Button>
             </Tooltip>
-            <Tooltip
-              size='md'
-              variant='rich'
-              shape='balloon'
-              content='작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요.'
-            >
+            <Tooltip size='md' variant='rich' shape='balloon' content={richBalloon.content}>
               <Button type='button' variant='outline' color='tertiary' size='md'>
-                Rich Balloon 툴팁
+                {richBalloon.button}
               </Button>
             </Tooltip>
           </div>
@@ -364,95 +368,139 @@ export const Positions: Story = {
     shape: 'balloon',
     size: 'md',
   },
-  render: args => (
-    <div
-      style={{
-        width: 'fit-content',
-        margin: 'auto',
-        display: 'grid',
-        gridTemplateColumns: 'repeat(2, 1fr)',
-        gap: '100px',
-      }}
-    >
-      <GuideGroup title='Position: Top'>
-        <GuideCell>
-          <Tooltip {...args} preferredPosition='top' content='Top Tooltip'>
-            <Button size='sm'>Standard 툴팁</Button>
-          </Tooltip>
-          <Tooltip
-            {...args}
-            preferredPosition='top'
-            variant='rich'
-            size='sm'
-            shape='balloon'
-            content='작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요.'
-          >
-            <Button size='sm' variant='outline'>
-              Rich 툴팁
-            </Button>
-          </Tooltip>
-        </GuideCell>
-      </GuideGroup>
-      <GuideGroup title='Position: Bottom'>
-        <GuideCell>
-          <Tooltip {...args} preferredPosition='bottom' content='Bottom Tooltip'>
-            <Button size='sm'>Standard 툴팁</Button>
-          </Tooltip>
-          <Tooltip
-            {...args}
-            preferredPosition='bottom'
-            variant='rich'
-            size='sm'
-            shape='balloon'
-            content='작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요.'
-          >
-            <Button size='sm' variant='outline'>
-              Rich 툴팁
-            </Button>
-          </Tooltip>
-        </GuideCell>
-      </GuideGroup>
-      <GuideGroup title='Position: Left'>
-        <GuideCell>
-          <Tooltip {...args} preferredPosition='left' content='Left Tooltip'>
-            <Button size='sm'>Standard 툴팁</Button>
-          </Tooltip>
-          <Tooltip
-            {...args}
-            preferredPosition='left'
-            variant='rich'
-            size='sm'
-            shape='balloon'
-            content='작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요.'
-          >
-            <Button size='sm' variant='outline'>
-              Rich 툴팁
-            </Button>
-          </Tooltip>
-        </GuideCell>
-      </GuideGroup>
+  render: args => {
+    const { t } = useTranslation();
+    const top = {
+      standard: {
+        button: t('tooltip.positions.top.standard.button'),
+        content: t('tooltip.positions.top.standard.content'),
+      },
+      rich: {
+        button: t('tooltip.positions.top.rich.button'),
+        content: t('tooltip.positions.top.rich.content'),
+      },
+    };
+    const bottom = {
+      standard: {
+        button: t('tooltip.positions.bottom.standard.button'),
+        content: t('tooltip.positions.bottom.standard.content'),
+      },
+      rich: {
+        button: t('tooltip.positions.bottom.rich.button'),
+        content: t('tooltip.positions.bottom.rich.content'),
+      },
+    };
+    const left = {
+      standard: {
+        button: t('tooltip.positions.left.standard.button'),
+        content: t('tooltip.positions.left.standard.content'),
+      },
+      rich: {
+        button: t('tooltip.positions.left.rich.button'),
+        content: t('tooltip.positions.left.rich.content'),
+      },
+    };
+    const right = {
+      standard: {
+        button: t('tooltip.positions.right.standard.button'),
+        content: t('tooltip.positions.right.standard.content'),
+      },
+      rich: {
+        button: t('tooltip.positions.right.rich.button'),
+        content: t('tooltip.positions.right.rich.content'),
+      },
+    };
 
-      <GuideGroup title='Position: Right'>
-        <GuideCell>
-          <Tooltip {...args} preferredPosition='right' content='Right Tooltip'>
-            <Button size='sm'>Standard 툴팁</Button>
-          </Tooltip>
-          <Tooltip
-            {...args}
-            preferredPosition='right'
-            variant='rich'
-            size='sm'
-            shape='balloon'
-            content='작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요.'
-          >
-            <Button size='sm' variant='outline'>
-              Rich 툴팁
-            </Button>
-          </Tooltip>
-        </GuideCell>
-      </GuideGroup>
-    </div>
-  ),
+    return (
+      <div
+        style={{
+          width: 'fit-content',
+          margin: 'auto',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '100px',
+        }}
+      >
+        <GuideGroup title='Position: Top'>
+          <GuideCell>
+            <Tooltip {...args} preferredPosition='top' content={top.standard.content}>
+              <Button size='sm'>{top.standard.button}</Button>
+            </Tooltip>
+            <Tooltip
+              {...args}
+              preferredPosition='top'
+              variant='rich'
+              size='sm'
+              shape='balloon'
+              content={top.rich.content}
+            >
+              <Button size='sm' variant='outline'>
+                {top.rich.button}
+              </Button>
+            </Tooltip>
+          </GuideCell>
+        </GuideGroup>
+        <GuideGroup title='Position: Bottom'>
+          <GuideCell>
+            <Tooltip {...args} preferredPosition='bottom' content={bottom.standard.content}>
+              <Button size='sm'>{bottom.standard.button}</Button>
+            </Tooltip>
+            <Tooltip
+              {...args}
+              preferredPosition='bottom'
+              variant='rich'
+              size='sm'
+              shape='balloon'
+              content={bottom.rich.content}
+            >
+              <Button size='sm' variant='outline'>
+                {bottom.rich.button}
+              </Button>
+            </Tooltip>
+          </GuideCell>
+        </GuideGroup>
+        <GuideGroup title='Position: Left'>
+          <GuideCell>
+            <Tooltip {...args} preferredPosition='left' content={left.standard.content}>
+              <Button size='sm'>{left.standard.button}</Button>
+            </Tooltip>
+            <Tooltip
+              {...args}
+              preferredPosition='left'
+              variant='rich'
+              size='sm'
+              shape='balloon'
+              content={left.rich.content}
+            >
+              <Button size='sm' variant='outline'>
+                {left.rich.button}
+              </Button>
+            </Tooltip>
+          </GuideCell>
+        </GuideGroup>
+
+        <GuideGroup title='Position: Right'>
+          <GuideCell>
+            <Tooltip {...args} preferredPosition='right' content={right.standard.content}>
+              <Button size='sm'>{right.standard.button}</Button>
+            </Tooltip>
+            <Tooltip
+              {...args}
+              preferredPosition='right'
+              variant='rich'
+              size='sm'
+              shape='balloon'
+              content={right.rich.content}
+            >
+              <Button size='sm' variant='outline'>
+                {right.rich.button}
+              </Button>
+            </Tooltip>
+          </GuideCell>
+        </GuideGroup>
+      </div>
+    );
+  },
 };
 
 /**
@@ -464,6 +512,7 @@ export const Alignment: Story = {
     size: 'md',
   },
   render: args => {
+    const { t } = useTranslation();
     const alignments: ('start' | 'center' | 'end')[] = ['start', 'center', 'end'];
 
     return (
@@ -476,63 +525,87 @@ export const Alignment: Story = {
           gap: '100px',
         }}
       >
-        {alignments.map(align => (
-          <GuideCell key={`top-${align}`} caption={`align: ${align}`}>
-            <Tooltip
-              {...args}
-              preferredPosition='top'
-              align={align}
-              content={`${align} 정렬된 툴팁입니다.`}
-              shape='balloon'
-            >
-              <Button variant='solid' color='primary' size='sm' style={{ width: 'max-content' }}>
-                Standard 툴팁
-              </Button>
-            </Tooltip>
-            <Tooltip
-              {...args}
-              preferredPosition='top'
-              align={align}
-              shape='balloon'
-              variant='rich'
-              size='sm'
-              content='작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요.'
-            >
-              <Button variant='outline' color='primary' size='sm' style={{ width: 'max-content' }}>
-                Rich 툴팁
-              </Button>
-            </Tooltip>
-          </GuideCell>
-        ))}
+        {alignments.map(align => {
+          const topStandardButton = t(`tooltip.alignment.top.${align}.standard.button`);
+          const topStandardContent = t(`tooltip.alignment.top.${align}.standard.content`);
+          const topRichButton = t(`tooltip.alignment.top.${align}.rich.button`);
+          const topRichContent = t(`tooltip.alignment.top.${align}.rich.content`);
 
-        {alignments.map(align => (
-          <GuideCell key={`bottom-${align}`} caption={`align: ${align}`}>
-            <Tooltip
-              {...args}
-              preferredPosition='bottom'
-              align={align}
-              content={`${align} 정렬된 하단 툴팁`}
-              shape='balloon'
-            >
-              <Button variant='solid' color='primary' size='sm' style={{ width: 'max-content' }}>
-                Standard 툴팁
-              </Button>
-            </Tooltip>
-            <Tooltip
-              {...args}
-              preferredPosition='bottom'
-              align={align}
-              shape='balloon'
-              variant='rich'
-              size='sm'
-              content='작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요.'
-            >
-              <Button variant='outline' color='primary' size='sm' style={{ width: 'max-content' }}>
-                Rich 툴팁
-              </Button>
-            </Tooltip>
-          </GuideCell>
-        ))}
+          return (
+            <GuideCell key={`top-${align}`} caption={`align: ${align}`}>
+              <Tooltip
+                {...args}
+                preferredPosition='top'
+                align={align}
+                content={topStandardContent}
+                shape='balloon'
+              >
+                <Button variant='solid' color='primary' size='sm' style={{ width: 'max-content' }}>
+                  {topStandardButton}
+                </Button>
+              </Tooltip>
+              <Tooltip
+                {...args}
+                preferredPosition='top'
+                align={align}
+                shape='balloon'
+                variant='rich'
+                size='sm'
+                content={topRichContent}
+              >
+                <Button
+                  variant='outline'
+                  color='primary'
+                  size='sm'
+                  style={{ width: 'max-content' }}
+                >
+                  {topRichButton}
+                </Button>
+              </Tooltip>
+            </GuideCell>
+          );
+        })}
+
+        {alignments.map(align => {
+          const bottomStandardButton = t(`tooltip.alignment.bottom.${align}.standard.button`);
+          const bottomStandardContent = t(`tooltip.alignment.bottom.${align}.standard.content`);
+          const bottomRichButton = t(`tooltip.alignment.bottom.${align}.rich.button`);
+          const bottomRichContent = t(`tooltip.alignment.bottom.${align}.rich.content`);
+
+          return (
+            <GuideCell key={`bottom-${align}`} caption={`align: ${align}`}>
+              <Tooltip
+                {...args}
+                preferredPosition='bottom'
+                align={align}
+                content={bottomStandardContent}
+                shape='balloon'
+              >
+                <Button variant='solid' color='primary' size='sm' style={{ width: 'max-content' }}>
+                  {bottomStandardButton}
+                </Button>
+              </Tooltip>
+              <Tooltip
+                {...args}
+                preferredPosition='bottom'
+                align={align}
+                shape='balloon'
+                variant='rich'
+                size='sm'
+                content={bottomRichContent}
+              >
+                <Button
+                  variant='outline'
+                  color='primary'
+                  size='sm'
+                  style={{ width: 'max-content' }}
+                >
+                  {bottomRichButton}
+                </Button>
+              </Tooltip>
+            </GuideCell>
+          );
+        })}
       </div>
     );
   },
@@ -557,54 +630,120 @@ export const ViewportEdgeCases: Story = {
   args: {
     shape: 'balloon',
   },
-  render: args => (
-    <div
-      style={{
-        position: 'relative',
-        height: '100vh', // 뷰포트 전체 높이
-        width: '100vw', // 뷰포트 전체 너비
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        padding: '20px', // 실제 화면 끝에서 툴팁이 어떻게 반응하는지 볼 수 있는 최소 여백
-        boxSizing: 'border-box',
-      }}
-    >
-      {/* 상단 배치 */}
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Tooltip {...args} content='화면 왼쪽 상단 끝' preferredPosition='top' align='start'>
-          <Button size='sm'>TL</Button>
-        </Tooltip>
-        <Tooltip {...args} content='상단 중앙 Flip 테스트' preferredPosition='top'>
-          <Button size='sm'>Top Center (Flip)</Button>
-        </Tooltip>
-        <Tooltip {...args} content='화면 오른쪽 상단 끝' preferredPosition='top' align='end'>
-          <Button size='sm'>TR</Button>
-        </Tooltip>
-      </div>
+  render: args => {
+    const { t } = useTranslation();
+    const viewportCopy = {
+      top: {
+        start: {
+          button: t('tooltip.viewport.top.start.standard.button'),
+          content: t('tooltip.viewport.top.start.standard.content'),
+        },
+        center: {
+          button: t('tooltip.viewport.top.center.standard.button'),
+          content: t('tooltip.viewport.top.center.standard.content'),
+        },
+        end: {
+          button: t('tooltip.viewport.top.end.standard.button'),
+          content: t('tooltip.viewport.top.end.standard.content'),
+        },
+      },
+      bottom: {
+        start: {
+          button: t('tooltip.viewport.bottom.start.standard.button'),
+          content: t('tooltip.viewport.bottom.start.standard.content'),
+        },
+        center: {
+          button: t('tooltip.viewport.bottom.center.standard.button'),
+          content: t('tooltip.viewport.bottom.center.standard.content'),
+        },
+        end: {
+          button: t('tooltip.viewport.bottom.end.standard.button'),
+          content: t('tooltip.viewport.bottom.end.standard.content'),
+        },
+      },
+      left: {
+        button: t('tooltip.viewport.center.left.standard.button'),
+        content: t('tooltip.viewport.center.left.standard.content'),
+      },
+      right: {
+        button: t('tooltip.viewport.center.right.standard.button'),
+        content: t('tooltip.viewport.center.right.standard.content'),
+      },
+    };
 
-      {/* 중앙/좌우 배치 */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Tooltip {...args} content='왼쪽 벽 Flip 테스트' preferredPosition='left'>
-          <Button size='sm'>L-Edge</Button>
-        </Tooltip>
-        <Tooltip {...args} content='오른쪽 벽 Flip 테스트' preferredPosition='right'>
-          <Button size='sm'>R-Edge</Button>
-        </Tooltip>
-      </div>
+    return (
+      <div
+        style={{
+          position: 'relative',
+          height: '100vh', // 뷰포트 전체 높이
+          width: '100vw', // 뷰포트 전체 너비
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          padding: '20px', // 실제 화면 끝에서 툴팁이 어떻게 반응하는지 볼 수 있는 최소 여백
+          boxSizing: 'border-box',
+        }}
+      >
+        {/* 상단 배치 */}
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Tooltip
+            {...args}
+            content={viewportCopy.top.start.content}
+            preferredPosition='top'
+            align='start'
+          >
+            <Button size='sm'>{viewportCopy.top.start.button}</Button>
+          </Tooltip>
+          <Tooltip {...args} content={viewportCopy.top.center.content} preferredPosition='top'>
+            <Button size='sm'>{viewportCopy.top.center.button}</Button>
+          </Tooltip>
+          <Tooltip
+            {...args}
+            content={viewportCopy.top.end.content}
+            preferredPosition='top'
+            align='end'
+          >
+            <Button size='sm'>{viewportCopy.top.end.button}</Button>
+          </Tooltip>
+        </div>
 
-      {/* 하단 배치 */}
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Tooltip {...args} content='화면 왼쪽 하단 끝' preferredPosition='bottom' align='start'>
-          <Button size='sm'>BL</Button>
-        </Tooltip>
-        <Tooltip {...args} content='하단 중앙 Flip 테스트' preferredPosition='bottom'>
-          <Button size='sm'>Bottom Center (Flip)</Button>
-        </Tooltip>
-        <Tooltip {...args} content='화면 오른쪽 하단 끝' preferredPosition='bottom' align='end'>
-          <Button size='sm'>BR</Button>
-        </Tooltip>
+        {/* 중앙/좌우 배치 */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Tooltip {...args} content={viewportCopy.left.content} preferredPosition='left'>
+            <Button size='sm'>{viewportCopy.left.button}</Button>
+          </Tooltip>
+          <Tooltip {...args} content={viewportCopy.right.content} preferredPosition='right'>
+            <Button size='sm'>{viewportCopy.right.button}</Button>
+          </Tooltip>
+        </div>
+
+        {/* 하단 배치 */}
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Tooltip
+            {...args}
+            content={viewportCopy.bottom.start.content}
+            preferredPosition='bottom'
+            align='start'
+          >
+            <Button size='sm'>{viewportCopy.bottom.start.button}</Button>
+          </Tooltip>
+          <Tooltip
+            {...args}
+            content={viewportCopy.bottom.center.content}
+            preferredPosition='bottom'
+          >
+            <Button size='sm'>{viewportCopy.bottom.center.button}</Button>
+          </Tooltip>
+          <Tooltip
+            {...args}
+            content={viewportCopy.bottom.end.content}
+            preferredPosition='bottom'
+            align='end'
+          >
+            <Button size='sm'>{viewportCopy.bottom.end.button}</Button>
+          </Tooltip>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };

@@ -12,7 +12,7 @@
     "lint:css:fix": "stylelint 'src/**/*.{css,scss}' --fix --allow-empty-input",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "token:setup": "node scripts/organize-primitive.mjs && node scripts/replace.mjs",
+    "token:setup": "node scripts/organize-primitive-colors.mjs && node scripts/sync-primitive-colors.mjs",
     "token:build": "pnpm run token:setup && style-dictionary build --config sd.config.js",
     "test": "vitest",
     "test:ui": "vitest --ui",

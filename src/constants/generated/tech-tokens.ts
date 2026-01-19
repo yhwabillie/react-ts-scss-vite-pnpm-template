@@ -1187,17 +1187,17 @@ export const TokenData = [
   {
     "id": "--color-secondary-badge-outline-bg",
     "lightValue": "var(--project-color-primitive-alpha-cyan-400)",
-    "darkValue": "var(--project-color-primitive-slate-blue-80)"
+    "darkValue": "var(--project-color-primitive-gray-880)"
   },
   {
     "id": "--color-secondary-badge-outline-text",
-    "lightValue": "var(--project-color-primitive-cyan-400)",
-    "darkValue": "var(--project-color-primitive-slate-blue-660)"
+    "lightValue": "var(--project-color-primitive-cyan-680)",
+    "darkValue": "var(--project-color-primitive-slate-blue-350)"
   },
   {
     "id": "--color-secondary-badge-outline-border",
-    "lightValue": "var(--project-color-primitive-cyan-400)",
-    "darkValue": "var(--project-color-primitive-slate-blue-660)"
+    "lightValue": "var(--project-color-primitive-cyan-680)",
+    "darkValue": "var(--project-color-primitive-slate-blue-350)"
   },
   {
     "id": "--color-secondary-data-table-solid-outer-border",
@@ -1831,7 +1831,7 @@ export const TokenData = [
   },
   {
     "id": "--color-tertiary-tag-solid-bg",
-    "lightValue": "var(--project-color-primitive-indigo-240)",
+    "lightValue": "var(--project-color-primitive-indigo-490)",
     "darkValue": "var(--project-color-primitive-indigo-420)"
   },
   {
@@ -1841,13 +1841,13 @@ export const TokenData = [
   },
   {
     "id": "--color-tertiary-tag-solid-text",
-    "lightValue": "var(--project-color-primitive-blue-800)",
+    "lightValue": "var(--project-color-primitive-gray-white)",
     "darkValue": "var(--project-color-primitive-gray-white)"
   },
   {
     "id": "--color-tertiary-tag-solid-icon-fill",
-    "lightValue": "var(--project-color-primitive-blue-800)",
-    "darkValue": "var(--project-color-primitive-blue-800)"
+    "lightValue": "var(--project-color-primitive-gray-white)",
+    "darkValue": "var(--project-color-primitive-gray-white)"
   },
   {
     "id": "--color-tertiary-tag-outline-bg",
@@ -1861,18 +1861,18 @@ export const TokenData = [
   },
   {
     "id": "--color-tertiary-tag-outline-text",
-    "lightValue": "var(--project-color-primitive-indigo-240)",
-    "darkValue": "var(--project-color-primitive-indigo-420)"
+    "lightValue": "var(--project-color-primitive-indigo-490)",
+    "darkValue": "var(--project-color-primitive-indigo-80)"
   },
   {
     "id": "--color-tertiary-tag-outline-border",
-    "lightValue": "var(--project-color-primitive-indigo-240)",
-    "darkValue": "var(--project-color-primitive-slate-blue-350)"
+    "lightValue": "var(--project-color-primitive-indigo-490)",
+    "darkValue": "var(--project-color-primitive-indigo-80)"
   },
   {
     "id": "--color-tertiary-tag-outline-icon-fill",
-    "lightValue": "var(--project-color-primitive-indigo-240)",
-    "darkValue": "var(--project-color-primitive-indigo-420)"
+    "lightValue": "var(--project-color-primitive-indigo-490)",
+    "darkValue": "var(--project-color-primitive-indigo-80)"
   },
   {
     "id": "--color-tertiary-chip-solid-bg",

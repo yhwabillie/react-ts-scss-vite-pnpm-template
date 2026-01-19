@@ -1,7 +1,7 @@
+import type { RefObject } from 'react';
 import type { ModalConfig } from '@/types/modal.types';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
 import Button from '../Button/Button';
-import IconButton from '../IconButton/IconButton';
 import Icon from '../../atoms/Icon/Icon';
 import styles from '@/components/ui/molecules/Modal/CustomModalContent.module.scss';
 import clsx from 'clsx';
@@ -10,7 +10,7 @@ export interface CustomModalContentProps {
   id: string;
   config: ModalConfig;
   onClose: (id: string) => void;
-  firstFocusableRef: React.RefObject<HTMLElement | null>;
+  firstFocusableRef: RefObject<HTMLElement | null>;
   size: 'sm' | 'md' | 'lg';
 }
 
@@ -31,7 +31,7 @@ const CustomModalContent = ({
         'is-outer-scroll': config.scrollType === 'outer',
         'is-inner-scroll': config.scrollType === 'inner',
       })}
-      ref={firstFocusableRef as React.RefObject<HTMLDivElement>}
+      ref={firstFocusableRef as RefObject<HTMLDivElement>}
       tabIndex={-1}
     >
       <div className='modal-head'>

@@ -1,0 +1,945 @@
+{
+  "label": {
+    "base": "기본 라벨 텍스트",
+    "sizes": "다람쥐 헌 쳇바퀴에 타고파",
+    "usage": {
+      "radio": "라디오 옵션 라벨",
+      "checkbox": "체크박스 옵션 라벨",
+      "switch": "스위치 라벨"
+    }
+  },
+  "textarea": {
+    "default": {
+      "placeholder": "내용을 입력해 주세요",
+      "value": "내용이 입력된 상태입니다"
+    },
+    "width_count": {
+      "placeholder": "17자 이내로 작성해 주세요",
+      "value": {
+        "typing": "현재 입력 중인 상태입니다",
+        "max": "최대 글자 수에 도달하면 카운터 색상이 변합니다."
+      }
+    }
+  },
+  "badge": {
+    "label": "공지"
+  },
+  "tag": {
+    "base": {
+      "label": "태그"
+    },
+    "deletable": {
+      "solid_items": {
+        "label_a": "자바스크립트",
+        "label_b": "타입스크립트",
+        "label_c": "리액트"
+      },
+      "outline_items": {
+        "label_a": "자바스크립트",
+        "label_b": "타입스크립트",
+        "label_c": "리액트"
+      }
+    },
+    "navigational": {
+      "solid_items": {
+        "label_a": "네이버로 이동",
+        "label_b": "문서 확인"
+      },
+      "outline_items": {
+        "label_a": "네이버로 이동",
+        "label_b": "문서 확인"
+      }
+    }
+  },
+  "tooltip": {
+    "base": {
+      "items": {
+        "label_a": "도움말",
+        "label_b": "알림",
+        "label_c": "더보기"
+      }
+    },
+    "shape": {
+      "ballon": "말풍선 꼬리 형태",
+      "plain": "단순 사각형 형태"
+    },
+    "variants": {
+      "standard": {
+        "label": "스탠다드 툴팁"
+      },
+      "rich": {
+        "label": "리치 툴팁"
+      }
+    },
+    "sizes": {
+      "standard": {
+        "plain": {
+          "content": "스탠다드 플레인 툴팁",
+          "button": "스탠다드 플레인 툴팁"
+        },
+        "ballon": {
+          "content": "스탠다드 벌룬 툴팁",
+          "button": "스탠다드 벌룬 툴팁"
+        }
+      },
+      "rich": {
+        "plain": {
+          "content": "작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요.",
+          "button": "리치 플레인 툴팁"
+        },
+        "ballon": {
+          "content": "작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요.",
+          "button": "리치 벌룬 툴팁"
+        }
+      }
+    },
+    "positions": {
+      "top": {
+        "standard": {
+          "button": "스탠다드 툴팁",
+          "content": "상위 툴팁"
+        },
+        "rich": {
+          "button": "리치 툴팁",
+          "content": "작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요."
+        }
+      },
+      "bottom": {
+        "standard": {
+          "button": "스탠다드 툴팁",
+          "content": "하위 툴팁"
+        },
+        "rich": {
+          "button": "리치 툴팁",
+          "content": "작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요."
+        }
+      },
+      "left": {
+        "standard": {
+          "button": "스탠다드 툴팁",
+          "content": "왼쪽 툴팁"
+        },
+        "rich": {
+          "button": "리치 툴팁",
+          "content": "작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요."
+        }
+      },
+      "right": {
+        "standard": {
+          "button": "스탠다드 툴팁",
+          "content": "오른쪽 툴팁"
+        },
+        "rich": {
+          "button": "리치 툴팁",
+          "content": "작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요."
+        }
+      }
+    },
+    "alignment": {
+      "top": {
+        "start": {
+          "standard": {
+            "button": "스탠다드 툴팁",
+            "content": "시작 정렬 툴팁"
+          },
+          "rich": {
+            "button": "리치 툴팁",
+            "content": "작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요."
+          }
+        },
+        "center": {
+          "standard": {
+            "button": "스탠다드 툴팁",
+            "content": "중앙 정렬 툴팁"
+          },
+          "rich": {
+            "button": "리치 툴팁",
+            "content": "작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요."
+          }
+        },
+        "end": {
+          "standard": {
+            "button": "스탠다드 툴팁",
+            "content": "끝 정렬 툴팁"
+          },
+          "rich": {
+            "button": "리치 툴팁",
+            "content": "작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요."
+          }
+        }
+      },
+      "bottom": {
+        "start": {
+          "standard": {
+            "button": "스탠다드 툴팁",
+            "content": "시작 정렬 툴팁"
+          },
+          "rich": {
+            "button": "리치 툴팁",
+            "content": "작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요."
+          }
+        },
+        "center": {
+          "standard": {
+            "button": "스탠다드 툴팁",
+            "content": "중앙 정렬 툴팁"
+          },
+          "rich": {
+            "button": "리치 툴팁",
+            "content": "작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요."
+          }
+        },
+        "end": {
+          "standard": {
+            "button": "스탠다드 툴팁",
+            "content": "끝 정렬 툴팁"
+          },
+          "rich": {
+            "button": "리치 툴팁",
+            "content": "작성 중인 내용은 30초마다 자동으로 브라우저에 저장됩니다. 네트워크 연결이 끊겨도 안심하고 작업하세요."
+          }
+        }
+      }
+    },
+    "viewport": {
+      "top": {
+        "start": {
+          "standard": {
+            "button": "스탠다드 툴팁",
+            "content": "Flip 정렬 툴팁"
+          }
+        },
+        "center": {
+          "standard": {
+            "button": "스탠다드 툴팁",
+            "content": "Flip 정렬 툴팁"
+          }
+        },
+        "end": {
+          "standard": {
+            "button": "스탠다드 툴팁",
+            "content": "Flip 정렬 툴팁"
+          }
+        }
+      },
+      "center": {
+        "left": {
+          "standard": {
+            "button": "스탠다드 툴팁",
+            "content": "Flip 정렬 툴팁"
+          }
+        },
+        "right": {
+          "standard": {
+            "button": "스탠다드 툴팁",
+            "content": "Flip 정렬 툴팁"
+          }
+        }
+      },
+      "bottom": {
+        "start": {
+          "standard": {
+            "button": "스탠다드 툴팁",
+            "content": "Flip 정렬 툴팁"
+          }
+        },
+        "center": {
+          "standard": {
+            "button": "스탠다드 툴팁",
+            "content": "Flip 정렬 툴팁"
+          }
+        },
+        "end": {
+          "standard": {
+            "button": "스탠다드 툴팁",
+            "content": "Flip 정렬 툴팁"
+          }
+        }
+      }
+    }
+  },
+  "button": "버튼",
+  "link-button": "구글로 이동",
+  "long-text": "텍스트가 매우 길어서 컨테이너를 벗어날 수 있습니다. 말줄임 처리가 필요합니다. 텍스트가 매우 길어서 컨테이너를 벗어날 수 있습니다. 말줄임 처리가 필요합니다.",
+  "button-stories": {
+    "full-width": {
+      "label": "Full Width Button",
+      "wrapper-title": "부모 요소 width: 500px",
+      "description": "버튼이 부모 요소의 전체 너비를 차지할지 여부를 결정합니다."
+    },
+    "long-text": {
+      "description": "버튼 내부에 긴 텍스트가 들어올 경우 말줄임(Ellipsis) 처리가 정상적으로 작동하는지 확인합니다. 부모 컨테이너의 너비를 200px로 제한한 테스트 케이스입니다.",
+      "wrapper-title": "부모 요소 width: 200px"
+    },
+    "polymorphic-link": {
+      "title": "새 창 열기",
+      "label": "구글로 이동 (Anchor Tag)",
+      "notice": "※ 아래 버튼은 HTML `<a>` 태그로 렌더링됩니다.",
+      "description": "버튼의 스타일을 유지하면서 `<a>` 태그로 렌더링하는 케이스입니다. 외부 링크 이동이나 SEO 최적화가 필요한 경우 사용합니다."
+    }
+  },
+  "button-group": {
+    "edit": "수정",
+    "save": "저장"
+  },
+  "switch": {
+    "left-label": "왼쪽 라벨",
+    "right-label": "오른쪽 라벨"
+  },
+  "input": {
+    "placeholder": {
+      "default": "정보를 입력해 주세요",
+      "password": "비밀번호를 입력해 주세요"
+    },
+    "value": "내용이 입력된 상태입니다"
+  },
+  "formfield": {
+    "input": {
+      "label": "이메일 주소",
+      "placeholder": "example@mail.com"
+    },
+    "radio": {
+      "label": "사용자(여)"
+    },
+    "checkbox": {
+      "label": "마케팅 동의"
+    }
+  },
+  "control-group": {
+    "options": {
+      "label_a": "옵션 A",
+      "label_b": "옵션 B",
+      "label_c": "옵션 C"
+    }
+  },
+  "formfieldset": {
+    "radio": {
+      "legend": "가입 경로 선택",
+      "options": {
+        "label_a": "검색",
+        "label_b": "지인 추천",
+        "label_c": "광고"
+      }
+    },
+    "checkbox": {
+      "legend": "약관 동의",
+      "options": {
+        "label_a": "서비스 이용약관 동의",
+        "label_b": "개인정보 수집 및 이용 동의",
+        "label_c": "마케팅 정보 수신 동의"
+      }
+    }
+  },
+  "validation-msg": {
+    "error": {
+      "label": "이메일 형식이 올바르지 않습니다."
+    },
+    "warning": {
+      "label": "8자 이상의 영문, 숫자, 특수문자를 조합해주세요.",
+      "long-label": "보안 강화를 위해 8자 이상의 영문 대소문자, 숫자, 특수문자를 반드시 조합하여 설정해야 합니다. 생년월일이나 전화번호 등 유추하기 쉬운 정보는 피해주십시오."
+    },
+    "success": {
+      "label": "사용 가능한 아이디입니다.",
+      "long-label": "축하합니다! 회원가입이 성공적으로 완료되었습니다. 지금 바로 로그인하여 서비스의 모든 기능을 제한 없이 이용하실 수 있으며, 등록하신 이메일로 웰컴 쿠폰이 발송되었으니 확인해 보시기 바랍니다."
+    },
+    "guide": {
+      "label": "비밀번호 분실 시 등록된 이메일로 안내됩니다.",
+      "long-label": "본인 확인 서비스 이용 시 등록된 휴대전화 번호로 인증 번호가 발송됩니다. 만약 스팸 차단 서비스가 설정되어 있다면 수신이 원활하지 않을 수 있으니 주의하시기 바랍니다. (SMS/MMS standard rates may apply)"
+    },
+    "usage": {
+      "row": {
+        "input": {
+          "formfield": {
+            "label": "이메일 주소",
+            "placeholder": "example@mail.com"
+          },
+          "validation-msg": {
+            "success": {
+              "label": "사용 가능한 이메일입니다."
+            }
+          }
+        },
+        "radio": {
+          "formfieldset": {
+            "legend": "가입 경로를 선택해주세요.",
+            "control-group": {
+              "items": {
+                "label_a": "검색",
+                "label_b": "지인 추천",
+                "label_c": "광고"
+              }
+            }
+          },
+          "validation-msg": {
+            "warning": {
+              "label": "가입 경로를 선택해주세요."
+            }
+          }
+        },
+        "checkbox": {
+          "formfieldset": {
+            "legend": "관심 분야",
+            "control-group": {
+              "items": {
+                "label_a": "디자인",
+                "label_b": "개발",
+                "label_c": "기획"
+              }
+            }
+          },
+          "validation-msg": {
+            "warning": {
+              "label": "관심 분야는 나중에 마이페이지에서 변경 가능합니다."
+            }
+          }
+        }
+      },
+      "column": {
+        "input": {
+          "formfield": {
+            "label": "이메일 주소",
+            "placeholder": "example@mail.com"
+          },
+          "validation-msg": {
+            "error": {
+              "label": "8~16자의 영문 대소문자, 숫자, 특수문자를 사용하세요."
+            }
+          }
+        },
+        "radio": {
+          "formfieldset": {
+            "legend": "가입 경로를 선택해주세요.",
+            "control-group": {
+              "items": {
+                "label_a": "검색",
+                "label_b": "지인 추천",
+                "label_c": "광고"
+              }
+            }
+          },
+          "validation-msg": {
+            "warning": {
+              "label": "가입 경로를 선택해주세요."
+            }
+          }
+        },
+        "checkbox": {
+          "formfieldset": {
+            "legend": "관심 분야",
+            "control-group": {
+              "items": {
+                "label_a": "디자인",
+                "label_b": "개발",
+                "label_c": "기획"
+              }
+            }
+          },
+          "validation-msg": {
+            "guide": {
+              "label": "관심 분야는 나중에 마이페이지에서 변경 가능합니다."
+            }
+          }
+        }
+      }
+    }
+  },
+  "option-item": {
+    "placeholder": "옵션을 선택해 주세요",
+    "items": {
+      "label_a": "옵션 1",
+      "label_b": "옵션 2",
+      "label_c": "옵션 3",
+      "label_d": "옵션 4",
+      "label_e": "옵션 5",
+      "label_f": "옵션 6",
+      "label_g": "옵션 7"
+    }
+  },
+  "selectbox": {
+    "placeholder": "옵션을 선택해 주세요",
+    "items": {
+      "label_a": "대기중",
+      "label_b": "진행중",
+      "label_c": "검토 요청",
+      "label_d": "보류",
+      "label_e": "승인됨",
+      "label_f": "반려됨",
+      "label_g": "배포대기",
+      "label_h": "배포완료",
+      "label_i": "아카이브",
+      "label_j": "삭제됨"
+    }
+  },
+  "autocomplete": {
+    "placeholder": "값을 선택하거나 입력해 주세요",
+    "items": {
+      "label_a": "프론트엔드 개발자",
+      "label_b": "백엔드 개발자",
+      "label_c": "풀스텍 개발자",
+      "label_d": "모바일 앱 개발자",
+      "label_e": "데이터 엔지니어",
+      "label_f": "QA 엔지니어",
+      "label_g": "UI/UX 디자이너",
+      "label_h": "프로덕트 매니저",
+      "label_i": "기술 기획자"
+    }
+  },
+  "searchbar": {
+    "placeholder": "검색어를 입력해 주세요",
+    "items": {
+      "label_a": "서버 개발자 채용 공고",
+      "label_b": "프론트엔드 신입 연봉 정보",
+      "label_c": "네이버 채용 공식 홈페이지",
+      "label_d": "UI/UX 디자이너 포트폴리오 가이드",
+      "label_e": "데이터 사이언티스트 기술 면접 질문",
+      "label_f": "서비스 기획자 역량 강화 로드맵",
+      "label_g": "퍼포먼스 마케터 실무 템플릿",
+      "label_h": "자주 묻는 질문 (FAQ)",
+      "label_i": "1:1 커리어 멘토링 신청하기"
+    }
+  },
+  "segmented-control": {
+    "items": {
+      "label_a": "최신순",
+      "label_b": "인기순",
+      "label_c": "가격순"
+    }
+  },
+  "accordion": {
+    "default": {
+      "depth_1": {
+        "title": "1 Depth 아코디언 제목",
+        "contents": "아코디언의 상세 내용이 여기에 표시됩니다. 대지가 흰색일 때 컴포넌트의 배경과 경계선 대비가 웹 접근성 기준을 충족하는지 확인하세요."
+      },
+      "depth_2": {
+        "title": "2 Depth 아코디언 제목",
+        "contents": "아코디언의 상세 내용이 여기에 표시됩니다. 대지가 흰색일 때 컴포넌트의 배경과 경계선 대비가 웹 접근성 기준을 충족하는지 확인하세요."
+      },
+      "depth_3": {
+        "title": "3 Depth 아코디언 제목",
+        "contents": "아코디언의 상세 내용이 여기에 표시됩니다. 대지가 흰색일 때 컴포넌트의 배경과 경계선 대비가 웹 접근성 기준을 충족하는지 확인하세요."
+      }
+    },
+    "long": {
+      "depth_1": {
+        "title": "[1 Depth] 제목이 길어질 때 줄바꿈, 아이콘 겹침, 행간 안정성을 점검하는 장문의 아코디언 헤더 예시입니다.",
+        "contents": "본문이 길어질수록 높이가 자연스럽게 확장되고, 상하 여백이 균일하게 유지되는지 확인합니다. 특히 밝은 배경 위에서 경계선 대비가 WCAG 기준을 만족하는지, 텍스트가 잘려 title 속성에 의존하지 않는지 검토하세요."
+      },
+      "depth_2": {
+        "title": "[2 Depth] 중첩 단계에서 좌측 여백이 늘어나도 가독성이 유지되는 긴 제목 예시입니다.",
+        "contents": "중첩 구조에서는 텍스트 가용 폭이 줄어들기 때문에 문장이 길어질수록 줄바꿈 품질이 중요합니다. 헤더 배경색과 본문 텍스트 대비, 그리고 인디케이터 이동이 자연스러운지 확인하세요."
+      },
+      "depth_3": {
+        "title": "[3 Depth] 가장 깊은 단계에서도 아이콘과 텍스트가 겹치지 않는지 확인하는 장문 타이틀입니다.",
+        "contents": "깊은 단계에서도 콘텐츠 영역이 유연하게 늘어나고, 스크롤 없이 정보가 읽히는지 점검합니다. 아이콘과 텍스트 간 간격, 줄바꿈 위치, 배경 대비가 균형을 이루는지 살펴보세요."
+      }
+    }
+  },
+  "avatar": {
+    "name": "홍길동"
+  },
+  "breadcrumb": {
+    "default": {
+      "depth_1": "홈",
+      "depth_2": "제품 목록",
+      "depth_3": "상세 페이지"
+    },
+    "long": {
+      "depth_1": "뎁스 1",
+      "depth_2": "뎁스 2",
+      "depth_3": "뎁스 3",
+      "depth_4": "뎁스 4",
+      "depth_5": "뎁스 5",
+      "depth_6": "매우 길어서 가로 길이를 많이 차지하는 마지막 페이지 제목"
+    }
+  },
+  "chip": {
+    "static": {
+      "label": "정적 태그"
+    },
+    "status": {
+      "label": "상태별 칩"
+    },
+    "choice": {
+      "items": {
+        "label_a": "옵션 1",
+        "label_b": "옵션 2",
+        "label_c": "옵션 3"
+      }
+    },
+    "filter": {
+      "items": {
+        "label_a": "필터 1",
+        "label_b": "필터 2",
+        "label_c": "필터 3"
+      }
+    },
+    "input": {
+      "solid": {
+        "items": {
+          "label_a": "리액트",
+          "label_b": "타입스크립트",
+          "label_c": "스토리북"
+        }
+      },
+      "outline": {
+        "items": {
+          "label_a": "비트(Vite)",
+          "label_b": "피엔피엠(pnpm)",
+          "label_c": "SCSS"
+        }
+      }
+    },
+    "action": {
+      "interaction": {
+        "share": "공유하기",
+        "download": "파일 다운로드"
+      },
+      "navigation": {
+        "label_1": "공식 문서 확인",
+        "label_2": "내 프로필로 이동"
+      }
+    }
+  },
+  "tabs": {
+    "items": {
+      "label_a": "카테고리 탭 1",
+      "label_b": "카테고리 탭 2",
+      "label_c": "카테고리 탭 3",
+      "label_d": "카테고리 탭 4",
+      "label_e": "카테고리 탭 5",
+      "label_f": "카테고리 탭 6",
+      "label_g": "카테고리 탭 7",
+      "label_h": "카테고리 탭 8",
+      "label_i": "카테고리 탭 9 ",
+      "label_j": "카테고리 탭 10",
+      "label_k": "카테고리 탭 11",
+      "label_l": "카테고리 탭 12",
+      "label_m": "카테고리 탭 13",
+      "label_n": "카테고리 탭 14",
+      "label_o": "카테고리 탭 15"
+    }
+  },
+  "toast": {
+    "info": {
+      "default": {
+        "label": "작성 중인 내용은 자동으로 저장됩니다."
+      },
+      "link": {
+        "label": "작성하신 글에 새로운 댓글이 달렸습니다.",
+        "btn": "바로가기"
+      }
+    },
+    "success": {
+      "label": "변경사항이 성공적으로 저장되었습니다.",
+      "link": {
+        "label": "송금이 완료되었습니다. 내역을 확인해보세요.",
+        "btn": "바로가기"
+      }
+    },
+    "warning": {
+      "label": "현재 위치에서는 서비스 이용이 제한될 수 있습니다",
+      "link": {
+        "label": "보안 등급이 낮습니다. 2단계 인증을 설정할까요?",
+        "btn": "바로가기"
+      }
+    },
+    "error": {
+      "label": "네트워크 연결이 불안정합니다. 잠시 후 다시 시도해주세요.",
+      "link": {
+        "label": "인증 세션이 만료되었습니다. 다시 로그인해 주세요",
+        "btn": "바로가기"
+      }
+    }
+  },
+  "modal": {
+    "alert": {
+      "base": {
+        "title": "복사 완료",
+        "description": "링크가 클립보드에 복사되었습니다. 이제 원하는 곳에 붙여넣기 할 수 있습니다.",
+        "footer": {
+          "confirm": "확인"
+        }
+      },
+      "interaction": {
+        "information": {
+          "title": "복사 완료",
+          "description": "링크가 클립보드에 복사되었습니다. 이제 원하는 곳에 붙여넣기 할 수 있습니다.",
+          "footer": {
+            "confirm": "확인"
+          }
+        },
+        "confirmation": {
+          "title": "변경 사항 저장",
+          "description": "수정하신 내용을 저장하시겠습니까? 저장 후에는 즉시 반영됩니다.",
+          "footer": {
+            "cancel": "취소",
+            "confirm": "확인"
+          }
+        }
+      },
+      "variants": {
+        "info": {
+          "interaction": {
+            "information": {
+              "title": "복사 완료",
+              "description": "링크가 클립보드에 복사되었습니다. 이제 원하는 곳에 붙여넣기 할 수 있습니다.",
+              "footer": {
+                "confirm": "확인"
+              }
+            },
+            "confirmation": {
+              "title": "저장 확인",
+              "description": "수정하신 내용을 저장하시겠습니까? 저장 후에는 즉시 목록으로 이동합니다.",
+              "footer": {
+                "cancel": "취소",
+                "save": "저장"
+              }
+            }
+          }
+        },
+        "danger": {
+          "interaction": {
+            "information": {
+              "title": "접근 권한 없음",
+              "description": "해당 메뉴에 접근할 수 있는 권한이 없습니다. 관리자에게 승인을 요청하세요.",
+              "footer": {
+                "confirm": "확인"
+              }
+            },
+            "confirmation": {
+              "title": "영구 삭제 확인",
+              "description": "데이터를 삭제하시겠습니까? 삭제된 정보는 시스템에서 즉시 제거되며 복구할 수 없습니다.",
+              "footer": {
+                "cancel": "취소",
+                "delete": "삭제"
+              }
+            }
+          }
+        }
+      },
+      "test": {
+        "sequential": {
+          "parent": {
+            "title": "삭제 확인",
+            "description": "삭제하면 복구할 수 없습니다. 삭제하시겠습니까?",
+            "footer": {
+              "cancel": "취소",
+              "confirm": "확인"
+            }
+          },
+          "child": {
+            "title": "삭제 완료",
+            "description": "정상적으로 삭제되었습니다.",
+            "footer": {
+              "confirm": "확인"
+            }
+          }
+        },
+        "default": {
+          "title": "단순 알림",
+          "description": "단일 모달입니다.",
+          "footer": {
+            "confirm": "확인"
+          }
+        }
+      }
+    },
+    "custom": {
+      "base": {
+        "title": "타이틀",
+        "content": "내용"
+      },
+      "interation": {
+        "information": {
+          "title": "복사 완료",
+          "content": "링크가 클립보드에 복사되었습니다. 이제 원하는 곳에 붙여넣기 할 수 있습니다.",
+          "footer": {
+            "confirm": "확인"
+          }
+        },
+        "confirmation": {
+          "title": "변경 사항 저장",
+          "content": "수정하신 내용을 저장하시겠습니까? 저장 후에는 즉시 반영됩니다.",
+          "footer": {
+            "cancel": "취소",
+            "confirm": "확인"
+          }
+        }
+      },
+      "sizes": {
+        "title": "복사 완료",
+        "content": "링크가 클립보드에 복사되었습니다. 이제 원하는 곳에 붙여넣기 할 수 있습니다.",
+        "footer": {
+          "cancel": "취소",
+          "confirm": "확인"
+        }
+      },
+      "scroll-type": {
+        "buttons": {
+          "outer": "Modal Body 외부 스크롤",
+          "inner": "Modal Body 내부 스크롤"
+        },
+        "footer": {
+          "confirm": "확인"
+        },
+        "outer": {
+          "title": "타이틀",
+          "content": "길게 스크롤할 수 있는 모달입니다."
+        },
+        "inner": {
+          "title": "타이틀",
+          "content": "브라우저 높이에 맞춰 내부 스크롤할 수 있는 모달입니다."
+        }
+      },
+      "test": {
+        "sequential": {
+          "parent": {
+            "title": "삭제 확인",
+            "description": "삭제하면 복구할 수 없습니다. 삭제하시겠습니까?",
+            "footer": {
+              "cancel": "취소",
+              "confirm": "확인"
+            }
+          },
+          "child": {
+            "title": "삭제 완료",
+            "description": "정상적으로 삭제되었습니다.",
+            "footer": {
+              "confirm": "확인"
+            }
+          }
+        },
+        "default": {
+          "title": "단순 알림",
+          "description": "단일 모달입니다.",
+          "footer": {
+            "confirm": "확인"
+          }
+        }
+      }
+    }
+  },
+  "action-bar": {
+    "left-group": {
+      "label": "목록"
+    },
+    "right-group": {
+      "item": {
+        "edit": "수정",
+        "save": "저장"
+      }
+    }
+  },
+  "data-table": {
+    "headers": {
+      "id": "ID",
+      "name": "이름",
+      "email": "이메일",
+      "role": "권한",
+      "status": "상태",
+      "no": "번호",
+      "title": "제목",
+      "file": "파일",
+      "author": "작성자",
+      "date": "날짜",
+      "views": "조회수"
+    },
+    "caption": {
+      "users": "사용자 목록",
+      "board": "공지사항 및 게시글 목록 예시",
+      "checkbox": "체크박스 선택 가능 표",
+      "sortable": "정렬 기능이 활성화된 표",
+      "empty": "데이터 없음 상태",
+      "variant-solid": "솔리드 테이블",
+      "variant-outline": "아웃라인 테이블"
+    },
+    "summary": {
+      "users": "시스템에 등록된 전체 사용자 정보를 나타내는 표입니다."
+    },
+    "a11y": {
+      "secret": "비공개 글",
+      "has-file": "첨부파일 있음",
+      "variant-solid": "솔리드 테이블",
+      "variant-outline": "아웃라인 테이블",
+      "select-all": "전체 행 선택"
+    },
+    "default": {
+      "items": {
+        "item_a": {
+          "name": "김철수",
+          "role": "최고 관리자",
+          "status": "활성화"
+        },
+        "item_b": {
+          "name": "다나카 소스케",
+          "role": "사용자",
+          "status": "비활성화"
+        },
+        "item_c": {
+          "name": "John Doe",
+          "role": "관리자",
+          "status": "활성화"
+        }
+      }
+    },
+    "notice": {
+      "notice_item": {
+        "item_a": {
+          "title": "[공지] 서비스 정기 점검 안내 및 이용 제한 관련 긴급 공지사항입니다 (1/10)",
+          "writer": "관리자"
+        },
+        "item_b": {
+          "title": "[안내] 2026년 상반기 디자인 시스템 업데이트 로드맵 공유",
+          "writer": "운영자"
+        }
+      },
+      "default_items": {
+        "item_a": {
+          "title": "제목이 매우 길어서 한 줄을 넘어가고 다음 칸을 가릴 정도로 길게 작성된 게시글의 제목입니다. 말줄임표 처리가 필요합니다.",
+          "name": "김철수"
+        },
+        "item_b": {
+          "title": "디자인 시스템 가이드",
+          "name": "이영희"
+        }
+      }
+    },
+    "empty": "데이터가 없습니다."
+  },
+  "filepicker": {
+    "base": {
+      "title": "타이틀 영역",
+      "desc": "컨텐츠 영역"
+    },
+    "submit-test": {
+      "button": {
+        "items": {
+          "submit_start": "서버로 전송 시작",
+          "upload_reset": "업로드 상태 초기화"
+        }
+      },
+      "title": "파일 전송 시뮬레이션",
+      "desc": "전송 후 [업로드 상태 초기화] 버튼을 눌러 다시 테스트해보세요."
+    },
+    "drag-and-drop": {
+      "default": "첨부할 파일을 여기에 끌어다 놓거나, 파일 선택 버튼을 눌러주세요.",
+      "draging": "여기에 파일을 놓아 업로드 하세요",
+      "uploading": "현재 파일 업로드 중에는 추가로 파일을 등록할 수 없습니다.",
+      "announcement": "파일을 업로드 영역에 올려두었습니다"
+    },
+    "aria": {
+      "dropzone": "파일 업로드 영역"
+    },
+    "unit": "개",
+    "btn": "파일 선택",
+    "delete-all-btn": "전체 파일 삭제",
+    "delete-btn": "삭제",
+    "validation": {
+      "error": {
+        "large-file": "용량이 너무 큽니다",
+        "unknown-format": "지원하지 않는 파일 형식입니다"
+      }
+    }
+  }
+}

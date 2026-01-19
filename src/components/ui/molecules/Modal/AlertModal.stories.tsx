@@ -6,6 +6,7 @@ import { ModalContext } from '@/components/contexts/ModalContext';
 import Button from '../Button/Button';
 import { GuideCell, GuideGroup, GuideRow, GuideWrapper } from '../../guide/Guide';
 import AlertModalContent, { type AlertModalContentProps } from './AlertModalContent';
+import { useTranslation } from 'react-i18next';
 
 const meta: Meta = {
   title: 'UI/Organisms/Modal/AlertModal',
@@ -145,25 +146,20 @@ export const Base: Story = {
   },
   render: args => {
     const props = args as AlertModalContentProps;
+    const { t } = useTranslation();
 
     return (
-      <GuideWrapper style={{ margin: 'auto', width: 'fit-content', gap: '80px' }}>
-        <GuideGroup direction='row'>
-          <GuideRow direction='column'>
-            <GuideCell>
-              <AlertModalContent
-                {...props}
-                config={{
-                  ...props.config,
-                  variant: 'alert-info',
-                  title: '복사 완료',
-                  description:
-                    '링크가 클립보드에 복사되었습니다. 이제 원하는 곳에 붙여넣기 할 수 있습니다.',
-                }}
-              />
-            </GuideCell>
-          </GuideRow>
-        </GuideGroup>
+      <GuideWrapper style={{ margin: 'auto', width: 'min-content', gap: '80px' }}>
+        <AlertModalContent
+          {...props}
+          config={{
+            ...props.config,
+            variant: 'alert-info',
+            title: t('modal.alert.base.title'),
+            description: t('modal.alert.base.description'),
+            confirmText: t('modal.alert.base.footer.confirm'),
+          }}
+        />
       </GuideWrapper>
     );
   },
@@ -184,9 +180,10 @@ export const InteractionPattern: Story = {
   },
   render: args => {
     const props = args as AlertModalContentProps;
+    const { t } = useTranslation();
 
     return (
-      <GuideWrapper style={{ margin: 'auto', width: 'fit-content', gap: '80px' }}>
+      <GuideWrapper style={{ margin: 'auto', width: 'min-content', gap: '80px' }}>
         <GuideGroup direction='row'>
           <GuideRow direction='column'>
             <GuideCell caption='Information'>
@@ -195,9 +192,9 @@ export const InteractionPattern: Story = {
                 config={{
                   ...props.config,
                   variant: 'alert-info',
-                  title: '복사 완료',
-                  description:
-                    '링크가 클립보드에 복사되었습니다. 이제 원하는 곳에 붙여넣기 할 수 있습니다.',
+                  title: t('modal.alert.interaction.information.title'),
+                  description: t('modal.alert.interaction.information.description'),
+                  confirmText: t('modal.alert.interaction.information.footer.confirm'),
                 }}
               />
             </GuideCell>
@@ -209,10 +206,10 @@ export const InteractionPattern: Story = {
                 config={{
                   ...props.config,
                   variant: 'alert-info',
-                  title: '변경 사항 저장',
-                  description: '수정하신 내용을 저장하시겠습니까? 저장 후에는 즉시 반영됩니다.',
-                  confirmText: '저장',
-                  cancelText: '취소',
+                  title: t('modal.alert.interaction.confirmation.title'),
+                  description: t('modal.alert.interaction.confirmation.description'),
+                  confirmText: t('modal.alert.interaction.confirmation.footer.confirm'),
+                  cancelText: t('modal.alert.interaction.confirmation.footer.cancel'),
                 }}
               />
             </GuideCell>
@@ -238,6 +235,7 @@ export const Variant: Story = {
   },
   render: args => {
     const props = args as AlertModalContentProps;
+    const { t } = useTranslation();
 
     return (
       <GuideWrapper style={{ margin: 'auto', width: 'fit-content', gap: '80px' }}>
@@ -249,9 +247,11 @@ export const Variant: Story = {
                 config={{
                   ...props.config,
                   variant: 'alert-info',
-                  title: '복사 완료',
-                  description:
-                    '링크가 클립보드에 복사되었습니다. 이제 원하는 곳에 붙여넣기 할 수 있습니다.',
+                  title: t('modal.alert.variants.info.interaction.information.title'),
+                  description: t('modal.alert.variants.info.interaction.information.description'),
+                  confirmText: t(
+                    'modal.alert.variants.info.interaction.information.footer.confirm',
+                  ),
                 }}
               />
             </GuideCell>
@@ -263,11 +263,10 @@ export const Variant: Story = {
                 config={{
                   ...props.config,
                   variant: 'alert-info',
-                  title: '저장 확인',
-                  description:
-                    '수정하신 내용을 저장하시겠습니까? 저장 후에는 즉시 목록으로 이동합니다.',
-                  confirmText: '저장',
-                  cancelText: '취소',
+                  title: t('modal.alert.variants.info.interaction.confirmation.title'),
+                  description: t('modal.alert.variants.info.interaction.confirmation.description'),
+                  confirmText: t('modal.alert.variants.info.interaction.confirmation.footer.save'),
+                  cancelText: t('modal.alert.variants.info.interaction.confirmation.footer.cancel'),
                 }}
               />
             </GuideCell>
@@ -281,9 +280,11 @@ export const Variant: Story = {
                 config={{
                   ...props.config,
                   variant: 'alert-danger',
-                  title: '접근 권한 없음',
-                  description:
-                    '해당 메뉴에 접근할 수 있는 권한이 없습니다. 관리자에게 승인을 요청하세요.',
+                  title: t('modal.alert.variants.danger.interaction.information.title'),
+                  description: t('modal.alert.variants.danger.interaction.information.description'),
+                  confirmText: t(
+                    'modal.alert.variants.danger.interaction.information.footer.confirm',
+                  ),
                 }}
               />
             </GuideCell>
@@ -295,11 +296,16 @@ export const Variant: Story = {
                 config={{
                   ...props.config,
                   variant: 'alert-danger',
-                  title: '영구 삭제 확인',
-                  description:
-                    '데이터를 삭제하시겠습니까? 삭제된 정보는 시스템에서 즉시 제거되며 복구할 수 없습니다.',
-                  confirmText: '삭제',
-                  cancelText: '취소',
+                  title: t('modal.alert.variants.danger.interaction.confirmation.title'),
+                  description: t(
+                    'modal.alert.variants.danger.interaction.confirmation.description',
+                  ),
+                  confirmText: t(
+                    'modal.alert.variants.danger.interaction.confirmation.footer.delete',
+                  ),
+                  cancelText: t(
+                    'modal.alert.variants.danger.interaction.confirmation.footer.cancel',
+                  ),
                 }}
               />
             </GuideCell>
@@ -318,13 +324,15 @@ export const Variant: Story = {
 export const SequenceAndStackTest: StoryObj = {
   render: () => {
     const { openModal, closeModal } = useContext(ModalContext);
+    const { t } = useTranslation();
 
     // ✅ 사용자가 공유한 연쇄 흐름 (Sequential Flow)
     const handleSequenceFlow = () => {
       openModal('alert-info', {
-        title: '삭제 확인',
-        description: '삭제하면 복구할 수 없습니다. 삭제하시겠습니까?', // TS 에러 방지를 위해 message로 통일 제안
-        cancelText: '취소',
+        title: t('modal.alert.test.sequential.parent.title'),
+        description: t('modal.alert.test.sequential.parent.description'),
+        cancelText: t('modal.alert.test.sequential.parent.footer.cancel'),
+        confirmText: t('modal.alert.test.sequential.parent.footer.confirm'),
         onConfirm: (currentId?: string) => {
           // 1. 현재 모달 닫기
           closeModal(currentId || 'alert-info');
@@ -332,9 +340,9 @@ export const SequenceAndStackTest: StoryObj = {
           // 2. 큐에 쌓인 상태 처리를 위해 지연 후 다음 모달 오픈
           setTimeout(() => {
             openModal('alert-info', {
-              title: '삭제 완료',
-              description: '정상적으로 삭제되었습니다.',
-              confirmText: '확인',
+              title: t('modal.alert.test.sequential.child.title'),
+              description: t('modal.alert.test.sequential.child.description'),
+              confirmText: t('modal.alert.test.sequential.child.footer.confirm'),
             });
           }, 0);
         },
@@ -344,16 +352,20 @@ export const SequenceAndStackTest: StoryObj = {
     return (
       <GuideWrapper style={{ flexDirection: 'row', justifyContent: 'center' }}>
         <Button variant='solid' color='secondary' onClick={handleSequenceFlow}>
-          연쇄 모달 실행 (삭제 흐름)
+          {t('modal.alert.test.sequential.parent.title')}
         </Button>
         <Button
           variant='outline'
           color='secondary'
           onClick={() =>
-            openModal('alert-info', { title: '단순 알림', description: '단일 모달입니다.' })
+            openModal('alert-info', {
+              title: t('modal.alert.test.default.title'),
+              description: t('modal.alert.test.default.description'),
+              confirmText: t('modal.alert.test.default.footer.confirm'),
+            })
           }
         >
-          단일 모달 실행
+          {t('modal.alert.test.default.title')}
         </Button>
       </GuideWrapper>
     );

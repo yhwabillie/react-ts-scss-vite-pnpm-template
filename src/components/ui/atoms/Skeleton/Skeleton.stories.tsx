@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Skeleton from './Skeleton';
 import { GuideWrapper } from '../../guide/Guide';
+import Card from '../../molecules/Card/Card';
 
 const meta: Meta<typeof Skeleton> = {
   title: 'UI/Atoms/Skeleton',
@@ -89,7 +90,9 @@ export const Text: Story = {
   render: args => {
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-        <Skeleton {...args} />
+        <Card>
+          <Skeleton {...args} />
+        </Card>
       </GuideWrapper>
     );
   },
@@ -109,7 +112,9 @@ export const Circle: Story = {
   render: args => {
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-        <Skeleton {...args} />
+        <Card>
+          <Skeleton {...args} />
+        </Card>
       </GuideWrapper>
     );
   },
@@ -129,7 +134,9 @@ export const Rectangle: Story = {
   render: args => {
     return (
       <GuideWrapper style={{ width: 'fit-content', margin: 'auto' }}>
-        <Skeleton {...args} />
+        <Card>
+          <Skeleton {...args} />
+        </Card>
       </GuideWrapper>
     );
   },
@@ -148,37 +155,39 @@ export const Usage: Story = {
         gap: '60px',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px', width: '400px' }}>
-        <Skeleton variant='circle' width={48} height={48} style={{ flex: '0 0 auto' }} />
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: '1 1 auto' }}>
-          <Skeleton variant='text' width='100%' height={20} />
-          <Skeleton variant='text' width='60%' height={14} />
+      <Card>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', width: '400px' }}>
+          <Skeleton variant='circle' width={48} height={48} style={{ flex: '0 0 auto' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: '1 1 auto' }}>
+            <Skeleton variant='text' width='100%' height={20} />
+            <Skeleton variant='text' width='60%' height={14} />
+          </div>
         </div>
-      </div>
 
-      <div
-        style={{
-          width: '400px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '12px',
-        }}
-      >
-        <Skeleton variant='rect' width='100%' height={160} style={{ borderRadius: '8px' }} />
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <Skeleton variant='text' width='90%' height={24} />
-          <Skeleton variant='text' width='100%' height={16} />
-          <Skeleton variant='text' width='60%' height={16} />
+        <div
+          style={{
+            width: '400px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '12px',
+          }}
+        >
+          <Skeleton variant='rect' width='100%' height={160} style={{ borderRadius: '8px' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <Skeleton variant='text' width='90%' height={24} />
+            <Skeleton variant='text' width='100%' height={16} />
+            <Skeleton variant='text' width='60%' height={16} />
+          </div>
         </div>
-      </div>
 
-      <div style={{ display: 'flex', gap: '8px', width: '400px' }}>
-        <Skeleton variant='text' width={40} height={16} />
-        <span style={{ color: 'var(--stroke-color-avatar)', opacity: 0.3 }}>/</span>
-        <Skeleton variant='text' width={60} height={16} />
-        <span style={{ color: 'var(--stroke-color-avatar)', opacity: 0.3 }}>/</span>
-        <Skeleton variant='text' width={80} height={16} />
-      </div>
+        <div style={{ display: 'flex', gap: '8px', width: '400px' }}>
+          <Skeleton variant='text' width={40} height={16} />
+          <span style={{ color: 'var(--stroke-color-avatar)', opacity: 0.3 }}>/</span>
+          <Skeleton variant='text' width={60} height={16} />
+          <span style={{ color: 'var(--stroke-color-avatar)', opacity: 0.3 }}>/</span>
+          <Skeleton variant='text' width={80} height={16} />
+        </div>
+      </Card>
     </GuideWrapper>
   ),
 };

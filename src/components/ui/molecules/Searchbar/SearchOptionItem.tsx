@@ -1,8 +1,7 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import clsx from 'clsx';
 import styles from '@/components/ui/molecules/OptionItem/OptionItem.module.scss';
 import Icon from '@/components/ui/atoms/Icon/Icon';
-import IconFrame from '../IconFrame/IconFrame';
 
 export interface SearchOptionItemBase {
   id: string;

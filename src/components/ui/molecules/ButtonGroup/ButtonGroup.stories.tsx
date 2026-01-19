@@ -3,7 +3,8 @@ import ButtonGroup from './ButtonGroup';
 import Button from '../Button/Button';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { SpecimenCell, SpecimenRow } from '../../guide/Specimen';
-import { GuideCell, GuideRow, GuideWrapper } from '../../guide/Guide';
+import { GuideCell } from '../../guide/Guide';
+import { useTranslation } from 'react-i18next';
 
 const meta = {
   title: 'UI/Molecules/Button/ButtonGroup',
@@ -77,13 +78,15 @@ export const Base: Story = {
   },
   args: {},
   render: args => {
+    const { t } = useTranslation();
+
     return (
       <ButtonGroup {...args}>
         <Button variant='outline' size={args.size}>
-          수정
+          {t('button-group.edit')}
         </Button>
         <Button variant='solid' size={args.size}>
-          저장
+          {t('button-group.save')}
         </Button>
       </ButtonGroup>
     );
@@ -103,16 +106,18 @@ export const AlignLeft: Story = {
     align: 'left',
   },
   render: args => {
+    const { t } = useTranslation();
+
     return (
       <AnatomyWrapper title='부모 요소 width: 500px'>
         <SpecimenRow>
           <SpecimenCell style={{ width: '500px' }}>
             <ButtonGroup {...args}>
               <Button variant='outline' size={args.size}>
-                수정
+                {t('button-group.edit')}
               </Button>
               <Button variant='solid' size={args.size}>
-                저장
+                {t('button-group.save')}
               </Button>
             </ButtonGroup>
           </SpecimenCell>
@@ -135,16 +140,18 @@ export const AlignCenter: Story = {
     align: 'center',
   },
   render: args => {
+    const { t } = useTranslation();
+
     return (
       <AnatomyWrapper title='부모 요소 width: 500px'>
         <SpecimenRow>
           <SpecimenCell style={{ width: '500px' }}>
             <ButtonGroup {...args}>
               <Button variant='outline' size={args.size}>
-                수정
+                {t('button-group.edit')}
               </Button>
               <Button variant='solid' size={args.size}>
-                저장
+                {t('button-group.save')}
               </Button>
             </ButtonGroup>
           </SpecimenCell>
@@ -167,16 +174,18 @@ export const AlignRight: Story = {
     align: 'right',
   },
   render: args => {
+    const { t } = useTranslation();
+
     return (
       <AnatomyWrapper title='부모 요소 width: 500px'>
         <SpecimenRow>
           <SpecimenCell style={{ width: '500px' }}>
             <ButtonGroup {...args}>
               <Button variant='outline' size={args.size}>
-                수정
+                {t('button-group.edit')}
               </Button>
               <Button variant='solid' size={args.size}>
-                저장
+                {t('button-group.save')}
               </Button>
             </ButtonGroup>
           </SpecimenCell>
@@ -200,6 +209,7 @@ export const Sizes: Story = {
   },
   render: args => {
     const sizeOptions: Array<'xl' | 'lg' | 'md' | 'sm' | 'xs'> = ['xl', 'lg', 'md', 'sm', 'xs'];
+    const { t } = useTranslation();
 
     return (
       <div
@@ -212,10 +222,10 @@ export const Sizes: Story = {
                 <SpecimenCell style={{ width: '500px' }}>
                   <ButtonGroup {...args} size={size}>
                     <Button variant='outline' size={size}>
-                      수정
+                      {t('button-group.edit')}
                     </Button>
                     <Button variant='solid' size={size}>
-                      저장
+                      {t('button-group.save')}
                     </Button>
                   </ButtonGroup>
                 </SpecimenCell>

@@ -1626,10 +1626,10 @@
             "value": "var(--project-color-primitive-alpha-cyan-400)"
           },
           "outline-text": {
-            "value": "var(--project-color-primitive-cyan-400)"
+            "value": "var(--project-color-primitive-cyan-680)"
           },
           "outline-border": {
-            "value": "var(--project-color-primitive-cyan-400)"
+            "value": "var(--project-color-primitive-cyan-680)"
           }
         },
         "dark": {
@@ -1643,13 +1643,13 @@
             "value": "transparent"
           },
           "outline-bg": {
-            "value": "var(--project-color-primitive-slate-blue-80)"
+            "value": "var(--project-color-primitive-gray-880)"
           },
           "outline-text": {
-            "value": "var(--project-color-primitive-slate-blue-660)"
+            "value": "var(--project-color-primitive-slate-blue-350)"
           },
           "outline-border": {
-            "value": "var(--project-color-primitive-slate-blue-660)"
+            "value": "var(--project-color-primitive-slate-blue-350)"
           }
         }
       },
@@ -2546,16 +2546,16 @@
       "tag": {
         "light": {
           "solid-bg": {
-            "value": "var(--project-color-primitive-indigo-240)"
+            "value": "var(--project-color-primitive-indigo-490)"
           },
           "solid-bg-hover": {
             "value": "var(--project-color-primitive-indigo-150)"
           },
           "solid-text": {
-            "value": "var(--project-color-primitive-blue-800)"
+            "value": "var(--project-color-primitive-gray-white)"
           },
           "solid-icon-fill": {
-            "value": "var(--project-color-primitive-blue-800)"
+            "value": "var(--project-color-primitive-gray-white)"
           },
           "outline-bg": {
             "value": "transparent"
@@ -2564,13 +2564,13 @@
             "value": "var(--project-color-primitive-alpha-indigo-250)"
           },
           "outline-text": {
-            "value": "var(--project-color-primitive-indigo-240)"
+            "value": "var(--project-color-primitive-indigo-490)"
           },
           "outline-border": {
-            "value": "var(--project-color-primitive-indigo-240)"
+            "value": "var(--project-color-primitive-indigo-490)"
           },
           "outline-icon-fill": {
-            "value": "var(--project-color-primitive-indigo-240)"
+            "value": "var(--project-color-primitive-indigo-490)"
           }
         },
         "dark": {
@@ -2593,13 +2593,13 @@
             "value": "var(--project-color-primitive-alpha-indigo-430)"
           },
           "outline-text": {
-            "value": "var(--project-color-primitive-indigo-420)"
+            "value": "var(--project-color-primitive-indigo-80)"
           },
           "outline-border": {
-            "value": "var(--project-color-primitive-slate-blue-350)"
+            "value": "var(--project-color-primitive-indigo-80)"
           },
           "outline-icon-fill": {
-            "value": "var(--project-color-primitive-indigo-420)"
+            "value": "var(--project-color-primitive-indigo-80)"
           }
         }
       },

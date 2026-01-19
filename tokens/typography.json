@@ -266,7 +266,7 @@
         "fontSize": { "value": "12px" },
         "tabletSize": { "value": "12px" },
         "mobileSize": { "value": "12px" },
-        "fontWeight": { "value": [400, 500] },
+        "fontWeight": { "value": [400, 500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ko" },
         "description": { "value": "국문 작은 섹션이나 리스트 헤더" }
@@ -275,7 +275,7 @@
         "fontSize": { "value": "12px" },
         "tabletSize": { "value": "12px" },
         "mobileSize": { "value": "12px" },
-        "fontWeight": { "value": [400, 500] },
+        "fontWeight": { "value": [400, 500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "ja" },
         "description": { "value": "일문 작은 섹션이나 리스트 헤더" }
@@ -284,7 +284,7 @@
         "fontSize": { "value": "12px" },
         "tabletSize": { "value": "12px" },
         "mobileSize": { "value": "12px" },
-        "fontWeight": { "value": [400, 500] },
+        "fontWeight": { "value": [400, 500, 700] },
         "lineHeight": { "value": 1.5 },
         "fontFamily": { "value": "en" },
         "description": { "value": "영문 작은 섹션이나 리스트 헤더" }

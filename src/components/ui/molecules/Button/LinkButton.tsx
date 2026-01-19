@@ -8,16 +8,20 @@ type BaseProps = {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   shape?: 'rounded';
   children?: React.ReactNode;
+
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
+
+  startSpinner?: React.ReactNode;
+  endSpinner?: React.ReactNode;
+
   fullWidth?: boolean;
   className?: string;
 };
 
-/** <a> 전용 Props */
-type AnchorProps = BaseProps & React.AnchorHTMLAttributes<HTMLAnchorElement>;
+type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-type LinkButtonProps = AnchorProps;
+type LinkButtonProps = BaseProps & AnchorProps;
 
 const LinkButton: React.FC<LinkButtonProps> = ({
   color = 'primary',
@@ -25,14 +29,17 @@ const LinkButton: React.FC<LinkButtonProps> = ({
   variant = 'link',
   shape = 'rounded',
   children,
+
   startIcon,
   endIcon,
+  startSpinner,
+  endSpinner,
+
   fullWidth,
   className,
-  ...props
-}) => {
-  const anchorProps = props as AnchorProps;
 
+  ...anchorProps
+}) => {
   return (
     <a
       className={clsx(
@@ -42,11 +49,13 @@ const LinkButton: React.FC<LinkButtonProps> = ({
       )}
       {...anchorProps}
     >
-      {startIcon && startIcon}
+      {startSpinner}
+      {startIcon}
 
-      <span className={`${styles['btn-label']}`}>{children}</span>
+      <span className={styles['btn-label']}>{children}</span>
 
-      {endIcon && endIcon}
+      {endIcon}
+      {endSpinner}
     </a>
   );
 };

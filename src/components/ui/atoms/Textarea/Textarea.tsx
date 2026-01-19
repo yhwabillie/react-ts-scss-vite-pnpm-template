@@ -91,7 +91,6 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           maxLength={maxLength}
           readOnly={readOnly}
           disabled={disabled}
-          // className={clsx(className?.includes('pseudo-hover') && className)}
           {...rest}
         />
 

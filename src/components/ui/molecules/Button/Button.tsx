@@ -6,7 +6,7 @@ import { mergeRefs } from '@/utils/option/mergeRefs';
 import { ModalContext } from '@/components/contexts/ModalContext';
 import type { ModalVariant } from '@/types/modal.types';
 
-// 1. 공통 스타일 Props 정의
+// 공통 스타일 props
 type BaseProps = {
   variant?: 'solid' | 'outline' | 'ghost' | 'link';
   color?: 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger';
@@ -21,19 +21,17 @@ type BaseProps = {
   className?: string;
 };
 
-// 2. 다형성 지원을 위한 제네릭 타입 정의
+// 폴리모픽 버튼 타입
 type PolymorphicButtonProps<T extends React.ElementType> = BaseProps & {
   as?: T;
 } & Omit<React.ComponentPropsWithoutRef<T>, keyof BaseProps | 'as'>;
 
-// 3. forwardRef의 타입 한계를 극복하기 위한 컴포넌트 전체 타입 선언
-// 이 타입이 외부에서 사용할 때 정확한 속성(href 등)을 추론하게 해줍니다.
+// forwardRef용 선언 타입 (외부 사용 시 props 추론)
 type ButtonComponent = <T extends React.ElementType = 'button'>(
   props: PolymorphicButtonProps<T> & { ref?: React.ComponentPropsWithRef<T>['ref'] },
 ) => React.ReactElement | null;
 
-// 4. 내부 구현 (ButtonInner)
-// 내부에서는 타입을 조금 느슨하게(any) 처리하여 forwardRef와의 충돌을 피합니다.
+// 내부 구현 (forwardRef 충돌 회피 위해 any 사용)
 const ButtonInner = (
   {
     as,
@@ -55,7 +53,7 @@ const ButtonInner = (
   const { openModal } = useContext(ModalContext);
   const Component = as || 'button';
 
-  // 실제 DOM 접근을 위한 내부 ref
+  // 내부 DOM ref
   const internalRef = useRef<HTMLElement>(null);
   const combinedRef = mergeRefs(ref, internalRef);
 
@@ -102,7 +100,7 @@ const ButtonInner = (
   );
 };
 
-// 5. ✅ 최종 내보내기: 구현체에 강제로 타입을 매핑
+// 최종 내보내기: 구현체에 타입 매핑
 const Button = forwardRef(ButtonInner) as ButtonComponent;
 
 (Button as any).displayName = 'Button';

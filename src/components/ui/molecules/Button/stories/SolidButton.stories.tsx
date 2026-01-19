@@ -165,7 +165,7 @@ export const Base: Story = {
   },
   render: args => {
     const { t } = useTranslation();
-    return <Button {...args}>{t('hello')}</Button>;
+    return <Button {...args}>{t('button')}</Button>;
   },
 };
 
@@ -230,7 +230,7 @@ export const Colors: Story = {
               return (
                 <SpecimenCell key={`${color}-${id}`}>
                   <Button {...args} color={color} {...variationProps}>
-                    {t('hello')}
+                    {t('button')}
                   </Button>
                 </SpecimenCell>
               );
@@ -270,7 +270,7 @@ export const States: Story = {
             <SpecimenGroup key={state.label} title={state.label}>
               <SpecimenRow>
                 <Button {...args} className={state.class} {...state.props} id={uniqueId}>
-                  {t('hello')}
+                  {t('button')}
                 </Button>
                 <Button
                   {...args}
@@ -287,7 +287,7 @@ export const States: Story = {
                     />
                   }
                 >
-                  {t('hello')}
+                  {t('button')}
                 </Button>
               </SpecimenRow>
             </SpecimenGroup>
@@ -361,7 +361,7 @@ export const Sizes: Story = {
               return (
                 <GuideCell key={`${size}-${id}`} caption={id === 'default' ? size : undefined}>
                   <Button {...args} size={size} {...variationProps}>
-                    {t('hello')}
+                    {t('button')}
                   </Button>
                 </GuideCell>
               );
@@ -430,7 +430,7 @@ export const Shapes: Story = {
             {variations.map(({ id, props }) => (
               <GuideCell key={`${shape}-${id}`} caption={id === 'default' ? shape : undefined}>
                 <Button {...args} shape={shape} {...props}>
-                  {t('hello')}
+                  {t('button')}
                 </Button>
               </GuideCell>
             ))}
@@ -514,7 +514,7 @@ export const Composition: Story = {
         {cases.map(item => (
           <GuideCell key={item.label} caption={item.label}>
             <Button {...args} {...item.props}>
-              {t('hello')}
+              {t('button')}
             </Button>
           </GuideCell>
         ))}
@@ -534,11 +534,11 @@ export const FullWidth: Story = {
   render: args => {
     const { t } = useTranslation();
     return (
-      <AnatomyWrapper title='부모 요소 width: 500px'>
+      <AnatomyWrapper title={t('button-stories.full-width.wrapper-title')}>
         <SpecimenRow>
           <SpecimenCell style={{ width: '500px' }}>
             <Button {...args} fullWidth={true}>
-              {t('Full Width Button')}
+              {t('button-stories.full-width.label')}
             </Button>
           </SpecimenCell>
         </SpecimenRow>
@@ -557,20 +557,26 @@ export const LongText: Story = {
     },
   },
   args: {
-    children:
-      '이 버튼의 글자는 매우 길어서 컨테이너를 벗어날 수 있습니다. 말줄임 처리가 필요합니다.',
     fullWidth: true,
   },
   render: args => {
+    const { t } = useTranslation();
     const currentColor = args.color || 'primary';
+    const resolvedArgs = {
+      ...args,
+      children: t('long-text'),
+    };
 
     return (
       <div style={{ display: 'flex', gap: '20px' }}>
-        <AnatomyWrapper title='부모 요소 width: 200px' style={{ width: '200px' }}>
+        <AnatomyWrapper
+          title={t('button-stories.long-text.wrapper-title')}
+          style={{ width: '200px' }}
+        >
           <SpecimenRow>
             <SpecimenCell>
               <Button
-                {...args}
+                {...resolvedArgs}
                 startIcon={
                   <Icon
                     name='chevron-left'
@@ -584,11 +590,14 @@ export const LongText: Story = {
             </SpecimenCell>
           </SpecimenRow>
         </AnatomyWrapper>
-        <AnatomyWrapper title='부모 요소 width: 200px' style={{ width: '200px' }}>
+        <AnatomyWrapper
+          title={t('button-stories.long-text.wrapper-title')}
+          style={{ width: '200px' }}
+        >
           <SpecimenRow>
             <SpecimenCell>
               <Button
-                {...args}
+                {...resolvedArgs}
                 endSpinner={
                   <RingSpinner
                     color={args.variant === 'solid' ? `${currentColor}-solid` : currentColor}
@@ -619,9 +628,7 @@ export const PolymorphicLink: Story = {
     as: 'a',
     href: 'https://www.google.com',
     target: '_blank',
-    title: '새 창 열기',
     rel: 'noopener noreferrer',
-    children: '구글로 이동 (Anchor Tag)',
   },
   // Interactions 패널을 통해 실제 태그가 <a>인지 자동 검증
   play: async ({ canvasElement, step }) => {
@@ -634,9 +641,15 @@ export const PolymorphicLink: Story = {
     });
   },
   render: args => {
+    const { t } = useTranslation();
+    const resolvedArgs = {
+      ...args,
+      title: t('button-stories.polymorphic-link.title'),
+      children: t('button-stories.polymorphic-link.label'),
+    };
     return (
-      <GuideWrapper title='※ 아래 버튼은 HTML `&lt;a&gt;` 태그로 렌더링됩니다.'>
-        <Button {...args} />
+      <GuideWrapper title={t('button-stories.polymorphic-link.notice')}>
+        <Button {...resolvedArgs} />
       </GuideWrapper>
     );
   },

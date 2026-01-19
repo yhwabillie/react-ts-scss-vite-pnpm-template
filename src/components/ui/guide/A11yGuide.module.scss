@@ -22,11 +22,11 @@
 }
 
 .a11y-card {
-  border: rem(1px) solid #cccccc;
+  border: rem(1px) solid var(--project-color-guide-a11y-guide-card-border);
   transition: transform 0.2s ease;
   border-radius: var(--project-border-radius-12);
   padding: rem(24px);
-  background: #f9fafb;
+  background: var(--project-color-primitive-slate-blue-60);
 
   :global {
     .a11y-card__header {
@@ -36,7 +36,7 @@
       margin-bottom: rem(8px);
 
       span {
-        color: #667eea;
+        color: var(--project-color-primitive-blue-340);
         font: var(--project-typo-sub-title-1-700);
       }
     }
@@ -44,7 +44,7 @@
     .a11y-card__text {
       margin: 0;
       font: var(--project-typo-sub-title-3-600);
-      color: #333333;
+      color: var(--project-color-guide-a11y-guide-card-text);
       word-break: keep-all;
 
       &:not(:last-child) {
@@ -53,7 +53,7 @@
 
       :global {
         .a11y-card__label {
-          color: #1e44ea;
+          color: var(--project-color-guide-a11y-guide-card-label);
         }
       }
     }

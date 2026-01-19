@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Toast, { type ToastProps } from './Toast';
 import { ToastProvider, useToast, type ToastPosition } from './ToastProvider';
-import { within, userEvent, expect } from 'storybook/test';
-import React, { useEffect } from 'react';
+
+import React from 'react';
 import Button from '../Button/Button';
 import { GuideCell, GuideGroup, GuideRow, GuideWrapper } from '../../guide/Guide';
+import { useTranslation } from 'react-i18next';
 
 const meta: Meta<typeof Toast> = {
   title: 'UI/Molecules/Toast',
@@ -106,9 +107,10 @@ export const Base: Story = {
     message: '정보가 업데이트되었습니다.',
   },
   render: args => {
+    const { t } = useTranslation();
     return (
       <GuideWrapper style={{ margin: 'auto', width: 'fit-content' }}>
-        <Toast {...args} />
+        <Toast {...args} message={t('toast.info.default.label')} />
       </GuideWrapper>
     );
   },
@@ -121,20 +123,22 @@ export const Base: Story = {
  */
 export const States: Story = {
   render: args => {
+    const { t } = useTranslation();
     const states: ToastProps[] = [
       {
         index: 2,
         id: 'toast-2',
         type: 'info',
-        message: '작성 중인 내용은 자동으로 저장됩니다.',
+        message: t('toast.info.default.label'),
         onClose: () => {},
       },
       {
         index: 3,
         id: 'toast-3',
         type: 'info',
-        message: '작성하신 글에 새로운 댓글이 달렸습니다.',
+        message: t('toast.info.link.label'),
         link: {
+          label: t('toast.info.link.btn'),
           url: 'https://www.naver.com/',
           external: true,
         },
@@ -144,15 +148,16 @@ export const States: Story = {
         index: 4,
         id: 'toast-4',
         type: 'success',
-        message: '변경사항이 성공적으로 저장되었습니다.',
+        message: t('toast.success.label'),
         onClose: () => {},
       },
       {
         index: 5,
         id: 'toast-5',
         type: 'success',
-        message: '송금이 완료되었습니다. 내역을 확인해보세요.',
+        message: t('toast.success.link.label'),
         link: {
+          label: t('toast.success.link.btn'),
           url: 'https://www.naver.com/',
           external: true,
         },
@@ -162,15 +167,16 @@ export const States: Story = {
         index: 6,
         id: 'toast-6',
         type: 'warning',
-        message: '현재 위치에서는 서비스 이용이 제한될 수 있습니다',
+        message: t('toast.warning.label'),
         onClose: () => {},
       },
       {
         index: 7,
         id: 'toast-7',
         type: 'warning',
-        message: '보안 등급이 낮습니다. 2단계 인증을 설정할까요?',
+        message: t('toast.warning.link.label'),
         link: {
+          label: t('toast.warning.link.btn'),
           url: 'https://www.naver.com/',
           external: true,
         },
@@ -180,15 +186,16 @@ export const States: Story = {
         index: 8,
         id: 'toast-8',
         type: 'error',
-        message: '네트워크 연결이 불안정합니다. 잠시 후 다시 시도해주세요.',
+        message: t('toast.error.label'),
         onClose: () => {},
       },
       {
         index: 9,
         id: 'toast-9',
         type: 'error',
-        message: '인증 세션이 만료되었습니다. 다시 로그인해 주세요.',
+        message: t('toast.error.link.label'),
         link: {
+          label: t('toast.error.link.btn'),
           url: 'https://www.naver.com/',
           external: true,
         },
@@ -262,6 +269,7 @@ export const States: Story = {
  */
 export const AllPositions: Story = {
   render: args => {
+    const { t } = useTranslation();
     const InteractiveTester = () => {
       const [currentPos, setCurrentPos] = React.useState<ToastPosition>('bottom-center');
 
@@ -288,7 +296,7 @@ export const AllPositions: Story = {
             ))}
           </div>
           <div style={{ marginTop: '20px', textAlign: 'center' }}>
-            <ToastTriggerHelper message={args.message} type={args.type} />
+            <ToastTriggerHelper message={t('toast.info.default.label')} type={args.type} />
           </div>
         </ToastProvider>
       );

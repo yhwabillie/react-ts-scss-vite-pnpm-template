@@ -4,6 +4,7 @@ import Checkbox from '@/components/ui/atoms/Checkbox/Checkbox';
 import Icon from '@/components/ui/atoms/Icon/Icon';
 import IconButton from '@/components/ui/molecules/IconButton/IconButton';
 import Styles from '@/components/ui/organisms/DataTable/DataTable.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export type SortOrder = 'asc' | 'desc' | 'none';
 
@@ -54,10 +55,11 @@ const DataTable = <T extends { id: string | number }>({
   onSelectAll,
   notices,
 }: DataTableProps<T>) => {
+  const { t } = useTranslation();
   const tableId = useId();
   const summaryId = `${tableId}-summary`;
 
-  // 공평한 너비 분배를 위한 계산 (체크박스 포함 여부 고려)
+  // 컬럼 너비 분배 계산
   const totalCols = showCheckbox ? columns.length + 1 : columns.length;
   const minWidthPercentage = `${100 / totalCols}%`;
 
@@ -68,7 +70,7 @@ const DataTable = <T extends { id: string | number }>({
     return <Icon name='arrow-down-up' strokeWidth={2.5} />;
   };
 
-  // 현재 눈앞의 데이터가 모두 Set에 있는지 확인
+  // 현재 목록이 모두 선택되었는지 확인
   const isAllSelected = data.length > 0 && data.every(row => selectedRows?.has(row.id));
 
   const getAriaSort = (key: string): 'ascending' | 'descending' | 'none' | undefined => {
@@ -119,7 +121,7 @@ const DataTable = <T extends { id: string | number }>({
                     size='md'
                     checked={isAllSelected}
                     onChange={e => onSelectAll?.(e.target.checked)}
-                    aria-label='전체 행 선택'
+                    aria-label={t('data-table.a11y.select-all')}
                   />
                 </div>
               </th>
@@ -145,7 +147,7 @@ const DataTable = <T extends { id: string | number }>({
                             : 'asc';
                         onSort(col.key as keyof T, nextOrder);
                       }}
-                      aria-label={`${col.header} 정렬`}
+                      aria-label={t('data-table.a11y.sort', { column: col.header })}
                       icon={getSortIcon(String(col.key))}
                     />
                   )}
@@ -155,7 +157,7 @@ const DataTable = <T extends { id: string | number }>({
           </tr>
         </thead>
         <tbody>
-          {/* 공지사항 데이터 루프 */}
+          {/* 공지사항 데이터 */}
           {notices &&
             notices.length > 0 &&
             notices.map((notice, index) => (
@@ -173,7 +175,7 @@ const DataTable = <T extends { id: string | number }>({
                 </td>
 
                 {columns.map((col, idx) => {
-                  // '번호' 컬럼(idx 0)은 이미 위에서 아이콘 td가 자리를 차지했으므로 렌더링하지 않음
+                  // 첫 컬럼은 공지 아이콘이 차지
                   if (idx === 0) return null;
 
                   const value = notice[col.key as keyof T];
@@ -200,7 +202,7 @@ const DataTable = <T extends { id: string | number }>({
                         id={`chk-${row.id}`}
                         checked={selectedRows?.has(row.id) || false}
                         onChange={() => onSelectRow?.(row.id)}
-                        aria-label={`${row.id}번 행 선택`}
+                        aria-label={t('data-table.a11y.select-row', { id: row.id })}
                       />
                     </div>
                   </td>
@@ -216,7 +218,7 @@ const DataTable = <T extends { id: string | number }>({
           ) : (
             <tr>
               <td colSpan={totalCols}>
-                <div className='data-table__empty-state'>데이터가 없습니다.</div>
+                <div className='data-table__empty-state'>{t('data-table.empty')}</div>
               </td>
             </tr>
           )}

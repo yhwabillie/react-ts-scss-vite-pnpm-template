@@ -8,6 +8,8 @@ import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { SpecimenCell, SpecimenRow } from '../../guide/Specimen';
 import { GuideGroup, GuideWrapper } from '../../guide/Guide';
 import { useId } from 'react';
+import { useTranslation } from 'react-i18next';
+import Card from '../Card/Card';
 
 const meta = {
   title: 'UI/Molecules/ControlGroup',
@@ -75,7 +77,6 @@ const meta = {
   },
   args: {
     size: 'xl',
-
     role: 'group',
     children: undefined,
     ariaLabel: '선택 옵션 그룹',
@@ -94,6 +95,7 @@ type Story = StoryObj<typeof meta>;
 export const Base: Story = {
   render: args => {
     const baseId = useId();
+    const { t } = useTranslation();
 
     const CONTROL_TYPES = [
       { type: 'radio', label: 'Radio ControlGroup', Component: Radio },
@@ -101,9 +103,9 @@ export const Base: Story = {
     ] as const;
 
     const OPTIONS = [
-      { label: '옵션 1', defaultChecked: true },
-      { label: '옵션 2' },
-      { label: '옵션 3' },
+      { label: t('control-group.options.label_a'), defaultChecked: true },
+      { label: t('control-group.options.label_b') },
+      { label: t('control-group.options.label_c') },
     ];
 
     return (
@@ -113,32 +115,30 @@ export const Base: Story = {
 
           return (
             <GuideWrapper key={groupId} title={label}>
-              <SpecimenRow>
-                <SpecimenCell>
-                  <AnatomyWrapper minimal={true}>
-                    <ControlGroup {...args}>
-                      {OPTIONS.map((option, idx) => {
-                        const fieldId = `${groupId}-opt-${idx}`;
+              <Card>
+                <AnatomyWrapper minimal={true}>
+                  <ControlGroup {...args}>
+                    {OPTIONS.map((option, idx) => {
+                      const fieldId = `${groupId}-opt-${idx}`;
 
-                        return (
-                          <FormField key={fieldId} as='label' htmlFor={fieldId} size={args.size}>
-                            <Component
-                              as='span'
-                              id={fieldId}
-                              name={groupId}
-                              color='primary'
-                              size={args.size}
-                              value={option.label}
-                              defaultChecked={option.defaultChecked}
-                            />
-                            <Label size={args.size}>{option.label}</Label>
-                          </FormField>
-                        );
-                      })}
-                    </ControlGroup>
-                  </AnatomyWrapper>
-                </SpecimenCell>
-              </SpecimenRow>
+                      return (
+                        <FormField key={fieldId} as='label' htmlFor={fieldId} size={args.size}>
+                          <Component
+                            as='span'
+                            id={fieldId}
+                            name={groupId}
+                            color='primary'
+                            size={args.size}
+                            value={option.label}
+                            defaultChecked={option.defaultChecked}
+                          />
+                          <Label size={args.size}>{option.label}</Label>
+                        </FormField>
+                      );
+                    })}
+                  </ControlGroup>
+                </AnatomyWrapper>
+              </Card>
             </GuideWrapper>
           );
         })}
@@ -154,6 +154,7 @@ export const Base: Story = {
  */
 export const Sizes: Story = {
   render: args => {
+    const { t } = useTranslation();
     const baseId = useId();
 
     // 1. 상수 데이터 추출 (렌더링 최적화 및 가독성)
@@ -164,9 +165,9 @@ export const Sizes: Story = {
     ] as const;
 
     const SAMPLE_OPTIONS = [
-      { label: '옵션 1', defaultChecked: true },
-      { label: '옵션 2' },
-      { label: '옵션 3' },
+      { label: t('control-group.options.label_a'), defaultChecked: true },
+      { label: t('control-group.options.label_b') },
+      { label: t('control-group.options.label_c') },
     ];
 
     return (
@@ -178,7 +179,7 @@ export const Sizes: Story = {
 
               return (
                 <SpecimenRow key={groupId}>
-                  <SpecimenCell>
+                  <Card>
                     <AnatomyWrapper minimal={true}>
                       <ControlGroup {...args} size={size}>
                         {SAMPLE_OPTIONS.map((option, idx) => {
@@ -201,7 +202,7 @@ export const Sizes: Story = {
                         })}
                       </ControlGroup>
                     </AnatomyWrapper>
-                  </SpecimenCell>
+                  </Card>
                 </SpecimenRow>
               );
             })}

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import styles from './ColorPipeline.module.scss';
+import styles from './Pipeline.module.scss';
 import BackgroundCallout from './BackgroundCallout';
 import clsx from 'clsx';
 

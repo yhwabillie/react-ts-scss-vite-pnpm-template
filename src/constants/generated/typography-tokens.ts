@@ -311,7 +311,8 @@ export const TypographyTokensData = [
     "fontSize": "12px",
     "weights": [
       400,
-      500
+      500,
+      700
     ],
     "lineHeight": 1.5,
     "fontFamily": "ko",
@@ -323,7 +324,8 @@ export const TypographyTokensData = [
     "fontSize": "12px",
     "weights": [
       400,
-      500
+      500,
+      700
     ],
     "lineHeight": 1.5,
     "fontFamily": "ja",
@@ -335,7 +337,8 @@ export const TypographyTokensData = [
     "fontSize": "12px",
     "weights": [
       400,
-      500
+      500,
+      700
     ],
     "lineHeight": 1.5,
     "fontFamily": "en",

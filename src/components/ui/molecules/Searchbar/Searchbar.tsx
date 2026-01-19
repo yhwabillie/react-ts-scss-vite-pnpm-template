@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useEffect, useId, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useId, useRef, useState, memo } from 'react';
 import styles from '@/components/ui/molecules/Searchbar/Searchbar.module.scss';
 import clsx from 'clsx';
 import type { Size, Variant, Color, Shape } from '@/types/design/design-tokens.types';
@@ -8,7 +8,7 @@ import IconButton from '../IconButton/IconButton';
 import type { PortalPosition } from '../OptionListPortal/OptionListPortal';
 import OptionListPortal from '../OptionListPortal/OptionListPortal';
 import OptionList from '../OptionList/OptionList';
-import OptionItem, { type OptionBase } from '../OptionItem/OptionItem';
+import { type OptionBase } from '../OptionItem/OptionItem';
 import SearchOptionItem from './SearchOptionItem';
 
 interface StyleProps {
@@ -67,10 +67,8 @@ const defaultAriaLabel: Record<SearchbarActionType, string> = {
 
 // -----------------------------------------------------
 // 🎯 [Performance] SearchOptionItem 메모이제이션
-// - 불필요한 리렌더링 방지
-// - 옵션 리스트 성능 최적화
 // -----------------------------------------------------
-const MemoizedOptionItem = React.memo(SearchOptionItem);
+const MemoizedOptionItem = memo(SearchOptionItem);
 
 const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
   (
@@ -91,11 +89,10 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
     },
     ref,
   ) => {
-    // inputProps 구조분해
     const { inputId, labelText, role, placeholder, disabled, value, onChange } = inputProps;
 
     // -----------------------------
-    // 📌 상태 선언
+    // 📌 상태
     // -----------------------------
     const [isOpen, setIsOpen] = useState(false);
     const [positioned, setPositioned] = useState(false);
@@ -103,19 +100,14 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const [internalValue, setInternalValue] = useState(value ?? '');
     const [filterKeyword, setFilterKeyword] = useState(value ?? '');
-    // const [announceMsg, setAnnounceMsg] = useState('');
-    // const [announceRole, setAnnounceRole] = useState<'assertive' | 'polite'>('polite');
-
     // -----------------------------
-    // 🧩 Ref 선언
+    // 🧩 Ref
     // -----------------------------
     const portalRef = useRef<HTMLDivElement | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
-    const customInputRef = React.useRef<HTMLDivElement>(null);
-    const nativeInputRef = React.useRef<HTMLInputElement>(null);
+    const customInputRef = useRef<HTMLDivElement>(null);
+    const nativeInputRef = useRef<HTMLInputElement>(null);
     const optionRefs = useRef<(HTMLLIElement | null)[]>([]);
-    const openReasonRef = useRef<'input' | 'keyboard' | 'button' | null>(null);
-    const isTypingRef = useRef(false);
     const ignoreNextFocusRef = useRef(false);
     const debouncedOnChangeRef = useRef<NodeJS.Timeout | undefined>(undefined);
     const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -127,18 +119,13 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
     const listboxId = `${baseId}-listbox`;
 
     // -----------------------------------------------------
-    // 🔍 [Filter] 옵션 필터링
-    // - input 값 기준으로 options 필터링
-    // - 대소문자 구분 없이 검색
+    // 🔍 [Filter] filterKeyword 기준 옵션 필터링
     // -----------------------------------------------------
-    // 🎯 [수정] internalValue 대신 filterKeyword를 기준으로 필터링
     const filteredOptions =
       options?.filter(opt => opt.value.toLowerCase().includes(filterKeyword.toLowerCase())) ?? [];
 
     // -----------------------------------------------------
-    // ✨ [Sync] 외부 value prop 동기화
-    // - 외부에서 value가 변경되면 내부 state 업데이트
-    // - Controlled component 지원
+    // ✨ [Sync] 외부 value 동기화
     // -----------------------------------------------------
     useEffect(() => {
       if (value !== undefined && value !== internalValue) {
@@ -148,8 +135,6 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
 
     // -----------------------------------------------------
     // 🧹 [Cleanup] 타이머 정리
-    // - 컴포넌트 언마운트 시 debounce 타이머 정리
-    // - 메모리 누수 방지
     // -----------------------------------------------------
     useEffect(() => {
       return () => {
@@ -164,18 +149,13 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
 
     // -----------------------------------------------------
     // 📂 [Interaction] 옵션 리스트 열기
-    // - 리스트를 여는 이유(reason) 추적
-    // - 'input', 'keyboard', 'button' 등의 소스 기록
     // -----------------------------------------------------
-    const openList = useCallback((reason?: 'input' | 'keyboard' | 'button') => {
-      openReasonRef.current = reason ?? null;
+    const openList = useCallback(() => {
       setIsOpen(true);
     }, []);
 
     // -----------------------------------------------------
     // 📁 [Interaction] 옵션 리스트 닫기
-    // - restoreFocus: true일 경우 input으로 포커스 복원
-    // - activeIndex 초기화로 aria-activedescendant 제거
     // -----------------------------------------------------
     const closeList = useCallback((restoreFocus = false) => {
       setIsOpen(false);
@@ -190,33 +170,28 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
     }, []);
 
     // -----------------------------------------------------
-    // ⌨️ [Input] Input 변경 핸들러
-    // - 내부 상태 업데이트 및 타이핑 상태 추적
-    // - Debounce를 통한 부모 onChange 호출 최적화
-    // - 입력값이 있을 때만 옵션 리스트 열기
+    // ⌨️ [Input] 입력 변경
+    // - 입력값 반영 + debounce onChange
     // -----------------------------------------------------
-    // 🎯 [수정] 사용자가 직접 타이핑할 때의 핸들러
     const handleInputChange = useCallback(
       (newValue: string) => {
         setInternalValue(newValue);
-        setFilterKeyword(newValue); // 🎯 타이핑 시에만 필터 키워드 업데이트
+        setFilterKeyword(newValue);
 
-        isTypingRef.current = true;
-        // ... (기존 debounce 및 isOpen 로직 동일)
-        if (newValue !== '') {
-          setIsOpen(true);
-        } else {
-          setIsOpen(false);
+        if (debouncedOnChangeRef.current) {
+          clearTimeout(debouncedOnChangeRef.current);
         }
+        debouncedOnChangeRef.current = setTimeout(() => {
+          onChange?.(newValue);
+        }, debounceMs);
+
+        setIsOpen(newValue !== '');
       },
       [onChange, debounceMs],
     );
 
     // -----------------------------------------------------
-    // 🖱️ [Selection] 옵션 클릭 핸들러
-    // - 선택된 옵션 값으로 input 업데이트
-    // - Debounce 타이머 취소 후 즉시 onChange 호출
-    // - 리스트 닫기 및 포커스 복원
+    // 🖱️ [Selection] 옵션 클릭
     // -----------------------------------------------------
     const handleOptionClick = useCallback(
       (optionValue: string) => {
@@ -234,12 +209,8 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
     );
 
     // -----------------------------------------------------
-    // 🔘 [Action] Utility 버튼 클릭 핸들러
-    // - 'clear' 타입일 경우 입력값 초기화
-    // - Debounce 타이머 취소 후 즉시 onChange 호출
-    // - 리스트 닫기 및 수동 포커스 복원
+    // 🔘 [Action] Utility 버튼 클릭
     // -----------------------------------------------------
-    // 🔘 [Action] Utility 버튼 클릭 핸들러 수정
     const handleUtilityClick = useCallback(
       (e?: React.MouseEvent) => {
         e?.preventDefault();
@@ -247,24 +218,15 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
         if (actions?.utilityAction?.type === 'clear') {
           const newValue = '';
 
-          // 1. 입력값과 필터 키워드 모두 초기화 (필터링 원복)
+          // 입력값 + 필터 키워드 초기화
           setInternalValue(newValue);
-          setFilterKeyword(newValue); // 🎯 이 부분이 추가되어야 리스트가 전체 옵션으로 돌아갑니다.
+          setFilterKeyword(newValue);
 
-          // 2. Debounce 타이머 취소 및 외부 onChange 호출
           if (debouncedOnChangeRef.current) {
             clearTimeout(debouncedOnChangeRef.current);
           }
           onChange?.(newValue);
 
-          // 3. 리스트 유지 여부 결정
-          // 삭제 후 리스트를 닫고 싶다면 closeList(false)를,
-          // 전체 리스트를 보여주고 싶다면 setIsOpen(true) 상태를 유지하세요.
-          // 여기서는 '원복'이 목적이므로 리스트를 닫지 않는 로직으로 제안드립니다.
-          // 만약 닫고 싶다면 기존처럼 closeList(false)를 유지하세요.
-          // setIsOpen(false); // 리스트를 닫고 싶을 때 주석 해제
-
-          // 4. 포커스 복원 시점 최적화
           ignoreNextFocusRef.current = true;
           window.requestAnimationFrame(() => {
             if (nativeInputRef.current) {
@@ -279,12 +241,7 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
     );
 
     // -----------------------------------------------------
-    // ⌨️ [Keyboard] Input 키보드 이벤트 핸들러
-    // - IME 조합 중 이벤트 무시
-    // - ArrowDown: 리스트 열기 또는 다음 옵션으로 이동
-    // - ArrowUp: 이전 옵션으로 이동
-    // - Enter: 현재 활성 옵션 선택
-    // - Escape: input 값 초기화 및 리스트 닫기
+    // ⌨️ [Keyboard] Input 키보드
     // -----------------------------------------------------
     const handleInputKeyDown = useCallback(
       (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -304,18 +261,15 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
         if (e.key === 'ArrowDown') {
           if (!isOpen) {
             e.preventDefault();
-            openList('keyboard');
+            openList();
           } else if (filteredOptions.length > 0) {
             e.preventDefault();
 
-            // 🎯 중요: 현재 타이핑된 값을 저장하여 나중에 복구할 수 있게 함
             beforeNavigationValueRef.current = internalValue;
 
-            // 첫 번째 옵션값으로 input 텍스트 동기화 (필터는 유지됨)
             const firstOption = filteredOptions[0];
             setInternalValue(firstOption.value);
 
-            // 첫 번째 a 태그로 포커스 이동
             requestAnimationFrame(() => {
               optionRefs.current[0]?.querySelector('a')?.focus();
             });
@@ -330,7 +284,6 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
       [isOpen, filteredOptions, internalValue, onChange, openList, closeList],
     );
 
-    // Searchbar 내부 상단에 추가
     const beforeNavigationValueRef = useRef('');
 
     const handleOptionKeyDown = useCallback(
@@ -370,14 +323,10 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
             break;
 
           case 'Enter':
-            // 🎯 Enter 시점에 현재 값을 확정
             setFilterKeyword(internalValue);
             if (debouncedOnChangeRef.current) clearTimeout(debouncedOnChangeRef.current);
             onChange?.(internalValue);
 
-            // 리스트를 닫습니다.
-            // <a> 태그의 기본 동작(이동)이 발생한 직후에 사라지도록
-            // requestAnimationFrame이나 약간의 delay를 줄 수 있습니다.
             requestAnimationFrame(() => {
               setIsOpen(false);
             });
@@ -388,9 +337,7 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
     );
 
     // -----------------------------------------------------
-    // ♿️ [ARIA] 활성 옵션 ID 계산
-    // - 키보드 포커스가 있는 옵션의 ID를 aria-activedescendant에 사용
-    // - activeIndex가 null이면 undefined 반환
+    // ♿️ [ARIA] 활성 옵션 ID
     // -----------------------------------------------------
     const activeDescendantId =
       activeIndex !== null && filteredOptions[activeIndex]
@@ -399,9 +346,6 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
 
     // -----------------------------------------------------
     // 🔧 [Portal] 위치 계산
-    // - customInputRef 또는 containerRef 기준으로 위치 측정
-    // - getBoundingClientRect() + window.scrollY/X로 스크롤 반영
-    // - top: 요소 하단, left/width: 요소 좌측 및 너비
     // -----------------------------------------------------
     const updatePosition = useCallback(() => {
       if (!isOpen) return null;
@@ -419,9 +363,6 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
 
     // -----------------------------------------------------
     // 🖱️ [Interaction] 외부 클릭 감지
-    // - Combobox 외부 영역 클릭 시 리스트 닫기
-    // - input 영역(containerRef)과 포털(portalRef) 모두 체크
-    // - 포털 구조에서도 정상 동작하도록 ref 기반 검사
     // -----------------------------------------------------
     const handleOutsideClick = useCallback((event: MouseEvent) => {
       const target = event.target as Node | null;
@@ -437,10 +378,7 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
     }, []);
 
     // -----------------------------------------------------
-    // 🎯 [Focus] Input 포커스 핸들러
-    // - ignoreNextFocusRef를 통한 중복 포커스 이벤트 방지
-    // - 포커스 시 activeIndex 리셋
-    // - 키보드 네비게이션으로 리스트 열기
+    // 🎯 [Focus] Input 포커스 처리
     // -----------------------------------------------------
     const handleInputFocus = useCallback(() => {
       if (ignoreNextFocusRef.current) {
@@ -448,14 +386,12 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
         return;
       }
 
-      setActiveIndex(null); // 포커스 시 activeIndex 리셋
-      openList('keyboard'); // 포커스만으로 리스트 열기
+      setActiveIndex(null);
+      openList();
     }, [openList]);
 
     // -----------------------------------------------------
     // ✨ [Effect] 외부 클릭 이벤트 등록
-    // - isOpen 상태일 때만 이벤트 리스너 등록
-    // - mousedown 이벤트로 외부 클릭 감지
     // -----------------------------------------------------
     useEffect(() => {
       if (!isOpen) return;
@@ -468,19 +404,13 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
 
     // -----------------------------------------------------
     // ✨ [Effect] 입력값 변경 시 activeIndex 리셋
-    // - internalValue가 변경되면 무조건 activeIndex 초기화
-    // - 새로운 필터 결과에 맞춰 포커스 상태 리셋
     // -----------------------------------------------------
     useEffect(() => {
       setActiveIndex(null);
     }, [internalValue]);
 
     // -----------------------------------------------------
-    // ✨ [Accessibility] 활성 옵션 스크롤 동기화
-    // - aria-activedescendant 기반 포커싱에서는
-    //   브라우저가 자동으로 스크롤하지 않으므로 수동 처리
-    // - scrollIntoView()로 화면 밖 옵션을 뷰포트로 이동
-    // - block: 'nearest'로 최소한의 스크롤만 발생
+    // ✨ [A11y] 활성 옵션 스크롤 동기화
     // -----------------------------------------------------
     useEffect(() => {
       if (activeIndex !== null && optionRefs.current[activeIndex]) {
@@ -493,9 +423,6 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
 
     // -----------------------------------------------------
     // ✨ [Effect] Portal 위치 초기화
-    // - isOpen 상태에 따라 Portal 위치 계산
-    // - 열려있으면 동기적으로 위치 계산 후 상태 업데이트
-    // - 닫히면 positioned, portalPos 초기화
     // -----------------------------------------------------
     useEffect(() => {
       if (!isOpen) {
@@ -512,10 +439,7 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
     }, [isOpen, updatePosition]);
 
     // -----------------------------------------------------
-    // ✨ [Effect] 윈도우 리사이즈/스크롤 시 Portal 위치 재계산
-    // - isOpen 상태에서만 이벤트 리스너 등록
-    // - 리사이즈 및 스크롤 이벤트 발생 시 updatePosition 실행
-    // - 컴포넌트 언마운트 시 이벤트 제거
+    // ✨ [Effect] 리사이즈/스크롤 시 위치 재계산
     // -----------------------------------------------------
     useEffect(() => {
       if (!isOpen) return;
@@ -535,33 +459,21 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
     }, [isOpen, updatePosition]);
 
     // -----------------------------------------------------
-    // 🔊 [Accessibility] 스크린리더 검색 결과 안내
-    // - 검색어 입력 시 필터링된 옵션 수를 안내
-    // - 검색 중 연속 입력 시 안내가 너무 자주 발생하지 않도록 debounce 적용 (300ms)
-    // - 이전 안내와 동일하면 중복 안내 방지
-    // - 검색 결과가 없으면 중요 메시지(assertive)로 안내
-    // - 검색 결과가 1개 이상이면 일반 안내(polite)로 안내
-    // - live region 갱신 시 기존 메시지를 초기화 후 requestAnimationFrame으로 새 메시지 설정하여
-    //   스크린리더가 변경을 감지하도록 보장
-    // - 검색어가 비어있으면 안내하지 않음 (초기 상태)
+    // 🔊 [A11y] 검색 결과 안내 (debounce + 중복 방지)
     // -----------------------------------------------------
     const prevAnnounceRef = useRef<string>('');
-    // const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const [announceMsg, setAnnounceMsg] = useState('');
     const [announceRole, setAnnounceRole] = useState<'assertive' | 'polite'>('polite');
 
     useEffect(() => {
-      // 이전 타이머 취소
       if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current);
 
-      // 검색어 없으면 안내 초기화
       if (!internalValue.trim()) {
         setAnnounceMsg('');
         prevAnnounceRef.current = '';
         return;
       }
 
-      // debounce: 300ms
       typingTimeoutRef.current = setTimeout(() => {
         let newMsg = '';
         let liveType: 'assertive' | 'polite' = 'polite';
@@ -575,14 +487,11 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
           newMsg = `${filteredOptions.length}개의 검색 결과가 있습니다.`;
         }
 
-        // 이전 메시지와 같으면 업데이트하지 않음 (중복 방지)
         if (prevAnnounceRef.current !== newMsg) {
           prevAnnounceRef.current = newMsg;
 
-          // live region 갱신
           setAnnounceRole(liveType);
 
-          // DOM 업데이트 보장: 기존 메시지 초기화 후 다음 렌더에서 새 메시지 설정
           setAnnounceMsg('');
           requestAnimationFrame(() => {
             setAnnounceMsg(newMsg);
@@ -619,72 +528,57 @@ const Searchbar = forwardRef<HTMLDivElement, SearchbarProps>(
         <div ref={customInputRef} className={clsx('custom-input', pseudoClasses)}>
           <input
             ref={nativeInputRef}
-            /* 식별/형태 */
             id={inputId}
             type='search'
             role={role}
-            /* 사용자 입력 */
             value={internalValue}
             placeholder={placeholder}
             disabled={disabled}
-            /* 접근성 */
             aria-autocomplete='list'
             aria-haspopup='listbox'
             aria-controls={isOpen ? listboxId : undefined}
             aria-expanded={isOpen}
             aria-activedescendant={activeDescendantId}
-            /* 이벤트 */
             onChange={e => handleInputChange(e.target.value)}
             onKeyDown={handleInputKeyDown}
             onFocus={handleInputFocus}
           />
           {actions?.utilityAction && internalValue !== '' && (
             <IconButton
-              /* 식별/형태 */
               variant='solid'
               color={color}
               size={size}
               shape={shape}
               type='button'
               className={clsx('adorned-end', 'delete-btn')}
-              /* 접근성 */
               aria-label={
                 actions.utilityAction.ariaLabel ?? defaultAriaLabel[actions.utilityAction.type]
               }
-              /* 상태 */
               disabled={actions.utilityAction.disabled}
-              /* 이벤트 */
               onClick={handleUtilityClick}
               onMouseDown={handleUtilityClick}
-              /* 커스텀 렌더링 */
               icon={actions.utilityAction.icon}
             />
           )}
 
           {actions?.submitAction && (
             <IconButton
-              /* 식별/형태 */
               variant={buttonProps?.variant}
               color={color}
               size={size}
               shape={shape}
               type='submit'
               className={clsx('adorned-end', 'submit-btn')}
-              /* 접근성 */
               aria-label={
                 actions.submitAction.ariaLabel ?? defaultAriaLabel[actions.submitAction.type]
               }
-              /* 상태 */
               disabled={actions.submitAction.disabled}
-              /* 이벤트 */
               onClick={actions.submitAction.onClick}
-              /* 커스텀 렌더링 */
               icon={actions.submitAction.icon}
             />
           )}
         </div>
 
-        {/* 최적화된 OptionList 렌더링 */}
         {isOpen && (
           <OptionListPortal
             isOpen={isOpen}

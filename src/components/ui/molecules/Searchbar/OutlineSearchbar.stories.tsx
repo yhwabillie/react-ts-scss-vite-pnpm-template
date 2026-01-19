@@ -7,6 +7,39 @@ import Icon from '../../atoms/Icon/Icon';
 import { useId } from 'react';
 import { userEvent, within, expect, waitFor } from 'storybook/test';
 import { GuideCell, GuideGroup, GuideRow } from '../../guide/Guide';
+import { useTranslation } from 'react-i18next';
+import type { SearchbarProps } from './Searchbar';
+
+const SEARCHBAR_ITEM_KEYS = [
+  'label_a',
+  'label_b',
+  'label_c',
+  'label_d',
+  'label_e',
+  'label_f',
+  'label_g',
+  'label_h',
+  'label_i',
+];
+
+const localizeSearchbarOptions = (t: (key: string) => string, options?: typeof searchbarOptions) =>
+  options?.map((option, index) => {
+    const key = SEARCHBAR_ITEM_KEYS[index];
+    if (!key) return option;
+
+    return {
+      ...option,
+      value: t(`searchbar.items.${key}`),
+    };
+  });
+
+const localizeSearchbarInputProps = (
+  t: (key: string) => string,
+  inputProps?: SearchbarProps['inputProps'],
+) => ({
+  ...inputProps,
+  placeholder: t('searchbar.placeholder'),
+});
 
 const meta = {
   title: 'UI/Molecules/Combobox/Searchbar',
@@ -172,7 +205,10 @@ type Story = StoryObj<typeof meta>;
  */
 export const Base: Story = {
   render: (args, context) => {
+    const { t } = useTranslation();
     const { updateArgs } = context;
+    const localizedOptions = localizeSearchbarOptions(t, args.options);
+    const localizedInputProps = localizeSearchbarInputProps(t, args.inputProps);
 
     const handleValueChange = (value: string) => {
       if (typeof updateArgs === 'function') {
@@ -188,8 +224,9 @@ export const Base: Story = {
     return (
       <Searchbar
         {...args}
+        options={localizedOptions}
         inputProps={{
-          ...args.inputProps,
+          ...localizedInputProps,
           // 현재 전달된 args의 value를 사용
           value: args.inputProps?.value,
           onChange: handleValueChange,
@@ -206,6 +243,7 @@ export const Base: Story = {
  */
 export const Colors: Story = {
   render: (args, context) => {
+    const { t } = useTranslation();
     const colorOptions: Array<'primary' | 'secondary' | 'tertiary'> = [
       'primary',
       'secondary',
@@ -213,6 +251,8 @@ export const Colors: Story = {
     ];
 
     const { updateArgs } = context;
+    const localizedOptions = localizeSearchbarOptions(t, args.options);
+    const localizedInputProps = localizeSearchbarInputProps(t, args.inputProps);
 
     const handleValueChange = (value: string) => {
       if (typeof updateArgs === 'function') {
@@ -234,8 +274,9 @@ export const Colors: Story = {
                 <Searchbar
                   {...args}
                   color={color}
+                  options={localizedOptions}
                   inputProps={{
-                    ...args.inputProps,
+                    ...localizedInputProps,
                     inputId: `${idx}`,
                     value: args.inputProps?.value,
                     onChange: handleValueChange,
@@ -257,9 +298,12 @@ export const Colors: Story = {
  */
 export const Sizes: Story = {
   render: (args, context) => {
+    const { t } = useTranslation();
     const { updateArgs } = context;
 
     const sizeOptions: Array<'xs' | 'sm' | 'md' | 'lg' | 'xl'> = ['xs', 'sm', 'md', 'lg', 'xl'];
+    const localizedOptions = localizeSearchbarOptions(t, args.options);
+    const localizedInputProps = localizeSearchbarInputProps(t, args.inputProps);
 
     const handleValueChange = (value: string) => {
       if (typeof updateArgs === 'function') {
@@ -281,8 +325,9 @@ export const Sizes: Story = {
                 <Searchbar
                   {...args}
                   size={size}
+                  options={localizedOptions}
                   inputProps={{
-                    ...args.inputProps,
+                    ...localizedInputProps,
                     inputId: `${idx}`,
                     value: args.inputProps?.value,
                     onChange: handleValueChange,
@@ -303,6 +348,7 @@ export const Sizes: Story = {
  */
 export const States: Story = {
   render: (args, context) => {
+    const { t } = useTranslation();
     const { updateArgs } = context;
 
     const states = [
@@ -310,6 +356,8 @@ export const States: Story = {
       { label: 'Hover', props: { className: 'pseudo-hover' } },
       { label: 'Focus (Typing)', props: { className: 'pseudo-focus-visible' } },
     ];
+    const localizedOptions = localizeSearchbarOptions(t, args.options);
+    const localizedInputProps = localizeSearchbarInputProps(t, args.inputProps);
 
     const handleValueChange = (value: string) => {
       if (typeof updateArgs === 'function') {
@@ -332,8 +380,9 @@ export const States: Story = {
               <Searchbar
                 {...args}
                 {...state.props}
+                options={localizedOptions}
                 inputProps={{
-                  ...args.inputProps,
+                  ...localizedInputProps,
                   inputId: `${idx}`,
                   value: args.inputProps?.value,
                   onChange: handleValueChange,
@@ -354,8 +403,11 @@ export const States: Story = {
  */
 export const Shapes: Story = {
   render: (args, context) => {
+    const { t } = useTranslation();
     const shapeOptions: Array<'square' | 'rounded' | 'pill'> = ['square', 'rounded', 'pill'];
     const { updateArgs } = context;
+    const localizedOptions = localizeSearchbarOptions(t, args.options);
+    const localizedInputProps = localizeSearchbarInputProps(t, args.inputProps);
 
     const handleValueChange = (value: string) => {
       if (typeof updateArgs === 'function') {
@@ -377,8 +429,9 @@ export const Shapes: Story = {
               <Searchbar
                 {...args}
                 shape={shape}
+                options={localizedOptions}
                 inputProps={{
-                  ...args.inputProps,
+                  ...localizedInputProps,
                   inputId: `${idx}`,
                   value: args.inputProps?.value,
                   onChange: handleValueChange,
@@ -399,11 +452,14 @@ export const Shapes: Story = {
  */
 export const Variants: Story = {
   render: (args, context) => {
+    const { t } = useTranslation();
     const { updateArgs } = context;
 
     type btnVariantsType = 'ghost' | 'solid';
 
     const btnVariants: btnVariantsType[] = ['ghost', 'solid'];
+    const localizedOptions = localizeSearchbarOptions(t, args.options);
+    const localizedInputProps = localizeSearchbarInputProps(t, args.inputProps);
 
     const handleValueChange = (value: string) => {
       if (typeof updateArgs === 'function') {
@@ -426,8 +482,9 @@ export const Variants: Story = {
               <Searchbar
                 {...args}
                 buttonProps={{ variant: variant }}
+                options={localizedOptions}
                 inputProps={{
-                  ...args.inputProps,
+                  ...localizedInputProps,
                   inputId: `${idx}`,
                   value: args.inputProps?.value,
                   onChange: handleValueChange,
@@ -447,7 +504,10 @@ export const Variants: Story = {
  */
 export const PortalTest: Story = {
   render: (args, context) => {
+    const { t } = useTranslation();
     const { updateArgs } = context;
+    const localizedOptions = localizeSearchbarOptions(t, args.options);
+    const localizedInputProps = localizeSearchbarInputProps(t, args.inputProps);
 
     const handleValueChange = (value: string) => {
       if (typeof updateArgs === 'function') {
@@ -467,8 +527,9 @@ export const PortalTest: Story = {
       >
         <Searchbar
           {...args}
+          options={localizedOptions}
           inputProps={{
-            ...args.inputProps,
+            ...localizedInputProps,
             value: args.inputProps?.value,
             onChange: handleValueChange,
           }}

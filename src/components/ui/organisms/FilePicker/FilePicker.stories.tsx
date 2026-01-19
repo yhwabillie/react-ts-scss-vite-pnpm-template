@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import FilePicker, { type FileItem } from './FilePicker';
 import Button from '../../molecules/Button/Button';
 import { GuideWrapper } from '../../guide/Guide';
+import { useTranslation } from 'react-i18next';
 
 const meta: Meta<typeof FilePicker> = {
   title: 'UI/Organisms/FilePicker',
@@ -102,12 +103,29 @@ const meta: Meta<typeof FilePicker> = {
 export default meta;
 type Story = StoryObj<typeof FilePicker>;
 
+const getBaseCopy = (t: (key: string) => string) => ({
+  title: t('filepicker.base.title'),
+  desc: t('filepicker.base.desc'),
+});
+
+const getSubmitCopy = (t: (key: string) => string) => ({
+  title: t('filepicker.submit-test.title'),
+  desc: t('filepicker.submit-test.desc'),
+  submit: t('filepicker.submit-test.button.items.submit_start'),
+  reset: t('filepicker.submit-test.button.items.upload_reset'),
+});
+
 // 📝 Mock 데이터 생성을 위한 헬퍼 함수
-const createMockFile = (id: string, name: string, error?: string) => ({
+const createMockFile = (
+  id: string,
+  name: string,
+  error?: string,
+  options?: { ext?: string; size?: number },
+) => ({
   id,
   name,
-  size: 102.4,
-  ext: 'png',
+  size: options?.size ?? 102.4,
+  ext: options?.ext ?? 'png',
   error,
 });
 
@@ -115,7 +133,34 @@ const createMockFile = (id: string, name: string, error?: string) => ({
  * 파일 선택기의 기본 렌더링 상태를 확인합니다.
  * - **Checklist**: 타이틀과 설명 문구가 영역 내에 적절히 배치되는지, 드롭존의 가시성이 확보되었는지 점검합니다.
  */
-export const Base: Story = {};
+export const Base: Story = {
+  render: args => {
+    const { t } = useTranslation();
+    const baseCopy = getBaseCopy(t);
+    const [files, setFiles] = useState<FileItem[]>(args.files ?? []);
+
+    return (
+      <FilePicker
+        {...args}
+        title={baseCopy.title}
+        desc={baseCopy.desc}
+        files={files}
+        onDrop={newFiles => {
+          const mapped = newFiles.map((file, index) => ({
+            id: `${Date.now()}-${index}`,
+            name: file.name.split('.').shift() || file.name,
+            ext: file.name.split('.').pop() || '',
+            size: Math.round(file.size / 1024),
+            status: 'ready' as const,
+          }));
+          setFiles(prev => [...prev, ...mapped]);
+        }}
+        onRemove={id => setFiles(prev => prev.filter(file => file.id !== id))}
+        onClear={() => setFiles([])}
+      />
+    );
+  },
+};
 
 /**
  * 파일이 성공적으로 로드된 후의 리스트 UI를 확인합니다.
@@ -123,6 +168,34 @@ export const Base: Story = {};
  * - **Action**: 파일이 존재할 때만 나타나는 '전체 파일 삭제' 버튼의 동작을 점검합니다.
  */
 export const WithFiles: Story = {
+  render: args => {
+    const { t } = useTranslation();
+    const baseCopy = getBaseCopy(t);
+    const [files, setFiles] = useState<FileItem[]>(
+      args.files && args.files.length > 0 ? args.files : [],
+    );
+
+    return (
+      <FilePicker
+        {...args}
+        title={baseCopy.title}
+        desc={baseCopy.desc}
+        files={files}
+        onDrop={newFiles => {
+          const mapped = newFiles.map((file, index) => ({
+            id: `${Date.now()}-${index}`,
+            name: file.name.split('.').shift() || file.name,
+            ext: file.name.split('.').pop() || '',
+            size: Math.round(file.size / 1024),
+            status: 'ready' as const,
+          }));
+          setFiles(prev => [...prev, ...mapped]);
+        }}
+        onRemove={id => setFiles(prev => prev.filter(file => file.id !== id))}
+        onClear={() => setFiles([])}
+      />
+    );
+  },
   args: {
     files: [createMockFile('1', 'design_system_v1'), createMockFile('2', 'logo_final_2026')],
     maxCount: 5,
@@ -135,11 +208,73 @@ export const WithFiles: Story = {
  * - **Dark Mode**: 어두운 배경에서도 에러 텍스트의 가독성이 유지되는지 점검합니다.
  */
 export const WithErrors: Story = {
+  render: args => {
+    const { t } = useTranslation();
+    const baseCopy = getBaseCopy(t);
+    const errorFiles = useMemo(
+      () => [
+        createMockFile('1', 'large_video_file', t('filepicker.validation.error.large-file'), {
+          ext: 'zip',
+          size: 12000,
+        }),
+        createMockFile('2', 'unknown_format', t('filepicker.validation.error.unknown-format'), {
+          ext: 'exe',
+        }),
+      ],
+      [t],
+    );
+    const [files, setFiles] = useState<FileItem[]>(
+      args.files && args.files.length > 0 ? args.files : errorFiles,
+    );
+    const allowedExtensions = useMemo(
+      () =>
+        new Set(
+          (args.accept ?? '')
+            .split(',')
+            .map(entry => entry.trim().replace(/^\./, '').toLowerCase())
+            .filter(Boolean),
+        ),
+      [args.accept],
+    );
+    const maxBytes = 10 * 1024 * 1024;
+
+    const mapFiles = (incomingFiles: File[]) =>
+      incomingFiles.map((file, index) => {
+        const ext = file.name.split('.').pop()?.toLowerCase() ?? '';
+        let error: string | undefined;
+
+        if (file.size > maxBytes) {
+          error = t('filepicker.validation.error.large-file');
+        } else if (allowedExtensions.size > 0 && !allowedExtensions.has(ext)) {
+          error = t('filepicker.validation.error.unknown-format');
+        }
+
+        return {
+          id: `${Date.now()}-${index}`,
+          name: file.name.split('.').shift() || file.name,
+          ext,
+          size: Math.round(file.size / 1024),
+          status: 'ready' as const,
+          error,
+        };
+      });
+
+    return (
+      <FilePicker
+        {...args}
+        title={baseCopy.title}
+        desc={baseCopy.desc}
+        files={files}
+        onDrop={newFiles => {
+          const mapped = mapFiles(newFiles);
+          setFiles(prev => [...prev, ...mapped]);
+        }}
+        onRemove={id => setFiles(prev => prev.filter(file => file.id !== id))}
+        onClear={() => setFiles([])}
+      />
+    );
+  },
   args: {
-    files: [
-      createMockFile('1', 'large_video_file', '용량이 너무 큽니다 (최대 10MB)'),
-      createMockFile('2', 'unknown_format', '지원하지 않는 파일 형식입니다'),
-    ],
     maxCount: 5,
   },
 };
@@ -150,6 +285,12 @@ export const WithErrors: Story = {
  * - **Interaction Control**: 업로드 진행 중에는 리셋 버튼을 비활성화하여 데이터 무결성을 보장합니다.
  */
 export const States: Story = {
+  render: args => {
+    const { t } = useTranslation();
+    const baseCopy = getBaseCopy(t);
+
+    return <FilePicker {...args} title={baseCopy.title} desc={baseCopy.desc} />;
+  },
   args: {
     maxCount: 5,
     files: [
@@ -187,6 +328,8 @@ export const States: Story = {
  */
 export const Submitting: Story = {
   render: args => {
+    const { t } = useTranslation();
+    const submitCopy = getSubmitCopy(t);
     const initialFiles: FileItem[] = [
       { id: '1', name: 'UI_Design_Final', size: 1240, ext: 'fig', status: 'ready' },
       { id: '2', name: 'Resource_Pack', size: 5400, ext: 'zip', status: 'ready' },
@@ -235,19 +378,21 @@ export const Submitting: Story = {
             disabled={isSubmitting || files.length === 0}
             color='primary'
           >
-            서버로 전송 시작
+            {submitCopy.submit}
           </Button>
           <Button
             onClick={handleResetStatus}
             variant='outline'
             disabled={isSubmitting} // 업로드 중에는 리셋 방지
           >
-            업로드 상태 초기화
+            {submitCopy.reset}
           </Button>
         </div>
 
         <FilePicker
           {...args}
+          title={submitCopy.title}
+          desc={submitCopy.desc}
           files={files}
           onClear={() => setFiles([])} // FilePicker 내부의 전체 삭제는 기능을 유지
           onRemove={id => setFiles(prev => prev.filter(f => f.id !== id))}
@@ -267,8 +412,6 @@ export const Submitting: Story = {
     );
   },
   args: {
-    title: '파일 전송 시뮬레이션',
-    desc: '전송 후 [업로드 상태 초기화] 버튼을 눌러 다시 테스트해보세요.',
     maxCount: 10,
   },
 };

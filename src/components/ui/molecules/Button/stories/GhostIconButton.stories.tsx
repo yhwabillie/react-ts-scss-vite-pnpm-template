@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useId } from 'react';
-import { expect, fn, within } from 'storybook/test';
+import { fn } from 'storybook/test';
 
 import Icon from '../../../atoms/Icon/Icon';
 import IconButton from '../../IconButton/IconButton';
@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/guide/Specimen';
 import { GuideCell, GuideGroup, GuideRow } from '@/components/ui/guide/Guide';
 import Input from '@/components/ui/atoms/Input/Input';
+import Card from '../../Card/Card';
 
 /**
  * [Constants]
@@ -263,36 +264,40 @@ export const Composition: Story = {
       <GuideGroup>
         <GuideRow direction='column'>
           <GuideCell caption='Input with Left Ghost Icon'>
-            <Input
-              id={`${baseId}-left`}
-              size='md'
-              className='adorned-start'
-              placeholder='정보를 입력해 주세요'
-              adornedStart={
-                <IconButton
-                  {...args}
-                  size='md'
-                  ariaLabel='검색 버튼'
-                  icon={<Icon name='search' strokeWidth={2.5} />}
-                />
-              }
-            />
+            <Card>
+              <Input
+                id={`${baseId}-left`}
+                size='md'
+                className='adorned-start'
+                placeholder='정보를 입력해 주세요'
+                adornedStart={
+                  <IconButton
+                    {...args}
+                    size='md'
+                    ariaLabel='검색 버튼'
+                    icon={<Icon name='search' strokeWidth={2.5} />}
+                  />
+                }
+              />
+            </Card>
           </GuideCell>
           <GuideCell caption='Input with Right Ghost Icon'>
-            <Input
-              id={`${baseId}-right`}
-              size='md'
-              className='adorned-end'
-              placeholder='정보를 입력해 주세요'
-              adornedEnd={
-                <IconButton
-                  {...args}
-                  size='md'
-                  ariaLabel='검색 버튼'
-                  icon={<Icon name='search' strokeWidth={2.5} />}
-                />
-              }
-            />
+            <Card>
+              <Input
+                id={`${baseId}-right`}
+                size='md'
+                className='adorned-end'
+                placeholder='정보를 입력해 주세요'
+                adornedEnd={
+                  <IconButton
+                    {...args}
+                    size='md'
+                    ariaLabel='검색 버튼'
+                    icon={<Icon name='search' strokeWidth={2.5} />}
+                  />
+                }
+              />
+            </Card>
           </GuideCell>
         </GuideRow>
       </GuideGroup>

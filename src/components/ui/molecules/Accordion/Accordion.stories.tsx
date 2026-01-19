@@ -1,6 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Accordion from './Accordion';
 import { GuideCell, GuideGroup, GuideWrapper } from '../../guide/Guide';
+import { useTranslation } from 'react-i18next';
+
+const getAccordionCopy = (t: (key: string) => string, variant: 'default' | 'long' = 'default') => ({
+  depth1: {
+    title: t(`accordion.${variant}.depth_1.title`),
+    content: t(`accordion.${variant}.depth_1.contents`),
+  },
+  depth2: {
+    title: t(`accordion.${variant}.depth_2.title`),
+    content: t(`accordion.${variant}.depth_2.contents`),
+  },
+  depth3: {
+    title: t(`accordion.${variant}.depth_3.title`),
+    content: t(`accordion.${variant}.depth_3.contents`),
+  },
+});
 
 const meta: Meta<typeof Accordion> = {
   title: 'UI/Molecules/Accordion',
@@ -111,15 +127,20 @@ type Story = StoryObj<typeof Accordion>;
  * - **Checklist**: 배경색과 경계선의 대비, 초기 열림 상태(`defaultOpen`)에서의 레이아웃 안정성을 확인합니다.
  */
 export const Base: Story = {
-  render: args => (
-    <GuideWrapper>
-      <GuideGroup direction='column'>
-        <GuideCell>
-          <Accordion {...args} size='md' title='Medium 사이즈 아코디언' />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const copy = getAccordionCopy(t);
+
+    return (
+      <GuideWrapper>
+        <GuideGroup direction='column'>
+          <GuideCell>
+            <Accordion {...args} size='md' title={copy.depth1.title} content={copy.depth1.content} />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
   args: {
     title: '아코디언 제목',
     content:
@@ -135,21 +156,41 @@ export const Base: Story = {
  * - **Scaling**: 크기 변화에 따라 텍스트와 아이콘의 비율이 조화롭게 유지되는지 검수합니다.
  */
 export const Sizes: Story = {
-  render: args => (
-    <GuideWrapper>
-      <GuideGroup direction='column'>
-        <GuideCell caption='Small (sm)' style={{ width: '100%' }}>
-          <Accordion {...args} size='sm' title='Small Size Accordion' />
-        </GuideCell>
-        <GuideCell caption='Medium (md)' style={{ width: '100%' }}>
-          <Accordion {...args} size='md' title='Medium Size Accordion (Default)' />
-        </GuideCell>
-        <GuideCell caption='Large (lg)' style={{ width: '100%' }}>
-          <Accordion {...args} size='lg' title='Large Size Accordion' />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const copy = getAccordionCopy(t);
+
+    return (
+      <GuideWrapper>
+        <GuideGroup direction='column'>
+          <GuideCell caption='Small (sm)' style={{ width: '100%' }}>
+            <Accordion
+              {...args}
+              size='sm'
+              title={`${copy.depth1.title} (sm)`}
+              content={copy.depth1.content}
+            />
+          </GuideCell>
+          <GuideCell caption='Medium (md)' style={{ width: '100%' }}>
+            <Accordion
+              {...args}
+              size='md'
+              title={`${copy.depth1.title} (md)`}
+              content={copy.depth1.content}
+            />
+          </GuideCell>
+          <GuideCell caption='Large (lg)' style={{ width: '100%' }}>
+            <Accordion
+              {...args}
+              size='lg'
+              title={`${copy.depth1.title} (lg)`}
+              content={copy.depth1.content}
+            />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
   args: {
     content: '사이즈별 내부 여백과 텍스트 크기 변화를 확인하세요.',
     level: 3,
@@ -164,21 +205,41 @@ export const Sizes: Story = {
  * - 특히 고채도의 Tertiary 배경에서 가독성을 중점적으로 확인하세요.
  */
 export const Colors: Story = {
-  render: args => (
-    <GuideWrapper>
-      <GuideGroup direction='column'>
-        <GuideCell caption='Primary' style={{ width: '100%' }}>
-          <Accordion {...args} color='primary' title='Primary 아코디언' />
-        </GuideCell>
-        <GuideCell caption='Secondary' style={{ width: '100%' }}>
-          <Accordion {...args} color='secondary' title='Secondary 아코디언' />
-        </GuideCell>
-        <GuideCell caption='Tertiary' style={{ width: '100%' }}>
-          <Accordion {...args} color='tertiary' title='Tertiary 아코디언' />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const copy = getAccordionCopy(t);
+
+    return (
+      <GuideWrapper>
+        <GuideGroup direction='column'>
+          <GuideCell caption='Primary' style={{ width: '100%' }}>
+            <Accordion
+              {...args}
+              color='primary'
+              title={`${copy.depth1.title} (Primary)`}
+              content={copy.depth1.content}
+            />
+          </GuideCell>
+          <GuideCell caption='Secondary' style={{ width: '100%' }}>
+            <Accordion
+              {...args}
+              color='secondary'
+              title={`${copy.depth1.title} (Secondary)`}
+              content={copy.depth1.content}
+            />
+          </GuideCell>
+          <GuideCell caption='Tertiary' style={{ width: '100%' }}>
+            <Accordion
+              {...args}
+              color='tertiary'
+              title={`${copy.depth1.title} (Tertiary)`}
+              content={copy.depth1.content}
+            />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
   args: {
     content:
       '각 테마 색상에 따른 스타일 변화를 확인하세요. 대지가 흰색일 때 컴포넌트의 배경과 경계선 대비가 웹 접근성 기준(3:1 이상)을 충족하는지 점검하기 좋습니다.',
@@ -193,19 +254,29 @@ export const Colors: Story = {
  * - **Focus Order**: 키보드 탭 이동 시 포커스 링이 인접한 다른 아코디언 요소에 의해 잘리거나 가려지지 않는지 체크합니다.
  */
 export const Multiple: Story = {
-  render: args => (
-    <GuideWrapper>
-      <GuideGroup direction='column'>
-        <GuideCell caption='Multiple Accordions (768px)' style={{ width: '768px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <Accordion {...args} title='첫 번째 아코디언' defaultOpen={true} />
-            <Accordion {...args} title='두 번째 아코디언' />
-            <Accordion {...args} title='세 번째 아코디언' />
-          </div>
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const copy = getAccordionCopy(t);
+
+    return (
+      <GuideWrapper>
+        <GuideGroup direction='column'>
+          <GuideCell caption='Multiple Accordions (768px)' style={{ width: '768px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <Accordion
+                {...args}
+                title={copy.depth1.title}
+                content={copy.depth1.content}
+                defaultOpen={true}
+              />
+              <Accordion {...args} title={copy.depth2.title} content={copy.depth2.content} />
+              <Accordion {...args} title={copy.depth3.title} content={copy.depth3.content} />
+            </div>
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
   args: {
     content:
       '여러 아코디언이 나열되었을 때의 간격과 열림/닫힘 상태를 확인하세요. 각 아코디언 간의 여백이 시각적으로 명확한지 점검하기 좋습니다.',
@@ -219,15 +290,49 @@ export const Multiple: Story = {
  * - **Auto Heading**: 중첩 시 헤딩 레벨(`h3` -> `h4` -> `h5`)이 시맨틱하게 자동 증가하는지 확인합니다.
  */
 export const Nested: Story = {
-  render: args => (
-    <GuideWrapper>
-      <GuideGroup direction='column'>
-        <GuideCell caption='Nested Accordion Hierarchy'>
-          <Accordion {...args} />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+  render: args => {
+    const { t } = useTranslation();
+    const copy = getAccordionCopy(t);
+    const localizedArgs = {
+      ...args,
+      title: copy.depth1.title,
+      content: copy.depth1.content,
+      items: [
+        {
+          ...(args.items?.[0] ?? {}),
+          title: copy.depth2.title,
+          content: copy.depth2.content,
+          items: [
+            {
+              ...(args.items?.[0]?.items?.[0] ?? {}),
+              title: `${copy.depth3.title} A`,
+              content: copy.depth3.content,
+            },
+            {
+              ...(args.items?.[0]?.items?.[1] ?? {}),
+              title: `${copy.depth3.title} B`,
+              content: copy.depth3.content,
+            },
+          ],
+        },
+        {
+          ...(args.items?.[1] ?? {}),
+          title: copy.depth2.title,
+          content: copy.depth2.content,
+        },
+      ],
+    };
+
+    return (
+      <GuideWrapper>
+        <GuideGroup direction='column'>
+          <GuideCell caption='Nested Accordion Hierarchy'>
+            <Accordion {...localizedArgs} />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
   args: {
     size: 'md',
     title: '1뎁스 메뉴 (h3)',
@@ -270,25 +375,38 @@ export const Nested: Story = {
  * - **Feedback**: 마우스 오버 시의 톤업(Tone-up) 효과나 키보드 포커스 시의 Outline이 명확하게 노출되는지 확인합니다.
  */
 export const States: Story = {
-  render: args => (
-    <GuideWrapper>
-      <GuideGroup direction='column'>
-        {/* Hover 상태 확인 */}
-        <GuideCell caption='Hover State' style={{ width: '100%' }}>
-          <div className='pseudo-hover-wrapper'>
-            <Accordion {...args} title='마우스 호버 상태 (Hover)' />
-          </div>
-        </GuideCell>
+  render: args => {
+    const { t } = useTranslation();
+    const copy = getAccordionCopy(t);
 
-        {/* Active / Focus 상태 확인 */}
-        <GuideCell caption='Active / Focus State' style={{ width: '100%' }}>
-          <div className='pseudo-active-wrapper'>
-            <Accordion {...args} title='클릭 또는 포커스 상태 (Active)' />
-          </div>
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+    return (
+      <GuideWrapper>
+        <GuideGroup direction='column'>
+          {/* Hover 상태 확인 */}
+          <GuideCell caption='Hover State' style={{ width: '100%' }}>
+            <div className='pseudo-hover-wrapper'>
+              <Accordion
+                {...args}
+                title={`${copy.depth1.title} (Hover)`}
+                content={copy.depth1.content}
+              />
+            </div>
+          </GuideCell>
+
+          {/* Active / Focus 상태 확인 */}
+          <GuideCell caption='Active / Focus State' style={{ width: '100%' }}>
+            <div className='pseudo-active-wrapper'>
+              <Accordion
+                {...args}
+                title={`${copy.depth1.title} (Active)`}
+                content={copy.depth1.content}
+              />
+            </div>
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
   parameters: {
     pseudo: {
       hover: '.pseudo-hover-wrapper button',
@@ -308,49 +426,50 @@ export const States: Story = {
  * - **Icon Safety**: 텍스트가 여러 줄이 되어도 우측의 열림/닫힘 아이콘과 겹치지 않는지 점검합니다.
  */
 export const LongText: Story = {
-  render: args => (
-    <GuideWrapper>
-      <GuideGroup direction='column'>
-        {/* 케이스 1: 단일 구조에서 매우 긴 제목 */}
-        <GuideCell caption='Single - Long Title' style={{ width: '100%' }}>
-          <Accordion
-            {...args}
-            title='[단일] 이 제목은 매우 길게 작성되어 줄바꿈이 어떻게 일어나는지 확인합니다. 제목이 길어져도 우측의 아이콘과 겹치지 않고 레이아웃을 유지해야 하며, 텍스트가 잘릴 때 툴팁을 띄우기 위해 title 속성을 사용해서는 안 됩니다.'
-          />
-        </GuideCell>
+  render: args => {
+    const { t } = useTranslation();
+    const copy = getAccordionCopy(t, 'long');
 
-        {/* 케이스 2: 중첩 구조에서 모든 단계의 텍스트가 긴 경우 */}
-        <GuideCell caption='Nested - All Levels Long Text' style={{ width: '100%' }}>
-          <Accordion
-            {...args}
-            title='[1뎁스] 상위 메뉴의 제목이 매우 길어서 여러 줄로 표시되는 경우입니다. 하위 메뉴들과의 구분감을 유지하는지 확인하세요.'
-            level={3}
-            defaultOpen={true}
-            items={[
-              {
-                ...args,
-                title:
-                  '[2뎁스] 중첩된 메뉴에서 제목이 길어지면 왼쪽 여백 때문에 텍스트 가용 폭이 줄어듭니다. 이때도 가독성이 확보되는지 점검합니다.',
-                level: 4,
-                defaultOpen: true,
-                items: [
-                  {
-                    ...args,
-                    title:
-                      '[3뎁스] 가장 깊은 단계입니다. 좁은 폭에서도 텍스트가 아이콘을 침범하지 않고 정상적으로 줄바꿈되어야 하며, 배경색(#dee2e6)과 텍스트(#212529)의 대비가 명확해야 합니다.',
-                    content:
-                      '내용 영역 또한 길어질 수 있으며, 부모 요소들의 높이가 유연하게 반응하여 전체 레이아웃이 깨지지 않는지 확인하는 케이스입니다.',
-                    level: 5,
-                    defaultOpen: true,
-                  },
-                ],
-              },
-            ]}
-          />
-        </GuideCell>
-      </GuideGroup>
-    </GuideWrapper>
-  ),
+    return (
+      <GuideWrapper>
+        <GuideGroup direction='column'>
+          {/* 케이스 1: 단일 구조에서 매우 긴 제목 */}
+          <GuideCell caption='Single - Long Title' style={{ width: '100%' }}>
+            <Accordion {...args} title={copy.depth1.title} content={copy.depth1.content} />
+          </GuideCell>
+
+          {/* 케이스 2: 중첩 구조에서 모든 단계의 텍스트가 긴 경우 */}
+          <GuideCell caption='Nested - All Levels Long Text' style={{ width: '100%' }}>
+            <Accordion
+              {...args}
+              title={copy.depth1.title}
+              content={copy.depth1.content}
+              level={3}
+              defaultOpen={true}
+              items={[
+                {
+                  ...args,
+                  title: copy.depth2.title,
+                  content: copy.depth2.content,
+                  level: 4,
+                  defaultOpen: true,
+                  items: [
+                    {
+                      ...args,
+                      title: copy.depth3.title,
+                      content: copy.depth3.content,
+                      level: 5,
+                      defaultOpen: true,
+                    },
+                  ],
+                },
+              ]}
+            />
+          </GuideCell>
+        </GuideGroup>
+      </GuideWrapper>
+    );
+  },
   args: {
     ...Base.args,
     size: 'md',

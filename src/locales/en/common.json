@@ -1,0 +1,945 @@
+{
+  "label": {
+    "base": "Basic label text",
+    "sizes": "The quick brown fox jumps over the lazy dog",
+    "usage": {
+      "radio": "Radio option label",
+      "checkbox": "Checkbox option label",
+      "switch": "Switch label"
+    }
+  },
+  "textarea": {
+    "default": {
+      "placeholder": "Please enter content",
+      "value": "Content is entered"
+    },
+    "width_count": {
+      "placeholder": "Please enter within 17 characters",
+      "value": {
+        "typing": "Currently typing",
+        "max": "The counter color changes when the max length is reached."
+      }
+    }
+  },
+  "badge": {
+    "label": "Notice"
+  },
+  "tag": {
+    "base": {
+      "label": "Tag"
+    },
+    "deletable": {
+      "solid_items": {
+        "label_a": "JavaScript",
+        "label_b": "TypeScript",
+        "label_c": "React"
+      },
+      "outline_items": {
+        "label_a": "JavaScript",
+        "label_b": "TypeScript",
+        "label_c": "React"
+      }
+    },
+    "navigational": {
+      "solid_items": {
+        "label_a": "Go to Naver",
+        "label_b": "View docs"
+      },
+      "outline_items": {
+        "label_a": "Go to Naver",
+        "label_b": "View docs"
+      }
+    }
+  },
+  "tooltip": {
+    "base": {
+      "items": {
+        "label_a": "Help",
+        "label_b": "Alert",
+        "label_c": "More"
+      }
+    },
+    "shape": {
+      "ballon": "Balloon tail shape",
+      "plain": "Simple rectangle shape"
+    },
+    "variants": {
+      "standard": {
+        "label": "Standard tooltip"
+      },
+      "rich": {
+        "label": "Rich tooltip"
+      }
+    },
+    "sizes": {
+      "standard": {
+        "plain": {
+          "content": "Standard plain tooltip",
+          "button": "Standard plain tooltip"
+        },
+        "ballon": {
+          "content": "Standard balloon tooltip",
+          "button": "Standard balloon tooltip"
+        }
+      },
+      "rich": {
+        "plain": {
+          "content": "Drafts are auto-saved to the browser every 30 seconds. You can keep working even if the network disconnects.",
+          "button": "Rich plain tooltip"
+        },
+        "ballon": {
+          "content": "Drafts are auto-saved to the browser every 30 seconds. You can keep working even if the network disconnects.",
+          "button": "Rich balloon tooltip"
+        }
+      }
+    },
+    "positions": {
+      "top": {
+        "standard": {
+          "button": "Standard tooltip",
+          "content": "Top tooltip"
+        },
+        "rich": {
+          "button": "Rich tooltip",
+          "content": "Drafts are auto-saved to the browser every 30 seconds. You can keep working even if the network disconnects."
+        }
+      },
+      "bottom": {
+        "standard": {
+          "button": "Standard tooltip",
+          "content": "Bottom tooltip"
+        },
+        "rich": {
+          "button": "Rich tooltip",
+          "content": "Drafts are auto-saved to the browser every 30 seconds. You can keep working even if the network disconnects."
+        }
+      },
+      "left": {
+        "standard": {
+          "button": "Standard tooltip",
+          "content": "Left tooltip"
+        },
+        "rich": {
+          "button": "Rich tooltip",
+          "content": "Drafts are auto-saved to the browser every 30 seconds. You can keep working even if the network disconnects."
+        }
+      },
+      "right": {
+        "standard": {
+          "button": "Standard tooltip",
+          "content": "Right tooltip"
+        },
+        "rich": {
+          "button": "Rich tooltip",
+          "content": "Drafts are auto-saved to the browser every 30 seconds. You can keep working even if the network disconnects."
+        }
+      }
+    },
+    "alignment": {
+      "top": {
+        "start": {
+          "standard": {
+            "button": "Standard tooltip",
+            "content": "Start-aligned tooltip"
+          },
+          "rich": {
+            "button": "Rich tooltip",
+            "content": "Drafts are auto-saved to the browser every 30 seconds. You can keep working even if the network disconnects."
+          }
+        },
+        "center": {
+          "standard": {
+            "button": "Standard tooltip",
+            "content": "Center-aligned tooltip"
+          },
+          "rich": {
+            "button": "Rich tooltip",
+            "content": "Drafts are auto-saved to the browser every 30 seconds. You can keep working even if the network disconnects."
+          }
+        },
+        "end": {
+          "standard": {
+            "button": "Standard tooltip",
+            "content": "End-aligned tooltip"
+          },
+          "rich": {
+            "button": "Rich tooltip",
+            "content": "Drafts are auto-saved to the browser every 30 seconds. You can keep working even if the network disconnects."
+          }
+        }
+      },
+      "bottom": {
+        "start": {
+          "standard": {
+            "button": "Standard tooltip",
+            "content": "Start-aligned tooltip"
+          },
+          "rich": {
+            "button": "Rich tooltip",
+            "content": "Drafts are auto-saved to the browser every 30 seconds. You can keep working even if the network disconnects."
+          }
+        },
+        "center": {
+          "standard": {
+            "button": "Standard tooltip",
+            "content": "Center-aligned tooltip"
+          },
+          "rich": {
+            "button": "Rich tooltip",
+            "content": "Drafts are auto-saved to the browser every 30 seconds. You can keep working even if the network disconnects."
+          }
+        },
+        "end": {
+          "standard": {
+            "button": "Standard tooltip",
+            "content": "End-aligned tooltip"
+          },
+          "rich": {
+            "button": "Rich tooltip",
+            "content": "Drafts are auto-saved to the browser every 30 seconds. You can keep working even if the network disconnects."
+          }
+        }
+      }
+    },
+    "viewport": {
+      "top": {
+        "start": {
+          "standard": {
+            "button": "Standard tooltip",
+            "content": "Flip-aligned tooltip"
+          }
+        },
+        "center": {
+          "standard": {
+            "button": "Standard tooltip",
+            "content": "Flip-aligned tooltip"
+          }
+        },
+        "end": {
+          "standard": {
+            "button": "Standard tooltip",
+            "content": "Flip-aligned tooltip"
+          }
+        }
+      },
+      "center": {
+        "left": {
+          "standard": {
+            "button": "Standard tooltip",
+            "content": "Flip-aligned tooltip"
+          }
+        },
+        "right": {
+          "standard": {
+            "button": "Standard tooltip",
+            "content": "Flip-aligned tooltip"
+          }
+        }
+      },
+      "bottom": {
+        "start": {
+          "standard": {
+            "button": "Standard tooltip",
+            "content": "Flip-aligned tooltip"
+          }
+        },
+        "center": {
+          "standard": {
+            "button": "Standard tooltip",
+            "content": "Flip-aligned tooltip"
+          }
+        },
+        "end": {
+          "standard": {
+            "button": "Standard tooltip",
+            "content": "Flip-aligned tooltip"
+          }
+        }
+      }
+    }
+  },
+  "button": "Button",
+  "link-button": "Go to Google",
+  "long-text": "The text is very long and may overflow the container. Truncation is required. The text is very long and may overflow the container. Truncation is required.",
+  "button-stories": {
+    "full-width": {
+      "label": "Full Width Button",
+      "wrapper-title": "Parent width: 500px",
+      "description": "Controls whether the button takes the full width of its parent."
+    },
+    "long-text": {
+      "description": "Checks that ellipsis works when the button text is long. The parent container width is set to 200px.",
+      "wrapper-title": "Parent width: 200px"
+    },
+    "polymorphic-link": {
+      "title": "Open in new window",
+      "label": "Go to Google (Anchor Tag)",
+      "notice": "※ The button below is rendered as an HTML `<a>` tag.",
+      "description": "Renders the button as an `<a>` tag while keeping its styles. Use this for external links or SEO."
+    }
+  },
+  "button-group": {
+    "edit": "Edit",
+    "save": "Save"
+  },
+  "switch": {
+    "left-label": "Left label",
+    "right-label": "Right label"
+  },
+  "input": {
+    "placeholder": {
+      "default": "Please enter information",
+      "password": "Please enter a password"
+    },
+    "value": "Content is entered"
+  },
+  "formfield": {
+    "input": {
+      "label": "Email address",
+      "placeholder": "example@mail.com"
+    },
+    "radio": {
+      "label": "Female user"
+    },
+    "checkbox": {
+      "label": "Agree to marketing"
+    }
+  },
+  "control-group": {
+    "options": {
+      "label_a": "Option A",
+      "label_b": "Option B",
+      "label_c": "Option C"
+    }
+  },
+  "formfieldset": {
+    "radio": {
+      "legend": "Select sign-up channel",
+      "options": {
+        "label_a": "Search",
+        "label_b": "Referral",
+        "label_c": "Ads"
+      }
+    },
+    "checkbox": {
+      "legend": "Agree to terms",
+      "options": {
+        "label_a": "Agree to Terms of Service",
+        "label_b": "Agree to Personal Data Collection and Use",
+        "label_c": "Agree to receive marketing info"
+      }
+    }
+  },
+  "validation-msg": {
+    "error": {
+      "label": "Invalid email format."
+    },
+    "warning": {
+      "label": "Use 8+ characters with letters, numbers, and symbols.",
+      "long-label": "For security, use at least 8 characters with upper/lowercase letters, numbers, and symbols. Avoid easy-to-guess info like birthdays or phone numbers."
+    },
+    "success": {
+      "label": "Username is available.",
+      "long-label": "Congratulations! Sign-up completed successfully. You can now log in and use all features, and a welcome coupon has been sent to your email."
+    },
+    "guide": {
+      "label": "If you forget your password, instructions will be sent to your registered email.",
+      "long-label": "When using identity verification, a code will be sent to your registered mobile number. If spam blocking is enabled, delivery may be delayed. (SMS/MMS standard rates may apply)"
+    },
+    "usage": {
+      "row": {
+        "input": {
+          "formfield": {
+            "label": "Email address",
+            "placeholder": "example@mail.com"
+          },
+          "validation-msg": {
+            "success": {
+              "label": "Email is available."
+            }
+          }
+        },
+        "radio": {
+          "formfieldset": {
+            "legend": "Please select a sign-up channel.",
+            "control-group": {
+              "items": {
+                "label_a": "Search",
+                "label_b": "Referral",
+                "label_c": "Ads"
+              }
+            }
+          },
+          "validation-msg": {
+            "warning": {
+              "label": "Please select a sign-up channel."
+            }
+          }
+        },
+        "checkbox": {
+          "formfieldset": {
+            "legend": "Areas of interest",
+            "control-group": {
+              "items": {
+                "label_a": "Design",
+                "label_b": "Development",
+                "label_c": "Planning"
+              }
+            }
+          },
+          "validation-msg": {
+            "warning": {
+              "label": "You can change areas of interest later in My Page."
+            }
+          }
+        }
+      },
+      "column": {
+        "input": {
+          "formfield": {
+            "label": "Email address",
+            "placeholder": "example@mail.com"
+          },
+          "validation-msg": {
+            "error": {
+              "label": "Use 8-16 letters, numbers, and symbols."
+            }
+          }
+        },
+        "radio": {
+          "formfieldset": {
+            "legend": "Please select a sign-up channel.",
+            "control-group": {
+              "items": {
+                "label_a": "Search",
+                "label_b": "Referral",
+                "label_c": "Ads"
+              }
+            }
+          },
+          "validation-msg": {
+            "warning": {
+              "label": "Please select a sign-up channel."
+            }
+          }
+        },
+        "checkbox": {
+          "formfieldset": {
+            "legend": "Areas of interest",
+            "control-group": {
+              "items": {
+                "label_a": "Design",
+                "label_b": "Development",
+                "label_c": "Planning"
+              }
+            }
+          },
+          "validation-msg": {
+            "guide": {
+              "label": "You can change areas of interest later in My Page."
+            }
+          }
+        }
+      }
+    }
+  },
+  "option-item": {
+    "placeholder": "Please select an option",
+    "items": {
+      "label_a": "Option 1",
+      "label_b": "Option 2",
+      "label_c": "Option 3",
+      "label_d": "Option 4",
+      "label_e": "Option 5",
+      "label_f": "Option 6",
+      "label_g": "Option 7"
+    }
+  },
+  "selectbox": {
+    "placeholder": "Please select an option",
+    "items": {
+      "label_a": "Pending",
+      "label_b": "In progress",
+      "label_c": "Review requested",
+      "label_d": "On hold",
+      "label_e": "Approved",
+      "label_f": "Rejected",
+      "label_g": "Awaiting deploy",
+      "label_h": "Deployed",
+      "label_i": "Archived",
+      "label_j": "Deleted"
+    }
+  },
+  "autocomplete": {
+    "placeholder": "Select or enter a value",
+    "items": {
+      "label_a": "Frontend developer",
+      "label_b": "Backend developer",
+      "label_c": "Full-stack developer",
+      "label_d": "Mobile app developer",
+      "label_e": "Data engineer",
+      "label_f": "QA engineer",
+      "label_g": "UI/UX designer",
+      "label_h": "Product manager",
+      "label_i": "Technical planner"
+    }
+  },
+  "searchbar": {
+    "placeholder": "Please enter a search term",
+    "items": {
+      "label_a": "Server developer job posting",
+      "label_b": "Frontend junior salary info",
+      "label_c": "Naver hiring official site",
+      "label_d": "UI/UX designer portfolio guide",
+      "label_e": "Data scientist interview questions",
+      "label_f": "Service planner skill roadmap",
+      "label_g": "Performance marketer practical template",
+      "label_h": "Frequently asked questions (FAQ)",
+      "label_i": "Apply for 1:1 career mentoring"
+    }
+  },
+  "segmented-control": {
+    "items": {
+      "label_a": "Latest",
+      "label_b": "Popular",
+      "label_c": "Price"
+    }
+  },
+  "accordion": {
+    "default": {
+      "depth_1": {
+        "title": "Depth 1 accordion title",
+        "contents": "Accordion details are shown here. When the background is white, check that the component background and border contrast meet accessibility standards."
+      },
+      "depth_2": {
+        "title": "Depth 2 accordion title",
+        "contents": "Accordion details are shown here. When the background is white, check that the component background and border contrast meet accessibility standards."
+      },
+      "depth_3": {
+        "title": "Depth 3 accordion title",
+        "contents": "Accordion details are shown here. When the background is white, check that the component background and border contrast meet accessibility standards."
+      }
+    },
+    "long": {
+      "depth_1": {
+        "title": "[Depth 1] A long accordion header example to check wrapping, icon overlap, and line-height stability.",
+        "contents": "As content grows, verify that the height expands naturally and vertical spacing stays consistent. On a light background, confirm that border contrast meets WCAG and text does not rely on title-only truncation."
+      },
+      "depth_2": {
+        "title": "[Depth 2] A long title to verify readability when indentation increases in nested levels.",
+        "contents": "Nested layouts reduce available width, so line-wrapping quality matters. Check header/background contrast and that indicator movement remains smooth."
+      },
+      "depth_3": {
+        "title": "[Depth 3] A long title to ensure icons and text do not overlap at the deepest level.",
+        "contents": "Confirm the content area expands without scroll and text remains readable. Check spacing between icon and text, wrap positions, and background contrast."
+      }
+    }
+  },
+  "avatar": {
+    "name": "Hong Gil-dong"
+  },
+  "breadcrumb": {
+    "default": {
+      "depth_1": "Home",
+      "depth_2": "Product List",
+      "depth_3": "Detail Page"
+    },
+    "long": {
+      "depth_1": "Depth 1",
+      "depth_2": "Depth 2",
+      "depth_3": "Depth 3",
+      "depth_4": "Depth 4",
+      "depth_5": "Depth 5",
+      "depth_6": "A very long last page title that takes up a lot of horizontal space"
+    }
+  },
+  "chip": {
+    "static": {
+      "label": "Static tag"
+    },
+    "status": {
+      "label": "Status chip"
+    },
+    "choice": {
+      "items": {
+        "label_a": "Option 1",
+        "label_b": "Option 2",
+        "label_c": "Option 3"
+      }
+    },
+    "filter": {
+      "items": {
+        "label_a": "Filter 1",
+        "label_b": "Filter 2",
+        "label_c": "Filter 3"
+      }
+    },
+    "input": {
+      "solid": {
+        "items": {
+          "label_a": "React",
+          "label_b": "TypeScript",
+          "label_c": "Storybook"
+        }
+      },
+      "outline": {
+        "items": {
+          "label_a": "Vite",
+          "label_b": "pnpm",
+          "label_c": "SCSS"
+        }
+      }
+    },
+    "action": {
+      "interaction": {
+        "share": "Share",
+        "download": "Download file"
+      },
+      "navigation": {
+        "label_1": "View official docs",
+        "label_2": "Go to my profile"
+      }
+    }
+  },
+  "tabs": {
+    "items": {
+      "label_a": "Category tab 1",
+      "label_b": "Category tab 2",
+      "label_c": "Category tab 3",
+      "label_d": "Category tab 4",
+      "label_e": "Category tab 5",
+      "label_f": "Category tab 6",
+      "label_g": "Category tab 7",
+      "label_h": "Category tab 8",
+      "label_i": "Category tab 9",
+      "label_j": "Category tab 10",
+      "label_k": "Category tab 11",
+      "label_l": "Category tab 12",
+      "label_m": "Category tab 13",
+      "label_n": "Category tab 14",
+      "label_o": "Category tab 15"
+    }
+  },
+  "toast": {
+    "info": {
+      "default": {
+        "label": "Drafts are saved automatically."
+      },
+      "link": {
+        "label": "A new comment was added to your post.",
+        "btn": "Go"
+      }
+    },
+    "success": {
+      "label": "Changes saved successfully.",
+      "link": {
+        "label": "Transfer completed. Check the details.",
+        "btn": "Go"
+      }
+    },
+    "warning": {
+      "label": "Service may be limited at your current location.",
+      "link": {
+        "label": "Your security level is low. Enable 2-factor auth?",
+        "btn": "Go"
+      }
+    },
+    "error": {
+      "label": "Network connection is unstable. Please try again later.",
+      "link": {
+        "label": "Your session has expired. Please log in again.",
+        "btn": "Go"
+      }
+    }
+  },
+  "modal": {
+    "alert": {
+      "base": {
+        "title": "Copy complete",
+        "description": "The link has been copied to the clipboard. You can now paste it wherever you want.",
+        "footer": {
+          "confirm": "OK"
+        }
+      },
+      "interaction": {
+        "information": {
+          "title": "Copy complete",
+          "description": "The link has been copied to the clipboard. You can now paste it wherever you want.",
+          "footer": {
+            "confirm": "OK"
+          }
+        },
+        "confirmation": {
+          "title": "Save changes",
+          "description": "Do you want to save your changes? They will be applied immediately.",
+          "footer": {
+            "cancel": "Cancel",
+            "confirm": "OK"
+          }
+        }
+      },
+      "variants": {
+        "info": {
+          "interaction": {
+            "information": {
+              "title": "Copy complete",
+              "description": "The link has been copied to the clipboard. You can now paste it wherever you want.",
+              "footer": {
+                "confirm": "OK"
+              }
+            },
+            "confirmation": {
+              "title": "Save confirmation",
+              "description": "Do you want to save your changes? You will be taken to the list after saving.",
+              "footer": {
+                "cancel": "Cancel",
+                "save": "Save"
+              }
+            }
+          }
+        },
+        "danger": {
+          "interaction": {
+            "information": {
+              "title": "No access",
+              "description": "You do not have permission to access this menu. Please request approval from an administrator.",
+              "footer": {
+                "confirm": "OK"
+              }
+            },
+            "confirmation": {
+              "title": "Confirm permanent deletion",
+              "description": "Do you want to delete the data? Deleted information is removed immediately and cannot be recovered.",
+              "footer": {
+                "cancel": "Cancel",
+                "delete": "Delete"
+              }
+            }
+          }
+        }
+      },
+      "test": {
+        "sequential": {
+          "parent": {
+            "title": "Confirm deletion",
+            "description": "Deleted items cannot be recovered. Do you want to delete?",
+            "footer": {
+              "cancel": "Cancel",
+              "confirm": "OK"
+            }
+          },
+          "child": {
+            "title": "Deletion complete",
+            "description": "Successfully deleted.",
+            "footer": {
+              "confirm": "OK"
+            }
+          }
+        },
+        "default": {
+          "title": "Simple alert",
+          "description": "This is a single modal.",
+          "footer": {
+            "confirm": "OK"
+          }
+        }
+      }
+    },
+    "custom": {
+      "base": {
+        "title": "Title",
+        "content": "Content"
+      },
+      "interation": {
+        "information": {
+          "title": "Copy complete",
+          "content": "The link has been copied to the clipboard. You can now paste it wherever you want.",
+          "footer": {
+            "confirm": "OK"
+          }
+        },
+        "confirmation": {
+          "title": "Save changes",
+          "content": "Do you want to save your changes? They will be applied immediately.",
+          "footer": {
+            "cancel": "Cancel",
+            "confirm": "OK"
+          }
+        }
+      },
+      "sizes": {
+        "title": "Copy complete",
+        "content": "The link has been copied to the clipboard. You can now paste it wherever you want.",
+        "footer": {
+          "cancel": "Cancel",
+          "confirm": "OK"
+        }
+      },
+      "scroll-type": {
+        "buttons": {
+          "outer": "Outer scroll in modal body",
+          "inner": "Inner scroll in modal body"
+        },
+        "footer": {
+          "confirm": "OK"
+        },
+        "outer": {
+          "title": "Title",
+          "content": "This is a modal with long scrollable content."
+        },
+        "inner": {
+          "title": "Title",
+          "content": "This is a modal that scrolls internally to fit the browser height."
+        }
+      },
+      "test": {
+        "sequential": {
+          "parent": {
+            "title": "Confirm deletion",
+            "description": "Deleted items cannot be recovered. Do you want to delete?",
+            "footer": {
+              "cancel": "Cancel",
+              "confirm": "OK"
+            }
+          },
+          "child": {
+            "title": "Deletion complete",
+            "description": "Successfully deleted.",
+            "footer": {
+              "confirm": "OK"
+            }
+          }
+        },
+        "default": {
+          "title": "Simple alert",
+          "description": "This is a single modal.",
+          "footer": {
+            "confirm": "OK"
+          }
+        }
+      }
+    }
+  },
+  "action-bar": {
+    "left-group": {
+      "label": "List"
+    },
+    "right-group": {
+      "item": {
+        "edit": "Edit",
+        "save": "Save"
+      }
+    }
+  },
+  "data-table": {
+    "headers": {
+      "id": "ID",
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "status": "Status",
+      "no": "No.",
+      "title": "Title",
+      "file": "File",
+      "author": "Author",
+      "date": "Date",
+      "views": "Views"
+    },
+    "caption": {
+      "users": "User list",
+      "board": "Notice and board list example",
+      "checkbox": "Table with checkbox selection",
+      "sortable": "Table with sorting enabled",
+      "empty": "Empty state table",
+      "variant-solid": "Solid table",
+      "variant-outline": "Outline table"
+    },
+    "summary": {
+      "users": "This table shows all registered users in the system."
+    },
+    "a11y": {
+      "secret": "Private post",
+      "has-file": "Attachment available",
+      "variant-solid": "Solid table",
+      "variant-outline": "Outline table",
+      "select-all": "Select all rows"
+    },
+    "default": {
+      "items": {
+        "item_a": {
+          "name": "Kim Chul-soo",
+          "role": "Super Admin",
+          "status": "Active"
+        },
+        "item_b": {
+          "name": "Tanaka Sosuke",
+          "role": "User",
+          "status": "Inactive"
+        },
+        "item_c": {
+          "name": "John Doe",
+          "role": "Admin",
+          "status": "Active"
+        }
+      }
+    },
+    "notice": {
+      "notice_item": {
+        "item_a": {
+          "title": "[Notice] Emergency notice about scheduled maintenance and service restrictions (1/10)",
+          "writer": "Administrator"
+        },
+        "item_b": {
+          "title": "[Info] Share the 2026 H1 design system update roadmap",
+          "writer": "Operator"
+        }
+      },
+      "default_items": {
+        "item_a": {
+          "title": "This is a very long post title that exceeds one line and could overlap the next column. Truncation is required.",
+          "name": "Kim Chul-soo"
+        },
+        "item_b": {
+          "title": "Design system guide",
+          "name": "Lee Young-hee"
+        }
+      }
+    },
+    "empty": "No data."
+  },
+  "filepicker": {
+    "base": {
+      "title": "Title area",
+      "desc": "Content area"
+    },
+    "submit-test": {
+      "button": {
+        "items": {
+          "submit_start": "Start upload to server",
+          "upload_reset": "Reset upload status"
+        }
+      },
+      "title": "File transfer simulation",
+      "desc": "After sending, click [Reset upload status] to test again."
+    },
+    "drag-and-drop": {
+      "default": "Drag files here or click the file select button.",
+      "draging": "Drop files here to upload",
+      "uploading": "You cannot add more files while uploading.",
+      "announcement": "Files are placed in the upload area."
+    },
+    "aria": {
+      "dropzone": "File upload area"
+    },
+    "unit": "items",
+    "btn": "Choose files",
+    "delete-all-btn": "Delete all files",
+    "delete-btn": "Delete",
+    "validation": {
+      "error": {
+        "large-file": "File is too large",
+        "unknown-format": "Unsupported file format"
+      }
+    }
+  }
+}

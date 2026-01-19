@@ -1779,7 +1779,7 @@
       },
       "outline-warning-bg-active": {
         "light": {
-          "value": "var(--project-color-primitive-orange-630)"
+          "value": "var(--project-color-primitive-alpha-orange-660)"
         },
         "dark": {
           "value": "var(--project-color-primitive-alpha-orange-460)"
@@ -1787,7 +1787,7 @@
       },
       "outline-warning-text-active": {
         "light": {
-          "value": "var(--project-color-primitive-orange-440)"
+          "value": "var(--project-color-primitive-orange-630)"
         },
         "dark": {
           "value": "var(--project-color-primitive-orange-440)"
@@ -3569,6 +3569,183 @@
         },
         "dark": {
           "value": "var(--project-color-primitive-slate-blue-740)"
+        }
+      }
+    },
+    "guide": {
+      "mesh-banner": {
+        "border": {
+          "value": "var(--project-color-primitive-gray-200)"
+        },
+        "title": {
+          "value": "var(--project-color-primitive-gray-940)"
+        },
+        "title-shadow": {
+          "value": "var(--project-color-primitive-alpha-gray-140)"
+        },
+        "spot": {
+          "blue": {
+            "value": "var(--project-color-primitive-alpha-blue-340)"
+          },
+          "purple": {
+            "value": "var(--project-color-primitive-alpha-indigo-540)"
+          },
+          "pink": {
+            "value": "var(--project-color-primitive-alpha-pink-250)"
+          },
+          "cyan": {
+            "value": "var(--project-color-primitive-alpha-green-240)"
+          }
+        }
+      },
+      "background-callout": {
+        "warning": {
+          "container-bg": {
+            "value": "var(--project-color-primitive-yellow-50)"
+          },
+          "container-text": {
+            "value": "var(--project-color-primitive-yellow-470)"
+          },
+          "label": {
+            "value": "var(--project-color-primitive-orange-740)"
+          },
+          "list-bullet": {
+            "value": "var(--project-color-primitive-orange-740)"
+          },
+          "list-strong": {
+            "value": "var(--project-color-primitive-orange-740)"
+          }
+        },
+        "info": {
+          "container-bg": {
+            "value": "var(--project-color-primitive-sky-50)"
+          },
+          "container-text": {
+            "value": "var(--project-color-primitive-sky-610)"
+          },
+          "label": {
+            "value": "var(--project-color-primitive-sky-610)"
+          },
+          "list-bullet": {
+            "value": "var(--project-color-primitive-sky-670)"
+          },
+          "list-strong": {
+            "value": "var(--project-color-primitive-sky-610)"
+          }
+        },
+        "danger": {
+          "container-bg": {
+            "value": "var(--project-color-primitive-red-50)"
+          },
+          "container-text": {
+            "value": "var(--project-color-primitive-red-490)"
+          },
+          "label": {
+            "value": "var(--project-color-primitive-red-490)"
+          },
+          "list-bullet": {
+            "value": "var(--project-color-primitive-red-730)"
+          },
+          "list-strong": {
+            "value": "var(--project-color-primitive-red-490)"
+          },
+          "code": {
+            "bg": {
+              "value": "var(--project-color-primitive-slate-blue-870)"
+            },
+            "text": {
+              "value": "var(--project-color-primitive-slate-blue-100)"
+            }
+          }
+        },
+        "success": {
+          "container-bg": {
+            "value": "var(--project-color-primitive-alpha-green-710)"
+          },
+          "container-text": {
+            "value": "var(--project-color-primitive-green-740)"
+          },
+          "label": {
+            "value": "var(--project-color-primitive-green-740)"
+          },
+          "list-bullet": {
+            "value": "var(--project-color-primitive-green-740)"
+          },
+          "list-strong": {
+            "value": "var(--project-color-primitive-green-740)"
+          }
+        },
+        "base": {
+          "list-text": {
+            "value": "var(--project-color-primitive-gray-800)"
+          }
+        }
+      },
+      "pipeline": {
+        "flow": {
+          "list-bg": {
+            "value": "var(--project-color-primitive-gray-50)"
+          },
+          "line": {
+            "value": "var(--project-color-primitive-indigo-650)"
+          },
+          "dot-bg": {
+            "value": "var(--project-color-primitive-indigo-240)"
+          },
+          "dot-border": {
+            "value": "var(--project-color-primitive-indigo-650)"
+          },
+          "dot-icon": {
+            "value": "var(--project-color-primitive-gray-white)"
+          },
+          "step-desc": {
+            "value": "var(--project-color-primitive-indigo-490)"
+          }
+        }
+      },
+      "a11y-guide": {
+        "card": {
+          "border": {
+            "value": "var(--project-color-primitive-gray-200)"
+          },
+          "bg": {
+            "value": "var(--project-color-primitive-slate-blue-60)"
+          },
+          "header": {
+            "value": "var(--project-color-primitive-blue-340)"
+          },
+          "text": {
+            "value": "var(--project-color-primitive-gray-800)"
+          },
+          "label": {
+            "value": "var(--project-color-primitive-blue-480)"
+          }
+        }
+      },
+      "feature-grid": {
+        "card": {
+          "border": {
+            "value": "var(--project-color-primitive-gray-200)"
+          },
+          "bg": {
+            "value": "var(--project-color-primitive-slate-blue-60)"
+          },
+          "title": {
+            "value": "var(--project-color-primitive-blue-340)"
+          },
+          "desc": {
+            "value": "var(--project-color-primitive-gray-800)"
+          },
+          "hover-shadow": {
+            "value": "var(--project-color-primitive-alpha-gray-1000)"
+          }
+        }
+      },
+      "component-inventory": {
+        "link": {
+          "hover": {
+            "value": "var(--project-color-primitive-indigo-420)"
+          }
         }
       }
     }

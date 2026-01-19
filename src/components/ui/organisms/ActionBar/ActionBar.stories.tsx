@@ -3,6 +3,7 @@ import ActionBar from './ActionBar';
 import ButtonGroup from '../../molecules/ButtonGroup/ButtonGroup';
 import Button from '../../molecules/Button/Button';
 import AnatomyWrapper from '../../guide/AnatomyWrapper';
+import { useTranslation } from 'react-i18next';
 
 const meta = {
   title: 'UI/Organisms/ActionBar',
@@ -47,19 +48,26 @@ type Story = StoryObj<typeof meta>;
  * 액션바의 가장 기본적인 레이아웃 형태를 확인합니다.
  * - **Checklist**: 부모 컨테이너의 너비 내에서 좌측 '목록' 버튼과 우측 '수정/저장' 그룹이 양 끝으로 올바르게 배치되는지 확인합니다.
  */
-const renderActionBarContent = (size: 'xs' | 'sm' | 'md' | 'lg' | 'xl') => (
+const renderActionBarContent = (
+  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
+  labels: {
+    list: string;
+    edit: string;
+    save: string;
+  },
+) => (
   <>
     <ButtonGroup size={size} align='left'>
       <Button as='a' href='#' color='tertiary' size={size} variant='outline' shape='rounded'>
-        목록
+        {labels.list}
       </Button>
     </ButtonGroup>
     <ButtonGroup size={size} align='right' role='group' ariaLabel='편집 작업'>
       <Button color='primary' size={size} variant='outline' shape='rounded'>
-        수정
+        {labels.edit}
       </Button>
       <Button color='primary' size={size} variant='solid' shape='rounded'>
-        저장
+        {labels.save}
       </Button>
     </ButtonGroup>
   </>
@@ -74,11 +82,17 @@ export const Base: Story = {
     size: 'xl',
   },
   render: args => {
+    const { t } = useTranslation();
     // args.size가 undefined일 경우를 대비한 안전장치
     const size = args.size ?? 'md';
+    const labels = {
+      list: t('action-bar.left-group.label'),
+      edit: t('action-bar.right-group.item.edit'),
+      save: t('action-bar.right-group.item.save'),
+    };
     return (
       <AnatomyWrapper title='부모 요소 (800px)' style={{ width: '800px' }}>
-        <ActionBar {...args}>{renderActionBarContent(size)}</ActionBar>
+        <ActionBar {...args}>{renderActionBarContent(size, labels)}</ActionBar>
       </AnatomyWrapper>
     );
   },
@@ -94,7 +108,13 @@ export const Sizes: Story = {
     ...meta.args,
   },
   render: args => {
+    const { t } = useTranslation();
     const sizeOptions: Array<'xl' | 'lg' | 'md' | 'sm' | 'xs'> = ['xl', 'lg', 'md', 'sm', 'xs'];
+    const labels = {
+      list: t('action-bar.left-group.label'),
+      edit: t('action-bar.right-group.item.edit'),
+      save: t('action-bar.right-group.item.save'),
+    };
 
     return (
       <div style={{ display: 'inline-flex', gap: '24px', flexDirection: 'column' }}>
@@ -105,7 +125,7 @@ export const Sizes: Story = {
             style={{ width: '800px' }}
           >
             <ActionBar {...args} size={size}>
-              {renderActionBarContent(size)}
+              {renderActionBarContent(size, labels)}
             </ActionBar>
           </AnatomyWrapper>
         ))}

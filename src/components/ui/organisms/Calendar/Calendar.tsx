@@ -4,15 +4,20 @@ import styles from '@/components/ui/organisms/Calendar/Calendar.module.scss';
 import clsx from 'clsx';
 import React, { forwardRef, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import CalendarSelectbox from './CalendarSelectbox';
-import { useCalendarMatrix, type CalendarCell } from './Calendar.mock';
+import {
+  getCalendarStatusLabels,
+  getWeekdayNames,
+  useCalendarMatrix,
+  type CalendarCell,
+} from './Calendar.mock';
 import Icon from '../../atoms/Icon/Icon';
 import IconButton from '../../molecules/IconButton/IconButton';
 import ActionBar from '../ActionBar/ActionBar';
 import Button from '../../molecules/Button/Button';
 import ButtonGroup from '../../molecules/ButtonGroup/ButtonGroup';
 import type { OptionBase } from '../../molecules/OptionItem/OptionItem';
-import type { Holiday } from '@/App';
 import CalendarSkeleton from '../../atoms/Skeleton/CalendarSkeleton';
+import type { Holiday } from '../../molecules/Datepicker/Datepicker';
 
 interface StyleProps {
   variant: Variant;
@@ -30,6 +35,7 @@ export interface CalendarProps extends StyleProps, NativeDivProps {
   selectedMonth?: number;
   selectedDate?: Date | null;
   initialSelectedDate?: Date | null;
+  locale?: string;
   calendarProps?: {
     yearOptions?: Omit<OptionBase, 'label'>[];
     monthOptions?: Omit<OptionBase, 'label'>[];
@@ -38,7 +44,6 @@ export interface CalendarProps extends StyleProps, NativeDivProps {
   onYearChange?: (year: number) => void;
   onMonthChange?: (month: number) => void;
   onDateSelect?: (date: Date) => void;
-  onDateChange?: (selectedDate: Date | null) => void;
   onConfirm?: () => void;
   onCancel?: () => void;
   onClose?: () => void;
@@ -55,12 +60,12 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       selectedMonth,
       selectedDate,
       initialSelectedDate = null,
+      locale = 'ko',
       calendarProps = {},
       holidays = [],
       onYearChange,
       onMonthChange,
       onDateSelect,
-      onDateChange,
       onConfirm,
       onCancel,
       onClose,
@@ -69,14 +74,13 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     },
     ref,
   ) => {
-    // calendarProps 구조분해
     const { yearOptions, monthOptions } = calendarProps;
 
     const [activeHolidayKey, setActiveHolidayKey] = useState<string | null>(null);
     const resolvedSelectedDate = selectedDate ?? initialSelectedDate;
 
     // -----------------------------
-    // 🔑 Selectbox에 전달할 현재 선택된 옵션 ID 계산
+    // 🔑 Selectbox 선택 ID 계산
     // -----------------------------
     const derivedYear = selectedYear ?? resolvedSelectedDate?.getFullYear();
 
@@ -88,9 +92,10 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     const currentMonthOptionId = derivedMonth ? `month-${derivedMonth}` : undefined;
 
     // -----------------------------
-    // 📌 요일 이름 정의 (일요일: 0, 토요일: 6)
+    // 📌 요일/상태 라벨
     // -----------------------------
-    const WEEKDAY_NAMES = ['일', '월', '화', '수', '목', '금', '토'];
+    const WEEKDAY_NAMES = useMemo(() => getWeekdayNames(locale), [locale]);
+    const statusLabels = useMemo(() => getCalendarStatusLabels(locale), [locale]);
 
     // -----------------------------
     // 🎯 이전/다음 달 이동
@@ -127,21 +132,25 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
     };
 
     // -----------------------------
-    // 🎯 날짜 선택 (수정)
+    // 🎯 날짜 선택
     // -----------------------------
+    const formatDateLabel = useCallback(
+      (date: Date) =>
+        new Intl.DateTimeFormat(locale, {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          weekday: 'short',
+        }).format(date),
+      [locale],
+    );
+
     const handleDateClick = (cell: CalendarCell) => {
       if (cell.disabled) return;
       onDateSelect?.(cell.date);
 
-      // 🚨 추가: 날짜 선택 시 Live Region 업데이트
       if (calendarAnnouncerRef.current) {
-        const year = cell.date.getFullYear();
-        const month = cell.date.getMonth() + 1;
-        const day = cell.date.getDate();
-        const weekday = WEEKDAY_NAMES[cell.date.getDay()];
-
-        // 포커스 이동과 동시에 스크린 리더에게 선택 사실 공지
-        calendarAnnouncerRef.current.textContent = `${year}년 ${month}월 ${day}일 ${weekday}요일 선택됨`;
+        calendarAnnouncerRef.current.textContent = `${formatDateLabel(cell.date)} ${statusLabels.selected}`;
       }
     };
 
@@ -181,34 +190,32 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       );
     }, [derivedYear, derivedMonth, resolvedSelectedDate, holidayMap]);
 
-    // Calendar 컴포넌트 내부 (useMemo, matrix 아래 등)
-
-    // ✅ Selectbox 열림 상태를 외부에서 참조하기 위한 Ref (연도)
+    // Selectbox 열림 상태 추적 (연도)
     const isYearSelectboxOpenRef = useRef(false);
-    // ✅ Selectbox 열림 상태를 외부에서 참조하기 위한 Ref (월)
+    // Selectbox 열림 상태 추적 (월)
     const isMonthSelectboxOpenRef = useRef(false);
 
-    // ✅ 연도 Selectbox 열림 상태를 업데이트하는 콜백
+    // 연도 Selectbox 열림 상태 업데이트
     const updateYearSelectboxOpenState = useCallback((isOpen: boolean) => {
       isYearSelectboxOpenRef.current = isOpen;
     }, []);
 
-    // ✅ 월 Selectbox 열림 상태를 업데이트하는 콜백
+    // 월 Selectbox 열림 상태 업데이트
     const updateMonthSelectboxOpenState = useCallback((isOpen: boolean) => {
       isMonthSelectboxOpenRef.current = isOpen;
     }, []);
 
-    // ✅ 날짜 셀 버튼들의 ref 배열
+    // 날짜 셀 버튼 ref 배열
     const dateButtonRefs = useRef<(HTMLButtonElement | null)[][]>([]);
 
-    // 📌 Live Region Ref 및 마운트 상태 추적 Ref 추가 (수정)
-    const calendarAnnouncerRef = useRef<HTMLDivElement>(null); // 🚨 monthAnnouncerRef -> calendarAnnouncerRef
+    // Live Region 및 마운트 상태
+    const calendarAnnouncerRef = useRef<HTMLDivElement>(null);
     const isMounted = useRef(false);
 
-    // ✅ 현재 포커스된 날짜 좌표 (Tab으로 들어올 때 어디를 활성화할지)
+    // 현재 포커스된 날짜 좌표
     const [focusedCell, setFocusedCell] = useState<{ row: number; col: number } | null>(null);
 
-    // ✅ Tab으로 진입 가능한 날짜 셀 찾기 (선택된 날짜 > 오늘 > 1일 순서)
+    // Tab 진입 시 활성화할 셀 (선택 > 오늘 > 1일)
     const getTabTargetCell = useCallback(() => {
       for (let i = 0; i < matrix.length; i++) {
         for (let j = 0; j < matrix[i].length; j++) {
@@ -228,7 +235,6 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
         }
       }
 
-      // 1일 찾기
       for (let i = 0; i < matrix.length; i++) {
         for (let j = 0; j < matrix[i].length; j++) {
           const cell = matrix[i][j];
@@ -241,7 +247,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       return null;
     }, [matrix]);
 
-    // ✅ 날짜 테이블 내에서 Arrow Key 처리 (재수정)
+    // 날짜 테이블 Arrow Key 처리
     const handleDateKeyDown = useCallback(
       (e: React.KeyboardEvent, rowIdx: number, colIdx: number) => {
         const key = e.key;
@@ -334,66 +340,43 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
       [matrix, handlePrevMonth, handleNextMonth],
     ); // 종속성 배열 유지
 
-    // ✅ 캘린더 전체 ESC 처리 (최종 수정된 로직)
+    // ESC: Selectbox가 열려 있으면 위임, 아니면 Calendar 닫기
     useEffect(() => {
       const handleEscape = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
-          // 🚨 연도 또는 월 Selectbox 중 하나라도 열려 있는지 확인
           const isAnySelectboxOpen =
             isYearSelectboxOpenRef.current || isMonthSelectboxOpenRef.current;
 
           if (isAnySelectboxOpen) {
-            // 🚨 수정: Selectbox가 열려 있다면, Calendar의 닫기 로직을 건너뛰고
-            // 이벤트가 Selectbox 내부로 버블링되도록 허용 (stopPropagation 제거).
-            // Selectbox 내부에서 OptionList를 닫고 포커스를 복귀시켜야 합니다.
             return;
-          } else {
-            // Selectbox가 닫혀 있고 캘린더에 포커스가 있다면 (캘린더 전체 닫기):
-            e.preventDefault();
-            onClose?.(); // Datepicker로 닫기 요청
-
-            // 🚨 Datepicker의 ESC 리스너는 캡처링이 아니므로 이 이벤트는 Datepicker에 도달해야 함.
           }
+          e.preventDefault();
+          onClose?.();
         }
       };
 
-      // 캡처링 단계에서 이벤트 감지 (Datepicker보다 먼저 받음)
       document.addEventListener('keydown', handleEscape, true);
       return () => document.removeEventListener('keydown', handleEscape, true);
     }, [onClose]);
 
-    // ✅ 캘린더가 열릴 때 또는 연도/월이 변경될 때 Tab 진입점만 설정 (자동 포커스 X)
+    // 캘린더 열림/월 변경 시 Tab 진입점만 갱신
     useEffect(() => {
       if (!matrix.length) return;
 
       const target = getTabTargetCell();
       if (target) {
         setFocusedCell(target);
-        // ✅ 자동 포커스 제거: Tab으로 진입할 때만 포커스
       }
     }, [matrix, getTabTargetCell]);
 
-    // ✅ Selectbox 열림 상태를 외부에서 참조하기 위한 Ref
-    const isSelectboxOpenRef = useRef(false);
-
-    // ✅ Selectbox 열림 상태를 업데이트하는 콜백
-    const updateSelectboxOpenState = useCallback((isOpen: boolean) => {
-      isSelectboxOpenRef.current = isOpen;
-    }, []);
-
-    // ✅ 월/연도가 변경될 때마다 스크린 리더에게 공지
+    // 월/연도 변경 시 스크린 리더 공지
     useEffect(() => {
       if (derivedYear && derivedMonth && calendarAnnouncerRef.current) {
-        // 🚨 calendarAnnouncerRef 사용
-        // 최초 마운트 시에는 공지하지 않고, 그 이후의 변경(월/연도 이동) 시에만 공지
         if (isMounted.current) {
-          // 🚨 announcementMessage 변수 사용
           const announcementMessage = `${derivedYear}년 ${derivedMonth}월`;
-          // Live Region의 텍스트 콘텐츠를 직접 업데이트하여 스크린 리더 공지 트리거
-          calendarAnnouncerRef.current.textContent = announcementMessage; // 🚨 calendarAnnouncerRef 사용
+          calendarAnnouncerRef.current.textContent = announcementMessage;
         }
 
-        // 마운트 완료 표시
         isMounted.current = true;
       }
     }, [derivedYear, derivedMonth]);
@@ -418,11 +401,11 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
           e.stopPropagation();
         }}
       >
-        {/* 🚨 ARIA Live Region 추가: 월/연도 변경 공지 */}
+        {/* ARIA Live Region: 월/연도 변경 공지 */}
         <div
-          ref={calendarAnnouncerRef} // 🚨 calendarAnnouncerRef 사용
-          className='sr-only' // 시각적으로 숨기는 클래스 (프로젝트 CSS에 정의되어 있어야 함)
-          aria-live='polite' // 변경 사항을 공손하게 공지
+          ref={calendarAnnouncerRef}
+          className='sr-only'
+          aria-live='polite'
         >
           {isLoading ? '공휴일 정보를 불러오는 중입니다.' : ''}
         </div>
@@ -468,8 +451,10 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                 defaultOptionId={currentYearOptionId}
                 onValueChange={(_, option) => {
                   if (!option) return;
-                  const year = Number(option.value.replace('년', ''));
-                  onYearChange?.(year);
+                  const year = Number(option.id.replace('year-', ''));
+                  if (!Number.isNaN(year)) {
+                    onYearChange?.(year);
+                  }
                 }}
                 onOpenChange={updateYearSelectboxOpenState}
                 disabled={isLoading}
@@ -487,7 +472,10 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                 defaultOptionId={currentMonthOptionId}
                 onValueChange={(_, option) => {
                   if (!option) return;
-                  onMonthChange?.(Number(option.value.replace('월', '')));
+                  const month = Number(option.id.replace('month-', ''));
+                  if (!Number.isNaN(month)) {
+                    onMonthChange?.(month);
+                  }
                 }}
                 onOpenChange={updateMonthSelectboxOpenState}
                 disabled={isLoading}
@@ -519,27 +507,11 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
               <table className='calendar-table' role='grid'>
                 <thead>
                   <tr role='row'>
-                    <th scope='col' role='columnheader'>
-                      일
-                    </th>
-                    <th scope='col' role='columnheader'>
-                      월
-                    </th>
-                    <th scope='col' role='columnheader'>
-                      화
-                    </th>
-                    <th scope='col' role='columnheader'>
-                      수
-                    </th>
-                    <th scope='col' role='columnheader'>
-                      목
-                    </th>
-                    <th scope='col' role='columnheader'>
-                      금
-                    </th>
-                    <th scope='col' role='columnheader'>
-                      토
-                    </th>
+                    {WEEKDAY_NAMES.map(name => (
+                      <th key={name} scope='col' role='columnheader'>
+                        {name}
+                      </th>
+                    ))}
                   </tr>
                 </thead>
                 <tbody>
@@ -587,7 +559,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(
                                 }
                                 aria-selected={cell.isSelected}
                                 // 🚨 수정된 aria-label
-                                aria-label={`${derivedYear}년 ${derivedMonth}월 ${cell.day}일 ${WEEKDAY_NAMES[cell.date.getDay()]}요일${cell.isHoliday ? ` ${cell.holidayName}` : ''}${cell.isToday ? ' 오늘' : ''}${cell.isSelected ? ' 선택됨' : ''}`}
+                                aria-label={`${formatDateLabel(cell.date)}${cell.isHoliday ? ` ${cell.holidayName}` : ''}${cell.isToday ? ` ${statusLabels.today}` : ''}${cell.isSelected ? ` ${statusLabels.selected}` : ''}`}
                                 onClick={() => handleDateClick(cell)}
                                 onKeyDown={e => handleDateKeyDown(e, rowIdx, colIdx)}
                                 onMouseEnter={() =>

@@ -5,6 +5,7 @@ import Radio from '../Radio/Radio';
 import Checkbox from '../Checkbox/Checkbox';
 import Switch from '../../molecules/Switch/Switch';
 import AnatomyWrapper from '@/components/ui/guide/AnatomyWrapper';
+import { useTranslation } from 'react-i18next';
 
 const meta = {
   title: 'UI/Atoms/Label',
@@ -64,9 +65,9 @@ export const Base: Story = {
       },
     },
   },
-  args: {
-    size: 'xl',
-    children: '기본 라벨 텍스트',
+  render: args => {
+    const { t } = useTranslation();
+    return <Label {...args}>{t('label.base')}</Label>;
   },
 };
 
@@ -77,13 +78,14 @@ export const Base: Story = {
  */
 export const Sizes: Story = {
   render: args => {
+    const { t } = useTranslation();
     const sizes = ['xl', 'lg', 'md', 'sm', 'xs'] as const;
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         {sizes.map(size => (
           <div key={size} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <Label {...args} size={size}>
-              {size.toUpperCase()} - The quick brown fox jumps over the lazy dog
+              {size.toUpperCase()} - {t('label.sizes')}
             </Label>
           </div>
         ))}
@@ -98,47 +100,51 @@ export const Sizes: Story = {
  * htmlFor 속성을 통해 입력 요소와 연결함으로써 접근성을 확보하고 클릭 영역을 확장합니다.
  */
 export const Usage: Story = {
-  render: args => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-      <FormField as='label' htmlFor='radio-id' size={args.size}>
-        <Radio
-          as='span'
-          id='radio-id'
-          defaultChecked
-          name='radio-name'
-          color='primary'
-          size={args.size}
-        />
-        <AnatomyWrapper minimal={true}>
-          <Label size={args.size}>라디오 옵션 라벨</Label>
-        </AnatomyWrapper>
-      </FormField>
+  render: args => {
+    const { t } = useTranslation();
 
-      <FormField as='label' htmlFor='checkbox-id' size={args.size}>
-        <Checkbox
-          as='span'
-          id='checkbox-id'
-          defaultChecked
-          name='checkbox-name'
-          color='primary'
-          size={args.size}
-        />
-        <AnatomyWrapper minimal={true}>
-          <Label size={args.size}>체크박스 옵션 라벨</Label>
-        </AnatomyWrapper>
-      </FormField>
-      <Switch
-        color='primary'
-        id='switch-id'
-        name='switch-name'
-        size={args.size}
-        defaultChecked
-        children={
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+        <FormField as='label' htmlFor='radio-id' size={args.size}>
+          <Radio
+            as='span'
+            id='radio-id'
+            defaultChecked
+            name='radio-name'
+            color='primary'
+            size={args.size}
+          />
           <AnatomyWrapper minimal={true}>
-            <Label size={args.size}>라디오 옵션 1</Label>
+            <Label size={args.size}>{t('label.usage.radio')}</Label>
           </AnatomyWrapper>
-        }
-      />
-    </div>
-  ),
+        </FormField>
+
+        <FormField as='label' htmlFor='checkbox-id' size={args.size}>
+          <Checkbox
+            as='span'
+            id='checkbox-id'
+            defaultChecked
+            name='checkbox-name'
+            color='primary'
+            size={args.size}
+          />
+          <AnatomyWrapper minimal={true}>
+            <Label size={args.size}>{t('label.usage.checkbox')}</Label>
+          </AnatomyWrapper>
+        </FormField>
+        <Switch
+          color='primary'
+          id='switch-id'
+          name='switch-name'
+          size={args.size}
+          defaultChecked
+          children={
+            <AnatomyWrapper minimal={true}>
+              <Label size={args.size}>{t('label.usage.switch')}</Label>
+            </AnatomyWrapper>
+          }
+        />
+      </div>
+    );
+  },
 };

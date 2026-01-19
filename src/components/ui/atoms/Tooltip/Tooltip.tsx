@@ -48,7 +48,7 @@ const Tooltip = ({
   const tooltipRef = useRef<HTMLDivElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
 
-  // ✅ 핵심: 툴팁이 닫힐 때 포커스를 트리거 요소로 되돌림
+  // 닫힘 시 트리거로 포커스 복귀
   const handleClose = () => {
     setIsVisible(false);
     // 닫기 버튼 클릭 시 포커스를 다시 트리거(IconButton 등)로 이동
@@ -57,7 +57,7 @@ const Tooltip = ({
     }
   };
 
-  // ✅ 포커스 이동 시점을 requestAnimationFrame으로 지연
+  // Rich 모드: 열릴 때 내부 포커스 이동
   useEffect(() => {
     if (isVisible && variant === 'rich') {
       const timer = requestAnimationFrame(() => {
@@ -82,7 +82,7 @@ const Tooltip = ({
     let calculatedPos: Position = preferredPosition || 'top';
     const offset = 10;
 
-    // --- [1] 상하 Flip 로직 강화 ---
+    // 상하 플립 우선 판단
     if (!preferredPosition || preferredPosition === 'top' || preferredPosition === 'bottom') {
       const spaceAbove = targetRect.top;
       const spaceBelow = viewportHeight - targetRect.bottom;
@@ -108,7 +108,7 @@ const Tooltip = ({
     let newTop = 0;
     let newLeft = 0;
 
-    // --- [2] 최종 좌표 계산 ---
+    // 최종 좌표 계산
     if (calculatedPos === 'top' || calculatedPos === 'bottom') {
       newTop =
         calculatedPos === 'top'
@@ -124,7 +124,7 @@ const Tooltip = ({
         newLeft = targetRect.left + scrollX + targetRect.width / 2 - tooltipRect.width / 2;
       }
     } else {
-      // Left/Right 배치 시 세로 Flip 로직 (간소화 버전)
+      // 좌우 배치 시 공간 부족하면 반대 방향으로 플립
       newLeft =
         calculatedPos === 'left'
           ? targetRect.left + scrollX - tooltipRect.width - offset
@@ -145,8 +145,7 @@ const Tooltip = ({
       newTop = targetRect.top + scrollY + targetRect.height / 2 - tooltipRect.height / 2;
     }
 
-    // --- [3] 최종 화면 이탈 방지 (Overflow 가둠) ---
-    // 좌우 이탈 방지
+    // 뷰포트 이탈 방지
     newLeft = Math.max(10, Math.min(newLeft, viewportWidth - tooltipRect.width - 10));
     // 상하 이탈 방지 (스크롤 영역 고려)
     newTop = Math.max(scrollY + 10, newTop);
@@ -159,7 +158,7 @@ const Tooltip = ({
     if (isVisible) {
       updatePosition();
 
-      // ✅ ESC 키 눌렀을 때도 포커스 복구하며 닫기
+      // ESC로 닫기
       const handleEsc = (e: KeyboardEvent) => e.key === 'Escape' && handleClose();
       window.addEventListener('resize', updatePosition);
       window.addEventListener('scroll', updatePosition);
@@ -191,7 +190,7 @@ const Tooltip = ({
       setIsVisible(prev => !prev);
     };
 
-    // ✅ 키보드 Enter/Space 대응 (IconButton이 내부적으로 처리하지 않는 경우 대비)
+    // 키보드 Enter/Space 대응
     triggerProps.onKeyDown = (e: React.KeyboardEvent) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();

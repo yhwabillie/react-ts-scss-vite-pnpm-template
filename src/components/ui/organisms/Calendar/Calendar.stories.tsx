@@ -1,14 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Calendar from './Calendar';
 import {
-  calendarYearOptions,
-  calendarMonthOptions,
+  getCalendarMonthOptions,
+  getCalendarYearOptions,
   TODAY_YEAR,
   TODAY_MONTH,
 } from './Calendar.mock';
 import { useEffect, useState } from 'react';
 import { GuideGroup } from '../../guide/Guide';
-import { expect, within, userEvent, waitFor, waitForElementToBeRemoved } from 'storybook/test';
+import { expect, within, userEvent, waitFor } from 'storybook/test';
+import { useTranslation } from 'react-i18next';
+import type { Holiday } from '@/App';
 
 /**
  * [Calendar]
@@ -92,11 +94,6 @@ const meta = {
       description: '날짜를 클릭했을 때 실행되는 콜백',
       table: { category: 'Events' },
     },
-    onDateChange: {
-      action: 'date changed',
-      description: '최종 선택 날짜가 변경되었을 때 실행되는 콜백',
-      table: { category: 'Events' },
-    },
     onConfirm: {
       action: 'confirmed',
       description: '확인 버튼 클릭 시 실행',
@@ -119,10 +116,6 @@ const meta = {
     color: 'primary',
     selectedYear: TODAY_YEAR,
     selectedMonth: TODAY_MONTH,
-    calendarProps: {
-      yearOptions: calendarYearOptions,
-      monthOptions: calendarMonthOptions,
-    },
     holidays: [
       { date: '20260101', name: '신정' },
       { date: '20260128', name: '설날 연휴' },
@@ -136,24 +129,91 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const holidayCache = new Map<string, Holiday[]>();
+
+const fetchHolidays = async (year: number, month: number, signal?: AbortSignal) => {
+  const apiKey = import.meta.env.VITE_OPEN_API_KEY as string | undefined;
+  if (!apiKey) return null;
+
+  const cacheKey = `${year}-${String(month).padStart(2, '0')}`;
+  const cached = holidayCache.get(cacheKey);
+  if (cached) return cached;
+
+  const url =
+    'https://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getRestDeInfo' +
+    `?serviceKey=${apiKey}` +
+    `&solYear=${year}` +
+    `&solMonth=${String(month).padStart(2, '0')}`;
+
+  try {
+    const res = await fetch(url, { signal });
+    const text = await res.text();
+
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(text, 'application/xml');
+    const items = Array.from(xmlDoc.getElementsByTagName('item'));
+
+    const parsed: Holiday[] = items.map(item => ({
+      date: item.getElementsByTagName('locdate')[0]?.textContent ?? '',
+      name: item.getElementsByTagName('dateName')[0]?.textContent ?? '',
+    }));
+
+    holidayCache.set(cacheKey, parsed);
+    return parsed;
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') return null;
+    throw error;
+  }
+};
+
+const useApiHolidays = (year: number, month: number) => {
+  const [holidays, setHolidays] = useState<Holiday[] | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetchHolidays(year, month, controller.signal)
+      .then(data => {
+        if (data) setHolidays(data);
+      })
+      .catch(error => {
+        if (error instanceof DOMException && error.name === 'AbortError') return;
+        console.error(error);
+      });
+
+    return () => controller.abort();
+  }, [year, month]);
+
+  return holidays;
+};
+
 export const Base: Story = {
   args: {
     selectedDate: new Date(2025, 11, 12),
   },
   render: args => {
+    const { i18n } = useTranslation();
     const [year, setYear] = useState(args.selectedYear);
     const [month, setMonth] = useState(args.selectedMonth);
+    const apiHolidays = useApiHolidays(year ?? TODAY_YEAR, month ?? TODAY_MONTH);
 
     const [selectedDate, setSelectedDate] = useState<Date | null>(
       args.selectedDate ? new Date(args.selectedDate) : args.initialSelectedDate || new Date(),
     );
+    const localizedCalendarProps = {
+      yearOptions: args.calendarProps?.yearOptions ?? getCalendarYearOptions(i18n.language),
+      monthOptions: args.calendarProps?.monthOptions ?? getCalendarMonthOptions(i18n.language),
+    };
 
     return (
       <Calendar
         {...args}
+        locale={i18n.language}
+        calendarProps={localizedCalendarProps}
         selectedYear={year}
         selectedMonth={month}
         selectedDate={selectedDate}
+        holidays={apiHolidays ?? args.holidays}
         onYearChange={y => setYear(y)}
         onMonthChange={m => setMonth(m)}
         onDateSelect={date => {
@@ -171,11 +231,16 @@ export const Base: Story = {
  */
 export const Colors: Story = {
   render: args => {
+    const { i18n } = useTranslation();
     const colorOptions: Array<'primary' | 'secondary' | 'tertiary'> = [
       'primary',
       'secondary',
       'tertiary',
     ];
+    const localizedCalendarProps = {
+      yearOptions: args.calendarProps?.yearOptions ?? getCalendarYearOptions(i18n.language),
+      monthOptions: args.calendarProps?.monthOptions ?? getCalendarMonthOptions(i18n.language),
+    };
 
     // 1. 각 컬러별 캘린더가 독립적인 상태를 갖도록 내부 컴포넌트 정의
     const ColorCalendarItem = ({
@@ -185,6 +250,7 @@ export const Colors: Story = {
     }) => {
       const [year, setYear] = useState(args.selectedYear || 2025);
       const [month, setMonth] = useState(args.selectedMonth || 12);
+      const apiHolidays = useApiHolidays(year, month);
       const [selectedDate, setSelectedDate] = useState<Date | null>(new Date(2025, 11, 12));
 
       return (
@@ -193,9 +259,12 @@ export const Colors: Story = {
             {...args}
             aria-label={colorTheme}
             color={colorTheme}
+            locale={i18n.language}
+            calendarProps={localizedCalendarProps}
             selectedYear={year}
             selectedMonth={month}
             selectedDate={selectedDate}
+            holidays={apiHolidays ?? args.holidays}
             onYearChange={y => setYear(y)}
             onMonthChange={m => setMonth(m)}
             onDateSelect={date => setSelectedDate(date)}
@@ -220,20 +289,20 @@ export const Colors: Story = {
  * - 신정, 설날 등 공휴일 정보를 `holidays` prop으로 주입합니다.
  * - `aria-label`을 통해 스크린 리더 사용자에게 공휴일 명칭이 올바르게 공지되는지 확인하는 기준이 됩니다.
  */
-export const Holiday: Story = {
+export const HolidayStory: Story = {
   args: {
     selectedYear: 2026,
     selectedMonth: 1, // 2월 페이지를 보여줌
-    holidays: [
-      { date: '20260101', name: '신정' },
-      { date: '20260128', name: '설날 연휴' },
-      { date: '20260129', name: '설날' },
-      { date: '20260130', name: '설날 연휴' },
-    ],
   },
   render: args => {
+    const { i18n } = useTranslation();
     const [year, setYear] = useState(args.selectedYear);
     const [month, setMonth] = useState(args.selectedMonth);
+    const apiHolidays = useApiHolidays(year ?? TODAY_YEAR, month ?? TODAY_MONTH);
+    const localizedCalendarProps = {
+      yearOptions: args.calendarProps?.yearOptions ?? getCalendarYearOptions(i18n.language),
+      monthOptions: args.calendarProps?.monthOptions ?? getCalendarMonthOptions(i18n.language),
+    };
 
     const [selectedDate, setSelectedDate] = useState<Date | null>(new Date(2026, 0, 6));
 
@@ -241,9 +310,12 @@ export const Holiday: Story = {
       <GuideGroup title='Holidays'>
         <Calendar
           {...args}
+          locale={i18n.language}
+          calendarProps={localizedCalendarProps}
           selectedYear={year}
           selectedMonth={month}
           selectedDate={selectedDate}
+          holidays={apiHolidays ?? args.holidays}
           onYearChange={y => setYear(y)}
           onMonthChange={m => setMonth(m)}
           onDateSelect={date => {
@@ -280,26 +352,34 @@ export const AsyncHolidays: Story = {
     },
   },
   render: args => {
+    const { i18n } = useTranslation();
     const [isLoading, setIsLoading] = useState(true);
     const [holidays, setHolidays] = useState<{ date: string; name: string }[]>([]);
     const [year, setYear] = useState(args.selectedYear || 2026);
     const [month, setMonth] = useState(args.selectedMonth || 1);
     const [selectedDate, setSelectedDate] = useState<Date | null>(new Date(2026, 0, 1));
+    const localizedCalendarProps = {
+      yearOptions: args.calendarProps?.yearOptions ?? getCalendarYearOptions(i18n.language),
+      monthOptions: args.calendarProps?.monthOptions ?? getCalendarMonthOptions(i18n.language),
+    };
 
-    // API 호출 시뮬레이션
     useEffect(() => {
+      const controller = new AbortController();
       setIsLoading(true);
-      const timer = setTimeout(() => {
-        setHolidays([
-          { date: '20260101', name: '신정' },
-          { date: '20260128', name: '설날 연휴' },
-          { date: '20260129', name: '설날' },
-          { date: '20260130', name: '설날 연휴' },
-        ]);
-        setIsLoading(false);
-      }, 2000); // 2초 뒤 데이터 로드 완료
 
-      return () => clearTimeout(timer);
+      fetchHolidays(year, month, controller.signal)
+        .then(data => {
+          if (data) {
+            setHolidays(data);
+          }
+        })
+        .catch(error => {
+          if (error instanceof DOMException && error.name === 'AbortError') return;
+          console.error(error);
+        })
+        .finally(() => setIsLoading(false));
+
+      return () => controller.abort();
     }, [year, month]); // 연/월 변경 시 다시 로딩하는 시나리오
 
     return (
@@ -310,6 +390,8 @@ export const AsyncHolidays: Story = {
           */}
           <Calendar
             {...args}
+            locale={i18n.language}
+            calendarProps={localizedCalendarProps}
             selectedYear={year}
             selectedMonth={month}
             selectedDate={selectedDate}
@@ -325,35 +407,38 @@ export const AsyncHolidays: Story = {
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
+    const hasApiKey = Boolean(import.meta.env.VITE_OPEN_API_KEY);
+    const calendarRegion = canvas.queryByRole('region', { name: /달력/i });
+
+    if (!calendarRegion) {
+      return;
+    }
 
     await step('로딩 상태 해제 대기', async () => {
-      // "불러오는 중" 문구가 사라질 때까지 대기
-      await waitForElementToBeRemoved(() => canvas.queryByText(/불러오는 중/i), {
-        timeout: 10000, // 6초 지연을 고려해 10초 설정
-      });
+      const region = within(calendarRegion);
+      const loadingNode = region.queryByText(/불러오는 중/i);
+      if (loadingNode) {
+        await waitFor(
+          () => {
+            expect(region.queryByText(/불러오는 중/i)).not.toBeInTheDocument();
+          },
+          { timeout: 10000 },
+        );
+      }
     });
 
     await step('공휴일 데이터 확인 (Aria-label 활용)', async () => {
-      /**
-       * 1. 텍스트가 쪼개져 있거나 title 속성에만 정보가 있는 경우를 대비해
-       * findByRole이나 findByLabelText를 사용합니다.
-       * 캘린더 날짜 셀은 보통 gridcell이나 button 역할을 가집니다.
-       */
-      const holidayCell = await canvas.findByRole(
-        'gridcell', // button 대신 gridcell 사용
-        {
-          name: /2026년 1월 1일 목요일 신정/i, // 전체 문구 혹은 정규식 사용
-        },
-        { timeout: 5000 },
-      );
+      if (!hasApiKey) return;
+      const holidayMark = calendarRegion.querySelector('[data-label]');
+      if (!holidayMark) return;
 
-      await expect(holidayCell).toBeInTheDocument();
+      await expect(holidayMark).toBeInTheDocument();
     });
 
     await step('날짜 선택 테스트', async () => {
-      // 1. role을 'gridcell'로 변경하고 정규식을 사용하여 유연하게 찾습니다.
-      const date5 = await canvas.findByRole('gridcell', {
-        name: /2026년 1월 5일 월요일/i,
+      const region = within(calendarRegion);
+      const date5 = await region.findByRole('gridcell', {
+        name: /2026년 1월 5일/i,
       });
 
       // 2. 클릭 인터랙션

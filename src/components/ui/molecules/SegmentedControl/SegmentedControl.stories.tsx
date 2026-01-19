@@ -3,6 +3,23 @@ import { useState } from 'react'; // 💡 외부 패키지 대신 리액트 기�
 import SegmentedControl from './SegmentedControl';
 import { SpecimenGroup, SpecimenRow, SpecimenWrapper } from '../../guide/Specimen';
 import { GuideCell, GuideGroup, GuideRow } from '../../guide/Guide';
+import { useTranslation } from 'react-i18next';
+
+const SEGMENTED_CONTROL_ITEM_KEYS = ['label_a', 'label_b', 'label_c'];
+
+const localizeSegmentedOptions = (
+  t: (key: string) => string,
+  options: Array<{ label: string; value: string }>,
+) =>
+  options.map((option, index) => {
+    const key = SEGMENTED_CONTROL_ITEM_KEYS[index];
+    if (!key) return option;
+
+    return {
+      ...option,
+      label: t(`segmented-control.items.${key}`),
+    };
+  });
 
 const meta = {
   title: 'UI/Molecules/SegmentedControl',
@@ -141,11 +158,14 @@ type Story = StoryObj<typeof meta>;
  */
 export const Base: Story = {
   render: args => {
+    const { t } = useTranslation();
     const [viewType, setViewType] = useState(args.selectedValue);
+    const localizedOptions = localizeSegmentedOptions(t, args.options);
 
     return (
       <SegmentedControl
         {...args}
+        options={localizedOptions}
         selectedValue={viewType} // 💡 2. 로컬 상태를 주입
         onChange={value => {
           setViewType(value); // 💡 3. 클릭 시 로컬 상태 변경 -> 인디케이터 이동
@@ -163,11 +183,13 @@ export const Base: Story = {
  */
 export const Colors: Story = {
   render: args => {
+    const { t } = useTranslation();
     const colorOptions: Array<'primary' | 'secondary' | 'tertiary'> = [
       'primary',
       'secondary',
       'tertiary',
     ];
+    const localizedOptions = localizeSegmentedOptions(t, args.options);
 
     // 💡 1. 각 컬러 테마별 독립적인 선택 값을 관리하기 위한 상태 선언
     const [values, setValues] = useState<Record<string, string>>(
@@ -182,6 +204,7 @@ export const Colors: Story = {
               <SegmentedControl
                 {...args}
                 color={color}
+                options={localizedOptions}
                 selectedValue={values[color]}
                 onChange={val => {
                   setValues(prev => ({ ...prev, [color]: val }));
@@ -204,11 +227,13 @@ export const Colors: Story = {
  */
 export const States: Story = {
   render: args => {
+    const { t } = useTranslation();
     const states = [
       { label: 'Normal', className: '' },
       { label: 'Focus', className: 'pseudo-focus-visible' },
       { label: 'Disabled', props: { disabled: true } },
     ];
+    const localizedOptions = localizeSegmentedOptions(t, args.options);
 
     const [values, setValues] = useState<Record<string, string>>(
       states.reduce((acc, state) => ({ ...acc, [state.label]: args.selectedValue }), {}),
@@ -225,6 +250,7 @@ export const States: Story = {
                 {...state.props}
                 // focus-visible은 부모 클래스 영향을 받도록 SCSS 설계됨
                 className={state.className}
+                options={localizedOptions}
                 // 현재 상태(label)에 맞는 값을 주입
                 selectedValue={values[state.label]}
                 // 클릭 시 해당 라벨의 값만 업데이트하여 인디케이터 이동
@@ -248,7 +274,9 @@ export const States: Story = {
  */
 export const Sizes: Story = {
   render: args => {
+    const { t } = useTranslation();
     const sizeOptions: Array<'xl' | 'lg' | 'md' | 'sm' | 'xs'> = ['xl', 'lg', 'md', 'sm', 'xs'];
+    const localizedOptions = localizeSegmentedOptions(t, args.options);
 
     const [values, setValues] = useState<Record<string, string>>(
       sizeOptions.reduce((acc, size) => ({ ...acc, [size]: args.selectedValue }), {}),
@@ -262,6 +290,7 @@ export const Sizes: Story = {
               <SegmentedControl
                 {...args}
                 size={size}
+                options={localizedOptions}
                 selectedValue={values[size]}
                 onChange={val => {
                   setValues(prev => ({ ...prev, [size]: val }));
@@ -282,7 +311,9 @@ export const Sizes: Story = {
  */
 export const Shapes: Story = {
   render: args => {
+    const { t } = useTranslation();
     const shapeOptions: Array<'rounded' | 'pill'> = ['rounded', 'pill'];
+    const localizedOptions = localizeSegmentedOptions(t, args.options);
 
     const [values, setValues] = useState<Record<string, string>>(
       shapeOptions.reduce((acc, shape) => ({ ...acc, [shape]: args.selectedValue }), {}),
@@ -296,6 +327,7 @@ export const Shapes: Story = {
               <SegmentedControl
                 {...args}
                 shape={shape}
+                options={localizedOptions}
                 selectedValue={values[shape]}
                 onChange={val => {
                   setValues(prev => ({ ...prev, [shape]: val }));

@@ -8,6 +8,7 @@ import { GuideCell, GuideGroup, GuideRow } from '../../guide/Guide';
 import IconButton from '../../molecules/IconButton/IconButton';
 import clsx from 'clsx';
 import IconFrame from '../../molecules/IconFrame/IconFrame';
+import { useTranslation } from 'react-i18next';
 
 const meta = {
   title: 'UI/Molecules/Input/Outline',
@@ -106,7 +107,6 @@ const meta = {
     shape: 'rounded',
     as: 'label',
     type: 'text',
-    placeholder: '정보를 입력해 주세요',
   },
 } satisfies Meta<typeof Input>;
 
@@ -128,9 +128,10 @@ export const Base: Story = {
   },
   args: {},
   render: args => {
+    const { t } = useTranslation();
     const uniqueId = useId();
 
-    return <Input {...args} id={uniqueId} />;
+    return <Input {...args} id={uniqueId} placeholder={t('input.placeholder.default')} />;
   },
 };
 
@@ -140,6 +141,7 @@ export const Base: Story = {
  */
 export const Colors: Story = {
   render: args => {
+    const { t } = useTranslation();
     const colorOptions: Array<
       'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger'
     > = ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger'];
@@ -153,7 +155,12 @@ export const Colors: Story = {
             <SpecimenGroup key={color} title={color}>
               <SpecimenRow>
                 <SpecimenCell caption='Empty'>
-                  <Input {...args} color={color} id={`${uniqueId}-${color}-emtpy`} />
+                  <Input
+                    {...args}
+                    color={color}
+                    id={`${uniqueId}-${color}-emtpy`}
+                    placeholder={t('input.placeholder.default')}
+                  />
                   <Input
                     {...args}
                     color={color}
@@ -178,7 +185,7 @@ export const Colors: Story = {
                     id={`${uniqueId}-${color}-emtpy-adorned-end`}
                     type='password'
                     className='adorned-end'
-                    placeholder='비밀번호를 입력해 주세요'
+                    placeholder={t('input.placeholder.password')}
                     adornedEnd={
                       <IconButton
                         variant='ghost'
@@ -204,7 +211,8 @@ export const Colors: Story = {
                     {...args}
                     color={color}
                     id={`${uniqueId}-${color}-filled`}
-                    defaultValue='내용이 입력된 상태입니다.'
+                    placeholder={t('input.placeholder.default')}
+                    defaultValue={t('input.value')}
                   />
                   <Input
                     {...args}
@@ -232,7 +240,7 @@ export const Colors: Story = {
                     type='password'
                     defaultValue='aa112233'
                     className='adorned-end'
-                    placeholder='비밀번호를 입력해 주세요'
+                    placeholder={t('input.placeholder.password')}
                     adornedEnd={
                       <IconButton
                         variant='ghost'
@@ -286,6 +294,7 @@ export const Sizes: Story = {
 
     const sizeOptions: Array<'xs' | 'sm' | 'md' | 'lg' | 'xl'> = ['xs', 'sm', 'md', 'lg', 'xl'];
     const uniqueId = useId();
+    const { t } = useTranslation();
 
     return (
       <SpecimenGroup flexWrapCenter={true}>
@@ -298,7 +307,12 @@ export const Sizes: Story = {
               {size === 'xl' ? (
                 <AnatomyWrapper title='부모 요소 width : 800px' style={{ width: '800px' }}>
                   <GuideCell caption={captionText}>
-                    <Input {...args} id={`${uniqueId}-${size}`} size={size} />
+                    <Input
+                      {...args}
+                      id={`${uniqueId}-${size}`}
+                      size={size}
+                      placeholder={t('input.placeholder.default')}
+                    />
                   </GuideCell>
                   <GuideCell>
                     <Input
@@ -328,7 +342,7 @@ export const Sizes: Story = {
                       type='password'
                       size={size}
                       className='adorned-end'
-                      placeholder='비밀번호를 입력해 주세요'
+                      placeholder={t('input.placeholder.password')}
                       adornedEnd={
                         <IconButton
                           variant='ghost'
@@ -353,7 +367,12 @@ export const Sizes: Story = {
               ) : (
                 <GuideRow direction='column'>
                   <GuideCell caption={captionText}>
-                    <Input {...args} size={size} id={`${uniqueId}-${size}`} />
+                    <Input
+                      {...args}
+                      size={size}
+                      id={`${uniqueId}-${size}`}
+                      placeholder={t('input.placeholder.default')}
+                    />
                   </GuideCell>
                   <GuideCell>
                     <Input
@@ -381,7 +400,7 @@ export const Sizes: Story = {
                       size={size}
                       id={`${uniqueId}-${size}-adorned-end`}
                       type='password'
-                      placeholder='비밀번호를 입력해 주세요'
+                      placeholder={t('input.placeholder.password')}
                       className='adorned-end'
                       adornedEnd={
                         <IconButton
@@ -419,6 +438,7 @@ export const Sizes: Story = {
  */
 export const States: Story = {
   render: args => {
+    const { t } = useTranslation();
     const states = [
       { label: 'Normal', props: {} },
       { label: 'Hover', props: { className: 'pseudo-hover' } },
@@ -436,7 +456,12 @@ export const States: Story = {
             <SpecimenGroup key={uniqueId} title={state.label}>
               <SpecimenRow>
                 <SpecimenCell caption='Empty'>
-                  <Input {...args} {...state.props} id={`${uniqueId}-empty`} />
+                  <Input
+                    {...args}
+                    {...state.props}
+                    id={`${uniqueId}-empty`}
+                    placeholder={t('input.placeholder.default')}
+                  />
                   <Input
                     {...args}
                     {...state.props}
@@ -461,7 +486,7 @@ export const States: Story = {
                     id={`${uniqueId}-empty-adorned-end`}
                     type='password'
                     className={clsx('adorned-end', state.props.className)}
-                    placeholder='비밀번호를 입력해 주세요'
+                    placeholder={t('input.placeholder.password')}
                     adornedEnd={
                       <IconButton
                         variant='ghost'
@@ -488,7 +513,8 @@ export const States: Story = {
                     {...args}
                     {...state.props}
                     id={`${uniqueId}-filled`}
-                    defaultValue='내용이 입력된 상태입니다.'
+                    placeholder={t('input.placeholder.default')}
+                    defaultValue={t('input.value')}
                   />
                   <Input
                     {...args}
@@ -514,7 +540,7 @@ export const States: Story = {
                     {...state.props}
                     id={`${uniqueId}-filled-adorned-end`}
                     type='password'
-                    placeholder='비밀번호를 입력해 주세요'
+                    placeholder={t('input.placeholder.password')}
                     defaultValue='aa112233'
                     className={clsx('adorned-end', state.props.className)}
                     adornedEnd={
@@ -553,6 +579,7 @@ export const States: Story = {
  */
 export const Shapes: Story = {
   render: args => {
+    const { t } = useTranslation();
     const baseId = useId(); // React 18 useId 활용
     const shapeOptions: Array<'square' | 'rounded' | 'pill'> = ['square', 'rounded', 'pill'];
 
@@ -575,7 +602,12 @@ export const Shapes: Story = {
             {/* 상단 캡션용 Cell */}
             <GuideCell caption={shape.toUpperCase()}>
               {/* 케이스 1: 기본 형태 (Empty) */}
-              <Input {...args} shape={shape} id={`${baseId}-${shape}-empty`} />
+              <Input
+                {...args}
+                shape={shape}
+                id={`${baseId}-${shape}-empty`}
+                placeholder={t('input.placeholder.default')}
+              />
 
               {/* 케이스 2: Adorned Start (Filled) */}
               <Input
@@ -604,7 +636,7 @@ export const Shapes: Story = {
                 id={`${baseId}-${shape}-end`}
                 type='password'
                 className='adorned-end'
-                placeholder='비밀번호를 입력해 주세요'
+                placeholder={t('input.placeholder.password')}
                 adornedEnd={renderIconButton(shape)}
               />
             </GuideCell>
@@ -622,6 +654,7 @@ export const Shapes: Story = {
 export const Composition: Story = {
   render: args => {
     const uniqueId = useId();
+    const { t } = useTranslation();
 
     return (
       <GuideGroup>
@@ -651,7 +684,7 @@ export const Composition: Story = {
               id={`${uniqueId}-right`}
               type='password'
               className='adorned-end'
-              placeholder='비밀번호를 입력해 주세요'
+              placeholder={t('input.placeholder.password')}
               adornedEnd={
                 <IconButton
                   variant='ghost'
@@ -675,6 +708,7 @@ export const Composition: Story = {
  */
 export const LongText: Story = {
   render: args => {
+    const { t } = useTranslation();
     const sizeOptions: Array<'md' | 'xl'> = ['md', 'xl'];
     const uniqueId = `input-${Math.random().toString(36).slice(2, 7)}`;
 
@@ -690,14 +724,15 @@ export const LongText: Story = {
                       {...args}
                       size={size}
                       id={`${uniqueId}-empty-${idx}`}
-                      defaultValue='말줄임 말줄임 표시 말줄임 표시 말줄임 말줄임 표시 말줄임 표시 말줄임 말줄임 표시 말줄임 표시 말줄임 말줄임 표시 말줄임 표시'
-                      placeholder='비어있는 상태'
+                      defaultValue={t('long-text')}
+                      placeholder={t('input.placeholder.default')}
                     />
                     <Input
                       {...args}
                       size={size}
                       id={`${uniqueId}-adorned-start-${idx}`}
-                      defaultValue='말줄임 말줄임 표시 말줄임 표시 말줄임 말줄임 표시 말줄임 표시 말줄임 말줄임 표시 말줄임 표시 말줄임 말줄임 표시 말줄임 표시'
+                      defaultValue={t('long-text')}
+                      placeholder={t('input.placeholder.default')}
                       className='adorned-start'
                       adornedStart={
                         <IconFrame size={size}>
@@ -715,7 +750,8 @@ export const LongText: Story = {
                       {...args}
                       size={size}
                       id={`${uniqueId}-adorned-end-${idx}`}
-                      defaultValue='말줄임 말줄임 표시 말줄임 표시 말줄임 말줄임 표시 말줄임 표시 말줄임 말줄임 표시 말줄임 표시 말줄임 말줄임 표시 말줄임 표시'
+                      defaultValue={t('long-text')}
+                      placeholder={t('input.placeholder.default')}
                       className='adorned-end'
                       adornedEnd={
                         <IconButton
@@ -746,14 +782,14 @@ export const LongText: Story = {
                     {...args}
                     size={size}
                     id={`${uniqueId}-empty-${idx}`}
-                    defaultValue='말줄임 말줄임 표시 말줄임 표시 말줄임 말줄임 표시 말줄임 표시 말줄임 말줄임 표시 말줄임 표시 말줄임 말줄임 표시 말줄임 표시'
-                    placeholder='비어있는 상태'
+                    defaultValue={t('long-text')}
+                    placeholder={t('input.placeholder.default')}
                   />
                   <Input
                     {...args}
                     size={size}
                     id={`${uniqueId}-adorned-start-${idx}`}
-                    defaultValue='내용이 입력된 상태입니다.'
+                    placeholder={t('input.placeholder.default')}
                     className='adorned-start'
                     adornedStart={
                       <IconFrame size={size}>
@@ -771,7 +807,8 @@ export const LongText: Story = {
                     {...args}
                     size={size}
                     id={`${uniqueId}-adorned-end-${idx}`}
-                    defaultValue='내용이 입력된 상태입니다.'
+                    defaultValue={t('input.value')}
+                    placeholder={t('input.placeholder.default')}
                     className='adorned-end'
                     adornedEnd={
                       <IconButton

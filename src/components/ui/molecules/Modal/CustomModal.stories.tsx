@@ -8,6 +8,7 @@ import AnatomyWrapper from '../../guide/AnatomyWrapper';
 import { useContext } from 'react';
 import { ModalContext } from '@/components/contexts/ModalContext';
 import Button from '../Button/Button';
+import { useTranslation } from 'react-i18next';
 
 const meta: Meta = {
   title: 'UI/Organisms/Modal/CustomModal',
@@ -156,13 +157,21 @@ type Story = StoryObj<typeof meta>;
 export const Base: Story = {
   render: args => {
     const props = args as CustomModalContentProps;
+    const { t } = useTranslation();
 
     return (
       <GuideWrapper style={{ margin: 'auto', width: 'fit-content', gap: '80px' }}>
         <GuideGroup direction='row'>
           <GuideRow direction='column'>
             <GuideCell>
-              <CustomModalContent {...props} />
+              <CustomModalContent
+                {...props}
+                config={{
+                  ...props.config,
+                  title: t('modal.custom.base.title'),
+                  description: t('modal.custom.base.content'),
+                }}
+              />
             </GuideCell>
           </GuideRow>
         </GuideGroup>
@@ -183,6 +192,7 @@ export const InteractionPattern: Story = {
   },
   render: args => {
     const props = args as CustomModalContentProps;
+    const { t } = useTranslation();
 
     return (
       <GuideWrapper style={{ margin: 'auto', width: 'fit-content', gap: '80px' }}>
@@ -193,10 +203,9 @@ export const InteractionPattern: Story = {
               config={{
                 ...props.config,
                 variant: 'custom',
-                title: '복사 완료',
-                confirmText: '저장',
-                description:
-                  '링크가 클립보드에 복사되었습니다. 이제 원하는 곳에 붙여넣기 할 수 있습니다.',
+                title: t('modal.custom.interation.information.title'),
+                confirmText: t('modal.custom.interation.information.footer.confirm'),
+                description: t('modal.custom.interation.information.content'),
                 showCloseButton: false,
               }}
             />
@@ -209,10 +218,10 @@ export const InteractionPattern: Story = {
               config={{
                 ...props.config,
                 variant: 'custom',
-                title: '변경 사항 저장',
-                description: '수정하신 내용을 저장하시겠습니까? 저장 후에는 즉시 반영됩니다.',
-                confirmText: '저장',
-                cancelText: '취소',
+                title: t('modal.custom.interation.confirmation.title'),
+                description: t('modal.custom.interation.confirmation.content'),
+                confirmText: t('modal.custom.interation.confirmation.footer.confirm'),
+                cancelText: t('modal.custom.interation.confirmation.footer.cancel'),
                 showCloseButton: false,
               }}
             />
@@ -231,6 +240,7 @@ export const InteractionPattern: Story = {
 export const Sizes: Story = {
   render: args => {
     const props = args as CustomModalContentProps;
+    const { t } = useTranslation();
     const sizeOptions: Array<'lg' | 'md' | 'sm'> = ['lg', 'md', 'sm'];
 
     return (
@@ -244,11 +254,10 @@ export const Sizes: Story = {
                 config={{
                   ...props.config,
                   variant: 'custom',
-                  title: '복사 완료',
-                  confirmText: '저장',
-                  cancelText: '취소',
-                  description:
-                    '링크가 클립보드에 복사되었습니다. 이제 원하는 곳에 붙여넣기 할 수 있습니다.',
+                  title: t('modal.custom.sizes.title'),
+                  confirmText: t('modal.custom.sizes.footer.confirm'),
+                  cancelText: t('modal.custom.sizes.footer.cancel'),
+                  description: t('modal.custom.sizes.content'),
                   showCloseButton: true,
                 }}
               />
@@ -268,6 +277,7 @@ export const Sizes: Story = {
 export const ScrollType: StoryObj = {
   render: () => {
     const { openModal } = useContext(ModalContext);
+    const { t } = useTranslation();
 
     return (
       <GuideWrapper style={{ flexDirection: 'row', justifyContent: 'center' }}>
@@ -277,16 +287,17 @@ export const ScrollType: StoryObj = {
           onClick={() =>
             openModal('custom', {
               scrollType: 'outer',
-              title: '단순 알림',
+              title: t('modal.custom.scroll-type.outer.title'),
+              confirmText: t('modal.custom.scroll-type.footer.confirm'),
               children: (
                 <div style={{ width: '100%', height: '3000px', backgroundColor: '#dddd' }}>
-                  길게 스크롤할 수 있는 모달입니다.
+                  {t('modal.custom.scroll-type.outer.content')}
                 </div>
               ),
             })
           }
         >
-          Modal Body 외부 스크롤
+          {t('modal.custom.scroll-type.buttons.outer')}
         </Button>
         <Button
           variant='outline'
@@ -294,16 +305,17 @@ export const ScrollType: StoryObj = {
           onClick={() =>
             openModal('custom', {
               scrollType: 'inner',
-              title: '단순 알림',
+              title: t('modal.custom.scroll-type.inner.title'),
+              confirmText: t('modal.custom.scroll-type.footer.confirm'),
               children: (
                 <div style={{ width: '100%', height: '3000px', backgroundColor: '#dddd' }}>
-                  브라우저 높이에 맞춰 내부 스크롤할 수 있는 모달입니다.
+                  {t('modal.custom.scroll-type.inner.content')}
                 </div>
               ),
             })
           }
         >
-          Modal Body 내부 스크롤
+          {t('modal.custom.scroll-type.buttons.inner')}
         </Button>
       </GuideWrapper>
     );
@@ -318,13 +330,15 @@ export const ScrollType: StoryObj = {
 export const SequenceAndStackTest: StoryObj = {
   render: () => {
     const { openModal, closeModal } = useContext(ModalContext);
+    const { t } = useTranslation();
 
     // ✅ 사용자가 공유한 연쇄 흐름 (Sequential Flow)
     const handleSequenceFlow = () => {
       openModal('custom', {
-        title: '삭제 확인',
-        description: '삭제하면 복구할 수 없습니다. 삭제하시겠습니까?', // TS 에러 방지를 위해 message로 통일 제안
-        cancelText: '취소',
+        title: t('modal.custom.test.sequential.parent.title'),
+        description: t('modal.custom.test.sequential.parent.description'),
+        cancelText: t('modal.custom.test.sequential.parent.footer.cancel'),
+        confirmText: t('modal.custom.test.sequential.parent.footer.confirm'),
         onConfirm: (currentId?: string) => {
           // 1. 현재 모달 닫기
           closeModal(currentId || 'custom');
@@ -332,9 +346,9 @@ export const SequenceAndStackTest: StoryObj = {
           // 2. 큐에 쌓인 상태 처리를 위해 지연 후 다음 모달 오픈
           setTimeout(() => {
             openModal('custom', {
-              title: '삭제 완료',
-              description: '정상적으로 삭제되었습니다.',
-              confirmText: '확인',
+              title: t('modal.custom.test.sequential.child.title'),
+              description: t('modal.custom.test.sequential.child.description'),
+              confirmText: t('modal.custom.test.sequential.child.footer.confirm'),
             });
           }, 0);
         },
@@ -344,16 +358,20 @@ export const SequenceAndStackTest: StoryObj = {
     return (
       <GuideWrapper style={{ flexDirection: 'row', justifyContent: 'center' }}>
         <Button variant='solid' color='secondary' onClick={handleSequenceFlow}>
-          연쇄 모달 실행 (삭제 흐름)
+          {t('modal.custom.test.sequential.parent.title')}
         </Button>
         <Button
           variant='outline'
           color='secondary'
           onClick={() =>
-            openModal('custom', { title: '단순 알림', description: '단일 모달입니다.' })
+            openModal('custom', {
+              title: t('modal.custom.test.default.title'),
+              description: t('modal.custom.test.default.description'),
+              confirmText: t('modal.custom.test.default.footer.confirm'),
+            })
           }
         >
-          단일 모달 실행
+          {t('modal.custom.test.default.title')}
         </Button>
       </GuideWrapper>
     );

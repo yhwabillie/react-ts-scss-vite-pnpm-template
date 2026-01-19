@@ -1,0 +1,945 @@
+{
+  "label": {
+    "base": "基本ラベルテキスト",
+    "sizes": "いろはにほへとちりぬるを",
+    "usage": {
+      "radio": "ラジオオプションラベル",
+      "checkbox": "チェックボックスオプションラベル",
+      "switch": "スイッチラベル"
+    }
+  },
+  "textarea": {
+    "default": {
+      "placeholder": "内容を入力してください",
+      "value": "内容が入力された状態です"
+    },
+    "width_count": {
+      "placeholder": "17文字以内で入力してください",
+      "value": {
+        "typing": "現在入力中です",
+        "max": "最大文字数に達するとカウンターの色が変わります。"
+      }
+    }
+  },
+  "badge": {
+    "label": "お知らせ"
+  },
+  "tag": {
+    "base": {
+      "label": "タグ"
+    },
+    "deletable": {
+      "solid_items": {
+        "label_a": "ジャバスクリプト",
+        "label_b": "タイプスクリプト",
+        "label_c": "リアクト"
+      },
+      "outline_items": {
+        "label_a": "ジャバスクリプト",
+        "label_b": "タイプスクリプト",
+        "label_c": "リアクト"
+      }
+    },
+    "navigational": {
+      "solid_items": {
+        "label_a": "Naverへ移動",
+        "label_b": "ドキュメントを確認"
+      },
+      "outline_items": {
+        "label_a": "Naverへ移動",
+        "label_b": "ドキュメントを確認"
+      }
+    }
+  },
+  "tooltip": {
+    "base": {
+      "items": {
+        "label_a": "ヘルプ",
+        "label_b": "通知",
+        "label_c": "もっと見る"
+      }
+    },
+    "shape": {
+      "ballon": "吹き出し形",
+      "plain": "シンプルな四角形"
+    },
+    "variants": {
+      "standard": {
+        "label": "スタンダードツールチップ"
+      },
+      "rich": {
+        "label": "リッチツールチップ"
+      }
+    },
+    "sizes": {
+      "standard": {
+        "plain": {
+          "content": "スタンダード・プレーンツールチップ",
+          "button": "スタンダード・プレーンツールチップ"
+        },
+        "ballon": {
+          "content": "スタンダード・バルーンツールチップ",
+          "button": "スタンダード・バルーンツールチップ"
+        }
+      },
+      "rich": {
+        "plain": {
+          "content": "作業中の内容は30秒ごとにブラウザに自動保存されます。ネットワークが切れても安心して作業してください。",
+          "button": "リッチ・プレーンツールチップ"
+        },
+        "ballon": {
+          "content": "作業中の内容は30秒ごとにブラウザに自動保存されます。ネットワークが切れても安心して作業してください。",
+          "button": "リッチ・バルーンツールチップ"
+        }
+      }
+    },
+    "positions": {
+      "top": {
+        "standard": {
+          "button": "スタンダードツールチップ",
+          "content": "上側ツールチップ"
+        },
+        "rich": {
+          "button": "リッチツールチップ",
+          "content": "作業中の内容は30秒ごとにブラウザに自動保存されます。ネットワークが切れても安心して作業してください。"
+        }
+      },
+      "bottom": {
+        "standard": {
+          "button": "スタンダードツールチップ",
+          "content": "下側ツールチップ"
+        },
+        "rich": {
+          "button": "リッチツールチップ",
+          "content": "作業中の内容は30秒ごとにブラウザに自動保存されます。ネットワークが切れても安心して作業してください。"
+        }
+      },
+      "left": {
+        "standard": {
+          "button": "スタンダードツールチップ",
+          "content": "左側ツールチップ"
+        },
+        "rich": {
+          "button": "リッチツールチップ",
+          "content": "作業中の内容は30秒ごとにブラウザに自動保存されます。ネットワークが切れても安心して作業してください。"
+        }
+      },
+      "right": {
+        "standard": {
+          "button": "スタンダードツールチップ",
+          "content": "右側ツールチップ"
+        },
+        "rich": {
+          "button": "リッチツールチップ",
+          "content": "作業中の内容は30秒ごとにブラウザに自動保存されます。ネットワークが切れても安心して作業してください。"
+        }
+      }
+    },
+    "alignment": {
+      "top": {
+        "start": {
+          "standard": {
+            "button": "スタンダードツールチップ",
+            "content": "開始位置に揃えたツールチップ"
+          },
+          "rich": {
+            "button": "リッチツールチップ",
+            "content": "作業中の内容は30秒ごとにブラウザに自動保存されます。ネットワークが切れても安心して作業してください。"
+          }
+        },
+        "center": {
+          "standard": {
+            "button": "スタンダードツールチップ",
+            "content": "中央揃えツールチップ"
+          },
+          "rich": {
+            "button": "リッチツールチップ",
+            "content": "作業中の内容は30秒ごとにブラウザに自動保存されます。ネットワークが切れても安心して作業してください。"
+          }
+        },
+        "end": {
+          "standard": {
+            "button": "スタンダードツールチップ",
+            "content": "末尾揃えツールチップ"
+          },
+          "rich": {
+            "button": "リッチツールチップ",
+            "content": "作業中の内容は30秒ごとにブラウザに自動保存されます。ネットワークが切れても安心して作業してください。"
+          }
+        }
+      },
+      "bottom": {
+        "start": {
+          "standard": {
+            "button": "スタンダードツールチップ",
+            "content": "開始位置に揃えたツールチップ"
+          },
+          "rich": {
+            "button": "リッチツールチップ",
+            "content": "作業中の内容は30秒ごとにブラウザに自動保存されます。ネットワークが切れても安心して作業してください。"
+          }
+        },
+        "center": {
+          "standard": {
+            "button": "スタンダードツールチップ",
+            "content": "中央揃えツールチップ"
+          },
+          "rich": {
+            "button": "リッチツールチップ",
+            "content": "作業中の内容は30秒ごとにブラウザに自動保存されます。ネットワークが切れても安心して作業してください。"
+          }
+        },
+        "end": {
+          "standard": {
+            "button": "スタンダードツールチップ",
+            "content": "末尾揃えツールチップ"
+          },
+          "rich": {
+            "button": "リッチツールチップ",
+            "content": "作業中の内容は30秒ごとにブラウザに自動保存されます。ネットワークが切れても安心して作業してください。"
+          }
+        }
+      }
+    },
+    "viewport": {
+      "top": {
+        "start": {
+          "standard": {
+            "button": "スタンダードツールチップ",
+            "content": "Flip整列ツールチップ"
+          }
+        },
+        "center": {
+          "standard": {
+            "button": "スタンダードツールチップ",
+            "content": "Flip整列ツールチップ"
+          }
+        },
+        "end": {
+          "standard": {
+            "button": "スタンダードツールチップ",
+            "content": "Flip整列ツールチップ"
+          }
+        }
+      },
+      "center": {
+        "left": {
+          "standard": {
+            "button": "スタンダードツールチップ",
+            "content": "Flip整列ツールチップ"
+          }
+        },
+        "right": {
+          "standard": {
+            "button": "スタンダードツールチップ",
+            "content": "Flip整列ツールチップ"
+          }
+        }
+      },
+      "bottom": {
+        "start": {
+          "standard": {
+            "button": "スタンダードツールチップ",
+            "content": "Flip整列ツールチップ"
+          }
+        },
+        "center": {
+          "standard": {
+            "button": "スタンダードツールチップ",
+            "content": "Flip整列ツールチップ"
+          }
+        },
+        "end": {
+          "standard": {
+            "button": "スタンダードツールチップ",
+            "content": "Flip整列ツールチップ"
+          }
+        }
+      }
+    }
+  },
+  "button": "ボタン",
+  "link-button": "Googleへ移動",
+  "long-text": "テキストが非常に長く、コンテナからはみ出す可能性があります。省略処理が必要です。テキストが非常に長く、コンテナからはみ出す可能性があります。省略処理が必要です。",
+  "button-stories": {
+    "full-width": {
+      "label": "Full Width Button",
+      "wrapper-title": "親要素の幅: 500px",
+      "description": "ボタンが親要素の全幅を占めるかどうかを決定します。"
+    },
+    "long-text": {
+      "description": "ボタン内の長いテキストで省略処理が正しく動作するか確認します。親コンテナ幅は200pxに制限したケースです。",
+      "wrapper-title": "親要素の幅: 200px"
+    },
+    "polymorphic-link": {
+      "title": "新しいウィンドウで開く",
+      "label": "Googleへ移動 (Anchor Tag)",
+      "notice": "※ 下のボタンはHTML `<a>` タグでレンダリングされます。",
+      "description": "ボタンのスタイルを維持したまま `<a>` タグとして描画するケースです。外部リンクやSEOが必要な場合に使用します。"
+    }
+  },
+  "button-group": {
+    "edit": "編集",
+    "save": "保存"
+  },
+  "switch": {
+    "left-label": "左ラベル",
+    "right-label": "右ラベル"
+  },
+  "input": {
+    "placeholder": {
+      "default": "情報を入力してください",
+      "password": "パスワードを入力してください"
+    },
+    "value": "内容が入力された状態です"
+  },
+  "formfield": {
+    "input": {
+      "label": "メールアドレス",
+      "placeholder": "example@mail.com"
+    },
+    "radio": {
+      "label": "女性ユーザー"
+    },
+    "checkbox": {
+      "label": "マーケティングに同意"
+    }
+  },
+  "control-group": {
+    "options": {
+      "label_a": "オプションA",
+      "label_b": "オプションB",
+      "label_c": "オプションC"
+    }
+  },
+  "formfieldset": {
+    "radio": {
+      "legend": "登録経路を選択",
+      "options": {
+        "label_a": "検索",
+        "label_b": "知人紹介",
+        "label_c": "広告"
+      }
+    },
+    "checkbox": {
+      "legend": "約款同意",
+      "options": {
+        "label_a": "利用規約に同意",
+        "label_b": "個人情報の収集・利用に同意",
+        "label_c": "マーケティング情報の受信に同意"
+      }
+    }
+  },
+  "validation-msg": {
+    "error": {
+      "label": "メール形式が正しくありません。"
+    },
+    "warning": {
+      "label": "8文字以上の英字・数字・記号を組み合わせてください。",
+      "long-label": "セキュリティ強化のため、8文字以上の英大文字・小文字、数字、記号を組み合わせて設定してください。誕生日や電話番号など推測しやすい情報は避けてください。"
+    },
+    "success": {
+      "label": "使用可能なIDです。",
+      "long-label": "おめでとうございます！会員登録が完了しました。すぐにログインしてすべての機能をご利用いただけます。登録したメールへウェルカムクーポンを送付しました。"
+    },
+    "guide": {
+      "label": "パスワードを忘れた場合、登録メールに案内が届きます。",
+      "long-label": "本人確認サービス利用時は、登録された携帯電話番号へ認証コードが送信されます。迷惑SMSフィルターが有効の場合、受信が遅れることがあります。(SMS/MMS standard rates may apply)"
+    },
+    "usage": {
+      "row": {
+        "input": {
+          "formfield": {
+            "label": "メールアドレス",
+            "placeholder": "example@mail.com"
+          },
+          "validation-msg": {
+            "success": {
+              "label": "使用可能なメールアドレスです。"
+            }
+          }
+        },
+        "radio": {
+          "formfieldset": {
+            "legend": "登録経路を選択してください。",
+            "control-group": {
+              "items": {
+                "label_a": "検索",
+                "label_b": "知人紹介",
+                "label_c": "広告"
+              }
+            }
+          },
+          "validation-msg": {
+            "warning": {
+              "label": "登録経路を選択してください。"
+            }
+          }
+        },
+        "checkbox": {
+          "formfieldset": {
+            "legend": "興味分野",
+            "control-group": {
+              "items": {
+                "label_a": "デザイン",
+                "label_b": "開発",
+                "label_c": "企画"
+              }
+            }
+          },
+          "validation-msg": {
+            "warning": {
+              "label": "興味分野は後でマイページから変更できます。"
+            }
+          }
+        }
+      },
+      "column": {
+        "input": {
+          "formfield": {
+            "label": "メールアドレス",
+            "placeholder": "example@mail.com"
+          },
+          "validation-msg": {
+            "error": {
+              "label": "8〜16文字の英大文字・小文字、数字、記号を使用してください。"
+            }
+          }
+        },
+        "radio": {
+          "formfieldset": {
+            "legend": "登録経路を選択してください。",
+            "control-group": {
+              "items": {
+                "label_a": "検索",
+                "label_b": "知人紹介",
+                "label_c": "広告"
+              }
+            }
+          },
+          "validation-msg": {
+            "warning": {
+              "label": "登録経路を選択してください。"
+            }
+          }
+        },
+        "checkbox": {
+          "formfieldset": {
+            "legend": "興味分野",
+            "control-group": {
+              "items": {
+                "label_a": "デザイン",
+                "label_b": "開発",
+                "label_c": "企画"
+              }
+            }
+          },
+          "validation-msg": {
+            "guide": {
+              "label": "興味分野は後でマイページから変更できます。"
+            }
+          }
+        }
+      }
+    }
+  },
+  "option-item": {
+    "placeholder": "オプションを選択してください",
+    "items": {
+      "label_a": "オプション1",
+      "label_b": "オプション2",
+      "label_c": "オプション3",
+      "label_d": "オプション4",
+      "label_e": "オプション5",
+      "label_f": "オプション6",
+      "label_g": "オプション7"
+    }
+  },
+  "selectbox": {
+    "placeholder": "オプションを選択してください",
+    "items": {
+      "label_a": "待機中",
+      "label_b": "進行中",
+      "label_c": "レビュー依頼",
+      "label_d": "保留",
+      "label_e": "承認済み",
+      "label_f": "却下",
+      "label_g": "配信待ち",
+      "label_h": "配信完了",
+      "label_i": "アーカイブ",
+      "label_j": "削除済み"
+    }
+  },
+  "autocomplete": {
+    "placeholder": "値を選択または入力してください",
+    "items": {
+      "label_a": "フロントエンド開発者",
+      "label_b": "バックエンド開発者",
+      "label_c": "フルスタック開発者",
+      "label_d": "モバイルアプリ開発者",
+      "label_e": "データエンジニア",
+      "label_f": "QAエンジニア",
+      "label_g": "UI/UXデザイナー",
+      "label_h": "プロダクトマネージャー",
+      "label_i": "技術企画者"
+    }
+  },
+  "searchbar": {
+    "placeholder": "検索語を入力してください",
+    "items": {
+      "label_a": "サーバー開発者採用情報",
+      "label_b": "フロントエンド新卒年収情報",
+      "label_c": "Naver採用公式サイト",
+      "label_d": "UI/UXデザイナーポートフォリオガイド",
+      "label_e": "データサイエンティスト面接質問",
+      "label_f": "サービス企画者スキル強化ロードマップ",
+      "label_g": "パフォーマンスマーケター実務テンプレート",
+      "label_h": "よくある質問 (FAQ)",
+      "label_i": "1:1キャリアメンタリング申請"
+    }
+  },
+  "segmented-control": {
+    "items": {
+      "label_a": "最新順",
+      "label_b": "人気順",
+      "label_c": "価格順"
+    }
+  },
+  "accordion": {
+    "default": {
+      "depth_1": {
+        "title": "1段アコーディオンタイトル",
+        "contents": "アコーディオンの詳細内容がここに表示されます。背景が白い場合、コンポーネントの背景と境界線のコントラストがアクセシビリティ基準を満たすか確認してください。"
+      },
+      "depth_2": {
+        "title": "2段アコーディオンタイトル",
+        "contents": "アコーディオンの詳細内容がここに表示されます。背景が白い場合、コンポーネントの背景と境界線のコントラストがアクセシビリティ基準を満たすか確認してください。"
+      },
+      "depth_3": {
+        "title": "3段アコーディオンタイトル",
+        "contents": "アコーディオンの詳細内容がここに表示されます。背景が白い場合、コンポーネントの背景と境界線のコントラストがアクセシビリティ基準を満たすか確認してください。"
+      }
+    },
+    "long": {
+      "depth_1": {
+        "title": "[1段] タイトルが長い場合の改行、アイコン重なり、行間安定性を確認する見本です。",
+        "contents": "内容が長くなるほど高さが自然に広がり、上下の余白が均一に保たれるか確認します。明るい背景で境界線コントラストがWCAG基準を満たすか、テキストがtitle属性に依存していないかを確認してください。"
+      },
+      "depth_2": {
+        "title": "[2段] ネストで左余白が増えても可読性が維持される長いタイトル例です。",
+        "contents": "ネスト構造では利用可能な幅が狭くなるため、長文の折り返し品質が重要です。ヘッダー背景色と本文テキストのコントラスト、インジケーターの移動が滑らかなことを確認してください。"
+      },
+      "depth_3": {
+        "title": "[3段] 最深段でもアイコンとテキストが重ならないことを確認する長いタイトルです。",
+        "contents": "深い段でもコンテンツ領域が柔軟に広がり、スクロールなしで読めるか確認します。アイコンとテキストの間隔、折り返し位置、背景コントラストのバランスを確認してください。"
+      }
+    }
+  },
+  "avatar": {
+    "name": "ホン・ギルドン"
+  },
+  "breadcrumb": {
+    "default": {
+      "depth_1": "ホーム",
+      "depth_2": "商品一覧",
+      "depth_3": "詳細ページ"
+    },
+    "long": {
+      "depth_1": "深度1",
+      "depth_2": "深度2",
+      "depth_3": "深度3",
+      "depth_4": "深度4",
+      "depth_5": "深度5",
+      "depth_6": "横幅を大きく占有するとても長い最終ページタイトル"
+    }
+  },
+  "chip": {
+    "static": {
+      "label": "静的タグ"
+    },
+    "status": {
+      "label": "状態チップ"
+    },
+    "choice": {
+      "items": {
+        "label_a": "オプション1",
+        "label_b": "オプション2",
+        "label_c": "オプション3"
+      }
+    },
+    "filter": {
+      "items": {
+        "label_a": "フィルター1",
+        "label_b": "フィルター2",
+        "label_c": "フィルター3"
+      }
+    },
+    "input": {
+      "solid": {
+        "items": {
+          "label_a": "React",
+          "label_b": "TypeScript",
+          "label_c": "Storybook"
+        }
+      },
+      "outline": {
+        "items": {
+          "label_a": "Vite",
+          "label_b": "pnpm",
+          "label_c": "SCSS"
+        }
+      }
+    },
+    "action": {
+      "interaction": {
+        "share": "共有",
+        "download": "ファイルをダウンロード"
+      },
+      "navigation": {
+        "label_1": "公式ドキュメントを確認",
+        "label_2": "マイプロフィールへ移動"
+      }
+    }
+  },
+  "tabs": {
+    "items": {
+      "label_a": "カテゴリタブ1",
+      "label_b": "カテゴリタブ2",
+      "label_c": "カテゴリタブ3",
+      "label_d": "カテゴリタブ4",
+      "label_e": "カテゴリタブ5",
+      "label_f": "カテゴリタブ6",
+      "label_g": "カテゴリタブ7",
+      "label_h": "カテゴリタブ8",
+      "label_i": "カテゴリタブ9",
+      "label_j": "カテゴリタブ10",
+      "label_k": "カテゴリタブ11",
+      "label_l": "カテゴリタブ12",
+      "label_m": "カテゴリタブ13",
+      "label_n": "カテゴリタブ14",
+      "label_o": "カテゴリタブ15"
+    }
+  },
+  "toast": {
+    "info": {
+      "default": {
+        "label": "作成中の内容は自動保存されます。"
+      },
+      "link": {
+        "label": "投稿に新しいコメントが追加されました。",
+        "btn": "移動"
+      }
+    },
+    "success": {
+      "label": "変更が正常に保存されました。",
+      "link": {
+        "label": "送金が完了しました。内容を確認してください。",
+        "btn": "移動"
+      }
+    },
+    "warning": {
+      "label": "現在の位置ではサービス利用が制限される可能性があります。",
+      "link": {
+        "label": "セキュリティレベルが低いです。2段階認証を設定しますか？",
+        "btn": "移動"
+      }
+    },
+    "error": {
+      "label": "ネットワーク接続が不安定です。しばらくしてから再試行してください。",
+      "link": {
+        "label": "認証セッションが期限切れです。再ログインしてください。",
+        "btn": "移動"
+      }
+    }
+  },
+  "modal": {
+    "alert": {
+      "base": {
+        "title": "コピー完了",
+        "description": "リンクがクリップボードにコピーされました。任意の場所に貼り付けできます。",
+        "footer": {
+          "confirm": "確認"
+        }
+      },
+      "interaction": {
+        "information": {
+          "title": "コピー完了",
+          "description": "リンクがクリップボードにコピーされました。任意の場所に貼り付けできます。",
+          "footer": {
+            "confirm": "確認"
+          }
+        },
+        "confirmation": {
+          "title": "変更を保存",
+          "description": "変更内容を保存しますか？保存後はすぐに反映されます。",
+          "footer": {
+            "cancel": "キャンセル",
+            "confirm": "確認"
+          }
+        }
+      },
+      "variants": {
+        "info": {
+          "interaction": {
+            "information": {
+              "title": "コピー完了",
+              "description": "リンクがクリップボードにコピーされました。任意の場所に貼り付けできます。",
+              "footer": {
+                "confirm": "確認"
+              }
+            },
+            "confirmation": {
+              "title": "保存確認",
+              "description": "変更内容を保存しますか？保存後は一覧に移動します。",
+              "footer": {
+                "cancel": "キャンセル",
+                "save": "保存"
+              }
+            }
+          }
+        },
+        "danger": {
+          "interaction": {
+            "information": {
+              "title": "アクセス権限なし",
+              "description": "このメニューにアクセスする権限がありません。管理者に承認を依頼してください。",
+              "footer": {
+                "confirm": "確認"
+              }
+            },
+            "confirmation": {
+              "title": "永久削除の確認",
+              "description": "データを削除しますか？削除された情報は直ちに削除され、復元できません。",
+              "footer": {
+                "cancel": "キャンセル",
+                "delete": "削除"
+              }
+            }
+          }
+        }
+      },
+      "test": {
+        "sequential": {
+          "parent": {
+            "title": "削除確認",
+            "description": "削除すると復元できません。削除しますか？",
+            "footer": {
+              "cancel": "キャンセル",
+              "confirm": "確認"
+            }
+          },
+          "child": {
+            "title": "削除完了",
+            "description": "正常に削除されました。",
+            "footer": {
+              "confirm": "確認"
+            }
+          }
+        },
+        "default": {
+          "title": "単純な通知",
+          "description": "単一モーダルです。",
+          "footer": {
+            "confirm": "確認"
+          }
+        }
+      }
+    },
+    "custom": {
+      "base": {
+        "title": "タイトル",
+        "content": "内容"
+      },
+      "interation": {
+        "information": {
+          "title": "コピー完了",
+          "content": "リンクがクリップボードにコピーされました。任意の場所に貼り付けできます。",
+          "footer": {
+            "confirm": "確認"
+          }
+        },
+        "confirmation": {
+          "title": "変更を保存",
+          "content": "変更内容を保存しますか？保存後はすぐに反映されます。",
+          "footer": {
+            "cancel": "キャンセル",
+            "confirm": "確認"
+          }
+        }
+      },
+      "sizes": {
+        "title": "コピー完了",
+        "content": "リンクがクリップボードにコピーされました。任意の場所に貼り付けできます。",
+        "footer": {
+          "cancel": "キャンセル",
+          "confirm": "確認"
+        }
+      },
+      "scroll-type": {
+        "buttons": {
+          "outer": "モーダルボディ外部スクロール",
+          "inner": "モーダルボディ内部スクロール"
+        },
+        "footer": {
+          "confirm": "確認"
+        },
+        "outer": {
+          "title": "タイトル",
+          "content": "長くスクロールできるモーダルです。"
+        },
+        "inner": {
+          "title": "タイトル",
+          "content": "ブラウザの高さに合わせて内部スクロールするモーダルです。"
+        }
+      },
+      "test": {
+        "sequential": {
+          "parent": {
+            "title": "削除確認",
+            "description": "削除すると復元できません。削除しますか？",
+            "footer": {
+              "cancel": "キャンセル",
+              "confirm": "確認"
+            }
+          },
+          "child": {
+            "title": "削除完了",
+            "description": "正常に削除されました。",
+            "footer": {
+              "confirm": "確認"
+            }
+          }
+        },
+        "default": {
+          "title": "単純な通知",
+          "description": "単一モーダルです。",
+          "footer": {
+            "confirm": "確認"
+          }
+        }
+      }
+    }
+  },
+  "action-bar": {
+    "left-group": {
+      "label": "一覧"
+    },
+    "right-group": {
+      "item": {
+        "edit": "修正",
+        "save": "保存"
+      }
+    }
+  },
+  "data-table": {
+    "headers": {
+      "id": "ID",
+      "name": "名前",
+      "email": "メール",
+      "role": "権限",
+      "status": "状態",
+      "no": "番号",
+      "title": "タイトル",
+      "file": "ファイル",
+      "author": "作成者",
+      "date": "日付",
+      "views": "閲覧数"
+    },
+    "caption": {
+      "users": "ユーザー一覧",
+      "board": "お知らせおよび掲示板一覧の例",
+      "checkbox": "チェックボックス選択可能な表",
+      "sortable": "並び替え機能付きの表",
+      "empty": "データなし状態",
+      "variant-solid": "ソリッドテーブル",
+      "variant-outline": "アウトラインテーブル"
+    },
+    "summary": {
+      "users": "システムに登録された全ユーザー情報を示す表です。"
+    },
+    "a11y": {
+      "secret": "非公開投稿",
+      "has-file": "添付ファイルあり",
+      "variant-solid": "ソリッドテーブル",
+      "variant-outline": "アウトラインテーブル",
+      "select-all": "全行選択"
+    },
+    "default": {
+      "items": {
+        "item_a": {
+          "name": "キム・チョルス",
+          "role": "最高管理者",
+          "status": "有効"
+        },
+        "item_b": {
+          "name": "田中ソウスケ",
+          "role": "ユーザー",
+          "status": "無効"
+        },
+        "item_c": {
+          "name": "ジョン・ドー",
+          "role": "管理者",
+          "status": "有効"
+        }
+      }
+    },
+    "notice": {
+      "notice_item": {
+        "item_a": {
+          "title": "[お知らせ] 定期メンテナンスと利用制限に関する緊急告知 (1/10)",
+          "writer": "管理者"
+        },
+        "item_b": {
+          "title": "[案内] 2026年上半期 デザインシステム更新ロードマップ共有",
+          "writer": "運営者"
+        }
+      },
+      "default_items": {
+        "item_a": {
+          "title": "1行を超えて次の列を隠すほど長い投稿タイトルの例です。省略が必要です。",
+          "name": "キム・チョルス"
+        },
+        "item_b": {
+          "title": "デザインシステムガイド",
+          "name": "イ・ヨンヒ"
+        }
+      }
+    },
+    "empty": "データがありません。"
+  },
+  "filepicker": {
+    "base": {
+      "title": "タイトル領域",
+      "desc": "コンテンツ領域"
+    },
+    "submit-test": {
+      "button": {
+        "items": {
+          "submit_start": "サーバーへ送信開始",
+          "upload_reset": "アップロード状態を初期化"
+        }
+      },
+      "title": "ファイル送信シミュレーション",
+      "desc": "送信後、[アップロード状態を初期化]ボタンを押して再テストしてください。"
+    },
+    "drag-and-drop": {
+      "default": "添付するファイルをここにドラッグするか、ファイル選択ボタンを押してください。",
+      "draging": "ここにファイルを置いてアップロードしてください",
+      "uploading": "アップロード中は追加でファイルを登録できません。",
+      "announcement": "ファイルがアップロード領域に置かれました"
+    },
+    "aria": {
+      "dropzone": "ファイルアップロード領域"
+    },
+    "unit": "件",
+    "btn": "ファイルを選択",
+    "delete-all-btn": "全ファイル削除",
+    "delete-btn": "削除",
+    "validation": {
+      "error": {
+        "large-file": "ファイル容量が大きすぎます",
+        "unknown-format": "対応していないファイル形式です"
+      }
+    }
+  }
+}
