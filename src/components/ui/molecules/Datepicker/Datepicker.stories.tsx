@@ -207,6 +207,7 @@ const fetchHolidays = async (year: number, month: number, signal?: AbortSignal) 
     }));
 
     holidayCache.set(cacheKey, parsed);
+
     return parsed;
   } catch (error) {
     if (error instanceof DOMException && error.name === 'AbortError') return null;
@@ -216,6 +217,8 @@ const fetchHolidays = async (year: number, month: number, signal?: AbortSignal) 
 
 const useApiHolidays = (year: number, month: number) => {
   const [holidays, setHolidays] = useState<Holiday[] | null>(null);
+
+  console.log(holidays, '///');
 
   useEffect(() => {
     const controller = new AbortController();
