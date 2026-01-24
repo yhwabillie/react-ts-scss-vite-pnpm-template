@@ -1,0 +1,39 @@
+/* Carousel.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.carousel {
+  position: relative;
+  padding: rem(20px) rem(24px);
+  border-radius: var(--project-border-radius-12);
+  background-color: #e7f4fe;
+  border: rem(1px) solid #d8e5fd;
+  box-shadow: 0 0.2rem 0.8rem 0 rgba(0, 0, 0, 0.04);
+
+  :global {
+    .swiper-autoheight .swiper-wrapper {
+      align-items: flex-start;
+    }
+
+    .carousel__bundle {
+      display: flex;
+      flex-wrap: wrap;
+      gap: rem(12px);
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel__item {
+      display: flex;
+      align-items: center;
+      width: calc((100% - rem(36px)) / 4);
+    }
+  }
+}
+
+// (max-width: 767px) {
+//     .main-favorite-swiper a {
+//         width: calc((100% - 1.2rem) / 2);
+//     }
+// }

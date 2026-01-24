@@ -10,7 +10,8 @@ import { useEffect, useState } from 'react';
 import { GuideGroup } from '../../guide/Guide';
 import { expect, within, userEvent, waitFor } from 'storybook/test';
 import { useTranslation } from 'react-i18next';
-import type { Holiday } from '@/App';
+import type { Holiday } from '../../molecules/Datepicker/Datepicker';
+
 
 /**
  * [Calendar]
