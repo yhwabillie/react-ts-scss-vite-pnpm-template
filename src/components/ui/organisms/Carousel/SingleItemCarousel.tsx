@@ -46,17 +46,29 @@ const SingleItemCarousel = () => {
     return index;
   };
 
+  const getTranslateX = (element: HTMLElement) => {
+    const transform = window.getComputedStyle(element).transform;
+    if (!transform || transform === 'none') return 0;
+    if (transform.startsWith('matrix3d')) {
+      const values = transform.replace('matrix3d(', '').replace(')', '').split(',');
+      return Number(values[12] ?? 0);
+    }
+    if (transform.startsWith('matrix')) {
+      const values = transform.replace('matrix(', '').replace(')', '').split(',');
+      return Number(values[4] ?? 0);
+    }
+    return 0;
+  };
+
   // 현재 activeIndex와 slidesPerView 기준으로 prev/next 버튼 상태 갱신.
   const updateEdgeState = (swiper: SwiperInstance, activeIndex = swiper.activeIndex) => {
-    if (isMobileViewport()) {
-      const perView = getSlidesPerViewForViewport(swiper);
-      const maxStartIndex = Math.max(swiper.slides.length - perView, 0);
-      setIsBeginning(activeIndex <= 0);
-      setIsEnd(activeIndex >= maxStartIndex);
-    } else {
-      setIsBeginning(false);
-      setIsEnd(false);
-    }
+    const perView = getSlidesPerViewForViewport(swiper);
+    const maxStartIndex = Math.max(swiper.slides.length - perView, 0);
+    const translateX = getTranslateX(swiper.wrapperEl as HTMLElement);
+    const isAtStart = translateX >= -1;
+
+    setIsBeginning(isAtStart);
+    setIsEnd(activeIndex >= maxStartIndex);
   };
 
   // Swiper 내부 상태에 의존하지 않고 wrapper translate/active 클래스를 강제로 맞춤.
@@ -169,8 +181,9 @@ const SingleItemCarousel = () => {
           autoHeight
           onSwiper={instance => {
             swiperRef.current = instance;
-            lastUserActiveIndexRef.current = instance.activeIndex;
-            updateEdgeState(instance);
+            const targetIndex = clampStartIndex(instance, instance.activeIndex);
+            lastUserActiveIndexRef.current = targetIndex;
+            updateEdgeState(instance, targetIndex);
           }}
           onSlideChange={instance => {
             if (isResizingRef.current) {
@@ -219,7 +232,9 @@ const SingleItemCarousel = () => {
           }}
           onInit={instance => {
             instance.setTranslate(0);
-            updateEdgeState(instance, instance.activeIndex);
+            const targetIndex = clampStartIndex(instance, instance.activeIndex);
+            lastUserActiveIndexRef.current = targetIndex;
+            updateEdgeState(instance, targetIndex);
           }}
         >
           {slideItems.map((item, index) => (
