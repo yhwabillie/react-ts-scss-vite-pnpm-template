@@ -1,0 +1,28 @@
+/* Carousel.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.single-item-carousel {
+  position: relative;
+  padding: rem(20px) rem(24px);
+  border-radius: var(--project-border-radius-12);
+  background-color: #ffffff;
+  border: rem(1px) solid #d8e5fd;
+  box-shadow: 0 0.2rem 0.8rem 0 rgba(0, 0, 0, 0.04);
+
+  :global {
+    .grid-carousel__item {
+      display: inline-block;
+      width: 100%;
+      border-radius: var(--project-border-radius-12);
+      padding: rem(16px) rem(20px);
+      height: rem(82px);
+      background-color: #f4f5f6;
+
+      &:global(:focus-visible) {
+        outline-offset: rem(-2px);
+      }
+    }
+  }
+}

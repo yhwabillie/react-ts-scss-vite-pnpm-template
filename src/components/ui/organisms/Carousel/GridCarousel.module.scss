@@ -3,7 +3,7 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
-.carousel {
+.grid-carousel {
   position: relative;
   padding: rem(20px) rem(24px);
   border-radius: var(--project-border-radius-12);
@@ -12,11 +12,7 @@
   box-shadow: 0 0.2rem 0.8rem 0 rgba(0, 0, 0, 0.04);
 
   :global {
-    .swiper-autoheight .swiper-wrapper {
-      align-items: flex-start;
-    }
-
-    .carousel__bundle {
+    .grid-carousel__bundle {
       display: flex;
       flex-wrap: wrap;
       gap: rem(12px);
@@ -24,16 +20,24 @@
       height: 100%;
     }
 
-    .carousel__item {
+    .grid-carousel__item {
       display: flex;
       align-items: center;
       width: calc((100% - rem(36px)) / 4);
+
+      &:global {
+        @media (max-width: 767px) {
+          width: calc((100% - rem(12px)) / 2);
+        }
+
+        @media (max-width: 480px) {
+          width: 100%;
+        }
+      }
+
+      &:global(:focus-visible) {
+        outline-offset: rem(-2px);
+      }
     }
   }
 }
-
-// (max-width: 767px) {
-//     .main-favorite-swiper a {
-//         width: calc((100% - 1.2rem) / 2);
-//     }
-// }

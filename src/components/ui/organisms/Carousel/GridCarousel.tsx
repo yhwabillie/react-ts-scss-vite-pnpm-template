@@ -5,9 +5,10 @@ import { Swiper as SwiperRoot, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import Style from './Carousel.module.scss';
+import Style from './GridCarousel.module.scss';
+import clsx from 'clsx';
 
-const Carousel = () => {
+const GridCarousel = () => {
   const swiperRef = useRef<SwiperInstance | null>(null);
   const lastFocusedSlideIndex = useRef<number | null>(null);
   const slideItems = [
@@ -54,22 +55,26 @@ const Carousel = () => {
   };
 
   return (
-    <div className={Style.carousel} onFocusCapture={handleFocusCapture}>
-      <div className='carousel__title-area'>
-        <h3 className='carousel__title'>캐러샐 타이틀</h3>
+    <div
+      className={clsx(Style['grid-carousel'], 'grid-carousel')}
+      onFocusCapture={handleFocusCapture}
+    >
+      <div className='grid-carousel__title-area'>
+        <h3 className='grid-carousel__title'>캐러샐 타이틀</h3>
       </div>
-      <div className='carousel__content-area'>
+      <div className='grid-carousel__content-area'>
         <button type='button' className='swiper-button-prev'>
           prev
         </button>
         <SwiperRoot
+          id='grid-carousel-swiper'
           modules={[Navigation, Pagination]}
           navigation={{
-            prevEl: '.swiper-button-prev',
-            nextEl: '.swiper-button-next',
+            prevEl: '.grid-carousel .swiper-button-prev',
+            nextEl: '.grid-carousel .swiper-button-next',
           }}
           slidesPerView='auto'
-          spaceBetween={8}
+          spaceBetween={0}
           loop={false}
           observer
           observeParents
@@ -85,9 +90,9 @@ const Carousel = () => {
         >
           {slideItems.map((items, index) => (
             <SwiperSlide key={`slide-${index}`} aria-label={`${index + 1}/${slideItems.length}`}>
-              <div className='carousel__bundle'>
+              <div className='grid-carousel__bundle'>
                 {items.map(item => (
-                  <a key={item.title} href='#' title={item.title} className='carousel__item'>
+                  <a key={item.title} href='#' title={item.title} className='grid-carousel__item'>
                     <i>{item.logo}</i>
                     <span>{item.title}</span>
                   </a>
@@ -96,13 +101,17 @@ const Carousel = () => {
             </SwiperSlide>
           ))}
         </SwiperRoot>
-        <span className='carousel__notification' aria-live='assertive' aria-atomic='true'></span>
+        <span
+          className='grid-carousel__notification'
+          aria-live='assertive'
+          aria-atomic='true'
+        ></span>
         <button type='button' className='swiper-button-next'>
           next
         </button>
       </div>
-      <div className='carousel__more-area'>
-        <button type='button' className='carousel__more-btn'>
+      <div className='grid-carousel__more-area'>
+        <button type='button' className='grid-carousel__more-btn'>
           <span className='sr-only'>캐러샐 타이틀</span>펼쳐보기
         </button>
       </div>
@@ -110,4 +119,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+export default GridCarousel;
