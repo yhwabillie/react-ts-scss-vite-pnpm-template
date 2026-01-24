@@ -11,8 +11,11 @@ import clsx from 'clsx';
 const SingleItemCarousel = () => {
   const swiperRef = useRef<SwiperInstance | null>(null);
   const lastFocusedSlideIndex = useRef<number | null>(null);
+  // 사용자가 마지막으로 선택한 슬라이드 인덱스(리사이즈 시 동일 시작 슬라이드 유지).
   const lastUserActiveIndexRef = useRef(0);
+  // 리사이즈 중 Swiper가 내부적으로 activeIndex를 바꾸는 것을 사용자 변경으로 보지 않음.
   const isResizingRef = useRef(false);
+  // 리사이즈 중 떨림을 줄이기 위한 보정 디바운스.
   const resizeTimerRef = useRef<number | null>(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
@@ -34,6 +37,7 @@ const SingleItemCarousel = () => {
     return 3;
   };
 
+  // 현재 per-view 기준으로 시작 인덱스가 유효 범위를 벗어나지 않게 보정.
   const clampStartIndex = (swiper: SwiperInstance, index: number) => {
     const perView = getSlidesPerViewForViewport(swiper);
     const maxStartIndex = Math.max(swiper.slides.length - perView, 0);
@@ -42,6 +46,7 @@ const SingleItemCarousel = () => {
     return index;
   };
 
+  // 현재 activeIndex와 slidesPerView 기준으로 prev/next 버튼 상태 갱신.
   const updateEdgeState = (swiper: SwiperInstance, activeIndex = swiper.activeIndex) => {
     if (isMobileViewport()) {
       const perView = getSlidesPerViewForViewport(swiper);
@@ -54,6 +59,7 @@ const SingleItemCarousel = () => {
     }
   };
 
+  // Swiper 내부 상태에 의존하지 않고 wrapper translate/active 클래스를 강제로 맞춤.
   const applyTranslateForIndex = (swiper: SwiperInstance, index: number) => {
     if (swiper.destroyed) return;
     const slide = swiper.slides[index] as HTMLElement | undefined;
@@ -80,6 +86,7 @@ const SingleItemCarousel = () => {
     swiper.previousIndex = index - 1;
   };
 
+  // 레이아웃이 안정된 다음 프레임에 translate 적용.
   const slideToIndex = (swiper: SwiperInstance, index: number) => {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
@@ -89,6 +96,7 @@ const SingleItemCarousel = () => {
     });
   };
 
+  // 탭 이동 시 포커스된 슬라이드가 화면에 보이도록 유지.
   const handleFocusCapture = (event: FocusEvent<HTMLElement>) => {
     const swiper = swiperRef.current;
     if (!swiper) return;
@@ -96,6 +104,7 @@ const SingleItemCarousel = () => {
     const slideEl = (event.target as HTMLElement).closest('.swiper-slide') as HTMLElement | null;
     if (!slideEl) return;
 
+    // data-slide-index는 Swiper DOM 재정렬에도 안정적으로 유지됨.
     const dataIndex = Number(slideEl.getAttribute('data-slide-index'));
     const nextIndex = Number.isFinite(dataIndex) ? dataIndex : swiper.slides.indexOf(slideEl);
     if (nextIndex < 0) return;
@@ -115,8 +124,6 @@ const SingleItemCarousel = () => {
     swiper.slideTo(nextIndex, 0);
   };
 
-  const isMobile = isMobileViewport();
-
   return (
     <div
       className={clsx(Style['single-item-carousel'], 'single-item-carousel')}
@@ -129,9 +136,9 @@ const SingleItemCarousel = () => {
         <button
           type='button'
           className={clsx('swiper-button-prev', {
-            'swiper-button-disabled': isMobile && isBeginning,
+            'swiper-button-disabled': isBeginning,
           })}
-          disabled={isMobile && isBeginning}
+          disabled={isBeginning}
         >
           prev
         </button>
@@ -166,9 +173,13 @@ const SingleItemCarousel = () => {
             updateEdgeState(instance);
           }}
           onSlideChange={instance => {
-            if (!isResizingRef.current) {
-              lastUserActiveIndexRef.current = instance.activeIndex;
+            if (isResizingRef.current) {
+              const targetIndex = clampStartIndex(instance, lastUserActiveIndexRef.current);
+              updateEdgeState(instance, targetIndex);
+              return;
             }
+
+            lastUserActiveIndexRef.current = instance.activeIndex;
             updateEdgeState(instance);
           }}
           onBeforeResize={instance => {
@@ -176,7 +187,6 @@ const SingleItemCarousel = () => {
           }}
           onResize={instance => {
             isResizingRef.current = true;
-            updateEdgeState(instance);
 
             if (resizeTimerRef.current !== null) {
               window.clearTimeout(resizeTimerRef.current);
@@ -184,25 +194,32 @@ const SingleItemCarousel = () => {
 
             resizeTimerRef.current = window.setTimeout(() => {
               const targetIndex = clampStartIndex(instance, lastUserActiveIndexRef.current);
+              lastUserActiveIndexRef.current = targetIndex;
+              updateEdgeState(instance, targetIndex);
               slideToIndex(instance, targetIndex);
             }, 120);
 
             const targetIndex = clampStartIndex(instance, lastUserActiveIndexRef.current);
+            lastUserActiveIndexRef.current = targetIndex;
+            updateEdgeState(instance, targetIndex);
             applyTranslateForIndex(instance, targetIndex);
           }}
           onBreakpoint={instance => {
-            updateEdgeState(instance);
-
             const targetIndex = clampStartIndex(instance, lastUserActiveIndexRef.current);
+            lastUserActiveIndexRef.current = targetIndex;
+            updateEdgeState(instance, targetIndex);
             slideToIndex(instance, targetIndex);
           }}
           onSetTranslate={instance => {
             if (!isResizingRef.current) return;
             const targetIndex = clampStartIndex(instance, lastUserActiveIndexRef.current);
+            lastUserActiveIndexRef.current = targetIndex;
+            updateEdgeState(instance, targetIndex);
             applyTranslateForIndex(instance, targetIndex);
           }}
           onInit={instance => {
             instance.setTranslate(0);
+            updateEdgeState(instance, instance.activeIndex);
           }}
         >
           {slideItems.map((item, index) => (
@@ -226,9 +243,9 @@ const SingleItemCarousel = () => {
         <button
           type='button'
           className={clsx('swiper-button-next', {
-            'swiper-button-disabled': isMobile && isEnd,
+            'swiper-button-disabled': isEnd,
           })}
-          disabled={isMobile && isEnd}
+          disabled={isEnd}
         >
           next
         </button>
