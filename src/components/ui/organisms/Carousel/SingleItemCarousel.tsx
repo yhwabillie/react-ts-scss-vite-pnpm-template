@@ -64,9 +64,7 @@ const SingleItemCarousel = () => {
   const updateEdgeState = (swiper: SwiperInstance, activeIndex = swiper.activeIndex) => {
     const perView = getSlidesPerViewForViewport(swiper);
     const maxStartIndex = Math.max(swiper.slides.length - perView, 0);
-    const translateX = getTranslateX(swiper.wrapperEl as HTMLElement);
-    const isAtStart = translateX >= -1;
-
+    const isAtStart = activeIndex <= 0;
     setIsBeginning(isAtStart);
     setIsEnd(activeIndex >= maxStartIndex);
   };
