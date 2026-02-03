@@ -24,7 +24,20 @@
 
         .auto-carousel__controls {
           display: inline-flex;
-          gap: rem(16px);
+          align-items: center;
+          gap: rem(8px);
+
+          :global {
+            .swiper-btn-controls {
+              display: flex;
+              gap: rem(8px);
+            }
+
+            .swiper-btn-stop,
+            .swiper-btn-play {
+              flex: 0 0 auto;
+            }
+          }
         }
       }
     }

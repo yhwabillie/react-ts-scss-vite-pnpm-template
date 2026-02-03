@@ -77,26 +77,53 @@ const AutoCarousel = () => {
         <div className='auto-carousel__controls'>
           <span ref={paginationRef} className='swiper-paination' aria-hidden='true'></span>
 
+          <div className='swiper-btn-controls'>
+            <IconButton
+              className='swiper-btn-prev'
+              color='primary'
+              shape='pill'
+              size='md'
+              variant='outline'
+              icon={<Icon name='chevron-left' className='icon' strokeWidth={2.5} />}
+            />
+            <IconButton
+              className='swiper-btn-next'
+              color='primary'
+              shape='pill'
+              size='md'
+              variant='outline'
+              icon={<Icon name='chevron-right' className='icon' strokeWidth={2.5} />}
+            />
+          </div>
+
           {isPlaying ? (
-            <button type='button' onClick={handleStop} aria-label='자동 재생 정지'>
-              Stop
-            </button>
+            <IconButton
+              type='button'
+              onClick={handleStop}
+              aria-label='자동 재생 정지'
+              className='swiper-btn-stop'
+              color='primary'
+              shape='pill'
+              size='md'
+              variant='outline'
+              icon={<Icon name='pause' className='icon' strokeWidth={2.5} />}
+            />
           ) : (
-            <button type='button' onClick={handlePlay} aria-label='자동 재생 시작'>
-              Play
-            </button>
+            <IconButton
+              type='button'
+              onClick={handlePlay}
+              aria-label='자동 재생 시작'
+              className='swiper-btn-play'
+              color='primary'
+              shape='pill'
+              size='md'
+              variant='outline'
+              icon={<Icon name='play' className='icon' strokeWidth={2.5} />}
+            />
           )}
         </div>
       </div>
       <div ref={swiperWrapRef} className='auto-carousel__content-area'>
-        <IconButton
-          className='swiper-button-prev'
-          color='primary'
-          shape='pill'
-          size='md'
-          variant='outline'
-          icon={<Icon name='chevron-left' className='icon' strokeWidth={2.5} />}
-        />
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={8}
@@ -120,8 +147,8 @@ const AutoCarousel = () => {
             disableOnInteraction: false,
           }}
           navigation={{
-            prevEl: '.auto-carousel .swiper-button-prev',
-            nextEl: '.auto-carousel .swiper-button-next',
+            prevEl: '.auto-carousel .swiper-btn-prev',
+            nextEl: '.auto-carousel .swiper-btn-next',
           }}
           loop={true}
           pagination={{
@@ -150,14 +177,6 @@ const AutoCarousel = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <IconButton
-          className='swiper-button-next'
-          color='primary'
-          shape='pill'
-          size='md'
-          variant='outline'
-          icon={<Icon name='chevron-right' className='icon' strokeWidth={2.5} />}
-        />
       </div>
     </div>
   );

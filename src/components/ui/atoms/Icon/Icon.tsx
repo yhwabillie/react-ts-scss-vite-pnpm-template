@@ -48,6 +48,8 @@ import OuterLinkIcon from '@/assets/icons/icon-square-arrow-out-up-right.svg?rea
 import RotateIcon from '@/assets/icons/icon-rotate-ccw.svg?react';
 import UserIcon from '@/assets/icons/icon-user.svg?react';
 import ListIcon from '@/assets/icons/icon-list.svg?react';
+import PlayIcon from '@/assets/icons/icon-play.svg?react';
+import PauseIcon from '@/assets/icons/icon-pause.svg?react';
 
 const iconMap = {
   search: SearchIcon,
@@ -97,6 +99,8 @@ const iconMap = {
   rotate: RotateIcon,
   user: UserIcon,
   list: ListIcon,
+  play: PlayIcon,
+  pause: PauseIcon,
   // 다른 아이콘들도 여기에 추가
 };
 
