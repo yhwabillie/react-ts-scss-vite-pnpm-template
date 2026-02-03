@@ -1,0 +1,95 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.auto-carousel {
+  position: relative;
+  padding: rem(20px) rem(24px);
+  border-radius: var(--project-border-radius-12);
+  background-color: #ffffff;
+  border: rem(1px) solid #d8e5fd;
+  box-shadow: 0 0.2rem 0.8rem 0 rgba(0, 0, 0, 0.04);
+
+  :global {
+    .auto-carousel__title-area {
+      display: flex;
+      align-items: center;
+      gap: rem(8px);
+      margin-bottom: rem(8px);
+
+      :global {
+        .auto-carousel__title {
+          flex: 1 1 auto;
+        }
+
+        .auto-carousel__controls {
+          display: inline-flex;
+          gap: rem(16px);
+        }
+      }
+    }
+
+    .auto-carousel__content-area {
+      display: flex;
+      align-items: center;
+      gap: rem(12px);
+    }
+
+    .auto-carousel__item {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+
+      :global {
+        a,
+        button {
+          flex: 1;
+          width: 100%;
+          min-height: rem(82px);
+          padding: rem(16px) rem(20px);
+          border-radius: var(--project-border-radius-12);
+          background-color: #f4f5f6;
+
+          &:global(:focus-visible) {
+            outline-offset: rem(-2px);
+          }
+        }
+      }
+    }
+
+    .swiper-pagination {
+      min-width: rem(48px);
+      text-align: center;
+      font-size: rem(12px);
+      color: #5b6b83;
+    }
+  }
+}
+
+// .auto-carousel__controls {
+//   display: inline-flex;
+//   align-items: center;
+//   gap: rem(8px);
+// }
+
+// .auto-carousel__control-button {
+//   padding: rem(6px) rem(10px);
+//   border-radius: rem(8px);
+//   border: rem(1px) solid #c6d6f2;
+//   background-color: #f7f9ff;
+//   color: #1f2a44;
+//   font-size: rem(13px);
+//   line-height: 1;
+//   cursor: pointer;
+
+//   &:disabled {
+//     opacity: 0.5;
+//     cursor: not-allowed;
+//   }
+// }
+
+// .auto-carousel__control-button--hidden {
+//   display: none;
+// }

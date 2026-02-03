@@ -1,3 +1,4 @@
+import AutoCarousel from './components/ui/organisms/Carousel/AutoCarousel';
 import GridCarousel from './components/ui/organisms/Carousel/GridCarousel';
 import SingleItemCarousel from './components/ui/organisms/Carousel/SingleItemCarousel';
 
@@ -7,8 +8,11 @@ function App() {
       <section style={{ padding: '0 24px', margin: '30px 0 30px 0' }}>
         <GridCarousel />
       </section>
-      <section style={{ padding: '0 24px' }}>
+      <section style={{ padding: '0 24px', margin: '0 0 30px 0' }}>
         <SingleItemCarousel />
+      </section>
+      <section style={{ padding: '0 24px' }}>
+        <AutoCarousel />
       </section>
     </main>
   );
