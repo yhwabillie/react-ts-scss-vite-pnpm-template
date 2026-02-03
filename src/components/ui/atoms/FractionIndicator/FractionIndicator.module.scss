@@ -1,0 +1,12 @@
+/* Code.module.scss */
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../../styles/mixins' as *;
+
+.fraction-indicator {
+  display: inline-flex;
+  font: var(--project-typo-btn-3-600);
+  padding: rem(8px) rem(16px);
+  border-radius: var(--project-border-radius-max);
+  gap: rem(8px);
+}

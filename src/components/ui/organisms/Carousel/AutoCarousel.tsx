@@ -11,8 +11,20 @@ import Icon from '../../atoms/Icon/Icon';
 
 import IconButton from '../../molecules/IconButton/IconButton';
 import { useCallback, useRef, useState } from 'react';
+import FractionIndicator from '../../atoms/FractionIndicator/FractionIndicator';
 
-const AutoCarousel = () => {
+type AutoCarouselItem = {
+  id: string;
+  title: string;
+  href?: string;
+};
+
+type AutoCarouselProps = {
+  title?: string;
+  items?: AutoCarouselItem[];
+};
+
+const AutoCarousel = ({ title = '오토 캐러샐', items }: AutoCarouselProps) => {
   const swiperWrapRef = useRef<HTMLDivElement | null>(null);
   const swiperRef = useRef<SwiperInstance | null>(null);
   const paginationRef = useRef<HTMLSpanElement | null>(null);
@@ -73,16 +85,16 @@ const AutoCarousel = () => {
   return (
     <div className={clsx(Style['auto-carousel'], 'auto-carousel')}>
       <div className='auto-carousel__title-area'>
-        <h3 className='auto-carousel__title'>오토 캐러샐</h3>
+        <h3 className='auto-carousel__title'>{title}</h3>
         <div className='auto-carousel__controls'>
-          <span ref={paginationRef} className='swiper-paination' aria-hidden='true'></span>
+          <FractionIndicator ref={paginationRef} className='swiper-paination' aria-hidden='true' />
 
           <div className='swiper-btn-controls'>
             <IconButton
               className='swiper-btn-prev'
               color='primary'
               shape='pill'
-              size='md'
+              size='xs'
               variant='outline'
               icon={<Icon name='chevron-left' className='icon' strokeWidth={2.5} />}
             />
@@ -90,7 +102,7 @@ const AutoCarousel = () => {
               className='swiper-btn-next'
               color='primary'
               shape='pill'
-              size='md'
+              size='xs'
               variant='outline'
               icon={<Icon name='chevron-right' className='icon' strokeWidth={2.5} />}
             />
@@ -102,9 +114,9 @@ const AutoCarousel = () => {
               onClick={handleStop}
               aria-label='자동 재생 정지'
               className='swiper-btn-stop'
-              color='primary'
+              color='tertiary'
               shape='pill'
-              size='md'
+              size='xs'
               variant='outline'
               icon={<Icon name='pause' className='icon' strokeWidth={2.5} />}
             />
@@ -114,9 +126,9 @@ const AutoCarousel = () => {
               onClick={handlePlay}
               aria-label='자동 재생 시작'
               className='swiper-btn-play'
-              color='primary'
+              color='tertiary'
               shape='pill'
-              size='md'
+              size='xs'
               variant='outline'
               icon={<Icon name='play' className='icon' strokeWidth={2.5} />}
             />
@@ -171,9 +183,15 @@ const AutoCarousel = () => {
             };
           }}
         >
-          {[1, 2, 3, 4, 5].map(n => (
-            <SwiperSlide key={n} className='auto-carousel__item'>
-              <a href='#'>Slide {n}</a>
+          {(items ?? [
+            { id: 'slide-1', title: 'Slide 1' },
+            { id: 'slide-2', title: 'Slide 2' },
+            { id: 'slide-3', title: 'Slide 3' },
+            { id: 'slide-4', title: 'Slide 4' },
+            { id: 'slide-5', title: 'Slide 5' },
+          ]).map(item => (
+            <SwiperSlide key={item.id} className='auto-carousel__item'>
+              <a href={item.href ?? '#'}>{item.title}</a>
             </SwiperSlide>
           ))}
         </Swiper>
