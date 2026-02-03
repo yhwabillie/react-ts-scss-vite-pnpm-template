@@ -16,6 +16,9 @@ import FractionIndicator from '../../atoms/FractionIndicator/FractionIndicator';
 type AutoCarouselItem = {
   id: string;
   title: string;
+  desc?: string;
+  imgSrc?: string;
+  imgAlt?: string;
   href?: string;
 };
 
@@ -24,7 +27,7 @@ type AutoCarouselProps = {
   items?: AutoCarouselItem[];
 };
 
-const AutoCarousel = ({ title = '오토 캐러샐', items }: AutoCarouselProps) => {
+const AutoCarousel = ({ title = '자동 캐러샐 타이틀', items }: AutoCarouselProps) => {
   const swiperWrapRef = useRef<HTMLDivElement | null>(null);
   const swiperRef = useRef<SwiperInstance | null>(null);
   const paginationRef = useRef<HTMLSpanElement | null>(null);
@@ -87,23 +90,31 @@ const AutoCarousel = ({ title = '오토 캐러샐', items }: AutoCarouselProps) 
       <div className='auto-carousel__title-area'>
         <h3 className='auto-carousel__title'>{title}</h3>
         <div className='auto-carousel__controls'>
-          <FractionIndicator ref={paginationRef} className='swiper-paination' aria-hidden='true' />
+          <FractionIndicator
+            ref={paginationRef}
+            variant='outline'
+            color='secondary'
+            className='swiper-paination'
+            aria-hidden='true'
+          />
 
           <div className='swiper-btn-controls'>
             <IconButton
               className='swiper-btn-prev'
-              color='primary'
+              color='secondary'
               shape='pill'
               size='xs'
               variant='outline'
+              aria-label='이전'
               icon={<Icon name='chevron-left' className='icon' strokeWidth={2.5} />}
             />
             <IconButton
               className='swiper-btn-next'
-              color='primary'
+              color='secondary'
               shape='pill'
               size='xs'
               variant='outline'
+              aria-label='다음'
               icon={<Icon name='chevron-right' className='icon' strokeWidth={2.5} />}
             />
           </div>
@@ -114,7 +125,7 @@ const AutoCarousel = ({ title = '오토 캐러샐', items }: AutoCarouselProps) 
               onClick={handleStop}
               aria-label='자동 재생 정지'
               className='swiper-btn-stop'
-              color='tertiary'
+              color='primary'
               shape='pill'
               size='xs'
               variant='outline'
@@ -126,7 +137,7 @@ const AutoCarousel = ({ title = '오토 캐러샐', items }: AutoCarouselProps) 
               onClick={handlePlay}
               aria-label='자동 재생 시작'
               className='swiper-btn-play'
-              color='tertiary'
+              color='primary'
               shape='pill'
               size='xs'
               variant='outline'
@@ -183,15 +194,25 @@ const AutoCarousel = ({ title = '오토 캐러샐', items }: AutoCarouselProps) 
             };
           }}
         >
-          {(items ?? [
-            { id: 'slide-1', title: 'Slide 1' },
-            { id: 'slide-2', title: 'Slide 2' },
-            { id: 'slide-3', title: 'Slide 3' },
-            { id: 'slide-4', title: 'Slide 4' },
-            { id: 'slide-5', title: 'Slide 5' },
-          ]).map(item => (
+          {(
+            items ?? [
+              { id: 'slide-1', title: 'Slide 1', desc: '설명 1' },
+              { id: 'slide-2', title: 'Slide 2', desc: '설명 2' },
+              { id: 'slide-3', title: 'Slide 3', desc: '설명 3' },
+              { id: 'slide-4', title: 'Slide 4', desc: '설명 4' },
+              { id: 'slide-5', title: 'Slide 5', desc: '설명 5' },
+            ]
+          ).map(item => (
             <SwiperSlide key={item.id} className='auto-carousel__item'>
-              <a href={item.href ?? '#'}>{item.title}</a>
+              <a href={item.href ?? '#'}>
+                {item.imgSrc && (
+                  <figure className='auto-carousel__item-image'>
+                    <img src={item.imgSrc} alt={item.imgAlt ?? item.title} />
+                  </figure>
+                )}
+                <span className='auto-carousel__item-title'>{item.title}</span>
+                {item.desc && <span className='auto-carousel__item-desc'>{item.desc}</span>}
+              </a>
             </SwiperSlide>
           ))}
         </Swiper>

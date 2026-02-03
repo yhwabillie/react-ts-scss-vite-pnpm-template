@@ -438,6 +438,10 @@ $g_colors: (
     "color-chip-disabled-bg": var(--project-color-primitive-gray-140),
     "color-chip-disabled-text": var(--project-color-primitive-gray-380),
     "color-chip-disabled-border": var(--project-color-primitive-gray-380),
+    "color-carousel-bg": var(--project-color-primitive-gray-white),
+    "color-carousel-border": var(--project-color-primitive-gray-50),
+    "color-carousel-card-bg": var(--project-color-primitive-gray-50),
+    "color-carousel-img-border": var(--project-color-primitive-gray-130),
   ),
   "dark": (
     "color-surface-sunken": var(--project-color-primitive-gray-930),
@@ -878,5 +882,9 @@ $g_colors: (
     "color-chip-disabled-bg": var(--project-color-primitive-gray-880),
     "color-chip-disabled-text": var(--project-color-primitive-slate-blue-670),
     "color-chip-disabled-border": var(--project-color-primitive-slate-blue-740),
+    "color-carousel-bg": var(--project-color-primitive-gray-880),
+    "color-carousel-border": var(--project-color-primitive-gray-830),
+    "color-carousel-card-bg": var(--project-color-primitive-gray-830),
+    "color-carousel-img-border": var(--project-color-primitive-gray-130),
   )
 );

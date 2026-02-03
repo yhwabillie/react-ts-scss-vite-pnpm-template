@@ -3,10 +3,88 @@
 @use 'sass:meta';
 @use '../../../../styles/mixins' as *;
 
+$fraction-sizes: (
+  md: (
+    height: rem(32px),
+    padding: 0 rem(14px),
+    font: var(--project-typo-btn-4-600),
+    gap: rem(6px),
+  ),
+);
+
+$fraction-colors: (
+  primary: (
+    solid: (
+      bg: var(--project-color-primary-chip-solid-bg),
+      label: var(--project-color-primary-chip-solid-text),
+    ),
+    outline: (
+      bg: var(--project-color-primary-chip-outline-bg),
+      label: var(--project-color-primary-chip-outline-text),
+      border: var(--project-color-primary-chip-outline-border),
+    ),
+  ),
+  secondary: (
+    solid: (
+      bg: var(--project-color-secondary-chip-solid-bg),
+      label: var(--project-color-secondary-chip-solid-text),
+    ),
+    outline: (
+      bg: var(--project-color-secondary-chip-outline-bg),
+      label: var(--project-color-secondary-chip-outline-text),
+      border: var(--project-color-secondary-chip-outline-border),
+    ),
+  ),
+  tertiary: (
+    solid: (
+      bg: var(--project-color-tertiary-chip-solid-bg),
+      label: var(--project-color-tertiary-chip-solid-text),
+    ),
+    outline: (
+      bg: var(--project-color-tertiary-chip-outline-bg),
+      label: var(--project-color-tertiary-chip-outline-text),
+      border: var(--project-color-tertiary-chip-outline-border),
+    ),
+  ),
+);
+
 .fraction-indicator {
+  width: max-content;
   display: inline-flex;
-  font: var(--project-typo-btn-3-600);
-  padding: rem(8px) rem(16px);
+  align-items: center;
   border-radius: var(--project-border-radius-max);
-  gap: rem(8px);
+
+  @each $size-name, $size-map in $fraction-sizes {
+    @include global-mod('size--#{$size-name}') {
+      height: map.get($size-map, height);
+      padding: map.get($size-map, padding);
+      gap: map.get($size-map, gap);
+      font: map.get($size-map, font);
+    }
+  }
+
+  @each $color-name, $color-map in $fraction-colors {
+    // color
+    @include global-mod('color--#{$color-name}') {
+      @each $variant-name, $variant-map in $color-map {
+        // variant
+        @include global-mod('variant--#{$variant-name}') {
+          @if $variant-name == 'solid' {
+            background-color: map.get($variant-map, bg);
+            color: map.get($variant-map, label);
+          } @else if $variant-name == 'outline' {
+            border: rem(1px) solid map.get($variant-map, border);
+            background-color: map.get($variant-map, bg);
+            color: map.get($variant-map, label);
+          }
+        }
+      }
+    }
+  }
+
+  :global {
+    .swiper-pagination-total {
+      font-weight: var(--project-font-weight-400);
+    }
+  }
 }

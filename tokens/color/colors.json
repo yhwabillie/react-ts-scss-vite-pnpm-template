@@ -3748,6 +3748,40 @@
           }
         }
       }
+    },
+    "carousel": {
+      "bg": {
+        "light": {
+          "value": "var(--project-color-primitive-gray-white)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-gray-880)"
+        }
+      },
+      "border": {
+        "light": {
+          "value": "var(--project-color-primitive-gray-50)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-gray-830)"
+        }
+      },
+      "card-bg": {
+        "light": {
+          "value": "var(--project-color-primitive-gray-50)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-gray-830)"
+        }
+      },
+      "img-border": {
+        "light": {
+          "value": "var(--project-color-primitive-gray-130)"
+        },
+        "dark": {
+          "value": "var(--project-color-primitive-gray-130)"
+        }
+      }
     }
   }
 }

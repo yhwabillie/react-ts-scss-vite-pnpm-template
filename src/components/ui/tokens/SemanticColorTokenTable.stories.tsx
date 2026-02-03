@@ -79,9 +79,7 @@ const guideTokens = buildGuideTokens(
 
 const mergedTokens = [
   ...ColorTokensData,
-  ...guideTokens.filter(
-    token => !ColorTokensData.some(existing => existing.id === token.id),
-  ),
+  ...guideTokens.filter(token => !ColorTokensData.some(existing => existing.id === token.id)),
 ];
 
 /**
@@ -390,5 +388,13 @@ export const Guide: Story = {
     title: 'Guide Tokens',
     category: 'System',
     tokens: groupedTokens['guide'] || [],
+  },
+};
+// Carousel 그룹
+export const Carousel: Story = {
+  args: {
+    title: 'Carousel Tokens',
+    category: 'System',
+    tokens: groupedTokens['carousel'] || [],
   },
 };

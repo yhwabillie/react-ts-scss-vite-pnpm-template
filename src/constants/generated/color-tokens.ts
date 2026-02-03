@@ -2188,5 +2188,25 @@ export const ColorTokensData = [
     "id": "--color-chip-disabled-border",
     "lightValue": "var(--project-color-primitive-gray-380)",
     "darkValue": "var(--project-color-primitive-slate-blue-740)"
+  },
+  {
+    "id": "--color-carousel-bg",
+    "lightValue": "var(--project-color-primitive-gray-white)",
+    "darkValue": "var(--project-color-primitive-gray-880)"
+  },
+  {
+    "id": "--color-carousel-border",
+    "lightValue": "var(--project-color-primitive-gray-50)",
+    "darkValue": "var(--project-color-primitive-gray-830)"
+  },
+  {
+    "id": "--color-carousel-card-bg",
+    "lightValue": "var(--project-color-primitive-gray-50)",
+    "darkValue": "var(--project-color-primitive-gray-830)"
+  },
+  {
+    "id": "--color-carousel-img-border",
+    "lightValue": "var(--project-color-primitive-gray-130)",
+    "darkValue": "var(--project-color-primitive-gray-130)"
   }
 ];
